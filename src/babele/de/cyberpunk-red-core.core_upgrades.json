@@ -14,7 +14,7 @@
     },
     "Backup Drive": {
       "name": "Datensicherungslaufwerk",
-      "description": "<p>Speichert Programme, die kein Schwarzes ICE sind, bevor sie zerstört werden. Diese Programme können von einem Netrunner als Fleisch-Aktion wieder installiert werden.</p>"
+      "description": "<p>\n  Saves Non-Black ICE programs when destroyed. These programs can be\n  re-installed by a Netrunner as a meat action.\n</p>\n"
     },
     "Bayonet": {
       "name": "Bajonett",

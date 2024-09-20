@@ -30,8 +30,8 @@
       "description": "<p>Une interface bon marché et encombrante pour une amélioration audio.</p>\n"
     },
     "Dynalar Modular Finger Enthusiast Cyberhand": {
-      "name": "Dynalar Modular Finger Enthusiast Cyberhand",
-      "description": "<p>Borgware. Requires cyberarm. Comes with 8 cyberfingers*.</p>\n<p>*Fingers must be added after installation</p>\n"
+      "name": "Cybermain pour fan de doigts modulaires Dynalar",
+      "description": "<p>Cyborgimplant. Nécessite un cyberbras. Livré avec 8 cyberdoigts*.</p>\n<p>*Les doigts doivent être ajoutés après l'installation</p>\n"
     },
     "Explicit Memory Stimulator": {
       "name": "Stimulateur de mémoire explicite",
@@ -54,16 +54,16 @@
       "description": "<p>Cyberdoigt contenant une lampe-torche dissimulée. Ne peut être installé que sur une cybermain à doigts modulaires.</p>\n"
     },
     "Hardened Shielding (Borgware)": {
-      "name": "Bouclier renforcé (cyborgimplant)",
-      "description": "<p>Les cyborgimplants installés ne sont pas affectés par les effets IEM.</p>\n"
+      "name": "Renforcement électronique de cyborgimplant",
+      "description": "<p>Cyborgimplant</p>\n<p>Le Cyborgimplant pour lequel cette option est installée n'est plus affecté par les effets IEM.</p>\n"
     },
     "Hardened Shielding (Cybereye)": {
-      "name": "Bouclier renforcé (cyberoptique)",
-      "description": "<p>L'œil et les options installés ne sont pas affectés par les effets IEM.</p>\n"
+      "name": "Orbite renforcée pour cyberœil",
+      "description": "<p>L'œil et les options installées ne sont pas affectés par les effets IEM.</p>\n"
     },
     "Hardened Shielding (Internal)": {
-      "name": "Bouclier renforcé (interne)",
-      "description": "<p>Cyberimplant interne.</p>\n<p>Tous les cyberimplants internes ne sont pas affectés par les effets IEM.</p>\n"
+      "name": "Renforcement électronique de cyberimplant corporel interne",
+      "description": "<p>Cyberimplant interne.</p>\n<p>Protège les cyberimplants internes des effets IEM.</p>\n"
     },
     "Heuristic Health Monitor": {
       "name": "Moniteur de santé heuristique",
@@ -106,7 +106,7 @@
       "description": "<p>Cyberdoigt contenant un enregistreur caché. Ne peut être installé que sur une cybermain à doigts modulaires.</p>\n"
     },
     "Mini Air Supply Cyberfinger": {
-      "name": "Cyberdoigt à mini réserve d'air",
+      "name": "Cyberdoigt à mini-réserve d'air",
       "description": "<p>Cyberdoigt contenant une réserve d'air. Ne peut être installé que sur une cybermain à doigts modulaires.</p>\n"
     },
     "Modular Finger Cyberhand": {
@@ -134,11 +134,11 @@
     },
     "RacerBracer": {
       "name": "Minerve de course",
-      "description": "<p>cyberimplant interne. Donne l'immunité au Coup du lapin.</p>\n"
+      "description": "<p>Cyberimplant interne. Donne l'immunité au Coup du lapin.</p>\n"
     },
     "Reflex Co-Processor": {
       "name": "Coprocesseur de réflexes",
-      "description": "<p>Neuromatériel.</p>\n<p>Annule l'exigence de REF pour exquiver les balles.</p>\n"
+      "description": "<p>Neuromatériel.</p>\n<p>Annule le prérequis de REF pour esquiver les balles.</p>\n"
     },
     "Reinforced Cyberarm Upgrade": {
       "name": "Renforcement pour cyberbras",

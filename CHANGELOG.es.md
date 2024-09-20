@@ -10,6 +10,10 @@
 
 We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
 
+#### Get EMP'd Macro
+
+If you have imported the `Get EMP'd Macro` you will need to delete the copy in your world and re-import it from the `Other/Macros` Compendium as we have updated this Macro.
+
 ### Nuevas Características
 
 - Added compatibility for Foundry v12.
@@ -38,6 +42,8 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Add ability to set weapon to ignore armor below set SP amount
 - #235 - Added ability to change resource bars for armor from item sheet
 - Display Net Architectures in Character's gear tab
+- Add Basic system API
+  - Add `GetEMPableItems` function to API
 
 ### Cambios
 
@@ -60,11 +66,17 @@ We have updated the Netrunning Tiles, we have replaced the PNG files with WebP f
 - Fix NET Arch image path seperators
 - #951 - Fix duplicate page references on item description that are already present in manual/page properties for items
 - #979 - Fix styling of inline rolls in chat
+- Fix Medtech translation stering on Role Item
 - Added several small updates to descriptions to understand various items better
 - Fix image overflow on Item Sheets
 - Fix typos in some items
+- Fix Computer not being isElectronic
 - Fix filepicker favorites styling
 - #1017 - Fix duplicate effect bonuses being applied to attacks
+- Fix program damage type in Chat messages for Programs
+- Fix not being able to creat effects on owned items.
+- Fix Black ICE actions/skills not being properly translated
+- Fix more typos in items
 
 ## Version 0.88.2
 

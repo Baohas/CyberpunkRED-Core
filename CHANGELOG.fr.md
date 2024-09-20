@@ -76,6 +76,7 @@ Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la cop
 - Corrige les types de dégâts de programmes dans les messages du chat pour les programmes
 - Corrige l'impossibilité de créer des effets dans les objets possédés.
 - Corrige les compétences/actions de GLACE Noir n'étant pas traduit adéquatement
+- Fix more typos in items
 
 ## Version 0.88.2
 
@@ -125,7 +126,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 ### Action Needed
 
-**AVERTISSEMENT**: SI VOUS AVEZ CHARGE LA MISE À JOUR `0.88.0`/FOUNDRY V11, C'ETAIT UNE ERREUR (mais pas de votre faute). VOUS DEVEZ REVENIR A LA SAUVEGARDE QUE VOUS AVEZ FAITE / FOUNDRY V10, AVANT LA MISE À JOUR À CETTE VERSION. A NOUVEAU, **REVENEZ A FOUNDRY V10 ET A VOTRE SAUVEGARDE QUE VOUS AVEZ FAIT DE CPR `0.87.6`**, PUIS METTEZ À JOUR DIRECTEMENT AVEC LA `V0.88.1`. Passez sur le Discord si vous avez un problème.
+**AVERTISSEMENT**: SI VOUS AVEZ CHARGE LA MISE À JOUR  `0.88.0`/FOUNDRY V11, C'ETAIT UNE ERREUR (mais pas de votre faute). VOUS DEVEZ REVENIR A LA SAUVEGARDE QUE VOUS AVEZ FAITE / FOUNDRY V10, AVANT LA MISE À JOUR À CETTE VERSION. A NOUVEAU, **REVENEZ A FOUNDRY V10 ET A VOTRE SAUVEGARDE QUE VOUS AVEZ FAIT DE CPR `0.87.6`**, PUIS METTEZ À JOUR DIRECTEMENT AVEC LA `V0.88.1`. Passez sur le Discord si vous avez un problème.
 
 ### Bug Fixes
 

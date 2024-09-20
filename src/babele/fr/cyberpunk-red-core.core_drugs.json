@@ -8,7 +8,7 @@
     },
     "Black Lace": {
       "name": "Dentelle noire",
-      "description": "<p><strong>Effet primaire</strong></p>\n<p>Une dose dure 24 heures.</p>\n<ul>\n<li>L'utilisateur pert 2d6 d'Humanité qui lui sont rendus s'il réussit la sauvegarde de l'effet secondaire</li>\n<li>L'utilisateur ignore les états de blessures graves pendant la durée de l'effet principal.</li>\n</ul>\n<p><br><strong> Effet secondaire (SD17)</strong></p>\n<p>Lorsque l'effet principal se termine, l'utilisateur lance VOL + Résistance torture/drogues + 1d10 contre SD.</p>\n<ul>\n<li>La perte de l'humanité en cas d'échec n'est pas rendue</li>\n<li>Si l'effet principal n'est pas actif: REF -2</li>\n</ul>"
+      "description": "<p><strong>Effet primaire</strong></p>\n<p>Une dose dure 24 heures.</p>\n<ul>\n<li>L'utilisateur perd 2d6 d'Humanité qui lui sont rendus s'il réussit la sauvegarde de l'effet secondaire</li>\n<li>L'utilisateur ignore les états de blessures graves pendant la durée de l'effet principal.</li>\n</ul>\n<p><strong> Effet secondaire (SD17)</strong></p>\n<p>Lorsque l'effet principal se termine, l'utilisateur lance <strong>VOL + Résistance torture/drogues + 1d10 contre SD</strong>.</p>\n<ul>\n<li>La perte de l'humanité en cas d'échec n'est pas rendue</li>\n<li>Si l'effet principal n'est pas actif: REF -2</li>\n</ul>"
     },
     "Blue Glass": {
       "name": "Verre bleu",
@@ -24,7 +24,7 @@
     },
     "Smash": {
       "name": "Smash",
-      "description": "<p><strong>Effet principal</strong></p>\n<p>Un dose dure 4 heures.</p>\n<ul>\n<li>L'utilisateur se sent heureux et satisfait</li>\n<li>+2 en Danse / Contortion / Conversation / Psychologie / Persuasion / Jeu d'acteur</li>\n</ul>\n<p><strong>Effet secondaire (SD15)</strong></p>\n<ul>\n<li>-2 en Danse / Contortion / Conversation / Psychologie / Persuasion / Jeu d'acteur</li>\n<li>Le MJ vous dira quand vous avez besoin de plus de Smash. Jeu de rôle en conséquence.</li>\n</ul>"
+      "description": "<p><strong>Effet principal</strong></p>\n<p>Un dose dure 4 heures.</p>\n<ul>\n<li>L'utilisateur se sent heureux et satisfait</li>\n<li>+2 en Danse / Contortion / Conversation / Psychologie / Persuasion / Jeu d'acteur</li>\n</ul>\n<p><strong>Effet secondaire (SD15)</strong></p>\n<p>L'utilisateur devient accro au Smash.</p>\n<ul>\n<li>-2 en Danse / Contortion / Conversation / Psychologie / Persuasion / Jeu d'acteur</li>\n<li>Le MJ vous dira quand vous avez besoin de plus de Smash. Jeu de rôle en conséquence.</li>\n</ul>"
     },
     "Speedheal": {
       "name": "Rapidoc",
@@ -40,7 +40,7 @@
     },
     "Synthcoke": {
       "name": "Synthécoke",
-      "description": "<p><strong>Effet principal</strong></p>\n<p>Une dose dure 4 heures.</p>\n<ul>\n<li>+1 REF pendant la durée de l'effet principal</li>\n<li>L'utilisateur se sent paranoïaque de temps en temps</li>\n\n</ul>\n<p><strong>Effet secondaire (SD15)</strong></p>\n<ul>\n<li>-2 REF sauf si effet principal actif</li>\n<li>Le MJ vous dira quand vous êtes en manque de Synthécoke. Jeu de rôle en conséquence</li>\n</ul>"
+      "description": "<p><strong>Effet principal</strong></p>\n<p>Une dose dure 4 heures.</p>\n<ul>\n<li>+1 REF pendant la durée de l'effet principal</li>\n<li>L'utilisateur se sent paranoïaque de temps en temps</li>\n</ul>\n<p><strong>Effet secondaire (SD15)</strong></p>\n<ul>\n<li>-2 REF sauf si l'effet principal est actif</li>\n<li>Le MJ vous dira quand vous êtes en manque de Synthécoke. Jeu de rôle en conséquence</li>\n</ul>"
     }
   }
 }

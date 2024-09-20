@@ -14,7 +14,7 @@
     },
     "Backup Drive": {
       "name": "Copia de seguridad",
-      "description": "<p>Guarda programas no Hielo Negro cuando se destruyen. Estos programas pueden ser reinstalados por un Netrunner como una acción de carne.&nbsp;</p>"
+      "description": "<p>\n  Saves Non-Black ICE programs when destroyed. These programs can be\n  re-installed by a Netrunner as a meat action.\n</p>\n"
     },
     "Bayonet": {
       "name": "Bayoneta",

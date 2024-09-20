@@ -14,7 +14,7 @@
     },
     "Backup Drive": {
       "name": "Zapasowy dysk",
-      "description": "<p>Zapisuje programy nie będące Czarnym LODem kiedy zostają zniszczone. Programy te mogą zostać przeinstalowane przez netrunnera w ramach akcji w somie.&nbsp;</p>"
+      "description": "<p>\n  Saves Non-Black ICE programs when destroyed. These programs can be\n  re-installed by a Netrunner as a meat action.\n</p>\n"
     },
     "Bayonet": {
       "name": "Bagnet",

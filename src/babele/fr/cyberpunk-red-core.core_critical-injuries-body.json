@@ -24,11 +24,11 @@
     },
     "Dismembered Arm": {
       "name": "Bras arraché",
-      "description": "<p>Le bras arraché est perdu. Vous lâchez immédiatement tous les objets que vous teniez dans la main. La pénalité au jet de sauvegarde contre la mort de base augmente de 1</p>"
+      "description": "<p>Le bras arraché est perdu. Vous lâchez immédiatement tous les objets que vous teniez dans la main.</p>"
     },
     "Dismembered Hand": {
       "name": "Main arrachée",
-      "description": "<p>La main arraché est perdu. Vous lâchez immédiatement tous les objets que vous teniez dans la main. La pénalité au jet de sauvegarde contre la mort de base augmente de 1</p>"
+      "description": "<p>La main arraché est perdu. Vous lâchez immédiatement tous les objets que vous teniez dans la main.</p>"
     },
     "Dismembered Leg": {
       "name": "Jambe arrachée",
@@ -40,7 +40,7 @@
     },
     "Spinal Injury": {
       "name": "Vertèbre endommagée",
-      "description": "<p>Prochain tour : Aucune action, sauf mouvement. La pénalité au jet de sauvegarde contre la mort de base augmente de 1</p>"
+      "description": "<p>Prochain tour : Aucune action, sauf mouvement.</p>"
     },
     "Torn Muscle": {
       "name": "Muscle déchiré",

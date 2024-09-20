@@ -14,7 +14,7 @@
     },
     "Backup Drive": {
       "name": "Disco di Backup",
-      "description": "<p>Quando installato, il Disco di Backup “salva” tutti i Programmi Boost, Difensivi e Offensivi non Black ICE quando vengono Distrutti, copiandoli un attimo prima della fine. Come Azione IRL, il Netrunner può reinstallare un Programma “salvato” nel proprio deck, se ha lo Slot per farlo. I programmi recuperati con limitazioni “una volta per Netrun” sono nello stesso stato in cui erano al momento del salvataggio</p>"
+      "description": "<p>\n  Saves Non-Black ICE programs when destroyed. These programs can be\n  re-installed by a Netrunner as a meat action.\n</p>\n"
     },
     "Bayonet": {
       "name": "Baionetta",

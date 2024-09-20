@@ -8,11 +8,11 @@
     },
     "Banhammer": {
       "name": "Bannissement",
-      "description": "<p>Inflige 2d6 points de dégâts aux GLACE et 3d6 aux autres programmes.</p>"
+      "description": "<p>Inflige 2d6 points de dégâts aux GLACE Noirs et 3d6 aux autres programmes.</p>"
     },
     "DeckKRASH": {
       "name": "ConsoleKRASH",
-      "description": "<p>Force le Netrunner à se déconnecter de l'architecture de force de manière non sûre. Il subit l'effet de toutes les GLACE ennemies rezzés qu'il a rencontré. </p>"
+      "description": "<p>Force le Netrunner à se déconnecter de l'architecture de force de manière non sûre.</p>"
     },
     "Eraser": {
       "name": "Effaceur",
@@ -24,15 +24,15 @@
     },
     "Hellbolt": {
       "name": "Feubeu",
-      "description": "<p>Inflige 2d6 dégâts directement au cerveau du Netrunner ennemi. Si sa cyberconsole n'est pas dotée d'un câblage isolé, elle prend feu. Le netrunner subit 2 points de dégâts sur ses PS chaque fois qu'il termine son tour (feu).</p>"
+      "description": "<p>Inflige 2d6 dégâts directement au cerveau du Netrunner ennemi. Si sa cyberconsole n'est pas dotée d'un câblage isolé, elle prend feu.</p>"
     },
     "Nervescrub": {
       "name": "Taser",
-      "description": "<p>L'INT, les REF et la DEX du Netrunner ennemi sont chacune réduites d'1d6 (mais restent de 1 minimum) pendant 1 heure.</p>"
+      "description": "<p>L'INT, les REF et la DEX du Netrunner ennemi sont chacune réduites d'1d6 (min. 1) pendant 1 heure.</p>"
     },
     "Poison Flatline": {
       "name": "Laser corrosif",
-      "description": "<p>Détruit aléatoirement un programme qui n'est pas une GLACE installée sur la cyberconsole du Netrunner ciblé.</p>"
+      "description": "<p>Détruit aléatoirement un programme qui n'est pas une GLACE Noir installée sur la cyberconsole du Netrunner ciblé.</p>"
     },
     "See Ya": {
       "name": "Loupe",
@@ -40,7 +40,7 @@
     },
     "Shield": {
       "name": "Bouclier",
-      "description": "<p>Empêche le premier effet réussi d'un programme qui n'est pas une GLACE d'infliger des dégâts au cerveau. Après avoir arrêté les dégâts, le Bouclier de dérezze. Vous ne pouvez exécuter qu'une seule copie de ce programme à la fois. Chaque copie de ce programme ne peut être utilisée qu'une fois par Netrun.</p>"
+      "description": "<p>Empêche le premier effet réussi d'un programme qui n'est pas une GLACE Noir d'infliger des dégâts au cerveau. Vous ne pouvez exécuter qu'une seule copie de ce programme à la fois. Chaque copie de ce programme ne peut être utilisée qu'une fois par Netrun.</p>"
     },
     "Speedy Gonzalvez": {
       "name": "Speedy Gonzalvez",
@@ -52,11 +52,11 @@
     },
     "Sword": {
       "name": "Sabre",
-      "description": "<p>Inflige 3d6 points de dégâts aux GLACE et 2d6 aux autres programmes.</p>"
+      "description": "<p>Inflige 3d6 points de dégâts aux GLACE Noir et 2d6 aux autres programmes.</p>"
     },
     "Vrizzbolt": {
       "name": "Hélice d'éclairs",
-      "description": "<p>Inflige 1d6 points de dégâts directement au cerveau du Netrunner et réduit la quantité totale d'actions virtuelles qu'il peut accomplir lors de son prochain tour de 1 (mais il lui reste 2 actions virtuelles minimum).</p>"
+      "description": "<p>Inflige 1d6 points de dégâts directement au cerveau du Netrunner et réduit la quantité totale d'actions virtuelles qu'il peut accomplir lors de son prochain tour de 1 (min. 2).</p>"
     },
     "Worm": {
       "name": "Ver",

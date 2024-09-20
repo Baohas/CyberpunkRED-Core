@@ -15,8 +15,8 @@
       "description": "<p>Tenue pare-balle légère qui ressemble à un vêtement Cadre sup. Restaure 1PA par jour où l'armure ne perd pas de PA.</p>\n"
     },
     "Fire Brand Bunker Gear": {
-      "name": "Fire Brand Bunker Gear",
-      "description": "<p>\n  Fireproof flak armor with a built in gas mask and 30 minutes of oxygen in a\n  tank that refills itself after an hour. -4 to REF, DEX, and MOVE.\n</p>\n"
+      "name": "Tenue de protection ignifugée Fire Brand",
+      "description": "<p>Armure type Flak ignifugée, avec un masque à gaz intégré et 30 minutes d'oxygène dans un réservoir qui se recharge en une heure. -4 en REF, DEX et MOUV.</p>\n"
     },
     "Laser Light Street Jacket": {
       "name": "Veste urbaine Laser Light",
@@ -27,7 +27,7 @@
       "description": "<p>Une combinaison connectée offrant un emplacement matériel supplémentaire de cyberconsole installé directement à l'intérieur. Désinstallé si la combinaison est retirée. Livrée avec une cyberconsole de qualité excellente*. -2 au REF, DEX et MOUV.</p>\n<p><em>*Doit être ajoutée manuellement après l'acquisition de l'armure</em></p>\n"
     },
     "Masetto AirRider": {
-      "name": "Masetto AirRider",
+      "name": "AirRider Masetto",
       "description": "<p>\n  Armure de corps en kevlar qui ignore la blessure critique Coup du lapin due à un accident de voiture tant que le réservoir de CO<sub>2</sub> de l'armure est plein*.\n</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'armure.</em></p>\n"
     },
     "MechaMan Motorcycle Helmet": {

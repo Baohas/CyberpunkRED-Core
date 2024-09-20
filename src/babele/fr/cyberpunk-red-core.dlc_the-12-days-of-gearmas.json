@@ -1,5 +1,5 @@
 {
-  "label": "Les 12 Jours d'Equipements de Noël",
+  "label": "Les 12 Jours d'Équipements de Noël",
   "mapping": {},
   "entries": {
     "Esporma Environment Suit": {
@@ -8,7 +8,7 @@
     },
     "PackShield": {
       "name": "Sac bouclier",
-      "description": "<p>Croisement entre un sac à dos de style Cadre Sup et un bouclier ballistique.</p>\n<p>Peut transporter des objets comme un sac et être équipé dans votre main comme un bouclier.</p>\n<p>Offre seulement une protection lorsqu'il est équipé dans une main.</p>\n<p>Ne peut pas être installé dans un membre cyber.</p>\n"
+      "description": "<p>Croisement entre un sac à dos de style Cadre Sup et un bouclier ballistique.</p>\n<p>Peut transporter des objets comme un @UUID[Compendium.cyberpunk-red-core.core_gear.Item.y2a4HDhIl7FlJyD7]{Fourre-tout}, et être équipé dans votre main comme un bouclier.</p>\n<p>Offre seulement une protection lorsqu'il est équipé dans une main.</p>\n<p>Ne peut pas être installé dans un @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.I08f3hOEgAPNG4kJ]{Bouclier escamotable}.</p>\n"
     },
     "Integrated Cyberscanner": {
       "name": "Cyberscanner intégré",

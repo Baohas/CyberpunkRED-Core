@@ -14,7 +14,7 @@
     },
     "Backup Drive": {
       "name": "Unidade de backup",
-      "description": "<p>Grava programas não Black ICE quando são destruídos. Esses programas podem ser reinstalados por um Trilha Rede usando uma ação de Carne.&nbsp;</p>"
+      "description": "<p>\n  Saves Non-Black ICE programs when destroyed. These programs can be\n  re-installed by a Netrunner as a meat action.\n</p>\n"
     },
     "Bayonet": {
       "name": "Baioneta",

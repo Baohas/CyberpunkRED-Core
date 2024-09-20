@@ -171,49 +171,49 @@
     "Rostović Ulični Uništitelj (aka the Street Destroyer)": {
       "name": "Ulični Uništitelj Rostović (alias Destructeur des rues)",
       "description": "<p>\n  L'Ulični Uništitelj Rostović (destructeur des rues) est un fusil à pompe exotique de \n  mauvaise qualité. Le chargeur ne contient que 3 coups. Il ne peut tirer que des chevrotines.\n</p>\n",
-      "dvTable": "DV Shotgun (Slug)"
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Sanroo Hello Cutie Ultra-K8 Assault Pistol": {
-      "name": "Sanroo Hello Cutie Ultra-K8 Assault Pistol",
-      "description": "<p>\n  The Sanroo Hello Cutie Ultra-K8 Assault Pistol is an Excellent Quality Exotic\n  Very Heavy Pistol with an Excellent Quality Heavy SMG mode.\n</p>\n",
-      "dvTable": "DV Pistol"
+      "name": "Pistolet d'assaut Hello Cutie Ultra-K8 de Sanroo",
+      "description": "<p>\n  Le pistolet d'assaut Hello Cutie Ultra-K8 de Sanroo est un pistolet très lourd \nexotique d'excellente qualité avec un mode de pistolet-mitrailleur lourd d'excellente qualité.\n</p>\n",
+      "dvTable": "SD Pistolet"
     },
     "SlamDance FangFist": {
-      "name": "SlamDance FangFist",
-      "description": "<p>Excellent Quality One Handed Exotic Medium Melee Weapon.</p>\n<p>A glove with a short retractable blade.</p>\n"
+      "name": "Poing à lame SlamDance",
+      "description": "<p>Arme exotique de mêlée à une main moyenne d'excellente qualité.</p>\n<p>Un gant avec une courte lame rétractable.</p>\n"
     },
     "SlamDance Tasmanskiy Klô": {
-      "name": "SlamDance Tasmanskiy Klô",
-      "description": "<p>Excellent Quality Exotic Very Heavy Melee Weapon.</p>\n<p>Big retractable blades in a Combat Glove.</p>\n"
+      "name": "Tasmanskiy Klô SlamDance",
+      "description": "<p>Arme exotique de mêlée très lourde d'excellente qualité.</p>\n<p>De grandes lames rétractables dans un Gantelet de combat.</p>\n"
     },
     "Solo Wolf and Bot Mono-Katana": {
-      "name": "Solo Wolf and Bot Mono-Katana",
-      "description": "<p>Poor Quality Two Handed Exotic Very Heavy Melee Weapon.</p>\n<p>Mono-Katana cheap look-alike.</p>\n"
+      "name": "Monokatana Solo Wolf and Bot",
+      "description": "<p>Arme exotique de mêlée à deux mains très lourde de mauvaise qualité.</p>\n<p>Copie bon marché d'un Monokatana.</p>\n"
     },
     "Sternmeyer M-04 Variable Assault": {
-      "name": "Sternmeyer M-04 Variable Assault",
-      "description": "<p>\n  The Sternmeyer M-04 Variable Assault is a Poor Quality Exotic Assault Rifle\n  with a custom Grenade Launcher underbarrel*.\n</p>\n<p><em>*Grenade Launcher must be manually added.</em></p>\n",
-      "dvTable": "DV Assault Rifle"
+      "name": "Fusil d'assaut modulable M-04 Sternmeyer",
+      "description": "<p>\n  Le M-04 de Sternmeyer est un fusil d'assaut exotique de mauvaise qualité avec\n  un lance-grenades sous canon*.\n</p>\n<p><em>*Le lance-grenades doit être ajouté manuellement.</em></p>\n",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Superchrome® Glam Rifle": {
-      "name": "Fusil glam Superchrome®",
-      "description": "<p>\n  Le Superchrome® Glam est un fusil d'assaut exotique. Donne à l'utilisateur un bonus de +2 en Habillement et Style lorsqu'il est équipé.\n</p>\n<p>\n  <em\n    >*Note : les effets Superchrome® ne s'additionnent pas et doivent être gérés dans l'onglet des effets si plusieurs objets Superchrome® sont installés.</em\n  >\n</p>\n",
+      "name": "Fusil glam Superchrome",
+      "description": "<p>\n  Le Superchrome Glam est un fusil d'assaut exotique. Donne à l'utilisateur un bonus de +2 en Habillement et Style lorsqu'il est équipé.\n</p>\n<p>\n  <em\n    >*Note : les effets Superchrome ne s'additionnent pas et doivent être gérés dans l'onglet des effets si plusieurs objets Superchrome sont installés.</em\n  >\n</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
     "Superchrome® Javelin": {
-      "name": "Javelot Superchrome®",
-      "description": "<p>\n  Le Javelot Superchrome® est un fusil de précision exotique. Donne à l'utilisateur un bonus de +2 en Habillement et Style lorsqu'il est équipé.\n</p>\n<p>\n  <em\n    >*Note : les effets Superchrome® ne s'additionnent pas et doivent être gérés dans l'onglet des effets si plusieurs objets Superchrome® sont installés.</em\n  >\n</p>\n",
+      "name": "Javelot Superchrome",
+      "description": "<p>\n  Le Javelot Superchrome est un fusil de précision exotique. Donne à l'utilisateur un bonus de +2 en Habillement et Style lorsqu'il est équipé.\n</p>\n<p>\n  <em\n    >*Note : les effets Superchrome ne s'additionnent pas et doivent être gérés dans l'onglet des effets si plusieurs objets Superchrome sont installés.</em\n  >\n</p>\n",
       "dvTable": "SD Fusil de précision"
     },
     "Superchrome® Sidearm": {
-      "name": "Pistolet Superchrome®",
-      "description": "<p>\n  Le Pistolet Superchrome® est un pistolet très lourd exotique. Donne à l'utilisateur un bonus de +2 en Habillement et style lorsqu'il est équipé.\n</p>\n<p>\n  <em\n    >*Note : Les effets Superchrome® ne s'additionnent pas et doivent être gérés dans l'onglet des effets si plusieurs objets Superchrome® sont installés.</em\n  >\n</p>\n",
+      "name": "Pistolet Superchrome",
+      "description": "<p>\n  Le Pistolet Superchrome est un pistolet très lourd exotique. Donne à l'utilisateur un bonus de +2 en Habillement et style lorsqu'il est équipé.\n</p>\n<p>\n  <em\n    >*Note : Les effets Superchrome ne s'additionnent pas et doivent être gérés dans l'onglet des effets si plusieurs objets Superchrome sont installés.</em\n  >\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Techtronika Russia BMG-500": {
-      "name": "Techtronika Russia BMG-500",
-      "description": "<p>\n  The Techtronika Russia BMG-500 is an Exotic Assault Rifle with a magazine of\n  500 rounds and a bipod. Requires BODY 11 or higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Assault Rifle"
+      "name": "Mitrailleuse Browning 500 Techtronika Russia",
+      "description": "<p>\n  La mitrailleuse Browning 500 de Techtronika Russia est un fusil d'assaut exotique avec un chargeur \n  de 500 balles et un bipied. Nécessite COR 11 ou plus (sauf si elle est montée sur un support).\n</p>\n",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Tommyknocker": {
       "name": "Poltergeist",
@@ -239,8 +239,8 @@
       "description": "<p>Arme de mêlée intermédiaire à une main exotique.</p>\n<p>Peut rendre la cible inconsciente plutôt que la tuer.</p>\n"
     },
     "Zhirafa Rhinocefist": {
-      "name": "Zhirafa Rhinocefist",
-      "description": "<p>\n  Armored large stone chisel glove, covering from hand to shoulder. Requires\n  interface plugs. Can be used both for demolition and brawling.\n</p>\n"
+      "name": "Rhinopoing Zhirafa",
+      "description": "<p>\n  Gantelet blindé recouvrant tout le bras et l'épaule. Nécessite des ports d’interface \n  neuronale. Peut être utilisé à la fois pour la démolition et la bagarre.\n</p>\n"
     }
   }
 }

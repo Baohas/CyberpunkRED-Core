@@ -1,5 +1,5 @@
 {
-  "label": "Objets",
+  "label": "Attirail",
   "mapping": {},
   "entries": {
     "Cyberdeck (Excellent)": {
@@ -16,7 +16,7 @@
     },
     "Battleglove": {
       "name": "Gantelet de combat",
-      "description": "<p>Un lourd gantelet qui couvre la main et l'avant-bras. Contient trois emplacements d'extensions pour cyberbras ou cybermembre. (cf. p.347).</p>"
+      "description": "<p>Un lourd gantelet qui couvre la main et l'avant-bras. Contient trois emplacements d'extensions.</p>"
     },
     "Smart Glasses": {
       "name": "Lunettes connectées",
@@ -24,11 +24,11 @@
     },
     "Agent": {
       "name": "Agent",
-      "description": "<p>Smartphone équipé d'une IA autoadaptative. +2 en Bibliothèque +2 en Habilement et style selon les circonstances (CF PAGE 352).</p>"
+      "description": "<p>Smartphone équipé d'une IA autoadaptative. +2 en Bibliothèque +2 en Habilement et style selon les circonstances.</p>"
     },
     "Airhypo": {
       "name": "Hypodair",
-      "description": "<p>Injecteur de drogue simple d'utilisation.</p>"
+      "description": "<p>Seringue hypodermique.</p>"
     },
     "Anti-Smog Breathing Mask": {
       "name": "Respirateur antipollution",
@@ -44,7 +44,7 @@
     },
     "Binoculars": {
       "name": "Jumelles",
-      "description": "<p>Vous regardez au travers et elles doublent ou triplent la taille de ce que vous voyez.</p>"
+      "description": "<p>Doublent ou triplent la taille de ce que vous voyez.</p>"
     },
     "Braindance Viewer": {
       "name": "Lecteur de danse sensorielle",
@@ -60,7 +60,7 @@
     },
     "Chemical Analyzer": {
       "name": "Analyseur chimique",
-      "description": "<p>Teste la composition chimique d'une substance.</p>"
+      "description": "<p>Teste la composition chimique d'une substance en utilisant des bases de données.</p>"
     },
     "Computer": {
       "name": "Ordinateur",
@@ -68,11 +68,11 @@
     },
     "Cryopump": {
       "name": "Cryocuve",
-      "description": "<p>Une cryocuve est un conteneur de taille humaine capable d'accueillir un adulte. Si le Medtech réussit un test de Techniques médicales SD13, la cryocuve peut maintenir 1 personne en stase aussi longtemps qu'on le désire. Le sujet est considéré comme inconscient, mais guérit deux fois plus vite que la normale.</p>"
+      "description": "<p>Outil de la taille d'une sacoche utilisé pour brancher une personne blessée. La place en stase.</p>"
     },
     "Cryotank": {
       "name": "Cryopompe",
-      "description": "<p>Outil de la taille d'une mallette, contenant un sac à cadavre relié à une puissante pompe. Une fois le sujet volontaire ou inconscient placé dans le sac et relié à la pompe au prix d'une action, cette dernière y injecte une fluide qui maintient un humain entièrement dimensionné, soigne les blessures plus rapidement que d'habitude.</p>"
+      "description": "<p>Peut contenir un humain entier, soigne les blessures plus rapidement que la normale.</p>"
     },
     "Disposable Cell Phone": {
       "name": "Téléphone jetable",
@@ -84,7 +84,7 @@
     },
     "Duct Tape": {
       "name": "Ruban adhésif",
-      "description": "<p>Plusieurs couleurs disponibles</p>"
+      "description": "<p>Scotchez des trucs avec.</p>"
     },
     "Electric Guitar/Other Instrument": {
       "name": "Guitare Électrique/Autre Instrument",
@@ -96,7 +96,7 @@
     },
     "Food Stick": {
       "name": "Barre nutritive",
-      "description": "<p>Un repas exécrable sous forme de barre</p>"
+      "description": "<p>Un repas exécrable sous forme de barre.</p>"
     },
     "Glow Paint": {
       "name": "Peinture phosphorescente",
@@ -112,15 +112,15 @@
     },
     "Handcuffs": {
       "name": "Menottes",
-      "description": "<p>Entrave les mouvements. Pour les briser, il faut avoir 10+ en COR.</p>"
+      "description": "<p>COR>10 pour les briser.</p>"
     },
     "Homing Tracer": {
       "name": "Traceur",
-      "description": "<p>Permet de suivre une balise connectée au traceur sur un rayon d'un kilomètre.</p>"
+      "description": "<p>Rayon : 1 kilomètre.</p>"
     },
     "Inflatable Bed & Sleep-bag": {
       "name": "Matelas autogonflant et sac de couchage",
-      "description": "<p>Un matelas qui se gonfle tout seul et son sac de couchage.</p>"
+      "description": "<p>Set de couchage portatif.</p>"
     },
     "Kibble Pack": {
       "name": "Paquet de croquettes",
@@ -128,35 +128,35 @@
     },
     "Linear Frame β (Beta)": {
       "name": "Charpente linéaire Beta",
-      "description": "<p>Exosquelette. Nécessite 2 installations de ports d'interface neuronale pour fonctionner. Augmente le COR à 14. Aucun changement à vos PS ou à la sauvegarde contre la mort.</p>"
+      "description": "<p>Exosquelette.</p>\n<ul>\n  <li>Requiert 2 Ports d'interface neuronale</li>\n  <li>Augment le COR à 14 lorsque branché.</li>\n  <li>N'affecte pas les PS ou les jets de sauvegarde contre la mort suite à l'augmentation de COR</li>\n</ul>\n"
     },
     "Linear Frame ∑ (Sigma)": {
       "name": "Charpente linéaire Sigma",
-      "description": "<p>Exosquelette. Nécessite 1 installation de port d'interface neuronale pour fonctionner. Augmente le COR à 12. Aucun changement à vos PS ou à la sauvegarde contre la mort.</p>"
+      "description": "<p>Exosquelette.</p>\n<ul>\n  <li>Requiert 1 Port d'interface neuronale</li>\n  <li>Augment le COR à 12 lorsque branché.</li>\n  <li>N'affecte pas les PS ou les jets de sauvegarde contre la mort suite à l'augmentation de COR</li>\n</ul>"
     },
     "Lock Picking Set": {
       "name": "Outils de crochetage",
-      "description": "<p>Permettent de crocheter les serrures mécaniques</p>"
+      "description": "<p>Permet de crocheter les serrures mécaniques</p>"
     },
     "Medscanner": {
       "name": "Médiscanner",
-      "description": "<p>Permet de diagnostiquer les blessures et les infections. +2 en Premier secours et en Assistance médicale.</p>"
+      "description": "<p>+2 en Premier secours et en Assistance médicale.</p>"
     },
     "Medtech Bag": {
       "name": "Sacoche de Medtech",
-      "description": "<p>Une sacoche contenant du matériel médical indispensable.</p>"
+      "description": "<p>Équipement médical.</p>"
     },
     "Memory Chip": {
       "name": "Puce Mémoire",
-      "description": "<p>Puce. Support de stockage standard.</p>"
+      "description": "<p>Support de stockage standard.</p>"
     },
     "MRE": {
       "name": "Ration alimentaire",
-      "description": "<p>Repas autochauffant dans son emballage composé de plastique et d'aluminium.</p>"
+      "description": "<p>Repas autochauffant.</p>"
     },
     "Personal CarePak": {
       "name": "Pack hygiène",
-      "description": "<p>Tout le nécessaire pour l'hygiène corporelle</p>"
+      "description": "<p>Tout le nécessaire pour l'hygiène corporelle.</p>"
     },
     "Pocket Amplifier": {
       "name": "Amplificateur portable",
@@ -164,7 +164,7 @@
     },
     "Radar Detector": {
       "name": "Détecteur de radar",
-      "description": "<p>Bipe quand il détecte des ondes électromagnétiques émises à moins de 100 m.</p>"
+      "description": "<p>Détecte les faisceaux radar émis à moins de 100 m.</p>"
     },
     "Radiation Suit": {
       "name": "Combinaison antiradiation",
@@ -172,11 +172,11 @@
     },
     "Radio Communicator": {
       "name": "Communicateur radio",
-      "description": "<p>Permet à l'utilisateur de communiquer par radio dans un rayon de 1,6 km.</p>"
+      "description": "<p>Intraauriculaire. Rayon : 1 km.</p>"
     },
     "Radio Scanner/Music Player": {
       "name": "Récepteur radio/lecteur de musique",
-      "description": "<p>Permet d'écouter de la musique disponible sur un puits de données ou une puce mémoire, ou bien d'écouter les stations radios qui émettent dans un rayon d'un kilomètre.</p>"
+      "description": "<p>Reçoit les transmissions radio. Rayon : 1 km.</p>"
     },
     "Road Flare": {
       "name": "Fusée de détresse",
@@ -188,15 +188,15 @@
     },
     "Scrambler/Descrambler": {
       "name": "Brouilleur/décrypteur",
-      "description": "<p>Permet de brouiller les communications ou de rétablir le signal.</p>"
+      "description": "<p>Brouilleur/récepteur de communication.</p>"
     },
     "Tech Bag": {
       "name": "Trousse de Techie",
-      "description": "<p>Petite sacoche à outils pour les réparations.</p>"
+      "description": "<p>Sacoche à outils.</p>"
     },
     "Techscanner": {
       "name": "Technoscanner",
-      "description": "<p>Permet de diagnostiquer les causes de panne matérielle. +2 aux compétences basées sur la Tech.</p>"
+      "description": "<p>+2 aux compétences basées sur la Tech.</p>"
     },
     "Techtool": {
       "name": "Technioutil",
@@ -220,7 +220,7 @@
     },
     "Video Camera": {
       "name": "Caméra",
-      "description": "<p>Enregistre jusqu'à 12 h d'audio et de vidéo sur une puce mémoire.</p>"
+      "description": "<p>Enregistre jusqu'à 12 h sur une puce mémoire.</p>"
     },
     "Virtuality Goggles": {
       "name": "Lunettes de réalité virtuelle",

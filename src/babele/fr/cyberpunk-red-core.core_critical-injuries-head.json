@@ -4,7 +4,7 @@
   "entries": {
     "Brain Injury": {
       "name": "Lésion cérébrale",
-      "description": "<p>-2 à toutes les actions. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+      "description": "<p>-2 à toutes les actions.</p>"
     },
     "Broken Jaw": {
       "name": "Mâchoire cassée",
@@ -20,7 +20,7 @@
     },
     "Crushed Windpipe": {
       "name": "Trachée écrasée",
-      "description": "<p>Impossible de parler. La pénalité au jet de sauvegarde contre la mort de base augmente de 1.</p>"
+      "description": "<p>Impossible de parler.</p>"
     },
     "Damaged Ear": {
       "name": "Oreille endommagée",

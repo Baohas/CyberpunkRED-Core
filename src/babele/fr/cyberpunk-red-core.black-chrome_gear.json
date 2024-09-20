@@ -112,7 +112,7 @@
     },
     "Zetatech Porta-Printer": {
       "name": "Imprimante 3D portative Zetatech",
-      "description": "<p>\n  Miniature Workshop. Allows a Tech to use Upgrade and Fabrication Expertise\n  anywhere as long as they have techtools.\n</p>\n"
+      "description": "<p>\n  Atelier miniature. Permet à un Techie d'utiliser les capacités Expert en amélioration \n  et Expert en fabrication n'importe où tant qu'il dispose des outils adéquats.\n</p>\n"
     }
   }
 }

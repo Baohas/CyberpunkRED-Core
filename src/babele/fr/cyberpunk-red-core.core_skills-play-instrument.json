@@ -3,23 +3,23 @@
   "mapping": {},
   "entries": {
     "Play Instrument (Drums)": {
-      "name": "Instrument (batterie)",
+      "name": "Instrument (Batterie)",
       "description": ""
     },
     "Play Instrument (Guitar)": {
-      "name": "Instrument (guitare)",
+      "name": "Instrument (Guitare)",
       "description": ""
     },
     "Play Instrument (Piano)": {
-      "name": "Instrument (piano)",
+      "name": "Instrument (Piano)",
       "description": ""
     },
     "Play Instrument (Singing)": {
-      "name": "Instrument (chant)",
+      "name": "Instrument (Chant)",
       "description": ""
     },
     "Play Instrument (Violin)": {
-      "name": "Instrument (violon)",
+      "name": "Instrument (Violon)",
       "description": ""
     }
   }

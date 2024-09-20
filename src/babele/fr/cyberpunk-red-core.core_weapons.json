@@ -6,17 +6,17 @@
   "entries": {
     "Air Pistol": {
       "name": "Pistolet à air comprimé",
-      "description": "<p>Pistolet moyen exotique. Tire des billes de peinture. Si chargé avec de l'acide, peut réduire une armure à chaque impact. Reportez-vous à la description complète de l'article p. 349.</p>",
+      "description": "<p>Pistolet moyen exotique. Tire des billes de peinture. Si chargé avec de l'acide, peut réduire une armure à chaque impact.</p>",
       "dvTable": "SD Pistolet"
     },
     "Assault Rifle (Excellent)": {
-      "name": "Fusil d'assaut +",
-      "description": "<p>Un fusil d'assaut. +1 au jet d'attaque.</p>",
+      "name": "Fusil d'assaut (Excellente qualité)",
+      "description": "<p>Un fusil d'assaut standard. +1 au jet d'attaque.</p>",
       "dvTable": "SD Fusil d'assaut"
     },
     "Assault Rifle (Poor)": {
-      "name": "Fusil d'assaut -",
-      "description": "<p>Un fusil d'assaut. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "name": "Fusil d'assaut (Mauvaise qualité)",
+      "description": "<p>Un fusil d'assaut standard. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
       "dvTable": "SD Fusil d'assaut"
     },
     "Assault Rifle": {
@@ -25,25 +25,25 @@
       "dvTable": "SD Fusil d'assaut"
     },
     "Baseball Bat (Excellent)": {
-      "name": "Batte de baseball +",
-      "description": "<p>Une batte de baseball ordinaire. +1 au jet d'attaque.</p>"
+      "name": "Batte de baseball (Excellente qualité)",
+      "description": "<p>Une batte de baseball bien équilibrée. L'arme préférée des Baseball Furies. +1 au jet d'attaque.</p>"
     },
     "Baseball Bat (Poor)": {
-      "name": "Batte de baseball -",
-      "description": "<p>Une batte de baseball ordinaire. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "name": "Batte de baseball (Mauvaise qualité)",
+      "description": "<p>Une batte de baseball bien équilibrée. L'arme préférée des Baseball Furies. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Baseball Bat": {
       "name": "Batte de baseball",
-      "description": "<p>Une batte de baseball ordinaire. </p>"
+      "description": "<p>Une batte de baseball bien équilibrée. L'arme préférée des Baseball Furies.</p>"
     },
     "Bow (Excellent)": {
-      "name": "Arc +",
+      "name": "Arc (Excellente qualité)",
       "description": "<p>Un arc qualité excellente, rechargement compris dans l'action d'attaque.</p>\n<p>+1 à l'attaque.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Bow (Poor)": {
-      "name": "Arc -",
-      "description": "<p>Un arc qualité mauvaise, rechargement compris dans l'action d'attaque.</p><p>Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
+      "name": "Arc (Mauvaise qualité)",
+      "description": "<p>Un arc de mauvaise qualité, rechargement compris dans l'action d'attaque.</p><p>Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>",
       "dvTable": "SD Arcs et arbalètes"
     },
     "Bow": {
@@ -52,19 +52,19 @@
       "dvTable": "SD Arcs et arbalètes"
     },
     "Chainsaw (Excellent)": {
-      "name": "Tronçonneuse +",
-      "description": "<p>Une Tronçonneuse qui fonctionne avec du CHOOH². 2-3 heures d'utilisation par réservoir. +1 au jet d'attaque.</p>"
+      "name": "Tronçonneuse (Excellente qualité)",
+      "description": "<p>Une Tronçonneuse portative qui fonctionne avec du CHOOH<sup>2</sup>. 2-3 heures d'utilisation par réservoir. +1 au jet d'attaque.</p>"
     },
     "Chainsaw (Poor)": {
-      "name": "Tronçonneuse -",
-      "description": "<p>Une Tronçonneuse qui fonctionne avec du CHOOH². 2-3 heures d'utilisation par réservoir. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "name": "Tronçonneuse (Mauvaise qualité)",
+      "description": "<p>Une Tronçonneuse portative qui fonctionne avec du CHOOH<sup>2</sup>. 2-3 heures d'utilisation par réservoir. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Chainsaw": {
       "name": "Tronçonneuse",
-      "description": "<p>Une Tronçonneuse qui fonctionne avec du CHOOH². 2-3 heures d'utilisation par réservoir.</p>"
+      "description": "<p>Une Tronçonneuse portative qui fonctionne avec du CHOOH<sup>2</sup>. 2-3 heures d'utilisation par réservoir.</p>"
     },
     "Combat Knife (Excellent)": {
-      "name": "Couteau de Combat +",
+      "name": "Couteau de Combat (Excellente qualité)",
       "description": "<p>Un couteau adapté aux combats de rues. +1 au jet d'attaque.</p>"
     },
     "Combat Knife (Poor)": {
@@ -76,9 +76,9 @@
       "description": "<p>Un couteau adapté aux combats de rues.</p>"
     },
     "Constitutional Arms Hurricane Assault Weapon": {
-      "name": "Constitutional Arms Hurricane Assault Weapon",
-      "description": "<p>\n  An Exotic Shotgun with 2 ROF. Cannot make aimed shots and needs BODY 11 or\n  higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Shotgun (Slug)"
+      "name": "Fusil d’assaut Hurricane de Constitution Arms",
+      "description": "<p>\n  Un fusil à pompe exotique, 2 Att/round. Ne peut pas viser.\n  Nécessite COR 11 ou plus (sauf s'il est monté sur un support).\n</p>\n",
+      "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Crossbow (Excellent)": {
       "name": "Arbalète +",
@@ -187,8 +187,8 @@
       "description": "<p>Récupéré sur un hélicoptère délabré, ces lames sont capables de trancher presque n'importe quoi.</p>"
     },
     "Kendachi Mono-Three": {
-      "name": "Kendachi Mono-Three",
-      "description": "<p>\n  An Exotic, Excellent Quality, Two-Handed Very Heavy Melee Weapon. It appears\n  as a high-tech katana, able to ignore any armor below SP11.\n</p>\n"
+      "name": "Kendachi Mono-trois",
+      "description": "<p>\n  Arme exotique de mêlée à deux mains très lourde d'excellente qualité. Elle ressemble\n  à un katana high-tech, capable d'ignorer toute armure sous SP11.\n</p>\n"
     },
     "Lead Pipe (Excellent)": {
       "name": "Tuyau en plomb +",
@@ -268,9 +268,9 @@
       "dvTable": "SD Pistolet"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
-      "name": "Militech \"Cowboy\" U-56 Grenade Launcher",
-      "description": "<p>\n  An Exotic Grenade Launcher with 2 ROF. Holds four grenades. Requires BODY 11\n  or higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Grenade Launcher"
+      "name": "Lance-grenades Militech « Cowboy » U-56",
+      "description": "<p>\n  Un lance-grenades exotique à 2 Att/round. Capacité de quatre grenades. \n  Nécessite COR 11 ou plus (sauf s'il est monté sur un support).\n</p>\n",
+      "dvTable": "SD Lance-grenades"
     },
     "Naginata (Excellent)": {
       "name": "Naginata +",
@@ -285,9 +285,9 @@
       "description": "<p>Arme d'origine japonaise, proche du fauchard à lame courbe. Utilisé par les équipes tactiques d'Arasaka lors des confrontations aux corps à corps.</p>"
     },
     "Rhinemetall EMG-86 Railgun": {
-      "name": "Rhinemetall EMG-86 Railgun",
-      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
-      "dvTable": "DV Assault Rifle"
+      "name": "Canon électrique Rhinemetall EMG-86",
+      "description": "<p>\n  Un fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou automatiques. Nécessite \n  COR 11 ou plus (sauf si elle est montée sur un support). Capable d'ignorer toute armure sous SP11*.\n</p>\n<p>\n  <em\n    >*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles \n    blindées</em\n  >\n</p>\n",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Rocket Launcher (Excellent)": {
       "name": "Lance-roquettes +",
@@ -417,9 +417,9 @@
       "description": "<p>Une hache légère qui peut être lancée.</p>"
     },
     "Tsunami Arms Helix": {
-      "name": "Tsunami Arms Helix",
-      "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Assault Rifle"
+      "name": "Helix de Tsunami Arms",
+      "description": "<p>\n  Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, \n  tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur \n  maximum de 5. Nécessite COR 11 ou plus (sauf s'il est monté sur un support)\n</p>\n",
+      "dvTable": "SD Fusil d'assaut"
     },
     "Unarmed": {
       "name": "Désarmé",

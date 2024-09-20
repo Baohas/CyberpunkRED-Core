@@ -4,31 +4,31 @@
   "entries": {
     "Exec": {
       "name": "Corporatiste",
-      "description": "<p>Cadres d'entreprise et corsaires du monde du business qui luttent pour rétablir le règne des mégacorporations.</p>"
+      "description": "<p>Cadres d'entreprise et gros bonnets du monde du business prêts à tout risquer pour s'élever au sommet de l'échelle corporatiste et réaliser le nouveau rêve américain.</p>"
     },
     "Fixer": {
       "name": "Fixer",
-      "description": "<p>Trafiquants, contrebandiers, négociateurs et informateurs qui règnent sur les marchés de minuit, dans la Rue d'après-guerre.</p>"
+      "description": "<p>Tant que le prix est juste, ils peuvent fournir n'importe quoi à n'importe qui. Avec leur charme et leurs compétences, ils réalisent les transactions qui gardent l'économie du Futur Sombre  à flot.</p>"
     },
     "Lawman": {
       "name": "Justicier",
-      "description": "<p>Des agents de l'autorité augmentés qui patrouillent dans les rues sauvages et les autoroutes ou règnent les barbares de la route.</p>"
+      "description": "<p>Défenseurs rénégats, équipe de choc corpo, ou les derniers vestiges des forces de l'ordre gouvernementales, ils patrouillent les rues pour faire régner un semblant d'ordre dans un monde sans foi ni loi.</p>"
     },
     "Media": {
       "name": "Média",
-      "description": "<p>Journalistes, stars médiatiques et influenceurs qui risquent tout au nom de la vérité ou pour la gloire.</p>"
+      "description": "<p>Journalistes, influenceurs et phénomènes culturels qui risquent tout au nom de la vérité ou pour la gloire.</p>"
     },
     "Medtech": {
       "name": "Medtech",
-      "description": "<p>Docteurs de quartiers qui exercent sans autorisation et médecins de la cybernétique ; ils réparent aussi bien la chair que le métal.</p>"
+      "description": "<p>Docteurs et mécaniciens de quartiers qui exercent pour garder ces chers edgerunners en bon état et cybernétisés, souvent contre monnaie sonnante et trébuchante.</p>"
     },
     "Netrunner": {
       "name": "Netrunner",
-      "description": "<p>Maîtres cybernétiques du piratage de l'après-NET et cambrioleurs des secrets de la psyché.</p>"
+      "description": "<p>Maîtres cybernétiques qui se mettent en danger lorsqu'ils se connectent au cyberespace pour télécharger des secrets et infiltrer des réseaux.</p>"
     },
     "Nomad": {
       "name": "Nomade",
-      "description": "<p>Experts en transports, quintessence des guerriers de la route, pirates et contrebandiers qui relient les communautés du monde entier.</p>"
+      "description": "<p>Experts en transports, camionneurs, aficionados du transport, pirates de l'air, ils sont les seuls transporteurs de produits à travers le monde, maintenant les chaînes de production et de livraison durant l'Ère du Rouge.</p>"
     },
     "Rockerboy": {
       "name": "Rockeur",
@@ -36,7 +36,7 @@
     },
     "Solo": {
       "name": "Solo",
-      "description": "<p>Assassins, gardes du corps, tueurs à gages et mercenaire.</p>"
+      "description": "<p>Experts au combat qui utilisent leurs prouesses martiales pour s'imposer durant l'Ère du Rouge.</p>"
     },
     "Tech": {
       "name": "Techie",
