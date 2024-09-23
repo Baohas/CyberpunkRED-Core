@@ -23,8 +23,8 @@
       "description": "<p>A very sticky grenade, details of which can be found on page 86.</p>"
     },
     "Grenade (KTech Security)": {
-      "name": "Grenade (KTech Security)",
-      "description": "<p>Armor piercing Grenade. Deals damage to targets but not to cover.</p>\n"
+      "name": "Granate (KTech-Security)",
+      "description": "<p>Panzerbrechende Granate. Verursacht Schaden an einem Ziel, aber nicht an Deckungen.</p>\n"
     },
     "Grenade (Shuriken Tornado)": {
       "name": "Granate (Shuriken Tornado)",

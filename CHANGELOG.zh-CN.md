@@ -8,7 +8,7 @@
 
 #### Netrunning Tiles
 
-We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
+We have updated the Netrunning Tiles, we have replaced the PNG files with WebP for reduced filesize. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`. This means any scenes using PNG tile will display as broken. These can be fixed by double clicking on the broken tile and either navigating to the new tiles in `tiles/WebP` or manually replacing the `PNG` filder with `WebP` and the extension `png` with `webp`.
 
 #### Get EMP'd Macro
 
@@ -126,7 +126,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 ### Action Needed
 
-**WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused. YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
+**WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused. YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused. YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused. Come to the discord if you are confused.
 
 ### Bug Fixes
 
@@ -327,7 +327,7 @@ If you are interested in making a theme for the system check out the [CSS Themes
 - Added Cargo Containers and Cube Hotels with help from Hakuan Quietpaws
 - Added Night City Weather with help from Miklos
 - Added Branded Weapons with help from Hakuan Quietpaws
-- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic Racha, Hakuan Quietpaws, and Sushimatic
+- Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic Added Black Chrome with help from, H.P. Racha, Hakuan Quietpaws, and Sushimatic Racha, Hakuan Quietpaws, and Sushimatic
 - Added clothing descriptions with help from Hakuan Quietpaws
 - Added Mook Encounter Complication, Hardened Lieutenant Tactics, and Hardened Mini Boss Mini Promotion rolltables
 - Added missing Elflines Online items with help from LordCheesusCrust
@@ -401,7 +401,7 @@ This release brings lots of Sheet changes to fix a lot of wonk exposed by the fo
 
 #### Ammo Modifies Weapon Damage
 
-Ammo can now modify weapon damage / autofire maximums. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo). This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
+Ammo can now modify weapon damage / autofire maximums. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo). Ammo can now modify weapon damage / autofire maximums. This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo). This supports ammo which overrides the weapon damage (e.g. shotgun shells), ammo which does no damage (e.g. sleep ammo), and ammo which adds/subtracts from the weapon damage (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo). Similarly, ammo can modify the autofire maximum of the base weapon (junk ammo).
 
 #### Other Changes
 
@@ -509,7 +509,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
   - Upgraded items and Loaded weapons can now be drag/transferred between Actors
     - If the destination actor does not have an ammo of the same type, an ammo item is created in their inventory with a quantity of 0
   - Upgraded items can now be dragged out to the Item Sidebar creating a World Upgraded Item that can then be dragged to other Actors
-    - A folder is created to store copies of the installed items. A folder is created to store copies of the installed items. You can not delete a world item which is installed in another item. You must uninstall it first You must uninstall it first
+    - A folder is created to store copies of the installed items. A folder is created to store copies of the installed items. You can not delete a world item which is installed in another item. You must uninstall it first You must uninstall it first A folder is created to store copies of the installed items. You can not delete a world item which is installed in another item. You must uninstall it first You must uninstall it first
   - You can now install that Cyberdeck into the `Cyberdeck (Hardwired)` Cyberware Item and it is displayed in the `Cyber` tab as such
     - `Hint`: Click the `Install into` arrow next to the Cyberdeck item in the Actor inventory
   - You can now install Chipware into a Chipware Socket and it is displayed in the `Cyber` tab as such

@@ -76,7 +76,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Fix program damage type in Chat messages for Programs
 - Fix not being able to creat effects on owned items.
 - Fix Black ICE actions/skills not being properly translated
-- Fix more typos in items
+- Исправлено ещё несколько опечаток в описаниях предметов
 
 ## Версия 0.88.2
 
@@ -258,7 +258,7 @@ Fix broken migrations
 
 ## Версия 0.87.0
 
-### Action Needed
+### Требует внимания
 
 #### New Discord
 
