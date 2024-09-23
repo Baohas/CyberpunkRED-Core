@@ -22,7 +22,7 @@ As we do not want to lose any of your data we have not removed these Skills from
 
 ##### Modifying existing Specific Skills
 
-For some functionality in the system we have added a `Skill Type` to each skill, while we have made a best effort to migrate all skills to the correct type there may be some instances where we were unable to detect the correct Skill Type of a skill. If you have any actors with custom skills for `Science`, `Play Instrument`, `Martial Arts`, `Local Expert`, and `Language` you may need to set it's Skill Type of the skill manually in that skill's Settings page. You can follow the process on the [wiki page <i class="fas fa-external-link-alt"></i>](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Skills#settings-tab).
+For some functionality in the system we have added a `Skill Type` to each skill, while we have made a best effort to migrate all skills to the correct type there may be some instances where we were unable to detect the correct Skill Type of a skill. If you have any actors with custom skills for `Science`, `Play Instrument`, `Martial Arts`, `Local Expert`, and `Language` you may need to set it's Skill Type of the skill manually in that skill's Settings page. You can follow the process on the [wiki page](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Skills#settings-tab).
 
 #### Weapons Ignoring Armor
 
@@ -72,7 +72,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Scrolling with the mousewheel no longer adjusts stats/skills on the Character sheet
 - Change Pause Font to Tektur for better internationalization support
   - Remove Orbitron font
-- Change the styling of <code> elements
+- Change the styling of `<code>` elements
 - Header elements in text input areas are now styled in a similar way to the core book
 - Update netrunning tiles with new tiles from Solution
 - Update Demon sheet layout to be less wonky
