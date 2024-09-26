@@ -66,7 +66,7 @@
     },
     "Triple Treat": {
       "name": "Тройное удовольствие",
-      "description": "<p>\n  Comes with an Exotic Grenade Launcher Underbarrel* which - as the main gun is\n  poor quality - functions as a poor quality weapon. It can't be removed. Both\n  that and the main weapon can fire non-Basic Ammunition.\n</p>\n<p><em>*Must be manually added after acquiring the weapon</em></p>\n",
+      "description": "<p>Идёт в комплекте с экзотическим подствольным гранатомётом* плохого качества, ввиду того, что само оружие тоже плохого качества. Его нельзя снять. И основное, и вспомогательное оружие могут стрелять нестандартными патронами.</p>\n<p><em>*Необходимо добавить вручную после получения оружия.</em></p>",
       "dvTable": "СЛ Ракетница"
     }
   }

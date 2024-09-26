@@ -14,7 +14,7 @@
     },
     "Backup Drive": {
       "name": "Резервный диск",
-      "description": "<p>\n  Saves Non-Black ICE programs when destroyed. These programs can be\n  re-installed by a Netrunner as a meat action.\n</p>\n"
+      "description": "<p>При уничтожении программы (если это не чёрный лёд) она сохраняется на резервный диск, после чего её можно переустановить мясным действием.</p>"
     },
     "Bayonet": {
       "name": "Штык-нож",

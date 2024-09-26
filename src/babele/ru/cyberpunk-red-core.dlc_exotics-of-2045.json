@@ -16,11 +16,11 @@
     },
     "Extra-Jointed Cyberarm Upgrade": {
       "name": "Дополнительный сустав для киберруки",
-      "description": "<p>Enhances cyberarm articulation. +2 Contortionist.</p>\n"
+      "description": "<p>Улучшенная артикуляция киберруки. +2 изворотливость.</p>"
     },
     "Extra-Jointed Cyberleg Upgrade": {
       "name": "Дополнительный сустав для киберноги",
-      "description": "<p>Enhances cyberleg articulation. +2 Contortionist.</p>\n"
+      "description": "<p>Улучшенная артикуляция киберноги. +2 изворотливость.</p>"
     },
     "Firebreather": {
       "name": "Огненное дыхание",

@@ -32,7 +32,7 @@
     },
     "Extended Seat": {
       "name": "Удлинённое сиденье",
-      "description": "<p>An elongated saddle, gaining a seat for a passenger.</p>\n"
+      "description": "<p>Удлинённое сиденье, которое позволяет усадить пассажира позади ездока.</p>"
     },
     "Folding Frame": {
       "name": "Складная рама",
