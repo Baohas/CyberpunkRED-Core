@@ -941,7 +941,13 @@ export default class CPRActor extends Actor {
     } else if (location === "head") {
       sps = armors.map((a) => a.system.headLocation.sp);
     } // we assume getEquippedArmors will throw an error with a bad loc
-    penalties = armors.map((a) => a.system.penalty);
+
+    // We allow the armour.penalty value to be either negative or positive
+    // in the item data because of DataModel limitations so we convert any
+    // negative integers to positive ones here when calculating the values.
+    penalties = armors.map((a) =>
+      a.system.penalty < 0 ? Math.abs(a.system.penalty) : a.system.penalty
+    );
     penalties = penalties.map(Math.abs);
 
     penalties.push(0);

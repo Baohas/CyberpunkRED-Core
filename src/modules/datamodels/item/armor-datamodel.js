@@ -79,7 +79,7 @@ export default class ArmorDataModel extends CPRSystemDataModel.mixin(
         nullable: false,
         integer: true,
         initial: 0,
-        min: 0,
+        min: -10,
       }),
     });
   }
