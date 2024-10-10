@@ -44,13 +44,11 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       buttons: {
         confirmMigration: {
           label: "CPR.migration.buttons.confirmMigration",
-          iconPre: "fas fa-file-signature",
-          iconPost: "fa-solid fa-diagram-next",
+          icon: "fa-solid fa-diagram-next",
         },
         returnToSetup: {
           label: "CPR.migration.buttons.rejectMigration",
-          iconPre: "fas fa-ban",
-          iconPost: "fas fa-home",
+          icon: "fas fa-home",
         },
       },
     },

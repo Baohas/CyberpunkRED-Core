@@ -2,11 +2,8 @@
 <div class="buttons flexrow">
   {{#each this as |buttonData action|}}
     <button class="migration-button" data-action="{{action}}">
-      <i class="icon-pre {{buttonData.iconPre}}"></i>
+      <i class="icon-pre {{buttonData.icon}}"></i>
       {{localize buttonData.label}}
-      {{#if buttonData.iconPost}}
-        <i class="icon-post {{buttonData.iconPost}}"></i>
-      {{/if}}
     </button>
   {{/each}}
 </div>
