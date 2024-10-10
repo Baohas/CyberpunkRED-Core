@@ -1052,6 +1052,7 @@
   "CPR.migration.docType.tokens": "Tokens",
   "CPR.migration.messages.prepareDocuments": "<p>Gathering documents for migration. This can take a while. Once the documents are prepared, the total number may not match the total number of documents in your world. This is expected because not all documents necessarily need migration.<p>",
   "CPR.migration.messages.userConfirm": "<p class='text-hero text-large text-center'>It is not possible to reverse this process!</p> <p>Please ensure you have made a backup of your world and any shared compendia you plan on migrating before proceeding with migration.</p>",
+  "CPR.migration.messages.migrationComplete": "<p>Migration has completed successfully!</p>",
   "CPR.migration.notification.migrationComplete": "Migration Complete!",
   "CPR.migration.notification.migrationFailed": "Migration failed!",
   "CPR.migration.status.error": "ERROR! Migration failed. See below.",
