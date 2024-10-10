@@ -7,14 +7,6 @@
       margin-bottom: unset;
     }
   }
-
-  input[type="checkbox"] {
-    margin: unset;
-    background-color: unset;
-    --checkbox-size: var(--cpr-font-small);
-    width: var(--checkbox-size);
-    height: var(--checkbox-size);
-  }
 }
 
 #cpr-migration {
@@ -47,6 +39,47 @@
     grid-area: status;
     text-align: center;
     font-size: var(--cpr-font-normal);
+  }
+
+  .toggle {
+    --cpr-toggle-width: 1.875rem;
+    --cpr-toggle-height: 0.938rem;
+    --cpr-toggle-padding: 0.063rem;
+
+    input {
+      display: none; // Hide the default checkbox
+    }
+
+    & {
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      width: var(--cpr-toggle-width);
+      height: var(--cpr-toggle-height);
+      border-radius: var(--cpr-toggle-height);
+      background-color: var(--cpr-background-toggle-unchecked); // Initial background color when unchecked
+
+      &:before {
+        content: '';
+        display: block;
+        width: calc(var(--cpr-toggle-height) - (var(--cpr-toggle-padding) * 2));
+        height: calc(var(--cpr-toggle-height) - (var(--cpr-toggle-padding) * 2));
+        border-radius: 50%; // Round border for the dot
+        background-color: var(--cpr-color-white); // Dot color
+        transition: transform 0.3s;
+        position: absolute;
+        top: var(--cpr-toggle-padding);
+        left: var(--cpr-toggle-padding);
+      }
+
+      &:checked:before {
+        transform: translateX(calc(var(--cpr-toggle-height) - (var(--cpr-toggle-padding) * 2)));
+      }
+
+      &:checked {
+        background-color: var(--cpr-background-toggle-checked); // Change background color when checked
+      }
+    }
   }
 
   form.compendia-selection {

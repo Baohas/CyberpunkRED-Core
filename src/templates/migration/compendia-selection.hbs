@@ -30,7 +30,7 @@
           {{#each packModules as |modData id|}}
             <label class="{{#if modData.selected}}text-pill{{/if}}" data-action="togglePackSelection">
               {{modData.title}}
-              <input type="checkbox" name="moduleChoices" value="{{id}}" {{checked modData.selected}}/>
+              <input class="toggle" type="checkbox" name="moduleChoices" value="{{id}}" {{checked modData.selected}}/>
             </label>
           {{/each}}
         </li>
@@ -38,7 +38,7 @@
       <li class="dialog-item dialog-item-footer">
         <label>
           {{localize "CPR.migration.app.saveCompendiaSelection"}}
-          <input type="checkbox" name="saveSelection" checked/>
+          <input class="toggle" type="checkbox" name="saveSelection" checked/>
         </label>
       </li>
   </ol>
