@@ -42,7 +42,7 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
         }),
         lifestyle: new fields.SchemaField({
           extras: new fields.SchemaField(
-            LifestyleSchema.defineSchema(true, {
+            LifestyleSchema.defineSchema({
               initialCost: 100,
             })
           ),
@@ -50,20 +50,18 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
             desription: new fields.HTMLField(),
           }),
           housing: new fields.SchemaField(
-            LifestyleSchema.defineSchema(true, {
+            LifestyleSchema.defineSchema({
               initialCost: 1000,
               initialDescription: "Cargo Container",
             })
           ),
           lifeStyle: new fields.SchemaField(
-            LifestyleSchema.defineSchema(true, {
+            LifestyleSchema.defineSchema({
               initialCost: 100,
               initialDescription: "Kibble",
             })
           ),
-          traumaTeam: new fields.SchemaField(
-            LifestyleSchema.defineSchema(true)
-          ),
+          traumaTeam: new fields.SchemaField(LifestyleSchema.defineSchema()),
         }),
       }
     );

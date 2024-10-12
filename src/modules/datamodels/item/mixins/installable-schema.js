@@ -4,7 +4,7 @@ import LOGGER from "../../../utils/cpr-logger.js";
 export default class InstallableSchema extends foundry.abstract.DataModel {
   static mixinName = "installable";
 
-  static defineSchema(options = { initialSize: 1 }) {
+  static defineSchema({ initialSize = 1 } = {}) {
     LOGGER.trace("defineSchema | InstallableSchema | called.");
     const { fields } = foundry.data;
     return {
@@ -16,7 +16,7 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
         required: true,
         nullable: false,
         integer: true,
-        initial: options.initialSize,
+        initial: initialSize,
         min: 0,
       }),
     };

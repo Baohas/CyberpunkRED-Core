@@ -26,9 +26,9 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
     return this.mergeSchema(
       super.defineSchema({
         initialAllowedTypes: ["itemUpgrade", "program"],
-        includeSlots: true,
         initialSlots: 7,
         initialSize: 1,
+        isElectronic: true,
       }),
       {}
     );

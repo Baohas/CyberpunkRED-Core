@@ -8,7 +8,7 @@ export default class DemonDataModel extends CPRSystemDataModel.mixin() {
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       stats: new fields.SchemaField({
-        rez: new fields.SchemaField(HpSchema.defineSchema(10)),
+        rez: new fields.SchemaField(HpSchema.defineSchema({ initial: 10 })),
         interface: new fields.NumberField({
           required: true,
           nullable: false,

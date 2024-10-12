@@ -23,17 +23,15 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
    * @param {Object} - options for configuring the schema. Can be overridden in the class that calls this as a mixin.
    *   @prop {Array<String>} options.initialAllowedTypes - initial array for allowed types, different for Actors and Items.
    *   @prop {Boolean} options.includeSlots - Items include slot data and actors dont. Set true by default since there are more
-   *   @prop {Boolean} options.initialSlots - How many slots this item should start with.
+   *   @prop {Number} options.initialSlots - How many slots this item should start with.
    *      items than actors that mixin the Container Schema.
    * @returns {SchemaField}
    */
-  static defineSchema(
-    options = {
-      initialAllowedTypes: ["itemUpgrade"],
-      includeSlots: true,
-      initialSlots: 3,
-    }
-  ) {
+  static defineSchema({
+    initialAllowedTypes = ["itemUpgrade"],
+    includeSlots = true,
+    initialSlots = 3,
+  } = {}) {
     LOGGER.trace("defineSchema | ContainerSchema | called.");
     const { fields } = foundry.data;
 
@@ -46,7 +44,7 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
           blank: true,
           choices: SystemUtils.GetTemplateItemTypes("installable"),
         }),
-        { initial: options.initialAllowedTypes }
+        { initial: initialAllowedTypes }
       ),
       list: new fields.ArrayField(
         new fields.DocumentIdField({ required: true }),
@@ -65,12 +63,12 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
         required: true,
         nullable: false,
         integer: true,
-        initial: options.initialSlots || 3,
+        initial: initialSlots || 3,
         min: 0,
       }),
     };
 
-    if (options.includeSlots) {
+    if (includeSlots) {
       return {
         installedItems: new fields.SchemaField({
           ...baseSchema,

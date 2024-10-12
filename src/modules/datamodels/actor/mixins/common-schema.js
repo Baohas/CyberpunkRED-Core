@@ -14,7 +14,7 @@ export default class CommonSchema extends foundry.abstract.DataModel {
   static defineSchema() {
     LOGGER.trace("defineSchema | CommonSchema | called.");
     const { fields } = foundry.data;
-    const hasMax = true;
+    const includeMax = true;
     return {
       /**
        *  !IMPORTANT!
@@ -29,10 +29,12 @@ export default class CommonSchema extends foundry.abstract.DataModel {
         tech: new fields.SchemaField(StatSchema.defineSchema()),
         cool: new fields.SchemaField(StatSchema.defineSchema()),
         will: new fields.SchemaField(StatSchema.defineSchema()),
-        luck: new fields.SchemaField(StatSchema.defineSchema(hasMax)),
+        luck: new fields.SchemaField(StatSchema.defineSchema({ includeMax })),
         move: new fields.SchemaField(StatSchema.defineSchema()),
         body: new fields.SchemaField(StatSchema.defineSchema()),
-        emp: new fields.SchemaField(StatSchema.defineSchema(hasMax, -10)),
+        emp: new fields.SchemaField(
+          StatSchema.defineSchema({ includeMax, min: -10 })
+        ),
       }),
       externalData: new fields.SchemaField({
         currentArmorBody: new fields.SchemaField(

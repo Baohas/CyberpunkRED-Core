@@ -41,7 +41,7 @@ export default class BlackIceDataModel extends CPRSystemDataModel.mixin() {
           initial: 0,
           min: 0,
         }),
-        rez: new fields.SchemaField(HpSchema.defineSchema(10)),
+        rez: new fields.SchemaField(HpSchema.defineSchema({ initial: 10 })),
       }),
       cost: new fields.NumberField({
         required: true,

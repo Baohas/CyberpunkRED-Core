@@ -7,7 +7,7 @@ export default class StatSchema extends foundry.abstract.DataModel {
    * @param {Number} [min = 0] - what the minimum value should be
    * @returns {Object}
    */
-  static defineSchema(includeMax, min = 0) {
+  static defineSchema({ includeMax = false, min = 0 } = {}) {
     LOGGER.trace("defineSchema | StatSchema | called.");
     if (includeMax) {
       return { ...this.valueStat(min), ...this.maxStat };

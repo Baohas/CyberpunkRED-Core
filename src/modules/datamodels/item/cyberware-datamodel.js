@@ -27,25 +27,31 @@ export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
   static defineSchema() {
     LOGGER.trace("defineSchema | CyberwareModel | called.");
     const { fields } = foundry.data;
-    return this.mergeSchema(super.defineSchema(), {
-      type: new fields.StringField({
-        initial: "cyberArm",
-        choices: Object.keys(CPR.cyberwareTypeList),
+    return this.mergeSchema(
+      super.defineSchema({
+        initialAllowedTypes: ["cyberware", "itemUpgrade"],
+        isElectronic: true,
       }),
-      isWeapon: new fields.BooleanField({ initial: false }),
-      isFoundational: new fields.BooleanField({ initial: true }),
-      core: new fields.BooleanField({ initial: false }),
-      humanityLoss: new fields.SchemaField({
-        static: new fields.NumberField({
-          required: true,
-          nullable: false,
-          integer: true,
-          initial: 3,
-          min: 0,
+      {
+        type: new fields.StringField({
+          initial: "cyberArm",
+          choices: Object.keys(CPR.cyberwareTypeList),
         }),
-        roll: new fields.StringField({ initial: "1d6" }),
-      }),
-    });
+        isWeapon: new fields.BooleanField({ initial: false }),
+        isFoundational: new fields.BooleanField({ initial: true }),
+        core: new fields.BooleanField({ initial: false }),
+        humanityLoss: new fields.SchemaField({
+          static: new fields.NumberField({
+            required: true,
+            nullable: false,
+            integer: true,
+            initial: 3,
+            min: 0,
+          }),
+          roll: new fields.StringField({ initial: "1d6" }),
+        }),
+      }
+    );
   }
 
   /**

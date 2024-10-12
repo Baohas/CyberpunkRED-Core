@@ -66,7 +66,7 @@ export default class ProgramDataModel extends CPRSystemDataModel.mixin(
         initial: 0,
         min: 0,
       }),
-      rez: new fields.SchemaField(HpSchema.defineSchema(10)),
+      rez: new fields.SchemaField(HpSchema.defineSchema({ initial: 10 })),
     });
   }
 

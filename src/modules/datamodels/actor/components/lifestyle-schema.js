@@ -4,22 +4,25 @@ export default class LifestyleSchema extends foundry.abstract.DataModel {
   /**
    * Programatically produce schema object for lifestyle options.
    *
-   * @param {Boolean} includeCost - Whether or not to include cost field in final object.
-   * @param {Object} options -
-   *    initialCost: Initial value for cost (Number);
-   *    initialDescription: initial value for description (String)
+   * @param {Boolean} options.includeCost - Whether or not to include cost field in final object.
+   * @param {number} options.initialCost- Initial value for cost
+   * @param {string} options.initialDescription - initial value for description
    * @returns {Object} Foundry schema object with schema fields defined.
    */
-  static defineSchema(includeCost, options) {
+  static defineSchema({
+    includeCost = true,
+    initialCost,
+    initialDescription,
+  } = {}) {
     LOGGER.trace("defineSchema | LifestyleSchema | called.");
     if (includeCost) {
       return {
-        ...this.cost(options?.initialCost),
-        ...this.description(options?.initialDescription),
+        ...this.cost(initialCost),
+        ...this.description(initialDescription),
       };
     }
 
-    return { ...this.description(options?.initialDescription) };
+    return { ...this.description(initialDescription) };
   }
 
   // eslint-disable-next-line foundry-cpr/logger-after-function-definition
