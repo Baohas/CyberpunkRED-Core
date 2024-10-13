@@ -43,8 +43,11 @@
 
   .toggle {
     --cpr-toggle-width: 1.875rem;
-    --cpr-toggle-height: 0.938rem;
+    --cpr-toggle-height: calc(var(--cpr-toggle-width) / 2);
     --cpr-toggle-padding: 0.063rem;
+    --cpr-dot-height: calc(
+      var(--cpr-toggle-height) - (var(--cpr-toggle-padding) * 2)
+    );
 
     input {
       display: none; // Hide the default checkbox
@@ -57,13 +60,16 @@
       width: var(--cpr-toggle-width);
       height: var(--cpr-toggle-height);
       border-radius: var(--cpr-toggle-height);
-      background-color: var(--cpr-background-toggle-unchecked); // Initial background color when unchecked
+      background-color: var(
+        --cpr-background-toggle-unchecked
+      ); // Initial background color when unchecked
+      transition: background-color 0.3s;
 
       &:before {
-        content: '';
+        content: "";
         display: block;
-        width: calc(var(--cpr-toggle-height) - (var(--cpr-toggle-padding) * 2));
-        height: calc(var(--cpr-toggle-height) - (var(--cpr-toggle-padding) * 2));
+        width: var(--cpr-dot-height);
+        height: var(--cpr-dot-height);
         border-radius: 50%; // Round border for the dot
         background-color: var(--cpr-color-white); // Dot color
         transition: transform 0.3s;
@@ -73,11 +79,18 @@
       }
 
       &:checked:before {
-        transform: translateX(calc(var(--cpr-toggle-height) - (var(--cpr-toggle-padding) * 2)));
+        content: "";
+        transform: translateX(calc(var(--cpr-toggle-height)));
+      }
+
+      &:checked:after {
+        content: "";
       }
 
       &:checked {
-        background-color: var(--cpr-background-toggle-checked); // Change background color when checked
+        background-color: var(
+          --cpr-background-toggle-checked
+        ); // Change background color when checked
       }
     }
   }
