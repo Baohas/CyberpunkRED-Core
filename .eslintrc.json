@@ -88,7 +88,9 @@
     "saveDataToFile": "readonly",
     "setProperty": "readonly",
     "ui": "readonly",
-    "window": "readonly"
+    "window": "readonly",
+
+    "getComputedStyle": "readonly"
   },
   "settings": {
     "import/extensions": [".js"]

@@ -1029,6 +1029,7 @@
   "CPR.messages.youCyberpsycho": "Choom, you've gone too far! Cyberpsychosis has set in.",
   "CPR.migration.app.compendiaModule": "Select from the following Module Compendia to migrate:",
   "CPR.migration.app.compendiaWorld": "The following World Compendia will be migrated:",
+  "CPR.migration.app.error": "ERROR",
   "CPR.migration.app.messagesTitle": "Messages",
   "CPR.migration.app.noModuleCompendia": "No Module Compendia found.",
   "CPR.migration.app.noWorldCompendia": "No World Compendia found.",

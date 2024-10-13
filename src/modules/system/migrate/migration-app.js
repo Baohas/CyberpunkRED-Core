@@ -239,7 +239,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     classes: ["dialog", "cpr-migration-dialog"],
     tag: "dialog",
     window: {
-      title: "CPR Migration",
+      title: "CPR.migration.app.title",
     },
     position: {
       width: 650,
@@ -727,6 +727,25 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     this.element.querySelectorAll(".progress-count").forEach((elem) => {
       elem.style = "";
     });
+  }
+
+  /**
+   * Handles the error phase of the MigrationApp.
+   *
+   * Apply an overlay, preventing button presses and making
+   * an error super obvious.
+   *
+   * @return {Promise<void>}
+   */
+  async onError() {
+    LOGGER.trace("onError | MigrationApp");
+    const { element } = this;
+    const errorOverlay = element.querySelector(".error-overlay");
+    const container = element.querySelector("ol.dialog-list");
+    const { height, width } = getComputedStyle(container);
+    errorOverlay.style.height = height;
+    errorOverlay.style.width = width;
+    errorOverlay.style["line-height"] = height;
   }
 
   /**
