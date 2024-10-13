@@ -217,11 +217,14 @@ export default class MigrationRunner {
       currentDataModelVersion < MINIMUM_VERSION.dataModel;
     const { enforceMinimumVersion } = this.debug;
     if (belowMinimumVersion && enforceMinimumVersion) {
-      await migrationApp.setCurrentPhase("userPrevented");
+      await migrationApp.setCurrentPhase("userPrevented", {
+        messageData: {
+          currentVersion: currentDataModelVersion,
+          minimumVersion: MINIMUM_VERSION.system,
+        },
+      });
       await migrationApp.setCurrentPhase("end");
-      throw new Error(
-        `Data model version ${currentDataModelVersion} is too old to migrate. Upgrade to ${MINIMUM_VERSION.system} first, then upgrade to this version.`
-      );
+      return false;
     }
 
     // Get confirmation from user.

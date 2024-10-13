@@ -91,8 +91,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     },
     // This phase is called no matter the result of migration.
     end: {},
-    // Below this line are phases which don't follow
-    // the standard flow of migration.
+    // Below this line are phases which don't follow the standard flow of migration.
     error: {
       statusChange: true,
       addMessage: true,
@@ -125,6 +124,19 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @type {string}
    */
   #errorPhase;
+
+  /**
+   * Object to store useful data that can't be included in `MigrationApp.PHASES,
+   *
+   * @typedef PhaseContext
+   * @type {Object}
+   * @property {Object.<string, number | string>} [messageData] - an object containing key-value pairs for substitution in i18n.
+   */
+
+  /**
+   * @type {PhaseContext}
+   */
+  phaseContext = {};
 
   /** The index of the currently viewed message. */
   currentMessageIndex = 0;
@@ -243,7 +255,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     },
     position: {
       width: 650,
-      height: 650,
+      height: 600,
     },
     actions: {
       returnToSetup: MigrationApp.returnToSetup,
@@ -581,12 +593,15 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * the provided phase value is not in the list of possible phases.
    *
    * @param {string} value - The new phase value to set.
+   * @param {PhaseContext} phaseContext - Object to store useful data that can't be included in MigrationApp.PHASES.
    */
-  async setCurrentPhase(value) {
+  async setCurrentPhase(value, phaseContext) {
     LOGGER.trace("setCurrentPhase | MigrationApp");
     if (!Object.keys(MigrationApp.PHASES).includes(value)) {
       throw new Error(`Invalid phase: ${value}`);
     }
+
+    if (phaseContext) this.phaseContext = phaseContext;
     // Set phase that caused error, and attach info to error.
     if (value === "error") {
       this.#errorPhase = this.#currentPhase;
@@ -732,13 +747,36 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   /**
    * Handles the error phase of the MigrationApp.
    *
-   * Apply an overlay, preventing button presses and making
-   * an error super obvious.
-   *
    * @return {Promise<void>}
    */
   async onError() {
     LOGGER.trace("onError | MigrationApp");
+    this.generateOverlay();
+  }
+
+  /**
+   * Handles the phase of the MigrationApp when the user
+   * is prevented from migrating
+   *
+   * @return {Promise<void>}
+   */
+  async onUserPrevented() {
+    LOGGER.trace("onUserPrevented | MigrationApp");
+    this.generateOverlay(["warning"]);
+    const { element } = this;
+    const errorText = element.querySelector(".error-text");
+    errorText.innerHTML = game.i18n.localize("CPR.migration.app.warning");
+  }
+
+  /**
+   * Generate an overlay that prevents button presses and makes
+   * an error super obvious.
+   *
+   * @param {string} [classes] - CSS classes to apply to the overlay
+   * @return {void}
+   */
+  generateOverlay(classes = []) {
+    LOGGER.trace("generateOverlay | MigrationApp");
     const { element } = this;
     const errorOverlay = element.querySelector(".error-overlay");
     const container = element.querySelector("ol.dialog-list");
@@ -746,6 +784,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     errorOverlay.style.height = height;
     errorOverlay.style.width = width;
     errorOverlay.style["line-height"] = height;
+    errorOverlay.classList.add(...classes); // Add custom classes;
   }
 
   /**
@@ -785,12 +824,18 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   async addMessage() {
     LOGGER.trace("addMessage | MigrationApp");
     const phase = this.#currentPhase;
-    const phaseData = MigrationApp.PHASES[phase];
-    const { addMessage } = phaseData;
+    const { addMessage } = MigrationApp.PHASES[phase];
+    const { messageData } = this.phaseContext;
     if (!addMessage) return;
 
-    // Add the messagge.
-    const message = game.i18n.localize(`CPR.migration.messages.${phase}`);
+    // Add the message.
+    let message = game.i18n.localize(`CPR.migration.messages.${phase}`);
+    if (messageData) {
+      message = game.i18n.format(
+        `CPR.migration.messages.${phase}`,
+        messageData
+      );
+    }
     this.messages.push(message);
 
     // We force show a message if migration was aborted.

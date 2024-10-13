@@ -133,6 +133,10 @@
       border-radius: 0.313rem;
       backdrop-filter: blur(1px);
 
+      &.warning {
+        background-color: rgba(156, 123, 30, 0.75);
+      }
+
       .error-text {
         display: inline-block;
         font-size: 5rem;
@@ -180,12 +184,20 @@
 
       li {
         flex: 1;
-      }
 
-      li.dialog-item-header {
-        flex: 0;
-        position: sticky;
-        top: 0;
+        &.dialog-item-header {
+          flex: 0;
+          position: sticky;
+          top: 0;
+        }
+
+        &.message {
+          padding: 0.5rem;
+        }
+
+        p {
+          margin-top: unset;
+        }
       }
 
       .notification-icon {
