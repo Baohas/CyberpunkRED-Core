@@ -84,7 +84,6 @@ export default class ChangelogUtils {
 
       if (version !== "Unknown") {
         const sort = version.replace(/[v.]+/g, "") * 100;
-        const level = parseInt(version.split(".").pop(), 10) > 0 ? 2 : 1;
         const pageId = PackUtils.GenerateId(16);
         const page = {
           sort,
@@ -94,7 +93,6 @@ export default class ChangelogUtils {
           _key: `!journal.pages!${journalId}.${pageId}`,
           title: {
             show: true,
-            level,
           },
           image: {},
           text: {
