@@ -13,12 +13,8 @@ export default class ArmorPenaltyMigration extends BaseMigrationScript {
   static name = "Item: Armor Penalty Migration";
 
   static documentFilters = {
-    Item: {
-      none: false,
-      types: ["armor"],
-      mixins: [],
-    },
-    Actor: { none: false, types: [], mixins: [] },
+    Item: { types: ["armor"], mixins: [] },
+    Actor: { types: [], mixins: [] },
   };
 
   async updateItem(doc) {

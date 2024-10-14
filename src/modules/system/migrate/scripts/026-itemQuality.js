@@ -9,12 +9,8 @@ export default class ItemQualityMigration extends BaseMigrationScript {
   static name = "Item: Quality";
 
   static documentFilters = {
-    Item: {
-      none: false,
-      types: [],
-      mixins: ["quality"],
-    },
-    Actor: { none: false, types: [], mixins: [] },
+    Item: { types: [], mixins: ["quality"] },
+    Actor: { types: [], mixins: [] },
   };
 
   async updateItem(doc) {

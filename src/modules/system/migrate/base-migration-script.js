@@ -43,7 +43,6 @@ export default class BaseMigrationScript {
    * ```
    *
    * To migrate all types/mixins, do not override.
-   * To migrate NO documents of that type, set `none` to true.
    *
    * NOTE: If you are migrating items, the migration system will
    * automatically migrate actors which can own items, no matter
@@ -51,8 +50,8 @@ export default class BaseMigrationScript {
    * to be explicit.
    */
   static documentFilters = {
-    Item: { none: false, types: [], mixins: [] },
-    Actor: { none: false, types: [], mixins: [] },
+    Item: { types: [], mixins: [] },
+    Actor: { types: [], mixins: [] },
   };
 
   /**
@@ -66,8 +65,7 @@ export default class BaseMigrationScript {
     const docTypes = {};
     /* eslint-disable no-continue */
     for (const [docName, filters] of Object.entries(this.documentFilters)) {
-      const { none, mixins, types } = filters;
-      if (none) continue;
+      const { mixins, types } = filters;
       if (!types.length && !mixins.length) {
         docTypes[docName] = new Set();
         continue;

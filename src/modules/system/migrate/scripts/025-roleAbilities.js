@@ -9,8 +9,8 @@ export default class RoleAbilityNaNMigration extends BaseMigrationScript {
   static name = "Role - NaN Multiplier";
 
   static documentFilters = {
-    Item: { none: false, types: ["role"], mixins: [] },
-    Actor: { none: false, types: [], mixins: [] },
+    Item: { types: ["role"], mixins: [] },
+    Actor: { types: [], mixins: [] },
   };
 
   async updateItem(doc) {

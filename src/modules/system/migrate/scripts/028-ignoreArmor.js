@@ -9,12 +9,8 @@ export default class AttackableIgnoreArmorMigration extends BaseMigrationScript 
   static name = "Item: Attackable Ignore Armor";
 
   static documentFilters = {
-    Item: {
-      none: false,
-      types: [],
-      mixins: ["attackable"],
-    },
-    Actor: { none: false, types: [], mixins: [] },
+    Item: { types: [], mixins: ["attackable"] },
+    Actor: { types: [], mixins: [] },
   };
 
   async updateItem(doc) {

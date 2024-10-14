@@ -9,12 +9,8 @@ export default class SkillTypeMigration extends BaseMigrationScript {
   static name = "Item: Skill Type";
 
   static documentFilters = {
-    Item: {
-      none: false,
-      types: ["skill"],
-      mixins: [],
-    },
-    Actor: { none: false, types: [], mixins: [] },
+    Item: { types: ["skill"], mixins: [] },
+    Actor: { types: [], mixins: [] },
   };
 
   async updateItem(doc) {
