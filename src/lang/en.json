@@ -1040,7 +1040,7 @@
   "CPR.migration.app.subtitle": "Your data is being migrated to the most recent data model. This may take a while. Do not refresh or close the browser tab. You cannot close this window or interact with Foundry until migration is complete.",
   "CPR.migration.app.title": "Cyberpunk RED - Migration Wizard",
   "CPR.migration.app.unreadMessages": "Unread Messages: {messages}",
-  "CPR.migration.app.wikiLink": "See our wiki for more details.",
+  "CPR.migration.app.wikiLink": "See our wiki for more details",
   "CPR.migration.buttons.close": "Show Changelog",
   "CPR.migration.buttons.confirmMigration": "Begin Migration",
   "CPR.migration.buttons.rejectMigration": "Exit to Main Menu",
