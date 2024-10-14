@@ -5,7 +5,18 @@ import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 /**
  * This is the base class for migration scripts. All migrations should extend this class and
  * implement the methods needed, which depends on what changed in the data model (actors, items, etc).
- * Put your migration in the scripts directory and add it to index.js so it is included.
+ *
+ * To Use:
+ *   1. Create a migration script file in the `/src/modules/system/migrate/scripts` directory
+ *      following naming conventions.
+ *   2. Extend this class. Copy/paste a previous migration script to see how it's done.
+ *   3. Override the `version`, `name` and `documentFilters` static properties.
+ *      See below for details, and other migration scripts for examples.
+ *   4. Write your script by overriding the following methods: `updateItem`, `updateActor` or both.
+ *      Again, see below for details.
+ *   5. Add an export statement pointing to your script in `./index.js`.
+ *   6. Finally, increment the `#LATEST_VERSION` static property in `../migration.js`.
+ *   7. Test to make sure your migrations work.
  *
  * @abstract
  */

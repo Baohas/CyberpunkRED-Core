@@ -9,6 +9,9 @@ import MigrationError from "./migration-error.js";
 /**
  * This class provides a method to find and execute all migrations that are needed
  * to get the data to the latest data model.
+ *
+ * See `./base-migration-script.js` for more details on
+ * how to implement your own migration scripts.
  */
 export default class MigrationRunner {
   /** The latest data model version we want to migrate to. */
