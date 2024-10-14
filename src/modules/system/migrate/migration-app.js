@@ -126,15 +126,11 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   #errorPhase;
 
   /**
-   * Object to store useful data that can't be included in `MigrationApp.PHASES,
+   * Object to store useful, dynamic data that can't be included in `MigrationApp.PHASES`,
+   * (because it might not yet exist).
    *
-   * @typedef PhaseContext
-   * @type {Object}
+   * @type {Object<string, Object>}
    * @property {Object.<string, number | string>} [messageData] - an object containing key-value pairs for substitution in i18n.
-   */
-
-  /**
-   * @type {PhaseContext}
    */
   phaseContext = {};
 
