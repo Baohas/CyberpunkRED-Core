@@ -1,4 +1,6 @@
 #cpr-migration {
+  --link-icon-padding: 0.25rem;
+
   &.application {
     ol {
       padding-left: 0;
@@ -35,7 +37,7 @@
     }
 
     .wiki-link i {
-      padding-left: 0.25rem;
+      padding-left: var(--link-icon-padding);
     }
   }
 
@@ -230,6 +232,10 @@
 
         p {
           margin-top: unset;
+        }
+
+        a i {
+          padding-left: 0.25rem;
         }
       }
 
