@@ -75,6 +75,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Change the styling of `<code>` elements
 - Header elements in text input areas are now styled in a similar way to the core book
 - Update netrunning tiles with new tiles from Solution
+- Update Macro icons to fit system style
 - Update Demon sheet layout to be less wonky
 - Change how we handle Branded Items
   - Rename branded items to use the full item name from the source book

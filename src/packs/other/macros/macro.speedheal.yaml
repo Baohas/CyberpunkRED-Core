@@ -32,7 +32,7 @@ command: |-
       ChatMessage.create({ content: message });
     }
   });
-img: systems/cyberpunk-red-core/icons/compendium/drugs/speedheal.svg
+img: systems/cyberpunk-red-core/icons/macros/speedheal.svg
 name: Speedheal
 scope: global
 type: script
