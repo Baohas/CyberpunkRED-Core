@@ -233,13 +233,13 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Get the debug options for the MigrationApp.
+   * Get the devMode options for the MigrationApp.
    *
    * @returns {object}
    */
-  get debug() {
-    LOGGER.trace("get debug | MigrationApp");
-    return this.migrationRunner.debug.app;
+  get devMode() {
+    LOGGER.trace("get devMode | MigrationApp");
+    return this.migrationRunner.constructor.devMode.app;
   }
 
   /**
@@ -329,8 +329,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   _onFirstRender(_context, _options) {
     LOGGER.trace("_onFirstRender | MigrationApp");
     const { element } = this;
-    const debugShowModal = this.debug.modal;
-    if (this.options.modal && debugShowModal) element.showModal();
+    const devModeShowModal = this.devMode.modal;
+    if (this.options.modal && devModeShowModal) element.showModal();
     else element.show();
 
     this.renderNav(); // Hide nav buttons.
@@ -528,7 +528,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     LOGGER.trace("returnToSetup | MigrationApp");
     if (this.currentPhase === "userConfirm") this.rejectMigration();
     if (this.errorPhase) MigrationApp.downloadReport();
-    if (!this.debug.returnToSetup) return;
+    if (!this.devMode.returnToSetup) return;
     game.shutDown();
   }
 

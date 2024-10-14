@@ -2,7 +2,6 @@
 
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
-import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 import MigrationApp from "./migration-app.js";
 import CPR from "../config.js";
 import MigrationError from "./migration-error.js";
@@ -54,10 +53,11 @@ export default class MigrationRunner {
    *
    * NOTE: DO NOT commit changes to these booleans.
    */
-  debug = {
+  static devMode = {
     enforceMinimumVersion: true,
     remigrateAlreadyMigrated: false,
     batchMigrations: true,
+    migrateSystemCompendia: false,
     app: {
       returnToSetup: true,
       modal: true,
@@ -215,7 +215,7 @@ export default class MigrationRunner {
     const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
     const belowMinimumVersion =
       currentDataModelVersion < MINIMUM_VERSION.dataModel;
-    const { enforceMinimumVersion } = this.debug;
+    const { enforceMinimumVersion } = MigrationRunner.devMode;
     if (belowMinimumVersion && enforceMinimumVersion) {
       await migrationApp.setCurrentPhase("userPrevented", {
         messageData: {
@@ -385,7 +385,7 @@ export default class MigrationRunner {
     }
 
     // Filter for docs that are not already migrated, in the case of an incomplete migration.
-    const { remigrateAlreadyMigrated } = this.debug;
+    const { remigrateAlreadyMigrated } = MigrationRunner.devMode;
     const nonMigratedDocs = docList.filter((doc) => {
       return !this.alreadyMigrated(doc, remigrateAlreadyMigrated);
     });
@@ -448,7 +448,7 @@ export default class MigrationRunner {
      NOTE: During dev you might want to run migrations on our own packs
      rather than migrate by hand. If so, uncomment the following line.
      */
-    // sourceTypes.push("system");
+    if (this.devMode.migrateSystemCompendia) sourceTypes.push("system");
 
     // Get a list of packs to migrate based on the above
     // and modules selected by the user in the app.
@@ -520,7 +520,7 @@ export default class MigrationRunner {
    */
   async migrateDocuments(
     documents,
-    { batch = this.debug.batchMigrations, pack = null } = {}
+    { batch = MigrationRunner.devMode.batchMigrations, pack = null } = {}
   ) {
     LOGGER.trace("migrateDocuments | MigrationRunner");
     if (!documents.length) return;
@@ -699,7 +699,7 @@ export default class MigrationRunner {
    * For tokens, we check the ActorDelta, rather than the parent actor.
    *
    * @param {CPRItem|CPRActor|IndexData} doc - The document to check for migration status.
-   * @param {boolean} [ignore=false] - NOTE: Debugging only. - Whether to ignore token migration status.
+   * @param {boolean} [ignore=false] - NOTE: Dev Mode only. - Whether to ignore token migration status.
    * @return {boolean} Returns true if the document has already been migrated, false otherwise.
    */
   alreadyMigrated(doc, ignore = false) {
