@@ -6,9 +6,29 @@
 
 ### Требует внимания
 
-#### Тайлы для нетраннига
+#### Item Quality
 
-Мы обновили тайлы для нетраннига, файлы формата PNG заменены на WebP для сокращения размера. Из-за этого сцены, на которых используются тайлы в формате PNG, будут сломаны. Это можно исправить двойным щелчком на сломанный тайл, после чего или выбрать новый тайл в директории `tiles/WebP`, или вручную в пути к файлу заменить директорию с `PNG` на `WebP` и расширение с `png` на `webp`.
+We have (re)added item quality data points to Weapons, Cyberdecks, etc. we have migrated items with a best effort (checking for poor/exellent in item names/descriptions) but this migration may not catch 100% of items.
+
+Please manually review any items in your world/custom compendia/on actors that may need to be adjusted.
+
+#### Skill Types
+
+##### Removing old Generic Skills
+
+We have removed the old (incorrect) generic skills `Science`, `Play Instrument`, `Martial Arts`, `Local Expert`, and `Language` from being added to new Characters/Mooks and We have added new system compendia for `Skills (Languages)`, `Skills (Local Expert)`, `Skills (Martial Arts)`, `Skills (Science)`, and `Skills (Science)` which you can use to populate these specific skills for new actors.
+
+As we do not want to lose any of your data we have not removed these Skills from your actors, we have instead made them deletable so you can add the add the correct specific skills and remove the old ones from character sheets as in your own time.
+
+##### Modifying existing Specific Skills
+
+For some functionality in the system we have added a `Skill Type` to each skill, while we have made a best effort to migrate all skills to the correct type there may be some instances where we were unable to detect the correct Skill Type of a skill. If you have any actors with custom skills for `Science`, `Play Instrument`, `Martial Arts`, `Local Expert`, and `Language` you may need to set it's Skill Type of the skill manually in that skill's Settings page. You can follow the process on the [wiki page](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Skills#settings-tab).
+
+#### Weapons Ignoring Armor
+
+We have added the ability to allow weapons to ignore a percentage of armor or armor under a certian SP. We have migrated all melee weapons to include the new datapoints to ignore 50% armor by default.
+
+If your players or mooks have any weapons that ignore a different percentage or armor under a certian SP that is not 50%/0SP then you will need to update these manually (or replace from a copy in the system compendia).
 
 #### Get EMP'd Macro
 
@@ -52,8 +72,10 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Пролистывание с помощью колеса мыши больше не изменяет параметры/навыки на Бланке персонажа
 - Шрифт сообщения о паузе заменён на Tektur для улучшенной поддержки локализаций на других языках
   - Удалён шрифт Orbitron
+- Change the styling of `<code>` elements
 - Элементы заголовка в зонах ввода текста теперь внешне похожи на те, что в основной книге правил
 - Тайлы для нетраннинга обновлены на тайлы от Solution
+- Update Macro icons to fit system style
 - Update Demon sheet layout to be less wonky
 - Изменён способ обработки предметов с брендами в нгазвании
   - Предметы с брендами в названии теперь называются точно, как в соответствующей книге правил
@@ -147,7 +169,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
 - Support for editing Active Effects on owned items
 
-### Исправления
+### Bug Fixes
 
 - A couple of minor CSS fixes
 - Facedown rolls correctly include reputation value.
@@ -198,7 +220,7 @@ This means any instances where you have dragged an item from a compendium into a
     - Default: false
   - If enabled we will migrate Module provided compendia
 
-### Исправления
+### Bug Fixes
 
 - Fix some typos/wording in BC+ items
 - Add CSS overrides for Dice Tray module buttons
