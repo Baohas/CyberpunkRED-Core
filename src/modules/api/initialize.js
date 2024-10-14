@@ -31,27 +31,10 @@ function _loadActorFunctions() {
  * @returns {Object} The initialized `game.cpr.api` object with actor functions.
  */
 function initializeAPI() {
-  // Initialize the API root namespace
-  if (!game.cpr) game.cpr = {};
-  if (!game.cpr.api) game.cpr.api = {};
-
-  if (!game.cpr.api.actor) {
-    game.cpr.api.actor = {};
-  }
-
   // Load actor functions synchronously
   const actorFunctions = _loadActorFunctions();
-
-  // Ensure game.cpr.api.actor remains defined
-  if (!game.cpr.api.actor) {
-    game.cpr.api.actor = {};
-  }
-
-  // Assign each of the actor functions to the namespace correctly
-  Object.assign(game.cpr.api.actor, actorFunctions);
-
   // Return the initialized API object
-  return game.cpr.api;
+  return { actor: actorFunctions };
 }
 
 export default initializeAPI;
