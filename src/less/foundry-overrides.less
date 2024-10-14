@@ -1,4 +1,5 @@
 form {
+
   .notes,
   .hint {
     color: var(--cpr-text-foundry-hint) !important;
@@ -226,6 +227,7 @@ html[data-cpr-theme="default"] .application {
   input[type="checkbox"]::before {
     color: var(--cpr-color-light-grey);
   }
+
   input[type="checkbox"]:checked::before {
     color: var(--cpr-color-faded-black);
   }
@@ -278,6 +280,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   }
 
   menu {
+
     button,
     ul,
     .pm-dropdown {
@@ -400,24 +403,25 @@ html[data-cpr-theme="darkmode"] body.theme-light {
     text-shadow: none;
   }
 
-  table thead + tbody tr:first-of-type {
+  table thead+tbody tr:first-of-type {
     background-color: blue;
   }
 
   table tbody tr:nth-of-type(even):not(:first-of-type),
-  table thead + tbody tr:nth-of-type(2n) {
+  table thead+tbody tr:nth-of-type(2n) {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-row-even);
   }
 
   table tbody tr:nth-of-type(odd):not(:first-of-type),
-  table thead + tbody tr:nth-of-type(2n + 1) {
+  table thead+tbody tr:nth-of-type(2n + 1) {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-row-odd);
     font-weight: 400;
   }
 
   table {
+
     tr,
     td,
     th {
@@ -428,8 +432,9 @@ html[data-cpr-theme="darkmode"] body.theme-light {
 
   .journal-sidebar {
     .pages-list {
+
       .directory-item.active:first-of-type,
-      .directory-item.active + :not(.active) {
+      .directory-item.active+ :not(.active) {
         border-top: 0.063rem solid var(--cpr-background-dialog-border);
       }
     }
@@ -456,13 +461,13 @@ html[data-cpr-theme="darkmode"] body.theme-light {
     font-size: 2rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
-    margin-left: -0.26rem;
 
     &::first-letter {
       float: left;
       font-size: 4.688rem;
       line-height: 3.75rem;
       padding-top: 0.625rem;
+      text-transform: capitalize;
     }
 
     &::after {
