@@ -1,5 +1,4 @@
 form {
-
   .notes,
   .hint {
     color: var(--cpr-text-foundry-hint) !important;
@@ -217,6 +216,12 @@ input::placeholder {
  * Application V2 Overrides *
  ****************************/
 
+html[data-cpr-theme="default"] .application {
+  a {
+    color: var(--cpr-color-red);
+  }
+}
+
 [data-cpr-theme="darkmode"] .theme-dark .application {
   input[type="checkbox"]::before {
     color: var(--cpr-color-light-grey);
@@ -273,7 +278,6 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   }
 
   menu {
-
     button,
     ul,
     .pm-dropdown {
@@ -396,25 +400,24 @@ html[data-cpr-theme="darkmode"] body.theme-light {
     text-shadow: none;
   }
 
-  table thead+tbody tr:first-of-type {
+  table thead + tbody tr:first-of-type {
     background-color: blue;
   }
 
   table tbody tr:nth-of-type(even):not(:first-of-type),
-  table thead+tbody tr:nth-of-type(2n) {
+  table thead + tbody tr:nth-of-type(2n) {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-row-even);
   }
 
   table tbody tr:nth-of-type(odd):not(:first-of-type),
-  table thead+tbody tr:nth-of-type(2n + 1) {
+  table thead + tbody tr:nth-of-type(2n + 1) {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-row-odd);
     font-weight: 400;
   }
 
   table {
-
     tr,
     td,
     th {
@@ -425,9 +428,8 @@ html[data-cpr-theme="darkmode"] body.theme-light {
 
   .journal-sidebar {
     .pages-list {
-
       .directory-item.active:first-of-type,
-      .directory-item.active+ :not(.active) {
+      .directory-item.active + :not(.active) {
         border-top: 0.063rem solid var(--cpr-background-dialog-border);
       }
     }
@@ -498,7 +500,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
 
   h3 {
     border-bottom: none;
-    font-size: 1.80rem;
+    font-size: 1.8rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
 
@@ -511,7 +513,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   h4 {
     text-align: center;
     border-bottom: none;
-    font-size: 1.80rem;
+    font-size: 1.8rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
 
@@ -529,14 +531,14 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   h5 {
     text-align: center;
     border-bottom: none;
-    font-size: 1.80rem;
+    font-size: 1.8rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
 
   h6 {
     border-bottom: none;
-    font-size: 1.80rem;
+    font-size: 1.8rem;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
