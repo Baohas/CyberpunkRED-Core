@@ -128,13 +128,13 @@
       z-index: 100;
       width: 0;
       height: 0;
-      background-color: rgba(156, 18, 18, 0.7);
+      background-color: var(--cpr-migration-overlay-error);
       overflow: hidden;
       border-radius: 0.313rem;
-      backdrop-filter: blur(1px);
+      backdrop-filter: blur(0.063rem);
 
       &.warning {
-        background-color: rgba(156, 123, 30, 0.75);
+        background-color: var(--cpr-migration-overlay-warning);
       }
 
       .error-text {

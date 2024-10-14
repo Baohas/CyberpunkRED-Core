@@ -932,3 +932,22 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     messagesElement.appendChild(element);
   }
 }
+
+/**
+ * Strings that are generated programatically, pasted here to
+ * pass our language-unused-strings test.
+ *
+ * CPR.migration.docType.packsDocs
+ * CPR.migration.docType.scenesTokens
+ * CPR.migration.messages.error
+ * CPR.migration.messages.migrationComplete
+ * CPR.migration.messages.prepareDocuments
+ * CPR.migration.messages.userConfirm
+ * CPR.migration.messages.userPrevented
+ * CPR.migration.status.error
+ * CPR.migration.status.migrationComplete
+ * CPR.migration.status.migrateMisc
+ * CPR.migration.status.prepareDocuments
+ * CPR.migration.status.userConfirm
+ * CPR.migration.status.userPrevented
+ */

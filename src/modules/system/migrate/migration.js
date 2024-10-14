@@ -252,11 +252,6 @@ export default class MigrationRunner {
       // and users can interact with the rest of Foundry again.
       migrationApp.element.close();
       migrationApp.element.show();
-    } else {
-      CPRSystemUtils.DisplayMessage(
-        "error",
-        CPRSystemUtils.Localize("CPR.migration.notification.migrationFailed")
-      );
     }
 
     await migrationApp.setCurrentPhase("end");
