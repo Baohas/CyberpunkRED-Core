@@ -789,21 +789,21 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   generateOverlay({ text, classes = [] } = {}) {
     LOGGER.trace("generateOverlay | MigrationApp");
     const { element } = this;
-    const errorOverlay = element.querySelector(".error-overlay");
-    const errorText = errorOverlay.querySelector(".error-text");
+    const alertOverlay = element.querySelector(".alert-overlay");
+    const alertText = alertOverlay.querySelector(".alert-text");
 
     // Replace text element.
-    if (text) errorText.innerHTML = game.i18n.localize(text);
+    if (text) alertText.innerHTML = game.i18n.localize(text);
 
     // Show overlay and size appropriately.
     const container = element.querySelector("ol.dialog-list");
     const { height, width } = getComputedStyle(container);
-    errorOverlay.style.height = height;
-    errorOverlay.style.width = width;
-    errorOverlay.style["line-height"] = height;
+    alertOverlay.style.height = height;
+    alertOverlay.style.width = width;
+    alertOverlay.style["line-height"] = height;
 
     // Add custom classes.
-    errorOverlay.classList.add(...classes);
+    alertOverlay.classList.add(...classes);
   }
 
   /**

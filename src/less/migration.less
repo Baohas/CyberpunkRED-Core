@@ -126,15 +126,24 @@
 
     /* The width/height/line-height get set in `migration-app.js`
      because we don't yet know the height of the dialog list */
-    .error-overlay {
+    .alert-overlay {
       position: absolute;
-      text-align: center;
       z-index: 100;
       width: 0;
       height: 0;
-      background-color: var(--cpr-migration-overlay-error);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      // Keep text to one line.
+      white-space: nowrap;
       overflow: hidden;
+
       border-radius: 0.313rem;
+      background-color: var(--cpr-migration-overlay-error);
       backdrop-filter: blur(0.063rem);
 
       opacity: 1;
@@ -152,11 +161,16 @@
         background-color: var(--cpr-migration-overlay-success);
       }
 
-      .error-text {
-        display: inline-block;
-        font-size: 5rem;
-        letter-spacing: 1rem;
+      .text-rotate {
+        height: inherit;
+        width: inherit;
         transform: rotate(-10deg);
+      }
+
+      .alert-text {
+        font-size: 4.5rem;
+        padding-left: 1rem;
+        letter-spacing: 1rem;
       }
     }
 

@@ -23,8 +23,10 @@
   </section>
 
   <section class="progress compendia-selection">
-    <div class="error-overlay">
-      <span class="error-text text-hero">{{localize "CPR.migration.app.error"}}</span>
+    <div class="alert-overlay">
+      <div class="text-rotate">
+        <span class="alert-text text-hero">{{localize "CPR.migration.app.error"}}</span>
+      </div>
     </div>
     {{> "systems/cyberpunk-red-core/templates/migration/compendia-selection.hbs" worldPacks=worldPacks packModules=packModules}}
     <hr>
