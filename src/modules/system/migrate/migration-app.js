@@ -747,7 +747,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    */
   async onError() {
     LOGGER.trace("onError | MigrationApp");
-    this.generateOverlay();
+    this.generateOverlay({ text: "CPR.migration.app.overlay.error" });
   }
 
   /**
@@ -758,29 +758,52 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    */
   async onUserPrevented() {
     LOGGER.trace("onUserPrevented | MigrationApp");
-    this.generateOverlay(["warning"]);
-    const { element } = this;
-    const errorText = element.querySelector(".error-text");
-    errorText.innerHTML = game.i18n.localize("CPR.migration.app.warning");
+    this.generateOverlay({
+      text: "CPR.migration.app.overlay.warning",
+      classes: ["warning"],
+    });
+  }
+
+  /**
+   * Handles the phase of the MigrationApp when the migrations are complete.
+   *
+   * @return {Promise<void>}
+   */
+  async onMigrationComplete() {
+    LOGGER.trace("onMigrationComplete | MigrationApp");
+    this.generateOverlay({
+      text: "CPR.migration.app.overlay.success",
+      classes: ["success"],
+    });
   }
 
   /**
    * Generate an overlay that prevents button presses and makes
    * an error super obvious.
    *
-   * @param {string} [classes] - CSS classes to apply to the overlay
+   * @param {Object} [options] - Options for the overlay
+   * @property {string} [text] - Text to display in the overlay
+   * @property {string} [classes] - CSS classes to apply to the overlay
    * @return {void}
    */
-  generateOverlay(classes = []) {
+  generateOverlay({ text, classes = [] } = {}) {
     LOGGER.trace("generateOverlay | MigrationApp");
     const { element } = this;
     const errorOverlay = element.querySelector(".error-overlay");
+    const errorText = errorOverlay.querySelector(".error-text");
+
+    // Replace text element.
+    if (text) errorText.innerHTML = game.i18n.localize(text);
+
+    // Show overlay and size appropriately.
     const container = element.querySelector("ol.dialog-list");
     const { height, width } = getComputedStyle(container);
     errorOverlay.style.height = height;
     errorOverlay.style.width = width;
     errorOverlay.style["line-height"] = height;
-    errorOverlay.classList.add(...classes); // Add custom classes;
+
+    // Add custom classes.
+    errorOverlay.classList.add(...classes);
   }
 
   /**

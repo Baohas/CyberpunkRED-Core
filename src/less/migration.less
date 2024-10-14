@@ -133,8 +133,19 @@
       border-radius: 0.313rem;
       backdrop-filter: blur(0.063rem);
 
+      opacity: 1;
+      transition: opacity 0.3s;
+
+      &:hover {
+        opacity: 0.4;
+      }
+
       &.warning {
         background-color: var(--cpr-migration-overlay-warning);
+      }
+
+      &.success {
+        background-color: var(--cpr-migration-overlay-success);
       }
 
       .error-text {
