@@ -589,6 +589,16 @@
       "path": "lang/en.json"
     },
     {
+      "lang": "zh-CN",
+      "name": "Chinese Simplified",
+      "path": "lang/zh-CN.json"
+    },
+    {
+      "lang": "zh-TW",
+      "name": "Chinese Traditional",
+      "path": "lang/zh-TW.json"
+    },
+    {
       "lang": "cz",
       "name": "Czech",
       "path": "lang/cz.json"
@@ -612,6 +622,11 @@
       "lang": "it",
       "name": "Italian",
       "path": "lang/it.json"
+    },
+    {
+      "lang": "ja-JP",
+      "name": "Japanese",
+      "path": "lang/ja-JP.json"
     },
     {
       "lang": "pl",

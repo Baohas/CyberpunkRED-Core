@@ -70,6 +70,10 @@ If your players or mooks have any weapons that ignore a different percentage or 
   - Displays an overlay Icon on the Character Sheet Image which lists the reasons a character is considered hardened when hovered
   - Programmatically available under the `system.derivedStats.isHardened` datapoint
 - Add Quality to Weapons/Cyberdecks
+- Add new translations:
+  - Chinese (Simplified)
+  - Chinese (Traditional)
+  - Japanese
 - #653 - Enable support for dddice
 - Adjust font size of Handle/Name in Character sheets if the name overflows
 - Skill Items now have a `skillType` for programmatic access
