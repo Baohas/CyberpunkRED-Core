@@ -195,7 +195,7 @@
       "description": "<p>Un cylindre creux, fait en métal ou en fibre de verre. Il a pu contenir des fluides autrefois. +1 au jet d'attaque.</p>"
     },
     "Lead Pipe (Poor)": {
-      "name": "Lead Pipe (Poor)",
+      "name": "Tuyau en plomb (Mauvaise qualité)",
       "description": "<p>Un cylindre creux, fait en métal ou en fibre de verre. Il a pu contenir des fluides autrefois. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Lead Pipe": {
@@ -216,19 +216,19 @@
     },
     "Machete (Excellent)": {
       "name": "Machette (Excellente qualité)",
-      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations. +1 au jet d'attaque.</p>"
+      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations. Connu comme le favori de plusieurs gangs de Night City. +1 au jet d'attaque.</p>"
     },
     "Machete (Poor)": {
-      "name": "Machette -",
-      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
+      "name": "Machette (Mauvaise qualité)",
+      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations. Connu comme le favori de plusieurs gangs de Night City. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Machete": {
       "name": "Machette",
-      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations.</p>"
+      "description": "<p>Un couteau à lame longue qui à une variété d'utilisations. Connu comme le favori de plusieurs gangs de Night City.</p>"
     },
     "Malorian Arms 3516": {
       "name": "3516 de Malorian Arms",
-      "description": "<p>Pistolet exotique très lourd, qualité excellente. Fourni avec une liaison smartgun* qui doit être utilisée. Reportez-vous à la description complète de l'article sur pg. 347.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>",
+      "description": "<p>Pistolet exotique très lourd, qualité excellente. Fourni avec une liaison smartgun* qui doit être utilisée.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>",
       "dvTable": "SD Pistolet"
     },
     "Martial Arts": {
@@ -236,11 +236,11 @@
       "description": "<p>Utilise ses poings/pieds pour attaquer, ignore la moitié de l'armure de l'adversaire.</p>"
     },
     "Medium Melee (Excellent)": {
-      "name": "Arme de mêlée moyenne (Excellent)",
+      "name": "Arme de mêlée moyenne (Excellente qualité)",
       "description": "<p>Arme de mêlée intermédiaire générique d'excellente qualité.</p>\n<p>+1 à l'attaque.</p>"
     },
     "Medium Melee (Poor)": {
-      "name": "Arme de mêlée moyenne (Mauvais)",
+      "name": "Arme de mêlée moyenne (Mauvaise qualité)",
       "description": "<p>Arme de mêlée intermédiaire générique de mauvaise qualité.</p>\n<p>Si vous lancez 1 lors de l'attaque (échec critique) l'arme échoue d'une manière ou d'une autre et nécessite une action pour être réutilisable.</p>"
     },
     "Medium Melee": {
@@ -248,12 +248,12 @@
       "description": "<p>Arme de mêlée intermédiaire générique.</p>"
     },
     "Medium Pistol (Excellent)": {
-      "name": "Pistolet moyen +",
+      "name": "Pistolet moyen (Excellente qualité)",
       "description": "<p>Un pistolet de taille moyenne. Dissimulable. +1 au jet d'attaque.</p>",
       "dvTable": "SD Pistolet"
     },
     "Medium Pistol (Poor)": {
-      "name": "Pistolet moyen -",
+      "name": "Pistolet moyen (Mauvaise qualité)",
       "description": "<p>Un pistolet de taille moyenne de mauvaise qualité. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
       "dvTable": "SD Pistolet"
     },
@@ -264,7 +264,7 @@
     },
     "Microwaver": {
       "name": "Canon à ondes",
-      "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de Cybertech SD15. Reportez-vous à la description complète de l'élément sur p. 347.</p>",
+      "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de <strong>Cybertech SD15</strong>.</p>",
       "dvTable": "SD Pistolet"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
@@ -273,11 +273,11 @@
       "dvTable": "SD Lance-grenades"
     },
     "Naginata (Excellent)": {
-      "name": "Naginata +",
+      "name": "Naginata (Excellente qualité)",
       "description": "<p>Arme d'origine japonaise, proche du fauchard à lame courbe. Utilisé par les équipes tactiques d'Arasaka lors des confrontations aux corps à corps. +1 au jet d'attaque.</p>"
     },
     "Naginata (Poor)": {
-      "name": "Naginata -",
+      "name": "Naginata (Mauvaise qualité)",
       "description": "<p>Arme d'origine japonaise, proche du fauchard à lame courbe. Utilisé par les équipes tactiques d'Arasaka lors des confrontations aux corps à corps. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Naginata": {
@@ -290,12 +290,12 @@
       "dvTable": "SD Fusil d'assaut"
     },
     "Rocket Launcher (Excellent)": {
-      "name": "Lance-roquettes +",
+      "name": "Lance-grenades (Excellente qualité)",
       "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. +1 au jet d'attaque.</p>",
       "dvTable": "SD Lance-roquettes"
     },
     "Rocket Launcher (Poor)": {
-      "name": "Lance-roquettes -",
+      "name": "Lance-roquettes (Mauvaise qualité)",
       "description": "<p>Sortez l'artillerie lourde. Ce lance-roquettes fera quelques dégâts. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
       "dvTable": "SD Lance-roquettes"
     },
@@ -305,12 +305,12 @@
       "dvTable": "SD Lance-roquettes"
     },
     "Shotgun (Excellent)": {
-      "name": "Fusil à pompe +",
+      "name": "Fusil à pompe (Excellente qualité)",
       "description": "<p>Fusil à pompe polyvalent. +1 au jet d'attaque.</p>",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
     "Shotgun (Poor)": {
-      "name": "Fusil à pompe -",
+      "name": "Fusil à pompe (Mauvaise qualité)",
       "description": "<p>Un fusil à pompe polyvalent. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
       "dvTable": "SD Fusil à pompe (Slug)"
     },
@@ -321,15 +321,15 @@
     },
     "Shrieker": {
       "name": "Hurleur",
-      "description": "<p>Pistolet Exotique très lourd. Nécessite une protection auditive contre les blessures critiques, sinon réussir un jet de Résistance à la torture/aux drogues SD15 ou subir une blessure critique Oreilles endommagées. Reportez-vous à la description complète de l'article sur le p. 348.</p>",
+      "description": "<p>Pistolet Exotique très lourd. Nécessite une protection auditive contre les blessures critiques. La cible doit réussir un jet de <strong>Résistance à la torture/aux drogues SD15</strong> ou subir la blessure critique Oreilles endommagées.</p>",
       "dvTable": "SD Pistolet"
     },
     "Sledgehammer (Excellent)": {
-      "name": "Masse +",
+      "name": "Masse (Excellente qualité)",
       "description": "<p>Une sorte de grand maillet avec une tête métallique plate. +1 au jet d'attaque.</p>"
     },
     "Sledgehammer (Poor)": {
-      "name": "Masse -",
+      "name": "Masse (mauvaise qualité)",
       "description": "<p>Une sorte de grand maillet avec une tête métallique plate. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Sledgehammer": {
@@ -337,12 +337,12 @@
       "description": "<p>Une sorte de grand maillet avec une tête métallique plate.</p>"
     },
     "SMG (Excellent)": {
-      "name": "Pistolet-mitrailleur +",
+      "name": "Pistolet-mitrailleur (Excellente qualité)",
       "description": "<p>Un pistolet-mitrailleur. Dissimulable. +1 au jet d'attaque.</p>",
       "dvTable": "SD Pistolet-mitrailleur"
     },
     "SMG (Poor)": {
-      "name": "Pistolet-mitrailleur -",
+      "name": "Pistolet-mitrailleur (Mauvaise qualité)",
       "description": "<p>Pistolet-mitrailleur. Dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
       "dvTable": "SD Pistolet-mitrailleur"
     },
@@ -352,26 +352,26 @@
       "dvTable": "SD Pistolet-mitrailleur"
     },
     "Sniper Rifle (Excellent)": {
-      "name": "Fusil de précision +",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance. +1 au jet d'attaque.</p>",
+      "name": "Fusil de précision (Excellente qualité)",
+      "description": "<p>Un fusil de précision à longue portée. Possède un chargeur de 4 balles. +1 au jet d'attaque.</p>",
       "dvTable": "SD Fusil de précision"
     },
     "Sniper Rifle (Poor)": {
-      "name": "Fusil de précision -",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
+      "name": "Fusil de précision (Mauvaise qualité)",
+      "description": "<p>Un fusil de précision à longue portée. Possède un chargeur de 4 balles. +1 au jet d'attaque. Si vous faites 1 sur un jet d'attaque (Échec critique) l'arme est enrayée et cela nécessite une action pour le désenrayer.</p>",
       "dvTable": "SD Fusil de précision"
     },
     "Sniper Rifle": {
       "name": "Fusil de précision",
-      "description": "<p>Un fusil utilisé afin d'engager des cibles à longue distance.</p>",
+      "description": "<p>Un fusil de précision à longue portée. Possède un chargeur de 4 balles. +1 au jet d'attaque.</p>",
       "dvTable": "SD Fusil de précision"
     },
     "Spiked Bat (Excellent)": {
-      "name": "Batte cloutée +",
+      "name": "Batte cloutée (Excellente qualité)",
       "description": "<p>Une batte de baseball ayant de multiples clous. +1 au jet d'attaque.</p>"
     },
     "Spiked Bat (Poor)": {
-      "name": "Batte cloutée -",
+      "name": "Batte cloutée (Mauvaise qualité)",
       "description": "<p>Une batte de baseball ayant de multiples clous. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Spiked Bat": {
@@ -384,15 +384,15 @@
     },
     "Stun Gun": {
       "name": "Pistolet à impulsion électrique",
-      "description": "<p>Pistolet lourd exotique. La cible est inconsciente si les dégâts infligés la réduisent à moins d'1 PS. Ne cause pas de blessures critiques ne de perforation d'armure. Reportez-vous à la description complète de l'objet sur le pg. 349.</p>",
+      "description": "<p>Pistolet lourd exotique. La cible est inconsciente si les dégâts infligés la réduisent à moins d'1 PS. Ne cause pas de blessures critiques ne de perforation d'armure.</p>",
       "dvTable": "SD Pistolet"
     },
     "Sword (Excellent)": {
-      "name": "Épée +",
+      "name": "Épée (Excellente qualité)",
       "description": "<p>Une arme avec une lame et une poignée. Conçue pour couper. +1 au jet d'attaque.</p>"
     },
     "Sword (Poor)": {
-      "name": "Épée -",
+      "name": "Épée (Mauvaise qualité)",
       "description": "<p>Une arme avec une lame et une poignée. Conçue pour couper. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Sword": {
@@ -405,11 +405,11 @@
       "dvTable": "SD Arme de lancer"
     },
     "Tomahawk (Excellent)": {
-      "name": "Tomahawk +",
+      "name": "Tomahawk (Excellente qualité)",
       "description": "<p>Une hache légère qui peut être lancée. +1 au jet d'attaque.</p>"
     },
     "Tomahawk (Poor)": {
-      "name": "Tomahawk -",
+      "name": "Tomahawk (Mauvaise qualité)",
       "description": "<p>Une hache légère qui peut être lancée. Si vous faites 1 sur un jet d'attaque (Échec critique) l'attaque échoue et cela nécessite une action afin que l'arme soit à nouveau utilisable.</p>"
     },
     "Tomahawk": {
@@ -418,7 +418,7 @@
     },
     "Tsunami Arms Helix": {
       "name": "Helix de Tsunami Arms",
-      "description": "<p>\n  Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, \n  tire 20 balles à chaque attaque. Utilise les règles Tir automatique avec un multiplicateur \n  maximum de 5. Nécessite COR 11 ou plus (sauf s'il est monté sur un support)\n</p>\n",
+      "description": "<p>\n  Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, \n  tire 20 balles à chaque attaque. Utilise les règles de Tir automatique avec un multiplicateur \n  maximum de 5. Nécessite COR 11 ou plus (sauf s'il est monté sur un support)\n</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
     "Unarmed": {
@@ -426,11 +426,11 @@
       "description": "<p>Utilise ses poings/pieds pour attaquer, n'ignore pas la moitié de l'armure de l'adversaire.</p>"
     },
     "Very Heavy Melee (Excellent)": {
-      "name": "Arme de mêlée très lourde (Excellent)",
+      "name": "Arme de mêlée très lourde (Excellente qualité)",
       "description": "<p>Arme de mêlée très lourde générique d'excellente qualité.</p>\n<p>+1 à l'attaque.</p>"
     },
     "Very Heavy Melee (Poor)": {
-      "name": "Arme de mêlée très lourde (Mauvais)",
+      "name": "Arme de mêlée très lourde (Mauvaise qualité)",
       "description": "<p>Arme de mêlée très lourde générique de mauvaise qualité.</p>\n<p>Si vous lancez 1 lors de l'attaque (échec critique) l'arme échoue d'une manière ou d'une autre et nécessite une action pour être à nouveau utilisable.</p>"
     },
     "Very Heavy Melee": {
@@ -438,12 +438,12 @@
       "description": "<p>Arme de mêlée très lourde générique.</p>"
     },
     "Very Heavy Pistol (Excellent)": {
-      "name": "Pistolet très lourd +",
+      "name": "Pistolet très lourd (Excellente qualité)",
       "description": "<p>Un pistolet très lourd. Non dissimulable. +1 au jet d'attaque.</p>",
       "dvTable": "SD Pistolet"
     },
     "Very Heavy Pistol (Poor)": {
-      "name": "Pistolet très lourd -",
+      "name": "Pistolet très lourd (Mauvaise qualité)",
       "description": "<p>Un pistolet très lourd. Non dissimulable. Si vous faites 1 sur un jet d'attaque (Échec critique) le pistolet est enrayé et cela nécessite une action pour le désenrayer.</p>",
       "dvTable": "SD Pistolet"
     },
