@@ -67,10 +67,10 @@ If your players or mooks have any weapons that ignore a different percentage or 
   - В бланке персонажа появляется иконка, при наведении курсора на которую появляются причины признания «прожжённости»
   - Программно доступно по точке данных `system.derivedStats.isHardened`
 - Добавлено качество для оружия и кибердек
-- Add new translations:
-  - Chinese (Simplified)
-  - Chinese (Traditional)
-  - Japanese
+- Добавлены новые переводы:
+  - китайский (упрощённый)
+  - китайский (традиционный)
+  - японский
 - #653 - Добавлена поддержка dddice
 - Изменение размеров шрифта в графе «Имя» бланка персонажа, чтобы избежать переполнения
 - У предметов навыков теперь есть `skillType` для программного доступа
@@ -618,7 +618,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Версия 0.85.1 (Исправление) | Дата: 2022-12-14
 
-### Bug Fixes
+### Исправления
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
@@ -831,7 +831,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Версия 0.81.1 (Исправление) | Дата: 2022-08-01
 
-### Bug Fixes
+### Исправления
 
 - #456 - Selling non-stackable items to vendors results in a NaN offer from the vendor
 - #454 - Kendachi Mono-Three has Incorrect Attack Bonus
