@@ -31,26 +31,6 @@ export default class LoadableSchema extends CPRSystemDataModel {
     };
   }
 
-  /**
-   * Migrates data on the fly. From Foundry.
-   *
-   * Give every weapon item "ammo" as an installable type.
-   *
-   * @override
-   * @param {CPRSystemDataModel} source - source actor or item `document.system`
-   * @returns {CPRSystemDataModel} - migrated data
-   */
-  static migrateData(source) {
-    if (
-      source.installedItems &&
-      source.installedItems.allowedTypes &&
-      !source.installedItems.allowedTypes.includes("ammo")
-    ) {
-      source.installedItems.allowedTypes.push("ammo");
-    }
-    return super.migrateData(source);
-  }
-
   get loadedAmmo() {
     return this.parent.getInstalledItems("ammo")[0];
   }
