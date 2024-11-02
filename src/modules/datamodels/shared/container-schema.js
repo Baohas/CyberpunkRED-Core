@@ -67,15 +67,10 @@ export default class ContainerSchema extends CPRSystemDataModel {
       }),
     };
 
-    if (includeSlots) {
-      return {
-        installedItems: new fields.SchemaField({
-          ...baseSchema,
-          ...slotsSchema,
-        }),
-      };
-    }
-    return { installedItems: new fields.SchemaField({ ...baseSchema }) };
+    const finalSchema = includeSlots
+      ? { ...baseSchema, ...slotsSchema }
+      : baseSchema;
+    return { installedItems: new fields.SchemaField(finalSchema) };
   }
 
   /**
@@ -88,38 +83,12 @@ export default class ContainerSchema extends CPRSystemDataModel {
    * @returns {CPRSystemDataModel} - migrated data
    */
   static migrateData(source) {
-    // Turn this list of UUIDs into a list of IDs.
-    if (source.installedItems?.list?.length > 0) {
-      const installed = source.installedItems.list;
-      // eslint-disable-next-line no-param-reassign
-      source.installedItems.list = installed.map((i) =>
-        this.migrateItemUuid(i)
-      );
-
+    const { installedItems } = source;
+    if (installedItems.list.length > 0) {
       // Ensure that this list never has duplicates.
-      // eslint-disable-next-line no-param-reassign
-      source.installedItems.list = Array.from(
-        new Set(source.installedItems.list)
-      );
+      installedItems.list = Array.from(new Set(installedItems.list));
     }
     return super.migrateData(source);
-  }
-
-  /**
-   * Turn Item UUIDs into IDs
-   *
-   * @param {String} uuid - the uuid of an item
-   * @returns {String} - the id of that item
-   */
-  static migrateItemUuid(uuid) {
-    if (foundry.data.validators.isValidId(uuid)) {
-      return uuid;
-    }
-    const parsedUuid = foundry.utils.parseUuid(uuid);
-    const index = parsedUuid.embedded.indexOf("Item") + 1;
-    return parsedUuid.documentType === "Item"
-      ? parsedUuid.documentId
-      : parsedUuid.embedded[index];
   }
 
   get hasInstalled() {
