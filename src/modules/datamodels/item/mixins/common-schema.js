@@ -1,4 +1,6 @@
-export default class CommonSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class CommonSchema extends CPRSystemDataModel {
   static mixinName = "common";
 
   static defineSchema() {

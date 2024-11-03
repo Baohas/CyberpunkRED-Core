@@ -1,6 +1,7 @@
 import CPR from "../../../system/config.js";
+import CPRSystemDataModel from "../../system-data-model.js";
 
-export default class RoleAbilitySchema extends foundry.abstract.DataModel {
+export default class RoleAbilitySchema extends CPRSystemDataModel {
   static defineSchema() {
     const { fields } = foundry.data;
     return {

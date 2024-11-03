@@ -1,6 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
 import CPR from "../../system/config.js";
-import CPRSystemDataModel from "../abstract.js";
+import CPRSystemDataModel from "../system-data-model.js";
 import CommonSchema from "./mixins/common-schema.js";
 import RoleAbilitySchema from "./components/role-ability-schema.js";
 

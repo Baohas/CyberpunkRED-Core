@@ -1,4 +1,6 @@
-export default class StackableSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class StackableSchema extends CPRSystemDataModel {
   static mixinName = "stackable";
 
   static defineSchema() {

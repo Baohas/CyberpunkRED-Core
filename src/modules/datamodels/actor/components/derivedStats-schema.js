@@ -1,9 +1,9 @@
 import CPR from "../../../system/config.js";
-import LOGGER from "../../../utils/cpr-logger.js";
+import CPRSystemDataModel from "../../system-data-model.js";
 import SystemUtils from "../../../utils/cpr-systemUtils.js";
 import HpSchema from "./hp-schema.js";
 
-export default class DerivedStatsSchema extends foundry.abstract.DataModel {
+export default class DerivedStatsSchema extends CPRSystemDataModel {
   static defineSchema() {
     const { fields } = foundry.data;
     return {
@@ -100,7 +100,6 @@ export default class DerivedStatsSchema extends foundry.abstract.DataModel {
    *                   explaining why this status was granted.
    */
   get isHardened() {
-    LOGGER.log("isHardened | DerivedStatsSchema | called.");
     const actorData = this.parent.parent;
 
     /**

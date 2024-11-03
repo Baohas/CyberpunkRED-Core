@@ -1,4 +1,4 @@
-import CPRSystemDataModel from "../abstract.js";
+import CPRSystemDataModel from "../system-data-model.js";
 import HpSchema from "./components/hp-schema.js";
 
 export default class DemonDataModel extends CPRSystemDataModel.mixin() {

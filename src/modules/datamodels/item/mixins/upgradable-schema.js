@@ -1,4 +1,6 @@
-export default class UpgradableSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class UpgradableSchema extends CPRSystemDataModel {
   static mixinName = "upgradable";
 
   static defineSchema() {

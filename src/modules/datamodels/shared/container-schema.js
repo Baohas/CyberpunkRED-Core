@@ -1,9 +1,10 @@
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRSystemDataModel from "../system-data-model.js";
 
 /**
  * Container Schema are shared between Actors and Items
  */
-export default class ContainerSchema extends foundry.abstract.DataModel {
+export default class ContainerSchema extends CPRSystemDataModel {
   static mixinName = "container";
 
   /**

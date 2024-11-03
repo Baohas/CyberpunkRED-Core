@@ -1,4 +1,6 @@
-export default class HpSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class HpSchema extends CPRSystemDataModel {
   static defineSchema({ initial = 40 } = {}) {
     const { fields } = foundry.data;
     return {

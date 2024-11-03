@@ -1,4 +1,4 @@
-import CPRSystemDataModel from "../abstract.js";
+import CPRSystemDataModel from "../system-data-model.js";
 import CommonSchema from "./mixins/common-schema.js";
 import EffectsSchema from "./mixins/effects-schema.js";
 import EquippableSchema from "./mixins/equippable-schema.js";

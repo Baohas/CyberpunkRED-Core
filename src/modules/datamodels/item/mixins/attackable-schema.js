@@ -1,6 +1,7 @@
 import CPR from "../../../system/config.js";
+import CPRSystemDataModel from "../../system-data-model.js";
 
-export default class AttackableSchema extends foundry.abstract.DataModel {
+export default class AttackableSchema extends CPRSystemDataModel {
   static mixinName = "attackable";
 
   static defineSchema() {

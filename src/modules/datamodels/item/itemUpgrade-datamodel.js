@@ -1,5 +1,5 @@
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import CPRSystemDataModel from "../abstract.js";
+import CPRSystemDataModel from "../system-data-model.js";
 import UpgradeModifierSchema from "./components/upgrade-modifier-schema.js";
 import AttackableSchema from "./mixins/attackable-schema.js";
 import CommonSchema from "./mixins/common-schema.js";

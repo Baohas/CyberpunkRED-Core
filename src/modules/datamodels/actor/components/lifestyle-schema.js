@@ -1,4 +1,6 @@
-export default class LifestyleSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class LifestyleSchema extends CPRSystemDataModel {
   /**
    * Programatically produce schema object for lifestyle options.
    *

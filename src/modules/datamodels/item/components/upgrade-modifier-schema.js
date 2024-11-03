@@ -1,4 +1,6 @@
-export default class UpgradeModifierSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class UpgradeModifierSchema extends CPRSystemDataModel {
   static defineSchema() {
     const { fields } = foundry.data;
     return {

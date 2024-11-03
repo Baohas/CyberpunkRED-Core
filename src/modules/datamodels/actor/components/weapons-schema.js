@@ -1,9 +1,8 @@
-import LOGGER from "../../../utils/cpr-logger.js";
+import CPRSystemDataModel from "../../system-data-model.js";
 import CPR from "../../../system/config.js";
 
-export default class ActorWeaponsSchema extends foundry.abstract.DataModel {
+export default class ActorWeaponsSchema extends CPRSystemDataModel {
   static defineSchema() {
-    LOGGER.log("defineSchema | WeaponsSchema | Called.");
     return {};
   }
 

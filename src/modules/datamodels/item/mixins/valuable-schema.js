@@ -1,4 +1,6 @@
-export default class ValuableSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class ValuableSchema extends CPRSystemDataModel {
   static mixinName = "valuable";
 
   static defineSchema() {

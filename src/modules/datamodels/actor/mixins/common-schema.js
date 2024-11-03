@@ -1,3 +1,4 @@
+import CPRSystemDataModel from "../../system-data-model.js";
 import SystemUtils from "../../../utils/cpr-systemUtils.js";
 import CPRMod from "../../../rolls/cpr-modifiers.js";
 
@@ -7,7 +8,7 @@ import ExternalResourceSchema from "../components/external-resource-schema.js";
 import LedgerSchema from "../components/ledger-schema.js";
 import ActorWeaponsSchema from "../components/weapons-schema.js";
 
-export default class CommonSchema extends foundry.abstract.DataModel {
+export default class CommonSchema extends CPRSystemDataModel {
   static mixinName = "common";
 
   static defineSchema() {

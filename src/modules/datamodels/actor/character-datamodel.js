@@ -1,4 +1,4 @@
-import CPRSystemDataModel from "../abstract.js";
+import CPRSystemDataModel from "../system-data-model.js";
 import CommonSchema from "./mixins/common-schema.js";
 import LedgerSchema from "./components/ledger-schema.js";
 import LifestyleSchema from "./components/lifestyle-schema.js";

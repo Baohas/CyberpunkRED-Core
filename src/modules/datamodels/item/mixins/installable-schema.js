@@ -1,6 +1,7 @@
 import CPR from "../../../system/config.js";
+import CPRSystemDataModel from "../../system-data-model.js";
 
-export default class InstallableSchema extends foundry.abstract.DataModel {
+export default class InstallableSchema extends CPRSystemDataModel {
   static mixinName = "installable";
 
   static defineSchema({ initialSize = 1 } = {}) {

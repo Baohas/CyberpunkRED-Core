@@ -1,4 +1,6 @@
-export default class ElectronicSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class ElectronicSchema extends CPRSystemDataModel {
   static mixinName = "electronic";
 
   /**

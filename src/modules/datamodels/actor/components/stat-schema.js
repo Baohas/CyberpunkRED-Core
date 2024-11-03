@@ -1,4 +1,6 @@
-export default class StatSchema extends foundry.abstract.DataModel {
+import CPRSystemDataModel from "../../system-data-model.js";
+
+export default class StatSchema extends CPRSystemDataModel {
   /**
    *
    * @param {Boolean} includeMax - whether this stat has a max property or not
