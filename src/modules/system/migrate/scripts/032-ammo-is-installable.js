@@ -38,7 +38,7 @@ export default class AmmoIsInstallable extends BaseMigrationScript {
   static addInstalledAmmo(loadable) {
     LOGGER.trace("addInstalledAmmo | AmmoIsInstallable");
     const { magazine, installedItems } = loadable.system;
-    if (magazine.ammoData.uuid) {
+    if (magazine.ammoData?.uuid) {
       installedItems.list.push(magazine.ammoData.uuid);
     }
   }

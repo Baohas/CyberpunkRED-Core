@@ -23,6 +23,9 @@ export default class InstallListUUIDsToIDs extends BaseMigrationScript {
 
   async updateActor(doc) {
     LOGGER.trace("updateActor | UUIDs to IDs");
+    // God I know this is confusing. We are migrating Actors with the "container" mixin,
+    // i.e., CPRCharacters and CPRMooks, not CPRContainers.
+    if (doc.type === "container") return;
     this.constructor.migrateUuids(doc);
   }
 
