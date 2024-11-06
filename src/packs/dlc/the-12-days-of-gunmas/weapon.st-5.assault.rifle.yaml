@@ -11,7 +11,7 @@ system:
   concealable:
     concealable: false
     isConcealed: false
-  critFailEffect: jammed
+  critFailEffect: coinToss
   damage: 5d6
   description:
     value: |
@@ -39,7 +39,7 @@ system:
     value: 0
   price:
     market: 100
-  quality: standard
+  quality: poor
   revealed: true
   rof: 1
   source:

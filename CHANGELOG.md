@@ -65,6 +65,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
 - #235 - Added ability to change resource bars for armor from item sheet
+- Add Critical Effect Failue datapoint for Weapons
 - Display Net Architectures in Character's gear tab
 - Add Basic system API
   - Add `GetEMPableItems` function to API
