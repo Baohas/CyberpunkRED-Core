@@ -6,51 +6,33 @@
 
 ### Action requise
 
-#### Item Quality
+#### Qualité des objets
 
-We have (re)added item quality data points to Weapons, Cyberdecks, etc. we have migrated items with a best effort (checking for poor/exellent in item names/descriptions) but this migration may not catch 100% of items.
+Nous avons (ré)ajouté la qualité des objets pour les Armes, Cyberdecks, etc. Nous avons migré les élémentsdu mieux possible (recherche de médiocre/exellents dans les noms/descriptions) mais cette migration peut ne pas présenter 100 % des articles.
 
-Please manually review any items in your world/custom compendia/on actors that may need to be adjusted.
+Veuillez examiner manuellement tous les éléments de votre monde/compendium personnalisés/ acteurs qui pourraient avoir besoin d'être ajustés.
 
-#### Skill Types
+#### Type de compétence
 
-##### Removing old Generic Skills
+##### Suppression des anciennes compétences génériques
 
-We have removed the old (incorrect) generic skills `Science`, `Play Instrument`, `Martial Arts`, `Local Expert`, and `Language` from being added to new Characters/Mooks and We have added new system compendia for `Skills (Languages)`, `Skills (Local Expert)`, `Skills (Martial Arts)`, `Skills (Science)`, and `Skills (Science)` which you can use to populate these specific skills for new actors.
+Nous avons supprimé les anciennes compétences génériques (incorrectes) `Science`, `Instrument`, `Arts Martiaux`, `Expert Local`, et `Langue`. Elles ne peuvent plus être ajoutées aux nouveaux Personnages/Mooks. Nous avons ajouté un nouveau système compendia pour `Compétences (Langues)`, `Compétences (Expert Local)`, `Compétences (Arts Martiaux)`, `Compétences (Science)`, et `Compétences (Science)` que vous pouvez utiliser pour remplir ces compétences spécifiques pour les nouveaux acteurs.
 
-As we do not want to lose any of your data we have not removed these Skills from your actors, we have instead made them deletable so you can add the add the correct specific skills and remove the old ones from character sheets as in your own time.
+Comme nous ne voulons pas perdre vos données, nous n'avons pas supprimé ces compétences de vos acteurs, nous les avons rendus supprimables afin que vous puissiez ajouter les compétences spécifiques correctes et supprimer les anciennes des feuilles de personnage.
 
-##### Modifying existing Specific Skills
+##### Modifier les compétences spécifiques existantes
 
-For some functionality in the system we have added a `Skill Type` to each skill, while we have made a best effort to migrate all skills to the correct type there may be some instances where we were unable to detect the correct Skill Type of a skill. If you have any actors with custom skills for `Science`, `Play Instrument`, `Martial Arts`, `Local Expert`, and `Language` you may need to set it's Skill Type of the skill manually in that skill's Settings page. You can follow the process on the [wiki page](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Skills#settings-tab).
+Pour certaines fonctionnalités du système, nous avons ajouté un `Type de compétence` à chaque compétence. Bien que nous nous soyons efforcés de migrer toutes les compétences vers le type correct, il se peut que, dans certains cas, nous n'ayons pas été en mesure de détecter le type de compétence correct d'une compétence. Si vous avez des acteurs avec des compétences personnalisées pour `Science`, `Instrument`, `Arts Martiaux`, `Expert local`, et `Langue` vous devrez peut-être définir son Type de Compétence manuellement dans la page Paramètres de cette Compétence. Vous pouvez suivre le processus pas à pas sur le [wiki](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Skills#settings-tab).
 
-#### Weapons Ignoring Armor
+#### Armes ignorant l'armure
 
-We have added the ability to allow weapons to ignore a percentage of armor or armor under a certian SP. We have migrated all melee weapons to include the new datapoints to ignore 50% armor by default.
+Nous avons ajouté la possibilité de permettre aux armes d'ignorer un pourcentage d'armure ou l'armure sous un seuil de SP. Nous avons migré toutes les armes de mêlée pour qu'elles ignorent 50 % d'armure par défaut.
 
-If your players or mooks have any weapons that ignore a different percentage or armor under a certian SP that is not 50%/0SP then you will need to update these manually (or replace from a copy in the system compendia).
+Si vos joueurs ou vos mooks ont des armes qui ignorent un pourcentage différent ou une armure sous un certiain seuil qui n'est pas de 50%/0SP, alors vous devrez les mettre à jour manuellement (ou remplacer à partir d'une copie dans la compendium système).
 
 #### Macro Get EMP'd (macro pour effet IEM)
 
 Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la copie dans votre monde et de l'importer à nouveau depuis le compendium `Autres/Macros` car la macro a été mise à jour.
-
-#### Skill Types
-
-Removing old Generic Skills
-
-We have removed the old (incorrect) generic skills Science, Play Instrument, Martial Arts, Local Expert, and Language from being added to new Characters/Mooks and We have added new system compendia for Skills (Languages), Skills (Local Expert), Skills (Martial Arts), Skills (Science), and Skills (Science) which you can use to populate these specific skills for new actors.
-
-As we do not want to lose any of your data we have not removed these Skills from your actors, we have instead made them deletable so you can add the add the correct specific skills and remove the old ones from character sheets as in your own time.
-
-Modifying existing Specific Skills
-
-For some functionality in the system we have added a Skill Type to each skill, while we have made a best effort to migrate all skills to the correct type there may be some instances where we were unable to detect the correct Skill Type of a skill. If you have any actors with custom skills for Science, Play Instrument, Martial Arts, Local Expert, and Language you may need to set it's Skill Type of the skill manually in that skill's Settings page. You can follow the process on the wiki page.
-
-#### Weapons Ignoring Armor
-
-We have added the ability to allow weapons to ignore a percentage of armor or armor under a certian SP. We have migrated all melee weapons to include the new datapoints to ignore 50% armor by default.
-
-If your players or mooks have any weapons that ignore a different percentage or armor under a certian SP that is not 50%/0SP then you will need to update these manually (or replace from a copy in the system compendia).
 
 ### Nouvelles fonctionnalités
 
@@ -67,10 +49,10 @@ If your players or mooks have any weapons that ignore a different percentage or 
   - Une icône sur la feuille de personnage liste désormais les raisons pour lesquelles il est considéré comme endurci lorsque survolé
   - Programmable sous le point de donnée `system.derivedStats.isHardened`
 - Ajout de Qualité aux Armes et Cyberconsoles
-- Add new translations:
-  - Chinese (Simplified)
-  - Chinese (Traditional)
-  - Japanese
+- Ajout de nouvelles traductions :
+  - Chinois (simplifié)
+  - Chinois (Traditionnel)
+  - Japonais
 - #653 - Support disponible pour dddice
 - Ajuste la taille de la police du Pseudo/Nom dans la feuille de personnage si le nom déborde
 - Les objets de compétences ont désormais un `skillType` pour l'accès par programmation
@@ -94,10 +76,10 @@ If your players or mooks have any weapons that ignore a different percentage or 
 - Utiliser la molette n'ajuste désormais plus les stats/compétences dans la feuille de personnage
 - Changement de la police Pause pour Tektur pour un meilleur support international
   - Retire la police Orbitron
-- Change the styling of `<code>` elements
+- Change le style des éléments `<code>`
 - Les titres dans les zones de texte sont désormais stylisés de la même façon que le livre de base de CP:R
 - Mis à jour des tuiles de Netrunning avec des nouvelles tuiles de Solution3
-- Update Macro icons to fit system style
+- Mise à jour des icônes de Macro pour s'adapter au style du système
 - Mise à jour de la feuille de Démon pour que la disposition soit moins chelou
 - Changement de la manière dont nous traitons les objets de Marque
   - Les objets de marque ont été renommés pour utiliser le nom complet de l'objet selon sa source
