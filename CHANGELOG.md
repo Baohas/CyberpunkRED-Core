@@ -69,6 +69,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Display Net Architectures in Character's gear tab
 - Add Basic system API
   - Add `GetEMPableItems` function to API
+- Add Q-Workshop dice presets for Dice-So-Nice
 
 ### Changes
 
