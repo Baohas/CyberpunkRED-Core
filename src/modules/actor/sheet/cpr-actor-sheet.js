@@ -1660,6 +1660,8 @@ export default class CPRActorSheet extends ActorSheet {
     const cprNewItemData = foundry.utils.duplicate(item.system);
     cprNewItemData.amount = formData.splitAmount;
     delete cprNewItemData._id;
+    const cprNewItemEffects = foundry.utils.duplicate(item.effects);
+    delete cprNewItemEffects._id;
     await this.actor.updateEmbeddedDocuments("Item", [
       { _id: item.id, "system.amount": newAmount },
     ]);
@@ -1671,6 +1673,7 @@ export default class CPRActorSheet extends ActorSheet {
           type: item.type,
           img: item.img,
           system: cprNewItemData,
+          effects: cprNewItemEffects,
         },
       ],
       { CPRsplitStack: true }
