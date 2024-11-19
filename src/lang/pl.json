@@ -862,6 +862,7 @@
   "CPR.itemSheet.ignoreArmor.percent": "Percentage of Armor to Ignore",
   "CPR.itemSheet.ignoreArmor.armorSP": "Armor SP to Ignore Below",
   "CPR.itemSheet.critFailEffect.text": "Critical Attack Failure Effect",
+  "CPR.itemSheet.critFailEffect.coinToss": "Coin Toss",
   "CPR.itemSheet.critFailEffect.jam": "Jammed",
   "CPR.itemSheet.critFailEffect.destroyed": "Destroyed",
   "CPR.itemSheet.critFailEffect.destroyedBeyondRepair": "Destroyed Beyond Repair",
