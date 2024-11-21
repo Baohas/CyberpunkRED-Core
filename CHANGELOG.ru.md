@@ -65,9 +65,11 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Добавлена возможность выставить оружию игнорировать проценты
 - Добавлена возможность выставить оружие игнорировать броню ниже определённого показателя ОС
 - #235 - добавлена возможность изменять шкалы ресурсов для брони с бланка предмета
+- Add Critical Effect Failue datapoint for Weapons
 - Сетевые архитектуры отображаются во вкладке «Снаряжение» бланка персонажа
 - Add Basic system API
   - Add `GetEMPableItems` function to API
+- Add Q-Workshop dice presets for Dice-So-Nice
 
 ### Изменения
 
