@@ -862,6 +862,7 @@
   "CPR.itemSheet.ignoreArmor.percent": "Pourcentage d'armure à ignorer",
   "CPR.itemSheet.ignoreArmor.armorSP": "PA d'armure à ignorer en dessous",
   "CPR.itemSheet.critFailEffect.text": "Effet d'échec critique de l'attaque",
+  "CPR.itemSheet.critFailEffect.coinToss": "Lancer de pièce",
   "CPR.itemSheet.critFailEffect.jam": "Enrayé",
   "CPR.itemSheet.critFailEffect.destroyed": "Hors d'état",
   "CPR.itemSheet.critFailEffect.destroyedBeyondRepair": "Détruit au-delà de toute réparation possible",
