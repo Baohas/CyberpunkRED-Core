@@ -65,9 +65,11 @@ Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la cop
 - Ajoute la possibilité de configurer une arme pour qu'elle ignore un pourcentage
 - Ajoute la possibilité de configurer une arme pour qu'elle ignore l'armure en dessous d'un montant de PA déterminé
 - #235 - Ajoute la possibilité de changer les barres de ressources pour l'armure depuis la feuille d'objet
+- Add Critical Effect Failue datapoint for Weapons
 - Montre les architectures Net dans l'onglet d'attirail des personnages
 - Ajout d'un système basique d'API
   - Ajout de la fonction `GetEMPableItems` dans les API
+- Add Q-Workshop dice presets for Dice-So-Nice
 
 ### Att/round
 
