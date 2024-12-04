@@ -15,7 +15,7 @@ export default class AttackableIgnoreArmorMigration extends BaseMigrationScript 
 
   async updateItem(doc) {
     LOGGER.trace("updateItem | Attackable Ignore Armor");
-    if (!doc.system.isRanged) {
+    if (!doc.system.isRanged && doc.system.weaponType !== "unarmed") {
       doc.system.canIgnoreArmor = true;
       doc.system.ignoreArmorPercent = 50;
       doc.system.ignoreBelowSP = 0;
