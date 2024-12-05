@@ -105,6 +105,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Fix not being able to creat effects on owned items.
 - Fix Black ICE actions/skills not being properly translated
 - Fix more typos in items
+- #1089 - Fix missing effects on items split from stacks
 
 ## Version 0.88.2
 
