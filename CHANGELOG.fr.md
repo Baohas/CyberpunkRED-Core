@@ -105,6 +105,7 @@ Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la cop
 - Corrige l'impossibilité de créer des effets dans les objets possédés.
 - Corrige les compétences/actions de GLACE Noir n'étant pas traduit adéquatement
 - Correction de toujours plus de fautes de frappe
+- #1089 - Fix missing effects on items split from stacks
 
 ## Version 0.88.2
 
