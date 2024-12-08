@@ -66,7 +66,9 @@ export default class CPRNetArchItem extends CPRItem {
     LOGGER.trace("_generateNetarchScene | CPRNetarchUtils | called.");
     this.tileData = {
       arrow: {
-        img: `${this.options.filePath}/Arrow.${this.options.fileExtension}`,
+        texture: {
+          src: `${this.options.filePath}/Arrow.${this.options.fileExtension}`,
+        },
         width: this.options.gridSize * this.options.connectorWidth,
         height: this.options.gridSize * this.options.connectorHeight,
         scale: 1,
@@ -75,7 +77,9 @@ export default class CPRNetArchItem extends CPRItem {
         rotation: 0,
       },
       level: {
-        img: `${this.options.filePath}/Root.${this.options.fileExtension}`,
+        texture: {
+          src: `${this.options.filePath}/Root.${this.options.fileExtension}`,
+        },
         width: this.options.gridSize * this.options.levelWidth,
         height: this.options.gridSize * this.options.levelHeight,
         scale: 1,
@@ -167,12 +171,12 @@ export default class CPRNetArchItem extends CPRItem {
           content === "ControlNode"
         ) {
           if ([6, 8, 10, 12].includes(dv)) {
-            newLevel.img = `${this.options.filePath}/${content}DV${dv}.${this.options.fileExtension}`;
+            newLevel.texture.src = `${this.options.filePath}/${content}DV${dv}.${this.options.fileExtension}`;
           } else {
-            newLevel.img = `${this.options.filePath}/${content}.${this.options.fileExtension}`;
+            newLevel.texture.src = `${this.options.filePath}/${content}.${this.options.fileExtension}`;
           }
         } else {
-          newLevel.img = `${this.options.filePath}/${content}.${this.options.fileExtension}`;
+          newLevel.texture.src = `${this.options.filePath}/${content}.${this.options.fileExtension}`;
         }
       }
       newTiles.push(newLevel);
