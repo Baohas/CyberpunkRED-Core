@@ -43,7 +43,7 @@ export default class CPRDemonActor extends Actor {
       cprRoll.rollCardExtraArgs.program = {
         class: "demon",
         system: {
-          damage: "standard",
+          damage: "blackice",
         },
       };
     }
