@@ -27,8 +27,8 @@
           {{!-- we only support mode 2 (add/subtract) for skills --}}
           {{cprEffectModMode 2 skill.mod}}
         </div>
-        <div class="dialog-item-detail skill-mod-value text-nowrap">
-          <b>{{cprMath "sum" skill.stat skill.level skill.mod}}</b>
+        <div class="dialog-item-detail skill-total text-nowrap">
+          {{cprMath "sum" skill.stat skill.level skill.mod}}
         </div>
       </li>
     {{/each}}
