@@ -62,6 +62,7 @@ Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la cop
 - Renomme la compétence de base `Local Expert` en `Guide Local (quartier d'origine)`
 - Ajout d'un support de thème CSS pour le module Monks Active Tile Triggers
 - Ajout d'une macro de Rapidoc
+- Add "Long-Barrel Pistol" DV Table from 12 Days of REDmas DLC
 - Ajoute la possibilité de configurer une arme pour qu'elle ignore un pourcentage
 - Ajoute la possibilité de configurer une arme pour qu'elle ignore l'armure en dessous d'un montant de PA déterminé
 - #235 - Ajoute la possibilité de changer les barres de ressources pour l'armure depuis la feuille d'objet
