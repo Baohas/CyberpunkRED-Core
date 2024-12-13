@@ -62,6 +62,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Rename default `Local Expert` skill to `Local Expert (Your Home)`
 - Add CSS theme support for Monks Active Tile Triggers Module
 - Add Speedheal Macro
+- Add "Long-Barrel Pistol" DV Table from 12 Days of REDmas DLC
 - Add ability to set weapon ignore percentage
 - Add ability to set weapon to ignore armor below set SP amount
 - #235 - Added ability to change resource bars for armor from item sheet
