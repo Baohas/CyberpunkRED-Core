@@ -6,7 +6,7 @@
   <div class="weapon-image">
     <img alt="{{this.name}}" src="{{this.img}}"/>
     {{#if this.system.isUpgraded }}
-        <i class="text-super fa-solid fa-square-up"></i>
+        <i class="text-super fa-solid fa-square-caret-up"></i>
       {{/if}}
   </div>
 
@@ -183,7 +183,7 @@
   {{!-- Roll Attack--}}
   <div class="weapon-attack text-largest">
     <a class="rollable" data-roll-type="attack" data-item-id="{{this.id}}">
-      <i class="fas fa-fist-raised red-fg"
+      <i class="fas fa-hand-fist red-fg"
          data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}">
       </i>
     </a>
@@ -196,7 +196,7 @@
          data-roll-type="damage"
          data-item-id="{{this.id}}"
          data-damage="{{this.system.damage}}">
-        <i class="fas fa-tint red-fg"
+        <i class="fas fa-droplet red-fg"
            data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}">
         </i>
       </a>

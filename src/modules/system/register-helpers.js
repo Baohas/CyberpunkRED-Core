@@ -844,7 +844,7 @@ export default function registerHandlebarsHelpers() {
         );
 
         let actions = "";
-        let uninstallIcon = "fa-sign-out-alt"; // Most items have the same uninstall icon
+        let uninstallIcon = "fa-arrow-right-from-bracket"; // Most items have the same uninstall icon
         const uninstallTooltip = SystemUtils.Localize(
           "CPR.actorSheets.commonActions.uninstall"
         );
@@ -858,7 +858,7 @@ export default function registerHandlebarsHelpers() {
               "CPR.actorSheets.commonActions.changeAmmo"
             );
             actions += `<a class="item-action data-item-id="${childItem._id}" data-action="select-ammo">`;
-            actions += `  <i class="fas fa-exchange-alt" data-tooltip="${reloadTooltip}"></i>`;
+            actions += `  <i class="fas fa-arrow-right-arrow-left" data-tooltip="${reloadTooltip}"></i>`;
             actions += `</a>`;
             break;
           }

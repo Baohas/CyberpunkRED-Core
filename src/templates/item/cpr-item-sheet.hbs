@@ -5,7 +5,7 @@
     <div class="item-image">
       <img src="{{item.img}}" class="item-image-block-img" data-edit="img" />
         {{#if item.system.isUpgraded }}
-          <i class="fa-solid fa-square-up fa-xs" data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>
+          <i class="fa-solid fa-square-caret-up fa-xs" data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>
         {{/if}}
         {{#if item.system.isInstalled }}
           <i class="fa-solid fa-circle-info fa-xs" data-tooltip="{{localize "CPR.global.generic.installed"}}"></i>
@@ -30,7 +30,7 @@
         <a class="help-article text-padding-left-smallest"
            href="{{cprWikiLink item.type}}"
            data-tooltip="{{localize "CPR.global.generic.helparticle"}}">
-          <i class="fas fa-question-circle"></i>
+          <i class="fas fa-circle-question"></i>
         </a>
       </div>
 

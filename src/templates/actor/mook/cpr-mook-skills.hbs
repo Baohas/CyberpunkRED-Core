@@ -3,7 +3,7 @@
   <span class="text-nowrap text-padding-left-smallest text-semi">
     {{localize "CPR.mookSheet.skills.title"}}
     <a class="mod-mook-skill">
-      <i class="fas fa-edit"></i>
+      <i class="fas fa-pen-to-square"></i>
     </a>
   </span>
   <span class="text-right text-semi">
@@ -15,7 +15,7 @@
     </a>
     <a class="reputation-open-ledger"
        data-tooltip="{{localize "CPR.ledger.ledgerOpen"}}">
-      <i class="fas fa-sticky-note"></i>
+      <i class="fas fa-note-sticky"></i>
     </a>
   </span>
 </div>
@@ -44,7 +44,7 @@
         {{~/if~}}
       </a>
       {{~#unless skill.system.core}}
-        <a class="item-edit skill-custom" data-tooltip="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-edit"></i></a>
+        <a class="item-edit skill-custom" data-tooltip="{{localize "CPR.actorSheets.commonActions.editCustomSkill"}}"><i class="fas fa-pen-to-square"></i></a>
       {{~/unless}}
       {{~#unless @last}},{{/unless}}
     </span>

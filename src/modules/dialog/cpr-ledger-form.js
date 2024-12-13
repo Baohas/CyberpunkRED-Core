@@ -226,7 +226,7 @@ export default class CPRLedger extends CPRDialog {
           },
         },
         no: {
-          icon: "fas fa-times",
+          icon: "fas fa-xmark",
           label: SystemUtils.Localize("CPR.dialog.common.no"),
           callback: (dialog) => {
             foundry.utils.mergeObject(dialog.object, { action: false });
@@ -234,7 +234,7 @@ export default class CPRLedger extends CPRDialog {
           },
         },
         cancel: {
-          icon: "fas fa-times",
+          icon: "fas fa-xmark",
           label: SystemUtils.Localize("CPR.dialog.common.cancel"),
           callback: (dialog) => dialog.closeDialog(),
         },

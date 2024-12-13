@@ -46,14 +46,14 @@
                    data-action="toggle"
                    data-effect-id="{{this._id}}"
                    data-tooltip="{{localize "CPR.itemSheet.effects.toggleEffectDesc"}}">
-                  <i class="far {{#if this.disabled }}fa-circle{{else }}fa-check-circle{{/if }}"></i>
+                  <i class="far {{#if this.disabled }}fa-circle{{else }}fa-circle-check{{/if }}"></i>
                 </a>
               {{/if}}
               <a class="effect-control"
                  data-action="edit"
                  data-effect-id="{{this._id}}"
                  data-tooltip="{{localize "CPR.itemSheet.effects.editEffectDesc"}}">
-                <i class="fas fa-edit"></i>
+                <i class="fas fa-pen-to-square"></i>
               </a>
               <a class="effect-control"
                  data-action="copy"
@@ -65,11 +65,11 @@
                  data-action="delete"
                  data-effect-id="{{this._id}}"
                  data-tooltip="{{localize "CPR.itemSheet.effects.deleteEffectDesc"}}">
-                <i class="fas fa-trash"></i>
+                <i class="fas fa-trash-can"></i>
               </a>
             {{else}}
               <!-- viewing from a compendium -->
-              <i class="fas fa-question-circle"
+              <i class="fas fa-circle-question"
                  data-tooltip="{{localize "CPR.itemSheet.effects.readOnly"}}"></i>
             {{/if}}
           </div>

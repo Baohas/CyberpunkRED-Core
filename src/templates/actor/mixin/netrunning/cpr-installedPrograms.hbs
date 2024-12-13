@@ -38,10 +38,10 @@
                      data-cyberdeck-id="{{../../fightData.cyberdeck.id}}"
                      data-program-id="{{program.id}}">
                     {{#if program.system.isRezzed }}
-                      <i class="far fa-arrow-alt-circle-down"
+                      <i class="far fa-circle-down"
                          data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToDeactivateProgram"}}"></i>
                     {{else}}
-                      <i class="far fa-arrow-alt-circle-up"
+                      <i class="far fa-circle-up"
                          data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.clickToActivateProgram"}}"></i>
                     {{/if}}
                   </a>
@@ -68,7 +68,7 @@
                        data-execution-type="atk"
                        data-cyberdeck-id="{{../../fightData.cyberdeck.id}}"
                        data-program-id="{{program.id}}">
-                      <i class="fas fa-fist-raised red-fg"
+                      <i class="fas fa-hand-fist red-fg"
                          data-tooltip="{{localize "CPR.characterSheet.bottomPane.fight.rollAnAttack"}}"></i>
                     </a>
                   </div>
@@ -79,7 +79,7 @@
                          data-execution-type="damage"
                          data-cyberdeck-id="{{../../fightData.cyberdeck.id}}"
                          data-program-id="{{program.id}}">
-                        <i class="fas fa-tint red-fg"
+                        <i class="fas fa-droplet red-fg"
                            data-tooltip="{{localize "CPR.actorSheets.commonActions.rollDamage"}}"></i>
                       </a>
                     </div>

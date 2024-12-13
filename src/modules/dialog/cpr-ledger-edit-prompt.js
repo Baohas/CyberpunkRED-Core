@@ -30,7 +30,7 @@ export default class LedgerEditPrompt {
               callback: (html) => _onConfirm(html),
             },
             cancel: {
-              icon: '<i class="fas fa-times"></i>',
+              icon: '<i class="fas fa-xmark"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.cancel"),
               callback: () => _onCancel(html),
             },

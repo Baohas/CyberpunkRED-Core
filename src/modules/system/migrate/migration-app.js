@@ -48,7 +48,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
         },
         returnToSetup: {
           label: "CPR.migration.buttons.rejectMigration",
-          icon: "fas fa-home",
+          icon: "fas fa-house",
         },
       },
     },
@@ -85,7 +85,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
         close: {
           label: "CPR.migration.buttons.close",
           iconPre: "fas fa-file-signature",
-          iconPost: "fas fa-times",
+          iconPost: "fas fa-xmark",
         },
       },
     },
@@ -99,7 +99,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
         returnToSetup: {
           label: "CPR.migration.buttons.returnToSetup",
           iconPre: "fas fa-bug",
-          iconPost: "fas fa-home",
+          iconPost: "fas fa-house",
         },
       },
     },
@@ -109,7 +109,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       buttons: {
         returnToSetup: {
           label: "GAME.ReturnSetup",
-          iconPre: "fas fa-home",
+          iconPre: "fas fa-house",
         },
       },
     },

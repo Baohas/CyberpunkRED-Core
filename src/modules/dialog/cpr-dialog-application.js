@@ -41,7 +41,7 @@ export default class CPRDialog extends FormApplication {
           callback: (dialog) => dialog.confirmDialog(),
         },
         cancel: {
-          icon: "fas fa-times",
+          icon: "fas fa-xmark",
           label: SystemUtils.Localize("CPR.dialog.common.cancel"),
           callback: (dialog) => dialog.closeDialog(),
         },

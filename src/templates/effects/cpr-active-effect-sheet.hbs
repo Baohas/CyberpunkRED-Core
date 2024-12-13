@@ -11,7 +11,7 @@
     <!-- Effect Configuration Tabs -->
     <nav class="sheet-tabs tabs">
       <a class="item" data-tab="details"><i class="fas fa-book"></i> {{localize "EFFECT.TabDetails"}}</a>
-      <a class="item" data-tab="effects"><i class="fas fa-cogs"></i> {{localize "EFFECT.TabEffects"}}</a>
+      <a class="item" data-tab="effects"><i class="fas fa-gears"></i> {{localize "EFFECT.TabEffects"}}</a>
     </nav>
     <!-- Details Tab -->
     <section class="tab" data-tab="details">
@@ -78,7 +78,7 @@
           <input type="hidden" name="changes.{{i}}.mode" data-dtype="Number" value="2"/>
           <span>
             {{localize "CPR.effectSheet.modifiers.addSubtract"}}
-            <i class="fas fa-question-circle" data-tooltip="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>
+            <i class="fas fa-circle-question" data-tooltip="{{localize "CPR.effectSheet.info.deleteAndModesComing"}}"></i>
           </span>
         {{/if}}
       </div>
@@ -89,7 +89,7 @@
       <input {{#unless change.isSituational}}disabled{{/unless}} name="onByDefault" class="toggle-on-by-default" type="checkbox" data-index="{{i}}" {{checked change.onByDefault}} {{disabled (cprCompare change.category "===" "stat")}}/>
     </div>
     <div class="change-actions">
-      <a class="effect-change-control" data-action="delete" data-index="{{i}}"><i class="fas fa-trash"></i></a>
+      <a class="effect-change-control" data-action="delete" data-index="{{i}}"><i class="fas fa-trash-can"></i></a>
     </div>
   </li>
 {{/each}}
@@ -99,14 +99,14 @@
   <a class="effect-change-control"
      data-action="add"
      data-tooltip="{{localize "CPR.effectSheet.createModDesc"}}">
-    <i class="far fa-plus-square"></i> {{localize "CPR.effectSheet.createMod"}}
+    <i class="far fa-square-plus"></i> {{localize "CPR.effectSheet.createMod"}}
   </a>
 </div>
 <br/>
 </section>
 <footer class="sheet-footer">
   <button type="submit">
-    <i class="fas fa-save"></i> {{localize submitText}}
+    <i class="fas fa-floppy-disk"></i> {{localize submitText}}
   </button>
 </footer>
 </div>
