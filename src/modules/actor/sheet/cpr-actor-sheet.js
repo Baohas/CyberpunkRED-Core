@@ -1160,7 +1160,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
     const critInjuryTables = await SystemUtils.GetCompendiumDocs(tableSetting);
     const tableNames = critInjuryTables.map((t) => t.name).sort();
-    const currentTable = tableNames[0];
+    const currentTable = 0;
 
     // Show "Roll Critical Injury" dialog.
     const formData = await CPRDialog.showDialog(
@@ -1176,7 +1176,7 @@ export default class CPRActorSheet extends ActorSheet {
     if (formData === undefined) {
       return undefined;
     }
-    return formData.currentTable;
+    return tableNames[formData.currentTable];
   }
 
   /**
