@@ -1252,13 +1252,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Emit a trace message to the dev log
-   */
-  Handlebars.registerHelper("cprTrace", (msg) => {
-    LOGGER.trace(msg);
-  });
-
-  /**
    * Sanitize a string to remove Foundry @UUID references and sanitize HTML
    */
   Handlebars.registerHelper("cprSanitizeText", (string) => {
