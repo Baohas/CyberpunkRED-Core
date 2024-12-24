@@ -6,7 +6,6 @@
   },
   "plugins": ["foundry-cpr"],
   "rules": {
-    "foundry-cpr/logger-after-function-definition": "warn",
     "no-warning-comments": [
       "warn",
       {

@@ -17,7 +17,6 @@ build-artifacts:
     - job: game-id
     - job: test-less-units
     - job: test-less-colors
-    - job: handlebars-traces
     - job: handlebars-tags
     - job: handlebars-attributes
     - job: handlebars-inlinestyles
