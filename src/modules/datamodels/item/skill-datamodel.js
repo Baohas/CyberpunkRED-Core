@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
@@ -7,7 +6,6 @@ export default class SkillDataModel extends CPRSystemDataModel.mixin(
   CommonSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | SkillDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       level: new fields.NumberField({

@@ -15,10 +15,8 @@ export default class CPRContainerActor extends Actor {
    * code here, we pre-configure a few token options to reduce repetitive clicking.
    */
   static async create(data, options) {
-    LOGGER.trace("create | CPRContainerActor | called.");
     const createData = data;
     if (typeof data.system === "undefined") {
-      LOGGER.trace("create | New Actor | CPRContainerActor | called.");
       createData.prototypeToken = {
         disposition: 0,
       };
@@ -45,7 +43,6 @@ export default class CPRContainerActor extends Actor {
     items,
     context = { createInstalled: true }
   ) {
-    LOGGER.trace("createEmbeddedDocuments | CPRContainerActor | called.");
     if (!embeddedName === "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
@@ -115,8 +112,6 @@ export default class CPRContainerActor extends Actor {
    * @async
    */
   async resetInstalled() {
-    LOGGER.trace("resetInstalled | CPRActor | called.");
-
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
     const installableTypes = SystemUtils.getDocTypesFromMixin("installable");
     const relevantItems = this.items.filter(
@@ -157,7 +152,6 @@ export default class CPRContainerActor extends Actor {
    *                    - false if it has been stacked on an existing item
    */
   automaticallyStackItems(newItem) {
-    LOGGER.trace("automaticallyStackItems | CPRContainerActor | Called.");
     const itemTemplates = SystemUtils.getMixins(newItem.type);
     if (itemTemplates.includes("stackable")) {
       const itemMatch = this.items.find(
@@ -198,7 +192,6 @@ export default class CPRContainerActor extends Actor {
    * @param {} event - object capturing event data (what was clicked and where?)
    */
   async setContainerType(containerType) {
-    LOGGER.trace("setContainerType | CPRContainerActor | Called.");
     await this.setFlag(game.system.id, "container-type", containerType);
     switch (containerType) {
       case "shop": {
@@ -247,7 +240,6 @@ export default class CPRContainerActor extends Actor {
    * @returns {Document} representing the flag
    */
   async toggleFlag(flagName) {
-    LOGGER.trace("toggleFlag | CPRContainerActor | Called.");
     const flag = this.getFlag(game.system.id, flagName);
     if (flag === undefined || flag === false) {
       return this.setFlag(game.system.id, flagName, true);
@@ -265,7 +257,6 @@ export default class CPRContainerActor extends Actor {
    * @returns {Array} - Each element is a tuple: [value, reason], or null if not found
    */
   listRecords(prop) {
-    LOGGER.trace("listRecords | CPRContainerActor | Called.");
     if (prop === "wealth") {
       return foundry.utils.getProperty(this.system, `${prop}.transactions`);
     }
@@ -284,7 +275,6 @@ export default class CPRContainerActor extends Actor {
    * @returns {Boolean}
    */
   isLedgerProperty(prop) {
-    LOGGER.trace("isLedgerProperty | CPRContainerActor | Called.");
     const ledgerData = foundry.utils.getProperty(this.system, prop);
     if (!foundry.utils.hasProperty(ledgerData, "value")) {
       SystemUtils.DisplayMessage(
@@ -314,7 +304,6 @@ export default class CPRContainerActor extends Actor {
    * @returns {Number} (or null if not found)
    */
   recordTransaction(value, reason, seller = null) {
-    LOGGER.trace("recordTransaction | CPRContainerActor | Called.");
     // update "value"; it may be negative
     // If Containers ever get Active Effects, this code will be a problem. See Issue #583.
     const cprData = foundry.utils.duplicate(this.system);
@@ -377,7 +366,6 @@ export default class CPRContainerActor extends Actor {
    * @returns {Array} - empty or null if the property was not found
    */
   clearLedger(prop) {
-    LOGGER.trace("clearLedger | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
       const valProp = `system.${prop}.value`;
       const ledgerProp = `system.${prop}.transactions`;
@@ -400,7 +388,6 @@ export default class CPRContainerActor extends Actor {
    * @returns {Number} (or null if not found)
    */
   deltaLedgerProperty(prop, value, reason) {
-    LOGGER.trace("deltaLedgerProperty | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
       // update "value"; it may be negative
       const valProp = `system.${prop}.value`;
@@ -448,7 +435,6 @@ export default class CPRContainerActor extends Actor {
    * @returns {Number} (or null if not found)
    */
   setLedgerProperty(prop, value, reason) {
-    LOGGER.trace("setLedgerProperty | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
       const valProp = `system.${prop}.value`;
       const ledgerProp = `system.${prop}.transactions`;
@@ -477,7 +463,6 @@ export default class CPRContainerActor extends Actor {
    * @returns {CPRItem}
    */
   getOwnedItem(itemId) {
-    LOGGER.trace("getOwnedItem | CPRActor | Called.");
     const item = this.items.find((i) => i._id === itemId)
       ? this.items.find((i) => i._id === itemId)
       : this.items.find((i) => i.uuid === itemId);

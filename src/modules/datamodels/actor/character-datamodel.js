@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
 import LedgerSchema from "./components/ledger-schema.js";
@@ -12,7 +11,6 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
   WealthSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | CharacterDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(
       super.defineSchema({
@@ -68,7 +66,6 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
   }
 
   get seriouslyWounded() {
-    LOGGER.trace("get seriouslyWounded");
     return Math.ceil(this.parent.system.derivedStats.hp.max / 2);
   }
 }

@@ -1,5 +1,4 @@
 import CPRChat from "../../chat/cpr-chat.js";
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 
@@ -12,7 +11,6 @@ import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 export default class CPRDemonActorSheet extends ActorSheet {
   /** @override */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRDemonActorSheet | Called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-demon-sheet.hbs`,
       width: 586,
@@ -29,7 +27,6 @@ export default class CPRDemonActorSheet extends ActorSheet {
    * @returns {Object} data - a curated structure of actorSheet data
    */
   async getData() {
-    LOGGER.trace("getData | CPRActorSheet | Called.");
     const sheetData = super.getData();
     sheetData.enrichedHTML = [];
     sheetData.enrichedHTML.notes = await TextEditor.enrichHTML(
@@ -47,7 +44,6 @@ export default class CPRDemonActorSheet extends ActorSheet {
    * @param {Object} html - the DOM object
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRDemonActorSheet | Called.");
     html.find(".rollable").click((event) => this._onRoll(event));
     this._createDemonImageContextMenu(html);
     super.activateListeners(html);
@@ -63,7 +59,6 @@ export default class CPRDemonActorSheet extends ActorSheet {
    * @param {Object} event - object with details of the event
    */
   async _onRoll(event) {
-    LOGGER.trace("_onRoll | CPRDemonActorSheet | Called.");
     const rollName = SystemUtils.GetEventDatum(event, "data-roll-title");
     const cprRoll = this.actor.createStatRoll(rollName);
 
@@ -87,7 +82,6 @@ export default class CPRDemonActorSheet extends ActorSheet {
    * @returns {object} The created ContextMenu
    */
   _createDemonImageContextMenu(html) {
-    LOGGER.trace("_createDemonImageContextMenu | CPRDemonActorSheet | Called.");
     return createImageContextMenu(html, ".demon-icon", this.actor);
   }
 }

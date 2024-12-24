@@ -4,7 +4,7 @@
     "ecmaVersion": 2022,
     "sourceType": "module"
   },
-  "plugins": ["foundry-cpr"],
+  "plugins": [],
   "rules": {
     "no-warning-comments": [
       "warn",
@@ -88,7 +88,6 @@
     "setProperty": "readonly",
     "ui": "readonly",
     "window": "readonly",
-
     "getComputedStyle": "readonly"
   },
   "settings": {

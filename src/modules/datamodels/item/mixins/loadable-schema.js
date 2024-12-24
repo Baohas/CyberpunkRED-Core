@@ -1,11 +1,9 @@
 import CPR from "../../../system/config.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class LoadableSchema extends foundry.abstract.DataModel {
   static mixinName = "loadable";
 
   static defineSchema() {
-    LOGGER.trace("defineSchema | LoadableSchema | called.");
     const { fields } = foundry.data;
     return {
       // Is this used anywhere?
@@ -42,7 +40,6 @@ export default class LoadableSchema extends foundry.abstract.DataModel {
    * @returns {CPRSystemDataModel} - migrated data
    */
   static migrateData(source) {
-    LOGGER.trace("migrateData | LoadableSchema | called.");
     if (!source.installedItems.allowedTypes.includes("ammo")) {
       source.installedItems.allowedTypes.push("ammo");
     }
@@ -50,12 +47,10 @@ export default class LoadableSchema extends foundry.abstract.DataModel {
   }
 
   get loadedAmmo() {
-    LOGGER.trace("loadedAmmo | LoadableSchema | called.");
     return this.parent.getInstalledItems("ammo")[0];
   }
 
   get hasAmmoLoaded() {
-    LOGGER.trace("hasAmmoLoaded | LoadableSchema | called.");
     return this.parent.getInstalledItems("ammo").length > 0;
   }
 }

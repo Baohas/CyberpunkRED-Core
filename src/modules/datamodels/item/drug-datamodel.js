@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
 import EffectsSchema from "./mixins/effects-schema.js";
@@ -16,7 +15,6 @@ export default class DrugDataModel extends CPRSystemDataModel.mixin(
   ValuableSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | DrugDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       consumed: new fields.StringField({ initial: "None" }),

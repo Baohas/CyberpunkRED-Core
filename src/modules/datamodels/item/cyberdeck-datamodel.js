@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
 import ContainerSchema from "../shared/container-schema.js";
@@ -22,7 +21,6 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
   ValuableSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | CyberdeckDataModel | called.");
     return this.mergeSchema(
       super.defineSchema({
         initialAllowedTypes: ["itemUpgrade", "program"],
@@ -34,12 +32,10 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
     );
   }
 
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   get installedPrograms() {
     return this.parent.getInstalledItems("program");
   }
 
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   get rezzedPrograms() {
     return this.parent
       .getInstalledItems("program")

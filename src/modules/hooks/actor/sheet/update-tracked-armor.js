@@ -1,5 +1,3 @@
-import LOGGER from "../../../utils/cpr-logger.js";
-
 const updateTrackedArmor = () => {
   /**
    * Executes only for tracked armor items. Updates the armor tracking on
@@ -10,7 +8,6 @@ const updateTrackedArmor = () => {
    * @param {Object} updateData - The update data for the item.
    */
   Hooks.on("updateItem", (doc, updateData) => {
-    LOGGER.trace("updateItem | itemHooks | Called.");
     // Only run if updateData exists
     if (updateData?.system == null) return;
 

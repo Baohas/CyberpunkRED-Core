@@ -26,7 +26,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {*} options - entity options passed up the chain
    */
   constructor(actor, options) {
-    LOGGER.trace("constructor | CPRCharacterActorSheet | Called.");
     super(actor, options);
     this.options.collapsedSections = [];
     const collapsedSections = SystemUtils.GetUserSetting(
@@ -49,7 +48,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns - sheet options merged with default options in ActorSheet
    */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRActorSheet | Called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(["sheet", "actor"]),
       scrollY: [".right-content-section", ".top-pane-gear"],
@@ -68,7 +66,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {Object} data - a curated structure of actorSheet data
    */
   async getData() {
-    LOGGER.trace("getData | CPRActorSheet | Called.");
     const foundryData = super.getData();
     const cprData = {};
 
@@ -205,7 +202,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {Object} - Data for rendering
    */
   async prepareActiveEffectCategories() {
-    LOGGER.trace("prepareActiveEffectCategories | CPRActorSheet | Called.");
     const categories = {
       permanent: {
         type: "permanent",
@@ -309,8 +305,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} html - the DOM object
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRActorSheet | Called.");
-
     // allow navigation for non owned actors
     this._tabs.forEach((t) => t.bind(html[0]));
 
@@ -428,7 +422,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {*} event - object with details of the event
    */
   _expandButton(event) {
-    LOGGER.trace("_expandButton | CPRCharacterActorSheet | Called.");
     const collapsibleElement = $(event.currentTarget).parents(".collapsible");
     $(collapsibleElement).find(".collapse-icon").toggleClass("hide");
     $(collapsibleElement).find(".expand-icon").toggleClass("hide");
@@ -459,20 +452,14 @@ export default class CPRActorSheet extends ActorSheet {
    */
 
   async _toggleInstalledVisibility(event) {
-    // Step 1: Initial setup and logging.
-    LOGGER.trace(
-      "_toggleInstalledVisibility | CPRCharacterActorSheet | Called."
-    );
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const installFlags = this.actor.getFlag(game.system.id, "showInstalled");
 
-    // Step 2: Toggle the icon rotation to indicate state change.
     const iconElement = event.currentTarget.querySelector("i");
     if (iconElement) {
       iconElement.classList.toggle("fa-flip-vertical");
     }
 
-    // Step 3: Identify the HTML elements involved in the toggling.
     const collapsibleContainer = event.currentTarget.closest(".collapsible");
     const installedRow = collapsibleContainer.querySelector(
       `div[data-items-wrapper-for-parent="${itemId}"]`
@@ -510,7 +497,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - object with details of the event
    */
   async _onRoll(event) {
-    LOGGER.trace("_onRoll | CPRActorSheet | Called.");
     let rollType = SystemUtils.GetEventDatum(event, "data-roll-type");
     let cprRoll;
     let item = null;
@@ -680,7 +666,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {CPRRoll}
    */
   _getFireCheckbox(event) {
-    LOGGER.trace("_getFireCheckbox | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
     const box = this.actor.getFlag(game.system.id, `firetype-${weaponID}`);
     if (box) {
@@ -696,7 +681,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @private
    */
   _increaseDeathSave() {
-    LOGGER.trace("_increaseDeathSave | CPRActorSheet | Called.");
     this.actor.increaseDeathPenalty();
   }
 
@@ -707,7 +691,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @private
    */
   _resetDeathSave() {
-    LOGGER.trace("_resetDeathSave | CPRActorSheet | Called.");
     this.actor.resetDeathPenalty();
   }
 
@@ -720,7 +703,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - object with details of the event
    */
   async _ablateArmor(event) {
-    LOGGER.trace("_ablateArmor | CPRActorSheet | Called.");
     const location = SystemUtils.GetEventDatum(event, "data-location");
     this.actor._ablateArmor(location, 1);
   }
@@ -737,7 +719,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {event} event - object capturing event data (what was clicked and where?)
    */
   async _itemAction(event) {
-    LOGGER.trace("_itemAction | CPRActorSheet | Called.");
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
     if (item) {
@@ -825,7 +806,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {CPRItem} item - item we are activating the DV Ruler for
    */
   _setDvIconState(item) {
-    LOGGER.trace("_setDvIconState | CPRActorSheet | Called.");
     const ActorSheetNodeID = `${
       item.actor.constructor.name
     }Sheet-${item.actor.uuid.replaceAll(".", "-")}`;
@@ -859,7 +839,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {} event - object capturing event data (what was clicked and where?)
    */
   _makeArmorCurrentTrack(event) {
-    LOGGER.trace("_makeArmorCurrentTrack | CPRActorSheet | Called.");
     const location = SystemUtils.GetEventDatum(event, "data-location");
     const id = SystemUtils.GetEventDatum(event, "data-item-id");
     this.actor.updateTrackedArmor(location, id);
@@ -874,7 +853,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {} event - object capturing event data (what was clicked and where?)
    */
   _makeArmorCurrentUntrack(event) {
-    LOGGER.trace("_makeArmorCurrentUntrack | CPRActorSheet | Called.");
     const location = SystemUtils.GetEventDatum(event, "data-location");
     this.actor.updateTrackedArmor(location);
   }
@@ -889,7 +867,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {*} value - value to set the property to
    */
   _updateOwnedItemProp(item, prop, value) {
-    LOGGER.trace("_updateOwnedItemProp | CPRActorSheet | Called.");
     foundry.utils.setProperty(item, prop, value);
     this._updateOwnedItem(item);
   }
@@ -903,7 +880,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns - the updated object (document) or array of entities
    */
   _updateOwnedItem(item) {
-    LOGGER.trace("_updateOwnedItem | CPRActorSheet | Called.");
     return this.actor.updateEmbeddedDocuments("Item", [
       { _id: item.id, system: item.system },
     ]);
@@ -919,7 +895,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
   _renderItemCard(event) {
-    LOGGER.trace("_renderItemCard | CPRActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
     const item = this.actor.getOwnedItem(itemId);
     if (event.ctrlKey) {
@@ -940,7 +915,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
   _renderReadOnlyItemCard(event) {
-    LOGGER.trace("_renderReadOnlyItemCard | CPRActorSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
     const item = this.actor.getOwnedItem(itemId);
     if (event.ctrlKey) {
@@ -962,7 +936,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {String} - the string Id of the item
    */
   static _getItemId(event) {
-    LOGGER.trace("_getItemId | CPRActorSheet | Called.");
     let id = SystemUtils.GetEventDatum(event, "data-item-id");
     if (typeof id === "undefined") {
       LOGGER.debug(
@@ -988,7 +961,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {String} - the property string
    */
   static _getObjProp(event) {
-    LOGGER.trace("_getObjProp | CPRActorSheet | Called.");
     return SystemUtils.GetEventDatum(event, "data-item-prop");
   }
 
@@ -1002,7 +974,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {null}
    */
   async _deleteOwnedItem(item, skipConfirm = false) {
-    LOGGER.trace("_deleteOwnedItem | CPRActorSheet | Called.");
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     // If item is installed, show dialog to make sure user understands it will be uninstalled
     if (item.system.isInstalled && !skipConfirm) {
@@ -1107,7 +1078,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
   async _fireCheckboxToggle(event) {
-    LOGGER.trace("_fireCheckboxToggle | CPRActorSheet | Called.");
     const weaponID = SystemUtils.GetEventDatum(event, "data-item-id");
     const firemode = SystemUtils.GetEventDatum(event, "data-fire-mode");
     const flag = foundry.utils.getProperty(
@@ -1157,7 +1127,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {String} - chosen name of the rollable table to be used for critical injuries
    */
   static async _setCriticalInjuryTable(tableSetting) {
-    LOGGER.trace("_setCriticalInjuryTable | CPRActorSheet | Called.");
     const critInjuryTables = await SystemUtils.GetCompendiumDocs(tableSetting);
     const tableNames = critInjuryTables.map((t) => t.name).sort();
     const currentTable = 0;
@@ -1187,7 +1156,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @private
    */
   async _rollCriticalInjury() {
-    LOGGER.trace("_rollCriticalInjury | CPRActorSheet | Called.");
     const tableSetting = game.settings.get(
       game.system.id,
       "criticalInjuryRollTableCompendium"
@@ -1217,7 +1185,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {null}
    */
   async _drawCriticalInjuryTable(table, injuryCompName, iteration) {
-    LOGGER.trace("_drawCriticalInjuryTable | CPRActorSheet | Called.");
     const dupeSetting = game.settings.get(
       game.system.id,
       "preventDuplicateCriticalInjuries"
@@ -1346,7 +1313,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {Array} - the records
    */
   _listEbRecords() {
-    LOGGER.trace("_listEbRecords | CPRActorSheet | called.");
     return this.actor.listRecords("wealth");
   }
 
@@ -1357,7 +1323,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns - any empty Array, or null if unsuccessful
    */
   _clearEbRecords() {
-    LOGGER.trace("_clearEbRecords | CPRActorSheet | called.");
     return this.actor.clearLedger("wealth");
   }
 
@@ -1371,7 +1336,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns - the modified property or null if it was unsuccessful
    */
   _setLedger(ledgerName, value, reason) {
-    LOGGER.trace("_setLedger | CPRActorSheet | called.");
     LOGGER.debug(`setting ${ledgerName} to ${value}`);
     return this.actor.setLedgerProperty(ledgerName, value, reason);
   }
@@ -1386,7 +1350,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns - the modified property or null if it was unsuccessful
    */
   _gainLedger(ledgerName, value, reason) {
-    LOGGER.trace("_gainLedger | CPRActorSheet | called.");
     return this.actor.deltaLedgerProperty(ledgerName, value, reason);
   }
 
@@ -1400,7 +1363,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns - the modified property or null if it was unsuccessful
    */
   _loseLedger(ledgerName, value, reason) {
-    LOGGER.trace("_loseLedger | CPRActorSheet | called.");
     const resultantValue = this.actor.system[ledgerName].value - value;
     let rulesWarning = "";
     switch (ledgerName) {
@@ -1440,7 +1402,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {String} prop - name of the property that has a ledger
    */
   async showLedger(prop) {
-    LOGGER.trace("showLedger | CPRActor | Called.");
     if (this.actor.isLedgerProperty(prop)) {
       await CPRLedger.showDialog(this.actor, prop).catch((err) =>
         LOGGER.debug(err)
@@ -1461,7 +1422,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {Array} - the records
    */
   _listIpRecords() {
-    LOGGER.trace("_listIpRecords | CPRActorSheet | called.");
     return this.actor.listRecords("improvementPoints");
   }
 
@@ -1472,7 +1432,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns - any empty Array, or null if unsuccessful
    */
   _clearIpRecords() {
-    LOGGER.trace("_clearIpRecords | CPRActorSheet | called.");
     return this.actor.clearLedger("improvementPoints");
   }
 
@@ -1485,7 +1444,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - an object capturing event details
    */
   _onDragItemStart(event) {
-    LOGGER.trace("_onDragItemStart | CPRActorSheet | called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const item = this.actor.getEmbeddedDocument("Item", itemId);
     const tokenId = this.token === null ? null : this.token.id;
@@ -1516,7 +1474,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {null}
    */
   async _onDrop(event) {
-    LOGGER.trace("_onDrop | CPRActorSheet | called.");
     const dragData = TextEditor.getDragEventData(event);
     return dragData.type === "Item"
       ? this._cprOnItemDrop(event)
@@ -1524,7 +1481,6 @@ export default class CPRActorSheet extends ActorSheet {
   }
 
   async _cprOnItemDrop(event) {
-    LOGGER.trace("_cprOnItemDrop | CPRActorSheet | called.");
     const dragData = TextEditor.getDragEventData(event);
     let sourceActor;
     const sourceItem = fromUuidSync(dragData.uuid);
@@ -1614,7 +1570,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {null}
    */
   async _splitItem(item) {
-    LOGGER.trace("_splitItem | CPRActorSheet | called.");
     if (item.system.installedUpgrades?.length !== 0) {
       SystemUtils.DisplayMessage(
         "warn",
@@ -1688,7 +1643,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {ContextMenu} The created ContextMenu
    */
   _createActorImageContextMenu(html) {
-    LOGGER.trace("_createActorImageContextMenu | CPRActorSheet | called.");
     return createImageContextMenu(html, ".image-block", this.actor);
   }
 
@@ -1700,7 +1654,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - an object capturing event details
    */
   async _applyContentFilter(event) {
-    LOGGER.trace("_applyContentFilter | CPRActorSheet | called.");
     const filterValue = event.currentTarget.value;
     const num = $(".filter-contents").val();
     this.options.cprContentFilter = filterValue;
@@ -1716,7 +1669,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - an object capturing event details
    */
   async _clearContentFilter() {
-    LOGGER.trace("_clearContentFilter | CPRActorSheet | called.");
     if (
       typeof this.options.cprContentFilter !== "undefined" &&
       this.options.cprContentFilter !== ""
@@ -1735,7 +1687,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
   async _createInventoryItem(event) {
-    LOGGER.trace("_createInventoryItem | CPRCharacterActorSheet | Called.");
     const itemType = SystemUtils.GetEventDatum(event, "data-item-type");
     const itemString = `TYPES.Item.${itemType}`;
     const itemName = SystemUtils.Format("CPR.actorSheets.commonActions.new", {
@@ -1753,7 +1704,6 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {Promise<null>}
    */
   async _uninstallSingleItem(event) {
-    LOGGER.trace("_uninstallSingleItem | CPRCharacterActorSheet | Called.");
     // Get the item being uninstalled.
     const installedItemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const installedItem = this.actor.getOwnedItem(installedItemId);

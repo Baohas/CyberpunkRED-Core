@@ -30,14 +30,12 @@ export default class CPRActor extends Actor {
    * @param {Object} options - not used here, but required by the parent class
    */
   static async create(data, options) {
-    LOGGER.trace("create | CPRActor | called.");
     const createData = data;
     const newActor = typeof data.system === "undefined";
     if (!newActor) {
       return super.create(data, options);
     }
 
-    LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
     createData.items = [];
     const tmpItems = data.items.concat(
       await SystemUtils.GetCoreSkills(),
@@ -76,7 +74,6 @@ export default class CPRActor extends Actor {
    * @public
    */
   loadMixins() {
-    LOGGER.trace("loadMixins | CPRItem | Called.");
     const mixins = ["container"];
     for (let m = 0; m < mixins.length; m += 1) {
       switch (mixins[m]) {
@@ -97,7 +94,6 @@ export default class CPRActor extends Actor {
    * @override
    */
   prepareData() {
-    LOGGER.trace("prepareData | CPRActor | Called.");
     super.prepareData();
     this.loadMixins();
     if (this.compendium === null || this.compendium === undefined) {
@@ -121,7 +117,6 @@ export default class CPRActor extends Actor {
    * @override
    */
   prepareBaseData() {
-    LOGGER.trace("prepareBaseData | CPRActor | Called.");
     super.prepareBaseData();
     this.bonuses = {};
     const skills = this.items.filter((i) => i.type === "skill");
@@ -174,7 +169,6 @@ export default class CPRActor extends Actor {
    * @returns nothing, just applies effects to the actor
    */
   applyActiveEffects() {
-    LOGGER.trace("applyActiveEffects | CPRActor | Called.");
     for (const e of this.allApplicableEffects()) {
       e.determineSuppression();
     }
@@ -199,7 +193,6 @@ export default class CPRActor extends Actor {
     items,
     context = { createInstalled: true }
   ) {
-    LOGGER.trace("createEmbeddedDocuments | CPRActor | called.");
     // If migration is calling this, we definitely want to
     // create the Embedded Documents.
     const isMigration = !!(
@@ -300,7 +293,6 @@ export default class CPRActor extends Actor {
       deleteInstalled: false,
     }
   ) {
-    LOGGER.trace("deleteEmbeddedDocuments | CPRActor | called.");
     // If migration is calling this, we assume migration is
     // handling all references to containers and installable
     // items, so we just delete the item.
@@ -350,7 +342,6 @@ export default class CPRActor extends Actor {
    * @private
    */
   _calculateDerivedStats() {
-    LOGGER.trace("_calculateDerivedStats | CPRActor | Called.");
     const cprData = this.system;
     const { derivedStats } = cprData;
 
@@ -400,7 +391,6 @@ export default class CPRActor extends Actor {
    * @returns {String}
    */
   getWoundState() {
-    LOGGER.trace("getWoundState | CPRActor | Obtaining Wound State.");
     return this.system.derivedStats.currentWoundState;
   }
 
@@ -410,7 +400,6 @@ export default class CPRActor extends Actor {
    * @private
    */
   _setWoundState() {
-    LOGGER.trace("_setWoundState | CPRActor | Setting Wound State.");
     const { derivedStats } = this.system;
     let newState = "invalidState";
     if (derivedStats.hp.value < 1) {
@@ -431,7 +420,6 @@ export default class CPRActor extends Actor {
    * @returns {Number}
    */
   getWoundStateMods() {
-    LOGGER.trace("getWoundStateMods | CPRActor | Obtaining Wound State Mods.");
     let woundStateMod = 0;
     if (
       this.getWoundState() === "seriouslyWounded" &&
@@ -457,7 +445,6 @@ export default class CPRActor extends Actor {
    * @returns {Boolean} - Whether the installation was successful or not
    */
   async installCyberware(itemId) {
-    LOGGER.trace("installCyberware | CPRActor | Called.");
     const item = this.getOwnedItem(itemId);
 
     const baseCompatibleFoundationalCyberware = this.itemTypes.cyberware.filter(
@@ -581,7 +568,6 @@ export default class CPRActor extends Actor {
    * @returns {Promise} - Returns the promise from calling this.update()
    */
   async uninstallCyberware(itemId, foundationalId, skipConfirm = false) {
-    LOGGER.trace("uninstallCyberware | CPRActor | Called.");
     const item = this.getOwnedItem(itemId);
     let confirmRemove;
     if (!skipConfirm) {
@@ -621,7 +607,6 @@ export default class CPRActor extends Actor {
    * @returns {CPRItem}
    */
   getOwnedItem(itemId) {
-    LOGGER.trace("getOwnedItem | CPRActor | Called.");
     const item = this.items.find((i) => i._id === itemId || i.uuid === itemId);
     return item;
   }
@@ -634,7 +619,6 @@ export default class CPRActor extends Actor {
    * @returns {Array<CPRItem>}
    */
   getMultipleOwnedItems(itemIds) {
-    LOGGER.trace("getMultipleOwnedItems | CPRActor | Called.");
     const items = [];
     for (const id of itemIds) {
       const ownedItem = this.items.find((i) => i._id === id || i.uuid === id);
@@ -650,7 +634,6 @@ export default class CPRActor extends Actor {
    * @returns {Number} - skill level or 0 if not found
    */
   getSkillLevel(skillName) {
-    LOGGER.trace("getSkillLevel | CPRActor | Called.");
     const skillList = this.itemTypes.skill.filter((s) => s.name === skillName);
     if (skillList.length > 0) {
       const relevantSkill = skillList[0];
@@ -667,7 +650,6 @@ export default class CPRActor extends Actor {
    * @returns {String}
    */
   processDeathSave(cprRoll) {
-    LOGGER.trace("processDeathSave | CPRActor | Called.");
     const success = SystemUtils.Localize("CPR.rolls.success");
     const failed = SystemUtils.Localize("CPR.rolls.failed");
     let saveResult =
@@ -687,7 +669,6 @@ export default class CPRActor extends Actor {
    * Can be used in case a character gets hit by an attack while mortally wounded.
    */
   increaseDeathPenalty() {
-    LOGGER.trace("increaseDeathPenalty | CPRActor | Called.");
     const deathPenalty = this.system.derivedStats.deathSave.penalty + 1;
     this.update({ "system.derivedStats.deathSave.penalty": deathPenalty });
   }
@@ -697,7 +678,6 @@ export default class CPRActor extends Actor {
    * the penalty should be reset to 0, which is what this method does.
    */
   resetDeathPenalty() {
-    LOGGER.trace("resetDeathPenalty | CPRActor | Called.");
     this.update({ "system.derivedStats.deathSave.penalty": 0 });
   }
 
@@ -708,7 +688,6 @@ export default class CPRActor extends Actor {
    * @returns {Number}
    */
   getStat(statName) {
-    LOGGER.trace("getStat | CPRActor | Called.");
     return parseInt(this.system.stats[statName].value, 10);
   }
 
@@ -719,7 +698,6 @@ export default class CPRActor extends Actor {
    * @returns {Number}
    */
   getUpgradeMods(baseName) {
-    LOGGER.trace("getUpgradeMods | CPRActor | Called.");
     let modValue = 0;
     // See if we have any items which upgrade our stat, and if so, upgrade the stat base
     const equippableItemTypes = SystemUtils.getDocTypesFromMixin("equippable");
@@ -760,7 +738,6 @@ export default class CPRActor extends Actor {
    * @returns {Array} - empty or null if the property was not found
    */
   clearLedger(prop) {
-    LOGGER.trace("clearLedger | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
       const valProp = `system.${prop}.value`;
       const ledgerProp = `system.${prop}.transactions`;
@@ -783,7 +760,6 @@ export default class CPRActor extends Actor {
    * @returns {Number} (or null if not found)
    */
   deltaLedgerProperty(prop, value, reason) {
-    LOGGER.trace("deltaLedgerProperty | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
       // update "value"; it may be negative
       const valProp = `system.${prop}.value`;
@@ -831,7 +807,6 @@ export default class CPRActor extends Actor {
    * @returns {Number} (or null if not found)
    */
   setLedgerProperty(prop, value, reason) {
-    LOGGER.trace("setLedgerProperty | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
       const valProp = `system.${prop}.value`;
       const ledgerProp = `system.${prop}.transactions`;
@@ -859,7 +834,6 @@ export default class CPRActor extends Actor {
    * @returns {Array} - Each element is a tuple: [value, reason], or null if not found
    */
   listRecords(prop) {
-    LOGGER.trace("listRecords | CPRActor | Called.");
     if (this.isLedgerProperty(prop)) {
       return foundry.utils.getProperty(this.system, `${prop}.transactions`);
     }
@@ -878,7 +852,6 @@ export default class CPRActor extends Actor {
    * @returns {Boolean}
    */
   isLedgerProperty(prop) {
-    LOGGER.trace("isLedgerProperty | CPRActor | Called.");
     const ledgerData = foundry.utils.getProperty(this.system, prop);
     if (!foundry.utils.hasProperty(ledgerData, "value")) {
       SystemUtils.DisplayMessage(
@@ -906,7 +879,6 @@ export default class CPRActor extends Actor {
    * @returns {Number}
    */
   getArmorPenaltyMods(stat) {
-    LOGGER.trace("getArmorPenaltyMods | CPRActor | Called.");
     const penaltyStats = ["ref", "dex", "move"];
     const penaltyMods = [0];
     if (penaltyStats.includes(stat)) {
@@ -930,8 +902,6 @@ export default class CPRActor extends Actor {
    * @returns {Number}
    */
   _getArmorValue(valueType, location) {
-    LOGGER.trace("_getArmorValue | CPRActor | Called.");
-
     const armors = this.getEquippedArmors(location);
     let sps;
     let penalties;
@@ -970,7 +940,6 @@ export default class CPRActor extends Actor {
    * @returns {Array}
    */
   getEquippedArmors(location) {
-    LOGGER.trace("getEquippedArmors | CPRActor | Called.");
     const armors = this.itemTypes.armor;
     const equipped = armors.filter(
       (item) => item.system.equipped === "equipped"
@@ -996,7 +965,6 @@ export default class CPRActor extends Actor {
    * @returns {Promise<boolean>} - Returns true if successful, false otherwise
    */
   async updateTrackedArmor(location, id = null) {
-    LOGGER.trace("updateTrackedArmor | CPRActor | Called.");
     const targetArmor = this.getOwnedItem(id);
     const armorLocation = TextUtils.toTitleCase(location);
     const currentArmor =
@@ -1046,7 +1014,6 @@ export default class CPRActor extends Actor {
    * @returns {CPRRoll}
    */
   createRoll(type, name) {
-    LOGGER.trace("createRoll | CPRActor | Called.");
     switch (type) {
       case CPRRolls.rollTypes.STAT: {
         return this._createStatRoll(name);
@@ -1070,7 +1037,6 @@ export default class CPRActor extends Actor {
    * @returns {CPRStatRoll}
    */
   _createStatRoll(statName) {
-    LOGGER.trace("_createStatRoll | CPRActor | Called.");
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
     const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
@@ -1116,7 +1082,6 @@ export default class CPRActor extends Actor {
    * @returns {CPRFacedownRoll}
    */
   _createFacedownRoll() {
-    LOGGER.trace("_createFacedownRoll | CPRActor | Called.");
     const statName = "cool";
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
@@ -1154,7 +1119,6 @@ export default class CPRActor extends Actor {
    * @returns {CPRDeathSaveRoll}
    */
   _createDeathSaveRoll() {
-    LOGGER.trace("_createDeathSaveRoll | CPRActor | Called.");
     const deathSavePenalty = this.system.derivedStats.deathSave.penalty;
     const deathSaveBasePenalty = this.system.derivedStats.deathSave.basePenalty;
     const bodyStat = this.system.stats.body.value;
@@ -1187,7 +1151,6 @@ export default class CPRActor extends Actor {
    * @returns {Boolean}
    */
   hasItemTypeEquipped(itemType) {
-    LOGGER.trace("hasItemTypeEquipped | CPRActor | Called.");
     let equipped = false;
     if (this.itemTypes[itemType]) {
       this.itemTypes[itemType].forEach((i) => {
@@ -1208,7 +1171,6 @@ export default class CPRActor extends Actor {
    * @returns {Object} - array of roles
    */
   getRoles() {
-    LOGGER.trace("getRoles | CPRActor | Called.");
     return this.itemTypes.role;
   }
 
@@ -1220,7 +1182,6 @@ export default class CPRActor extends Actor {
    * @returns {Number}
    */
   _getHands() {
-    LOGGER.trace("_getHands | CPRActor | Called.");
     return 2 + this.bonuses.hands;
   }
 
@@ -1232,7 +1193,6 @@ export default class CPRActor extends Actor {
    */
 
   _getFreeHands() {
-    LOGGER.trace("_getFreeHands | CPRActor | Called.");
     const equippedWeapons = this.system.weapons.equipped;
     // Filter out weapons with undefined handsReq (cyberWeapons, itemUpgrade)
     const filteredWeapons = equippedWeapons.filter(
@@ -1256,7 +1216,6 @@ export default class CPRActor extends Actor {
    * @returns {Boolean}
    */
   canHoldWeapon(weapon) {
-    LOGGER.trace("canHoldWeapon | CPRActor | Called.");
     const needed = weapon.system.handsReq;
     if (needed > this._getFreeHands()) {
       return false;
@@ -1270,7 +1229,6 @@ export default class CPRActor extends Actor {
    * @returns {CPRItem} or null if none are found/equipped
    */
   getEquippedCyberdeck() {
-    LOGGER.trace("getEquippedCyberdeck | CPRActor | Called.");
     const cyberdecks = this.itemTypes.cyberdeck;
     const equipped = cyberdecks.filter(
       (item) => item.system.equipped === "equipped"
@@ -1291,7 +1249,6 @@ export default class CPRActor extends Actor {
    *                    - false if it has been stacked on an existing item
    */
   automaticallyStackItems(newItem) {
-    LOGGER.trace("automaticallyStackItems | CPRActor | Called.");
     const itemTemplates = SystemUtils.getMixins(newItem.type);
     if (itemTemplates.includes("stackable")) {
       const itemMatch = this.items.find(
@@ -1349,7 +1306,6 @@ export default class CPRActor extends Actor {
     damageLethal,
     formData
   ) {
-    LOGGER.trace("_applyDamage | CPRActor | Called.");
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
     let takenDamage = 0;
@@ -1579,7 +1535,6 @@ export default class CPRActor extends Actor {
    * @param {int} shieldAblation - value of the shield ablation
    */
   async _reverseDamage(hpReduction, location, ablation, shieldAblation) {
-    LOGGER.trace("_reverseDamage | CPRActor | Called.");
     const currentHp = this.system.derivedStats.hp.value;
     const maxHp = this.system.derivedStats.hp.max;
     if (maxHp > currentHp + hpReduction) {
@@ -1600,7 +1555,6 @@ export default class CPRActor extends Actor {
    * @param {int} ablation - value of the ablation
    */
   async _ablateArmor(location, ablation) {
-    LOGGER.trace("_ablateArmor | CPRActor | Called.");
     const armorList = this.getEquippedArmors(location);
     const updateList = [];
     let currentArmorValue;
@@ -1728,7 +1682,6 @@ export default class CPRActor extends Actor {
    * @returns {CPRActiveEffect} the new document
    */
   async createEffect(render = true) {
-    LOGGER.trace("createEffect | CPRActor | Called.");
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
       {
         name: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
@@ -1742,7 +1695,6 @@ export default class CPRActor extends Actor {
   }
 
   copyEffect(effect) {
-    LOGGER.trace("copyEffect | CPRActor | Called.");
     const newEffect = foundry.utils.duplicate(effect);
     return this.createEmbeddedDocuments("ActiveEffect", [newEffect]);
   }
@@ -1754,7 +1706,6 @@ export default class CPRActor extends Actor {
    * @returns null
    */
   static async deleteEffect(effect) {
-    LOGGER.trace("deleteEffect | CPRActor | Called.");
     const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
     if (setting) {
       const dialogMessage = `${SystemUtils.Localize(
@@ -1789,7 +1740,6 @@ export default class CPRActor extends Actor {
    * @return {Number}
    */
   calcMaxHp() {
-    LOGGER.trace("_calcMaxHp | CPRActor | Called.");
     const { stats } = this.system;
     let maxHp = 10 + 5 * Math.ceil((stats.will.value + stats.body.value) / 2);
     maxHp += this.bonuses.maxHp; // from any active effects
@@ -1803,7 +1753,6 @@ export default class CPRActor extends Actor {
    * @private
    */
   _calcMaxHumanity() {
-    LOGGER.trace("_calcMaxHumanity | CPRActor | Called.");
     const cprData = this.system;
     const { stats } = cprData;
     let cyberwarePenalty = 0;
@@ -1831,7 +1780,6 @@ export default class CPRActor extends Actor {
    * @callback
    */
   async setMaxHumanity() {
-    LOGGER.trace("setMaxHumanity | CPRActor | Called.");
     const maxHumanity = this._calcMaxHumanity();
     const { humanity } = this.system.derivedStats;
     if (humanity.max === humanity.value && maxHumanity < humanity.max) {
@@ -1861,11 +1809,7 @@ export default class CPRActor extends Actor {
    * @returns {@Promise}
    */
   async loseHumanityValue(itemArray, humanityLossType) {
-    LOGGER.trace("loseHumanityValue | CPRActor | Called.");
     if (humanityLossType === "none") {
-      LOGGER.trace(
-        "CPR Actor loseHumanityValue | Called. | humanityLoss was None."
-      );
       return this.setMaxHumanity();
     }
 
@@ -1905,7 +1849,6 @@ export default class CPRActor extends Actor {
    * @returns {Object}
    */
   setLifepath(lifepathData) {
-    LOGGER.trace("setLifepath | CPRActor | Called.");
     return this.update({ "system.lifepath": lifepathData });
   }
 
@@ -1919,7 +1862,6 @@ export default class CPRActor extends Actor {
    * @returns {Promise}
    */
   async handleMookDraggedItem(item) {
-    LOGGER.trace("handleMookDraggedItem | CPRActor | Called.");
     // auto-install this cyberware
     const allInstalled = item.recursiveGetAllInstalledItems();
 

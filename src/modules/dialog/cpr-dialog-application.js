@@ -6,7 +6,6 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
  */
 export default class CPRDialog extends FormApplication {
   constructor(dialogData, options) {
-    LOGGER.trace("constructor | CPRDialog | Called.");
     super(dialogData, options);
 
     // Overwrite default buttons if indicated.
@@ -24,7 +23,6 @@ export default class CPRDialog extends FormApplication {
    * @override
    */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRDialog | called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`,
       title: "CPR.global.generic.title",
@@ -57,7 +55,6 @@ export default class CPRDialog extends FormApplication {
    * @override
    */
   getData() {
-    LOGGER.trace("getData | CPRDialog | called.");
     const data = super.getData();
     Object.entries(this.object).forEach(([key, value]) => {
       data[key] = value;
@@ -68,7 +65,6 @@ export default class CPRDialog extends FormApplication {
   /* -------------------------------------------- */
   /** @override */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRDialog | Called.");
     super.activateListeners(html);
     if (!this.options.editable) return;
 
@@ -98,7 +94,6 @@ export default class CPRDialog extends FormApplication {
    * @param {*} event
    */
   _itemCheckboxToggle(event) {
-    LOGGER.trace("_itemCheckboxToggle | CPRDialog | Called.");
     const dialogData = this.object;
     const target = SystemUtils.GetEventDatum(event, "data-target");
     const value = !foundry.utils.getProperty(dialogData, target);
@@ -119,7 +114,6 @@ export default class CPRDialog extends FormApplication {
    * @param {Object} options - potential options to pass to this.close; currently unused;
    */
   async confirmDialog(event, options) {
-    LOGGER.trace("confirmDialog | CPRDialog | Called.");
     // Taken from Starfinder: Fire callback that resolves original promise.
     this.options.confirmDialog();
     return this.close(options);
@@ -131,7 +125,6 @@ export default class CPRDialog extends FormApplication {
    * @param {Object} options - potential options to pass to this.close; currently unused;
    */
   async closeDialog(event, options) {
-    LOGGER.trace("closeDialog | CPRDialog | Called.");
     this.options.closeDialog();
     return this.close(options);
   }
@@ -145,7 +138,6 @@ export default class CPRDialog extends FormApplication {
    *                          - See constructors to know how many arguments each dialog Class expects.
    */
   static async showDialog(...args) {
-    LOGGER.trace("showDialog | CPRDialog | Called.");
     return new Promise((resolve, reject) => {
       const dialog = new this(...args);
       dialog.options.confirmDialog = () => resolve(args[0]);
@@ -162,7 +154,6 @@ export default class CPRDialog extends FormApplication {
    * @override
    */
   async _updateObject(event, formData) {
-    LOGGER.trace("_updateObject | CPRDialog | Called.");
     const fd = foundry.utils.duplicate(formData);
     foundry.utils.mergeObject(this.object, fd);
     this.render(true); // rerenders the FormApp with the new data.

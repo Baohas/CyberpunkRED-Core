@@ -18,7 +18,6 @@ export class CPRRoll {
    * @param {String} formula - a string representing what should be rolled using Foundry roll logic
    */
   constructor(rollTitle, formula) {
-    LOGGER.trace("constructor | CPRRoll | Called.");
     // (private) the resulting Roll() object from Foundry for intial roll
     this._roll = null;
     // (private) the resulting Roll() object from Foundry for critical roll
@@ -63,7 +62,6 @@ export class CPRRoll {
    * @returns {String} - the dice formula itself, in the form (XdY)
    */
   _processFormula(formula) {
-    LOGGER.trace("_processFormula | CPRRoll | Called.");
     // If formula is just a number string, return that number.
     // This allows us to pass flat numbers as the roll formula, if a weapon or its ammo do flat damage.
     // See: "https://stackoverflow.com/questions/175739/how-can-i-check-if-a-string-is-a-valid-number"
@@ -107,7 +105,6 @@ export class CPRRoll {
    *      - CPRMods have the above information and more (see cpr-modifiers.js).
    */
   addMod(modArray) {
-    LOGGER.trace("addMod | CPRRoll | Called.");
     if (Array.isArray(modArray)) {
       modArray.forEach((m) => {
         if (this.mods.find((mod) => m.id && mod.id === m.id)) {
@@ -133,7 +130,6 @@ export class CPRRoll {
    * @param {String} id - id of mod to remove
    */
   removeMod(id) {
-    LOGGER.trace("removeMod | CPRRoll | Called.");
     const modIndex = this.mods.findIndex((m) => m.id === id);
     this.mods.splice(modIndex, 1);
   }
@@ -144,7 +140,6 @@ export class CPRRoll {
    * @returns {Number} - the sum of the mods applied so far
    */
   totalMods() {
-    LOGGER.trace("totalMods | CPRRoll | Called.");
     let modTotal = 0;
     // Total up regular mods.
     this.mods.forEach((mod) => {
@@ -169,7 +164,6 @@ export class CPRRoll {
    * @async
    */
   async roll() {
-    LOGGER.trace("roll | CPRRoll | Called.");
     // calculate the initial roll
     this._roll = await new Roll(this.formula).evaluate();
 
@@ -209,7 +203,6 @@ export class CPRRoll {
    * @returns {Number} - the results of a roll without considering critical events
    */
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRRoll | Called.");
     return this.initialRoll + this.totalMods() + this.luck;
   }
 
@@ -220,7 +213,6 @@ export class CPRRoll {
    * @private
    */
   _computeResult() {
-    LOGGER.trace("_computeResult | CPRRoll | Called.");
     this.resultTotal = this._computeBase();
     if (this.wasCritFail()) {
       this.resultTotal += -1 * this.criticalRoll;
@@ -235,7 +227,6 @@ export class CPRRoll {
    * @returns {Boolean}
    */
   wasCritical() {
-    LOGGER.trace("wasCritical | CPRRoll | Called.");
     // return true or false indicating if a roll was critical
     return this.wasCritFail() || this.wasCritSuccess();
   }
@@ -247,7 +238,6 @@ export class CPRRoll {
    * @returns {Boolean}
    */
   wasCritFail() {
-    LOGGER.trace("wasCritFail | CPRRoll | Called.");
     return this.initialRoll === 1;
   }
 
@@ -258,7 +248,6 @@ export class CPRRoll {
    * @returns {Boolean}
    */
   wasCritSuccess() {
-    LOGGER.trace("wasCritSuccess | CPRRoll | Called.");
     return this.initialRoll === this._roll.terms[0].faces;
   }
 
@@ -270,8 +259,6 @@ export class CPRRoll {
    * @returns {Boolean}
    */
   async handleRollDialog(event, actor, item) {
-    LOGGER.trace("handleRollDialog | CPRRoll | Called.");
-
     // Handle skipping of the user verification step
     let skipDialog = event.ctrlKey || event.metaKey;
     if (event.type === "click") {
@@ -318,7 +305,6 @@ export class CPRRoll {
  */
 export class CPRInitiative extends CPRRoll {
   constructor(combatant, formula, statName, statValue) {
-    LOGGER.trace("constructor | CPRStatRoll | Called.");
     const die = /d[0-9][0-9]*/;
     if (formula.match(die)) {
       super(SystemUtils.Localize("CPR.chat.initiative"), formula);
@@ -340,7 +326,6 @@ export class CPRInitiative extends CPRRoll {
   }
 
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRStatRoll | Called.");
     return this.initialRoll + this.totalMods() + this.statValue + this.luck;
   }
 }
@@ -350,7 +335,6 @@ export class CPRInitiative extends CPRRoll {
  */
 export class CPRStatRoll extends CPRRoll {
   constructor(name, value) {
-    LOGGER.trace("constructor | CPRStatRoll | Called.");
     super(name, "1d10");
     this.statName = name;
     this.statValue = value;
@@ -365,7 +349,6 @@ export class CPRStatRoll extends CPRRoll {
    * @returns {Number}
    */
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRStatRoll | Called.");
     return this.initialRoll + this.totalMods() + this.statValue + this.luck;
   }
 }
@@ -375,7 +358,6 @@ export class CPRStatRoll extends CPRRoll {
  */
 export class CPRProgramStatRoll extends CPRStatRoll {
   constructor(name, value) {
-    LOGGER.trace("constructor | CPRStatRoll | Called.");
     super(name, value);
     this.statName = name;
     this.statValue = value;
@@ -389,7 +371,6 @@ export class CPRProgramStatRoll extends CPRStatRoll {
    * @param {String} rollTitle - a title for the roll, shown in the roll card (chat message)
    */
   setNetCombat(rollTitle) {
-    LOGGER.trace("setNetCombat | CPRProgramStatRoll | Called.");
     this.rollTitle = rollTitle;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
   }
@@ -410,7 +391,6 @@ export class CPRSkillRoll extends CPRStatRoll {
    * @param {Number} skillValue - value of the skill level
    */
   constructor(statName, statValue, skillName, skillValue) {
-    LOGGER.trace("constructor | CPRSkillRoll | Called.");
     super(skillName, statValue);
     this.statName = statName;
     this.skillName = skillName;
@@ -434,7 +414,6 @@ export class CPRSkillRoll extends CPRStatRoll {
    * @returns {Number}
    */
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRSkillRoll | Called.");
     return (
       this.initialRoll +
       this.totalMods() +
@@ -450,7 +429,6 @@ export class CPRSkillRoll extends CPRStatRoll {
  */
 export class CPRFacedownRoll extends CPRStatRoll {
   constructor(statName, statValue, repValue) {
-    LOGGER.trace("constructor | CPRFacedownRoll | Called.");
     super(statName, "1d10");
     this.statName = statName;
     this.statValue = statValue;
@@ -468,7 +446,6 @@ export class CPRFacedownRoll extends CPRStatRoll {
    * @returns {Number}
    */
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRStatRoll | Called.");
     return super._computeBase() + Number.parseInt(this.repValue, 10);
   }
 }
@@ -483,7 +460,6 @@ export class CPRHumanityLossRoll extends CPRRoll {
    * @param {String} humanityLoss - a roll formula
    */
   constructor(name, humanityLoss) {
-    LOGGER.trace("constructor | CPRHumanityLossRoll | Called.");
     LOGGER.debug(`humanityLoss is ${humanityLoss}`);
     super(name, humanityLoss);
     LOGGER.debug(`formula is ${this.formula}`);
@@ -524,7 +500,6 @@ export class CPRAttackRoll extends CPRSkillRoll {
     skillValue,
     weaponType
   ) {
-    LOGGER.trace("constructor | CPRAttackRoll | Called.");
     super(statName, statValue, skillName, skillValue);
     this.rollTitle = `${attackName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-attack-rollcard.hbs`;
@@ -557,7 +532,6 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
     skillValue,
     weaponType
   ) {
-    LOGGER.trace("constructor | CPRAimedAttackRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-aimed-attack-rollcard.hbs`;
@@ -587,7 +561,6 @@ export class CPRAutofireRoll extends CPRAttackRoll {
     skillValue,
     weaponType
   ) {
-    LOGGER.trace("constructor | CPRAutofireRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-autofire-rollcard.hbs`;
@@ -615,7 +588,6 @@ export class CPRSuppressiveFireRoll extends CPRAttackRoll {
     skillValue,
     weaponType
   ) {
-    LOGGER.trace("constructor | CPRSuppressiveFireRoll | Called.");
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-suppressive-fire-rollcard.hbs`;
@@ -645,7 +617,6 @@ export class CPRRoleRoll extends CPRRoll {
     statValue,
     skillList
   ) {
-    LOGGER.trace("constructor | CPRRoleRoll | Called.");
     super(roleName, "1d10");
     this.skillList = skillList;
     this.roleName = roleName;
@@ -665,7 +636,6 @@ export class CPRRoleRoll extends CPRRoll {
    * @returns {Number}
    */
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRRoleRoll | Called.");
     return (
       this.initialRoll +
       this.totalMods() +
@@ -693,7 +663,6 @@ export class CPRInterfaceRoll extends CPRRoleRoll {
    * @param {Number} statValue - Loaded program stat value
    */
   constructor(rollType, roleName, roleValue, statName, statValue) {
-    LOGGER.trace("constructor | CPRInterfaceRoll | Called.");
     super(roleName, roleValue);
     this.rollType = rollType;
     this.statName = statName;
@@ -704,12 +673,10 @@ export class CPRInterfaceRoll extends CPRRoleRoll {
   }
 
   setProgramRollCard() {
-    LOGGER.trace("setProgramRollCard | CPRInterfaceRoll | Called.");
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-attack-rollcard.hbs`;
   }
 
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRInterfaceRoll | Called.");
     return (
       this.initialRoll +
       this.totalMods() +
@@ -732,7 +699,6 @@ export class CPRDeathSaveRoll extends CPRRoll {
    * @param {Number} bodyStat - the value of the actor's body stat, used in the roll card
    */
   constructor(penalty, basePenalty, bodyStat) {
-    LOGGER.trace("constructor | CPRDeathSaveRoll | Called.");
     super(SystemUtils.Localize("CPR.rolls.deathSave.title"), "1d10");
     this.calculateCritical = false;
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`;
@@ -745,7 +711,6 @@ export class CPRDeathSaveRoll extends CPRRoll {
   }
 
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRDeathSaveRoll | Called.");
     return (
       this.initialRoll + this.basePenalty + this.penalty + this.totalMods()
     );
@@ -764,7 +729,6 @@ export class CPRDamageRoll extends CPRRoll {
    * @param {String} weaponType - the weapon type is considered when displaying alt fire modes in the UI
    */
   constructor(rollTitle, formula, weaponType) {
-    LOGGER.trace("constructor | CPRDamageRoll | Called.");
     // we assume always d6s
     super(rollTitle, formula);
 
@@ -805,7 +769,6 @@ export class CPRDamageRoll extends CPRRoll {
    * @returns {Number}
    */
   _computeBase() {
-    LOGGER.trace("_computeBase | CPRDamageRoll | Called.");
     this.autofireMultiplier = Math.min(
       this.autofireMultiplier,
       this.autofireMultiplierMax
@@ -822,7 +785,6 @@ export class CPRDamageRoll extends CPRRoll {
    */
   // eslint-disable-next-line class-methods-use-this
   wasCritFail() {
-    LOGGER.trace("wasCritFail | CPRDamageRoll | Called.");
     return false;
   }
 
@@ -834,7 +796,6 @@ export class CPRDamageRoll extends CPRRoll {
    * @returns {Boolean}
    */
   wasCritSuccess() {
-    LOGGER.trace("wasCritSuccess | CPRDamageRoll | Called.");
     return this.faces.filter((x) => x === 6).length >= 2;
   }
 
@@ -846,7 +807,6 @@ export class CPRDamageRoll extends CPRRoll {
    * @private
    */
   _computeResult() {
-    LOGGER.trace("_computeResult | CPRDamageRoll | Called.");
     // figure how aimed shots work...
     this.resultTotal = this._computeBase();
   }
@@ -856,7 +816,6 @@ export class CPRDamageRoll extends CPRRoll {
    * formula and no extra mods.
    */
   setAutofire() {
-    LOGGER.trace("setAutofire | CPRDamageRoll | Called.");
     this.isAutofire = true;
     this.formula = "2d6";
     this.mods = [];
@@ -875,7 +834,6 @@ export class CPRDamageRoll extends CPRRoll {
     autofireMultiplierMax = 0,
     ammoOverride
   ) {
-    LOGGER.trace("configureAutofire | CPRDamageRoll | Called.");
     this.autofireMultiplier = autofireMultiplier;
 
     // We account for ammo overriding autofire maximum here.
@@ -898,7 +856,6 @@ export class CPRDamageRoll extends CPRRoll {
    * @param {String} rollTitle - a title for the roll, shown in the roll card (chat message)
    */
   setNetCombat(rollTitle) {
-    LOGGER.trace("setNetCombat | CPRDamageRoll | Called.");
     this.rollTitle = rollTitle;
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-damage-prompt.hbs`;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-damage-rollcard.hbs`;
@@ -917,7 +874,6 @@ export class CPRTableRoll extends CPRRoll {
    * @param {String} rollCard - path to a roll card template
    */
   constructor(rollTitle, tableRoll, rollCard) {
-    LOGGER.trace("constructor | CPRTableRoll | Called.");
     // This is just to create a CPR Roll Object from an already rolled RollTable
     const formula = tableRoll._formula;
     super(rollTitle, formula);

@@ -42,7 +42,6 @@ export default class ActorWeaponsSchema extends foundry.abstract.DataModel {
    * @return {Array} of CPRItems that match the filter option.
    */
   getWeapons(option) {
-    LOGGER.trace("_getWeapons | ActorWeaponSchema | Called.");
     // Retrieve all possible equipped states an item can be in
     const equippedStates = Object.keys(CPR.equipped);
 
@@ -122,27 +121,22 @@ export default class ActorWeaponsSchema extends foundry.abstract.DataModel {
   // Getters to return one of the above options from `getWeapons`
   // Accessed via `actor.system.weapons.all` etc.
   get all() {
-    LOGGER.trace("get all | ActorWeaponsSchema | Called.");
     return this.getWeapons("all");
   }
 
   get available() {
-    LOGGER.trace("get available | ActorWeaponsSchema | Called.");
     return this.getWeapons("available");
   }
 
   get owned() {
-    LOGGER.trace("get owned | ActorWeaponsSchema | Called.");
     return this.getWeapons("owned");
   }
 
   get carried() {
-    LOGGER.trace("get carried | ActorWeaponsSchema | Called.");
     return this.getWeapons("carried");
   }
 
   get equipped() {
-    LOGGER.trace("get equipped | ActorWeaponsSchema | Called.");
     return this.getWeapons("equipped");
   }
 }

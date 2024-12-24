@@ -5,7 +5,6 @@ import HpSchema from "./hp-schema.js";
 
 export default class DerivedStatsSchema extends foundry.abstract.DataModel {
   static defineSchema() {
-    LOGGER.trace("defineSchema | DerivedStatsSchema | called.");
     const { fields } = foundry.data;
     return {
       currentWoundState: new fields.StringField({

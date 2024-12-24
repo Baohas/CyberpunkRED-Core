@@ -25,7 +25,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {Array} programs      - Array of CPRItem programs
    */
   async uninstallPrograms(programs) {
-    LOGGER.trace("uninstallPrograms | CPRCyberdeckItem | Called.");
     const tokenList = [];
     let sceneId;
     for (const program of programs) {
@@ -61,7 +60,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {CPRItem} program      - CPRItem of the program to REZ
    */
   async rezProgram(program, callingToken) {
-    LOGGER.trace("rezProgram | CPRCyberdeckItem | Called.");
     const programData = foundry.utils.duplicate(program.system);
     await program.setRezzed();
     if (programData.class === "blackice") {
@@ -77,7 +75,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @returns {CPRRoll}
    */
   _createCyberdeckRoll(actor, extraData = {}) {
-    LOGGER.trace("_createCyberdeckRoll | CPRCyberdeckItem | Called.");
     let cprRoll;
     const { programId } = extraData;
     const program = actor.getOwnedItem(programId);
@@ -186,7 +183,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @returns {CPRRoll}
    */
   _createInterfaceRoll(actor, rollInfo) {
-    LOGGER.trace("_createInterfaceRoll | CPRCyberdeckItem | Called.");
     let rollTitle;
     const roleName = rollInfo.netRoleItem.system.mainRoleAbility;
     const roleValue = Number.parseInt(rollInfo.netRoleItem.system.rank, 10);
@@ -282,7 +278,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {CPRItem} program      - CPRItem of the program create the Token for
    */
   async _rezBlackIceToken(program, callingToken) {
-    LOGGER.trace("_rezBlackIceToken | CPRCyberdeckItem | Called.");
     let netrunnerToken = callingToken;
     let scene;
     const blackIceName = program.name;
@@ -431,7 +426,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {CPRItem} program      - CPRItem of the program de-rez
    */
   async derezProgram(program) {
-    LOGGER.trace("derezProgram | CPRCyberdeckItem | Called.");
     program.unsetRezzed();
     if (program.system.class === "blackice") {
       await CPRCyberdeckItem._derezBlackIceToken(program);
@@ -445,7 +439,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {CPRItem} program      - CPRItem of the program to remove the token for
    */
   static async _derezBlackIceToken(programData) {
-    LOGGER.trace("_derezBlackIceToken | CPRCyberdeckItem | Called.");
     if (typeof programData.flags[game.system.id] !== "undefined") {
       const cprFlags = programData.flags[game.system.id];
       const { biTokenId } = cprFlags;
@@ -486,7 +479,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {CPRItem} program      - CPRItem of the program to reset
    */
   async resetRezProgram(program) {
-    LOGGER.trace("resetRezProgram | CPRCyberdeckItem | Called.");
     await program.update({ "system.rez.value": program.system.rez.max });
   }
 
@@ -498,7 +490,6 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {Number} reduceAmount - Amount to reduce REZ by. Defaults to 1.
    */
   async reduceRezProgram(program, reduceAmount = 1) {
-    LOGGER.trace("reduceRezProgram | CPRCyberdeckItem | Called.");
     const newRez = Math.max(program.system.rez.value - reduceAmount, 0);
     if (
       program.system.class === "blackice" &&

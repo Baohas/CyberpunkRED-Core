@@ -1,5 +1,4 @@
 // eslint-disable-next-line max-classes-per-file
-import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
@@ -9,7 +8,6 @@ export default class RoleDataModel extends CPRSystemDataModel.mixin(
   CommonSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | RoleDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       rank: new fields.NumberField({
@@ -56,7 +54,6 @@ export default class RoleDataModel extends CPRSystemDataModel.mixin(
    * @returns {RoleDataModel} - the migrated role data model
    */
   static migrateData(source) {
-    LOGGER.trace("migrateData | RoleDataModel | called.");
     if (source.abilities) {
       source.abilities.sort((a, b) => (a.name > b.name ? 1 : -1));
     }

@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 const UpdateRoleOnItemDelete = () => {
@@ -12,7 +11,6 @@ const UpdateRoleOnItemDelete = () => {
    * @param {CPRItem} doc - The document (item) to be deleted
    */
   Hooks.on("deleteItem", (doc) => {
-    LOGGER.trace("deleteItem | itemHooks | Called.");
     const actor = doc.parent;
     if (actor !== null) {
       if (

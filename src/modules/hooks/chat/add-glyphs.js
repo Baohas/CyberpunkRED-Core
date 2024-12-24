@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRChat from "../../chat/cpr-chat.js";
 
 const AddGlyphs = () => {
@@ -14,7 +13,6 @@ const AddGlyphs = () => {
    *                                     the chat message
    */
   Hooks.on("renderChatMessage", async (_, html, msg) => {
-    LOGGER.trace("renderChatMessage | chatHooks | Called.");
     CPRChat.chatListeners(html);
     CPRChat.addMessageTags(html, msg);
   });

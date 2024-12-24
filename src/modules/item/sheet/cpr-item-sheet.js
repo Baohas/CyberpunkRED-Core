@@ -16,7 +16,6 @@ export default class CPRItemSheet extends ItemSheet {
   /* -------------------------------------------- */
   /** @override */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRItemSheet | Called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       tabs: [
         {
@@ -32,12 +31,10 @@ export default class CPRItemSheet extends ItemSheet {
 
   // eslint-disable-next-line class-methods-use-this
   get template() {
-    LOGGER.trace("template | CPRItemSheet | Called.");
     return `systems/${game.system.id}/templates/item/cpr-item-sheet.hbs`;
   }
 
   get classes() {
-    LOGGER.trace("classes | CPRItemSheet | Called.");
     return super.defaultOptions.classes.concat([
       "sheet",
       "item",
@@ -47,7 +44,6 @@ export default class CPRItemSheet extends ItemSheet {
 
   /** @override */
   async getData() {
-    LOGGER.trace("getData | CPRItemSheet | Called.");
     const foundryData = super.getData();
     const cprData = {};
     cprData.isGM = game.user.isGM;
@@ -116,7 +112,6 @@ export default class CPRItemSheet extends ItemSheet {
    * @return {Array} The options for selecting DV tables for weapons.
    */
   static async _getWeaponDVSelectOptions() {
-    LOGGER.trace("_getWeaponDVSelectOptions | `CPRItemSheet` | Called.");
     const dvTablesNames = (await SystemUtils.GetDvTables()).map((t) => {
       return { value: t.name, label: t.name };
     });
@@ -136,8 +131,6 @@ export default class CPRItemSheet extends ItemSheet {
    * @return {Array} The options for the weapon skill select element.
    */
   static _getWeaponSkillSelectOptions(skillsList) {
-    LOGGER.trace("_getWeaponSkillSelectOptions | `CPRItemSheet` | Called.");
-
     const options = [];
 
     Object.entries(CPR.skillCategoriesForWeapons).forEach(([k, v]) => {
@@ -164,8 +157,6 @@ export default class CPRItemSheet extends ItemSheet {
    * @return {Object} The options for the role select element.
    */
   static _getRoleSelectOptions(skillList, { includeMultiplier = false } = {}) {
-    LOGGER.trace("_getRoleSelectOptions | `CPRItemSheet` | Called.");
-
     // Prepare Option Groups for Select Element.
     const optionGroups = {
       specialOptions: SystemUtils.Localize(
@@ -228,7 +219,6 @@ export default class CPRItemSheet extends ItemSheet {
    * @return {Object} Item upgrade data for the template.
    */
   static _getItemUpgradeData(item) {
-    LOGGER.trace("_getItemUpgradeData | `CPRItemSheet` | Called.");
     const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
     const upgradableSelectOptions = upgradableTypes.map((type) => {
       return {
@@ -270,7 +260,6 @@ export default class CPRItemSheet extends ItemSheet {
   /* -------------------------------------------- */
   /** @override */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRItemSheet | Called.");
     super.activateListeners(html);
     if (!this.options.editable) return;
 
@@ -373,7 +362,6 @@ export default class CPRItemSheet extends ItemSheet {
   */
 
   _itemCheckboxToggle(event) {
-    LOGGER.trace("_itemCheckboxToggle | CPRItemSheet | Called.");
     const cprItem = foundry.utils.duplicate(this.item);
     const target = SystemUtils.GetEventDatum(event, "data-target");
     const value = !foundry.utils.getProperty(cprItem, target);
@@ -387,7 +375,6 @@ export default class CPRItemSheet extends ItemSheet {
   }
 
   async _itemMultiOption(event) {
-    LOGGER.trace("_itemMultiOption | CPRItemSheet | Called.");
     const cprItem = foundry.utils.duplicate(this.item);
     // the target the option wants to be put into
     const target = $(event.currentTarget)
@@ -407,7 +394,6 @@ export default class CPRItemSheet extends ItemSheet {
   }
 
   async _selectCompatibleAmmo() {
-    LOGGER.trace("_selectCompatibleAmmo | CPRItemSheet | Called.");
     const cprItemData = this.item.system;
     let formData = {
       header: SystemUtils.Format(
@@ -438,7 +424,6 @@ export default class CPRItemSheet extends ItemSheet {
    * @param {*} event
    */
   async _selectRoleBonuses(event) {
-    LOGGER.trace("ItemSheet | _selectRoleBonuses | Called.");
     const cprRoleData = foundry.utils.duplicate(this.item.system);
     const roleType = SystemUtils.GetEventDatum(event, "data-role-type"); // Either "mainRole" or "subRole".
     const coreSkills = await SystemUtils.GetCoreSkills(); // Get core skills.
@@ -489,7 +474,6 @@ export default class CPRItemSheet extends ItemSheet {
   }
 
   async _netarchGenerateFromTables() {
-    LOGGER.trace("_netarchGenerateFromTables | CPRItemSheet | Called.");
     // Show "Netarch Rolltable Generation" Prompt.
     const formData = await CPRDialog.showDialog(
       {},
@@ -641,7 +625,6 @@ export default class CPRItemSheet extends ItemSheet {
 
   // eslint-disable-next-line class-methods-use-this
   async _netarchDrawFromTableCustom(table, number) {
-    LOGGER.trace("_netarchDrawFromTableCustom | CPRItemSheet | Called.");
     let abortCounter = 0;
     const drawDuplicatesRegex = "^File|^Control Node";
     const drawnNumbers = [];
@@ -664,7 +647,6 @@ export default class CPRItemSheet extends ItemSheet {
   }
 
   async _netarchLevelAction(event) {
-    LOGGER.trace("_netarchLevelAction | CPRItemSheet | Called.");
     const target = Number(
       SystemUtils.GetEventDatum(event, "data-action-target")
     );
@@ -1081,7 +1063,6 @@ export default class CPRItemSheet extends ItemSheet {
 
   // eslint-disable-next-line class-methods-use-this
   _openItemFromId(event) {
-    LOGGER.trace("_openItemFromId | CPRItemSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const itemEntity = game.items.get(itemId);
     if (itemEntity !== null) {
@@ -1099,7 +1080,6 @@ export default class CPRItemSheet extends ItemSheet {
   // Installed Item Code
 
   async _manageInstalledItems(itemType) {
-    LOGGER.trace("_manageInstalledItems | CPRItemSheet | Called.");
     const { item } = this;
 
     const promptResult = await this._selectInstallableItems(itemType);
@@ -1118,7 +1098,6 @@ export default class CPRItemSheet extends ItemSheet {
   }
 
   async _uninstallSingleItem(event) {
-    LOGGER.trace("_uninstallSingleItem | CPRItemSheet | Called.");
     // Warn/disallow user if trying to uninstall from items in a pack.
     if (this.item.pack)
       return SystemUtils.DisplayMessage(
@@ -1134,7 +1113,6 @@ export default class CPRItemSheet extends ItemSheet {
   }
 
   async _roleAbilityAction(event) {
-    LOGGER.trace("ItemSheet | _roleAbilityAction | Called.");
     const index = SystemUtils.GetEventDatum(event, "data-index");
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
 
@@ -1255,7 +1233,6 @@ export default class CPRItemSheet extends ItemSheet {
    *                       installItemList (Array of CPRItems) }
    */
   async _selectInstallableItems(itemType = false) {
-    LOGGER.trace("_selectInstallableItems | CPRItemSheet | Called.");
     const installTarget = this.item;
     const actor = installTarget.isOwned ? installTarget.actor : false;
     // Items that *can* be installed, but might not be currently.
@@ -1407,7 +1384,6 @@ export default class CPRItemSheet extends ItemSheet {
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
   _renderReadOnlyItemCard(event) {
-    LOGGER.trace("_renderReadOnlyItemCard | CPRItemSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     let item = this.item.isEmbedded
       ? this.actor.items.find((i) => i._id === itemId)
@@ -1436,12 +1412,10 @@ export default class CPRItemSheet extends ItemSheet {
    * @returns {ContextMenu} The created ContextMenu
    */
   _createItemImageContextMenu(html) {
-    LOGGER.trace("_createItemImageContextMenu | CPRItemSheet | Called.");
     return createImageContextMenu(html, ".item-image-block", this.item);
   }
 
   async _manageInstallableTypes() {
-    LOGGER.trace("_manageInstallableTypes | CPRItemSheet | Called.");
     // Show "Manage Installable Types" prompt.
     const formData = await CPRDialog.showDialog(
       { selectedTypes: this.item.system.installedItems.allowedTypes },
@@ -1473,7 +1447,6 @@ export default class CPRItemSheet extends ItemSheet {
    * @param {Object} event
    */
   async _setUsage(event) {
-    LOGGER.trace("_setUsage | CPRItemSheet | Called.");
     this.item._setUsage(event.target.value);
   }
 }

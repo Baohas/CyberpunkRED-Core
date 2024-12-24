@@ -1,5 +1,4 @@
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import LOGGER from "../../utils/cpr-logger.js";
 
 /**
  * Container Schema are shared between Actors and Items
@@ -32,7 +31,6 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
     includeSlots = true,
     initialSlots = 3,
   } = {}) {
-    LOGGER.trace("defineSchema | ContainerSchema | called.");
     const { fields } = foundry.data;
 
     const baseSchema = {
@@ -89,7 +87,6 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
    * @returns {CPRSystemDataModel} - migrated data
    */
   static migrateData(source) {
-    LOGGER.trace("migrateData | ContainerSchema | called.");
     // Turn this list of UUIDs into a list of IDs.
     if (source.installedItems?.list?.length > 0) {
       const installed = source.installedItems.list;
@@ -114,7 +111,6 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
    * @returns {String} - the id of that item
    */
   static migrateItemUuid(uuid) {
-    LOGGER.trace("migrateItemUuid | ContainerSchema | called.");
     if (foundry.data.validators.isValidId(uuid)) {
       return uuid;
     }
@@ -126,7 +122,6 @@ export default class ContainerSchema extends foundry.abstract.DataModel {
   }
 
   get hasInstalled() {
-    LOGGER.trace("hasInstalled | ContainerSchema | called.");
     return this.parent.system.installedItems?.list.length > 0;
   }
 }

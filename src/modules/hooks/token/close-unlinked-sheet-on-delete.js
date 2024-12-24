@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 const CloseUnlinkedSheetOnDelete = () => {
   /**
    * When deleting an unlinked token while the sheet is open the data in the
@@ -12,7 +10,6 @@ const CloseUnlinkedSheetOnDelete = () => {
    * @param {TokenDocument} tokenDocument  The token object being deleted
    */
   Hooks.on("deleteToken", (tokenDocument) => {
-    LOGGER.trace("deleteToken | tokenHooks | Called.");
     if (!tokenDocument.isLinked) {
       const tokenId = tokenDocument.id;
       const actorId = tokenDocument.actor.id;

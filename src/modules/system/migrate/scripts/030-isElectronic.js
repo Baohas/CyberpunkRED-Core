@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import BaseMigrationScript from "../base-migration-script.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class ElectronicMigration extends BaseMigrationScript {
   static version = 30;
@@ -14,7 +13,6 @@ export default class ElectronicMigration extends BaseMigrationScript {
   };
 
   async updateItem(doc) {
-    LOGGER.trace("updateItem | Test Migration");
     // Set Cyberdecks to be electronic
     if (doc.type === "cyberdeck") {
       doc.system.isElectronic = true;

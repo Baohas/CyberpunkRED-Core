@@ -1,5 +1,4 @@
 import CPRItem from "../cpr-item.js";
-import LOGGER from "../../utils/cpr-logger.js";
 
 /**
  * Extend the base CPRItem object with things specific to cyberware.
@@ -15,7 +14,6 @@ export default class CPRCyberwareItem extends CPRItem {
    * @returns null for invalid actions
    */
   _cyberwareAction(actor, actionAttributes) {
-    LOGGER.trace("_cyberwareAction | CPRCyberwareItem | Called.");
     const actionData = actionAttributes["data-action"].nodeValue;
     switch (actionData) {
       case "select-ammo":

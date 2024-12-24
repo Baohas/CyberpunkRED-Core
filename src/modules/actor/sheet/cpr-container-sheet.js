@@ -20,7 +20,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @returns - sheet options merged with default options in ActorSheet
    */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRContainerActorSheet | Called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
       width: 990,
@@ -36,7 +35,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @returns {Object} data - a curated structure of actorSheet data
    */
   async getData() {
-    LOGGER.trace("getData | CPRContainerSheet | Called.");
     const foundryData = await super.getData();
     const cprActorData = {};
 
@@ -71,8 +69,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {*} html - the DOM object
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRContainerSheet | Called.");
-
     // Selection of trade partner
     html
       .find('select[name="trade-with-dropdown"')
@@ -106,7 +102,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {event} event - object capturing event data (what was clicked and where?)
    */
   async _itemAction(event) {
-    LOGGER.trace("_itemAction | CPRContainerSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const item = this.actor.getOwnedItem(itemId);
     const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
@@ -148,7 +143,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
   _renderItemCard(event) {
-    LOGGER.trace("_renderItemCard | CPRContainerSheet | Called.");
     const itemId = CPRActorSheet._getItemId(event);
     const item = this.actor.items.find((i) => i._id === itemId);
     if (event.ctrlKey) {
@@ -175,7 +169,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {} event - object capturing event data (what was clicked and where?)
    */
   _setTradePartner(event) {
-    LOGGER.trace("_setTradePartner | CPRContainerSheet | Called.");
     this.tradePartnerId = $(event.currentTarget).val();
   }
 
@@ -188,7 +181,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {boolean} all - Toggle to purchase all of the items in the stack or just a part of them
    */
   async _purchaseItem(item, all) {
-    LOGGER.trace("_purchaseItem | CPRContainerSheet | Called.");
     let { tradePartnerId } = this;
     if (tradePartnerId === undefined || tradePartnerId === "") {
       if (!game.user.isGM && game.user.character) {
@@ -353,8 +345,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {Item} item - object to be purchased
    */
   async _sellItemTo(tradePartnerId, item) {
-    LOGGER.trace("_sellItemTo | CPRContainerSheet | Called.");
-
     // Players must have Owned permission on Containers for them to function properly
     if (!this.actor.isOwner) {
       SystemUtils.DisplayMessage(
@@ -519,7 +509,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
   async _checkboxToggle(event) {
-    LOGGER.trace("_checkboxToggle | CPRContainerSheet | Called.");
     const flagName = SystemUtils.GetEventDatum(event, "data-flag-name");
     const actor = this.token === null ? this.actor : this.token.actor;
     if (this.token === null) {
@@ -540,7 +529,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {} event - object capturing event data (what was clicked and where?)
    */
   async _setContainerType(event) {
-    LOGGER.trace("_setContainerType | CPRContainerSheet | Called.");
     const containerType = $(event.currentTarget).val();
     const actor = this.token === null ? this.actor : this.token.actor;
     if (this.token === null) {
@@ -562,7 +550,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {Object} event - an object capturing event details
    */
   async _onDrop(event) {
-    LOGGER.trace("_onDrop | CPRContainerSheet | Called.");
     const containerType = foundry.utils.getProperty(
       this.actor,
       `flags.${game.system.id}.container-type`
@@ -615,7 +602,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @callback
    */
   async _configureSellTo() {
-    LOGGER.trace("_configureSellTo | CPRContainerSheet | Called.");
     const cprActorData = foundry.utils.duplicate(this.actor.system);
     const promptData = {};
     promptData.itemTypes = SystemUtils.getDocTypesFromMixin("physical");
@@ -656,7 +642,6 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
   }
 
   async _updateEurobucks(event) {
-    LOGGER.trace("_updateEurobucks | CPRContainerSheet | Called.");
     // const value = parseInt(event.currentTarget.parentElement.previousElementSibling.children[0].value, 10);
     const value = parseInt($("#eurobucks").val(), 10);
     const action = $(event.currentTarget).attr("data-action");

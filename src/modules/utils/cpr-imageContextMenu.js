@@ -1,4 +1,3 @@
-import LOGGER from "./cpr-logger.js";
 import SystemUtils from "./cpr-systemUtils.js";
 
 /**
@@ -13,8 +12,6 @@ export default function createImageContextMenu(
   contextMenuTargetSelector,
   data
 ) {
-  LOGGER.trace("createImageContextMenu | Called.");
-
   const menuItems = [
     {
       name: SystemUtils.Format("CPR.sheets.image.showPlayers"),

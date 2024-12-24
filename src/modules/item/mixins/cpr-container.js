@@ -9,7 +9,6 @@ export class ContainerUtils {
    * @returns {Object|void} Form data containing whether or not to delete installed items.
    */
   static async confirmContainerDelete() {
-    LOGGER.trace("confirmContainerDelete | ContainerUtils | Called.");
     // Show "Delete Container" dialog.
     return CPRDialog.showDialog(
       { deleteInstalled: game.settings.get(game.system.id, "deleteContainer") },
@@ -38,7 +37,6 @@ const Container = function Container() {
    * @returns Integer - Total number of available slots
    */
   this.availableInstallSlots = function availableInstallSlots() {
-    LOGGER.trace("availableInstallSlots | Container | Called.");
     const itemTemplates = SystemUtils.getDocTypesFromMixin("upgradable");
     let totalSlots = this.system.installedItems.slots;
     if (itemTemplates.includes(this.type)) {
@@ -60,7 +58,6 @@ const Container = function Container() {
    * @returns {Array} - Array of objects that are installed
    */
   this.getInstalledItems = function getInstalledItems(type = false) {
-    LOGGER.trace("getInstalledItems | Container | Called.");
     let actor = false;
     if (this.documentName === "Actor") {
       actor = this;
@@ -87,7 +84,6 @@ const Container = function Container() {
    * @returns {Array} - Array of objects that are installed
    */
   this.getInstallableItems = function getInstallableItems(type = false) {
-    LOGGER.trace("getInstalableItems | Container | Called.");
     let actor = false;
     if (this.documentName === "Actor") {
       actor = this;
@@ -131,8 +127,6 @@ const Container = function Container() {
    */
   this.recursiveGetAllInstalledItems =
     function recursiveGetAllInstalledItems() {
-      LOGGER.trace("recursiveGetAllInstalledItems | Container | Called.");
-
       const installedItems = [];
       const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
@@ -171,7 +165,6 @@ const Container = function Container() {
    * @returns {Boolean} - Whether this item can install all objects passed to it
    */
   this.canInstallItems = function canInstallItems(itemList) {
-    LOGGER.trace("canInstallItems | Container | Called.");
     if (!Array.isArray(itemList)) {
       LOGGER.debug(
         `CPRActor.canInstallItems argument is not an array: ${itemList}`
@@ -226,7 +219,6 @@ const Container = function Container() {
    * @returns {Promise<Boolean>} - Promise containing a boolean; whether or not changes were made to the caling document.
    */
   this.installItems = async function installItems(itemList) {
-    LOGGER.trace("_installItems | Container | Called.");
     // Make sure this function is passed an array.
     if (!Array.isArray(itemList)) {
       Promise.reject(
@@ -367,7 +359,6 @@ const Container = function Container() {
     uninstallList,
     options = { recursive: false, unloadAmmo: true }
   ) {
-    LOGGER.trace("uninstallItems | Container | Called.");
     if (!Array.isArray(uninstallList)) {
       return Promise.reject(
         new Error(
@@ -470,7 +461,6 @@ const Container = function Container() {
    * @returns {Promise}
    */
   this.resetInstalled = async function resetInstalled(all = false) {
-    LOGGER.trace("resetInstalled | Container | Called.");
     let actor = false;
     if (this.documentName === "Actor") {
       actor = this;
@@ -529,7 +519,6 @@ const Container = function Container() {
   this.createInstalledItemsOnActor = async function createInstalledItemsOnActor(
     imported = false
   ) {
-    LOGGER.trace("createInstalledItemsOnActor | Container | Called.");
     const actor = this.parent;
     const creationList = [];
 
@@ -591,7 +580,6 @@ const Container = function Container() {
   this.importInstalledToWorld = async function importInstalledToWorld(
     recursive
   ) {
-    LOGGER.trace("importInstalledToWorld | CPRItem | called.");
     const newInstalledList = [];
     const { flags } = this;
     // Create the item from the object data.
@@ -624,7 +612,6 @@ const Container = function Container() {
   this.convertInstalledIdsToObjects = function convertInstalledIdsToObject(
     actor
   ) {
-    LOGGER.trace("convertInstalledIdsToObjects | Container | Called.");
     const installedIds = this.system.installedItems.list;
     const installedItemData = installedIds.map((id) => {
       const itemObject = actor
@@ -652,8 +639,6 @@ const Container = function Container() {
    * @returns {Object} - The object data of all installed items nested in the correct structure.
    */
   this.createInstalledObjectData = function createInstalledObjectData() {
-    LOGGER.trace("createInstalledObjectData | CPRItem | called.");
-
     /**
      * Provided a container item, we create an array of nested objects of installed item data.
      * Note, we store this data as regular JS objects, since the data may be stored in JSON format,

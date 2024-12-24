@@ -1,4 +1,3 @@
-/* eslint-disable foundry-cpr/logger-after-function-definition */
 /* eslint-disable no-param-reassign  */
 import fs from "fs-extra";
 import log from "fancy-log";

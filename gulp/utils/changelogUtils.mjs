@@ -1,4 +1,3 @@
-/* eslint-disable foundry-cpr/logger-after-function-definition */
 import fs from "fs-extra";
 import log from "fancy-log";
 import YAML from "js-yaml";

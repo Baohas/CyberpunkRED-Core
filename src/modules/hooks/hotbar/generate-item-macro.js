@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-import LOGGER from "../../utils/cpr-logger.js";
 
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
@@ -23,7 +22,6 @@ const hotbarHooks = () => {
    * @return {Null}
    */
   Hooks.on("hotbarDrop", (_, data, slot) => {
-    LOGGER.trace("hotbarDrop | hotbarHooks | Called.");
     const document = fromUuidSync(data.uuid);
     const macroObject = {
       name: `${game.user.name} - ${document.name}`, // Prepend the user's name to prevent duplicates with different permissions.

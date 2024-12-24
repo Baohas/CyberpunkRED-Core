@@ -18,7 +18,6 @@ const Upgradable = function Upgradable() {
    *
    */
   this.getTotalUpgradeValues = function getTotalUpgradeValues(dataPoint) {
-    LOGGER.trace("getTotalUpgradeValues | Upgradable | Called.");
     let upgradeNumber = 0;
     let baseOverride = -100000;
     const upgradeData = {
@@ -65,7 +64,6 @@ const Upgradable = function Upgradable() {
    * @returns
    */
   this.getAllUpgradeMods = function getAllUpgradeMods(dataPoint) {
-    LOGGER.trace("getAllUpgradeMods | Upgradable | Called.");
     const relevantUpgrades = [];
     if (
       this.actor &&

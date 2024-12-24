@@ -1,4 +1,3 @@
-import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
@@ -20,7 +19,6 @@ export default class CPRCombatant extends Combatant {
    * @returns {Roll}
    */
   async getInitiativeRoll(formula) {
-    LOGGER.trace("getInitiativeRoll | CPRCombatant | Called.");
     let cprInitiative;
     const { actor } = this.token;
     let statName = "";

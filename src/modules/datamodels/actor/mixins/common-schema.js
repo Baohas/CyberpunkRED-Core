@@ -1,4 +1,3 @@
-import LOGGER from "../../../utils/cpr-logger.js";
 import SystemUtils from "../../../utils/cpr-systemUtils.js";
 import CPRMod from "../../../rolls/cpr-modifiers.js";
 
@@ -12,7 +11,6 @@ export default class CommonSchema extends foundry.abstract.DataModel {
   static mixinName = "common";
 
   static defineSchema() {
-    LOGGER.trace("defineSchema | CommonSchema | called.");
     const { fields } = foundry.data;
     const includeMax = true;
     return {
@@ -100,7 +98,6 @@ export default class CommonSchema extends foundry.abstract.DataModel {
    * }
    */
   get skills() {
-    LOGGER.trace("get skills | CommonSchema | Called.");
     const skills = this.parent.itemTypes.skill;
 
     const effects = Array.from(this.parent.allApplicableEffects());

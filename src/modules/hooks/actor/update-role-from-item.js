@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 const UpdateRoleFromItem = () => {
   /**
    * Sets the Actor role field when Role Item is dragged to a sheet.
@@ -9,7 +7,6 @@ const UpdateRoleFromItem = () => {
    * @param {CPRItem} doc - The pending document which is requested for creation
    */
   Hooks.on("createItem", async (doc) => {
-    LOGGER.trace("createItem | itemHooks | Called.");
     const actor = doc.parent;
     if (actor !== null) {
       if (doc.type === "role") {

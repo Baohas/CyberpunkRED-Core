@@ -1,7 +1,6 @@
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
-import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
@@ -20,10 +19,8 @@ export default class CPRDemonActor extends Actor {
    * @param {Object} options - unused here but passed up to the parent
    */
   static async create(data, options) {
-    LOGGER.trace("create | CPRDemonActor | called.");
     const createData = data;
     if (typeof data.system === "undefined") {
-      LOGGER.trace("create | New Actor | CPRDemonActor | called.");
       createData.prototypeToken = {
         bar1: { attribute: "stats.rez" },
       };
@@ -38,7 +35,6 @@ export default class CPRDemonActor extends Actor {
    * @returns {CPRProgramStatRoll}
    */
   createStatRoll(statName) {
-    LOGGER.trace("createStatRoll | CPRDemonActor | called.");
     const niceStatName = SystemUtils.Localize(CPR.demonStatList[statName]);
     const statValue = parseInt(this.system.stats[statName], 10);
     const cprRoll = new CPRRolls.CPRProgramStatRoll(niceStatName, statValue);
@@ -58,7 +54,6 @@ export default class CPRDemonActor extends Actor {
    * @param {int} bonusDamage - bonus damage dealt
    */
   async _applyDamage(damage, bonusDamage) {
-    LOGGER.trace("_applyDamage | CPRDemonActor | Called.");
     // As a Demon does not have any armor, the damage will be simply subtracted from the REZ.
     const currentRez = this.system.stats.rez.value;
     await this.update({
@@ -77,7 +72,6 @@ export default class CPRDemonActor extends Actor {
    * @param {int} rezReduction - value of the damage taken
    */
   async _reverseDamage(rezReduction) {
-    LOGGER.trace("_reverseDamage | CPRDemonActor | Called.");
     const currentRez = this.system.stats.rez.value;
     const updatedRez = Math.min(
       currentRez + rezReduction,
@@ -93,7 +87,6 @@ export default class CPRDemonActor extends Actor {
    * @returns {Number}
    */
   getStat(statName) {
-    LOGGER.trace("getStat | CPRDemonActor | Called.");
     const statValue =
       statName === "rez"
         ? this.system.stats[statName].value

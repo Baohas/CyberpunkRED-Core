@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 const SetDefaultImage = () => {
@@ -14,7 +13,6 @@ const SetDefaultImage = () => {
    * @param {string} (unused)   - The ID of the requesting user, always game.user.id
    */
   Hooks.on("preCreateActor", (doc, createData) => {
-    LOGGER.trace("preCreateActor | actorHooks | Called.");
     if (typeof createData.img === "undefined") {
       const actorImage = SystemUtils.GetDefaultImage("Actor", createData.type);
       doc.updateSource({

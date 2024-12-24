@@ -19,7 +19,6 @@ export default class CPRChat {
    * @returns {*} - object encapsulating chat message data
    */
   static ChatDataSetup(content, modeOverride, forceWhisper, isRoll = false) {
-    LOGGER.trace("ChatDataSetup | CPRChat | Called.");
     const chatData = {
       user: game.user.id,
       rollMode: modeOverride || game.settings.get("core", "rollMode"),
@@ -58,8 +57,6 @@ export default class CPRChat {
    * @returns - a created chat message
    */
   static RenderRollCard(incomingRoll) {
-    LOGGER.trace("RenderRollCard | CPRChat | Called.");
-
     const cprRoll = incomingRoll;
 
     cprRoll.criticalCard = cprRoll.wasCritical();
@@ -106,7 +103,6 @@ export default class CPRChat {
    * @returns - the rendered template that will be displayed
    */
   static RenderItemCard(item) {
-    LOGGER.trace("RenderItemCard | CPRChat | Called.");
     const trimmedItem = item;
     const itemTemplate = `systems/${game.system.id}/templates/item/cpr-item-roll-card.hbs`;
 
@@ -158,7 +154,6 @@ export default class CPRChat {
    * @returns ChatMessage
    */
   static RenderDamageApplicationCard(damageData) {
-    LOGGER.trace("RenderDamageApplicationCard | CPRChat | Called.");
     const damageApplicationTemplate = `systems/${game.system.id}/templates/chat/cpr-damage-application-card.hbs`;
 
     return renderTemplate(damageApplicationTemplate, damageData).then(
@@ -196,7 +191,6 @@ export default class CPRChat {
    * @param {*} data - a string of whatever the user typed in with /red
    */
   static async HandleCPRCommand(data) {
-    LOGGER.trace("HandleCPRCommand | CPRChat | Called.");
     // First, let's see if we can figure out what was passed to /red
     // Right now, we will assume it is a roll
     const modifiersRegex = /[+-][0-9][0-9]*/;
@@ -252,7 +246,6 @@ export default class CPRChat {
    * @param {*} html - html DOM
    */
   static async chatListeners(html) {
-    LOGGER.trace("chatListeners | CPRChat | Called.");
     html.on("click", ".clickable", async (event) => {
       const clickAction = SystemUtils.GetEventDatum(event, "data-action");
 
@@ -431,7 +424,6 @@ export default class CPRChat {
    * @param {*} messageData - an object with a bunch of chat message data (see ChatDataSetup above)
    */
   static addMessageTags(html, messageData) {
-    LOGGER.trace("addMessageTags | CPRChat | Called.");
     const timestampTag = html.find(".message-timestamp");
     const whisperTargets = messageData.message.whisper;
     const isBlind = messageData.message.blind || false;
@@ -462,7 +454,6 @@ export default class CPRChat {
    * @param {*} event - event data from the chat message
    */
   static async damageApplication(event) {
-    LOGGER.trace("damageApplication | CPRChat | Called.");
     // Define a bunch of constants to be used in the rest of the function.
     const totalDamage = SystemUtils.isNumeric(
       parseInt(SystemUtils.GetEventDatum(event, "data-total-damage"), 10)

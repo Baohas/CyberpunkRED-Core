@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import BaseMigrationScript from "../base-migration-script.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class SkillTypeMigration extends BaseMigrationScript {
   static version = 27;
@@ -14,7 +13,6 @@ export default class SkillTypeMigration extends BaseMigrationScript {
   };
 
   async updateItem(doc) {
-    LOGGER.trace("updateItem | Skill Type");
     const itemName = doc.name.toLowerCase();
 
     // Set the skill type based on the name

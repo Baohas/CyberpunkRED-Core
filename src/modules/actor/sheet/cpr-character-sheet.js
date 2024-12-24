@@ -19,7 +19,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @override
    */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRCharacterActorSheet | Called.");
     const defaultWidth = 1050;
     const defaultHeight = "auto";
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -44,7 +43,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   }
 
   async getData() {
-    LOGGER.trace("getData | CPRActorSheet | Called.");
     const actorSheetData = await super.getData();
     const characterSheetData = {};
 
@@ -65,8 +63,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} html - the DOM object
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRCharacterActorSheet | Called.");
-
     html.find(".navtabs-right").click(() => this._clearContentFilter());
 
     // calculate max Hp
@@ -161,7 +157,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @private
    */
   _setMaxHp() {
-    LOGGER.trace("_setMaxHp | CPRCharacterActorSheet | Called.");
     const maxHp = this.actor.calcMaxHp();
     const { hp } = this.actor.system.derivedStats;
     this.actor.update({
@@ -179,7 +174,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @private
    */
   _setMaxHumanity() {
-    LOGGER.trace("_setMaxHumanity | CPRCharacterActorSheet | Called.");
     this.actor.setMaxHumanity();
   }
 
@@ -192,7 +186,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {} event - object with details of the event
    */
   _cycleEquipState(event) {
-    LOGGER.trace("_cycleEquipState | CPRCharacterActorSheet | Called.");
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const prop = CPRActorSheet._getObjProp(event);
     let newValue = "owned";
@@ -271,7 +264,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   _repairArmor(event) {
-    LOGGER.trace("_repairArmor | CPRCharacterActorSheet | Called.");
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const upgradeData = item.getTotalUpgradeValues("shieldHp");
     const currentArmorBodyValue = item.system.bodyLocation.sp;
@@ -325,9 +317,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   async _installUninstallCyberwareAction(event) {
-    LOGGER.trace(
-      "_installUninstallCyberwareAction | CPRCharacterActorSheet | Called."
-    );
     const itemId = CPRActorSheet._getItemId(event);
     const item = this.actor.getOwnedItem(itemId);
     if (item.system.isInstalled) {
@@ -349,8 +338,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @returns {null}
    */
   async _setLifepath() {
-    LOGGER.trace("_setLifepath | CPRCharacterActorSheet | Called.");
-
     // Show "Set Lifepath" dialog.
     const dialogData = await CPRDialog.showDialog(this.actor.system.lifepath, {
       // Set the options for the dialog.
@@ -374,7 +361,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   _toggleSectionVisibility(event) {
-    LOGGER.trace("_toggleSectionVisibility | CPRCharacterActorSheet | Called.");
     const collapsibleElement = $(event.currentTarget).parents(".collapsible");
     const skillCategory = event.currentTarget.id.replace("-showFavorites", "");
     const categoryTarget = $(collapsibleElement.find(`#${skillCategory}`));
@@ -413,7 +399,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   _updateSkill(event) {
-    LOGGER.trace("_updateSkill | CPRCharacterActorSheet | Called.");
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     item.setSkillLevel(parseInt(event.target.value, 10));
     this._updateOwnedItem(item);
@@ -427,7 +412,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   _updateWeaponAmmo(event) {
-    LOGGER.trace("_updateWeaponAmmo | CPRCharacterActorSheet | Called.");
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const updateType = SystemUtils.GetEventDatum(event, "data-item-prop");
     if (updateType === "system.magazine.value") {
@@ -451,7 +435,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   _updateAmount(event) {
-    LOGGER.trace("_updateAmount | CPRCharacterActorSheet | Called.");
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     if (!Number.isNaN(parseInt(event.target.value, 10))) {
       item.setItemAmount(event.target.value);
@@ -473,9 +456,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   async _updateRoleAbility(event) {
-    LOGGER.trace(
-      "ActorID _updateRoleAbility | CPRCharacterActorSheet | Called."
-    );
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const cprItemData = foundry.utils.duplicate(item.system);
     const subskill = SystemUtils.GetEventDatum(event, "data-subskill-name");
@@ -518,7 +498,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @returns {ActiveEffect} - the newly created or updated document
    */
   async manageEffect(event) {
-    LOGGER.trace("manageEffect | CPRCharacterActorSheet | Called.");
     event.preventDefault();
     const action = SystemUtils.GetEventDatum(event, "data-action");
     const effectUuid = SystemUtils.GetEventDatum(event, "data-effect-id");
@@ -550,7 +529,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   _updateEurobucks(event) {
-    LOGGER.trace("_updateEurobucks | CPRCharacterActorSheet | Called.");
     let { value } = event.currentTarget.parentElement.parentElement.children[1];
     const reason =
       event.currentTarget.parentElement.parentElement.nextElementSibling
@@ -603,7 +581,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {Object} event - object capturing event data (what was clicked and where?)
    */
   _toggleFightState(event) {
-    LOGGER.trace("_toggleFightState | CPRCharacterSheet | Called.");
     const fightState = SystemUtils.GetEventDatum(event, "data-state");
     this.actor.setFlag(game.system.id, "fightState", fightState);
   }
@@ -617,9 +594,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @private
    */
   async _cyberdeckProgramExecution(event) {
-    LOGGER.trace(
-      "_cyberdeckProgramExecution | CPRCharacterActorSheet | Called."
-    );
     const executionType = SystemUtils.GetEventDatum(
       event,
       "data-execution-type"

@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 const SyncBlackIceWithProgram = () => {
   /**
    * If the actor being updated is Black-ICE, reflect those changes on the owned
@@ -12,7 +10,6 @@ const SyncBlackIceWithProgram = () => {
    * @param {object} updatedData      - The changed data object provided to the document creation request
    */
   Hooks.on("preUpdateActor", async (doc, updatedData) => {
-    LOGGER.trace("preUpdateActor | actorHooks | Called.");
     if (doc.type === "blackIce" && doc.isToken && updatedData.system?.stats) {
       const biToken = doc.token;
 

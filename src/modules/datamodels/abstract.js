@@ -1,6 +1,5 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-continue */
-/* eslint-disable foundry-cpr/logger-after-function-definition */
 
 /**
  * NOTE: This was taken from 5e! Thanks to them.

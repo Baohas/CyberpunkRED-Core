@@ -1,4 +1,3 @@
-import LOGGER from "../../../utils/cpr-logger.js";
 import enablePauseAnimation from "../../../system/pause-animation.js";
 
 const PauseAnimation = () => {
@@ -12,7 +11,6 @@ const PauseAnimation = () => {
    * @memberof hookEvents
    */
   Hooks.on("renderPause", () => {
-    LOGGER.trace("renderPause | uiHooks | Called.");
     enablePauseAnimation();
   });
 };

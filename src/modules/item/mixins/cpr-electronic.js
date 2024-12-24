@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 /**
  * Lessons:
  *   1. Arrow functions do not work here, because they are not bound to "this", and are generally
@@ -15,7 +13,6 @@ const Electronic = function Electronic() {
    * @param {Boolean}
    */
   this.setElectronic = function setElectronic(val) {
-    LOGGER.trace("setElectronic | Electronic | Called.");
     const cprItemData = foundry.utils.duplicate(this.system);
     const target = "system.isElectronic";
     foundry.utils.setProperty(cprItemData, target, val);
@@ -28,7 +25,6 @@ const Electronic = function Electronic() {
    * @param {Boolean}
    */
   this.setProvidesHardening = function setProvidesHardening(val) {
-    LOGGER.trace("setProvidesHardening | Electronic | Called.");
     const cprItemData = foundry.utils.duplicate(this.system);
     const target = "system.providesHardening";
     foundry.utils.setProperty(cprItemData, target, val);

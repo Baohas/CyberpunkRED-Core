@@ -25,7 +25,6 @@ export default class BaseMigrationScript {
    * Basic constructor to establish the version and other options.
    */
   constructor() {
-    LOGGER.trace("constructor | BaseMigrationScript");
     this.version = this.constructor.version; // Derived from the static property below.
     this.name = this.constructor.name; // Derived from the static property below.
     this.allowedDocTypes = this.constructor.getAllowedDocTypes();
@@ -72,7 +71,6 @@ export default class BaseMigrationScript {
    * @return {Object} Returns an object containing Sets of document types that are allowed.
    */
   static getAllowedDocTypes() {
-    LOGGER.trace("getAllowedDocTypes | BaseMigrationScript");
     const docTypes = {};
     /* eslint-disable no-continue */
     for (const [docName, filters] of Object.entries(this.documentFilters)) {
@@ -118,7 +116,6 @@ export default class BaseMigrationScript {
    * @returns {Object}
    */
   static safeDelete(doc, prop) {
-    LOGGER.trace("safeDelete | BaseMigrationScript");
     let key = prop;
 
     if (foundry.utils.hasProperty(doc, key)) {
@@ -141,9 +138,8 @@ export default class BaseMigrationScript {
    * async changes to the database here (e.g. `await someTile.update()`),
    *
    */
-  async migrateMisc() {
-    LOGGER.trace("migrateMisc | BaseMigrationScript");
-  }
+  // eslint-disable-next-line no-empty-function
+  async migrateMisc() {}
 
   /**
    * Does nothing and is meant to be over-ridden.
@@ -157,9 +153,8 @@ export default class BaseMigrationScript {
    * @param {Object} itemData - Source data for the item. From item.toObject().
    * @param {Object} actorData - Source data for the item's parent actor, if any. From actor.toObject().
    */
-  async updateItem(itemData, actorData) {
-    LOGGER.trace("updateItem | BaseMigrationScript");
-  }
+  // eslint-disable-next-line no-empty-function
+  async updateItem(itemData, actorData) {}
 
   /**
    * Does nothing and is meant to be over-ridden.
@@ -172,9 +167,8 @@ export default class BaseMigrationScript {
    *
    * @param {Object} actorData - Source data for the actor.From actor.toObject().
    */
-  async updateActor(actor) {
-    LOGGER.trace("updateActor | BaseMigrationScript");
-  }
+  // eslint-disable-next-line no-empty-function
+  async updateActor(actor) {}
 
   /**
    * Utility function which simulates a long process by delaying the resolution of a Promise.
@@ -184,7 +178,6 @@ export default class BaseMigrationScript {
    * @return {Promise} A Promise that resolves after the specified time.
    */
   static simulateLongProcess(time = 10) {
-    LOGGER.trace("simulateLongProcess | BaseMigrationScript");
     return new Promise((resolve) => {
       setTimeout(resolve, time);
     });

@@ -1,5 +1,3 @@
-import LOGGER from "../../../utils/cpr-logger.js";
-
 export default class StatSchema extends foundry.abstract.DataModel {
   /**
    *
@@ -8,7 +6,6 @@ export default class StatSchema extends foundry.abstract.DataModel {
    * @returns {Object}
    */
   static defineSchema({ includeMax = false, min = 0 } = {}) {
-    LOGGER.trace("defineSchema | StatSchema | called.");
     if (includeMax) {
       return { ...this.valueStat(min), ...this.maxStat };
     }
@@ -16,7 +13,6 @@ export default class StatSchema extends foundry.abstract.DataModel {
     return { ...this.valueStat(min) };
   }
 
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   static valueStat(min) {
     const { fields } = foundry.data;
     return {
@@ -30,7 +26,6 @@ export default class StatSchema extends foundry.abstract.DataModel {
     };
   }
 
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   static get maxStat() {
     const { fields } = foundry.data;
     return {

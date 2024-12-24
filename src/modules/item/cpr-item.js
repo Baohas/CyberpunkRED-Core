@@ -31,7 +31,6 @@ export default class CPRItem extends Item {
    * @param {Object} options options (from Foundry) to the Item creation process
    */
   static async create(data, options) {
-    LOGGER.trace("create | CPRItem | Called.");
     const item = await super.create(data, options);
     // Early return if has no installed, or its in a compendium.
     if (!item.system.hasInstalled || item.pack) return;
@@ -73,7 +72,6 @@ export default class CPRItem extends Item {
    * @param {Object} options options (from Foundry) to the Item update process
    */
   update(data, options = {}) {
-    LOGGER.trace("update | CPRItem | Called.");
     const cprData = data;
     if (
       data["system.type"] === "cyberwareInternal" ||
@@ -113,7 +111,6 @@ export default class CPRItem extends Item {
    * @returns {Promise<CPRItem>}
    */
   async delete(context) {
-    LOGGER.trace("delete | CPRItem | Called.");
     if (!this.system.hasInstalled) return super.delete(context);
     const formData = await ContainerUtils.confirmContainerDelete(this);
     if (!formData)
@@ -139,7 +136,6 @@ export default class CPRItem extends Item {
    * @public
    */
   loadMixins() {
-    LOGGER.trace("loadMixins | CPRItem | Called.");
     const mixins = SystemUtils.getMixins(this.type);
     const cprItemData = this.system;
     for (let m = 0; m < mixins.length; m += 1) {
@@ -210,7 +206,6 @@ export default class CPRItem extends Item {
    * @override
    */
   prepareDerivedData() {
-    LOGGER.trace("prepareDerivedData | CPRItem | Called.");
     super.prepareDerivedData();
     this.loadMixins();
   }
@@ -233,7 +228,6 @@ export default class CPRItem extends Item {
    * @returns {object}                      A data object of cleaned data suitable for compendium import
    */
   toCompendium(pack, options) {
-    LOGGER.trace("toCompendium | CPRItem | called.");
     const data = super.toCompendium(pack, options);
 
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
@@ -269,7 +263,6 @@ export default class CPRItem extends Item {
    * @returns {Promise<CPRItem>} - The resolved item
    */
   static async fromDropData(data, options) {
-    LOGGER.trace("fromDropData | CPRItem | called.");
     const item = await super.fromDropData(data, options);
 
     // Return if not a container item or if this item doesn't have a parent.
@@ -302,8 +295,6 @@ export default class CPRItem extends Item {
    * @returns {Promise<CPRItem>}   The updated Document instance
    */
   async importFromJSON(json) {
-    LOGGER.trace("importFromJSON | CPRItem | called.");
-
     // Import the item so that we can then manipulate it.
     const item = await super.importFromJSON(json);
     // Only manipulate the imported item if it contains installed item data.
@@ -330,7 +321,6 @@ export default class CPRItem extends Item {
    * @param {*} actionAttributes - arbitrary data to control the action
    */
   doAction(actor, actionAttributes) {
-    LOGGER.trace("doAction | CPRItem | Called.");
     const itemType = this.type;
     switch (itemType) {
       case "cyberware": {
@@ -358,7 +348,6 @@ export default class CPRItem extends Item {
    * @returns null for invalid actions
    */
   _itemUpgradeAction(actor, actionAttributes) {
-    LOGGER.trace("_itemUpgradeAction | CPRItem | Called.");
     switch (this.system.type) {
       case "weapon": {
         if (this.system.modifiers.secondaryWeapon.configured) {
@@ -380,7 +369,6 @@ export default class CPRItem extends Item {
    * @returns {CPRRoll}
    */
   confirmRoll(cprRoll) {
-    LOGGER.trace("confirmRoll | CPRItem | Called.");
     const itemType = this.type;
     const cprItemData = this.system;
     const localCprRoll = cprRoll;
@@ -409,7 +397,6 @@ export default class CPRItem extends Item {
    * Set whether the item is a favorite for the player, highlighting it in the UI/sheet
    */
   toggleFavorite() {
-    LOGGER.trace("toggleFavorite | CPRItem | Called.");
     this.update({ "system.favorite": !this.system.favorite });
   }
 
@@ -422,7 +409,6 @@ export default class CPRItem extends Item {
    * @returns {CPRRoll} or null for invalid roll types
    */
   createRoll(type, actor, extraData = []) {
-    LOGGER.trace("createRoll | CPRItem | Called.");
     switch (type) {
       case CPRRolls.rollTypes.SKILL: {
         return this._createSkillRoll(actor);

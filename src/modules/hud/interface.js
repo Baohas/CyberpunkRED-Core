@@ -16,7 +16,6 @@ export default class HudInterface {
    * @returns {null}
    */
   static async SetDvTable(tokenData) {
-    LOGGER.trace("SetDvTable | HudInterface | Called.");
     const dvTables = (await SystemUtils.GetDvTables()).filter(
       (table) => table.name !== "DV Generic"
     );

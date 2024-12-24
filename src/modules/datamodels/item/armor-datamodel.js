@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
 import ContainerSchema from "../shared/container-schema.js";
@@ -20,7 +19,6 @@ export default class ArmorDataModel extends CPRSystemDataModel.mixin(
   ValuableSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | ArmorModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       isBodyLocation: new fields.BooleanField({ initial: true }),
@@ -92,7 +90,6 @@ export default class ArmorDataModel extends CPRSystemDataModel.mixin(
    * @returns {Boolean} - whether or not this armor is being tracked.
    */
   get isTracked() {
-    LOGGER.trace("get isTracked | ArmorDataModel | called.");
     const item = this.parent;
     if (!item.isEmbedded) return false; // Return false if this item is not embedded in an actor (owned)
     switch (true) {

@@ -1,4 +1,3 @@
-import LOGGER from "../../../utils/cpr-logger.js";
 import Rules from "../../../utils/cpr-rules.js";
 
 const UpdateSubRoles = () => {
@@ -12,7 +11,6 @@ const UpdateSubRoles = () => {
    * @param {object} updateData     A trimmed object with the data provided for creation
    */
   Hooks.on("updateItem", (doc, updateData) => {
-    LOGGER.trace("updateItem | itemHooks | Called.");
     if (updateData.system && updateData.system.abilities) {
       const roleRank = doc.system.rank;
       let subRolesValue = 0;

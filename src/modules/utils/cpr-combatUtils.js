@@ -4,7 +4,6 @@ import SystemUtils from "./cpr-systemUtils.js";
 export default class CPRCombatUtils {
   // Optional
   static GetBestInit() {
-    LOGGER.trace("GetBestInit | CPRCombatUtils | called.");
     const combat = game.combats.viewed;
     if (!combat) {
       // no combat encounters are happening in this scene

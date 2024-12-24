@@ -1,11 +1,9 @@
 import CPR from "../../../system/config.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class AttackableSchema extends foundry.abstract.DataModel {
   static mixinName = "attackable";
 
   static defineSchema() {
-    LOGGER.trace("defineSchema | AttackableSchema | called.");
     const { fields } = foundry.data;
     return {
       weaponType: new fields.StringField({

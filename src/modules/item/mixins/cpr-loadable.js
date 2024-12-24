@@ -19,7 +19,6 @@ const Loadable = function Loadable() {
    * @returns - the updated item document
    */
   this.setCompatibleAmmo = async function setCompatibleAmmo(ammoList) {
-    LOGGER.trace("setCompatibleAmmo | Loadable | Called.");
     this.system.ammoVariety = ammoList;
     if (this.actor) {
       this.actor.updateEmbeddedDocuments("Item", [
@@ -38,7 +37,6 @@ const Loadable = function Loadable() {
    * @param {String} dvTable - which dvTable to use, overridden if autofire is set.
    */
   this._setDvTable = async function _setDvTable(actor, dvTable) {
-    LOGGER.trace("_setDvTable | Loadable | Called.");
     const flag = foundry.utils.getProperty(
       actor,
       `flags.${game.system.id}.firetype-${this._id}`
@@ -57,7 +55,6 @@ const Loadable = function Loadable() {
    * @returns {Promise}
    */
   this.unload = async function unload() {
-    LOGGER.trace("unload | Loadable | Called.");
     const [currentAmmo] = this.getInstalledItems("ammo");
     const newAmount = currentAmmo.system.amount + this.system.magazine.value;
     await this.update({ "system.magazine.value": 0 });
@@ -71,7 +68,6 @@ const Loadable = function Loadable() {
    * @returns {Promise}
    */
   this.load = async function load() {
-    LOGGER.trace("load | Loadable | Called.");
     const [currentAmmo] = this.getInstalledItems("ammo");
     const ownedAmmo = this.actor.itemTypes.ammo;
     const validAmmo = [];
@@ -155,7 +151,6 @@ const Loadable = function Loadable() {
    * @returns {Promise}
    */
   this.reload = async function reload() {
-    LOGGER.trace("reload | Loadable | Called.");
     const [loadedAmmo] = this.getInstalledItems("ammo");
     if (!loadedAmmo) {
       return this.load();
@@ -206,7 +201,6 @@ const Loadable = function Loadable() {
    * @returns {Number} how many bullets to consume given the roll
    */
   this.bulletConsumption = function bulletConsumption(cprRoll) {
-    LOGGER.trace("bulletConsumption | Loadable | Called.");
     let bulletCount = 1;
     if (
       cprRoll instanceof CPRRolls.CPRAutofireRoll ||
@@ -222,7 +216,6 @@ const Loadable = function Loadable() {
    * @returns - true or false
    */
   this.hasAmmo = function hasAmmo(cprRoll) {
-    LOGGER.trace("hasAmmo | Loadable | Called.");
     return this.system.magazine.value - this.bulletConsumption(cprRoll) >= 0;
   };
 
@@ -233,7 +226,6 @@ const Loadable = function Loadable() {
    * @param {String} value - a number with an optional + or - prefixing it
    */
   this.setWeaponAmmo = function setWeaponAmmo(value) {
-    LOGGER.trace("setWeaponAmmo | Loadable | Called.");
     const maxAmmo = this.system.magazine.max;
     if (this.type === "weapon") {
       if (value.charAt(0) === "+" || value.charAt(0) === "-") {
@@ -255,7 +247,6 @@ const Loadable = function Loadable() {
    * @returns {*} - value of the ammo property
    */
   this._getLoadedAmmoProp = function _getLoadedAmmoProp(prop) {
-    LOGGER.trace("_getLoadedAmmoProp | Loadable | Called.");
     if (this.actor) {
       const [ammo] = this.getInstalledItems("ammo");
       if (ammo) {

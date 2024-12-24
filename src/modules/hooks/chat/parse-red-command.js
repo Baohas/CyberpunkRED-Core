@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRChat from "../../chat/cpr-chat.js";
 
 const ParseRedCommand = () => {
@@ -14,7 +13,6 @@ const ParseRedCommand = () => {
    *                                 of this Document
    */
   Hooks.on("chatMessage", (_, message) => {
-    LOGGER.trace("chatMessage | chatHooks | Called.");
     if (message !== undefined && message.startsWith("/red")) {
       const fragment = message.slice(4);
       CPRChat.HandleCPRCommand(fragment);

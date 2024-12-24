@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 const InitializePopOutIntegration = () => {
@@ -10,7 +9,6 @@ const InitializePopOutIntegration = () => {
    * @memberof hookEvents
    */
   Hooks.on("PopOut:loaded", async (_, node) => {
-    LOGGER.trace("setTheme | uiHooks | called");
     SystemUtils.SetTheme(node);
   });
 };

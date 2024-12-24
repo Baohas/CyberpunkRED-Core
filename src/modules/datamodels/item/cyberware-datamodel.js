@@ -25,7 +25,6 @@ export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
   ValuableSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | CyberwareModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(
       super.defineSchema({
@@ -64,7 +63,6 @@ export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
    * @returns {Boolean} - whether or not the top-level parent is installed in an actor.
    */
   get isInstalledInActor() {
-    LOGGER.trace("isInstalledInActor | CyberwareModel | called.");
     function getTopLevelParentItem(childItem) {
       const { actor } = childItem;
       const parentItem = actor.items.get(childItem.system.installedIn[0]);

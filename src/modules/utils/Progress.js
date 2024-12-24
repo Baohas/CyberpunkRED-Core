@@ -1,5 +1,3 @@
-import LOGGER from "./cpr-logger.js";
-
 export default class Progress {
   constructor({
     id = "cpr-default-progress",
@@ -8,7 +6,6 @@ export default class Progress {
     classes = [],
     closeWhenFull = false,
   } = {}) {
-    LOGGER.trace("constructor | Progress");
     this.id = id;
     this.value = 0;
     this.max = max;
@@ -28,7 +25,6 @@ export default class Progress {
    * @returns {number}
    */
   get percent() {
-    LOGGER.trace("get percent | Progress");
     return Math.floor((this.value / this.max) * 100) || 0;
   }
 
@@ -40,8 +36,6 @@ export default class Progress {
    * @return {void}
    */
   advance(by = 1) {
-    LOGGER.trace("advance | Progress");
-
     if (this.value === this.max) return;
     this.value += Math.abs(by);
     this.render();
@@ -53,7 +47,6 @@ export default class Progress {
    * @return {void}
    */
   close() {
-    LOGGER.trace("close | Progress");
     const bar = this.element;
     if (bar !== null) {
       if (!bar.hidden) {
@@ -71,7 +64,6 @@ export default class Progress {
    * @return {Promise<void>} A promise that resolves when the progress bar element is created and appended.
    */
   static async createElement(options = {}, parentElement = null) {
-    LOGGER.trace("createElement | Progress");
     const progress = new Progress(options);
     const rawTemplate = await renderTemplate(
       `systems/${game.system.id}/${this.TEMPLATE}`,
@@ -93,7 +85,6 @@ export default class Progress {
    * @return {void}
    */
   render() {
-    LOGGER.trace("render | Progress");
     if (!this.element) return;
 
     const { element } = this;

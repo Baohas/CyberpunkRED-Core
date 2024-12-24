@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 export default class MigrationError extends Error {
   /**
    * Extend the base Error class with information
@@ -11,7 +9,6 @@ export default class MigrationError extends Error {
    * @override
    */
   constructor(data, message, options) {
-    LOGGER.trace("constructor | MigrationError");
     super(message, options);
     this.name = "MigrationError";
     this.type = options.type || "MigrationScriptError";

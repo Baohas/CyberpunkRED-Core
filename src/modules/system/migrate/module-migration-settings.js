@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 export default class ModuleMigrationSettings extends FormApplication {
@@ -10,7 +9,6 @@ export default class ModuleMigrationSettings extends FormApplication {
    * @static
    */
   static get defaultOptions() {
-    LOGGER.trace("ModuleMigrationSettings | defaultOptions | called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       title: SystemUtils.Localize("CPR.settings.moduleMigrationMenu.name"),
       id: "module-migration-config",
@@ -29,7 +27,6 @@ export default class ModuleMigrationSettings extends FormApplication {
    * @returns {Object}
    */
   async getData() {
-    LOGGER.trace("ModuleMigrationSettings | getData | called.");
     const data = super.getData();
 
     const moduleIdSet = new Set(
@@ -62,7 +59,6 @@ export default class ModuleMigrationSettings extends FormApplication {
    * @param {Object} formData - object containing module ids corresponding to choices
    */
   async _updateObject(event, formData) {
-    LOGGER.trace("ModuleMigrationSettings | _updateObject | called.");
     // Cast to an array if not.
     if (!Array.isArray(formData.modIds)) formData.modIds = [formData.modIds];
     const modIdList = formData.modIds.filter((id) => id); // remove null values

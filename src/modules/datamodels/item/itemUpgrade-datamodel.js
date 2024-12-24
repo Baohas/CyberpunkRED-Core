@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRSystemDataModel from "../abstract.js";
 import UpgradeModifierSchema from "./components/upgrade-modifier-schema.js";
@@ -24,7 +23,6 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
   ValuableSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | ItemUpgradeDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       handsReq: new fields.NumberField({

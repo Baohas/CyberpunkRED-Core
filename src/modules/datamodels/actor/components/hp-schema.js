@@ -1,8 +1,5 @@
-import LOGGER from "../../../utils/cpr-logger.js";
-
 export default class HpSchema extends foundry.abstract.DataModel {
   static defineSchema({ initial = 40 } = {}) {
-    LOGGER.trace("defineSchema | HpSchema | called.");
     const { fields } = foundry.data;
     return {
       max: new fields.NumberField({

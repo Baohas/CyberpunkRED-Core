@@ -1,7 +1,5 @@
 /* eslint-env jquery */
 
-import LOGGER from "./cpr-logger.js";
-
 /**
  * CPR-C utilities that are used for Text manipulation.
  *
@@ -23,7 +21,6 @@ export default class CPRTextUtils {
     @returns {String}
    */
   static stripHTML(html) {
-    LOGGER.trace("stripHTML | CPRTextUtils | Called.");
     return new Handlebars.SafeString($("<div>").html(html).text());
   }
 
@@ -44,8 +41,6 @@ export default class CPRTextUtils {
    * // Returns the sanitized version of the enriched text.
    */
   static sanitizeEnrichedText(str) {
-    LOGGER.trace("sanitizeEnrichedText | CPRTextUtils | Called.");
-
     // Ensure str is not empty before proceeding
     if (typeof str !== "string") {
       // Handle cases where str is not a string
@@ -79,8 +74,6 @@ export default class CPRTextUtils {
    */
 
   static toTitleCase(str) {
-    LOGGER.trace("toTitleCase | CPRTextUtils | Called.");
-
     // converts the string value to title case.
     return str.toLowerCase().replace(/\b\w/g, (s) => s.toUpperCase());
   }

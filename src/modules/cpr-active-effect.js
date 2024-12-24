@@ -16,7 +16,6 @@ export default class CPRActiveEffect extends ActiveEffect {
    * @param {*} options - The Foundry options for an Active Effect
    */
   constructor(object = {}, options = {}) {
-    LOGGER.trace("constructor | CPRActiveEffect | Called.");
     super(object, options);
     if (!this.system) {
       this.system = {
@@ -32,7 +31,6 @@ export default class CPRActiveEffect extends ActiveEffect {
    * XXX: LOGGER calls do not work in this getter. I don't know why; use console.
    */
   get usage() {
-    LOGGER.trace("get usage | CPRActiveEffect | Called.");
     const item = this.parent;
     if (!item) return null;
     return item.system.usage;
@@ -45,7 +43,6 @@ export default class CPRActiveEffect extends ActiveEffect {
    * @param {String} category - the key category value to set
    */
   async setModKeyCategory(num, category) {
-    LOGGER.trace("setModKeyCategory | CPRActiveEffect | Called.");
     await this.setFlag(game.system.id, `changes.cats.${num}`, category);
   }
 
@@ -59,7 +56,6 @@ export default class CPRActiveEffect extends ActiveEffect {
    * @returns null if this is suppressed, apply() otherwise
    */
   apply(actor, change) {
-    LOGGER.trace("apply | CPRActiveEffect | Called.");
     if (this.system.isSuppressed) return null;
     return super.apply(actor, change);
   }
@@ -74,7 +70,6 @@ export default class CPRActiveEffect extends ActiveEffect {
    * @returns nothing, it only sets the isSuppressed property (it's a mutator)
    */
   determineSuppression() {
-    LOGGER.trace("determineSuppression | CPRActiveEffect | Called.");
     this.system.isSuppressed = false;
     if (this.disabled) return;
     const doc = this.parent;

@@ -1,5 +1,4 @@
 import CPRItem from "../cpr-item.js";
-import LOGGER from "../../utils/cpr-logger.js";
 
 /**
  * Extend the base CPRItem object with things specific to ammunition.
@@ -11,7 +10,6 @@ export default class CPRAmmoItem extends CPRItem {
    * @param {*} actionAttributes - data passed in from the event
    */
   _ammoAction(actionAttributes) {
-    LOGGER.trace("_ammoAction | CPRAmmoItem | Called.");
     const actionData = actionAttributes["data-action"].nodeValue;
     const ammoAmount = actionAttributes["data-amount"].nodeValue;
     switch (actionData) {
@@ -39,7 +37,6 @@ export default class CPRAmmoItem extends CPRItem {
    * @returns - null or the updated actor data if this ammo is owned
    */
   async _ammoDecrement(changeAmount) {
-    LOGGER.trace("_ammoDecrement | CPRAmmoItem | Called.");
     const currentValue = this.system.amount;
     const newValue = Math.max(0, Number(currentValue) - Number(changeAmount));
     this.system.amount = newValue;
@@ -58,7 +55,6 @@ export default class CPRAmmoItem extends CPRItem {
    * @returns -null or the updated actor data if this ammo is owned
    */
   async _ammoIncrement(changeAmount) {
-    LOGGER.trace("_ammoIncrement | CPRAmmoItem | Called.");
     const currentValue = this.system.amount;
     const newValue = Number(currentValue) + Number(changeAmount);
     this.system.amount = newValue;

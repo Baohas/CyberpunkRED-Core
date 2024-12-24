@@ -9,7 +9,6 @@ export default class CPRSystemUtils {
   /* COMPENDIA AND FOLDER UTILS */
 
   static GetWorldCompendia(ctype = null) {
-    LOGGER.trace("GetWorldCompendia | CPRSystemUtils | Called.");
     if (!game.packs) return [];
     const packs = game.packs.filter((p) => p.metadata.packageType === "world");
     if (ctype) {
@@ -28,7 +27,6 @@ export default class CPRSystemUtils {
    * @returns {Document} - returns a Document object with specific document searched for by name
    */
   static async GetCompendiumDoc(cname, dname) {
-    LOGGER.trace("GetCompendiumDoc | CPRSystemUtils | Called.");
     const comp = game.packs.get(cname);
     return comp.getDocument(
       comp.index.contents.filter((i) => i.name === dname)[0]._id
@@ -44,7 +42,6 @@ export default class CPRSystemUtils {
    * @returns {Array<Document>} - returns an array with all documents from compendium
    */
   static async GetCompendiumDocs(cname) {
-    LOGGER.trace("GetCompendiumDocs | CPRSystemUtils | Called.");
     return game.packs.get(cname).getDocuments();
   }
 
@@ -56,7 +53,6 @@ export default class CPRSystemUtils {
    * @param {String} name - name to look up by
    */
   static GetCompendiumIdByLabel(label) {
-    LOGGER.trace("GetCompendiumIdByLabel | CPRSystemUtils | Called.");
     const comps = game.packs.filter((p) => p.metadata.label === label);
     if (comps.length > 1) {
       this.DisplayMessage(
@@ -84,7 +80,6 @@ export default class CPRSystemUtils {
    * @returns {Object} - Merged choices of themes
    */
   static GetThemes(themes) {
-    LOGGER.trace("GetThemes | CPRSystemUtils | Called.");
     const defaultThemes = themes;
     const moduleThemes = {};
 
@@ -111,7 +106,6 @@ export default class CPRSystemUtils {
    * @static
    */
   static SetTheme(node) {
-    LOGGER.trace("SetThemes | CPRSystemUtils | Called.");
     const theme = game.settings.get(game.system.id, "theme")
       ? game.settings.get(game.system.id, "theme")
       : "default";
@@ -132,7 +126,6 @@ export default class CPRSystemUtils {
    * @returns {Documents}
    */
   static async GetCoreSkills() {
-    LOGGER.trace("GetCoreSkills | CPRSystemUtils | Called.");
     return CPRSystemUtils.GetCompendiumDocs(
       `${game.system.id}.internal_skills`
     );
@@ -145,8 +138,6 @@ export default class CPRSystemUtils {
    * @returns {Set} - A Set containing martial art skills from the actorData.
    */
   static GetMartialArtSkills(actorData) {
-    LOGGER.trace("GetMartialArtSkills | CPRSystemUtils | Called.");
-
     // Get any skills with `skillType` === `martialArts`
     const martialArtSkills = new Set(
       actorData.itemTypes.skill.reduce((acc, item) => {
@@ -167,8 +158,6 @@ export default class CPRSystemUtils {
    * @returns {Set} - A Set containing attackable skills of the actor.
    */
   static GetAttackableSkills(actorData) {
-    LOGGER.trace("GetAttackableSkills | CPRSystemUtils | Called.");
-
     // Find the default attack skills (meleeWeapon, autofire, etc.)
     // the `Evasion` skill gets grouped with these so we need to exclude it
     // manually.
@@ -223,7 +212,6 @@ export default class CPRSystemUtils {
    * @returns {Documents}
    */
   static async GetCoreCyberware() {
-    LOGGER.trace("GetCoreCyberware | CPRSystemUtils | Called.");
     return CPRSystemUtils.GetCompendiumDocs(
       `${game.system.id}.internal_cyberware-core`
     );
@@ -234,7 +222,6 @@ export default class CPRSystemUtils {
    * @returns {Array} - array of tables
    */
   static async GetDvTables() {
-    LOGGER.trace("GetDvTables | CPRSystemUtils | called.");
     const tableList = await CPRSystemUtils.GetCompendiumDocs(
       game.settings.get(game.system.id, "dvRollTableCompendium")
     );
@@ -243,7 +230,6 @@ export default class CPRSystemUtils {
   }
 
   static async SetDvTable(token, tableName) {
-    LOGGER.trace("SetDvTable | CPRSystemUtils | called.");
     const dvTables = await CPRSystemUtils.GetDvTables();
     const [selectedTable] = dvTables.filter(
       (table) => table.name === tableName
@@ -277,7 +263,6 @@ export default class CPRSystemUtils {
    * @returns {Array} table objects matching the given criteria
    */
   static GetRollTables(tableName, useRegExp) {
-    LOGGER.trace("GetRollTables | CPRSystemUtils | Called.");
     let tableList;
     if (useRegExp) {
       const searchString = new RegExp(tableName);
@@ -304,7 +289,6 @@ export default class CPRSystemUtils {
     name,
     options = { parent: null, forceCreate: false }
   ) {
-    LOGGER.trace("GetFolder | CPRSystemUtils | Called.");
     const folderList = game.folders.filter(
       (folder) => folder.name === name && folder.type === type
     );
@@ -323,7 +307,6 @@ export default class CPRSystemUtils {
    * @param {String} msg - the message to print (untranslated)
    */
   static async DisplayMessage(msgType, msg) {
-    LOGGER.trace("DisplayMessage | CPRSystemUtils | Called.");
     const localizedMessage = CPRSystemUtils.Localize(msg);
     switch (msgType) {
       case "warn":
@@ -352,7 +335,6 @@ export default class CPRSystemUtils {
    * @returns {string} The localized version of the input string.
    *
    */
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   static Localize(string) {
     return game.i18n.localize(string);
   }
@@ -369,7 +351,6 @@ export default class CPRSystemUtils {
    * @returns {string} The formatted string with substituted values.
    *
    */
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   static Format(string, object) {
     return game.i18n.format(string, object);
   }
@@ -395,7 +376,6 @@ export default class CPRSystemUtils {
    * @returns {String}
    */
   static slugify(name) {
-    LOGGER.trace("slugify | CPRSkillItem | Called.");
     const slug = name;
     const initialSplit = slug.split(" ").join("");
     const orCaseSplit = initialSplit.split("/").join("Or");
@@ -419,7 +399,6 @@ export default class CPRSystemUtils {
   }
 
   static SortItemListByName(itemList) {
-    LOGGER.trace("SortItemListByName | CPRSystemUtils | Called.");
     const itemDataList = itemList.map((o) => ({
       name: o.name,
       uuid: o.uuid,
@@ -472,7 +451,6 @@ export default class CPRSystemUtils {
    * @param {*} extraSettings - a prefix for the name of the setting (sheetConfig only)
    */
   static SetUserSetting(type, name, value, extraSettings) {
-    LOGGER.trace("SetUserSetting | CPRSystemUtils | Called.");
     const userSettings = game.settings.get(game.system.id, "userSettings")
       ? game.settings.get(game.system.id, "userSettings")
       : {};
@@ -514,7 +492,6 @@ export default class CPRSystemUtils {
    * @returns - the request hidden setting value
    */
   static GetUserSetting(type, name, extraSettings) {
-    LOGGER.trace("GetUserSetting | CPRSystemUtils | Called.");
     const userSettings = game.settings.get(game.system.id, "userSettings")
       ? game.settings.get(game.system.id, "userSettings")
       : {};
@@ -544,7 +521,6 @@ export default class CPRSystemUtils {
    * @returns {String} - path to an icon to use
    */
   static GetDefaultImage(foundryObject, objectType) {
-    LOGGER.trace("GetDefaultImage | CPRSystemUtils | Called.");
     let imageLink = "";
     if (foundryObject === "Item") {
       switch (objectType) {
@@ -640,7 +616,6 @@ export default class CPRSystemUtils {
    * @return {Array.<string>} - array of parent class names; strings.
    */
   static getPrototypeChain(objectData) {
-    LOGGER.trace("getPrototypeChain | CPRSystemUtils | Called.");
     const prototypeChain = [];
     let currentPrototype = objectData;
     while (currentPrototype) {
@@ -659,7 +634,6 @@ export default class CPRSystemUtils {
    * @return {Array} - Targeted or selected tokens.
    */
   static getUserTargetedOrSelected(targetedOrSelected) {
-    LOGGER.trace("getUserTargetedOrSelected | CPRSystemUtils | Called.");
     const targets = new Set(game.user.targets);
     const tokens =
       targetedOrSelected === "selected"
@@ -679,7 +653,6 @@ export default class CPRSystemUtils {
    * @returns {Array}
    */
   static getDocTypesFromMixin(mixinName, docClass = "Item") {
-    LOGGER.trace("getDocTypesFromMixin | CPRSystemUtils | Called.");
     const docTypes = [];
     const docDataModels = Object.entries(CONFIG[docClass].dataModels);
     docDataModels.forEach(([entityType, dataModel]) => {
@@ -699,7 +672,6 @@ export default class CPRSystemUtils {
    * @returns {Array} - array of document types which have the mixin
    */
   static getMixins(docType, docClass = "Item") {
-    LOGGER.trace("getMixins | CPRSystemUtils | Called.");
     return CONFIG[docClass].dataModels[docType].mixins.filter(
       (t) => t !== "common"
     );
@@ -714,7 +686,6 @@ export default class CPRSystemUtils {
    * @returns {Boolean}
    */
   static hasMixin(docType, mixin, docClass = "Item") {
-    LOGGER.trace("hasMixin | CPRSystemUtils | Called.");
     return CPRSystemUtils.getMixins(docType, docClass).includes(mixin);
   }
 
@@ -730,7 +701,6 @@ export default class CPRSystemUtils {
    * @returns {String} - the value of the field passed in the event data
    */
   static GetEventDatum(event, datum) {
-    LOGGER.trace("GetEventDatum | CPRSystemUtils | Called.");
     let id = $(event.currentTarget).attr(datum);
     if (typeof id === "undefined") {
       LOGGER.debug(
@@ -754,7 +724,6 @@ export default class CPRSystemUtils {
    * @returns {Boolean}
    */
   static isNumeric(numericVariable) {
-    LOGGER.trace("isNumeric | CPRSystemUtils | Called.");
     if (Number.isNaN(numericVariable)) {
       LOGGER.error("Expected a numeric, but received NaN");
       return false;

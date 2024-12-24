@@ -1,6 +1,5 @@
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPRItem from "../cpr-item.js";
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
 
@@ -19,7 +18,6 @@ export default class CPRRoleItem extends CPRItem {
    * @returns {CPRRoll}
    */
   _createRoleRoll(rollType, actor, rollInfo) {
-    LOGGER.trace("_createRoleRoll | CPRRoleItem | Called.");
     const cprItemData = this.system;
     let roleName = cprItemData.mainRoleAbility;
     let statName = "--";
@@ -151,7 +149,6 @@ export default class CPRRoleItem extends CPRItem {
    * @return {Array} - Array of CPRMod-like-objects for feeding into cprRoll.addMod().
    */
   getRoleMods(bonusName, isUniversalBonus = false) {
-    LOGGER.trace("getRoleMods | CPRRoleItem | Called.");
     // Assign correct key and category for skill bonuses.
     let key = `bonuses.${SystemUtils.slugify(bonusName)}`;
     let category = "skill";

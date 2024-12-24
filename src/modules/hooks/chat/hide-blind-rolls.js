@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 const HideBlindRolls = () => {
   /**
    * Inject UI "tags" for rolls and whispers make it more clear that private
@@ -12,7 +10,6 @@ const HideBlindRolls = () => {
    * @param {string} msg (unused)      - our simulation of the ChatData object
    */
   Hooks.on("renderChatMessage", async (_, html) => {
-    LOGGER.trace("renderChatMessage | chatHooks | Called.");
     // Do not display "Blind" chat cards to non-gm
     // Foundry doesn't support blind chat messages so this is how we get around
     // that.

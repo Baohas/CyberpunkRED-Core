@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
 import CPRSystemDataModel from "../abstract.js";
 import AttackableSchema from "./mixins/attackable-schema.js";
@@ -25,7 +24,6 @@ export default class WeaponDataModel extends CPRSystemDataModel.mixin(
   ValuableSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | WeaponDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       handsReq: new fields.NumberField({

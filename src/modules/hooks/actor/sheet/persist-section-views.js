@@ -1,4 +1,3 @@
-import LOGGER from "../../../utils/cpr-logger.js";
 import SystemUtils from "../../../utils/cpr-systemUtils.js";
 
 const PersistSectionViews = () => {
@@ -11,7 +10,6 @@ const PersistSectionViews = () => {
    * @param {CPRActorSheet} actorSheet - application object (the sheet)
    */
   Hooks.on("closeActorSheet", (actorSheet) => {
-    LOGGER.trace("closeActorSheet | actorSheetHooks | Called.");
     SystemUtils.SetUserSetting(
       "sheetConfig",
       "sheetCollapsedSections",

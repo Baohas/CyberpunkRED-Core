@@ -1,9 +1,7 @@
 import CPR from "../../../system/config.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class RoleAbilitySchema extends foundry.abstract.DataModel {
   static defineSchema() {
-    LOGGER.trace("defineSchema | RoleAbilitySchema | called.");
     const { fields } = foundry.data;
     return {
       name: new fields.StringField({ required: true, nullable: false }),

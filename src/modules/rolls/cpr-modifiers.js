@@ -1,6 +1,5 @@
 /* eslint-disable max-classes-per-file */
 
-import LOGGER from "../utils/cpr-logger.js";
 import CPR from "../system/config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
@@ -12,7 +11,6 @@ export default class CPRMod {
    * @constructor
    */
   constructor(effect, change) {
-    LOGGER.trace("constructor | CPRMod | Called.");
     const index = effect.changes.indexOf(change); // Index of change on the effect.
     // We do optional chaining on the next few because some items may not have flags.${game.system.id}.situational or .cats defined.
     this.category = effect.flags[game.system.id].changes.cats?.[index]; // Category of the change. This comes from Zyzyx's work.
@@ -37,7 +35,6 @@ export default class CPRMod {
    * @return {Array<CPRMod>}
    */
   static getAllModifiers(effects, getDisabled = false) {
-    LOGGER.trace("getAllModifiers | CPRMod | Called.");
     const allModifiers = [];
     effects.forEach((effect) => {
       // Ignore suppressed/disabled effects, unless getDisabled = true. In that case, get all.
@@ -59,7 +56,6 @@ export default class CPRMod {
    * @return {Array<CPRMod>} - Array of mods filtered for a specific key.
    */
   static getRelevantMods(modifiers, key) {
-    LOGGER.trace("getRelevantMods | CPRMod | Called.");
     let relevantMods = [];
     if (Array.isArray(key)) {
       relevantMods = modifiers.filter((m) => {
@@ -83,7 +79,6 @@ export default class CPRMod {
    * @return {Array<CPRMod>} - Array of mods filtered to be applicable for a specific type of roll.
    */
   static getSituationalRollMods(rollData, effects, item, actor) {
-    LOGGER.trace("getSituationalRollMods | CPRMod | Called.");
     const prototypeChain = SystemUtils.getPrototypeChain(rollData);
 
     // Get effects relevant to the roll.
@@ -274,7 +269,6 @@ export default class CPRMod {
    * @return {Array<CPRMod-like-objects>} - Array of mods from config.js.
    */
   static getDefaultSituationalMods() {
-    LOGGER.trace("getDefaultSituationalMods | CPRMod | Called.");
     return Object.values(CPR.defaultSituationalMods);
   }
 }

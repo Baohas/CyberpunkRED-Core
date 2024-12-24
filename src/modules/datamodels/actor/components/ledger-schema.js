@@ -1,8 +1,5 @@
-import LOGGER from "../../../utils/cpr-logger.js";
-
 export default class LedgerSchema extends foundry.abstract.DataModel {
   static defineSchema() {
-    LOGGER.trace("defineSchema | LedgerSchema | called.");
     const { fields } = foundry.data;
     return {
       transactions: new fields.ArrayField(

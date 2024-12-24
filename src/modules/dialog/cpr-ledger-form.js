@@ -7,7 +7,6 @@ import CPRDialog from "./cpr-dialog-application.js";
  */
 export default class CPRLedger extends CPRDialog {
   constructor(actor, propName, options) {
-    LOGGER.trace("constructor | CPRDialog | Called.");
     super(actor.system[propName], options);
     this.actor = actor;
     this.total = actor.system[propName].value;
@@ -36,7 +35,6 @@ export default class CPRLedger extends CPRDialog {
    * @override
    */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRLedger | called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       // The title is set in the constructor above.
       template: `systems/${game.system.id}/templates/dialog/cpr-ledger-form.hbs`,
@@ -53,7 +51,6 @@ export default class CPRLedger extends CPRDialog {
    * @return {Object} - a structured object representing ledger data.
    */
   getData() {
-    LOGGER.trace("getData | CPRLedger | called.");
     super.getData();
     const data = {
       total: this.total,
@@ -70,8 +67,6 @@ export default class CPRLedger extends CPRDialog {
    * @param {*} html - the DOM object
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRLedger | called.");
-
     html
       .find(".delete-ledger-line")
       .click((event) => this._deleteLedgerLine(event));
@@ -93,7 +88,6 @@ export default class CPRLedger extends CPRDialog {
    * @param {*} event - object with details of the event
    */
   _updateLedger(ledgerProp, event) {
-    LOGGER.trace("_updateLedger | CPRCharacterActorSheet | Called.");
     let { value } = this.form[0];
     const reason = this.form[1].value;
     let action = SystemUtils.GetEventDatum(event, "data-action");
@@ -171,7 +165,6 @@ export default class CPRLedger extends CPRDialog {
    * @param {String} name - Name of the ledger
    */
   _makeLedgerReadable() {
-    LOGGER.trace("_makeLedgerReadable | CPRLedger | called.");
     this.contents.forEach((element, index) => {
       const tmp = element[0].replace(this.propName, "").trim();
       this.contents[index][0] = tmp[0].toUpperCase() + tmp.slice(1);
@@ -185,7 +178,6 @@ export default class CPRLedger extends CPRDialog {
    * @param {Object} event - Event Data contianing the line to delete
    */
   async _deleteLedgerLine(event) {
-    LOGGER.trace("_deleteLedgerLine | CPRLedger | called.");
     const lineId = SystemUtils.GetEventDatum(event, "data-line");
     this.contents = foundry.utils.duplicate(
       this.actor.listRecords(this.propName)

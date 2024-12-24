@@ -1,5 +1,4 @@
 import CPRActor from "./cpr-actor.js";
-import LOGGER from "../utils/cpr-logger.js";
 
 /**
  * Character actors are generally represented by players, but for especially detailed NPCs,
@@ -19,10 +18,8 @@ export default class CPRCharacterActor extends CPRActor {
    * @param {Object} options - not used here, but required by the parent class
    */
   static async create(data, options) {
-    LOGGER.trace("create | CPRCharacterActor | called.");
     const createData = data;
     if (typeof data.system === "undefined") {
-      LOGGER.trace("create | New Actor | CPRCharacterActor | called.");
       createData.prototypeToken = {
         actorLink: true,
         disposition: 1,

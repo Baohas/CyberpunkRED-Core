@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 /**
  * Filter out electronic items that are EMPable. An item is considered
  * EMPable if none of its installed items, sibling items, or itself provide
@@ -16,7 +14,6 @@ import LOGGER from "../../utils/cpr-logger.js";
  * @return: {Array<String>} A list of EMPable electronic items
  */
 function getEMPableItems(actorData) {
-  LOGGER.trace("getEMPableItems | CPRMacro | called.");
   const electronicItems = actorData.items.reduce((acc, item) => {
     if (item.system.isElectronic) {
       if (

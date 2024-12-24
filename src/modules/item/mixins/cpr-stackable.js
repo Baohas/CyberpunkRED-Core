@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 /**
  * Note: a lot of direct item interaction from CPRActorSheet._splitItem()
  */
@@ -10,7 +8,6 @@ const Stackable = function Stackable() {
    * @param {String} value - "+X", "-X", or "X" to change the amount
    */
   this.setItemAmount = function setItemAmount(value) {
-    LOGGER.trace("setItemAmount | Stackable | Called.");
     if (value.charAt(0) === "+" || value.charAt(0) === "-") {
       // handle a delta provided rather than a straight value
       this.system.amount += parseInt(value, 10);

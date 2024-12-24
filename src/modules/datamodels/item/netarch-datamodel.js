@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import CommonSchema from "./mixins/common-schema.js";
 import ValuableSchema from "./mixins/valuable-schema.js";
@@ -10,7 +9,6 @@ export default class NetArchDataModel extends CPRSystemDataModel.mixin(
   // Most of these should be moved to `config.js`
   // or converted into ints rather than int-like strings.
   static defineSchema() {
-    LOGGER.trace("defineSchema | NetArchDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       floors: new fields.ArrayField(

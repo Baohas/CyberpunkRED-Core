@@ -34,7 +34,6 @@ export default class MigrationRunner {
    * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
    */
   constructor(currDataModelVersion) {
-    LOGGER.trace("constructor | MigrationRunner");
     this.currentDataModelVersion = currDataModelVersion;
     this.newDataModelVersion = MigrationRunner.#LATEST_VERSION;
 
@@ -82,12 +81,10 @@ export default class MigrationRunner {
   #currentMigration = null;
 
   get currentMigration() {
-    LOGGER.trace("get currentMigration | MigrationRunner");
     return this.#currentMigration;
   }
 
   get migrationClasses() {
-    LOGGER.trace("get migrationClasses | MigrationRunner");
     return this.#migrationClasses;
   }
 
@@ -96,18 +93,15 @@ export default class MigrationRunner {
    * @returns {MigrationApp|null}
    */
   static get app() {
-    LOGGER.trace("get app | MigrationRunner");
     const app = foundry.applications.instances.get("cpr-migration");
     return app || null;
   }
 
   get app() {
-    LOGGER.trace("get app | MigrationRunner");
     return MigrationRunner.app;
   }
 
   get totalMigrations() {
-    LOGGER.trace("get totalMigrations | MigrationRunner");
     return this.migrationClasses.length;
   }
 
@@ -117,7 +111,6 @@ export default class MigrationRunner {
    * @return {boolean}
    */
   get needsMigration() {
-    LOGGER.trace("get needsMigration | MigrationRunner");
     return this.totalMigrations > 0;
   }
 
@@ -127,7 +120,6 @@ export default class MigrationRunner {
    * @return {Object} An object containing the count of items, actors, scenes, tokens, packs, and pack documents.
    */
   get totalDocs() {
-    LOGGER.trace("get totalDocs | MigrationRunner");
     const totals = {
       get total() {
         return this.items + this.actors + this.tokens + this.packDocuments;
@@ -166,7 +158,6 @@ export default class MigrationRunner {
    * @return {Array<typeof BaseMigrationScript>} - an ordered list of BaseMigrationScript subclasses.
    */
   filterMigrationClasses() {
-    LOGGER.trace("filterMigrationClasses | MigrationRunner");
     const { currentDataModelVersion, newDataModelVersion } = this;
     const migrationClasses = Object.values(Migrations)
       .filter((Migration) => {
@@ -186,8 +177,6 @@ export default class MigrationRunner {
    * @returns {Promise<boolean>} - True if all migrations completed successfully or no migrations are needed
    */
   async migrateWorld() {
-    LOGGER.trace("migrateWorld | MigrationRunner");
-
     // Open migration application before anything else.
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
@@ -271,8 +260,6 @@ export default class MigrationRunner {
    * @returns {Promise<Boolean>} - True if all migrations completed successfully
    */
   async runMigrations() {
-    LOGGER.trace("runMigrations | MigrationRunner");
-
     const { app } = this;
     try {
       // migrate miscellaneous data
@@ -312,7 +299,6 @@ export default class MigrationRunner {
    * @return {Promise<Object>} An object containing the world items, world actors, scene Map, and pack Map.
    */
   async prepareDocumentsForMigration() {
-    LOGGER.trace("prepareDocumentsForMigration | MigrationRunner");
     // Prepare world items and actors.
     const worldItems = this.filterDocuments(game.items);
     const worldActors = this.filterDocuments(game.actors);
@@ -374,7 +360,6 @@ export default class MigrationRunner {
    * @return {Array<CPRActor|CPRItem>} An array of filtered Actors or Items (but not both).
    */
   filterDocuments(docList) {
-    LOGGER.trace("filterDocuments | MigrationRunner");
     if (!Array.isArray(docList)) docList = Array.from(docList);
     if (!docList.length) return docList;
 
@@ -413,7 +398,6 @@ export default class MigrationRunner {
    * @return {Array<Token>} An array of filtered tokens.
    */
   static filterTokens(tokens) {
-    LOGGER.trace("filterTokens | MigrationRunner");
     const filteredTokens = tokens.filter((token) => {
       if (!game.actors.has(token.actorId)) {
         // Degenerate case where the actor that the token is derived from was since
@@ -440,7 +424,6 @@ export default class MigrationRunner {
    * @return {Array} The filtered array of compendia.
    */
   static filterCompendia(compendia) {
-    LOGGER.trace("filterCompendia | MigrationRunner");
     // Pack types we provide migrations for
     const packTypes = ["Actor", "Item", "Scene"];
 
@@ -473,7 +456,6 @@ export default class MigrationRunner {
    * @return {Object<Set<string>>} An object which contains Sets of document types that are allowed.
    */
   getAllowedDocTypes() {
-    LOGGER.trace("getAllowedDocTypes | MigrationRunner");
     const docNames = ["Item", "Actor"];
     const finalTypes = { Item: null, Actor: null };
     for (const docName of docNames) {
@@ -507,7 +489,6 @@ export default class MigrationRunner {
    */
 
   isMigratableType(docName, docType, migration = {}) {
-    LOGGER.trace("isMigratableType | MigrationRunner");
     const allowedDocTypes = migration.allowedDocTypes || this.allowedDocTypes;
     if (!allowedDocTypes[docName]) return false;
     if (!allowedDocTypes[docName].size) return true;
@@ -525,7 +506,6 @@ export default class MigrationRunner {
     documents,
     { batch = MigrationRunner.devMode.batchMigrations, pack = null } = {}
   ) {
-    LOGGER.trace("migrateDocuments | MigrationRunner");
     if (!documents.length) return;
     const [firstEntry] = documents;
     const { documentName, documentClass } = firstEntry.collection;
@@ -550,7 +530,6 @@ export default class MigrationRunner {
   }
 
   async migrateItem(itemData) {
-    LOGGER.trace("migrateItem | MigrationRunner");
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
       if (!this.isMigratableType("Item", itemData.type, migration)) continue;
@@ -564,7 +543,6 @@ export default class MigrationRunner {
   }
 
   async migrateActor(actorData) {
-    LOGGER.trace("migrateActor | MigrationRunner");
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
       if (!this.isMigratableType("Actor", actorData.type, migration)) continue;
@@ -593,7 +571,6 @@ export default class MigrationRunner {
    * Migrate scenes, specifically unlinked tokens.
    */
   async migrateScenes() {
-    LOGGER.trace("migrateScenes | MigrationRunner");
     const { progress } = this.app;
     progress.scenes.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const actorList of this.documents.sceneMap.values()) {
@@ -628,7 +605,6 @@ export default class MigrationRunner {
    * community for Foundry preferred locked things to be left alone.
    */
   async migrateCompendia() {
-    LOGGER.trace("migrateCompendia | MigrationRunner");
     const { progress } = this.app;
     progress.packs.render(); // Initialize 'scenes' progress bar so that it is on top of all 'tokens' progress bars.
     for (const [pack, docList] of this.documents.packMap) {
@@ -664,7 +640,6 @@ export default class MigrationRunner {
    * During this phase we do permit the scripts to make async changes to the database
    */
   async migrateMisc() {
-    LOGGER.trace("migrateMisc | MigrationRunner");
     for (const migration of this.migrationInstances) {
       this.#currentMigration = migration;
       try {
@@ -687,7 +662,6 @@ export default class MigrationRunner {
    * @return {void}
    */
   updateMigrationRecord(update, isToken = false) {
-    LOGGER.trace("updateMigrationRecord | MigrationRunner");
     if (!update.flags[game.system.id]) update.flags[game.system.id] = {};
     const migrationData = {
       previous: this.currentDataModelVersion,
@@ -706,7 +680,6 @@ export default class MigrationRunner {
    * @return {boolean} Returns true if the document has already been migrated, false otherwise.
    */
   alreadyMigrated(doc, ignore = false) {
-    LOGGER.trace("alreadyMigrated | MigrationRunner");
     if (ignore) return false;
     const systemFlags = doc.flags[game.system.id];
     if (!systemFlags) return false;
@@ -736,7 +709,6 @@ export default class MigrationRunner {
    * @return {Promise<Error>} The Error object
    */
   async generateError(uuid, error) {
-    LOGGER.trace("generateError | MigrationRunner");
     const document = await fromUuid(uuid);
     const errorInfo = {
       pack: null,
@@ -802,7 +774,6 @@ export default class MigrationRunner {
    * @return {Object|null} The progress bar for the document, or null if the document is not provided.
    */
   getProgressBar(document) {
-    LOGGER.trace("getProgressBar | MigrationRunner");
     if (!document) return null;
     const { collectionName } = document;
     const isEmbeddedItem = collectionName === "items" && document.isEmbedded;

@@ -1,5 +1,4 @@
 /* eslint-disable class-methods-use-this */
-import LOGGER from "../../utils/cpr-logger.js";
 
 const InitializeDragRulerIntegration = () => {
   /**
@@ -10,10 +9,8 @@ const InitializeDragRulerIntegration = () => {
    * @memberof hookEvents
    */
   Hooks.once("dragRuler.ready", (SpeedProvider) => {
-    LOGGER.trace("dragRulerHook | cprSpeedProvider | Called.");
     class cprSpeedProvider extends SpeedProvider {
       get colors() {
-        LOGGER.trace("dragRulerHook | get colors | Called.");
         return [
           { id: "walk", default: 0x00ff00, name: "cprDragRuler.speeds.walk" },
           { id: "run", default: 0xff8000, name: "cprDragRuler.speeds.run" },
@@ -21,7 +18,6 @@ const InitializeDragRulerIntegration = () => {
       }
 
       getRanges(token) {
-        LOGGER.trace("dragRulerHook | getRanges  | Called.");
         const walkSpeed =
           token.actor.system.derivedStats.walk.value + token.actor.bonuses.walk;
         const runSpeed =

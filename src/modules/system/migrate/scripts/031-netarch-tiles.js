@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import BaseMigrationScript from "../base-migration-script.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class NetarchTilesMigration extends BaseMigrationScript {
   static version = 31;
@@ -9,7 +8,6 @@ export default class NetarchTilesMigration extends BaseMigrationScript {
   static name = "Misc: Netarch Tiles";
 
   async migrateMisc() {
-    LOGGER.trace("migrateMisc | NetarchTiles");
     const scenes = game.scenes.contents;
 
     for (const scene of scenes) {

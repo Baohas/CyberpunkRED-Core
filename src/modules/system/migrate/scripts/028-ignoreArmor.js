@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import BaseMigrationScript from "../base-migration-script.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class AttackableIgnoreArmorMigration extends BaseMigrationScript {
   static version = 28;
@@ -14,7 +13,6 @@ export default class AttackableIgnoreArmorMigration extends BaseMigrationScript 
   };
 
   async updateItem(doc) {
-    LOGGER.trace("updateItem | Attackable Ignore Armor");
     if (!doc.system.isRanged && doc.system.weaponType !== "unarmed") {
       doc.system.canIgnoreArmor = true;
       doc.system.ignoreArmorPercent = 50;

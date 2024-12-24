@@ -1,5 +1,4 @@
 import CPR from "../system/config.js";
-import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
@@ -16,7 +15,6 @@ export default class CPRCompendiaSettings extends FormApplication {
    * @static
    */
   static get defaultOptions() {
-    LOGGER.trace("CPRCompendiaSettings | defaultOptions | called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       title: SystemUtils.Localize("CPR.settings.compendiumMenu.title"),
       id: "injury-config",
@@ -39,7 +37,6 @@ export default class CPRCompendiaSettings extends FormApplication {
    */
   // eslint-disable-next-line class-methods-use-this
   async getData() {
-    LOGGER.trace("CPRCompendiaSettings | getData | called.");
     const critCurr = await game.settings.get(
       game.system.id,
       "criticalInjuryRollTableCompendium"
@@ -90,7 +87,6 @@ export default class CPRCompendiaSettings extends FormApplication {
    */
   // eslint-disable-next-line class-methods-use-this
   async _updateObject(event, formData) {
-    LOGGER.trace("CPRCompendiaSettings | _updateObject | called.");
     await game.settings.set(
       game.system.id,
       "criticalInjuryRollTableCompendium",

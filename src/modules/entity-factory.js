@@ -24,9 +24,6 @@ import CPRUpgradeItem from "./item/types/cpr-upgrade.js";
 import CPRVehicleItem from "./item/types/cpr-vehicle.js";
 import CPRWeaponItem from "./item/types/cpr-weapon.js";
 
-// Utilities
-import LOGGER from "./utils/cpr-logger.js";
-
 /**
  * This code is heavily borrowed from the Burning Wheel system module. The jist
  * is to provide a Proxy object (this a native thing in JavaScript) whenever an actor
@@ -45,7 +42,6 @@ import LOGGER from "./utils/cpr-logger.js";
 function factory(entities, baseClass) {
   return new Proxy(baseClass, {
     construct: (target, args) => {
-      LOGGER.trace("object construct | factory | entity-factory.js");
       const [data, options] = args;
       const constructor = entities[data.type];
       if (!constructor)
@@ -53,7 +49,6 @@ function factory(entities, baseClass) {
       return new constructor(data, options);
     },
     get: (target, prop) => {
-      LOGGER.trace("object get | factory | entity-factory.js");
       switch (prop) {
         case "create":
           // Calling the class' create() static function

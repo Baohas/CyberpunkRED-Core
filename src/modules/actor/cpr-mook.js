@@ -19,10 +19,8 @@ export default class CPRMookActor extends CPRActor {
    * @param {Object} options - not used here but passed up to the parent class
    */
   static async create(data, options) {
-    LOGGER.trace("create | CPRMookActor | called.");
     const createData = data;
     if (typeof data.system === "undefined") {
-      LOGGER.trace("create | New Actor | CPRMookActor | called.");
       createData.prototypeToken = {
         "sight.enabled": true,
         bar1: { attribute: "derivedStats.hp" },

@@ -1,6 +1,5 @@
 /* eslint-disable max-classes-per-file */
 import CPRMod from "../rolls/cpr-modifiers.js";
-import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
 
@@ -14,8 +13,6 @@ export class CPRRollDialog extends CPRDialog {
    * @constructor
    */
   constructor(rollData, actor, item, options) {
-    LOGGER.trace("constructor | CPRRollDialog | Called.");
-
     super(rollData, options);
 
     // Set data and options specific to this subclass.
@@ -47,7 +44,6 @@ export class CPRRollDialog extends CPRDialog {
    * @override
    */
   async getData() {
-    LOGGER.trace("getData | CPRRollDialog | called.");
     const data = super.getData();
     data.rollData = this.rollData; // CPRRoll object
     data.actor = this.actor;
@@ -91,7 +87,6 @@ export class CPRRollDialog extends CPRDialog {
    * @return {Array<Object>} An array of objects containing the value and label for each program damage option.
    */
   getProgramDamageSelectOptions() {
-    LOGGER.trace("getProgramDamageSelectOptions | CPRRollDialog | Called.");
     const standardDamage =
       this.rollData.rollCardExtraArgs.program.system.damage.standard;
     const blackIceDamage =
@@ -121,7 +116,6 @@ export class CPRRollDialog extends CPRDialog {
    * @override
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRRollDialog | Called.");
     super.activateListeners(html);
     if (!this.options.editable) return;
 
@@ -144,7 +138,6 @@ export class CPRRollDialog extends CPRDialog {
    *
    */
   _aimedToggle() {
-    LOGGER.trace("_aimedToggle | CPRRollDialog | Called.");
     if (this.rollData.isAimed) {
       this.rollData.location = "body";
     } else {
@@ -158,7 +151,6 @@ export class CPRRollDialog extends CPRDialog {
    * @param {*} event
    */
   _toggleSituationalMod(event) {
-    LOGGER.trace("_toggleSituationalMod | CPRRollDialog | Called.");
     // Every situational mod should have an ID so that it can be added and deleted.
     const id = SystemUtils.GetEventDatum(event, "data-mod-id");
     const mod =
@@ -179,7 +171,6 @@ export class CPRRollDialog extends CPRDialog {
    *
    */
   _toggleModsVisibility(event) {
-    LOGGER.trace("_toggleModsVisibility | CPRRollDialog | Called.");
     const target = SystemUtils.GetEventDatum(event, "data-target");
     if (target === "situational-mods") {
       this.showSituationalMods = !this.showSituationalMods;
@@ -197,7 +188,6 @@ export class CPRRollDialog extends CPRDialog {
    * @override
    */
   async _updateObject(event, formData) {
-    LOGGER.trace("_updateObject | CPRDialog | Called.");
     const fd = foundry.utils.duplicate(formData);
     if (formData.additionalMods) {
       // Replace all spaces/commas and then split into an array at each comma.
@@ -234,7 +224,6 @@ export class CPRRoleRollDialog extends CPRRollDialog {
    * Prepares any data unique to the Role Roll Dialog sheet.
    */
   getData() {
-    LOGGER.trace("getData | CPRRoleRollDialog | called.");
     const data = super.getData();
 
     const skillIsVarying =
@@ -267,7 +256,6 @@ export class CPRRoleRollDialog extends CPRRollDialog {
    * @override
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRRollRoleDialog | Called.");
     super.activateListeners(html);
     html
       .find(".skill-list-select")
@@ -281,7 +269,6 @@ export class CPRRoleRollDialog extends CPRRollDialog {
    * @param {*} event
    */
   _updateSkillValue(event) {
-    LOGGER.trace("_updateSkillValue | CPRRoleRollDialog | called.");
     const skill = this.rollData.skillList.find(
       (s) => s.name === event.currentTarget.value
     );

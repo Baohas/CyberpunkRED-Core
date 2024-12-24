@@ -19,7 +19,6 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    * @static
    */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRBlackIceActorSheet | Called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
       width: 575,
@@ -36,7 +35,6 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    * @returns {Object} data - a curated structure of actorSheet data
    */
   async getData() {
-    LOGGER.trace("getData | CPRActorSheet | Called.");
     const foundryData = super.getData();
 
     foundryData.enrichedHTML = [];
@@ -106,7 +104,6 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    * @param {Object} html - the DOM object
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRBlackIceActorSheet | Called.");
     html.find(".rollable").click((event) => this._onRoll(event));
     html
       .find(".configure-from-program")
@@ -125,7 +122,6 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    * @param {Object} event - object with details of the event
    */
   async _onRoll(event) {
-    LOGGER.trace("_onRoll | CPRBlackIceActorSheet | Called.");
     const rollType = SystemUtils.GetEventDatum(event, "data-roll-type");
     const rollName = SystemUtils.GetEventDatum(event, "data-roll-title");
     let cprRoll;
@@ -176,7 +172,6 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    * @returns {null}
    */
   async _configureFromProgram() {
-    LOGGER.trace("_configureFromProgram | CPRBlackIceActorSheet | Called.");
     // Only configure Black ICE from a token.
     if (!this.actor.isToken) {
       SystemUtils.DisplayMessage(
@@ -265,9 +260,6 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    * @returns {ContextMenu} The created ContextMenu
    */
   _createBlackIceImageContextMenu(html) {
-    LOGGER.trace(
-      "_createBlackIceImageContextMenu | CPRBlackIceActorSheet | Called."
-    );
     return createImageContextMenu(html, ".bice-icon", this.actor);
   }
 }

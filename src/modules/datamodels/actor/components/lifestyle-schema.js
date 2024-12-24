@@ -1,5 +1,3 @@
-import LOGGER from "../../../utils/cpr-logger.js";
-
 export default class LifestyleSchema extends foundry.abstract.DataModel {
   /**
    * Programatically produce schema object for lifestyle options.
@@ -14,7 +12,6 @@ export default class LifestyleSchema extends foundry.abstract.DataModel {
     initialCost,
     initialDescription,
   } = {}) {
-    LOGGER.trace("defineSchema | LifestyleSchema | called.");
     if (includeCost) {
       return {
         ...this.cost(initialCost),
@@ -25,7 +22,6 @@ export default class LifestyleSchema extends foundry.abstract.DataModel {
     return { ...this.description(initialDescription) };
   }
 
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   static cost(initial) {
     const { fields } = foundry.data;
     return {
@@ -39,7 +35,6 @@ export default class LifestyleSchema extends foundry.abstract.DataModel {
     };
   }
 
-  // eslint-disable-next-line foundry-cpr/logger-after-function-definition
   static description(initial) {
     const { fields } = foundry.data;
     return {

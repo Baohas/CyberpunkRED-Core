@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 const SetDefaultImage = () => {
@@ -11,8 +10,6 @@ const SetDefaultImage = () => {
    * @param {object} createData     A trimmed object with the data provided for creation
    */
   Hooks.on("preCreateItem", (doc, createData) => {
-    LOGGER.trace("preCreateItem | itemHooks | Called.");
-
     const actor = doc.parent;
 
     // The first check makes sure the image isn't overridden if the item is

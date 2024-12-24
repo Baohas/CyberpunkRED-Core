@@ -1,4 +1,3 @@
-/* eslint-disable foundry-cpr/logger-after-function-definition */
 /* eslint no-console:0 */
 export default class LOGGER {
   static log(msg) {

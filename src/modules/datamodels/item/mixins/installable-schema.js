@@ -1,11 +1,9 @@
 import CPR from "../../../system/config.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class InstallableSchema extends foundry.abstract.DataModel {
   static mixinName = "installable";
 
   static defineSchema({ initialSize = 1 } = {}) {
-    LOGGER.trace("defineSchema | InstallableSchema | called.");
     const { fields } = foundry.data;
     return {
       installLocation: new fields.StringField({
@@ -30,7 +28,6 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
    * @returns {Boolean} - whether or not this is installed in an actor/item.
    */
   get isInstalled() {
-    LOGGER.trace("get isInstalled | InstallableSchema | called.");
     const { id } = this.parent;
     const actor = this.parent.isEmbedded ? this.parent.actor : false;
     if (actor) {
@@ -53,7 +50,6 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
    * @returns {Array<String>} - the id or list of ids of the item(s) that this is installed in.
    */
   get installedIn() {
-    LOGGER.trace("get installedIn | InstallableSchema | called.");
     const { id } = this.parent;
     const actor = this.parent.isEmbedded ? this.parent.actor : false;
     // If this item lives on an actor...
@@ -94,7 +90,6 @@ export default class InstallableSchema extends foundry.abstract.DataModel {
    * @returns {Number} - The amount of layers deep that this item is installed. Returns 0 if uninstalled.
    */
   get installDepth() {
-    LOGGER.trace("get installDepth | InstallableSchema | called.");
     function getDepth(doc, n = 0) {
       const actor = doc?.isEmbedded ? doc.actor : false;
       if (doc.system.isInstalled && doc.documentName !== "Actor") {

@@ -15,7 +15,6 @@ export default class CPRNetArchItem extends CPRItem {
    * @constructor
    */
   constructor(itemData, context) {
-    LOGGER.trace("constructor | CPRNetarchUtils | called.");
     super(itemData, context);
     this.options = {
       filePath: `systems/${game.system.id}/tiles/netarch/WebP/`,
@@ -63,7 +62,6 @@ export default class CPRNetArchItem extends CPRItem {
    * @returns nothing
    */
   async _generateNetarchScene() {
-    LOGGER.trace("_generateNetarchScene | CPRNetarchUtils | called.");
     this.tileData = {
       arrow: {
         texture: {
@@ -353,7 +351,6 @@ export default class CPRNetArchItem extends CPRItem {
    * @param {String} newName - name for the new scene
    */
   async _duplicateScene(newName) {
-    LOGGER.trace("_duplicateScene | CPRNetarchUtils | Called.");
     const sceneName = this.animated
       ? "Netarch Template - Animated"
       : "Netarch Template";
@@ -375,7 +372,6 @@ export default class CPRNetArchItem extends CPRItem {
    * @returns nothing
    */
   async _addTilesToScene(tileData) {
-    LOGGER.trace("_addTilesToScene | CPRNetarchUtils | Called.");
     if (this.scene === null) {
       LOGGER.log("Error no scene defined!");
       return;
@@ -389,7 +385,6 @@ export default class CPRNetArchItem extends CPRItem {
    * @returns nothing
    */
   async _removeAllTiles() {
-    LOGGER.trace("_removeAllTiles | CPRNetarchUtils | Called.");
     const tileIds = [];
     this.scene.tiles.forEach((t) => {
       tileIds.push(t.id);
@@ -404,7 +399,6 @@ export default class CPRNetArchItem extends CPRItem {
    * @returns the number given, or null if it is not a number
    */
   static _checkDV(dv) {
-    LOGGER.trace("_checkDV | CPRNetarchUtils | called.");
     const reg = /^[0-9]+$/;
     if (reg.test(dv)) {
       return Number(dv);
@@ -419,7 +413,6 @@ export default class CPRNetArchItem extends CPRItem {
    * @returns whether the given floor is a black-ICE floor or other floor type
    */
   _checkFloorType(floor) {
-    LOGGER.trace("_checkFloorType | CPRNetarchUtils | called.");
     if (
       floor.content === "CPR.global.programClass.blackice" &&
       floor.blackice !== "--"
@@ -435,7 +428,6 @@ export default class CPRNetArchItem extends CPRItem {
    * @returns nothing
    */
   async _customize() {
-    LOGGER.trace("_customize | CPRNetarchUtils | called.");
     let formData = {
       animated: false,
       customTiles: false,

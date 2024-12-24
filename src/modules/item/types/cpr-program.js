@@ -1,5 +1,4 @@
 import CPRItem from "../cpr-item.js";
-import LOGGER from "../../utils/cpr-logger.js";
 
 /**
  * Extend the base CPRItem object with things specific to Programs.
@@ -18,7 +17,6 @@ export default class CPRProgramItem extends CPRItem {
    * @public
    */
   async setRezzed(instanceId = null) {
-    LOGGER.trace("setRezzed | CPRProgramItem | Called.");
     if (instanceId) {
       await this.setFlag(game.system.id, "rezInstanceId", instanceId);
     }
@@ -31,7 +29,6 @@ export default class CPRProgramItem extends CPRItem {
    * @public
    */
   unsetRezzed() {
-    LOGGER.trace("unsetRezzed | CPRProgramItem | Called.");
     this.system.isRezzed = false;
   }
 }

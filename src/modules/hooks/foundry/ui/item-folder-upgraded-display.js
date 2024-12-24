@@ -1,4 +1,3 @@
-import LOGGER from "../../../utils/cpr-logger.js";
 import SystemUtils from "../../../utils/cpr-systemUtils.js";
 
 /**
@@ -168,7 +167,6 @@ function _toggleInstalledVisibility(event) {
  */
 const renderItemDirHooks = () => {
   Hooks.on("renderItemDirectory", (_, html) => {
-    LOGGER.trace("renderItemDirectory | renderItemDirHooks | Called.");
     const itemElements = html.find("li.item");
 
     const hiddenElements = itemElements.filter((__, element) => {

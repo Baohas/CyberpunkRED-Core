@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import HpSchema from "./components/hp-schema.js";
 import WealthSchema from "./mixins/wealth-schema.js";
@@ -7,7 +6,6 @@ export default class ContainerDataModel extends CPRSystemDataModel.mixin(
   WealthSchema
 ) {
   static defineSchema() {
-    LOGGER.trace("defineSchema | ContainerDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       armor: new fields.SchemaField({

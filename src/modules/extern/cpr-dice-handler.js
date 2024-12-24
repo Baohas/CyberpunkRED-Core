@@ -1,5 +1,3 @@
-import LOGGER from "../utils/cpr-logger.js";
-
 /**
  * We use custom chat cards for dice rolls, so we have to override the dice card behaviours
  * provided by 3rd party dice rollers. We currently support Dice So Nice! and DDDice.
@@ -8,7 +6,6 @@ import LOGGER from "../utils/cpr-logger.js";
  */
 export default class DiceHandler {
   static async handle3dDice(roll, rollModeOverride) {
-    LOGGER.trace("handle3dDice | DiceHandler | called.");
     if (
       (game.modules.get("dice-so-nice") &&
         game.modules.get("dice-so-nice").active) ||
@@ -25,7 +22,6 @@ export default class DiceHandler {
    * @param {Object} rollModeOverride - an object with overriding parameters
    */
   static async _passRoll(roll, rollModeOverride) {
-    LOGGER.trace("_passRoll | DiceHandler | called.");
     let whisper = null;
     let blind = false;
     const rollMode = rollModeOverride || game.settings.get("core", "rollMode");

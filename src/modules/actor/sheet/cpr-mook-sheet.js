@@ -19,7 +19,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @override
    */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRMookActorSheet | Called.");
     const defaultWidth = 800;
     return foundry.utils.mergeObject(super.defaultOptions, {
       width: defaultWidth,
@@ -39,7 +38,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @returns {String} - path to a handlebars template
    */
   get template() {
-    LOGGER.trace("get template | CPRMookActorSheet | Called.");
     if (!game.user.isGM && this.actor.limited) {
       return `systems/${game.system.id}/templates/actor/cpr-mook-sheet-limited.hbs`;
     }
@@ -54,7 +52,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @returns {Object} data - a curated structure of actorSheet data
    */
   async getData() {
-    LOGGER.trace("getData | CPRMookActorSheet | Called.");
     const foundryData = await super.getData();
     const cprActorData = foundryData.actor.system;
     cprActorData.equippedArmor = this.actor.itemTypes.armor.filter(
@@ -84,7 +81,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @param {Object} html - the DOM object
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRMookActorSheet | Called.");
     super.activateListeners(html);
     html.find(".mod-mook-skill").click(() => this._modMookSkills());
     html.find(".change-mook-name").click(() => this._changeMookName());
@@ -114,7 +110,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @returns null
    */
   async _modMookSkills() {
-    LOGGER.trace("_modMookSkills | CPRMookActorSheet | Called.");
     const skillObj = {};
 
     const sortedArray = SystemUtils.SortItemListByName(
@@ -184,8 +179,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @returns null
    */
   async _changeMookName() {
-    LOGGER.trace("_changeMookName | CPRMookActorSheet | Called.");
-
     // Show "Mook Name" dialog.
     const dialogData = await CPRDialog.showDialog(
       { name: this.actor.name },
@@ -213,7 +206,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @param {Object} event - event data such as a mouse click or key press
    */
   _expandMookImage(event) {
-    LOGGER.trace("_expandMookImage | CPRMookActorSheet | Called.");
     const mookImageArea = $(event.currentTarget).parents(".mook-image");
     const mookImageImg = $(event.currentTarget)
       .parents(".mook-image")
@@ -255,7 +247,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @param {Object} event - event data such as a mouse click or key press
    */
   async _handleKeyPress(event) {
-    LOGGER.trace("_handleKeyPress | CPRMookActorSheet | Called.");
     LOGGER.debug(event.keyCode);
     if (event.keyCode === 46) {
       LOGGER.debug("DEL key was pressed");
@@ -318,7 +309,6 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @param {Object} event - event data such as a mouse click or key press
    */
   async _handleInstallAction(event) {
-    LOGGER.trace("_handleInstallAction | CPRMookActorSheet | Called.");
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const item = this.actor.getOwnedItem(itemId);
     if (event.shiftKey) {

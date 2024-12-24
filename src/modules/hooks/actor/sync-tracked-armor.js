@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 const SyncTrackedArmor = () => {
   /**
    *
@@ -14,7 +12,6 @@ const SyncTrackedArmor = () => {
    * @param {object} updatedData      - The changed data object provided to the document creation request
    */
   Hooks.on("preUpdateActor", async (doc, updatedData) => {
-    LOGGER.trace("preUpdateActor | actorHooks | Called.");
     if (updatedData.system?.externalData) {
       Object.keys(updatedData.system.externalData).forEach((itemType) => {
         if (!updatedData.system.externalData[itemType].id) {

@@ -1,6 +1,5 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-shadow */
-import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
 
@@ -12,7 +11,6 @@ export default class SelectRoleBonuses extends CPRDialog {
    * @constructor
    */
   constructor(dialogData, options) {
-    LOGGER.trace("constructor | CPRSelectRoleBonuses | Called.");
     super(dialogData, options);
     this.skillList = dialogData.skillList;
     this.roleData = dialogData.roleData;
@@ -28,7 +26,6 @@ export default class SelectRoleBonuses extends CPRDialog {
    * @override
    */
   getData() {
-    LOGGER.trace("getData | CPRSelectRoleBonuses | called.");
     const data = super.getData();
     data.skillList = this.skillList;
     data.roleData = this.roleData;
@@ -43,8 +40,6 @@ export default class SelectRoleBonuses extends CPRDialog {
    * @override
    */
   async _updateObject(event, formData) {
-    LOGGER.trace("_updateObject | CPRDialog | Called.");
-
     // Convert selected skills into a neat list.
     const bonuses = [];
     formData.selectedSkills.forEach((s) => {

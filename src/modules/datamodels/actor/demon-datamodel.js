@@ -1,10 +1,8 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../abstract.js";
 import HpSchema from "./components/hp-schema.js";
 
 export default class DemonDataModel extends CPRSystemDataModel.mixin() {
   static defineSchema() {
-    LOGGER.trace("defineSchema | DemonDataModel | called.");
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
       stats: new fields.SchemaField({

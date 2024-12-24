@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
 
 /**
@@ -15,7 +14,6 @@ const Valuable = function Valuable() {
    * @returns {Number} - the price of the item per the core rules
    */
   this.calcPrice = function calcPrice(category) {
-    LOGGER.trace("calcPrice | Valuable | Called.");
     // Note: since we use "const", this map is not persisted on the Item object the mixin is added to
     let price = CPR.itemPriceCategoryMap[category];
     const cprItemData = this.system;

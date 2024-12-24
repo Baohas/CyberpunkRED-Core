@@ -30,7 +30,6 @@
     "eslint": "^8.24.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-foundry-cpr": "file:.gitlab/pipeline_tests/eslint-plugin-foundry-cpr",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "fancy-log": "^2.0.0",

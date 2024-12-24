@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import BaseMigrationScript from "../base-migration-script.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 /**
  * Armour penalties used to be stored as negative integers (eg: -4)
@@ -18,7 +17,6 @@ export default class ArmorPenaltyMigration extends BaseMigrationScript {
   };
 
   async updateItem(doc) {
-    LOGGER.trace("updateItem | Attackable Ignore Armor");
     if (doc.system.penalty < 0) {
       doc.system.penalty = Math.abs(doc.system.penalty);
     }

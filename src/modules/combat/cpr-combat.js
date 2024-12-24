@@ -1,5 +1,4 @@
 /* eslint-disable no-await-in-loop */
-import LOGGER from "../utils/cpr-logger.js";
 import CombatUtils from "../utils/cpr-combatUtils.js";
 import CPRChat from "../chat/cpr-chat.js";
 import DiceHandler from "../extern/cpr-dice-handler.js";
@@ -28,7 +27,6 @@ export default class CPRCombat extends Combat {
    *            valid formula, which is treated like a constant.
    */
   static _getInitiativeFormula(combatant) {
-    LOGGER.trace("_getInitiativeFormula | CPRCombat | Called.");
     if (
       combatant.actor.type === "blackIce" ||
       combatant.actor.type === "demon"
@@ -58,7 +56,6 @@ export default class CPRCombat extends Combat {
     ids,
     { formula = null, updateTurn = true, messageOptions = {} } = {}
   ) {
-    LOGGER.trace("rollInitiative | CPRCombat | Called.");
     // Structure input data
     const combatantIds = typeof ids === "string" ? [ids] : ids;
     const currentId = this.combatant ? this.combatant.id : null;

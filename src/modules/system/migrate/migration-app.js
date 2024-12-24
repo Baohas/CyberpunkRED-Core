@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 import Progress from "../../utils/Progress.js";
 import CPR from "../config.js";
@@ -9,7 +8,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   ApplicationV2
 ) {
   constructor(options = {}) {
-    LOGGER.trace("constructor | MigrationApp");
     super(options);
     this.#migrationRunner = options.migrationRunner;
     /** @type {Object<string,Progress>} */
@@ -164,7 +162,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @returns {MigrationRunner}
    */
   get migrationRunner() {
-    LOGGER.trace("get migrationRunner | MigrationApp");
     return this.#migrationRunner;
   }
 
@@ -174,7 +171,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {string}
    */
   get currentPhase() {
-    LOGGER.trace("get currentPhase | MigrationApp");
     return this.#currentPhase;
   }
 
@@ -184,7 +180,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {string}
    */
   get errorPhase() {
-    LOGGER.trace("get errorPhase | MigrationApp");
     return this.#errorPhase;
   }
 
@@ -194,7 +189,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {object}
    */
   get buttons() {
-    LOGGER.trace("get buttons | MigrationApp");
     const phase = this.#currentPhase;
     return MigrationApp.PHASES[phase].buttons || null;
   }
@@ -205,7 +199,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {string|null}
    */
   get currentStatus() {
-    LOGGER.trace("get currentStatus | MigrationApp");
     const phase = this.#currentPhase;
     const phaseData = MigrationApp.PHASES[phase];
     const { docType, statusChange } = phaseData;
@@ -224,7 +217,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @returns {Boolean}
    */
   get migrationSuccessful() {
-    LOGGER.trace("get migrationSuccessful | MigrationApp");
     return this.migrationRunner.migrationSuccessful;
   }
 
@@ -234,7 +226,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @returns {object}
    */
   get devMode() {
-    LOGGER.trace("get devMode | MigrationApp");
     return this.migrationRunner.constructor.devMode.app;
   }
 
@@ -286,7 +277,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @returns {Promise<Object>}
    */
   async _prepareContext(options) {
-    LOGGER.trace("_prepareContext | MigrationApp");
     const context = await super._prepareContext(options);
     context.runner = this.migrationRunner;
     context.progress = this.progress;
@@ -323,7 +313,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
   /** @override */
   _onFirstRender(_context, _options) {
-    LOGGER.trace("_onFirstRender | MigrationApp");
     const { element } = this;
     const devModeShowModal = this.devMode.modal;
     if (this.options.modal && devModeShowModal) element.showModal();
@@ -340,7 +329,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
   /** @override */
   _onRender(context, options) {
-    LOGGER.trace("_onRender | MigrationApp");
     const dialog = this.element;
     dialog.addEventListener("keydown", this._preventEscape.bind(this));
   }
@@ -351,7 +339,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @protected
    */
   _preventEscape(event) {
-    LOGGER.trace("_preventEscape | MigrationApp");
     // Capture Escape keypresses for dialogs to ensure that close is called properly.
     // The default behavior of `<dialog>` elements is to close on Escape keypress.
     if (event.key === "Escape") {
@@ -366,7 +353,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @override
    */
   close(options = {}) {
-    LOGGER.trace("close | MigrationApp");
     if (!this.migrationSuccessful) return;
 
     super.close(options);
@@ -380,7 +366,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @type {Object<string,string[]>}
    */
   static getModPackOptions() {
-    LOGGER.trace("getModPackOptions | MigrationApp");
     const compendiaTypes = ["Actor", "Item", "Scene"];
 
     // Gather modules with relevant compendia.
@@ -405,7 +390,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {void}
    */
   static togglePackSelection(event, target) {
-    LOGGER.trace("togglePackSelection | MigrationApp");
     if (target === event.target) return; // Prevent double click of label/checkbox.
     target.classList.toggle("text-pill");
   }
@@ -417,7 +401,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @returns {void}
    */
   confirmPackSelection() {
-    LOGGER.trace("confirmPackSelection | MigrationApp");
     const formElement = this.element.querySelector("form");
     const fd = new FormDataExtended(formElement);
     const formData = foundry.utils.expandObject(fd.object);
@@ -454,7 +437,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @param {HTMLElement} target - the capturing HTML element which defined a [data-action]
    */
   static navigateMessages(event, target) {
-    LOGGER.trace("navigateMessages | MigrationApp");
     if (!this.userChangedMessage) this.userChangedMessage = true;
     const { direction } = target.dataset;
 
@@ -479,7 +461,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   static async showChangelog() {
-    LOGGER.trace("showChangelog | MigrationApp");
     // Pop Up the relevant Changelog Journal from
     const changelog = await CPRSystemUtils.GetCompendiumDoc(
       CPR.changelogCompendium,
@@ -495,7 +476,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<Boolean>} Resolves to true if the user confirms, false otherwise.
    */
   userConfirm() {
-    LOGGER.trace("userConfirm | MigrationApp");
     return new Promise((resolve) => {
       this.confirmMigration = () => resolve(true);
       this.rejectMigration = () => resolve(false);
@@ -510,7 +490,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {void}
    */
   static confirmMigration() {
-    LOGGER.trace("confirmMigration | MigrationApp");
     this.confirmPackSelection();
     this.confirmMigration();
   }
@@ -521,7 +500,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * even though the function is static (this is a Foundry quirk).
    */
   static returnToSetup() {
-    LOGGER.trace("returnToSetup | MigrationApp");
     if (this.currentPhase === "userConfirm") this.rejectMigration();
     if (this.errorPhase) MigrationApp.downloadReport();
     if (!this.devMode.returnToSetup) return;
@@ -534,7 +512,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {void}
    */
   static downloadReport() {
-    LOGGER.trace("downloadReport | MigrationApp");
     const { error } = game.cpr.MigrationRunner;
     const date = new Date();
     let monthString = date.getMonth() + 1;
@@ -566,7 +543,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    *                                   - The keys are document types and values are Progress objects.
    */
   static prepareProgressBars() {
-    LOGGER.trace("prepareProgressBars | MigrationApp");
     const progressBars = {};
     for (const [docType, label] of Object.entries(CPR.migrationDocTypes)) {
       const classes =
@@ -592,7 +568,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @param {PhaseContext} phaseContext - Object to store useful data that can't be included in MigrationApp.PHASES.
    */
   async setCurrentPhase(value, phaseContext) {
-    LOGGER.trace("setCurrentPhase | MigrationApp");
     if (!Object.keys(MigrationApp.PHASES).includes(value)) {
       throw new Error(`Invalid phase: ${value}`);
     }
@@ -618,7 +593,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async onPhaseChange() {
-    LOGGER.trace("onPhaseChange | MigrationApp");
     const phase = this.#currentPhase;
     const functionName = `on${phase.capitalize()}`;
     this.changeStatus(); // Change status message.
@@ -634,7 +608,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async onUserConfirm() {
-    LOGGER.trace("onUserConfirm | MigrationApp");
     const confirmButton = this.element.querySelector(
       ".migration-button[data-action='confirmMigration']"
     );
@@ -689,7 +662,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async onPrepareDocuments() {
-    LOGGER.trace("onPrepareDocuments | MigrationApp");
     // Remove user confirmation buttons
     const userConfirmButtons = this.element.querySelector(".buttons");
     userConfirmButtons.remove();
@@ -723,7 +695,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>} A promise that resolves when the progress bars are set and rendered.
    */
   async onDocumentsReady() {
-    LOGGER.trace("onDocumentsReady | MigrationApp");
     for (const [docType, progress] of Object.entries(this.progress)) {
       progress.element = this.element.querySelector(
         `#migration-progress-${docType}`
@@ -746,7 +717,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async onError() {
-    LOGGER.trace("onError | MigrationApp");
     this.generateOverlay({ text: "CPR.migration.app.overlay.error" });
   }
 
@@ -757,7 +727,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async onUserPrevented() {
-    LOGGER.trace("onUserPrevented | MigrationApp");
     this.generateOverlay({
       text: "CPR.migration.app.overlay.warning",
       classes: ["warning"],
@@ -770,7 +739,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async onMigrationComplete() {
-    LOGGER.trace("onMigrationComplete | MigrationApp");
     this.generateOverlay({
       text: "CPR.migration.app.overlay.success",
       classes: ["success"],
@@ -787,7 +755,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {void}
    */
   generateOverlay({ text, classes = [] } = {}) {
-    LOGGER.trace("generateOverlay | MigrationApp");
     const { element } = this;
     const alertOverlay = element.querySelector(".alert-overlay");
     const alertText = alertOverlay.querySelector(".alert-text");
@@ -815,7 +782,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async onEnd() {
-    LOGGER.trace("onEnd | MigrationApp");
     const { element } = this;
     const spinner = element.querySelector(".spinner");
     spinner.style = "display: none";
@@ -827,7 +793,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {void}
    */
   changeStatus() {
-    LOGGER.trace("changeStatus | MigrationApp");
     const { element } = this;
     const statusString = this.currentStatus;
     if (!statusString) return;
@@ -841,7 +806,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async addMessage() {
-    LOGGER.trace("addMessage | MigrationApp");
     const phase = this.#currentPhase;
     const { addMessage } = MigrationApp.PHASES[phase];
     const { messageData } = this.phaseContext;
@@ -886,7 +850,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    *
    */
   renderNav() {
-    LOGGER.trace("renderNav | MigrationApp");
     const messageCount = this.messages.length;
     const { currentMessageIndex } = this;
 
@@ -938,7 +901,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @return {Promise<void>}
    */
   async addButtons() {
-    LOGGER.trace("addButtons | MigrationApp");
     if (!this.buttons) return;
     const buttonsTemplate = await renderTemplate(
       `systems/${game.system.id}/templates/migration/migration-buttons.hbs`,

@@ -15,7 +15,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * Most of that logic lives in cpr-active-effect.js.
    */
   static get defaultOptions() {
-    LOGGER.trace("defaultOptions | CPRActiveEffectSheet | Called.");
     return foundry.utils.mergeObject(super.defaultOptions, {
       template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
       width: "auto",
@@ -33,7 +32,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @return {Promise<Object>} The prepared data.
    */
   async getData() {
-    LOGGER.trace("getData | CPRActiveEffectSheet | Called.");
     const data = await super.getData();
     const cprData = {};
     // Convert Changes into CPRMods, which have a more convenient data structure.
@@ -97,7 +95,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @param {Object} html - the DOM object
    */
   activateListeners(html) {
-    LOGGER.trace("activateListeners | CPRActiveEffectSheet | Called.");
     super.activateListeners(html);
     if (!this.options.editable) return;
 
@@ -134,7 +131,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @private
    */
   async _forceSubmit() {
-    LOGGER.trace("_forceSubmit | CPRActiveEffectSheet | Called.");
     this.submit({
       preventClose: true,
     });
@@ -149,7 +145,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @private
    */
   async _changeModKeyCategory(event) {
-    LOGGER.trace("_changeModKeyCategory | CPRActiveEffectSheet | Called.");
     const effect = this.object;
     const modnum = event.currentTarget.dataset.index;
     const keyCategory = event.target.value;
@@ -183,7 +178,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @returns (varies by action)
    */
   _effectChangeControl(event) {
-    LOGGER.trace("_effectChangeControl | CPRActiveEffectSheet | Called.");
     event.preventDefault();
     switch (event.currentTarget.dataset.action) {
       case "add":
@@ -203,7 +197,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @param {Object} event - mouse click event
    */
   async _toggleSituational(event) {
-    LOGGER.trace("_toggleSituational | CPRActiveEffectSheet | Called.");
     const effect = this.object;
     const modnum = SystemUtils.GetEventDatum(event, "data-index");
     const isSituational = event.target.checked;
@@ -225,7 +218,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @param {Object} event - mouse click event
    */
   async _toggleOnByDefault(event) {
-    LOGGER.trace("_toggleOnByDefault | CPRActiveEffectSheet | Called.");
     const effect = this.object;
     const modnum = SystemUtils.GetEventDatum(event, "data-index");
     const onByDefault = event.target.checked;
@@ -247,7 +239,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @private
    */
   async _addEffectChange() {
-    LOGGER.trace("_addEffectChange | CPRActiveEffectSheet | Called.");
     const idx = this.document.changes.length;
     LOGGER.debug(`adding change defaults for changes.${idx}`);
     return this.submit({
@@ -281,7 +272,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @returns - whether re-rendering the sheet was successful
    */
   async _deleteEffectChange(event) {
-    LOGGER.trace("_deleteEffectChange | CPRActiveEffectSheet | Called.");
     const modnum = parseInt(event.currentTarget.dataset.index, 10);
     // First, delete the change itself in the AE
     const { changes } = this.object;
@@ -342,7 +332,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @return {Object} - sorted object of skill keys to names
    */
   static getSkillOptionConfigs(effect) {
-    LOGGER.trace("getSkillOptionConfigs | CPRActiveEffectSheet | Called.");
     const skillMap = CPR.activeEffectKeys.skill;
     let skillList = [];
     if (effect.parent.documentName === "Item") {
@@ -381,7 +370,6 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * @return {Object} The configuration options for other effect categories.
    */
   static getOtherOptionConfigs(effect) {
-    LOGGER.trace("getOtherOptionConfigs | CPRActiveEffectSheet | Called.");
     const configs = {};
     const aeKeyEntries = Object.entries(CPR.activeEffectKeys);
     aeKeyEntries.forEach(([categoryKey, data]) => {

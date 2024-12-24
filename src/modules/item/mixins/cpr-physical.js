@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 /**
  * Lessons:
  *   1. Arrow functions do not work here, because they are not bound to "this", and are generally
@@ -16,7 +14,6 @@ const Physical = function Physical() {
    * @param {Boolean} val - set whether the Item is concealable (true) or not (false)
    */
   this.setConcealable = function setConcealable(val) {
-    LOGGER.trace("setConcealable | Physical | Called.");
     const cprItemData = foundry.utils.duplicate(this.system);
     let target = "concealable.concealable";
     foundry.utils.setProperty(cprItemData, target, val);

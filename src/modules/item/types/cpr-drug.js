@@ -21,7 +21,6 @@ export default class CPRDrugItem extends CPRItem {
    * @returns the updated info
    */
   async snort() {
-    LOGGER.trace("snort | CPRDrugItem | called.");
     Rules.lawyer(
       this.system.amount > 0,
       SystemUtils.Localize("CPR.messages.notEnoughDrugs")
@@ -64,7 +63,6 @@ export default class CPRDrugItem extends CPRItem {
    * @returns a promise
    */
   async _confirmSnort() {
-    LOGGER.trace("_confirmSnort | CPRDrugItem | called.");
     const dialogMessage = `${SystemUtils.Localize(
       "CPR.dialog.snortConfirmation.message"
     )} ${this.name}?`;

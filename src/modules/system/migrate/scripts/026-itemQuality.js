@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import BaseMigrationScript from "../base-migration-script.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 export default class ItemQualityMigration extends BaseMigrationScript {
   static version = 26;
@@ -14,7 +13,6 @@ export default class ItemQualityMigration extends BaseMigrationScript {
   };
 
   async updateItem(doc) {
-    LOGGER.trace("updateItem | Test Migration");
     const itemName = doc.name.toLowerCase();
     const itemDescription = doc.system.description.value.toLowerCase();
 

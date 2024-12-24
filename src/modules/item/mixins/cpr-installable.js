@@ -12,7 +12,6 @@ const Installable = function Installable() {
    * @async
    */
   this.install = async function install() {
-    LOGGER.trace("install | Installable | Called.");
     if (!this.actor) {
       return;
     }
@@ -99,7 +98,6 @@ const Installable = function Installable() {
     providedContainers = [],
     skipDialog = false,
   } = {}) {
-    LOGGER.trace("uninstall | Installable | Called.");
     const { actor } = this;
 
     // In theory, something could be installed in multiple items.

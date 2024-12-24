@@ -19,7 +19,6 @@ export default class CPRSheetUtils {
    * @param {String} cssClass - The CSS class to target
    */
   static setCssClassWidth(html, cssClass) {
-    LOGGER.trace("setCssClassWidth | CPRSheetUtils | Called.");
     const typeTags = html.find(cssClass);
 
     // As some elements might be hidden on other tabs or under expandos we need
@@ -69,7 +68,6 @@ export default class CPRSheetUtils {
    */
   static adjustFontSizeToFit(inputElement) {
     // Use LOGGER to trace the call
-    LOGGER.trace("adjustFontSizeToFit | CPRSheetUtils | Called.");
 
     // Ensure we have the DOM element
     const input = inputElement.jquery ? inputElement.get(0) : inputElement;

@@ -27,7 +27,6 @@ const Effects = function Effects() {
    * @returns - usually the impacted active effect, or null if something was invalid in the event
    */
   this.manageEffects = function manageEffects(event) {
-    LOGGER.trace("manageEffects | Effects | Called.");
     event.preventDefault();
     LOGGER.debug("effect listener fired");
     const action = SystemUtils.GetEventDatum(event, "data-action");
@@ -65,7 +64,6 @@ const Effects = function Effects() {
    * @returns {ActiveEffect} - the newly created document
    */
   this.createEffect = async function createEffect(render = true) {
-    LOGGER.trace("createEffect | Effects | Called.");
     const disabled = this.system.usage === "snorted";
     const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
       {
@@ -80,7 +78,6 @@ const Effects = function Effects() {
   };
 
   this.copyEffect = function copyEffect(eid) {
-    LOGGER.trace("copyEffect | Effects | Called.");
     const effect = foundry.utils.duplicate(this.getEffect(eid));
     return this.createEmbeddedDocuments("ActiveEffect", [effect]);
   };
@@ -92,7 +89,6 @@ const Effects = function Effects() {
    * @returns - the deleted document
    */
   this.deleteEffect = function deleteEffect(eid) {
-    LOGGER.trace("deleteEffect | Effects | Called.");
     const effect = this.getEffect(eid);
     return effect.delete();
   };
@@ -104,7 +100,6 @@ const Effects = function Effects() {
    * @returns
    */
   this.editEffect = function editEffect(eid) {
-    LOGGER.trace("editEffect | Effects | Called.");
     const effect = this.getEffect(eid);
     return effect.sheet.render(true);
   };
@@ -117,7 +112,6 @@ const Effects = function Effects() {
    * @returns {ActiveEffect}
    */
   this.getEffect = function getEffect(eid) {
-    LOGGER.trace("getEffect | Effects | Called.");
     const effect = this.effects.get(eid);
     if (!effect) {
       LOGGER.error(`Active effect ${eid} does not exist!`);
@@ -133,7 +127,6 @@ const Effects = function Effects() {
    * @returns {ActiveEffect}
    */
   this.getEffectByName = function getEffectByName(name) {
-    LOGGER.trace("getEffectByName | Effects | Called.");
     return this.effects.find((e) => e.name === name);
   };
 
@@ -159,7 +152,6 @@ const Effects = function Effects() {
    * @returns {ActiveEffect}
    */
   this.toggleEffect = function toggleEffect(eid) {
-    LOGGER.trace("toggleEffect | Effects | Called.");
     const effect = this.getEffect(eid);
     const value = !effect.disabled;
     LOGGER.debug(`Setting disabled on ${eid} to ${value}`);
@@ -173,7 +165,6 @@ const Effects = function Effects() {
    * @return {Array}
    */
   this.getAllowedUsage = function getAllowedUsage() {
-    LOGGER.trace("getAllowedUsage | Effects | Called.");
     const usageAllowed = ["always", "toggled"];
     if (this.type === "drug") {
       usageAllowed.push("snorted");
@@ -203,7 +194,6 @@ const Effects = function Effects() {
    * @returns {Bool}
    */
   this.areEffectsSuppressed = function areEffectsSuppressed() {
-    LOGGER.trace("areEffectsSuppressed | Effects | Called.");
     switch (this.system.usage) {
       case "carried":
         return this.system.equipped === "owned";
@@ -229,7 +219,6 @@ const Effects = function Effects() {
    * @param {String} usage - the value to set usage to
    */
   this._setUsage = function _setUsage(usage) {
-    LOGGER.trace("_setUsage | Effects | Called.");
     if (usage === "snorted") {
       const aeUpdates = [];
       this.effects.forEach((ae) =>

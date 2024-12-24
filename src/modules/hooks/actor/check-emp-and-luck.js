@@ -1,4 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 const CheckEmpAndLuck = () => {
@@ -13,7 +12,6 @@ const CheckEmpAndLuck = () => {
    * @param {object} updatedData      - The changed data object provided to the document creation request
    */
   Hooks.on("preUpdateActor", async (_, updatedData) => {
-    LOGGER.trace("preUpdateActor | actorHooks | Called.");
     if (updatedData.system?.stats?.emp || updatedData.system?.stats?.luck) {
       const updatedValue = updatedData.system.stats.emp
         ? updatedData.system.stats.emp.value

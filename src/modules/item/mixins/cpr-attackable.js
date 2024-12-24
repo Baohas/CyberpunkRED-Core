@@ -21,7 +21,6 @@ const Attackable = function Attackable() {
    * @param {*} actionAttributes - details from the event indicating what the actor is doing
    */
   this._weaponAction = async function _weaponAction(actor, actionAttributes) {
-    LOGGER.trace("_weaponAction | CPRWeaponItem | Called.");
     const actionData = actionAttributes["data-action"].nodeValue;
     switch (actionData) {
       case "select-ammo":
@@ -48,7 +47,6 @@ const Attackable = function Attackable() {
    * @returns updated actor data
    */
   this.dischargeItem = function dischargeItem(cprRoll) {
-    LOGGER.trace("dischargeItem | Attackable | Called.");
     const discharged = this.bulletConsumption(cprRoll);
     LOGGER.debug(discharged);
     // don't go negative
@@ -69,7 +67,6 @@ const Attackable = function Attackable() {
    * @returns {CPRAttackRoll}
    */
   this._createAttackRoll = function _createAttackRoll(type, actor) {
-    LOGGER.trace("_createAttackRoll | Attackable | Called.");
     const cprWeaponData = this.system;
     const weaponName = this.name;
     const { weaponType } = cprWeaponData;
@@ -280,7 +277,6 @@ const Attackable = function Attackable() {
    * @returns {CPRDamageRoll}
    */
   this._createDamageRoll = function _createDamageRoll(type, actor) {
-    LOGGER.trace("_createDamageRoll | Attackable | Called.");
     const cprWeaponData = this.system;
     const rollName = this.name;
     const { weaponType } = cprWeaponData;
@@ -468,7 +464,6 @@ const Attackable = function Attackable() {
    * @returns {Number}
    */
   this._getAttackMod = function _getAttackMod() {
-    LOGGER.trace("_getAttackMod | Attackable | Called.");
     const cprWeaponData = this.system;
     let returnValue = 0;
     if (typeof cprWeaponData.attackmod !== "undefined") {

@@ -1,5 +1,3 @@
-import LOGGER from "../../utils/cpr-logger.js";
-
 const PreDeleteFolder = () => {
   /**
    * Add a call to the `preDeleteItem` Hook when deleting a Folder of items.
@@ -14,7 +12,6 @@ const PreDeleteFolder = () => {
    * @param {object} options  - Options for deletion
    */
   Hooks.on("preDeleteFolder", (folder, options) => {
-    LOGGER.trace("preDeleteFolder | folderHooks | Called.");
     let deleteFolder = true;
     // if the folder deletion deletes the items within
     //   and we are deleting a folder of Items
