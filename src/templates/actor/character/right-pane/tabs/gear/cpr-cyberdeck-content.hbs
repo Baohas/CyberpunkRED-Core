@@ -1,4 +1,3 @@
-{{cprTrace "START ACTOR CHARACTER RIGHT-PANE TABS GEAR CPR-CYBERDECK-CONTENT.HBS"}}
 <li class="item flexrow{{#if item.system.favorite }} favorite{{else }}{{#if (cprListContains sheet.options.collapsedSections "gearTab-gear") }} hide{{/if }}{{/if }}"
     data-item-id="{{item._id}}"
     data-item-category="{{item.type}}"
@@ -37,4 +36,3 @@
   </div>
   {{cprNestedInstalledGearTab item}}
 </li>
-{{cprTrace "END CPR-CYBERDECK-CONTENT.HBS"}}

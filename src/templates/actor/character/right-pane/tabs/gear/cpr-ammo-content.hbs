@@ -1,4 +1,3 @@
-{{cprTrace "START ACTOR CHARACTER RIGHT-PANE TABS GEAR CPR-AMMO-CONTENT.HBS"}}
 <li class="item flexrow{{#if item.system.favorite }} favorite{{else }}{{#if (cprListContains sheet.options.collapsedSections "gearTab-ammo") }} hide{{/if }}{{/if }}"
     data-item-id="{{item._id}}"
     data-item-category="{{item.type}}"
@@ -29,4 +28,3 @@
     {{> "systems/cyberpunk-red-core/templates/actor/mixin/actions/cpr-actions.hbs" item}}
   </div>
 </li>
-{{cprTrace "END CPR-AMMO-CONTENT.HBS"}}

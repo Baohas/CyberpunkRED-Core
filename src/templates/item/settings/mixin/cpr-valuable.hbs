@@ -1,4 +1,3 @@
-{{cprTrace "START ITEM SETTINGS MIXIN CPR-VALUABLE.HBS"}}
 <li class="item flexrow">
 <div class="item flexrow setting-name text-nowrap"
      data-tooltip=" {{#if (cprCompare item.type "===" "ammo") }} {{localize "CPR.itemSheet.physical.priceHoverExplanationAmmo" }} {{else }} {{localize "CPR.itemSheet.physical.priceHoverExplanation" }} {{/if }} ">
@@ -22,4 +21,3 @@
     <span class="text-flex-end">{{localize (cprFindConfigValue "itemPriceCategory" (cprGetPriceCategory item.system.price.market))}}</span>
   </div>
 </li>
-{{cprTrace "END CPR-VALUABLE.HBS"}}

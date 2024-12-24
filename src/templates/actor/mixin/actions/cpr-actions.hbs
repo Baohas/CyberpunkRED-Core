@@ -1,4 +1,3 @@
-{{cprTrace "START ACTOR MIXIN ACTIONS CPR-ACTIONS.HBS"}}
 {{#if (cprCompare type "===" "weapon") }}
   {{!-- LOAD/RELOAD ACTION --}}
   {{#if system.isRanged }}
@@ -52,4 +51,3 @@
 </a>
 <a class="item-action" data-action-type="delete"><i class="fas fa-trash-can"
    data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
-{{cprTrace "END CPR-ACTIONS.HBS"}}

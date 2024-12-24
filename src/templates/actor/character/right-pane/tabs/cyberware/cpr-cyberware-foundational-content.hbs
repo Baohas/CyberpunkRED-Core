@@ -1,4 +1,3 @@
-{{cprTrace "START ACTOR CHARACTER RIGHT-PANE TABS CYBERWARE CPR-CYBERWARE-FOUNDATIONAL-CONTENT.HBS"}}
 {{#if cyberware.system.core }}
   {{#each cyberware.system.installedItems.list as |id| }}
     {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/tabs/cyberware/cpr-cyberware-optional-content.hbs" (cprMergeForPartialArg "actor,cyberware,depth" ../actor (cprGetOwnedItem ../actor id) 0)}}
@@ -39,4 +38,3 @@
     {{> "systems/cyberpunk-red-core/templates/actor/character/right-pane/tabs/cyberware/cpr-cyberware-optional-content.hbs" (cprMergeForPartialArg "actor,cyberware,depth" ../actor (cprGetOwnedItem ../actor id) 1)}}
   {{/each}}
 {{/if}}
-{{cprTrace "END CPR-CYBERWARE-FOUNDATIONAL-CONTENT.HBS"}}

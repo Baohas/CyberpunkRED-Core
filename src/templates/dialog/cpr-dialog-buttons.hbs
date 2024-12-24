@@ -1,4 +1,3 @@
-{{cprTrace "START DIALOG CPR-DIALOG-BUTTONS.HBS"}}
 <div class="dialog-footer flexrow">
   {{#each options.buttons as |button b|}}
     <button class="cpr-dialog-button" name="{{b}}" {{#if (cprCompare ../options.buttonDefault "===" b)}}autofocus{{/if}}>
@@ -6,4 +5,3 @@
     </button>
   {{/each}}
 </div>
-{{cprTrace "END CPR-DIALOG-BUTTONS.HBS"}}

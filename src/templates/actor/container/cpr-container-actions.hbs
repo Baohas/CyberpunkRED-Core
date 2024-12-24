@@ -1,4 +1,3 @@
-{{cprTrace "START ACTOR CONTAINER CPR-CONTAINER-ACTIONS.HBS"}}
 {{!-- Item purchase or take --}}
 {{#if (cprCompare item.system.amount ">" "1") }}
   <a class="item-action" data-action-type="purchaseFraction">
@@ -25,4 +24,3 @@
   <a class="item-action" data-action-type="delete"><i class="fas fa-trash-can"
    data-tooltip="{{localize "CPR.actorSheets.commonActions.deleteItem"}}"></i></a>
 {{/if}}
-{{cprTrace "END CPR-CONTAINER-ACTIONS.HBS"}}
