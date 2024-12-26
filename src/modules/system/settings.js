@@ -39,6 +39,20 @@ const registerSystemSettings = () => {
     },
   });
 
+  /**
+   * Hidden from users. Used to determine whether
+   * a world has just been migrated, and thus if
+   * we should pop up the Changelog. This should only be
+   * `true` for the  brief period of time between completing
+   * a migration and refreshing Foundry.
+   */
+  game.settings.register(game.system.id, "justMigrated", {
+    scope: "world",
+    config: false,
+    type: Boolean,
+    default: false,
+  });
+
   // Invert CTRL+Click behaviour
   // Default:
   //   Click to roll:      Brings up roll dialogue

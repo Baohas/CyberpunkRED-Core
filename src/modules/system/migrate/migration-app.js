@@ -80,8 +80,8 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       statusChange: true,
       addMessage: true,
       buttons: {
-        close: {
-          label: "CPR.migration.buttons.close",
+        refresh: {
+          label: "CPR.migration.buttons.refresh",
           iconPre: "fas fa-file-signature",
           iconPost: "fas fa-xmark",
         },
@@ -249,6 +249,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       navigate: MigrationApp.navigateMessages,
       confirmMigration: MigrationApp.confirmMigration,
       togglePackSelection: MigrationApp.togglePackSelection,
+      refresh: MigrationApp.refresh,
     },
     modal: true,
   };
@@ -344,19 +345,26 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     if (event.key === "Escape") {
       event.preventDefault(); // Prevent default browser dialog dismiss behavior.
       event.stopPropagation();
-      this.close();
     }
   }
 
   /**
-   * Prevent user from closing dialog unless migration is successful.
+   * Prevent user from closing dialog.
    * @override
    */
   close(options = {}) {
-    if (!this.migrationSuccessful) return;
+    // Should not be able to close the dialog for any reason.
+    // Leaving this empty function as an override, so that the
+    // super method cannot be called.
+  }
 
-    super.close(options);
-    MigrationApp.showChangelog();
+  /**
+   * Refresh the page when the migration is complete.
+   * @returns {void}
+   */
+  static refresh() {
+    if (!this.migrationSuccessful) return;
+    window.location.reload();
   }
 
   /**

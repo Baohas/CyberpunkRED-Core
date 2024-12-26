@@ -1,6 +1,8 @@
 /* eslint-disable max-classes-per-file */
 /* eslint-disable no-continue */
 
+import { validateOverride } from "../system/overrides.js";
+
 /**
  * NOTE: This was taken from 5e! Thanks to them.
  *
@@ -94,10 +96,14 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
 
   /* -------------------------------------------- */
 
-  /** @inheritdoc */
-  validate(options = {}) {
-    if (this.constructor._enableV10Validation === false) return true;
-    return super.validate(options);
+  /**
+   * Override validate function to suppress validation if migration is happening.
+   *
+   * @inheritdoc
+   * @override
+   */
+  validate(options) {
+    return validateOverride.call(this, options);
   }
 
   /* -------------------------------------------- */
@@ -108,8 +114,8 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
    * @returns {typeof CPRSystemDataModel}  Final prepared type.
    */
   static mixin(...templates) {
-    const Base = class extends this {};
-    Object.defineProperty(Base, "_schemaTemplates", {
+    const CombinedCPRModel = class extends this {};
+    Object.defineProperty(CombinedCPRModel, "_schemaTemplates", {
       value: Object.seal([...this._schemaTemplates, ...templates]),
       writable: false,
       configurable: false,
@@ -130,7 +136,7 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
         Object.getOwnPropertyDescriptors(template)
       )) {
         if (this._immiscible.has(key)) continue;
-        Object.defineProperty(Base, key, descriptor);
+        Object.defineProperty(CombinedCPRModel, key, descriptor);
       }
 
       // Take all instance methods and fields from template and mix in to base class
@@ -138,17 +144,17 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
         Object.getOwnPropertyDescriptors(template.prototype)
       )) {
         if (["constructor"].includes(key)) continue;
-        Object.defineProperty(Base.prototype, key, descriptor);
+        Object.defineProperty(CombinedCPRModel.prototype, key, descriptor);
       }
     }
 
     // Define mixinNames on the base class.
-    Object.defineProperty(Base, "mixins", {
+    Object.defineProperty(CombinedCPRModel, "mixins", {
       value: Object.seal(mixinNames),
       writable: false,
       configurable: false,
     });
 
-    return Base;
+    return CombinedCPRModel;
   }
 }

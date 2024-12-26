@@ -33,8 +33,11 @@ export default class MigrationRunner {
    * @param {Number} currDataModelVersion - the current data model version
    * @param {Number} newDataModelVersion - the data model version we want to get to, may be multiple versions ahead
    */
-  constructor(currDataModelVersion) {
-    this.currentDataModelVersion = currDataModelVersion;
+  constructor() {
+    this.currentDataModelVersion = game.settings.get(
+      game.system.id,
+      "dataModelVersion"
+    );
     this.newDataModelVersion = MigrationRunner.#LATEST_VERSION;
 
     this.#migrationClasses = this.filterMigrationClasses();
@@ -47,6 +50,15 @@ export default class MigrationRunner {
 
     // This is also set in `migrateWorld()`, if migrations completed successfully.
     this.migrationSuccessful = null;
+  }
+
+  /**
+   * Instantiates the globally accessible MigrationRunner.
+   * Called in the "init" hook of `cpr.js`.
+   */
+  static instantiate() {
+    const MR = new MigrationRunner();
+    game.cpr.MigrationRunner = MR;
   }
 
   /**
@@ -101,17 +113,16 @@ export default class MigrationRunner {
     return MigrationRunner.app;
   }
 
-  get totalMigrations() {
-    return this.migrationClasses.length;
-  }
-
   /**
    * Check if there are any migrations that need to be run.
    *
    * @return {boolean}
    */
   get needsMigration() {
-    return this.totalMigrations > 0;
+    return (
+      game.settings.get(game.system.id, "dataModelVersion") <
+      this.newDataModelVersion
+    );
   }
 
   /**
@@ -159,6 +170,9 @@ export default class MigrationRunner {
    */
   filterMigrationClasses() {
     const { currentDataModelVersion, newDataModelVersion } = this;
+    // Brand new world, already at the latest data model, no migrations needed.
+    if (currentDataModelVersion === "newCprWorld") return [];
+
     const migrationClasses = Object.values(Migrations)
       .filter((Migration) => {
         const { version } = Migration;
@@ -180,25 +194,6 @@ export default class MigrationRunner {
     // Open migration application before anything else.
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
-
-    // We want to screen for validation errors, as these are thrown in
-    // foundry's update operations, and therefore are not caught during
-    // the normal migration process. We keep track of them here.
-    const errorHook = Hooks.on("error", (location, error, data) => {
-      if (!(error instanceof foundry.data.validation.DataModelValidationError))
-        return;
-
-      const { id } = data;
-      const failure = error.getFailure();
-      this.error = new MigrationError(
-        { failure, id },
-        `Foundry DataModelValidationError - ${error.message}`,
-        { cause: error }
-      );
-
-      // Turn hook off once we reach an error.
-      Hooks.off("error", errorHook);
-    });
 
     // Enforce a minimum version that user has to migrate from.
     // Below this, they will be instructed to first update to
@@ -240,16 +235,12 @@ export default class MigrationRunner {
     this.migrationSuccessful = await this.runMigrations();
 
     if (this.migrationSuccessful) {
-      // This makes it so the app no longer acts as a modal,
-      // and users can interact with the rest of Foundry again.
-      migrationApp.element.close();
-      migrationApp.element.show();
+      // Let the system know that the world has been migrated,
+      // so we can show the Changelog upon refresh.
+      game.settings.set(game.system.id, "justMigrated", true);
     }
 
     await migrationApp.setCurrentPhase("end");
-
-    // Turn the hook off because we don't need to track validation errors anymore.
-    Hooks.off("error", errorHook);
 
     return this.migrationSuccessful;
   }
@@ -278,6 +269,13 @@ export default class MigrationRunner {
       await app.setCurrentPhase("migrateCompendia");
       await this.migrateCompendia();
     } catch (error) {
+      if (!this.error) {
+        this.error = new MigrationError(
+          {},
+          `Unknown Migration Error: '${error.message}'`,
+          { cause: error }
+        );
+      }
       await app.setCurrentPhase("error");
       LOGGER.error(error);
       return false;

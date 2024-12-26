@@ -24,6 +24,9 @@ import CPRUpgradeItem from "./item/types/cpr-upgrade.js";
 import CPRVehicleItem from "./item/types/cpr-vehicle.js";
 import CPRWeaponItem from "./item/types/cpr-weapon.js";
 
+// Utilities
+import { validateOverride } from "./system/overrides.js";
+
 /**
  * This code is heavily borrowed from the Burning Wheel system module. The jist
  * is to provide a Proxy object (this a native thing in JavaScript) whenever an actor
@@ -46,6 +49,9 @@ function factory(entities, baseClass) {
       const constructor = entities[data.type];
       if (!constructor)
         throw new Error(`Unsupported Entity type for create(): ${data.type}`);
+
+      // Override the validate() function to suppress validation if migration is happening.
+      constructor.prototype.validate = validateOverride;
       return new constructor(data, options);
     },
     get: (target, prop) => {
