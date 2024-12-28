@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import BaseMigrationScript from "../base-migration-script.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 /**
  * Make "ammo" an installable type for every loadable (weapon) item.
@@ -20,14 +19,12 @@ export default class AmmoIsInstallable extends BaseMigrationScript {
   };
 
   async updateItem(doc) {
-    LOGGER.trace("updateItem | AmmoIsInstallable");
     const { addAmmoAsInstallable, addInstalledAmmo } = this.constructor;
     addAmmoAsInstallable(doc);
     addInstalledAmmo(doc);
   }
 
   static addAmmoAsInstallable(loadable) {
-    LOGGER.trace("addAmmoAsInstallable | AmmoIsInstallable");
     const { installedItems, isRanged } = loadable.system;
     if (!isRanged) return;
     installedItems.allowed = true;
@@ -36,7 +33,6 @@ export default class AmmoIsInstallable extends BaseMigrationScript {
   }
 
   static addInstalledAmmo(loadable) {
-    LOGGER.trace("addInstalledAmmo | AmmoIsInstallable");
     const { magazine, installedItems } = loadable.system;
     if (magazine.ammoData?.uuid) {
       installedItems.list.push(magazine.ammoData.uuid);

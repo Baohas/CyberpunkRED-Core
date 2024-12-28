@@ -1,7 +1,6 @@
 /* eslint-disable no-param-reassign */
 
 import BaseMigrationScript from "../base-migration-script.js";
-import LOGGER from "../../../utils/cpr-logger.js";
 
 /**
  * Turn Item UUIDs into IDs for Container Items
@@ -17,12 +16,10 @@ export default class InstallListUUIDsToIDs extends BaseMigrationScript {
   };
 
   async updateItem(doc) {
-    LOGGER.trace("updateItem | UUIDs to IDs");
     this.constructor.migrateUuids(doc);
   }
 
   async updateActor(doc) {
-    LOGGER.trace("updateActor | UUIDs to IDs");
     // God I know this is confusing. We are migrating Actors with the "container" mixin,
     // i.e., CPRCharacters and CPRMooks, not CPRContainers.
     if (doc.type === "container") return;
@@ -36,7 +33,6 @@ export default class InstallListUUIDsToIDs extends BaseMigrationScript {
    * @returns {void} - just mutates the document
    */
   static migrateUuids(doc) {
-    LOGGER.trace("migrateUuids | UUIDs to IDs");
     const { installedItems } = doc.system;
     if (installedItems.list.length > 0) {
       const installed = installedItems.list;
