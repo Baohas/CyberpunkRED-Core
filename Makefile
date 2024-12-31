@@ -22,7 +22,7 @@ clean:
 	@DEBUG=$(DEBUG) npx gulp clean
 
 # Run `npx gulp clean && npx gulp watch`
-clean_watch: clean watch
+cbw: clean build watch
 
 # Runs the full CI suite against the codebase
 ci:
