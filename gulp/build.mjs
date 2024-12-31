@@ -1,3 +1,4 @@
+import chalk from "chalk";
 import fs from "fs-extra";
 import log from "fancy-log";
 import gulp from "gulp";
@@ -53,7 +54,7 @@ async function compileLess() {
         if (CI) {
           throw new Error("CSS failed to compile.");
         } else {
-          log.error("CSS failed to compile.");
+          log.error(chalk.red("CSS failed to compile."));
         }
       })
       .pipe(gulp.dest(path.resolve(DEST_DIR)))
