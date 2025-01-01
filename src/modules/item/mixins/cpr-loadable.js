@@ -86,7 +86,7 @@ const Loadable = function Loadable() {
     // Prepare select options for ammo.
     const ammoSelectOptions = validAmmo.map((ammo) => {
       const ammoTypeSubstrings = [
-        SystemUtils.Localize(CPR.ammoType[ammo.system.type]),
+        SystemUtils.Localize(CPR.ammoTypes[ammo.system.type]),
         ammo.system.type,
       ];
       // Only programatically show the ammo type if it's not in the name.

@@ -26,7 +26,7 @@ export default class LoadableSchema extends CPRSystemDataModel {
         }),
       }),
       ammoVariety: new fields.ArrayField(
-        new fields.StringField({ choices: Object.keys(CPR.ammoVariety) })
+        new fields.StringField({ choices: Object.keys(CPR.ammoVarieties) })
       ),
     };
   }

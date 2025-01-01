@@ -9,7 +9,7 @@ export default class AttackableSchema extends CPRSystemDataModel {
     return {
       weaponType: new fields.StringField({
         blank: true,
-        choices: Object.keys(CPR.weaponTypeList),
+        choices: Object.keys(CPR.weaponTypes),
       }),
       weaponSkill: new fields.StringField({
         blank: true,

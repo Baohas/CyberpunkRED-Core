@@ -34,7 +34,7 @@ export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
       {
         type: new fields.StringField({
           initial: "cyberArm",
-          choices: Object.keys(CPR.cyberwareTypeList),
+          choices: Object.keys(CPR.cyberwareTypes),
         }),
         isWeapon: new fields.BooleanField({ initial: false }),
         isFoundational: new fields.BooleanField({ initial: true }),

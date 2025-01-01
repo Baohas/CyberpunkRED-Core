@@ -61,12 +61,12 @@ export default class AmmoDataModel extends CPRSystemDataModel.mixin(
       type: new fields.StringField({
         blank: false,
         initial: "basic",
-        choices: Object.keys(CPR.ammoType),
+        choices: Object.keys(CPR.ammoTypes),
       }),
       variety: new fields.StringField({
         blank: false,
         initial: "heavyPistol",
-        choices: Object.keys(CPR.ammoVariety),
+        choices: Object.keys(CPR.ammoVarieties),
       }),
     });
   }

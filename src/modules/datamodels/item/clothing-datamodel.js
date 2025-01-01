@@ -26,11 +26,11 @@ export default class ClothingDataModel extends CPRSystemDataModel.mixin(
     return this.mergeSchema(super.defineSchema(), {
       type: new fields.StringField({
         initial: "jacket",
-        choices: Object.keys(CPR.clothingType),
+        choices: Object.keys(CPR.clothingTypes),
       }),
       style: new fields.StringField({
         initial: "genericChic",
-        choices: Object.keys(CPR.clothingStyle),
+        choices: Object.keys(CPR.clothingVarieties),
       }),
     });
   }

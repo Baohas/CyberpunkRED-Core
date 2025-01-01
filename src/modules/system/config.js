@@ -178,7 +178,7 @@ CPR.skillTypes = {
 };
 
 // Sorted as listed in core rule book
-CPR.weaponTypeList = {
+CPR.weaponTypes = {
   assaultRifle: "CPR.global.weaponType.assaultRifle",
   bow: "CPR.global.weaponType.bowsAndCrossbows",
   grenadeLauncher: "CPR.global.weaponType.grenadeLauncher",
@@ -200,7 +200,7 @@ CPR.weaponTypeList = {
 };
 
 // Sorted A-Z, with custom at the end
-CPR.ammoVariety = {
+CPR.ammoVarieties = {
   arrow: "CPR.global.ammo.variety.arrow",
   battery: "CPR.global.ammo.variety.battery",
   grenade: "CPR.global.ammo.variety.grenade",
@@ -223,7 +223,7 @@ CPR.attackableCritFailEffects = {
 };
 
 // Sorted A-Z, with basic at the start and special at the end
-CPR.ammoType = {
+CPR.ammoTypes = {
   basic: "CPR.global.ammo.type.basic",
   acid: "CPR.global.ammo.type.acid",
   armorPiercing: "CPR.global.ammo.type.armorPiercing",
@@ -288,7 +288,7 @@ CPR.objectTypes = {
 };
 
 // Sorted A-Z
-CPR.clothingStyle = {
+CPR.clothingVarieties = {
   asiaPop: "CPR.global.clothing.style.asiaPop",
   bagLadyChic: "CPR.global.clothing.style.bagLadyChic",
   bohemian: "CPR.global.clothing.style.bohemian",
@@ -302,7 +302,7 @@ CPR.clothingStyle = {
 };
 
 // Sorted A-Z
-CPR.clothingType = {
+CPR.clothingTypes = {
   bottoms: "CPR.global.clothing.type.bottoms",
   contactLenses: "CPR.global.clothing.type.contactLenses",
   footwear: "CPR.global.clothing.type.footWear",
@@ -315,7 +315,7 @@ CPR.clothingType = {
 };
 
 //
-CPR.cyberwareTypeList = {
+CPR.cyberwareTypes = {
   cyberAudioSuite: "CPR.global.cyberwareType.cyberAudioSuite",
   cyberEye: "CPR.global.cyberwareType.cyberEye",
   cyberArm: "CPR.global.cyberwareType.cyberArm",
