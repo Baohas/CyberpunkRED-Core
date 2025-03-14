@@ -18,7 +18,13 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
         includeSlots: false,
       }),
       {
-        improvementPoints: new fields.SchemaField(LedgerSchema.defineSchema()),
+        improvementPoints: new fields.SchemaField(LedgerSchema.defineSchema(), {
+          deprecate: {
+            version: "0.91.0",
+            path: "character",
+            reason: "The ledger is now part of the character sheet",
+          },
+        }),
         lifepath: new fields.SchemaField({
           aboutPeople: new fields.HTMLField({ initial: "" }),
           affectations: new fields.HTMLField({ initial: "" }),
@@ -42,7 +48,14 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
           extras: new fields.SchemaField(
             LifestyleSchema.defineSchema({
               initialCost: 100,
-            })
+            }),
+            {
+              deprecate: {
+                version: "0.91.0",
+                path: "character",
+                reason: "The extras are now part of the character sheet",
+              },
+            }
           ),
           fashion: new fields.SchemaField({
             desription: new fields.HTMLField(),

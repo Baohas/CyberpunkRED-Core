@@ -184,6 +184,40 @@ export default class MigrationRunner {
     return migrationClasses;
   }
 
+  static getDeprecatedDataModelFields() {
+    const deprecatedKeys = new Set();
+    function searchForDeprecated(schemaObj, key) {
+      for (const [fieldName, fieldObj] of Object.entries(schemaObj.fields)) {
+        const { deprecate } = fieldObj.options;
+        const newPath = `${key}.${fieldName}`;
+        if (deprecate) {
+          const { path } = deprecate;
+          deprecatedKeys.add(
+            // Stringify ensures we don't add duplicates
+            JSON.stringify({
+              ...deprecate,
+              path: newPath.split(".").toSpliced(1, 0, path).join("."),
+            })
+          );
+          continue;
+        }
+
+        if (fieldObj.fields) {
+          searchForDeprecated(fieldObj, newPath);
+        }
+      }
+    }
+
+    const docTypes = ["Item", "Actor"];
+    for (const docType of docTypes) {
+      const documentDataModel = CONFIG[docType].dataModels;
+      for (const DataModel of Object.values(documentDataModel)) {
+        searchForDeprecated(DataModel.schema, docType);
+      }
+    }
+    return Array.from(deprecatedKeys).map((key) => JSON.parse(key));
+  }
+
   /**
    * This is the top level entry point for executing migrations. This code assumes the user is a GM. It will
    * figure out what migrations to run, and dispatch them for execution.

@@ -37,5 +37,6 @@ export default class AmmoIsInstallable extends BaseMigrationScript {
     if (magazine.ammoData?.uuid) {
       installedItems.list.push(magazine.ammoData.uuid);
     }
+    magazine.ammoData = null;
   }
 }
