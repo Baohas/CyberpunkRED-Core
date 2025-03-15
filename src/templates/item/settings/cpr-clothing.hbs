@@ -5,7 +5,7 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.style" data-dtype="{{item.system.style}}">
-      {{selectOptions (cprFindConfigObj "clothingStyle") selected=item.system.style localize=true}}
+      {{selectOptions (cprFindConfigObj "clothingVarieties") selected=item.system.style localize=true}}
     </select>
   </div>
 </li>
@@ -16,7 +16,7 @@
   </div>
   <div class="item flexrow setting-value text-nowrap item-end">
     <select name="system.type" data-dtype="{{item.system.type}}">
-      {{selectOptions (cprFindConfigObj "clothingType") selected=item.system.type localize=true}}
+      {{selectOptions (cprFindConfigObj "clothingTypes") selected=item.system.type localize=true}}
     </select>
   </div>
 </li>

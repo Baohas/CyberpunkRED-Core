@@ -39,7 +39,7 @@
     {{#if this.system.isRanged}}
       {{#if this.system.hasAmmoLoaded}}
         {{#with this.system.loadedAmmo as |ammo|}}
-          {{localize (cprFindConfigValue "ammoType" ammo.system.type)}}:
+          {{localize (cprFindConfigValue "ammoTypes" ammo.system.type)}}:
         {{/with}}
         {{this.system.magazine.value}}
         /

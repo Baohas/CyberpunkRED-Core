@@ -7,10 +7,10 @@
   <div class="item flexrow setting-value text-nowrap item-end">
     {{#if this.editable }}
       <select name="system.type" data-dtype="{{item.system.type}}">
-        {{selectOptions (cprFindConfigObj "cyberwareTypeList") selected=item.system.type localize=true}}
+        {{selectOptions (cprFindConfigObj "cyberwareTypes") selected=item.system.type localize=true}}
       </select>
     {{else}}
-      <span class="text-flex-end">{{localize (cprFindConfigValue "cyberwareTypeList" item.system.type)}}</span>
+      <span class="text-flex-end">{{localize (cprFindConfigValue "cyberwareTypes" item.system.type)}}</span>
     {{/if}}
   </div>
 </li>
