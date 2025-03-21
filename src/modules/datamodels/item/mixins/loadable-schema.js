@@ -41,7 +41,10 @@ export default class LoadableSchema extends CPRSystemDataModel {
    * @returns {CPRSystemDataModel} - migrated data
    */
   static migrateData(source) {
-    if (!source.installedItems.allowedTypes.includes("ammo")) {
+    if (
+      source.installedItems.allowedTypes &&
+      !source.installedItems.allowedTypes.includes("ammo")
+    ) {
       source.installedItems.allowedTypes.push("ammo");
     }
     return super.migrateData(source);
