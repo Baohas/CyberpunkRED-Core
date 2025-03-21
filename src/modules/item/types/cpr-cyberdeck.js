@@ -390,6 +390,11 @@ export default class CPRCyberdeckItem extends CPRItem {
       );
       const biToken = biTokenList.length > 0 ? biTokenList[0] : null;
       if (biToken !== null) {
+        // Ensure Token has Black Ice image for token
+        biToken.update(
+          { texture: { src: blackIce.img } },
+          { animation: { duration: 0 } }
+        );
         // Update the Token Actor based on the Black ICE Program Stats, leaving any effect description in place.
         biToken.actor.update({
           class: program.system.blackIceType,
