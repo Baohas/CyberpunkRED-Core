@@ -56,6 +56,10 @@ export default class CPRBlackIceActor extends Actor {
       cprRoll.rollCardExtraArgs.program = {
         class: "blackice",
         blackIceType: this.system.class,
+        system: {
+          class: "blackice",
+          damage: "blackice",
+        },
       };
     }
     return cprRoll;
