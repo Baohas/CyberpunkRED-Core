@@ -76,12 +76,14 @@ export default class CPRItemSheet extends ItemSheet {
         value: "none",
       });
 
-      cprData.allowedUsages = this.item.system.allowedUsage.map((use) => {
-        return {
-          value: use,
-          label: CPR.effectUses[use],
-        };
-      });
+      cprData.allowedUsages =
+        this.item.system.allowedUsage &&
+        this.item.system.allowedUsage.map((use) => {
+          return {
+            value: use,
+            label: CPR.effectUses[use],
+          };
+        });
     }
 
     if (itemType === "itemUpgrade") {

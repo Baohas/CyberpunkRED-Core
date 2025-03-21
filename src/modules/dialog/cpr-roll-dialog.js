@@ -87,10 +87,13 @@ export class CPRRollDialog extends CPRDialog {
    * @return {Array<Object>} An array of objects containing the value and label for each program damage option.
    */
   getProgramDamageSelectOptions() {
-    const standardDamage =
-      this.rollData.rollCardExtraArgs.program.system.damage.standard;
-    const blackIceDamage =
-      this.rollData.rollCardExtraArgs.program.system.damage.blackIce;
+    const { program } = this.rollData.rollCardExtraArgs;
+    const standardDamage = program.system
+      ? program.system.damage.standard
+      : program.damage.standard;
+    const blackIceDamage = program.system
+      ? program.system.damage.blackIce
+      : program.damage.blackIce;
     const programDamageSelectOptions = [
       {
         value: standardDamage,

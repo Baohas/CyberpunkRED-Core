@@ -41,7 +41,6 @@ export default class CPRDemonActor extends Actor {
 
     if (cprRoll.rollCardExtraArgs.length === 0) {
       cprRoll.rollCardExtraArgs.program = {
-        class: "demon",
         system: {
           class: "demon",
           damage: "blackice",
