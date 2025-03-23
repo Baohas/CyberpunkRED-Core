@@ -38,6 +38,7 @@
   "CPR.blackIceSheet.configureFromProgram": "Update this Black ICE Actor using Black ICE Program Data",
   "CPR.blackIceSheet.cost": "Cost",
   "CPR.blackIceSheet.damage": "The damage value must come from a linked program.",
+  "CPR.blackIceSheet.defaultNotes": "<p>This Actor is used for creating Black ICE Actors within the system, we suggest not deleting it.</p><p>See the <a href=\"https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/System-Documentation/Items/Programs#black-ice\">Wiki: Programs page</a> for more information.",
   "CPR.characterSheet.bottomPane.fight.clickToActivateProgram": "Click to activate program",
   "CPR.characterSheet.bottomPane.fight.clickToDeactivateProgram": "Click to de-activate program",
   "CPR.characterSheet.bottomPane.fight.clickToPerformAction": "Click to perform action.",

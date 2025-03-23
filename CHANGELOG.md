@@ -71,6 +71,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Add Basic system API
   - Add `GetEMPableItems` function to API
 - Add Q-Workshop dice presets for Dice-So-Nice
+- Add a default Black ICE actor when first launching a world
 
 ### Changes
 

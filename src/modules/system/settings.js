@@ -337,6 +337,18 @@ const registerSystemSettings = () => {
       LOGGER.log(`System Version persisted to ${value}`);
     },
   });
+
+  // Hidden settings
+  // Settings used to track per world things that don't require user input
+
+  // Create Black ICE Actor
+  game.settings.register(game.system.id, "firstRunCreateBlackIceActor", {
+    name: "First Run: Create Black ICE Actor",
+    scope: "world",
+    config: false,
+    type: Boolean,
+    default: false,
+  });
 };
 
 export default registerSystemSettings;
