@@ -5,7 +5,6 @@ import gulp from "gulp";
 import less from "gulp-less";
 import path from "path";
 import svgmin from "gulp-svgmin";
-import YAML from "js-yaml";
 import ChangelogUtils from "./utils/changelogUtils.mjs";
 
 import {
