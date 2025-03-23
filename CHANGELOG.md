@@ -87,6 +87,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Change how we handle Branded Items
   - Rename branded items to use the full item name from the source book
   - Remove the programatic band name handler
+- Ensure all SVGs have `width`/`height` set corectly to prevent known Firefox/PIXI bug
 
 ### Bug Fixes
 

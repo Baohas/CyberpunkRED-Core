@@ -4,7 +4,8 @@ import log from "fancy-log";
 import gulp from "gulp";
 import less from "gulp-less";
 import path from "path";
-import svgmin from "gulp-svgmin";
+import { optimize } from "svgo";
+import through2 from "through2";
 import ChangelogUtils from "./utils/changelogUtils.mjs";
 
 import {
@@ -273,28 +274,92 @@ async function processImages() {
   });
 }
 
+/**
+ * Processes all SVG files, applying optimization and standardizing dimensions.
+ * @returns {Promise<void>} A promise that resolves when SVG processing is complete
+ */
 async function processSvgs() {
-  return new Promise((cb) => {
+  return new Promise((resolve) => {
     log("Processing SVGs...");
+
+    // SVGO configuration
+    const svgoConfig = {
+      multipass: true,
+      plugins: [
+        // Basic optimizations
+        "cleanupAttrs",
+        "removeDoctype",
+        "removeComments",
+        "removeXMLProcInst",
+        "removeUselessDefs",
+        "convertStyleToAttrs",
+
+        // Custom plugin to set dimensions
+        {
+          name: "customSetDimensions",
+          type: "visitor",
+          fn: () => ({
+            element: {
+              enter: (node) => {
+                if (node.name === "svg") {
+                  // Set exact dimensions
+                  node.attributes.width = "512px";
+                  node.attributes.height = "512px";
+                  node.attributes.viewBox = "0 0 512 512";
+                }
+              },
+            },
+          }),
+        },
+      ],
+    };
+
     gulp
       .src("src/**/*.svg", { base: SRC_DIR })
-      .on("data", (file) => {
-        if (DEBUG) {
-          log(
-            `DEBUG: Processing SVG: ${path.relative(process.cwd(), file.path)}`
-          );
-        }
-      })
       .pipe(
-        svgmin({
-          multipass: true,
-          plugins: ["convertStyleToAttrs"],
+        through2.obj(function (file, enc, callback) {
+          if (file.isNull()) {
+            callback(null, file);
+            return;
+          }
+
+          if (DEBUG) {
+            log(
+              `DEBUG: Processing SVG: ${path.relative(
+                process.cwd(),
+                file.path
+              )}`
+            );
+          }
+
+          // Get SVG content as string
+          const svgString = file.contents.toString("utf8");
+
+          try {
+            // Process with SVGO
+            const result = optimize(svgString, {
+              path: file.path,
+              ...svgoConfig,
+            });
+
+            // Update file content with optimized SVG
+            file.contents = Buffer.from(result.data);
+
+            callback(null, file);
+          } catch (error) {
+            log(`Error processing ${file.path}: ${error.message}`);
+            callback(error);
+          }
         })
       )
       .pipe(gulp.dest(DEST_DIR))
+      .on("error", (err) => {
+        log(`SVG processing error: ${err.message}`);
+        resolve(err);
+      })
       .on("finish", () => {
         log("Finished Processing SVGs.");
-        cb();
+        resolve();
       });
   });
 }
