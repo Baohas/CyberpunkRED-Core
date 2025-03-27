@@ -84,7 +84,7 @@ export default class ContainerSchema extends CPRSystemDataModel {
    */
   static migrateData(source) {
     const { installedItems } = source;
-    if (installedItems.list.length > 0) {
+    if (installedItems?.list?.length > 0) {
       // Ensure that this list never has duplicates.
       installedItems.list = Array.from(new Set(installedItems.list));
     }
