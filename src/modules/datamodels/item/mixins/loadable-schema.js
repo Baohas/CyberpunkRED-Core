@@ -24,18 +24,18 @@ export default class LoadableSchema extends CPRSystemDataModel {
           initial: 0,
           min: 0,
         }),
+        ammoData: new fields.SchemaField(
+          { uuid: new fields.StringField() },
+          {
+            deprecate: {
+              version: "0.91.0",
+              path: "loadable",
+              reason: "This data now exists in installedItems.list",
+            },
+            nullable: true,
+          }
+        ),
       }),
-      ammoData: new fields.SchemaField(
-        { uuid: new fields.StringField() },
-        {
-          deprecate: {
-            version: "0.91.0",
-            path: "loadable",
-            reason: "This data now exists in installedItems.list",
-          },
-          nullable: true,
-        }
-      ),
       ammoVariety: new fields.ArrayField(
         new fields.StringField({ choices: Object.keys(CPR.ammoVarieties) })
       ),
