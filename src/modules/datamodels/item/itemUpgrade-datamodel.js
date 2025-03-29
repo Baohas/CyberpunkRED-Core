@@ -55,6 +55,12 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
         seats: new fields.SchemaField(UpgradeModifierSchema.defineSchema(), {
           required: false,
         }),
+        speedCombat: new fields.SchemaField(
+          UpgradeModifierSchema.defineSchema(),
+          {
+            required: false,
+          }
+        ),
         slots: new fields.SchemaField(UpgradeModifierSchema.defineSchema(), {
           required: false,
         }),
