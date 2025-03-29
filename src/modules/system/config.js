@@ -619,6 +619,7 @@ CPR.upgradableDataPoints = {
       localization: "CPR.global.stats.cool",
     },
   },
+  gear: {},
 };
 
 CPR.activeEffectCategories = {
