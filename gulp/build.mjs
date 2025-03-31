@@ -309,11 +309,8 @@ async function processSvgs() {
                   if (node.attributes.height === undefined) {
                     node.attributes.height = "512";
                   }
-                  // Get existing width & height from svg
-                  const svgWidth = node.attributes.width;
-                  const svgHeight = node.attributes.height;
-                  // Set viewbox to match dimensions
-                  node.attributes.viewBox = `0 0 ${svgWidth} ${svgHeight}`;
+                  // Set viewbox to match existing dimensions
+                  node.attributes.viewBox = `0 0 ${node.attributes.width} ${node.attributes.height}`;
                 }
               },
             },
