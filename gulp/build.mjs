@@ -309,8 +309,10 @@ async function processSvgs() {
                   if (node.attributes.height === undefined) {
                     node.attributes.height = "512";
                   }
-                  // Set viewbox to match existing dimensions
-                  node.attributes.viewBox = `0 0 ${node.attributes.width} ${node.attributes.height}`;
+                  // Set viewbox if value is missing
+                  if (node.attributes.viewBox === undefined) {
+                    node.attributes.viewBox = `0 0 ${node.attributes.width} ${node.attributes.height}`;
+                  }
                 }
               },
             },
