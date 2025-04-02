@@ -71,6 +71,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Add Basic system API
   - Add `GetEMPableItems` function to API
 - Add Q-Workshop dice presets for Dice-So-Nice
+- Add a default Black ICE actor when first launching a world
 
 ### Изменения
 
@@ -87,6 +88,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Изменён способ обработки предметов с брендами в нгазвании
   - Предметы с брендами в названии теперь называются точно, как в соответствующей книге правил
   - Бренд больше не добавляется в название программно
+- Ensure all SVGs have `width`/`height` set corectly to prevent known Firefox/PIXI bug
 
 ### Исправления
 
@@ -105,6 +107,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
 - Fix program damage type in Chat messages for Programs
 - Fix not being able to creat effects on owned items.
 - Fix Black ICE actions/skills not being properly translated
+- Change description of Warlocks Book to be RTal Homebrew Policy compliant
 - Исправлено ещё несколько опечаток в описаниях предметов
 - #1089 - Fix missing effects on items split from stacks
 
