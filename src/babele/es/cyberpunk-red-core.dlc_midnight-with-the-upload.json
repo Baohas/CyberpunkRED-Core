@@ -60,7 +60,7 @@
     },
     "Warlock's Book": {
       "name": "Libro del Brujo",
-      "description": "<p>Una opción fantástica para desmantelar a los Netrunners hostiles. Solo espere que no tengan ningún Hielo Negro.</p>\n<p>6 ranuras para programas o hardware, 3 ranuras extra solo para programas de Flak.</p>\n<p>Restricciones para Programas de Defensa o Hielo Negro: Solo se puede instalar Flak y Aspid en cualquier ranura</p>"
+      "description": "<p>\n  If you prefer sliding through NET Architectures avoiding Black ICE this is the\n  deck for you.\n</p>\n<p>9 slots to install either Programs or Hardware.</p>\n<p><em>No Attacker or Black ICE Program may be installed.</em></p>\n"
     },
     "Aerie": {
       "name": "Aguilera",
