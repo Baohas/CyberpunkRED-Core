@@ -71,6 +71,7 @@ Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la cop
 - Ajout d'un système basique d'API
   - Ajout de la fonction `GetEMPableItems` dans les API
 - Add Q-Workshop dice presets for Dice-So-Nice
+- Add a default Black ICE actor when first launching a world
 
 ### Att/round
 
@@ -87,6 +88,7 @@ Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la cop
 - Changement de la manière dont nous traitons les objets de Marque
   - Les objets de marque ont été renommés pour utiliser le nom complet de l'objet selon sa source
   - Retire le gestionnaire de nom de la bande programmatique
+- Ensure all SVGs have `width`/`height` set corectly to prevent known Firefox/PIXI bug
 
 ### Correction de bugs
 
@@ -105,6 +107,7 @@ Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la cop
 - Corrige les types de dégâts de programmes dans les messages du chat pour les programmes
 - Corrige l'impossibilité de créer des effets dans les objets possédés.
 - Corrige les compétences/actions de GLACE Noir n'étant pas traduit adéquatement
+- Change description of Warlocks Book to be RTal Homebrew Policy compliant
 - Correction de toujours plus de fautes de frappe
 - #1089 - Fix missing effects on items split from stacks
 
