@@ -60,7 +60,7 @@
     },
     "Warlock's Book": {
       "name": "Фолиант чернокнижника",
-      "description": "<p>\n  If you prefer sliding through NET Architectures avoiding Black ICE this is the\n  deck for you.\n</p>\n<p>9 slots to install either Programs or Hardware.</p>\n<p><em>No Attacker or Black ICE Program may be installed.</em></p>\n"
+      "description": "<p>Если твой стиль — словно по льду проехать через архитектуру, то это твой выбор.</p>\n<p>Девять слотов для программ или аппаратного обеспечения.</p>\n<p><em>Нельзя установить атакующие программы и чёрный лёд.</em></p>"
     },
     "Aerie": {
       "name": "Воронье гнездо",
