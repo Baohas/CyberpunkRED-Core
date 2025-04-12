@@ -306,12 +306,12 @@ export default class CPRActor extends Actor {
       // Get the item.
       const item = this.getOwnedItem(itemId);
       // Check if item is installed somewhere. Uninstall it first.
-      if (item.system.isInstalled) {
+      if (item?.system.isInstalled) {
         uninstallPromises.push(item.uninstall({ skipDialog: true }));
       }
 
       // Check if it has installed items. Uninstall them before deleting.
-      if (item.system.hasInstalled) {
+      if (item?.system.hasInstalled) {
         const installedItemIDs = item.system.installedItems.list;
         const installedItemsList = installedItemIDs.map((id) =>
           this.getOwnedItem(id)
