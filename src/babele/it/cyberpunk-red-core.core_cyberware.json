@@ -259,7 +259,8 @@
     },
     "Popup Ranged Weapon": {
       "name": "Arma a Distanza Popup",
-      "description": "<p>Un'Arma a Distanza ad una mano nascosta. Non è possibile tenere nulla con questa mano mentre è attivata. </p>"
+      "description": "<p>Un'Arma a Distanza ad una mano nascosta. Non è possibile tenere nulla con questa mano mentre è attivata. </p>",
+      "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Scudo Popup",
