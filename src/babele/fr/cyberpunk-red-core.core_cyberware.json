@@ -259,7 +259,8 @@
     },
     "Popup Ranged Weapon": {
       "name": "Arme à distance escamotable",
-      "description": "<p>Une arme à distance installée dans un cyberbras. Lorsque activé, cette main ne peut rien tenir.</p>"
+      "description": "<p>Une arme à distance installée dans un cyberbras. Lorsque activé, cette main ne peut rien tenir.</p>",
+      "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Bouclier escamotable",
