@@ -259,7 +259,8 @@
     },
     "Popup Ranged Weapon": {
       "name": "Pop-Up-Fernkampfwaffe",
-      "description": "<p>Eine vom Anwender bereitgestellte, einhändige Fernkampfwaffe wird permanent in den Cyberarm installiert. Bei\ngezogener Waffe kann der Anwender nichts anderes in der Hand dieses Arms halten.</p>"
+      "description": "<p>Eine vom Anwender bereitgestellte, einhändige Fernkampfwaffe wird permanent in den Cyberarm installiert. Bei\ngezogener Waffe kann der Anwender nichts anderes in der Hand dieses Arms halten.</p>",
+      "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Pop-Up-Schild",
