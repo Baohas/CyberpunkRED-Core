@@ -24,9 +24,10 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: >-
+img: >-
   systems/cyberpunk-red-core/icons/compendium/cyberware/grafted_muscle_and_bone_lace.svg
 name: Grafted Muscle & Bone Lace
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

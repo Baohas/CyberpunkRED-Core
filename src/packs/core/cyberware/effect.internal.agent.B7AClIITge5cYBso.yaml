@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/cyberware/internal_agent.svg
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/internal_agent.svg
 name: Internal Agent
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

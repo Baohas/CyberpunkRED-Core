@@ -8,5 +8,5 @@ range:
   - 1
   - 1
 text: 2 Coils of Rope (60m/yd per coil, 120m/yd in all.)
-type: 0
+type: text
 weight: 1

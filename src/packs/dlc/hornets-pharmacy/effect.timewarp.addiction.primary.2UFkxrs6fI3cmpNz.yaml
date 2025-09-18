@@ -3,6 +3,7 @@ _key: "!items.effects!8nOTvNR4qZP54nKy.2UFkxrs6fI3cmpNz"
 changes:
   - key: bonuses.initiative
     mode: 2
+    priority: null
     value: "5"
 description: ""
 disabled: true
@@ -23,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/timewarp_addiction.svg
+img: systems/cyberpunk-red-core/icons/compendium/status/timewarp_addiction.svg
 name: Timewarp Addiction Primary
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

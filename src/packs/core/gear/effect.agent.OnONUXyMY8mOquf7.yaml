@@ -32,8 +32,9 @@ flags:
         "1":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
+img: systems/cyberpunk-red-core/icons/compendium/gear/agent.svg
 name: Agent
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

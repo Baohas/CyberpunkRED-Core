@@ -12,5 +12,5 @@ text: >-
   in the Body and once in the Head locations. If the Attack was a Melee Attack
   with a melee weapon, the weapon is stuck in the target's body and the Attacker
   is disarmed. (See Night City Tarot Page 5).
-type: 0
+type: text
 weight: 1

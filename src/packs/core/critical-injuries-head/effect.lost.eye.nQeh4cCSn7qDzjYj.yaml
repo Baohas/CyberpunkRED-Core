@@ -32,8 +32,9 @@ flags:
         "1":
           isSituational: true
           onByDefault: true
-icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_eye.svg
 name: Lost Eye
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

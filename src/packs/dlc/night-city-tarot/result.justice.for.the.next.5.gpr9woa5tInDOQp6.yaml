@@ -11,5 +11,5 @@ text: >-
   Justice. For the next 5 minutes, the target suffers a -5 penalty to Evasion
   Skill Checks and they cannot dodge Ranged Attacks. (See Night City Tarot Page
   4).
-type: 0
+type: text
 weight: 1

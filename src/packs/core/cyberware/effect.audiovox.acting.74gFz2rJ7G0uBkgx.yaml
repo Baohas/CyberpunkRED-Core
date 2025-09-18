@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
 name: AudioVox Acting
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

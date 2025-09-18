@@ -3,6 +3,7 @@ _key: "!items.effects!ka6ccQeTt7ud3pFi.6eJSLpqij03VxIFa"
 changes:
   - key: bonuses.speed
     mode: 2
+    priority: null
     value: "-2"
 description: ""
 disabled: true
@@ -23,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/sixgun_addiction.svg
+img: systems/cyberpunk-red-core/icons/compendium/status/sixgun_addiction.svg
 name: Sixgun Addiction
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

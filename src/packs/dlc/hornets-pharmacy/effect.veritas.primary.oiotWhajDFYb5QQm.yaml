@@ -64,8 +64,9 @@ flags:
         "5":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/veritas.svg
+img: systems/cyberpunk-red-core/icons/compendium/status/veritas.svg
 name: Veritas Primary
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

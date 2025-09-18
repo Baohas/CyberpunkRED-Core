@@ -64,8 +64,9 @@ flags:
         "5":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/smash_addiciton.svg
+img: systems/cyberpunk-red-core/icons/compendium/status/smash_addiciton.svg
 name: Smash Addiction
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

@@ -8,5 +8,5 @@ range:
   - 2
   - 2
 text: Add 2 additional Mooks to the encounter at the start of the 2nd Round.
-type: 0
+type: text
 weight: 1

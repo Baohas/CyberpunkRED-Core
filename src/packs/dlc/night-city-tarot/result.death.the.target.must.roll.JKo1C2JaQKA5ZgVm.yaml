@@ -12,5 +12,5 @@ text: >-
   they are reduced to 0 HP and are considered unconscious for one minute. When
   they regain consciousness, they regain 3d6 Humanity Points up to their Max
   Humanity. (See Night City Tarot Page 4).
-type: 0
+type: text
 weight: 1

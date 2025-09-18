@@ -13,5 +13,5 @@ text: >-
   When moving more than 4 m/yards, instead of taking the Critical Injury Bonus
   Damage, they must beat a DV 15 Resist Torture/Drugs Skill Check or take 3d6
   Damage directly to their HP. (See Night City Tarot Page 3).
-type: 0
+type: text
 weight: 1

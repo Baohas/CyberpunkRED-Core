@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/lost_ear.svg
 name: Lost Ear
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

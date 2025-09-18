@@ -64,8 +64,9 @@ flags:
         "5":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/piranha-smash.svg
+img: systems/cyberpunk-red-core/icons/compendium/status/piranha-smash.svg
 name: Piranha Smash Primary
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

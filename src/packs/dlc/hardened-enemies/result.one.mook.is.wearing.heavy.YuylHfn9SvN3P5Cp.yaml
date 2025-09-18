@@ -10,5 +10,5 @@ range:
 text: >-
   One Mook is wearing Heavy Armorjack (SP13) Body Armor. Increase their REF,
   DEX, and MOVE by 2 (before calculating the Armor Penalty).
-type: 0
+type: text
 weight: 1

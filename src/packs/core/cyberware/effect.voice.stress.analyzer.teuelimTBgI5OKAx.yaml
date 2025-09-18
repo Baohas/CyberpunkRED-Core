@@ -32,9 +32,10 @@ flags:
         "1":
           isSituational: false
           onByDefault: false
-icon: >-
+img: >-
   systems/cyberpunk-red-core/icons/compendium/cyberware/voice_stress_analyzer.svg
 name: Voice Stress Analyzer
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

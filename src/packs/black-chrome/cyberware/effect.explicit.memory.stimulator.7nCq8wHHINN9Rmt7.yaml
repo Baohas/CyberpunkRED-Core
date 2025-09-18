@@ -24,9 +24,10 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: >-
+img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/explicit-memory-stimulator.svg
 name: Explicit Memory Stimulator
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

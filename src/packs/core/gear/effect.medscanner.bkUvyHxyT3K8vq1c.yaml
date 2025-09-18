@@ -32,8 +32,9 @@ flags:
         "1":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
+img: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
 name: Medscanner
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

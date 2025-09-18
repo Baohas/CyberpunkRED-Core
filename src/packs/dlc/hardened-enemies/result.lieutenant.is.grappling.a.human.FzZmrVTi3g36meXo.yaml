@@ -8,5 +8,5 @@ range:
   - 2
   - 2
 text: Lieutenant is grappling a human shield (CP:R page 184).
-type: 0
+type: text
 weight: 1

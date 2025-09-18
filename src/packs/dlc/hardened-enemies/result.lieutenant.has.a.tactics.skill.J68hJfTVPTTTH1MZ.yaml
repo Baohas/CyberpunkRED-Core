@@ -8,5 +8,5 @@ range:
   - 10
   - 10
 text: Lieutenant has a Tactics Skill Base of 16 and is in command.
-type: 0
+type: text
 weight: 1

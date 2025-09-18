@@ -11,5 +11,5 @@ text: >-
   The Magician. The GM must select one of the target's cyberware. It is then
   Destroyed. The target is now also Deadly On Fire (CP:R Page 180). (See Night
   City Tarot Page 3).
-type: 0
+type: text
 weight: 1

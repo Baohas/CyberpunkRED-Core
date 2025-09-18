@@ -72,8 +72,9 @@ flags:
         "6":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
 name: Techscanner
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

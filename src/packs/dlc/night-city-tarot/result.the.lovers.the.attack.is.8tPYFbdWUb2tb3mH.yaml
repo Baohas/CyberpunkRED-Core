@@ -11,5 +11,5 @@ text: >-
   The Lovers. The Attack is now treated as an Aimed Shot to the Head. If the
   Attack was a Melee Attack, the target is now grappled by the Attacker. (See
   Night City Tarot Page 3).
-type: 0
+type: text
 weight: 1

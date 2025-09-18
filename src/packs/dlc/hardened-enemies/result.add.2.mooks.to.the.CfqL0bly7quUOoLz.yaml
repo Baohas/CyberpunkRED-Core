@@ -8,5 +8,5 @@ range:
   - 8
   - 8
 text: Add 2 Mooks to the encounter. Give each a Critical Injury to the head.
-type: 0
+type: text
 weight: 1

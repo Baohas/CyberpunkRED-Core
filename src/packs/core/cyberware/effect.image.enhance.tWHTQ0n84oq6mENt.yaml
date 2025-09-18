@@ -40,8 +40,9 @@ flags:
         "2":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
+img: systems/cyberpunk-red-core/icons/compendium/cyberware/image_enhance.svg
 name: Image Enhance
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

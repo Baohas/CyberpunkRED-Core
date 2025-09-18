@@ -32,8 +32,9 @@ flags:
         "1":
           isSituational: true
           onByDefault: true
-icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
 name: Damaged Eye
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

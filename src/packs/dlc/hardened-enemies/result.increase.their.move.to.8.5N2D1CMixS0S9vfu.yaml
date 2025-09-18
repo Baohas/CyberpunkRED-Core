@@ -8,5 +8,5 @@ range:
   - 9
   - 9
 text: Increase their MOVE to 8 or increase their Evasion Skill Base to 18.
-type: 0
+type: text
 weight: 1

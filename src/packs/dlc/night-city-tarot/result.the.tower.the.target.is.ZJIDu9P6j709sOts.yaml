@@ -12,5 +12,5 @@ text: >-
   Whiplash Critical Injuries but without taking their Bonus Damage. The target
   cannot feel pain and ignores the Seriously Wounded Wound State for 1 hour.
   (See Night City Tarot Page 5).
-type: 0
+type: text
 weight: 1

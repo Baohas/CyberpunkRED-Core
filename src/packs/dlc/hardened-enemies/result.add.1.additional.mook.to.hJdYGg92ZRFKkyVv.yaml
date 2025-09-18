@@ -8,5 +8,5 @@ range:
   - 9
   - 9
 text: Add 1 additional Mook to the encounter at the start of Rounds 2, 3, and 4.
-type: 0
+type: text
 weight: 1

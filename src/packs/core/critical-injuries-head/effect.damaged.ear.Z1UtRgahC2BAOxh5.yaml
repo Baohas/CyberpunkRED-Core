@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_ear.svg
 name: Damaged Ear
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

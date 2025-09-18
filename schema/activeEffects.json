@@ -31,20 +31,24 @@
         "flags": {
           "$ref": "#/definitions/CPRC-Effect-Flags"
         },
-        "icon": {
+        "img": {
           "$ref": "./components/img.json"
         },
         "name": {
           "type": "string"
-        },
-        "tint": {
-          "type": "null"
         },
         "transfer": {
           "type": "boolean"
         },
         "statuses": {
           "type": "array"
+        },
+        "system": {
+          "type": "object"
+        },
+        "type": {
+          "type": "string",
+          "pattern": "base"
         }
       },
       "required": [
@@ -54,11 +58,11 @@
         "disabled",
         "duration",
         "flags",
-        "icon",
+        "img",
         "name",
         "statuses",
-        "tint",
-        "transfer"
+        "transfer",
+        "type"
       ]
     },
     "CPRC-Effect-Change": {

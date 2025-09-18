@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_leg.svg
+img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/broken_leg.svg
 name: Broken Leg
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

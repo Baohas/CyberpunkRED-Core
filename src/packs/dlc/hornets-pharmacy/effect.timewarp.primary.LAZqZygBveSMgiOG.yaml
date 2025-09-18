@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/readied_action.svg
+img: systems/cyberpunk-red-core/icons/compendium/status/readied_action.svg
 name: Timewarp Primary
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

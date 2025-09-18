@@ -24,7 +24,7 @@ export default class PackUtils {
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     let result = "";
 
-    for (let i = 0; i < length; ) {
+    for (let i = 0; i < length;) {
       const randomIndex = Math.floor(Math.random() * characters.length);
       result += characters.charAt(randomIndex);
       i += 1;
@@ -600,6 +600,9 @@ export default class PackUtils {
     }
     if ("permission" in data) {
       delete data.permission;
+    }
+    if ("tint" in data) {
+      delete data.tint;
     }
 
     // Only run on items

@@ -40,8 +40,9 @@ flags:
         "2":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/sixgun.svg
+img: systems/cyberpunk-red-core/icons/compendium/status/sixgun.svg
 name: Sixgun Primary
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

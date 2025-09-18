@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/status/poser_chip.svg
+img: systems/cyberpunk-red-core/icons/compendium/status/poser_chip.svg
 name: Poser Chip (Impersonate)
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

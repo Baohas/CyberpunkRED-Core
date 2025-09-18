@@ -12,5 +12,5 @@ text: >-
   gain a +5 Bonus to any of their Skill Checks, ignore their Wound State effects
   and do not make a Death Save if they are Mortally wounded during that next
   turn. (See Night City Tarot Page 5).
-type: 0
+type: text
 weight: 1

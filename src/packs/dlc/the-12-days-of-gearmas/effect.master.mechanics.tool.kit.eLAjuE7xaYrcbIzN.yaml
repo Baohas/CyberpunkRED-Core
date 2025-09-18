@@ -72,8 +72,9 @@ flags:
         "6":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/gear/tech_bag.svg
+img: systems/cyberpunk-red-core/icons/compendium/gear/tech_bag.svg
 name: Master Mechanic's Tool Kit
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

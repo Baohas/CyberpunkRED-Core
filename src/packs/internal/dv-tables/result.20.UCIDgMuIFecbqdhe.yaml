@@ -8,5 +8,5 @@ range:
   - 13
   - 25
 text: "20"
-type: 0
+type: text
 weight: 1

@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
+img: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
 name: EL-F4-NT Linear Frame
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

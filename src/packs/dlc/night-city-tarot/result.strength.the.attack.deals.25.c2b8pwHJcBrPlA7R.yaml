@@ -10,5 +10,5 @@ range:
 text: >-
   Strength. The Attack deals 25 more points of damage. That damage is added
   before any armor or multipliers. (See Night City Tarot Page 4).
-type: 0
+type: text
 weight: 1

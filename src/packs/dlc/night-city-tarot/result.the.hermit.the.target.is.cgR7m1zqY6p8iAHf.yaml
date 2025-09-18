@@ -12,5 +12,5 @@ text: >-
   taking the penalty once. Their Checks gain the "Obscured by Darkness" modifier
   if it would leave them with no way to sense an enemy. (See Night City Tarot
   Page 4).
-type: 0
+type: text
 weight: 1

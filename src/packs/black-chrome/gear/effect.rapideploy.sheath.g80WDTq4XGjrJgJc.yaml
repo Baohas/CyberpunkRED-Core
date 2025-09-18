@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: true
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/black-chrome/rapideploy-sheath.svg
+img: systems/cyberpunk-red-core/icons/compendium/black-chrome/rapideploy-sheath.svg
 name: RapiDeploy Sheath
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

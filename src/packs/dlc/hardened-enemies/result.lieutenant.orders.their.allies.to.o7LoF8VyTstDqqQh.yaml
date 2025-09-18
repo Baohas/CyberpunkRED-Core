@@ -8,5 +8,5 @@ range:
   - 3
   - 3
 text: Lieutenant orders their allies to focus on a particular player.
-type: 0
+type: text
 weight: 1

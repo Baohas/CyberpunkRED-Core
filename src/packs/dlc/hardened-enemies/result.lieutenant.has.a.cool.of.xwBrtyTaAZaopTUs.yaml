@@ -10,5 +10,5 @@ range:
 text: >-
   Lieutenant has a COOL of 6, a Reputation of 2, and attempts a Facedown. (CP:R
   page 194) either before combat begins or right at the beginning.
-type: 0
+type: text
 weight: 1

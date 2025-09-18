@@ -24,9 +24,10 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: >-
+img: >-
   systems/cyberpunk-red-core/icons/compendium/default/default-implanted-linearframe.svg
 name: Implanted LF-001 SWAT Linear Frame
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

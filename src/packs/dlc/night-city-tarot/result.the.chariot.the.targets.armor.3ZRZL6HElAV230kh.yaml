@@ -11,5 +11,5 @@ text: >-
   The Chariot. The target's armor location is ablated by another 5 points, even
   if the Damage Roll didn't beat the target's armor SP. (See Night City Tarot
   Page 4).
-type: 0
+type: text
 weight: 1

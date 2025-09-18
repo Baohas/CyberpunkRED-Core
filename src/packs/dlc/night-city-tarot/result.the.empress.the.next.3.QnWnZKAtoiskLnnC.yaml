@@ -12,5 +12,5 @@ text: >-
   automatically deal a Critical Injury, no matter the Damage Roll results. This
   doesn't work with weapons incapable of causing a Critical Injury, with
   exception of Light Melee Weapons. (See Night City Tarot Page 3).
-type: 0
+type: text
 weight: 1

@@ -24,9 +24,10 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: >-
+img: >-
   systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/kill_display.svg
 name: Kill Display
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

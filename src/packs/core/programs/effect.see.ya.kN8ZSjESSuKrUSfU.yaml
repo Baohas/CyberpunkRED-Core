@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg
+img: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg
 name: See Ya
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

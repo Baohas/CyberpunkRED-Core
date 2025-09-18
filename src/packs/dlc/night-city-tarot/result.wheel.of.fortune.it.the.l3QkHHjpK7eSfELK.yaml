@@ -14,5 +14,5 @@ text: >-
   misses. The weapon used for the Attack malfunctions and requires an Action to
   be used to reverse the malfunction before being used again. (See Night City
   Tarot Page 4).
-type: 0
+type: text
 weight: 1

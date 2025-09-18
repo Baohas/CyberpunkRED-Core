@@ -24,9 +24,10 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: >-
+img: >-
   systems/cyberpunk-red-core/icons/compendium/cyberware/artificial_shoulder_mount.svg
 name: Artificial Shoulder Mount
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

@@ -14,5 +14,5 @@ text: >-
   body. You roll a new Damage Roll for the second hit. If the Attack was a Melee
   Attack, the target is dealt the Broken Ribs and Collapsed Lung Critical
   Injuries. (See Night City Tarot Page 5).
-type: 0
+type: text
 weight: 1

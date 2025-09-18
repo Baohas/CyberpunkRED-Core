@@ -52,8 +52,11 @@
           "type": "string"
         },
         "type": {
-          "type": "number",
-          "enum": [0, 2]
+          "type": "string",
+          "enum": [
+            "text",
+            "pack"
+          ]
         },
         "weight": {
           "type": "number",

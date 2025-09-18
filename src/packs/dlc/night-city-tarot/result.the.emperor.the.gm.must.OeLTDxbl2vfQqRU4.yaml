@@ -12,5 +12,5 @@ text: >-
   Critical Injury from the Head Critical Injury Rolltable (CPR: Page 188) and
   from the Body Critical Injury Rolltable (CP:R Page 187). The target is dealt
   both Critical Injuries. (See Night City Tarot Page 3).
-type: 0
+type: text
 weight: 1

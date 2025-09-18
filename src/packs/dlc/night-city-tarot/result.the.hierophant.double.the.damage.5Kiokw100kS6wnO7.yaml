@@ -13,5 +13,5 @@ text: >-
   modifiers. (Just like how you would double the damage on an Aimed Shot to the
   Head). If the Attack was made with a weapon, that weapon is now Destroyed
   Beyond Repair. (See Night City Tarot Page 3).
-type: 0
+type: text
 weight: 1

@@ -11,5 +11,5 @@ text: >-
   Temperance. The target chooses one of their limbs to be dealt the Dismembered
   Limb Critical Injury and another one to be dealt the Broken Limb Critical
   Injury. (See Night City Tarot Page 5).
-type: 0
+type: text
 weight: 1

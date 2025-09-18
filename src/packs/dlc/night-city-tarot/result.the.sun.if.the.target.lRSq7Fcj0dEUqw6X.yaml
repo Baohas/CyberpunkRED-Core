@@ -12,5 +12,5 @@ text: >-
   explodes. If the target wasn't carrying any, the GM must choose one non-weapon
   equipment on the target. It is Destroyed Beyond Repair. (See Night City Tarot
   Page 5).
-type: 0
+type: text
 weight: 1

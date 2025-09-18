@@ -8,5 +8,5 @@ range:
   - 6
   - 6
 text: Lieutenant has First Aid and Paramedic Skill Bases of 14 each.
-type: 0
+type: text
 weight: 1

@@ -14,5 +14,5 @@ text: >-
   counterpart, but are still attached to the target's body. If the target
   doesn't have any cyberware, they are dealt the Foreign Object Critical Injury
   and take 3d6 Humanity Loss instead. (See Night City Tarot Page 3).
-type: 0
+type: text
 weight: 1

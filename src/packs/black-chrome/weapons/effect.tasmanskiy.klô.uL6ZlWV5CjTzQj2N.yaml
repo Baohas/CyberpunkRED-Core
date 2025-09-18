@@ -24,8 +24,9 @@ flags:
         "0":
           isSituational: false
           onByDefault: false
-icon: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg
+img: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg
 name: Tasmanskiy Klô
 statuses: []
-tint: null
+system: {}
 transfer: true
+type: base

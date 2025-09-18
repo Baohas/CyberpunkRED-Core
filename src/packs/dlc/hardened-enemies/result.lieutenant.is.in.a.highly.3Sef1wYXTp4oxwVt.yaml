@@ -8,5 +8,5 @@ range:
   - 5
   - 5
 text: Lieutenant is in a highly defensible position, making use of cover.
-type: 0
+type: text
 weight: 1
