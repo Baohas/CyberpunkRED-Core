@@ -54,8 +54,8 @@ export default class CPRDialog extends FormApplication {
    *
    * @override
    */
-  getData() {
-    const data = super.getData();
+  async getData() {
+    const data = await super.getData();
     Object.entries(this.object).forEach(([key, value]) => {
       data[key] = value;
     });

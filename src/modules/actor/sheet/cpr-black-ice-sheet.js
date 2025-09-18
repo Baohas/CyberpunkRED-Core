@@ -35,7 +35,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    * @returns {Object} data - a curated structure of actorSheet data
    */
   async getData() {
-    const foundryData = super.getData();
+    const foundryData = await super.getData();
 
     foundryData.enrichedHTML = [];
     foundryData.enrichedHTML.notes = await TextEditor.enrichHTML(

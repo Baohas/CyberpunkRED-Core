@@ -25,8 +25,8 @@ export default class SelectRoleBonuses extends CPRDialog {
    *
    * @override
    */
-  getData() {
-    const data = super.getData();
+  async getData() {
+    const data = await super.getData();
     data.skillList = this.skillList;
     data.roleData = this.roleData;
     return data;

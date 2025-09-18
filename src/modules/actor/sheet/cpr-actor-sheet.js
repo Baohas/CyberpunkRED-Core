@@ -66,7 +66,7 @@ export default class CPRActorSheet extends ActorSheet {
    * @returns {Object} data - a curated structure of actorSheet data
    */
   async getData() {
-    const foundryData = super.getData();
+    const foundryData = await super.getData();
     const cprData = {};
 
     cprData.fightData = {};

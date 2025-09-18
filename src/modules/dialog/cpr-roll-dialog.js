@@ -44,7 +44,7 @@ export class CPRRollDialog extends CPRDialog {
    * @override
    */
   async getData() {
-    const data = super.getData();
+    const data = await super.getData();
     data.rollData = this.rollData; // CPRRoll object
     data.actor = this.actor;
     data.prototypeChain = this.prototypeChain;
@@ -226,8 +226,8 @@ export class CPRRoleRollDialog extends CPRRollDialog {
   /**
    * Prepares any data unique to the Role Roll Dialog sheet.
    */
-  getData() {
-    const data = super.getData();
+  async getData() {
+    const data = await super.getData();
 
     const skillIsVarying =
       this.item.system.skill === "varying" ||

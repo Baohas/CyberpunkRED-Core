@@ -44,7 +44,7 @@ export default class CPRItemSheet extends ItemSheet {
 
   /** @override */
   async getData() {
-    const foundryData = super.getData();
+    const foundryData = await super.getData();
     const cprData = {};
     cprData.isGM = game.user.isGM;
     const itemType = foundryData.item.type;

@@ -50,8 +50,7 @@ export default class CPRLedger extends CPRDialog {
    *
    * @return {Object} - a structured object representing ledger data.
    */
-  getData() {
-    super.getData();
+  async getData() {
     const data = {
       total: this.total,
       ledgername: this.ledgername,

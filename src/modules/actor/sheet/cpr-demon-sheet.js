@@ -27,7 +27,7 @@ export default class CPRDemonActorSheet extends ActorSheet {
    * @returns {Object} data - a curated structure of actorSheet data
    */
   async getData() {
-    const sheetData = super.getData();
+    const sheetData = await super.getData();
     sheetData.enrichedHTML = [];
     sheetData.enrichedHTML.notes = await TextEditor.enrichHTML(
       this.actor.system.notes,

@@ -27,7 +27,7 @@ export default class ModuleMigrationSettings extends FormApplication {
    * @returns {Object}
    */
   async getData() {
-    const data = super.getData();
+    const data = await super.getData();
 
     const moduleIdSet = new Set(
       game.settings.get(game.system.id, "moduleMigrationIds")
