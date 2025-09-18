@@ -259,7 +259,8 @@
     },
     "Popup Ranged Weapon": {
       "name": "Wysuwana broń dystansowa",
-      "description": "<p>Wysuwana jednoręczna broń dystansowa. Nie można nic trzymać w tej ręce, gdy jest wysunięta.</p>"
+      "description": "<p>Wysuwana jednoręczna broń dystansowa. Nie można nic trzymać w tej ręce, gdy jest wysunięta.</p>",
+      "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Wysuwana tarcza",
