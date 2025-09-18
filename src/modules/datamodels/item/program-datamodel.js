@@ -67,4 +67,17 @@ export default class ProgramDataModel extends CPRSystemDataModel.mixin(
       rez: new fields.SchemaField(HpSchema.defineSchema({ initial: 10 })),
     });
   }
+
+  /** @inheritdoc */
+  static migrateData(source) {
+    // v0.89
+    if (typeof source.rez === "number") {
+      source.rez = {
+        value: source.rez,
+        max: source.rez,
+      };
+    }
+
+    return super.migrateData(source);
+  }
 }
