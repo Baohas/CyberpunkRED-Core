@@ -141,53 +141,53 @@ export default class CPRItem extends Item {
     for (let m = 0; m < mixins.length; m += 1) {
       switch (mixins[m]) {
         case "attackable": {
-          Attackable.call(this);
+          Attackable.call(CPRItem.prototype);
           break;
         }
         case "effects": {
-          Effects.call(this);
+          Effects.call(CPRItem.prototype);
           cprItemData.allowedUsage = this.getAllowedUsage();
           // To Do: we could toggle on/off if there's exactly 1 effect enforced...
           break;
         }
         case "electronic": {
-          Electronic.call(this);
+          Electronic.call(CPRItem.prototype);
           break;
         }
         case "equippable": {
-          Equippable.call(this);
+          Equippable.call(CPRItem.prototype);
           break;
         }
         case "loadable": {
-          Loadable.call(this);
+          Loadable.call(CPRItem.prototype);
           break;
         }
         case "installable": {
-          Installable.call(this);
+          Installable.call(CPRItem.prototype);
           break;
         }
         case "container": {
-          Container.call(this);
+          Container.call(CPRItem.prototype);
           break;
         }
         case "physical": {
-          Physical.call(this);
+          Physical.call(CPRItem.prototype);
           break;
         }
         case "quality": {
-          Quality.call(this);
+          Quality.call(CPRItem.prototype);
           break;
         }
         case "stackable": {
-          Stackable.call(this);
+          Stackable.call(CPRItem.prototype);
           break;
         }
         case "upgradable": {
-          Upgradable.call(this);
+          Upgradable.call(CPRItem.prototype);
           break;
         }
         case "valuable": {
-          Valuable.call(this);
+          Valuable.call(CPRItem.prototype);
           break;
         }
         default:

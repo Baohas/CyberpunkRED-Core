@@ -78,7 +78,7 @@ export default class CPRActor extends Actor {
     for (let m = 0; m < mixins.length; m += 1) {
       switch (mixins[m]) {
         case "container": {
-          Container.call(this);
+          Container.call(CPRActor.prototype);
           break;
         }
         default:
