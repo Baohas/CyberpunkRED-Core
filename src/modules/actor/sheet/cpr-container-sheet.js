@@ -204,9 +204,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
-    const cprInstallTree = item.createInstalledObjectData();
     const transferredItemData = foundry.utils.duplicate(item);
-    transferredItemData.flags.cprInstallTree = cprInstallTree;
+
+    if (SystemUtils.hasMixin(item.type, "container")) {
+      const cprInstallTree = item.createInstalledObjectData();
+      transferredItemData.flags.cprInstallTree = cprInstallTree;
+    }
+
     let cost = 0;
     if (
       item.type === "ammo" &&
