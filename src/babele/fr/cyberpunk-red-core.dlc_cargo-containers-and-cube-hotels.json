@@ -3,11 +3,11 @@
   "mapping": {},
   "entries": {
     "A Touch of Luxury Furniture Set": {
-      "name": "Set de meubles Une touche de luxe",
+      "name": "Set de meubles Une touche d'élégance",
       "description": "<p>Avec ce cet ensemble de meubles, votre conteneur ressemble presque à une maison confortable.</p>\n"
     },
     "Cargo Container Chic Furniture Set": {
-      "name": "Set de meubles Conteneur chic",
+      "name": "Set de meubles Aménagement standard",
       "description": "<p>C'est peut-être bon marché, mais au moins c'est du vrai meuble. Ensemble de meubles de départ pour la plupart des conteneurs.</p>"
     },
     "Fire Safe": {
@@ -16,7 +16,7 @@
     },
     "Hidden Compartment": {
       "name": "Compartiment caché",
-      "description": "<p>Un petit compartiment caché à l'intérieur du conteneur.</p>\n<ul>\n<li>15,25x30x7,5 cm</li>\n<li>Peut être trouvé avec un jet <strong>SD15 Dissimuler/révéler objet</strong></li>\n</ul>\n"
+      "description": "<p>Un petit compartiment caché à l'intérieur du conteneur.</p>\n<ul>\n<li>15x30x7,5 cm</li>\n<li>Peut être trouvé avec un jet <strong>SD15 Dissimuler/révéler objet</strong></li>\n</ul>\n"
     },
     "Koff Popper": {
       "name": "Koff Popper",
@@ -24,15 +24,15 @@
     },
     "Koff Pops": {
       "name": "Koff Pops",
-      "description": "<p>Les capsules Koff Pops sont utilisées avec le Koff Popper de Continental Brands</p>\n<ul>\n<li>Pack de 10</li>\n<li>Inclus dans le style de vie Croquette ou supérieur</li>\n</ul>\n"
+      "description": "<p>Les capsules Koff Pop sont utilisées avec le Koff Popper de Continental Brands</p>\n<ul>\n<li>Pack de 10</li>\n<li>Inclus dans le style de vie Croquette ou supérieur</li>\n</ul>\n"
     },
     "Second-hand Special Furniture Set": {
-      "name": "Set de meuble spécial d'occasion",
+      "name": "Set de meuble Produits d'occasion",
       "description": "<p>Ça ne semble pas joli, mais c'est fonctionnel. Cet ensemble de meubles style camping est le strict minimum dont votre conteneur a besoin.</p>"
     },
     "Smart Vanity": {
       "name": "Coiffeuse intelligente",
-      "description": "<p>Une station de maquillage intelligente. Elle est entièrement équipée avec tous les accessoires et le maquillage dont vous aurez besoin.</p>\n"
+      "description": "<p>Une table de toilette connectée. Elle est entièrement équipée avec tous les accessoires et le maquillage dont vous aurez besoin.</p>\n"
     },
     "Wall Art": {
       "name": "Art mural",
