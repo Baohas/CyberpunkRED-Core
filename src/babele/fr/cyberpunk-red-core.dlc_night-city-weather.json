@@ -6,7 +6,7 @@
   "entries": {
     "Umbrella": {
       "name": "Parapluie",
-      "description": "<p>Protège contre la pluie acide. Pour chaque minute exposée à la pluie acide, toutes les armures perdent 1 PA (NCW p.4).</p>\n<p>+2 aux jets de Résistance à la torture/aux drogues quand exposé à l'averse sanglante. Une averse sanglante sévère applique les effets d'un empoisonnement aux biotoxines lors d'un jet raté (NCW p.4).</p>\n"
+      "description": "<p>Protège contre la pluie acide. Pour chaque minute exposée à la pluie acide, toutes les armures perdent 1 PA (NCW p.4).</p>\n<p>+2 aux jets de Résistance à la torture/aux drogues quand exposé aux Pluies de Sang. Les Pluies de Sang sévères appliquent les effets d'un flacon de biotoxine lors d'un jet raté (NCW p.4).</p>\n"
     },
     "Cold-Weather Jacket Lining": {
       "name": "Doublure de veste pour temps froid",

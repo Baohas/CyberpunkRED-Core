@@ -4,7 +4,7 @@
   "entries": {
     "Appetite Controller": {
       "name": "Contrôleur d'appétit",
-      "description": "<p>Supprime la sensation de faim. L'utilisateur échappe à la perte d'Humanité associée à l'insuffisance alimentaire mais l'utilisateur peut encore mourir de faim. Effectuez un jet de sauvegarde quotidien contre la mort à partir de la 7e journée consécutive sans manger, avec un modificateur de +1 par journée supplémentaire.</p>\n<p>Nécessite un Biomoniteur.</p>\n"
+      "description": "<p>Supprime la sensation de faim. L'utilisateur ignore les pénalités de perte d'Humanité dues à un traumatisme de famine mais l'utilisateur peut encore mourir de faim. Lancez une sauvegarde contre la mort au début de la 7e journée consécutive sans manger. +1 aux sauvegardes successives contre la Mort par la suite.</p>\n<p>Nécessite un Biomoniteur.</p>\n"
     },
     "Combat Jaw": {
       "name": "Mâchoire de combat",
