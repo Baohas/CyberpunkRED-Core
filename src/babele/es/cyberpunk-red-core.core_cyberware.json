@@ -259,7 +259,8 @@
     },
     "Popup Ranged Weapon": {
       "name": "Arma a distancia emergente",
-      "description": "<p>Arma a distancia ocultable a una mano. No puede contener nada con esta mano mientras está activada. </p>"
+      "description": "<p>Arma a distancia ocultable a una mano. No puede contener nada con esta mano mientras está activada. </p>",
+      "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Escudo emergente",
