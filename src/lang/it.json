@@ -12,6 +12,7 @@
   "CPR.actorSheets.commonActions.managePrograms": "Gestisci Programmi",
   "CPR.actorSheets.commonActions.manageUpgrades": "Gestisci Aggiornamenti",
   "CPR.actorSheets.commonActions.measureDv": "Misura il VD",
+  "CPR.actorSheets.commonActions.measureDvDisabled": "The 'Measure DV' tool currently only works when the character sheet has been opened from a token.",
   "CPR.actorSheets.commonActions.new": "Nuovo",
   "CPR.actorSheets.commonActions.reload": "Ricarica",
   "CPR.actorSheets.commonActions.removeUpgrade": "Rimuovi Aggiornamento",
