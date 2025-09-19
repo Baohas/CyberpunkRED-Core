@@ -8,9 +8,9 @@ init:
     - apt-get update
     - apt-get install -y curl jq
   script:
-    - ./.gitlab/pipeline_tests/test-choombot-key.sh
-    - ./.gitlab/pipeline_tests/test-envar-exports.sh
-    - ./.gitlab/pipeline_utils/envars.sh
+    - bash -x ./.gitlab/pipeline_tests/test-choombot-key.sh
+    - bash -x ./.gitlab/pipeline_tests/test-envar-exports.sh
+    - bash -x ./.gitlab/pipeline_utils/envars.sh
     - npm ci
   artifacts:
     expire_in: 1h

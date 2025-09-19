@@ -8,7 +8,7 @@ pre-release:
     - apt-get install curl zip jq -y
   script:
     - echo "Running Pre Release Checks"
-    - ./.gitlab/pipeline_tests/pre-release-checks.sh
+    - bash -x ./.gitlab/pipeline_tests/pre-release-checks.sh
   needs:
     - job: init
       artifacts: true
