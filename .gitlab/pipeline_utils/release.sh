@@ -59,7 +59,7 @@ rm -rf "${TMP_DIR}"
 # Create a Release in GitLab
 # NOTE: This references the files created by the `build-artifacts` job.
 
-if ! ./glab auth login --token "${CI_JOB_TOKEN}"; then
+if ! ./glab auth login --job-token "${CI_JOB_TOKEN}"; then
   echo "❌ Unable to log into the Gitlab API"
 fi
 
