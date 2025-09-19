@@ -181,10 +181,12 @@ export default class CPRMod {
       );
 
       // Attack mods from upgrades.
-      const upgradeMods = item
-        .getAllUpgradeMods("attackmod")
-        .filter((m) => m.isSituational);
-      filteredMods = filteredMods.concat(attackMods).concat(upgradeMods);
+      if (item && SystemUtils.hasMixin(item.type, "upgradable")) {
+        const upgradeMods = item
+          .getAllUpgradeMods("attackmod")
+          .filter((m) => m.isSituational);
+        filteredMods = filteredMods.concat(attackMods).concat(upgradeMods);
+      }
 
       // Attack mods from role bonuses.
       let roleMods = [];
@@ -202,7 +204,7 @@ export default class CPRMod {
       );
 
       // Damage mods from upgrades.
-      if (item) {
+      if (item && SystemUtils.hasMixin(item.type, "upgradable")) {
         const upgradeMods = item
           .getAllUpgradeMods("damage")
           .filter((m) => m.isSituational);

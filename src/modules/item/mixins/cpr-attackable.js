@@ -236,25 +236,27 @@ const Attackable = function Attackable() {
     cprRoll.addMod(allActionsMods);
 
     // Mod from item upgrades that affect attackmod.
-    const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter(
-      (m) => (m.isSituational && m.onByDefault) || !m.isSituational
-    );
-    cprRoll.addMod(relevantUpgradeMods);
+    if (SystemUtils.hasMixin(this.type, "upgradable")) {
+      const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter(
+        (m) => (m.isSituational && m.onByDefault) || !m.isSituational
+      );
+      cprRoll.addMod(relevantUpgradeMods);
 
-    // Mod from weapon attackmod. We will only add it if there are no upgrade mods that override this value.
-    if (
-      relevantUpgradeMods.length === 0 ||
-      relevantUpgradeMods.some((m) => !(m.type === "override"))
-    ) {
-      // CPRMod-like object.
-      cprRoll.addMod([
-        {
-          value: cprWeaponData.attackmod,
-          source: this.name,
-          category: "combat",
-          key: "bonuses.universalAttack",
-        },
-      ]);
+      // Mod from weapon attackmod. We will only add it if there are no upgrade mods that override this value.
+      if (
+        relevantUpgradeMods.length === 0 ||
+        relevantUpgradeMods.some((m) => !(m.type === "override"))
+      ) {
+        // CPRMod-like object.
+        cprRoll.addMod([
+          {
+            value: cprWeaponData.attackmod,
+            source: this.name,
+            category: "combat",
+            key: "bonuses.universalAttack",
+          },
+        ]);
+      }
     }
 
     if (fumbleRecovery >= 1) {
@@ -348,17 +350,19 @@ const Attackable = function Attackable() {
     );
     cprRoll.addMod(roleMods);
 
-    // Mod from item upgrades that affect damage.
-    const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter(
-      (m) => (m.isSituational && m.onByDefault) || !m.isSituational
-    );
+    if (SystemUtils.hasMixin(this.type, "upgradable")) {
+      // Mod from item upgrades that affect damage.
+      const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter(
+        (m) => (m.isSituational && m.onByDefault) || !m.isSituational
+      );
 
-    // If there are no mods of type "override", add the mods. Otherwise, set roll formula appropriately.
-    if (relevantUpgradeMods.length > 0) {
-      if (relevantUpgradeMods.some((m) => !(m.type === "override"))) {
-        cprRoll.addMod(relevantUpgradeMods);
-      } else {
-        cprRoll.formula = "0d6";
+      // If there are no mods of type "override", add the mods. Otherwise, set roll formula appropriately.
+      if (relevantUpgradeMods.length > 0) {
+        if (relevantUpgradeMods.some((m) => !(m.type === "override"))) {
+          cprRoll.addMod(relevantUpgradeMods);
+        } else {
+          cprRoll.formula = "0d6";
+        }
       }
     }
 
