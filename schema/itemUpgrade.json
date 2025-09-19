@@ -32,7 +32,15 @@
           "$ref": "#/definitions/System"
         }
       },
-      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
+      "required": [
+        "_id",
+        "_key",
+        "effects",
+        "img",
+        "name",
+        "system",
+        "type"
+      ]
     },
     "System": {
       "type": "object",
@@ -49,6 +57,12 @@
         },
         "concealable": {
           "$ref": "./components/physical/concealable.json"
+        },
+        "ignoreArmorPercent": {
+          "$ref": "./components/attackable/ignoreArmorPercent.json"
+        },
+        "canIgnoreArmor": {
+          "$ref": "./components/attackable/canIgnoreArmor.json"
         },
         "critFailEffect": {
           "$ref": "./components/attackable/critFailEffect.json"
@@ -109,7 +123,13 @@
         },
         "type": {
           "type": "string",
-          "enum": ["clothing", "cyberdeck", "gear", "vehicle", "weapon"]
+          "enum": [
+            "clothing",
+            "cyberdeck",
+            "gear",
+            "vehicle",
+            "weapon"
+          ]
         },
         "unarmedAutomaticCalculation": {
           "$ref": "./components/attackable/unarmedAutomaticCalculation.json"

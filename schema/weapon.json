@@ -127,6 +127,8 @@
         "ammoVariety",
         "attackmod",
         "brand",
+        "canIgnoreArmor",
+        "ignoreArmorPercent",
         "concealable",
         "damage",
         "description",
