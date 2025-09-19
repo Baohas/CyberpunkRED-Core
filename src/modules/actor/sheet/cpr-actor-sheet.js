@@ -89,8 +89,11 @@ export default class CPRActorSheet extends ActorSheet {
       }
       cprData.filteredEffects = await this.prepareActiveEffectCategories();
     }
+
     // This appears to have been removed in V10?
     cprData.isGM = game.user.isGM;
+
+    cprData.isTokenSheet = !!this.token;
 
     cprData.enrichedHTML = [];
     if (this.actor.type !== "container") {
