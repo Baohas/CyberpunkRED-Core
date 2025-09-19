@@ -51,13 +51,14 @@ fi
 echo "Extracting Gitlab CLI..."
 tar -xzf "${TMP_DIR}/glab.tar.gz" -C "${TMP_DIR}"
 mv "${TMP_DIR}/bin/glab" .
+chmod +x ./glab
 
 # Clean up
 rm -rf "${TMP_DIR}"
 
 # Create a Release in GitLab
 # NOTE: This references the files created by the `build-artifacts` job.
-if ! glab release create "${SYSTEM_VERSION}" \
+if ! ./glab release create "${SYSTEM_VERSION}" \
   --name "${SYSTEM_VERSION}" \
   --notes "Automated release of ${SYSTEM_VERSION}" \
   --assets-links="[
