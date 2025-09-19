@@ -55,11 +55,6 @@ mv "${TMP_DIR}/bin/glab" .
 # Clean up
 rm -rf "${TMP_DIR}"
 
-./glab create "${SYSTEM_VERSION}" \
-  --name "${SYSTEM_VERSION}" \
-  --notes "Automated release of ${SYSTEM_VERSION}" \
-  --assets
-
 # Create a Release in GitLab
 # NOTE: This references the files created by the `build-artifacts` job.
 if ! glab release create "${SYSTEM_VERSION}" \
