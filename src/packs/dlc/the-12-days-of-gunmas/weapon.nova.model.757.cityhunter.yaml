@@ -13,6 +13,7 @@ system:
     - custom
   attackmod: 0
   brand: Nova Arms
+  canIgnoreArmor: false
   concealable:
     concealable: true
     isConcealed: false
@@ -34,6 +35,8 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
   installedItems:
     allowed: true
     allowedTypes:

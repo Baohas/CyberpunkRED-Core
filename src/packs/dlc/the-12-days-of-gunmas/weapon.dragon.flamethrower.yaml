@@ -13,6 +13,7 @@ system:
     - shotgunShell
   attackmod: 0
   brand: Kendachi
+  canIgnoreArmor: false
   concealable:
     concealable: false
     isConcealed: false
@@ -31,6 +32,8 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
   installedItems:
     allowed: true
     allowedTypes:

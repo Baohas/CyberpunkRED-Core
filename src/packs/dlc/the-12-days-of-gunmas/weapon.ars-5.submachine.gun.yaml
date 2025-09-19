@@ -13,6 +13,7 @@ system:
     - heavyPistol
   attackmod: 0
   brand: Mustang Arms
+  canIgnoreArmor: false
   concealable:
     concealable: false
     isConcealed: false
@@ -34,6 +35,8 @@ system:
     autoFire: 3
     suppressiveFire: true
   handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
   installedItems:
     allowed: true
     allowedTypes:

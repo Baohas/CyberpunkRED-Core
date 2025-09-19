@@ -13,6 +13,7 @@ system:
     - medPistol
   attackmod: 0
   brand: ""
+  canIgnoreArmor: false
   concealable:
     concealable: true
     isConcealed: false
@@ -31,6 +32,8 @@ system:
     autoFire: 3
     suppressiveFire: true
   handsReq: 1
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
   installedItems:
     allowed: true
     allowedTypes:

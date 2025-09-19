@@ -13,6 +13,7 @@ system:
     - rifle
   attackmod: 0
   brand: Pursuit Security Inc.
+  canIgnoreArmor: false
   concealable:
     concealable: false
     isConcealed: false
@@ -33,6 +34,8 @@ system:
     autoFire: 4
     suppressiveFire: true
   handsReq: 2
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
   installedItems:
     allowed: true
     allowedTypes:
