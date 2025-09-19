@@ -647,7 +647,7 @@ export default function registerHandlebarsHelpers() {
    *
    * See `cpr-netarch-level-prompt.hbs`.
    */
-  Handlebars.registerHelper("arrayToSelectOptions", (array) => {
+  Handlebars.registerHelper("cprArrayToSelectOptions", (array) => {
     return array.map((dv) => ({ value: dv, label: dv }));
   });
 
