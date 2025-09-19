@@ -1,6 +1,11 @@
 _id: NLERUj14kVq8X2Ni
 _key: "!items!NLERUj14kVq8X2Ni"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Bohemian Glasses
 system:

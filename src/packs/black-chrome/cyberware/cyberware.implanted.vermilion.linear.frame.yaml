@@ -2,6 +2,11 @@ _id: vuq1KEbsMjpOTqhl
 _key: "!items!vuq1KEbsMjpOTqhl"
 effects:
   - n1T1ojrhz0na565t
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/default/default-implanted-linearframe.svg
 name: Implanted Vermilion Linear Frame
@@ -9,6 +14,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: Wyzard Technologies
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -33,6 +39,7 @@ system:
   humanityLoss:
     roll: 4d6
     static: 14
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: true
@@ -48,6 +55,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

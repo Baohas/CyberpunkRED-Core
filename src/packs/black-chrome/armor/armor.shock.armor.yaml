@@ -1,6 +1,11 @@
 _id: 592mTHSG05w0qS0W
 _key: "!items!592mTHSG05w0qS0W"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/shock-armor.svg
 name: Shock Armor
 system:

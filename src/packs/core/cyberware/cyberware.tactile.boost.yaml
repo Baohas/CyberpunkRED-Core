@@ -1,12 +1,18 @@
 _id: zoj5iyIV1bVrMxzW
 _key: "!items!zoj5iyIV1bVrMxzW"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/tactile_boot.svg
 name: Tactile Boost
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -23,6 +29,7 @@ system:
   humanityLoss:
     roll: 2d6
     static: 7
+  ignoreArmorPercent: 50
   installLocation: notApplicable
   installedItems:
     allowed: false
@@ -36,6 +43,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

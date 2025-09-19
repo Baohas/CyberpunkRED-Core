@@ -1,6 +1,11 @@
 _id: lC8eVVZeNha8IVW3
 _key: "!items!lC8eVVZeNha8IVW3"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_top.svg
 name: Bag Lady Chic Top
 system:

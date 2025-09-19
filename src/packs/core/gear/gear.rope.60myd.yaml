@@ -1,6 +1,11 @@
 _id: i0xmIJjhcMKIWJ0M
 _key: "!items!i0xmIJjhcMKIWJ0M"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/rope.svg
 name: Rope (60m/yd)
 system:

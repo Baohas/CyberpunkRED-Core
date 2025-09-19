@@ -1,6 +1,11 @@
 _id: djhqRvyLhzXexgoS
 _key: "!items!djhqRvyLhzXexgoS"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/equipment/head/cap-simple-leather-brown.webp
 name: Leather Armor (Head)
 system:

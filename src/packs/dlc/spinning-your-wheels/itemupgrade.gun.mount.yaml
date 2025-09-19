@@ -1,12 +1,18 @@
 _id: P9jImk9MAd7h32Pn
 _key: "!items!P9jImk9MAd7h32Pn"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/onboard_machine_gun.svg
 name: Gun Mount
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -25,6 +31,7 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 0
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: false
@@ -36,6 +43,7 @@ system:
   isElectronic: false
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   modifiers:

@@ -1,6 +1,11 @@
 _id: DsO5c0MS5tZ0bh1B
 _key: "!items!DsO5c0MS5tZ0bh1B"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/cyberdeck_poor.svg
 name: Cyberdeck (Poor)
 system:

@@ -3,6 +3,11 @@ _key: "!items!P19OmJOcdgjhgjLm"
 effects:
   - wCVnIEpRw7zhqmZD
   - joudVbiOapxtTJl8
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/the_12_days_of_cybermas/poser_chip.svg
 name: Poser Chip
@@ -10,6 +15,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -38,6 +44,7 @@ system:
   humanityLoss:
     roll: 4d6
     static: 14
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: true
@@ -51,6 +58,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: EDyAgDm44dFXiBKE
 _key: "!items!EDyAgDm44dFXiBKE"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/distilling_compound.svg
 name: Distilling Compound

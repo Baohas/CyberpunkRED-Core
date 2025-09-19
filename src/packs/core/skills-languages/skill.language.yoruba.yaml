@@ -1,6 +1,11 @@
 _id: NP3N6piGaQTyZJo3
 _key: "!items!NP3N6piGaQTyZJo3"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Skill.svg
 name: Language (Yoruba)
 system:

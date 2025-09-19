@@ -2,6 +2,11 @@ _id: xW4PlIcWJ82QSfSh
 _key: "!items!xW4PlIcWJ82QSfSh"
 effects:
   - bkUvyHxyT3K8vq1c
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/medscanner.svg
 name: Medscanner
 system:

@@ -1,6 +1,11 @@
 _id: r5x9bz7XA12gIiRY
 _key: "!items!r5x9bz7XA12gIiRY"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/vehicles/helicopter.svg
 name: Helicopter
 system:

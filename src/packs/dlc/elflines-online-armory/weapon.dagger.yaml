@@ -1,6 +1,11 @@
 _id: Cq0h1I75g6Q4NM1h
 _key: "!items!Cq0h1I75g6Q4NM1h"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/weapons/daggers/dagger-straight-blue.webp
 name: Dagger
 system:
@@ -33,6 +38,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

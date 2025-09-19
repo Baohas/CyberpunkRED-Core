@@ -1,6 +1,11 @@
 _id: B53FFRpbpoT3VPP0
 _key: "!items!B53FFRpbpoT3VPP0"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/shrieker.svg
 name: Shrieker
 system:
@@ -38,6 +43,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 8
     value: 0
   price:

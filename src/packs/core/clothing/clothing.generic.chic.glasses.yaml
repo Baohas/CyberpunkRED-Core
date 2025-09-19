@@ -1,6 +1,11 @@
 _id: M8voGXTG2a8S1CzV
 _key: "!items!M8voGXTG2a8S1CzV"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Generic Chic Glasses
 system:

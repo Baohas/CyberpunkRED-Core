@@ -1,6 +1,11 @@
 _id: U47JzJJylGt7DGaB
 _key: "!items!U47JzJJylGt7DGaB"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/sovoil-lubricant.svg
 name: SovOil Personal Lubricant
 system:

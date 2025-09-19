@@ -1,6 +1,11 @@
 _id: YFAt5vDcufYFtFCr
 _key: "!items!YFAt5vDcufYFtFCr"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_excellent.svg
 name: Malorian Arms 3516
@@ -38,6 +43,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 8
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: myBn6xsxyEKDcoYc
 _key: "!items!myBn6xsxyEKDcoYc"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/solo-of-fortune-body-pillow.svg
 name: Solo of Fortune Bodypillow

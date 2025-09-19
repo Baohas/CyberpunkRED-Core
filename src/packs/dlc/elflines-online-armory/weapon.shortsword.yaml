@@ -1,6 +1,11 @@
 _id: qYcmlmhYCE63uZlr
 _key: "!items!qYcmlmhYCE63uZlr"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/weapons/swords/shortsword-guard-gold.webp
 name: Shortsword
 system:
@@ -35,6 +40,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

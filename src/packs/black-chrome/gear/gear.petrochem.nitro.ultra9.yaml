@@ -1,6 +1,11 @@
 _id: oMgMhUUI35PyKJ50
 _key: "!items!oMgMhUUI35PyKJ50"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/nitro-ultra9.svg
 name: Petrochem Nitro Ultra9
 system:

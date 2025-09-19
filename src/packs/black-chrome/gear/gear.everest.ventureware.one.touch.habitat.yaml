@@ -1,6 +1,11 @@
 _id: swKwgrj4QbNn5EvW
 _key: "!items!swKwgrj4QbNn5EvW"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/one-touch-habitat.svg
 name: Everest VentureWare One Touch Habitat
 system:

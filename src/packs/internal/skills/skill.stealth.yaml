@@ -1,6 +1,11 @@
 _id: y2oyHHPllOLVxiNJ
 _key: "!items!y2oyHHPllOLVxiNJ"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/svg/item-bag.svg
 name: Stealth
 system:

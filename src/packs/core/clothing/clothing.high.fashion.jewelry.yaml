@@ -1,6 +1,11 @@
 _id: v6QgCemk6DInkpZJ
 _key: "!items!v6QgCemk6DInkpZJ"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jewelry.svg
 name: High Fashion Jewelry
 system:

@@ -1,6 +1,11 @@
 _id: LC58KTHAuFDzIFRq
 _key: "!items!LC58KTHAuFDzIFRq"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/mimic-clothing-kit.svg
 name: Mimic Clothing (Leisurewear)

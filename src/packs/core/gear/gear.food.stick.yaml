@@ -1,6 +1,11 @@
 _id: j71ouZVOvc7xEfke
 _key: "!items!j71ouZVOvc7xEfke"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/foodstick.svg
 name: Food Stick
 system:

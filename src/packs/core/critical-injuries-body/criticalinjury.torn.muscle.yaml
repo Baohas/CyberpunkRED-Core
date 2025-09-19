@@ -2,6 +2,11 @@ _id: Z3iVuSFtma3Bx7SX
 _key: "!items!Z3iVuSFtma3Bx7SX"
 effects:
   - KkhtjtxpPv03U2Km
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/torn_muscle.svg
 name: Torn Muscle
 system:

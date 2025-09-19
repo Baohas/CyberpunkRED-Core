@@ -1,6 +1,11 @@
 _id: LIGE9re7IZWkvU4g
 _key: "!items!LIGE9re7IZWkvU4g"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Bow_poor.svg
 name: Bow (Poor)
 system:
@@ -37,6 +42,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 1
     value: 0
   price:

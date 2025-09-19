@@ -1,6 +1,11 @@
 _id: sOsNx7YCfB7Z1c6D
 _key: "!items!sOsNx7YCfB7Z1c6D"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/ranger-combat-boomerang.svg
 name: Ranger Combat Boomerang
@@ -40,6 +45,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

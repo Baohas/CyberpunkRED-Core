@@ -1,6 +1,11 @@
 _id: f319Qi6jITQMATyG
 _key: "!items!f319Qi6jITQMATyG"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/svg/item-bag.svg
 name: Concentration
 system:

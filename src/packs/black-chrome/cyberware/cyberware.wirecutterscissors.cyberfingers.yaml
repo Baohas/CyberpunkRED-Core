@@ -1,12 +1,18 @@
 _id: GkcLdOzI3jhtTYPd
 _key: "!items!GkcLdOzI3jhtTYPd"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/cyberfinger.svg
 name: Wirecutter/Scissors Cyberfingers
 system:
   ammoVariety: []
   attackmod: 0
   brand: Dynalar Technologies
+  canIgnoreArmor: true
   concealable:
     concealable: true
     isConcealed: false
@@ -27,6 +33,7 @@ system:
   humanityLoss:
     roll: 1d6
     static: 3
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: false
@@ -41,6 +48,7 @@ system:
   isRanged: false
   isWeapon: true
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

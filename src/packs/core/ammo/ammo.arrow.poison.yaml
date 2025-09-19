@@ -1,6 +1,11 @@
 _id: 1DmAuk2SsgDh0YqG
 _key: "!items!1DmAuk2SsgDh0YqG"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_poison.png
 name: Arrow (Poison)
 system:

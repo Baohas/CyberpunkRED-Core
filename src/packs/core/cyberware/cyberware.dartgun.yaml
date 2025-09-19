@@ -1,6 +1,11 @@
 _id: IdSRZEcuCutjFB1D
 _key: "!items!IdSRZEcuCutjFB1D"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/dartgun.svg
 name: Dartgun
 system:
@@ -26,9 +31,10 @@ system:
     static: 2
   installLocation: clinic
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 3
     usedSlots: 0
@@ -37,6 +43,7 @@ system:
   isRanged: true
   isWeapon: true
   magazine:
+    ammoData: null
     max: 1
     value: 0
   price:

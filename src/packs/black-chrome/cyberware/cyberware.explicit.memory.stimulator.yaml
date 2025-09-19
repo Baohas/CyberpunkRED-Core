@@ -2,6 +2,11 @@ _id: VSw96UuPdlXfu7Hy
 _key: "!items!VSw96UuPdlXfu7Hy"
 effects:
   - 7nCq8wHHINN9Rmt7
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/explicit-memory-stimulator.svg
 name: Explicit Memory Stimulator
@@ -9,6 +14,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -26,6 +32,7 @@ system:
   humanityLoss:
     roll: 1d6
     static: 3
+  ignoreArmorPercent: 50
   installLocation: notApplicable
   installedItems:
     allowed: false
@@ -40,6 +47,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

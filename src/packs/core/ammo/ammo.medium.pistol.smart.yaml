@@ -1,6 +1,11 @@
 _id: 6dwSiAhYho02ZtgL
 _key: "!items!6dwSiAhYho02ZtgL"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_smart.png
 name: Medium Pistol (Smart)
 system:

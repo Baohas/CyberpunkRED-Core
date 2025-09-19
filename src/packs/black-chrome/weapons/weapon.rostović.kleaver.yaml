@@ -1,6 +1,11 @@
 _id: N3O9kYdqirfIbhNw
 _key: "!items!N3O9kYdqirfIbhNw"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/rostovic-kleaver.svg
 name: Rostović Kleaver
 system:
@@ -28,7 +33,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   ignoreArmorPercent: 50
-  ignoreBelowSP: 11
+  ignoreBelowSP: 0
   installedItems:
     allowed: false
     allowedTypes:
@@ -39,6 +44,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

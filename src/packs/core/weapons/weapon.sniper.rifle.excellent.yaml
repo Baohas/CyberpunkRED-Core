@@ -1,6 +1,11 @@
 _id: g1WPHBmTgxEHTbSp
 _key: "!items!g1WPHBmTgxEHTbSp"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle_excellent.svg
 name: Sniper Rifle (Excellent)
 system:
@@ -35,6 +40,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 4
     value: 0
   price:

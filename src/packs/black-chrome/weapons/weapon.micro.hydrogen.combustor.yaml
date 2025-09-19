@@ -1,6 +1,11 @@
 _id: uyBRdbvnCDcFdO82
 _key: "!items!uyBRdbvnCDcFdO82"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/micro-hydrogen-combustor.svg
 name: Micro Hydrogen Combustor
@@ -8,6 +13,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: Hydrosubsidium Inc.
+  canIgnoreArmor: true
   concealable:
     concealable: true
     isConcealed: false
@@ -26,6 +32,7 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  ignoreArmorPercent: 50
   installedItems:
     allowed: true
     allowedTypes:
@@ -36,6 +43,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

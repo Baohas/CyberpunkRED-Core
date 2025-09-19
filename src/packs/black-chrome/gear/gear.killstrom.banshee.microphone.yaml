@@ -2,6 +2,11 @@ _id: seglg544pSg95OjB
 _key: "!items!seglg544pSg95OjB"
 effects:
   - nmfV8HiXPcYsChjv
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/killstrom-banshee-microphone.svg
 name: KillStrom Banshee Microphone

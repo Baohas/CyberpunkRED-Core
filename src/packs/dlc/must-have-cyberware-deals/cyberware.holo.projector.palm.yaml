@@ -1,6 +1,11 @@
 _id: ViH7d2nQAg0dLQuD
 _key: "!items!ViH7d2nQAg0dLQuD"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/holo_projector_palm.svg
 name: Holo Projector Palm
@@ -8,6 +13,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -28,6 +34,7 @@ system:
   humanityLoss:
     roll: 1d3
     static: 2
+  ignoreArmorPercent: 50
   installLocation: clinic
   installedItems:
     allowed: false
@@ -41,6 +48,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

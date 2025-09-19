@@ -1,12 +1,18 @@
 _id: rUSdivkoD9THJXNy
 _key: "!items!rUSdivkoD9THJXNy"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/micro_chrome/smart_lens.svg
 name: Smart Lens
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -24,6 +30,7 @@ system:
   humanityLoss:
     roll: "0"
     static: 0
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: true
@@ -38,6 +45,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

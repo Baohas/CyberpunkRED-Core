@@ -1,12 +1,18 @@
 _id: xuxITCWhHzvdr7Yi
 _key: "!items!xuxITCWhHzvdr7Yi"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/door-cracker.svg
 name: GunMart Door Cracker
 system:
   ammoVariety: []
   attackmod: 0
   brand: GunMart
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -22,6 +28,7 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 2
+  ignoreArmorPercent: 50
   installedItems:
     allowed: true
     allowedTypes:
@@ -32,6 +39,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

@@ -2,6 +2,11 @@ _id: XySJZT4SbLBmOihf
 _key: "!items!XySJZT4SbLBmOihf"
 effects:
   - 0iwdEfCEWGdYvMv0
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/programs/speedy_gonzalvez.svg
 name: Speedy Gonzalvez
 system:

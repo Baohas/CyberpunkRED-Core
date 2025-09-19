@@ -1,6 +1,11 @@
 _id: 8ZDEswdFk7K839Dn
 _key: "!items!8ZDEswdFk7K839Dn"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Naginata_excellent.svg
 name: Kendachi Mono-Three
 system:
@@ -27,7 +32,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   ignoreArmorPercent: 50
-  ignoreBelowSP: 11
+  ignoreBelowSP: 0
   installedItems:
     allowed: true
     allowedTypes:
@@ -38,6 +43,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

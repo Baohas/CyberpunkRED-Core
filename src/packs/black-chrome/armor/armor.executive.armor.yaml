@@ -1,6 +1,11 @@
 _id: 7Ki9v2iwMH8AZp8B
 _key: "!items!7Ki9v2iwMH8AZp8B"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/executive-armor.svg
 name: Executive Armor
 system:

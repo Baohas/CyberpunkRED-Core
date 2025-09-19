@@ -1,6 +1,11 @@
 _id: uaN9WukkezPfcutU
 _key: "!items!uaN9WukkezPfcutU"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/armor/light-armorjack_body.svg
 name: Light Armorjack (Body)
 system:

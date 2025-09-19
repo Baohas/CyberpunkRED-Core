@@ -1,6 +1,11 @@
 _id: t32KOdX9C9oavu9X
 _key: "!items!t32KOdX9C9oavu9X"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol.svg
 name: Mustang Arms Mark III
 system:
@@ -33,6 +38,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 8
     value: 0
   price:

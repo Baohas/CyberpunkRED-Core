@@ -1,6 +1,11 @@
 _id: YHhTX03AJFe0cS5N
 _key: "!items!YHhTX03AJFe0cS5N"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
 name: Hellbringer
 system:
@@ -28,12 +33,14 @@ system:
   handsReq: 1
   installedItems:
     allowed: true
-    allowedTypes: []
+    allowedTypes:
+      - ammo
     list: []
     slots: 0
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 3
     value: 0
   price:

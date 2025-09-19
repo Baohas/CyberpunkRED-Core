@@ -1,6 +1,11 @@
 _id: 8X8llGr7eUD7KMmP
 _key: "!items!8X8llGr7eUD7KMmP"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_poor.svg
 name: Timeless WW1 Rifle to Pistol Conversion
 system:
@@ -27,11 +32,13 @@ system:
     allowed: true
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 3
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 5
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: qAqYtbD1yFgQNelR
 _key: "!items!qAqYtbD1yFgQNelR"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/flamethrower.svg
 name: Flamethrower
 system:
@@ -34,6 +39,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 4
     value: 0
   price:

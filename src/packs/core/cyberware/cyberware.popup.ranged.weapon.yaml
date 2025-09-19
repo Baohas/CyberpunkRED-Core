@@ -1,6 +1,11 @@
 _id: gUvoOayETJInctg8
 _key: "!items!gUvoOayETJInctg8"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/popup_ranged_weapon.svg
 name: Popup Ranged Weapon
 system:
@@ -41,6 +46,7 @@ system:
   isRanged: true
   isWeapon: true
   magazine:
+    ammoData: null
     max: 12
     value: 0
   price:

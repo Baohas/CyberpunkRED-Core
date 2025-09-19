@@ -1,6 +1,11 @@
 _id: mW78dV6SfvSikUCy
 _key: "!items!mW78dV6SfvSikUCy"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Skill.svg
 name: Language (Mongolian)
 system:

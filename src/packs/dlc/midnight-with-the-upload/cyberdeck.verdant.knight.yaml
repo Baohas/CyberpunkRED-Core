@@ -1,6 +1,11 @@
 _id: omSuV3gSqbIedBhs
 _key: "!items!omSuV3gSqbIedBhs"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
 name: Verdant Knight
 system:

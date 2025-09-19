@@ -1,6 +1,11 @@
 _id: GVG933xxERHQztLs
 _key: "!items!GVG933xxERHQztLs"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
 name: Hades Multipurpose Assault Shotgun
 system:
@@ -28,7 +33,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -37,6 +42,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 16
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: 7q61PwpWp0KM6vYb
 _key: "!items!7q61PwpWp0KM6vYb"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Crossbow.svg
 name: Eagletech Survivalist
 system:
@@ -28,7 +33,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -37,6 +42,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

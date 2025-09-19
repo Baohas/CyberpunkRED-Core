@@ -2,6 +2,11 @@ _id: SmwW6B3Qi6svIClB
 _key: "!items!SmwW6B3Qi6svIClB"
 effects:
   - klHyNd5SaW5gjLO7
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/programs/worm.svg
 name: Worm
 system:

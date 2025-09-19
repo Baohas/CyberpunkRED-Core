@@ -1,6 +1,11 @@
 _id: eRpD2JusdqIHCN7f
 _key: "!items!eRpD2JusdqIHCN7f"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/bow_incendiary.png
 name: Arrow (Incendiary)
 system:

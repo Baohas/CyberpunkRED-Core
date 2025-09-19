@@ -1,6 +1,11 @@
 _id: OdeOEmoocJix2BbC
 _key: "!items!OdeOEmoocJix2BbC"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/clothing/generic_contact_lenses.svg
 name: Bag Lady Chic Contact Lenses

@@ -1,6 +1,11 @@
 _id: yPKIpu75TmOHSXWi
 _key: "!items!yPKIpu75TmOHSXWi"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG.svg
 name: Federated Arms Pepper Shaker
 system:
@@ -27,7 +32,7 @@ system:
     suppressiveFire: true
   handsReq: 1
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -36,6 +41,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 30
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: 30W4ja1h6Sq42cB9
 _key: "!items!30W4ja1h6Sq42cB9"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/GrenadeLauncher_poor.svg
 name: Grenade Launcher (Poor)
 system:
@@ -37,6 +42,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 2
     value: 0
   price:

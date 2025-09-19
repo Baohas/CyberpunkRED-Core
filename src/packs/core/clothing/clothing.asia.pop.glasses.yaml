@@ -1,6 +1,11 @@
 _id: JP2GQY2TWRuIWOmw
 _key: "!items!JP2GQY2TWRuIWOmw"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Asia Pop Glasses
 system:

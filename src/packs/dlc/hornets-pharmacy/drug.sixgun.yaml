@@ -4,6 +4,11 @@ effects:
   - bSalB1is9PwUW4HE
   - 6eJSLpqij03VxIFa
   - nvBX8WcPBua5cUWL
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/hornets_pharmacy/sixgun.svg
 name: Sixgun
 system:

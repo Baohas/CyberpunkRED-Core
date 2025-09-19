@@ -1,6 +1,11 @@
 _id: 398a6e2GP6Vie9Lr
 _key: "!items!398a6e2GP6Vie9Lr"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/killchip-100-micro-bomb.svg
 name: KillChip 100 Micro-Bomb
@@ -8,6 +13,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: true
     isConcealed: false
@@ -23,6 +29,7 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 1
+  ignoreArmorPercent: 50
   installedItems:
     allowed: false
     allowedTypes:
@@ -33,6 +40,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

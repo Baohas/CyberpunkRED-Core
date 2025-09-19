@@ -1,6 +1,11 @@
 _id: 2wP5wan7HZmaRuh3
 _key: "!items!2wP5wan7HZmaRuh3"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Machete_poor.svg
 name: Machete (Poor)
 system:
@@ -39,6 +44,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

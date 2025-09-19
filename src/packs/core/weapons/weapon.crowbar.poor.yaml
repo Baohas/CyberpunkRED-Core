@@ -1,6 +1,11 @@
 _id: ES0FYqZpy8NcDrEZ
 _key: "!items!ES0FYqZpy8NcDrEZ"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Crowbar_poor.svg
 name: Crowbar (Poor)
 system:
@@ -39,6 +44,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

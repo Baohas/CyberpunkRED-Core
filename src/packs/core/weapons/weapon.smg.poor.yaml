@@ -1,6 +1,11 @@
 _id: eBiYEY7wwTGQeE1g
 _key: "!items!eBiYEY7wwTGQeE1g"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SMG_poor.svg
 name: SMG (Poor)
 system:
@@ -36,6 +41,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 30
     value: 0
   price:

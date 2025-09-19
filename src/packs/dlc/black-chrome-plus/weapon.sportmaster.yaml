@@ -1,6 +1,11 @@
 _id: LnOj3QW7fU5auvUg
 _key: "!items!LnOj3QW7fU5auvUg"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
 name: SportMaster
 system:
@@ -30,11 +35,13 @@ system:
     allowed: true
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 3
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 25
     value: 0
   price:

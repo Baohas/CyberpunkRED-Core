@@ -1,12 +1,18 @@
 _id: CeCRMtA7XTyEm3HM
 _key: "!items!CeCRMtA7XTyEm3HM"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/security_upgrade.svg
 name: Security Upgrade
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -29,6 +35,7 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 0
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: true
@@ -40,6 +47,7 @@ system:
   isElectronic: false
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   modifiers:

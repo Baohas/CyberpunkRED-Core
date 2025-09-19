@@ -1,6 +1,11 @@
 _id: RA7Fa2ZiPNiJ1pQx
 _key: "!items!RA7Fa2ZiPNiJ1pQx"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/reinforced-cyberarm.svg
 name: Reinforced Cyberarm Upgrade
@@ -8,6 +13,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -25,6 +31,7 @@ system:
   humanityLoss:
     roll: 1d6
     static: 3
+  ignoreArmorPercent: 50
   installLocation: clinic
   installedItems:
     allowed: false
@@ -39,6 +46,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

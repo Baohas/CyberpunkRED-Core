@@ -2,6 +2,11 @@ _id: DZe6EtplLToNFWjN
 _key: "!items!DZe6EtplLToNFWjN"
 effects:
   - Mr1smM09ey7SR6II
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/default/default-linearframe.svg
 name: LF-001 SWAT Linear Frame
 system:

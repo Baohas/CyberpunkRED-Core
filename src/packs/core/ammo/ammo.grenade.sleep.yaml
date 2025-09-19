@@ -1,6 +1,11 @@
 _id: rjTyO2vXdd4T19Me
 _key: "!items!rjTyO2vXdd4T19Me"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_sleep.png
 name: Grenade (Sleep)
 system:

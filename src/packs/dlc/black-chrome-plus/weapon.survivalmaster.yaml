@@ -1,6 +1,11 @@
 _id: 5boGB9jFKUJ9cSMR
 _key: "!items!5boGB9jFKUJ9cSMR"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
 name: SurvivalMaster
 system:
@@ -24,14 +29,16 @@ system:
     suppressiveFire: false
   handsReq: 2
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 0
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 5
     value: 0
   price:

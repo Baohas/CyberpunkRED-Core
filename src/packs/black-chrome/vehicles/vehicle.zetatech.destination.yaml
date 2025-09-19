@@ -1,6 +1,11 @@
 _id: eK3VQaeSd2DFYJ9z
 _key: "!items!eK3VQaeSd2DFYJ9z"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/zetatech-destination.svg
 name: Zetatech Destination

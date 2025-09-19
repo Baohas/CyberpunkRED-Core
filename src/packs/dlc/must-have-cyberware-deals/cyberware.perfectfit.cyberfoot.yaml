@@ -1,6 +1,11 @@
 _id: u9qz2RDLomNTMl2n
 _key: "!items!u9qz2RDLomNTMl2n"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/perfectfit_cyberfoot.svg
 name: PerfectFit Cyberfoot
@@ -8,6 +13,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -29,6 +35,7 @@ system:
   humanityLoss:
     roll: 1d3
     static: 2
+  ignoreArmorPercent: 50
   installLocation: clinic
   installedItems:
     allowed: false
@@ -42,6 +49,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

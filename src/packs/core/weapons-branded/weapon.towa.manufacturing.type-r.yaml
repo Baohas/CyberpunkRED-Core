@@ -1,6 +1,11 @@
 _id: QrQ9bDFkwQTJstPK
 _key: "!items!QrQ9bDFkwQTJstPK"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
 name: Towa Manufacturing Type-R
 system:
@@ -36,6 +41,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 1
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: bZlhfqhQEVp4vodP
 _key: "!items!bZlhfqhQEVp4vodP"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/gear/tent_and_camping_equipment.svg
 name: Tent and Camping Equipment

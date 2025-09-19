@@ -2,6 +2,11 @@ _id: 0begTrdCOQcRyLMN
 _key: "!items!0begTrdCOQcRyLMN"
 effects:
   - tdnkWa1CRu3vQO0N
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_sigma.svg
 name: Linear Frame ∑ (Sigma)
 system:

@@ -1,6 +1,11 @@
 _id: dHHTQLHUkd0IX8GI
 _key: "!items!dHHTQLHUkd0IX8GI"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rocket_armorpiercing.png
 name: Rocket (Armor-Piercing)
 system:

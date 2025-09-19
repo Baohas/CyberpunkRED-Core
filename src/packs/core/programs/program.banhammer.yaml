@@ -1,6 +1,11 @@
 _id: ccLHU1Ym4K4mnOds
 _key: "!items!ccLHU1Ym4K4mnOds"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/programs/banhammer.svg
 name: Banhammer
 system:

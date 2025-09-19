@@ -1,6 +1,11 @@
 _id: eOsTEhtcRVyKxV7u
 _key: "!items!eOsTEhtcRVyKxV7u"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/heavyPistol_poor.svg
 name: GunMart Special
 system:
@@ -11,7 +16,7 @@ system:
   concealable:
     concealable: true
     isConcealed: false
-  critFailEffect: destroyedBeyondRepair
+  critFailEffect: jammed
   damage: 3d6
   description:
     value: |
@@ -24,7 +29,7 @@ system:
     suppressiveFire: false
   handsReq: 1
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -33,6 +38,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 8
     value: 0
   price:

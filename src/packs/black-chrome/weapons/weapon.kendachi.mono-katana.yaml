@@ -1,6 +1,11 @@
 _id: 062x3IuaFgsjMV5X
 _key: "!items!062x3IuaFgsjMV5X"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Sword.svg
 name: Kendachi Mono-Katana
 system:
@@ -27,7 +32,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   ignoreArmorPercent: 50
-  ignoreBelowSP: 7
+  ignoreBelowSP: 0
   installedItems:
     allowed: false
     allowedTypes:
@@ -38,6 +43,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

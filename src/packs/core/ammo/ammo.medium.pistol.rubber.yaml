@@ -1,6 +1,11 @@
 _id: n1vIKB6Mln9XgUXL
 _key: "!items!n1vIKB6Mln9XgUXL"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolmedium_rubber.png
 name: Medium Pistol (Rubber)
 system:

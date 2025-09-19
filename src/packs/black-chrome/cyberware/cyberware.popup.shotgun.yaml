@@ -1,6 +1,11 @@
 _id: A8TUvYw4Ysv7tqpL
 _key: "!items!A8TUvYw4Ysv7tqpL"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/popup-shotgun.svg
 name: Popup Shotgun
 system:
@@ -32,7 +37,7 @@ system:
     static: 7
   installLocation: clinic
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -44,6 +49,7 @@ system:
   isRanged: true
   isWeapon: true
   magazine:
+    ammoData: null
     max: 2
     value: 0
   price:

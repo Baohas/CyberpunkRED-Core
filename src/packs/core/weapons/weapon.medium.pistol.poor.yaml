@@ -1,6 +1,11 @@
 _id: tCTzi4miYdNgAJVc
 _key: "!items!tCTzi4miYdNgAJVc"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol_poor.svg
 name: Medium Pistol (Poor)
 system:
@@ -36,6 +41,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 12
     value: 0
   price:

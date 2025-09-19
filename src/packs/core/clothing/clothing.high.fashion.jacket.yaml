@@ -1,6 +1,11 @@
 _id: z2Gfkljp1A65Onoo
 _key: "!items!z2Gfkljp1A65Onoo"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_jacket.svg
 name: High Fashion Jacket
 system:

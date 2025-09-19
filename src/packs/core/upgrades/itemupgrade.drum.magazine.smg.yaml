@@ -1,12 +1,18 @@
 _id: 3z654ef9UlgH8o1o
 _key: "!items!3z654ef9UlgH8o1o"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/generic_drum_magazine.svg
 name: Drum Magazine (SMG)
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -20,6 +26,7 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 0
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: true
@@ -31,6 +38,7 @@ system:
   isElectronic: false
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   modifiers:

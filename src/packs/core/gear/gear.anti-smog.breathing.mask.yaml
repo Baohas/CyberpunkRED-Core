@@ -1,6 +1,11 @@
 _id: LTxStSIeRegbtZpd
 _key: "!items!LTxStSIeRegbtZpd"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/antismog_breathing_mask.svg
 name: Anti-Smog Breathing Mask
 system:

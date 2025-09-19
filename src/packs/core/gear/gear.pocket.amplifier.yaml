@@ -1,6 +1,11 @@
 _id: Zp8YbDBMTCl7sy61
 _key: "!items!Zp8YbDBMTCl7sy61"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/pocket_amplifier.svg
 name: Pocket Amplifier
 system:

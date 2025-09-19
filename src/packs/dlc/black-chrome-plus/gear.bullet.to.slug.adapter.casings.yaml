@@ -1,6 +1,11 @@
 _id: bDif9oZ2gb46jAx3
 _key: "!items!bDif9oZ2gb46jAx3"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/bullet-to-slug-adapter-casings.svg
 name: Bullet To Slug Adapter Casings

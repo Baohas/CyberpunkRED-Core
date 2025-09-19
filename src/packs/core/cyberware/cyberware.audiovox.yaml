@@ -3,12 +3,18 @@ _key: "!items!oSCkXo6VZXIwjWhL"
 effects:
   - 74gFz2rJ7G0uBkgx
   - dqjjjMsDuHu1WoiE
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
 name: AudioVox
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -26,6 +32,7 @@ system:
   humanityLoss:
     roll: 1d6
     static: 3
+  ignoreArmorPercent: 50
   installLocation: clinic
   installedItems:
     allowed: false
@@ -39,6 +46,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

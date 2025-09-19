@@ -1,6 +1,11 @@
 _id: ZWoM763wXSI3njJA
 _key: "!items!ZWoM763wXSI3njJA"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/scavenged-armor.svg
 name: Scavenged Armor

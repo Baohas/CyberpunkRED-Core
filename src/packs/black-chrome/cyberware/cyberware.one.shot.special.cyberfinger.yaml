@@ -1,6 +1,11 @@
 _id: hqxjHYkBe9mLzl2B
 _key: "!items!hqxjHYkBe9mLzl2B"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/cyberfinger.svg
 name: One Shot Special Cyberfinger
 system:
@@ -30,7 +35,7 @@ system:
     static: 7
   installLocation: mall
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -42,6 +47,7 @@ system:
   isRanged: true
   isWeapon: true
   magazine:
+    ammoData: null
     max: 1
     value: 0
   price:

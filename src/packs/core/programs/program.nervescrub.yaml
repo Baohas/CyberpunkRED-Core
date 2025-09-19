@@ -1,6 +1,11 @@
 _id: iq3V4YMib0WVSZZD
 _key: "!items!iq3V4YMib0WVSZZD"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/programs/nervescrub.svg
 name: Nervescrub
 system:

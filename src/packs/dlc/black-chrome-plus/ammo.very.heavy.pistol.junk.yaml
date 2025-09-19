@@ -1,6 +1,11 @@
 _id: uufKUdm7eZ7SFZmB
 _key: "!items!uufKUdm7eZ7SFZmB"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/pistolveryheavy_junk.png
 name: Very Heavy Pistol (Junk)

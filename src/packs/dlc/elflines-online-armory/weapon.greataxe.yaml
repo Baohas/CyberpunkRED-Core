@@ -1,6 +1,11 @@
 _id: syV8GagEmOsAOMkj
 _key: "!items!syV8GagEmOsAOMkj"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/weapons/axes/axe-double-black.webp
 name: Greataxe
 system:
@@ -37,6 +42,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

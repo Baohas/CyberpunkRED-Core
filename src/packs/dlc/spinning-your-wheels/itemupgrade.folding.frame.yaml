@@ -1,6 +1,11 @@
 _id: BMtpB0IpvAp6xon8
 _key: "!items!BMtpB0IpvAp6xon8"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/spinning_your_wheels/folding_frame.svg
 name: Folding Frame
@@ -8,6 +13,7 @@ system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -28,6 +34,7 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 0
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: false
@@ -39,6 +46,7 @@ system:
   isElectronic: false
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   modifiers:

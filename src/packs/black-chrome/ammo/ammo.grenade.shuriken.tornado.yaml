@@ -1,6 +1,11 @@
 _id: KPSBX2Ns6cj6JC4v
 _key: "!items!KPSBX2Ns6cj6JC4v"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_armorpiercing.png
 name: Grenade (Shuriken Tornado)
 system:

@@ -2,12 +2,18 @@ _id: uApwuxpuIJMe47Vn
 _key: "!items!uApwuxpuIJMe47Vn"
 effects:
   - CMDlHoVTmNq5MRwZ
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/teleoptics.svg
 name: TeleOptics
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -27,6 +33,7 @@ system:
   humanityLoss:
     roll: 1d6
     static: 3
+  ignoreArmorPercent: 50
   installLocation: clinic
   installedItems:
     allowed: false
@@ -40,6 +47,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: X6VYB5awDbtURwIv
 _key: "!items!X6VYB5awDbtURwIv"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/unarmed.svg
 name: Unarmed
 system:
@@ -32,6 +37,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

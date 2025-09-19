@@ -2,6 +2,11 @@ _id: KwNqQrQpLzbhpDNR
 _key: "!items!KwNqQrQpLzbhpDNR"
 effects:
   - kN8ZSjESSuKrUSfU
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/programs/see_ya.svg
 name: See Ya
 system:

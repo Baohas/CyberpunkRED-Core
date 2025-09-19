@@ -1,6 +1,11 @@
 _id: NQP4I9heyv9fXj46
 _key: "!items!NQP4I9heyv9fXj46"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_basic.png
 name: Very Heavy Pistol (Basic)
 system:

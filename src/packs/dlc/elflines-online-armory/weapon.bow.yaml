@@ -1,6 +1,11 @@
 _id: 6iTkyK9JSQHM2IqU
 _key: "!items!6iTkyK9JSQHM2IqU"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/weapons/bows/shortbow-recurve-red.webp
 name: Bow
 system:
@@ -25,12 +30,14 @@ system:
   handsReq: 2
   installedItems:
     allowed: true
-    allowedTypes: []
+    allowedTypes:
+      - ammo
     list: []
     slots: 0
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 1
     value: 0
   price:

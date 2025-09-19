@@ -2,6 +2,11 @@ _id: qoegLCfpEOQifeZq
 _key: "!items!qoegLCfpEOQifeZq"
 effects:
   - exv56SDpa0UW3rxp
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/critical_injuries/damaged_eye.svg
 name: Damaged Eye
 system:

@@ -1,6 +1,11 @@
 _id: DbASrTymPy4wHNpX
 _key: "!items!DbASrTymPy4wHNpX"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/armor/kevlar_body.svg
 name: Kevlar® (Body)
 system:

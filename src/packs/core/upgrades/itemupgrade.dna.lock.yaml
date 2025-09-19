@@ -1,12 +1,18 @@
 _id: jz7lnKQ3dKd5GCbY
 _key: "!items!jz7lnKQ3dKd5GCbY"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/dna_lock.svg
 name: DNA Lock
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -23,6 +29,7 @@ system:
     autoFire: 0
     suppressiveFire: false
   handsReq: 0
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: true
@@ -34,6 +41,7 @@ system:
   isElectronic: true
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   modifiers:

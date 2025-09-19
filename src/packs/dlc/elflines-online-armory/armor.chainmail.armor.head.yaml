@@ -1,6 +1,11 @@
 _id: kZy1Hr5L1oUdY3k8
 _key: "!items!kZy1Hr5L1oUdY3k8"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/equipment/head/cap-steel.webp
 name: Chainmail Armor (Head)
 system:

@@ -1,6 +1,11 @@
 _id: UCDzCXYth1eKdmX8
 _key: "!items!UCDzCXYth1eKdmX8"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome-plus/rifle_junk.png
 name: Rifle (Junk)
 system:

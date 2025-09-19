@@ -1,6 +1,11 @@
 _id: TcVJvGcbgK30TNUJ
 _key: "!items!TcVJvGcbgK30TNUJ"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_incendiary.png
 name: Heavy Pistol (Incendiary)
 system:

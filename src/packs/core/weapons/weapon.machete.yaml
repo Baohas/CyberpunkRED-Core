@@ -1,6 +1,11 @@
 _id: ZgcPrSNsggkm8D0w
 _key: "!items!ZgcPrSNsggkm8D0w"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Machete.svg
 name: Machete
 system:
@@ -38,6 +43,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

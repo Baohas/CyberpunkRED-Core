@@ -1,6 +1,11 @@
 _id: Rju0qV9mEaZ8oJhG
 _key: "!items!Rju0qV9mEaZ8oJhG"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
 name: Tsunami Arms Helix
 system:
@@ -37,6 +42,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 40
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: okVi2Gn9qk8KH7sD
 _key: "!items!okVi2Gn9qk8KH7sD"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
 name: Hello Cutie 1TruLuv
 system:
@@ -37,14 +42,16 @@ system:
     suppressiveFire: false
   handsReq: 2
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 0
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 4
     value: 0
   price:

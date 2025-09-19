@@ -1,6 +1,11 @@
 _id: fSvkIl83Rsqd7O16
 _key: "!items!fSvkIl83Rsqd7O16"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/dartgun.svg
 name: Dartgun
 system:
@@ -33,6 +38,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 8
     value: 0
   price:

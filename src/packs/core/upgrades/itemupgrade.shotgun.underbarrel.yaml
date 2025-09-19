@@ -1,6 +1,11 @@
 _id: aFg1nXhz37e1C2YP
 _key: "!items!aFg1nXhz37e1C2YP"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/shotgun_underbarrel.svg
 name: Shotgun Underbarrel
 system:
@@ -35,12 +40,14 @@ system:
     allowed: true
     allowedTypes:
       - itemUpgrade
+      - ammo
     list: []
     slots: 3
     usedSlots: 0
   isElectronic: false
   isRanged: true
   magazine:
+    ammoData: null
     max: 2
     value: 0
   modifiers:

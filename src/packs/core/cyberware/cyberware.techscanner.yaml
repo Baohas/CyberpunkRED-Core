@@ -2,12 +2,18 @@ _id: 2EvWIW0HXwoBK6xq
 _key: "!items!2EvWIW0HXwoBK6xq"
 effects:
   - tVc7bM54Ej63Yv2E
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/techscanner.svg
 name: Techscanner
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -27,6 +33,7 @@ system:
   humanityLoss:
     roll: 2d6
     static: 7
+  ignoreArmorPercent: 50
   installLocation: clinic
   installedItems:
     allowed: false
@@ -40,6 +47,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

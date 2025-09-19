@@ -1,6 +1,11 @@
 _id: wNHXTitRqLd1X0Do
 _key: "!items!wNHXTitRqLd1X0Do"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
 name: Assault Rifle (Poor)
 system:
@@ -36,6 +41,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 25
     value: 0
   price:

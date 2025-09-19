@@ -1,6 +1,11 @@
 _id: 3rtsVDMaB16lc5tY
 _key: "!items!3rtsVDMaB16lc5tY"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/grenade_teargas.png
 name: Grenade (Teargas)
 system:

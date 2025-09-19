@@ -2,6 +2,11 @@ _id: im5VJlsJv37KsyrE
 _key: "!items!im5VJlsJv37KsyrE"
 effects:
   - AGKnpiEshwvZDOrK
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/glowstick.svg
 name: Glow Stick
 system:

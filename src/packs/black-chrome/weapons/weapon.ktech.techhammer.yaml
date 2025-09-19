@@ -1,6 +1,11 @@
 _id: N2JO2RGnXWvrGjGf
 _key: "!items!N2JO2RGnXWvrGjGf"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun.svg
 name: KTech TechHammer
 system:
@@ -26,7 +31,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -35,6 +40,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 4
     value: 0
   price:

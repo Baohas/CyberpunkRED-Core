@@ -1,12 +1,18 @@
 _id: eapyCpVJd8BdGPMU
 _key: "!items!eapyCpVJd8BdGPMU"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/sensor_array.svg
 name: Sensor Array
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -23,6 +29,7 @@ system:
   humanityLoss:
     roll: 4d6
     static: 14
+  ignoreArmorPercent: 50
   installLocation: clinic
   installedItems:
     allowed: true
@@ -37,6 +44,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

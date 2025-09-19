@@ -1,6 +1,11 @@
 _id: RpCYrr6aUyZDUr4v
 _key: "!items!RpCYrr6aUyZDUr4v"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/sovoil-lubricant.svg
 name: SovOil Medical Lubricant
 system:

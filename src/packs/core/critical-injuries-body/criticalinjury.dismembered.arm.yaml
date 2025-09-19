@@ -1,6 +1,11 @@
 _id: 9N6yHeVwiGg2MkeL
 _key: "!items!9N6yHeVwiGg2MkeL"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/dismembered_arm.svg
 name: Dismembered Arm

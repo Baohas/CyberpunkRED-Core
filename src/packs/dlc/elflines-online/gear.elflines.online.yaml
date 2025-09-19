@@ -1,6 +1,11 @@
 _id: yobTPhOaGRpfkjz8
 _key: "!items!yobTPhOaGRpfkjz8"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/memory_chip.svg
 name: Elflines Online
 system:

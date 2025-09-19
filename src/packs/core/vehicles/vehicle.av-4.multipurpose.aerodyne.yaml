@@ -1,6 +1,11 @@
 _id: WNqG41VJWwDzQaIY
 _key: "!items!WNqG41VJWwDzQaIY"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/vehicles/airplane.svg
 name: AV-4 Multipurpose Aerodyne
 system:

@@ -1,6 +1,11 @@
 _id: j7uqIHY7bGmEL0Ma
 _key: "!items!j7uqIHY7bGmEL0Ma"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_glasses.svg
 name: Bag Lady Chic Glasses
 system:

@@ -1,6 +1,11 @@
 _id: Q3Cd7mARIdnaDH6o
 _key: "!items!Q3Cd7mARIdnaDH6o"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/clothing/generic_mirrorshades.svg
 name: Gang Colors Mirrorshades
 system:

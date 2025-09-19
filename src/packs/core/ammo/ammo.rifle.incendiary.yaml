@@ -1,6 +1,11 @@
 _id: U6VMjZRYgJMlMSsg
 _key: "!items!U6VMjZRYgJMlMSsg"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/ammo/rifle_incendiary.png
 name: Rifle (Incendiary)
 system:

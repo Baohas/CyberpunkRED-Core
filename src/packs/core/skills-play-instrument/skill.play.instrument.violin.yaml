@@ -1,6 +1,11 @@
 _id: bCvE0sHBsSz8UT4r
 _key: "!items!bCvE0sHBsSz8UT4r"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Skill.svg
 name: Play Instrument (Violin)
 system:
@@ -12,7 +17,7 @@ system:
   difficulty: typical
   favorite: false
   level: 0
-  skillType: playInstrument
+  skillType: generic
   source:
     book: Core
     page: 83

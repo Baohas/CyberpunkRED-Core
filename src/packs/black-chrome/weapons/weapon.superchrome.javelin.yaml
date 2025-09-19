@@ -2,6 +2,11 @@ _id: OHMbhkYy7we5ieIL
 _key: "!items!OHMbhkYy7we5ieIL"
 effects:
   - DyNsjXqBcOOWFdG9
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
 name: Superchrome® Javelin
 system:
@@ -34,7 +39,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -43,6 +48,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 4
     value: 0
   price:

@@ -1,6 +1,11 @@
 _id: Z8oZSJWzdiOJGo3z
 _key: "!items!Z8oZSJWzdiOJGo3z"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Skill.svg
 name: Language (Arabic)
 system:

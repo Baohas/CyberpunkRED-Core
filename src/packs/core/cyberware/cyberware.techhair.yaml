@@ -2,12 +2,18 @@ _id: opzHe5mz24EwqNCM
 _key: "!items!opzHe5mz24EwqNCM"
 effects:
   - XfIu5sS4q3YguQ2O
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/techhair.svg
 name: Techhair
 system:
   ammoVariety: []
   attackmod: 0
   brand: ""
+  canIgnoreArmor: true
   concealable:
     concealable: false
     isConcealed: false
@@ -24,6 +30,7 @@ system:
   humanityLoss:
     roll: "0"
     static: 0
+  ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
     allowed: false
@@ -37,6 +44,7 @@ system:
   isRanged: false
   isWeapon: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

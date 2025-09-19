@@ -1,6 +1,11 @@
 _id: xTQ2T50UGNY8DrHl
 _key: "!items!xTQ2T50UGNY8DrHl"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/foreign_object_body.svg
 name: Foreign Object

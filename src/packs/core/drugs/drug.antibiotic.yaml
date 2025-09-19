@@ -1,6 +1,11 @@
 _id: ags0aoY9ViaGvTIb
 _key: "!items!ags0aoY9ViaGvTIb"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/drugs/antibiotics.svg
 name: Antibiotic
 system:

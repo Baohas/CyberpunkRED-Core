@@ -1,6 +1,11 @@
 _id: YLYKK3N4631dbRwt
 _key: "!items!YLYKK3N4631dbRwt"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/black-chrome/pursuit-security-bouncer.svg
 name: Pursuit Security Bouncer
@@ -37,6 +42,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

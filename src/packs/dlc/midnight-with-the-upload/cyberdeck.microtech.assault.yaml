@@ -1,6 +1,11 @@
 _id: 2XWVECWhfnVrwtQv
 _key: "!items!2XWVECWhfnVrwtQv"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/default/cyberdeck.svg
 name: Microtech Assault
 system:

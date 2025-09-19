@@ -1,6 +1,11 @@
 _id: mDciV1eKpoew146L
 _key: "!items!mDciV1eKpoew146L"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle.svg
 name: ModFire 10X (Rifle)
 system:
@@ -34,7 +39,7 @@ system:
     suppressiveFire: false
   handsReq: 1
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -43,6 +48,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 8
     value: 0
   price:

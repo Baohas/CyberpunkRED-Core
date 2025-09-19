@@ -1,6 +1,11 @@
 _id: eTdomqPYaFg1CAp5
 _key: "!items!eTdomqPYaFg1CAp5"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/black-chrome/harriet.svg
 name: Harriet 100
 system:

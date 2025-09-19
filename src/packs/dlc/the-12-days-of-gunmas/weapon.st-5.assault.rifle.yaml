@@ -1,6 +1,11 @@
 _id: poMp4coxB8SORzvi
 _key: "!items!poMp4coxB8SORzvi"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/AssaultRifle_poor.svg
 name: ST-5 Assault Rifle
 system:
@@ -11,7 +16,7 @@ system:
   concealable:
     concealable: false
     isConcealed: false
-  critFailEffect: coinToss
+  critFailEffect: jammed
   damage: 5d6
   description:
     value: |
@@ -29,17 +34,19 @@ system:
   handsReq: 2
   installedItems:
     allowed: true
-    allowedTypes: []
+    allowedTypes:
+      - ammo
     list: []
     slots: 0
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 20
     value: 0
   price:
     market: 100
-  quality: poor
+  quality: standard
   revealed: true
   rof: 1
   source:

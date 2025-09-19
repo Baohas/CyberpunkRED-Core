@@ -2,6 +2,11 @@ _id: RAZcouFe0FS1VN1o
 _key: "!items!RAZcouFe0FS1VN1o"
 effects:
   - K5VZo8azU8QYk46R
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/collapsed_lung.svg
 name: Collapsed Lung

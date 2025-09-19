@@ -1,6 +1,11 @@
 _id: N0XtKbgIohJmwa5R
 _key: "!items!N0XtKbgIohJmwa5R"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/equipment/chest/breastplate-scale-grey.webp
 name: Chainmail Armor (Body)
 system:

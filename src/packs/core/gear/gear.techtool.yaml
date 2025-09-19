@@ -1,6 +1,11 @@
 _id: GPgc2QczR4H1rYPj
 _key: "!items!GPgc2QczR4H1rYPj"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/tech_tool.svg
 name: Techtool
 system:

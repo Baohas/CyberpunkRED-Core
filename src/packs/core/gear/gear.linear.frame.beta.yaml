@@ -2,6 +2,11 @@ _id: xH9lmDC4oWAt9l4P
 _key: "!items!xH9lmDC4oWAt9l4P"
 effects:
   - fby6eAZaHGBFcK1v
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/gear/linearframe_beta.svg
 name: Linear Frame β (Beta)
 system:

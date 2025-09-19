@@ -1,6 +1,11 @@
 _id: 8wVlu4VqXbhL0XKA
 _key: "!items!8wVlu4VqXbhL0XKA"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/RocketLauncher_poor.svg
 name: Triple Treat
 system:
@@ -30,12 +35,14 @@ system:
   handsReq: 2
   installedItems:
     allowed: true
-    allowedTypes: []
+    allowedTypes:
+      - ammo
     list: []
     slots: 0
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 2
     value: 0
   price:

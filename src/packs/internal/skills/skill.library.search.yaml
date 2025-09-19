@@ -1,6 +1,11 @@
 _id: cUIOleVPNLHP9y3i
 _key: "!items!cUIOleVPNLHP9y3i"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: icons/svg/item-bag.svg
 name: Library Search
 system:

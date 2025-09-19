@@ -1,6 +1,11 @@
 _id: s72mTsiZhAJHvLg5
 _key: "!items!s72mTsiZhAJHvLg5"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/Shotgun_poor.svg
 name: Rostović Ulični Uništitelj (aka the Street Destroyer)
 system:
@@ -27,7 +32,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -36,6 +41,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 3
     value: 0
   price:

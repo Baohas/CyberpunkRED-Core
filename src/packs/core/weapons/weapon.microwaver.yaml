@@ -1,6 +1,11 @@
 _id: oQ4mV07fh1et5zI7
 _key: "!items!oQ4mV07fh1et5zI7"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/weapons/microwaver.svg
 name: Microwaver
 system:
@@ -37,6 +42,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 8
     value: 0
   price:

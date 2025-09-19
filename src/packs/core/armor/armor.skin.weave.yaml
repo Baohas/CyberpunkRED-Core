@@ -1,6 +1,11 @@
 _id: DXavZyl7CTtgoZ6i
 _key: "!items!DXavZyl7CTtgoZ6i"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/skin_weave.svg
 name: Skin Weave
 system:

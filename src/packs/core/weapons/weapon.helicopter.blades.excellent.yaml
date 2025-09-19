@@ -1,6 +1,11 @@
 _id: 9alzkarjimr2QXmn
 _key: "!items!9alzkarjimr2QXmn"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/weapons/HelicopterBlade_excellent.svg
 name: Helicopter Blades (Excellent)
@@ -39,6 +44,7 @@ system:
     usedSlots: 0
   isRanged: false
   magazine:
+    ammoData: null
     max: 0
     value: 0
   price:

@@ -2,6 +2,11 @@ _id: IKKcCgHU1lBJ4wVd
 _key: "!items!IKKcCgHU1lBJ4wVd"
 effects:
   - ioMOVsyk9FRbs9EI
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/critical_injuries/crushed_fingers.svg
 name: Crushed Fingers

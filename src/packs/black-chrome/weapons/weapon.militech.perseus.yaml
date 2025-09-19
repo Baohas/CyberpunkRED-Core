@@ -1,6 +1,11 @@
 _id: rwfBQoEJu2uLnGeo
 _key: "!items!rwfBQoEJu2uLnGeo"
 effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 33
+      previous: "24"
 img: >-
   systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol_excellent.svg
 name: Militech Perseus
@@ -26,7 +31,7 @@ system:
     suppressiveFire: false
   handsReq: 1
   installedItems:
-    allowed: false
+    allowed: true
     allowedTypes:
       - itemUpgrade
       - ammo
@@ -35,6 +40,7 @@ system:
     usedSlots: 0
   isRanged: true
   magazine:
+    ammoData: null
     max: 11
     value: 0
   price:
