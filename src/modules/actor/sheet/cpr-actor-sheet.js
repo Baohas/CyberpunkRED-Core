@@ -766,7 +766,7 @@ export default class CPRActorSheet extends ActorSheet {
         case "dv-ruler": {
           if (item.system?.dvTable !== "") {
             await item.doAction(this.actor, event.currentTarget.attributes);
-            this._setDvIconState(item);
+            await this._setDvIconState(item);
             if (
               canvas.tokens.controlled.filter((t) => t.id === this.token.id)
                 .length === 0 &&
@@ -808,20 +808,12 @@ export default class CPRActorSheet extends ActorSheet {
    * @callback
    * @param {CPRItem} item - item we are activating the DV Ruler for
    */
-  _setDvIconState(item) {
-    const ActorSheetNodeID = `${
-      item.actor.constructor.name
-    }Sheet-${item.actor.uuid.replaceAll(".", "-")}`;
-    const dvGlyphs = document
-      .getElementById(ActorSheetNodeID)
-      .getElementsByClassName("dv-glyph");
+  async _setDvIconState(item) {
+    const dvGlyphs = this.element[0].querySelectorAll(".dv-glyph");
 
-    const dvFlag = this.token.object.document.getFlag(
-      game.system.id,
-      "cprDvTable"
-    );
+    const dvFlag = this.token.getFlag(game.system.id, "cprDvTable");
 
-    const dvFlagSet = typeof dvFlag === "object" && dvFlag?.name !== "";
+    const dvFlagSet = dvFlag?.name !== "";
 
     for (const glyphNode of dvGlyphs) {
       const weaponId = $(glyphNode).attr("data-item-id");
@@ -831,6 +823,9 @@ export default class CPRActorSheet extends ActorSheet {
         $(glyphNode).removeClass("dv-active");
       }
     }
+
+    // Rerender the sheet
+    return this.render();
   }
 
   /**

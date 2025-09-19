@@ -1,5 +1,6 @@
 {{#if (cprCompare system.dvTable "!==" "") }}
-  <a class="{{#if isTokenSheet}}item-action dv-glyph{{/if}}
+  <a class="dv-glyph
+            {{#if isTokenSheet}}item-action{{/if}}
             {{#if (cprHighlightDVRuler weapon)}}button-active{{/if}}
             {{#unless isTokenSheet}}button-disabled{{/unless}}"
      data-item-id="{{weapon.id}}"
