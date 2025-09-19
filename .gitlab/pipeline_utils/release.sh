@@ -27,7 +27,7 @@ PLATFORM=$(detect_platform)
 echo "Fetching latest glab version..."
 LATEST_VERSION=$(curl -s "https://gitlab.com/api/v4/projects/gitlab-org/cli/releases" | jq -r '.[0].tag_name')
 
-if [[ -z "$LATEST_VERSION" ]]; then
+if [[ -z "${LATEST_VERSION}" ]]; then
   echo "Error: Could not determine the latest version."
   exit 1
 fi
