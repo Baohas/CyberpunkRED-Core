@@ -58,6 +58,9 @@ rm -rf "${TMP_DIR}"
 
 # Create a Release in GitLab
 # NOTE: This references the files created by the `build-artifacts` job.
+
+.glab auth login --token "${CI_JOB_TOKEN}"
+
 if ! ./glab release create "${SYSTEM_VERSION}" \
   --name "${SYSTEM_VERSION}" \
   --notes "Automated release of ${SYSTEM_VERSION}" \
