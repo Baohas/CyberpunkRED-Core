@@ -110,6 +110,7 @@ Si vous avez importé la `Macro Get EMP'd` vous aurez besoin de supprimer la cop
 - Change description of Warlocks Book to be RTal Homebrew Policy compliant
 - Correction de toujours plus de fautes de frappe
 - #1089 - Fix missing effects on items split from stacks
+- #1077 - Fix DV Ruler button on character sheets not working correctly.
 
 ## Version 0.88.2
 
