@@ -59,7 +59,9 @@ rm -rf "${TMP_DIR}"
 # Create a Release in GitLab
 # NOTE: This references the files created by the `build-artifacts` job.
 
-.glab auth login --token "${CI_JOB_TOKEN}"
+if ! ./glab auth login --token "${CI_JOB_TOKEN}"; then
+  echo "❌ Unable to log into the Gitlab API"
+fi
 
 if ! ./glab release create "${SYSTEM_VERSION}" \
   --name "${SYSTEM_VERSION}" \
@@ -78,6 +80,7 @@ if ! ./glab release create "${SYSTEM_VERSION}" \
   ]"; then
 
   echo "❌ Unable to create release for ${SYSTEM_NAME} ${SYSTEM_VERSION}"
+  exit 1
 else
   echo "🎉 Created ${SYSTEM_NAME} ${SYSTEM_VERSION} release successfully!"
 fi
