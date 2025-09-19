@@ -855,9 +855,7 @@ export default class CPRItemSheet extends ItemSheet {
         floor: "1",
         branch: "a",
         dv: "N/A",
-        content: SystemUtils.Localize(
-          "CPR.netArchitecture.floor.options.password"
-        ),
+        content: "CPR.netArchitecture.floor.options.password",
         blackice: "--",
         description: "",
         returnType: "string",

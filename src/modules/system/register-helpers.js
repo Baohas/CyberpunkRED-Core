@@ -640,6 +640,18 @@ export default function registerHandlebarsHelpers() {
   );
 
   /**
+   * Convert an array of strings to an array of objects
+   * whose `value` and `label` are set to the string.
+   * This is to prepare data for select options in some
+   * niche parts of the codebase.
+   *
+   * See `cpr-netarch-level-prompt.hbs`.
+   */
+  Handlebars.registerHelper("arrayToSelectOptions", (array) => {
+    return array.map((dv) => ({ value: dv, label: dv }));
+  });
+
+  /**
    * Get all skills on a mook that have a level above 0. This is used to present
    * specialized skills a mook may have.
    */

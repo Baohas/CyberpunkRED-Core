@@ -13,11 +13,11 @@
         </div>
         <div class="dialog-item-input text-nowrap">
           <select name="floor">
-            {{selectOptions floornumbers selected=floor localize=true}}
+            {{selectOptions (arrayToSelectOptions floornumbers) selected=floor localize=true}}
           </select>
 
           <select name="branch">
-            {{selectOptions branchlabels selected=branch localize=true}}
+            {{selectOptions (arrayToSelectOptions branchlabels) selected=branch localize=true}}
           </select>
         </div>
       </li>
@@ -38,7 +38,7 @@
           </div>
           <div class="dialog-item-input text-nowrap">
             <select name="dv">
-              {{selectOptions dvoptions selected=dv localize=true}}
+              {{selectOptions (arrayToSelectOptions dvoptions) selected=dv}}
             </select>
           </div>
         </li>
