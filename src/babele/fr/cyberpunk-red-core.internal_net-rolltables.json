@@ -80,7 +80,6 @@
           "5-5": "Cerbère, Tueur",
           "6-6": "Cerbère",
           "7-7": "Cerbère, Tigre à dents de sabre",
-          "8-8": "Cerbère",
           "9-9": "Mot de passe SD10",
           "10-10": "Fichier SD10",
           "11-11": "Nœud de contrôle SD10",
@@ -90,7 +89,8 @@
           "15-15": "Dragon",
           "16-16": "Cobra",
           "17-17": "Dragon, Feu follet",
-          "18-18": "Dragon x2"
+          "18-18": "Dragon x2",
+          "8-8": "Cerbère"
         }
       ]
     },

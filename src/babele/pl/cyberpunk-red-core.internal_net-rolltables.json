@@ -80,7 +80,6 @@
           "5-5": "Piekielny ogar, Zabójca",
           "6-6": "Piekielny Ogar",
           "7-7": "Piekielny ogar, Szabloząb",
-          "8-8": "Piekielny Ogar",
           "9-9": "Hasło PT10",
           "10-10": "Plik PT10",
           "11-11": "Węzeł kontrolny PT10",
@@ -90,7 +89,8 @@
           "15-15": "Smok",
           "16-16": "Żmija",
           "17-17": "Smok, Błędny ognik",
-          "18-18": "Smok x2"
+          "18-18": "Smok x2",
+          "8-8": "Piekielny Ogar"
         }
       ]
     },

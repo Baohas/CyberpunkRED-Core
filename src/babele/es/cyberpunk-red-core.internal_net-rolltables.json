@@ -80,7 +80,6 @@
           "5-5": "Perro del Infierno, Asesino",
           "6-6": "Perro del Infierno",
           "7-7": "Perro del Infierno, Dientes de Sable",
-          "8-8": "Perro del Infierno",
           "9-9": "Contraseña VD10",
           "10-10": "Archivo VD10",
           "11-11": "Nodo de Control VD10",
@@ -90,7 +89,8 @@
           "15-15": "Dragón",
           "16-16": "Aspid",
           "17-17": "Dragón, Fuego Fatuo",
-          "18-18": "Dragón x2"
+          "18-18": "Dragón x2",
+          "8-8": "Perro del Infierno"
         }
       ]
     },

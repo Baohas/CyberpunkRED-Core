@@ -80,7 +80,6 @@
           "5-5": "Hellhound, Killer",
           "6-6": "Cão Infernal",
           "7-7": "Hellhound, Sabertooth",
-          "8-8": "Cão Infernal",
           "9-9": "Password DV10",
           "10-10": "File DV10",
           "11-11": "Control Node DV10",
@@ -90,7 +89,8 @@
           "15-15": "Dragão",
           "16-16": "Víbora",
           "17-17": "Dragon, Wisp",
-          "18-18": "Dragon x2"
+          "18-18": "Dragon x2",
+          "8-8": "Cão Infernal"
         }
       ]
     },

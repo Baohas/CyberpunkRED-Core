@@ -80,7 +80,6 @@
           "5-5": "Cerbero, Killer",
           "6-6": "Cerbero",
           "7-7": "Cerbero, Sabertooth",
-          "8-8": "Cerbero",
           "9-9": "Password VD10",
           "10-10": "File VD10",
           "11-11": "Nodo di Controllo VD10",
@@ -90,7 +89,8 @@
           "15-15": "Dragon",
           "16-16": "Cobra",
           "17-17": "Dragon, Sprite",
-          "18-18": "Dragon x2"
+          "18-18": "Dragon x2",
+          "8-8": "Cerbero"
         }
       ]
     },

@@ -80,7 +80,6 @@
           "5-5": "Höllenhund, Killer",
           "6-6": "Höllenhund",
           "7-7": "Höllenhund, Säbelzahntiger",
-          "8-8": "Höllenhund",
           "9-9": "Passwort SG10",
           "10-10": "Datei SG10",
           "11-11": "Kontrollknoten SG10",
@@ -90,7 +89,8 @@
           "15-15": "Drache",
           "16-16": "Viper",
           "17-17": "Drache, Irrlicht",
-          "18-18": "Drache x2"
+          "18-18": "Drache x2",
+          "8-8": "Höllenhund"
         }
       ]
     },
