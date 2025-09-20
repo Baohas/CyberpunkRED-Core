@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Version 0.89.1
+
+### Bug Fixes
+
+- #1128 - Fixed visual bug related to weapon firemodes not showing state correctly
+
 ## Version 0.89.0
 
 ### Action Needed
