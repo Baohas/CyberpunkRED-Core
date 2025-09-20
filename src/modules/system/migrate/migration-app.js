@@ -4,6 +4,7 @@ import CPR from "../config.js";
 import DEV_MODE from "../devMode.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+const { renderTemplate } = foundry.applications.handlebars;
 
 export default class MigrationApp extends HandlebarsApplicationMixin(
   ApplicationV2

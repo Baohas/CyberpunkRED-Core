@@ -13,7 +13,10 @@ const AddDvTokenHud = () => {
   Hooks.on("renderTokenHUD", async (hud, html, token) => {
     html = $(html); // TODO: Remove JQuery.
     const dvHudTemplate = `systems/${game.system.id}/templates/hud/dv.hbs`;
-    const dvDisplay = await renderTemplate(dvHudTemplate, token.flags);
+    const dvDisplay = await foundry.applications.handlebars.renderTemplate(
+      dvHudTemplate,
+      token.flags
+    );
     html.find("div.left").append(dvDisplay);
     html.find(".dv-table-selector").click(() => {
       HudInterface.SetDvTable(token);
