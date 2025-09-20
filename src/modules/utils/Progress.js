@@ -65,7 +65,7 @@ export default class Progress {
    */
   static async createElement(options = {}, parentElement = null) {
     const progress = new Progress(options);
-    const rawTemplate = await renderTemplate(
+    const rawTemplate = await foundry.applications.handlebars.renderTemplate(
       `systems/${game.system.id}/${this.TEMPLATE}`,
       progress
     );

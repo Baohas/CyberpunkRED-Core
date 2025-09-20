@@ -3,6 +3,8 @@ import { CPRRoll, CPRDamageRoll, CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 
+const { renderTemplate } = foundry.applications.handlebars;
+
 /**
  * For the sake of aesthetics, we have a class for Chat cards. It wraps around
  * ChatMessage, but note it does not actually extend the Foundry-provided class.
