@@ -9,7 +9,8 @@ const HideBlindRolls = () => {
    * @param {object} html              - the HTML DOM of the chat card
    * @param {string} msg (unused)      - our simulation of the ChatData object
    */
-  Hooks.on("renderChatMessage", async (_, html) => {
+  Hooks.on("renderChatMessageHTML", async (_, html) => {
+    html = $(html); // TODO: Remove JQuery.
     // Do not display "Blind" chat cards to non-gm
     // Foundry doesn't support blind chat messages so this is how we get around
     // that.
