@@ -118,6 +118,10 @@
   --cpr-text-tab-highlight: #ffff3f;
   --cpr-text-tab-normal: var(--cpr-color-white);
   --cpr-text-window: var(--cpr-color-black);
+  --cpr-text-hint: var(--cpr-color-near-black);
+  --cpr-text-pause: var(--cpr-color-white);
+  --cpr-text-journal-table-header: var(--cpr-color-white);
+  --cpr-text-dir-list: var(--cpr-color-near-black);
 
   /* Icon Colors */
   --cpr-icon-actor-image-overlay-border: var(--cpr-color-red);
