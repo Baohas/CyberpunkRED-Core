@@ -6,7 +6,8 @@
 
 ### Corrections de bugs
 
-- \#1128 - Fixed visual bug related to weapon firemodes not showing state correctly
+- \#1128 - Fixed visual bug related to weapon firemodes not showing state correctly.
+- Fix uprade weapons (e.g., underbarrel weapons) not rolling.
 
 ## Version 0.89.0
 

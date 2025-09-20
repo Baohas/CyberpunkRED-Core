@@ -2,11 +2,12 @@
 
 # Журнал изменений
 
-## Version 0.89.1
+## Версия 0.89.1
 
 ### Исправления
 
-- \#1128 - Fixed visual bug related to weapon firemodes not showing state correctly
+- \#1128 - Fixed visual bug related to weapon firemodes not showing state correctly.
+- Fix uprade weapons (e.g., underbarrel weapons) not rolling.
 
 ## Версия 0.89.0
 
