@@ -167,17 +167,18 @@ function _toggleInstalledVisibility(event) {
  */
 const renderItemDirHooks = () => {
   Hooks.on("renderItemDirectory", (_, html) => {
+    html = $(html); // TODO: Remove JQuery.
     const itemElements = html.find("li.item");
 
     const hiddenElements = itemElements.filter((__, element) => {
-      const item = game.items.get(element.dataset.documentId);
+      const item = game.items.get(element.dataset.entryId);
       return item.system.isInstalled;
     });
     hiddenElements.toggleClass("directory-item-hidden");
 
     // Get elements that represent items which have other items installed in them.
     const itemsWithInstalledElements = itemElements.filter((__, element) => {
-      const item = game.items.get(element.dataset.documentId);
+      const item = game.items.get(element.dataset.entryId);
       return item.system.hasInstalled;
     });
 

@@ -11,6 +11,7 @@ const AddDvTokenHud = () => {
    * @param {string} token - token data
    */
   Hooks.on("renderTokenHUD", async (hud, html, token) => {
+    html = $(html); // TODO: Remove JQuery.
     const dvHudTemplate = `systems/${game.system.id}/templates/hud/dv.hbs`;
     const dvDisplay = await renderTemplate(dvHudTemplate, token.flags);
     html.find("div.left").append(dvDisplay);
