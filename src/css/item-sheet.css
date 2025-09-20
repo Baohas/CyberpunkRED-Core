@@ -127,11 +127,10 @@
 
     .item-bottom-content-section {
       grid-area: item-bottom-content;
-      display: flex;
+
       border-style: solid;
       border-width: 0.313rem;
       overflow-y: hidden;
-      flex-wrap: wrap;
       border-color: var(--cpr-background-border);
     }
   }
@@ -141,13 +140,11 @@
   }
 }
 
-.item-description-grid,
-.item-settings-grid,
-.item-effects-grid {
-  display: flex;
+.item-description-grid.active,
+.item-settings-grid.active,
+.item-effects-grid.active {
   width: inherit;
   height: inherit;
-  flex: 1 1 auto;
 
   .setting-value {
     justify-content: right;

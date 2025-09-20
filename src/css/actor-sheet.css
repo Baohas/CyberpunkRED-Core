@@ -389,7 +389,6 @@
 
     .bottom-content-section {
       grid-area: content-bottom;
-      display: flex;
       width: 100%;
       border-style: solid;
       border-width: 0.313rem;
@@ -437,7 +436,7 @@
   }
 }
 
-.cyberware-tab {
+.cyberware-tab.active {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
@@ -448,20 +447,21 @@
   }
 }
 
-.effects-tab,
-.gear-tab {
+.effects-tab.active,
+.gear-tab.active {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto;
   width: inherit;
 }
 
-.lifepath-tab {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  grid-template-rows: auto;
-  grid-template-areas: "notes-pane lifepath-pane";
-  justify-content: space-between;
+.lifepath-tab.active {
+  .lifepath-tab-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-rows: auto;
+    grid-template-areas: "notes-pane lifepath-pane";
+  }
 
   .section-name {
     background-color: var(--cpr-background-header);
@@ -490,15 +490,16 @@
   }
 }
 
-.fight-tab {
-  background-color: var(--cpr-background-border);
-  display: grid;
-  gap: 0.313rem;
-  grid-template-areas: "injuries armor weapon";
-  grid-template-columns: 25% 25% auto;
-  grid-template-rows: auto;
-  height: 100%;
+.fight-tab.active {
   width: inherit;
+  background-color: var(--cpr-background-border);
+
+  .fight-tab-grid {
+    display: grid;
+    grid-template-columns: 25% 25% auto;
+    grid-template-rows: auto;
+    grid-template-areas: "injuries armor weapon";
+    grid-gap: 0.313rem;
 
   .fight-tab > div {
     background-color: var(--cpr-background-box);
