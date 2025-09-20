@@ -12,6 +12,8 @@ mapfile -t DOCS < <(
     -not \( -path "./.gitlab/pipeline_tests" -prune \) \
     -not \( -path "./.gitlab/merge_request_templates" -prune \) \
     -not \( -path "./.gitlab/issue_templates" -prune \) \
+    -not \( -path "./.gitlab-ci-local" -prune \) \
+    -not -name "CHANGELOG.*.md" \
     -iname "*.md"
 )
 
