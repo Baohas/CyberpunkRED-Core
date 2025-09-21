@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Version 0.89.2
+
+### Bug Fixes
+
+- #1130 - Fixed loading ammo into weapon upgrades.
+
 ## Version 0.89.1
 
 ### Bug Fixes
