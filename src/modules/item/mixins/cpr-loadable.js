@@ -183,6 +183,13 @@ const Loadable = function Loadable() {
    * @returns {Number} - upgraded magazine space
    */
   this.getUpgradedMagazine = function getUpgradedMagazine() {
+    // Sometimes we are checking the magazine of an item upgrade,
+    // e.g., an underbarrel weapon, which themselves cannot be upgraded.
+    // Early return with just the base magazine size, if so.
+    if (!SystemUtils.hasMixin(this.type, "upgradeable")) {
+      return this.system.magazine.max;
+    }
+
     const magazineData = this.system.magazine;
     const upgradeData = this.getTotalUpgradeValues("magazine");
     const magazineSpace =
