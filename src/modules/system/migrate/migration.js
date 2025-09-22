@@ -72,6 +72,7 @@ export default class MigrationRunner {
     remigrateAlreadyMigrated: false,
     batchMigrations: true,
     migrateSystemCompendia: false,
+    simulateMigrationError: false,
     app: {
       returnToSetup: true,
       modal: true,
@@ -228,6 +229,10 @@ export default class MigrationRunner {
     // Open migration application before anything else.
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
+
+    if (MigrationRunner.devMode.simulateMigrationError) {
+      throw new Error("Simulated migration error");
+    }
 
     // Enforce a minimum version that user has to migrate from.
     // Below this, they will be instructed to first update to

@@ -31,8 +31,24 @@ export default class MigrationError extends Error {
     this.data.message = this.message;
     this.data.originError = {
       message: options.cause?.message,
-      stack: options.cause?.stack,
+      stack: this.sanitizeStackTrace(options.cause?.stack || ""),
     };
-    this.data.stack = this.stack;
+    this.data.stack = this.sanitizeStackTrace(this.stack || "");
+  }
+
+  /**
+   * Sanitize the stack trace of an error by removing the
+   * user's host information.
+   *
+   * @param {string} trace - The error's stack trace.
+   * @returns {string} - The sanitized stack trace.
+   */
+  sanitizeStackTrace(trace) {
+    return trace.replace(
+      /\b(https?|wss?):\/\/([^/:]+)(:\d+)?/g,
+      (match, protocol, host, port) => {
+        return `${protocol}://host${port || ""}`;
+      }
+    );
   }
 }
