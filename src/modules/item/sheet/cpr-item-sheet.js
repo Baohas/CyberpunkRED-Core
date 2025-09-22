@@ -7,8 +7,11 @@ import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 import RoleAbilitySchema from "../../datamodels/item/components/role-ability-schema.js";
 
+const { ItemSheet } = foundry.appv1.sheets;
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
+
 /**
- * Extend the basic ActorSheet.
+ * Extend the basic ItemSheet.
  * @extends {ItemSheet}
  */
 

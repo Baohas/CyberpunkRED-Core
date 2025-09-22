@@ -9,6 +9,9 @@ import CPRMod from "../../rolls/cpr-modifiers.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 import { ContainerUtils } from "../../item/mixins/cpr-container.js";
 
+const { ActorSheet } = foundry.appv1.sheets;
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
+
 /**
  * Extend the basic ActorSheet, which comes from Foundry. Not all sheets used in
  * this system module may extend from this. Others also extend ActorSheet. CPRActor

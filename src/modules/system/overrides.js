@@ -1,3 +1,5 @@
+const { Ruler } = foundry.canvas.interaction;
+
 export default function overrideRulerFunctions() {
   const foundryPrototype = Ruler.prototype._getSegmentLabel;
   Ruler.prototype._getSegmentLabel = function _getSegmentLabel(

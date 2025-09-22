@@ -53,6 +53,10 @@ import VehicleDataModel from "./modules/datamodels/item/vehicle-datamodel.js";
 import WeaponDataModel from "./modules/datamodels/item/weapon-datamodel.js";
 import MigrationError from "./modules/system/migrate/migration-error.js";
 
+const { ActorSheet, ItemSheet } = foundry.appv1.sheets;
+const { DocumentSheetConfig } = foundry.applications.apps;
+const { Actors, Items } = foundry.documents.collections;
+
 Hooks.once("init", async () => {
   LOGGER.log("THANK YOU TO EVERYONE WHO HELPED!!!!");
   LOGGER.credits();
