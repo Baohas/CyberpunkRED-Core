@@ -310,7 +310,8 @@ const Container = function Container() {
         : !!(await this.installWorldItems(itemList, installedItems));
 
     // Rerender items directory for world items.
-    if (!this.isEmbedded) ui.sidebar.tabs.items.render(true);
+    if (!this.isEmbedded)
+      foundry.applications.instances.get("items").render(true);
     return update;
   };
 
@@ -467,7 +468,8 @@ const Container = function Container() {
     });
 
     // Rerender items directory for world items.
-    if (!this.isEmbedded) ui.sidebar.tabs.items.render(true);
+    if (!this.isEmbedded)
+      foundry.applications.instances.get("items").render(true);
     return updates;
   };
 
@@ -627,7 +629,7 @@ const Container = function Container() {
     // And remove the now unnecessary import flag.
     await this.unsetFlag(game.system.id, "cprInstallTree");
     await this.update({ "system.installedItems.list": newInstalledList });
-    ui.sidebar.tabs.items.render(true);
+    foundry.applications.instances.get("items").render(true);
   };
 
   /**
