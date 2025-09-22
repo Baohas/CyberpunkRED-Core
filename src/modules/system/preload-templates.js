@@ -2,7 +2,7 @@ import LOGGER from "../utils/cpr-logger.js";
 
 export default function preloadHandlebarsTemplates() {
   LOGGER.log("Calling Preload Handlebars");
-  return loadTemplates([
+  return foundry.applications.handlebars.loadTemplates([
     // Actor: Character - Left Pane
     `systems/${game.system.id}/templates/actor/character/cpr-left-pane.hbs`,
     `systems/${game.system.id}/templates/actor/character/left-pane/cpr-left-pane-info.hbs`,

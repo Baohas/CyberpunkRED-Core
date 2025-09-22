@@ -6,6 +6,8 @@ import CPRChat from "../../chat/cpr-chat.js";
 import CPRItem from "../../item/cpr-item.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
+
 /**
  * Implement the sheet for containers and shop keepers. This extends CPRActorSheet to make use
  * of owned-item management methods like getOwnedItem and _deleteOwnedItem.

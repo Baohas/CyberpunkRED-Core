@@ -1,5 +1,7 @@
 import SystemUtils from "./cpr-systemUtils.js";
 
+const ContextMenu = foundry.applications.ux.ContextMenu.implementation;
+
 /**
  * Sets up a ContextMenu that appears when the provided selector is right clicked.
  * The ContextMenu contains a menu item that enables the user to share an image with other players.
@@ -8,7 +10,7 @@ import SystemUtils from "./cpr-systemUtils.js";
  * @param {{name: string, img: string}} data - The created ContextMenu
  */
 export default function createImageContextMenu(
-  html,
+  [html],
   contextMenuTargetSelector,
   data
 ) {
@@ -26,5 +28,7 @@ export default function createImageContextMenu(
       },
     },
   ];
-  return new ContextMenu(html, contextMenuTargetSelector, menuItems);
+  return new ContextMenu(html, contextMenuTargetSelector, menuItems, {
+    jQuery: false,
+  });
 }

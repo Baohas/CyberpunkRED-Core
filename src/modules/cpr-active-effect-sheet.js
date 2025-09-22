@@ -4,6 +4,8 @@ import CPR from "./system/config.js";
 import LOGGER from "./utils/cpr-logger.js";
 import SystemUtils from "./utils/cpr-systemUtils.js";
 
+const { ActiveEffectConfig } = foundry.applications.sheets;
+
 /**
  * Extend the base ActiveEffect class to implement system-specific logic.
  * @extends {ActiveEffect}
