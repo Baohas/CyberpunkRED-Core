@@ -2,6 +2,14 @@
 
 # Registro de Cambios
 
+## Version 0.89.2
+
+### Corrección de Errores
+
+- \#1130 - Fixed loading ammo into weapon upgrades.
+- \#1131 - Fixed issue where migration app would not scroll when many compendia caused overflow.
+- Migration error reports now redact host information.
+
 ## Version 0.89.1
 
 ### Corrección de Errores
