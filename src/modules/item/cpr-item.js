@@ -36,7 +36,7 @@ export default class CPRItem extends Item {
     if (!item.system.hasInstalled || item.pack) return;
     // If this item is being imported into the world,
     // and it has embedded installed item data in its flags.
-    if (!item.parent && item.flags.cprInstallTree) {
+    if (!item.parent && ContainerUtils.getInstallTreeFlag(item)) {
       // Convert the embedded data into other world items and update
       // the original item's `system.installedItems.list` to point to them.
       await item.importInstalledToWorld(true);
@@ -48,7 +48,7 @@ export default class CPRItem extends Item {
     else if (
       !item.parent &&
       item.system.hasInstalled &&
-      !item.flags.cprInstallTree
+      !ContainerUtils.getInstallTreeFlag(item)
     ) {
       const installedItemList = item.system.installedItems.list.map((id) =>
         game.items.get(id)
@@ -243,9 +243,8 @@ export default class CPRItem extends Item {
     // Set the installed object data as a flag.
     // Note, if you ever change the name of `cprInstallTree` to something else,
     // you would have to change it in `createInstalledObjectData()` too.
-    const { flags } = this;
-    flags.cprInstallTree = cprInstallTree;
-    data.flags = flags;
+    ContainerUtils.setInstallTreeFlag(this, cprInstallTree);
+    data.flags = this.flags;
 
     // Update the item data with the new flags.
     return data;
@@ -278,11 +277,12 @@ export default class CPRItem extends Item {
     // Set the installed object data as a flag.
     // Note, if you ever change the name of `cprInstallTree` to something else,
     // you would have to change it in `createInstalledObjectData()` too.
-    const flags = foundry.utils.duplicate(item.flags);
-    flags.cprInstallTree = cprInstallTree;
+    ContainerUtils.setInstallTreeFlag(item, cprInstallTree);
 
     // Update the item with the new flags.
-    await item.update({ flags });
+    await item.update({
+      flags: item.flags,
+    });
 
     return item;
   }
@@ -299,7 +299,7 @@ export default class CPRItem extends Item {
     // Import the item so that we can then manipulate it.
     const item = await super.importFromJSON(json);
     // Only manipulate the imported item if it contains installed item data.
-    if (item.flags.cprInstallTree) {
+    if (ContainerUtils.getInstallTreeFlag(item)) {
       // Recursively create installed items from the item data embedded in
       // `item.flags.cprInstallTree`
       return item.importInstalledToWorld(true);

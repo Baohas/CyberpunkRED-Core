@@ -6,6 +6,7 @@ import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 import RoleAbilitySchema from "../../datamodels/item/components/role-ability-schema.js";
+import { ContainerUtils } from "../mixins/cpr-container.js";
 
 const { ItemSheet } = foundry.appv1.sheets;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
@@ -1404,7 +1405,7 @@ export default class CPRItemSheet extends ItemSheet {
     // render its sheet.
     if (this.item.pack) {
       const flattenedTree = this.item.flattenInstallTree(
-        this.item.flags.cprInstallTree
+        ContainerUtils.getInstallTreeFlag(this.item)
       );
       const itemData = flattenedTree.find((i) => i._id === itemId);
       // eslint-disable-next-line new-cap
