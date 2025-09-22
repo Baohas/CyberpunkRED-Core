@@ -11,7 +11,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
-import Container from "../item/mixins/cpr-container.js";
+import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -247,7 +247,7 @@ export default class CPRActor extends Actor {
         // eslint-disable-next-line no-continue
         if (!item.system.hasInstalled) continue;
         // The item will only have this flag if it is imported/coming from another actor.
-        const imported = !!item.flags.cprInstallTree;
+        const imported = !!ContainerUtils.getInstallTreeFlag(item);
         // The following function recusrively creates and installs all items in the install tree.
         await item.createInstalledItemsOnActor(imported);
       }

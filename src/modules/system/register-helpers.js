@@ -5,6 +5,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
+import { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 export default function registerHandlebarsHelpers() {
   LOGGER.log("Calling Register Handlebars Helpers");
@@ -786,7 +787,7 @@ export default function registerHandlebarsHelpers() {
       // Get all items installed in the parent and sort.
       // If item is in a pack, get this data from the cprInstallTree instead of real world items.
       const installedItems = inItemPack
-        ? parentItem.flags.cprInstallTree
+        ? ContainerUtils.getInstallTreeFlag(parentItem)
         : parentItem.getInstalledItems();
       const sortedInstalled = installedItems.sort((a, b) => {
         // If items are the same type, sort alphabetically.

@@ -19,6 +19,33 @@ export class ContainerUtils {
       }
     ).catch((err) => LOGGER.debug(err));
   }
+
+  /**
+   * Get the install tree stored in the container's flags.
+   *
+   * @param {Object} containerObj - The container item (or the object data of the container item)
+   * @returns {Object} - The install tree stored in the container's flags
+   */
+  static getInstallTreeFlag(containerObj) {
+    return foundry.utils.getProperty(
+      containerObj.flags,
+      `${game.system.id}.cprInstallTree`
+    );
+  }
+
+  /**
+   * Set the install tree stored in the container's flags.
+   *
+   * @param {Object} containerObj - The container item (or the object data of the container item)
+   * @param {Object} installTree - The install tree to store in the container's flags
+   */
+  static setInstallTreeFlag(containerObj, installTree) {
+    foundry.utils.setProperty(
+      containerObj.flags,
+      `${game.system.id}.cprInstallTree`,
+      installTree
+    );
+  }
 }
 
 /**
@@ -524,7 +551,7 @@ const Container = function Container() {
 
     if (imported) {
       // If this item is imported, the information for installed items is embedded in its flags.
-      for (const itemData of this.flags.cprInstallTree) {
+      for (const itemData of ContainerUtils.getInstallTreeFlag(this)) {
         // Add the item data to the list.
         creationList.push(itemData);
       }
@@ -555,19 +582,23 @@ const Container = function Container() {
         // Keep track of newly created item ID's so we can update the parent item.
         newInstalledList.push(item.id);
         if (item.system.hasInstalled) {
-          await item.createInstalledItemsOnActor(!!item.flags.cprInstallTree);
+          await item.createInstalledItemsOnActor(
+            !!ContainerUtils.getInstallTreeFlag(item)
+          );
         }
       }
     }
 
     // Remove the import flags.
-    const { flags } = this;
-    if (this.flags.cprInstallTree) {
-      flags["-=cprInstallTree"] = null;
+    if (ContainerUtils.getInstallTreeFlag(this)) {
+      await this.unsetFlag(game.system.id, "cprInstallTree");
     }
     // Update the parent item.
     return actor.updateEmbeddedDocuments("Item", [
-      { _id: this._id, flags, "system.installedItems.list": newInstalledList },
+      {
+        _id: this._id,
+        "system.installedItems.list": newInstalledList,
+      },
     ]);
   };
 
@@ -581,22 +612,21 @@ const Container = function Container() {
     recursive
   ) {
     const newInstalledList = [];
-    const { flags } = this;
     // Create the item from the object data.
-    const newItems = await Item.createDocuments(flags.cprInstallTree);
+    const newItems = await Item.createDocuments(
+      ContainerUtils.getInstallTreeFlag(this)
+    );
     for (const newItem of newItems) {
       newInstalledList.push(newItem.id);
-      if (recursive && newItem.flags.cprInstallTree) {
+      if (recursive && ContainerUtils.getInstallTreeFlag(newItem)) {
         newItem.importInstalledToWorld(recursive);
       }
     }
+
     // Update the item with installed list that contains the newly created items' ids.
     // And remove the now unnecessary import flag.
-    flags["-=cprInstallTree"] = null;
-    await this.update({
-      flags,
-      "system.installedItems.list": newInstalledList,
-    });
+    await this.unsetFlag(game.system.id, "cprInstallTree");
+    await this.update({ "system.installedItems.list": newInstalledList });
     ui.sidebar.tabs.items.render(true);
   };
 
@@ -671,7 +701,10 @@ const Container = function Container() {
           // ...and set its flags equal to the function, called recursively.
           // This will set the flags with installed object data for each installed item,
           // no matter the depth.
-          childObject.flags.cprInstallTree = nestItemObjects(childItem);
+          ContainerUtils.setInstallTreeFlag(
+            childObject,
+            nestItemObjects(childItem)
+          );
         }
       }
       // Return the nested object list.
@@ -695,8 +728,8 @@ const Container = function Container() {
     const masterList = [];
     for (const itemData of tree) {
       masterList.push(itemData);
-      if (itemData.flags.cprInstallTree?.length > 0) {
-        const childTree = itemData.flags.cprInstallTree;
+      const childTree = ContainerUtils.getInstallTreeFlag(itemData);
+      if (childTree?.length > 0) {
         masterList.push(...this.flattenInstallTree(childTree));
       }
     }

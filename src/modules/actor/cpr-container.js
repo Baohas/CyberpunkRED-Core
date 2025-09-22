@@ -2,6 +2,7 @@
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
+import { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 /**
  * Container actors function like loot boxes, player or party stashes, stores, and
@@ -86,7 +87,7 @@ export default class CPRContainerActor extends Actor {
         // eslint-disable-next-line no-continue
         if (!item.system.hasInstalled) continue;
         // The item will only have this flag if it is imported/coming from another actor.
-        const imported = !!item.flags.cprInstallTree;
+        const imported = !!ContainerUtils.getInstallTreeFlag(item);
         // The following function recusrively creates and installs all items in the install tree.
         await item.createInstalledItemsOnActor(imported);
       }

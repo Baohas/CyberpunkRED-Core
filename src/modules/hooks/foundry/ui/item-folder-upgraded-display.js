@@ -63,7 +63,7 @@ function recursiveHTML(parentItem, topLevelId, level = 0) {
  * @returns {String} - HTML of the element's install tree
  */
 function _prepareSubList(element) {
-  const item = game.items.get(element.dataset.documentId);
+  const item = game.items.get(element.dataset.entryId);
   // Only create a dropdown if the item has installed items & is not itself installed.
   if (item.system.hasInstalled && !item.system.isInstalled) {
     const showInstallFlag = game.user.getFlag(
@@ -100,7 +100,7 @@ function _prepareSubList(element) {
  * @returns {String} - HTML for the chevron button.
  */
 function _prepareChevron(element) {
-  const itemID = element.dataset.documentId;
+  const itemID = element.dataset.entryId;
   const showInstallFlag = game.user.getFlag(
     game.system.id,
     "showInstalledList"
@@ -131,7 +131,7 @@ function _renderViewOnlyItemSheet(event) {
  */
 function _toggleInstalledVisibility(event) {
   // Step 1: Prepare data
-  const itemId = SystemUtils.GetEventDatum(event, "data-document-id");
+  const itemId = SystemUtils.GetEventDatum(event, "data-entry-id");
 
   // Step 2: Toggle the icon rotation to indicate state change.
   const iconElement = event.currentTarget.querySelector("i");
