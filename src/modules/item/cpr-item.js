@@ -111,7 +111,8 @@ export default class CPRItem extends Item {
    * @returns {Promise<CPRItem>}
    */
   async delete(context) {
-    if (!this.system.hasInstalled) return super.delete(context);
+    if (!this.system.hasInstalled || this.pack) return super.delete(context);
+
     const formData = await ContainerUtils.confirmContainerDelete(this);
     if (!formData)
       return LOGGER.debug("Form submission cancelled or dialog closed.");
