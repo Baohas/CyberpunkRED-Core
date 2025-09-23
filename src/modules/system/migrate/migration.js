@@ -24,8 +24,8 @@ export default class MigrationRunner {
    * and migration is cancelled before it starts.
    */
   static #MINIMUM_VERSION = {
-    dataModel: 24,
-    system: "0.88.2",
+    dataModel: 34,
+    system: "0.89.3",
   };
 
   /**
@@ -426,7 +426,7 @@ export default class MigrationRunner {
         // with this token. We skip it.
         LOGGER.warn(
           `WARNING: Token "${token.name}" (${token.actorId}) on Scene "${token.parent.name}" (${token.parent.id})` +
-            ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`
+          ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`
         );
         return false;
       }

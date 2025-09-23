@@ -116,15 +116,12 @@ export default class BaseMigrationScript {
    * @returns {Object}
    */
   static safeDelete(doc, prop) {
-    let key = prop;
+    if (!foundry.utils.hasProperty(doc, prop)) return;
 
-    if (foundry.utils.hasProperty(doc, key)) {
-      key = prop.match(/.\../)
-        ? prop.replace(/.([^.]*)$/, ".-=$1")
-        : `-=${prop}`;
-      return { [key]: null };
-    }
-    return {};
+    const key = prop.match(/.\../)
+      ? prop.replace(/.([^.]*)$/, ".-=$1")
+      : `-=${prop}`;
+    foundry.utils.setProperty(doc, key, null);
   }
 
   /**
