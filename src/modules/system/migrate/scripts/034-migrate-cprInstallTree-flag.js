@@ -21,7 +21,7 @@ export default class MoveCPRInstallTreeFlag extends BaseMigrationScript {
   }
 
   /**
-   * Recursively move the cprInstallTree flag from flags to flags.cyberpunk-red-core
+   * Recursively move the cprInstallTree flag from `flags` to `flags[game.system.id]`
    * for all installed items in the given document.
    *
    * @param {Object} doc - The document data to migrate
@@ -40,20 +40,22 @@ export default class MoveCPRInstallTreeFlag extends BaseMigrationScript {
       current: MigrationRunner.newDataModelVersion,
     };
 
+    const systemId = game.system.id;
+
     // Inner helper that does recursive migration.
     function moveFlag(tree) {
       for (const itemData of tree) {
         // Update migration record for all item data in tree.
-        itemData.flags["cyberpunk-red-core"] = {
-          ...itemData.flags["cyberpunk-red-core"],
+        itemData.flags[systemId] = {
+          ...itemData.flags[systemId],
           _migration: migrationData,
         };
 
         // Recurse into nested cprInstallTree if present.
         const childTree = itemData.flags?.cprInstallTree;
         if (Array.isArray(childTree) && childTree.length > 0) {
-          itemData.flags["cyberpunk-red-core"] = {
-            ...itemData.flags["cyberpunk-red-core"],
+          itemData.flags[systemId] = {
+            ...itemData.flags[systemId],
             cprInstallTree: moveFlag(childTree),
           };
         }
@@ -61,8 +63,8 @@ export default class MoveCPRInstallTreeFlag extends BaseMigrationScript {
       return tree;
     }
 
-    flags["cyberpunk-red-core"] = {
-      ...flags["cyberpunk-red-core"],
+    flags[systemId] = {
+      ...flags[systemId],
       cprInstallTree: moveFlag(cprInstallTree),
     };
   }
