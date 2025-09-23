@@ -9,3 +9,4 @@ export { default as ElectronicMigration } from "./030-isElectronic.js";
 export { default as NetarchTilesMigration } from "./031-netarch-tiles.js";
 export { default as AmmoIsInstallable } from "./032-ammo-is-installable.js";
 export { default as UUIDsToIds } from "./033-uuids-to-ids.js";
+export { default as CPRInstallTreeFlagMigration } from "./034-migrate-cprInstallTree-flag.js";
