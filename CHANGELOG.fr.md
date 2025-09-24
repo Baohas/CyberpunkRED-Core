@@ -2,6 +2,13 @@
 
 # Journal des modifications
 
+## Version 0.89.3
+
+### Corrections de bugs
+
+- Remove `templateVersion` from `system.json` which was causing a warning message in the Foundry Admin page.
+- Fixed issue where deleting a Compendia item that has installed items within it, would prompt the user to delete those internal installed items. Since Compendia items only store ephemeral installed-item data (and no real in-world) items exist, this would error or incorrectly delete corresponding in-world items.
+
 ## Version 0.89.2
 
 ### Correction de bugs
