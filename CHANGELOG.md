@@ -2,6 +2,18 @@
 
 # Changelog
 
+## Version 0.91
+
+### Changes
+- System Chat Messages now provide `rolls` data.
+
+## Version 0.89.3
+
+### Bug Fixes
+
+- Remove `templateVersion` from `system.json` which was causing a warning
+  message in the Foundry Admin page
+
 ## Version 0.89.2
 
 ### Bug Fixes

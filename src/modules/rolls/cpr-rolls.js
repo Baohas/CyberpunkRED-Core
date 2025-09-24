@@ -167,11 +167,6 @@ export class CPRRoll {
     // calculate the initial roll
     this._roll = await new Roll(this.formula).evaluate();
 
-    // eslint-disable-next-line no-use-before-define
-    if (!(this instanceof CPRInitiative)) {
-      await DiceHandler.handle3dDice(this._roll);
-    }
-
     this.initialRoll = this._roll.total;
     this.resultTotal = this.initialRoll + this.totalMods();
 
@@ -185,10 +180,7 @@ export class CPRRoll {
     // check and consider criticals (min or max # on die)
     if (this.wasCritical() && this.calculateCritical) {
       this._critRoll = await new Roll(this.formula).evaluate();
-      // eslint-disable-next-line no-use-before-define
-      if (!(this instanceof CPRInitiative)) {
-        await DiceHandler.handle3dDice(this._critRoll);
-      }
+
       this.criticalRoll = this._critRoll.total;
     }
     this._computeResult();
