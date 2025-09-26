@@ -16,12 +16,13 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
-      width: "auto",
-      height: "auto",
+      height: 300,
+      resizable: true,
       // Submit on close to prevent an edge case where a user adds and active effect, but doesn't change anything.
       // If they closed the dialog (without submitting) then there was just a blank AE on their sheet. This setting prevents that.
       submitOnClose: true,
+      template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
+      width: 675,
     });
   }
 
