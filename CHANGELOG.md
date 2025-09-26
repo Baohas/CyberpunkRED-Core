@@ -2,6 +2,12 @@
 
 # Changelog
 
+## Version 0.92.1
+
+### Bug Fixes
+
+- Fix HP/Humanity interacting with the mouse scrollwheel
+
 ## Version 0.92
 
 ### Bug Fixes
