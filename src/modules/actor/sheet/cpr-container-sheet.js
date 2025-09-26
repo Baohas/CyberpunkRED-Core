@@ -14,7 +14,7 @@ import CPRDialog from "../../dialog/cpr-dialog-application.js";
  */
 export default class CPRContainerActorSheet extends CPRActorSheet {
   /**
-   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
+   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
    *
    * @override
    * @returns - sheet options merged with default options in ActorSheet

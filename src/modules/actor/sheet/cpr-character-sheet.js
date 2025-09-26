@@ -13,7 +13,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   /**
    * Set default options for character sheets, which include making sure vertical scrollbars do not
    * get reset when re-rendering.
-   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
+   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
    *
    * @static
    * @override

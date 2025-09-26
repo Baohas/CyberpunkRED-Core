@@ -17,7 +17,7 @@ export default class CPRDialog extends FormApplication {
 
   /**
    * Set default options for the ledger.
-   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
+   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
    *
    * @static
    * @override
