@@ -50,9 +50,9 @@ export default class CPRActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(["sheet", "actor"]),
+      height: 500,
       scrollY: [".right-content-section", ".top-pane-gear"],
-      width: "auto",
-      height: "auto",
+      width: 800,
     });
   }
 
