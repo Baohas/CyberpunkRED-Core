@@ -19,12 +19,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @override
    */
   static get defaultOptions() {
-    const defaultWidth = 1050;
-    const defaultHeight = "auto";
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
-      width: defaultWidth,
-      height: defaultHeight,
+      height: 850,
       resizable: true,
       scrollY: [".right-content-section", ".top-pane-gear"],
       tabs: [
@@ -39,6 +35,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
           initial: "fight",
         },
       ],
+      template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
+      width: 1050,
     });
   }
 
