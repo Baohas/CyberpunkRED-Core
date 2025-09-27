@@ -2,17 +2,18 @@
 
 # Changelog
 
-## Version 0.91
+## Version 0.94
 
 ### Changes
+
 - System Chat Messages now provide `rolls` data.
 
-## Version 0.89.3
+## Version 0.92
 
 ### Bug Fixes
 
-- Remove `templateVersion` from `system.json` which was causing a warning
-  message in the Foundry Admin page
+- Remove `templateVersion` from `system.json` which was causing a warning message in the Foundry Admin page.
+- Fixed issue where deleting a Compendia item that has installed items within it, would prompt the user to delete those internal installed items. Since Compendia items only store ephemeral installed-item data (and no real in-world) items exist, this would error or incorrectly delete corresponding in-world items.
 
 ## Version 0.89.2
 
