@@ -20,9 +20,10 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
    */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
+      height: 250,
+      resizable: true,
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
       width: 575,
-      height: "auto",
     });
   }
 
