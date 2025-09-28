@@ -17,15 +17,16 @@ export default class CPRItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
+      height: 750,
+      resizable: true,
       tabs: [
         {
-          navSelector: ".navtabs-item",
           contentSelector: ".item-bottom-content-section",
           initial: "item-description",
+          navSelector: ".navtabs-item",
         },
       ],
       width: 715,
-      height: "auto",
     });
   }
 
