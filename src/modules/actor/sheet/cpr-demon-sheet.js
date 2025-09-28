@@ -13,7 +13,7 @@ export default class CPRDemonActorSheet extends ActorSheet {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets"
+      "resizeCPRSheets",
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -37,7 +37,7 @@ export default class CPRDemonActorSheet extends ActorSheet {
     sheetData.enrichedHTML = [];
     sheetData.enrichedHTML.notes = await TextEditor.enrichHTML(
       this.actor.system.notes,
-      { async: true }
+      { async: true },
     );
     return sheetData;
   }
