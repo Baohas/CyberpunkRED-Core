@@ -16,8 +16,13 @@ export default class CPRItemSheet extends ItemSheet {
   /* -------------------------------------------- */
   /** @override */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
-      height: 400,
+      height: resizeCPRSheets ? 400 : "auto",
       resizable: true,
       tabs: [
         {

@@ -15,8 +15,13 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
    * Most of that logic lives in cpr-active-effect.js.
    */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
-      height: 300,
+      height: resizeCPRSheets ? 300 : "auto",
       resizable: true,
       // Submit on close to prevent an edge case where a user adds and active effect, but doesn't change anything.
       // If they closed the dialog (without submitting) then there was just a blank AE on their sheet. This setting prevents that.
