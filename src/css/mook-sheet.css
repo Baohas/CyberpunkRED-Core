@@ -11,6 +11,7 @@
   grid-template-columns: 0.05fr 1fr;
   grid-template-areas: "mook-name mook-details";
   background-color: var(--cpr-background-border);
+  height: 100%;
 
   .mook-name {
     color: var(--cpr-text-header);
@@ -19,7 +20,6 @@
 
   .mook-details {
     display: grid;
-    grid-template-rows: auto;
     grid-area: mook-details;
     grid-template-areas:
       "mook-img-and-stats"
@@ -29,6 +29,14 @@
       "mook-program"
       "mook-crit"
       "mook-notes";
+    grid-template-rows:
+      auto
+      auto
+      auto
+      auto
+      auto
+      auto
+      1fr;
   }
 
   .mook-img-and-stats {

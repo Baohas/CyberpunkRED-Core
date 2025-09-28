@@ -19,9 +19,10 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @override
    */
   static get defaultOptions() {
-    const defaultWidth = 800;
     return foundry.utils.mergeObject(super.defaultOptions, {
-      width: defaultWidth,
+      height: 600,
+      resizable: true,
+      width: 800,
     });
   }
 
