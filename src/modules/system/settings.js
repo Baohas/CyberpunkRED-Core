@@ -169,6 +169,7 @@ const registerSystemSettings = () => {
     config: true,
     type: Boolean,
     default: true,
+    requiresReload: true,
     onChange: (value) => {
       LOGGER.log(`Changed resizeCPRSheets to ${value}`);
     },
