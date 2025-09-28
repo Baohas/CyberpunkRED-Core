@@ -29,14 +29,7 @@
       "mook-program"
       "mook-crit"
       "mook-notes";
-    grid-template-rows:
-      auto
-      auto
-      auto
-      auto
-      auto
-      auto
-      1fr;
+    grid-template-rows: auto auto auto auto auto auto 1fr;
   }
 
   .mook-img-and-stats {
@@ -269,6 +262,7 @@
   .mook-notes {
     display: flex;
     flex-direction: column;
+    flex: auto 1fr;
     grid-area: mook-notes;
     min-height: 3.75rem;
     min-width: 26.875rem;
