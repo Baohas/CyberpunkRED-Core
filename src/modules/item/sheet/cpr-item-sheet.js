@@ -440,8 +440,8 @@ export default class CPRItemSheet extends ItemSheet {
     const allSkills = this.object.isOwned
       ? this.actor.itemTypes.skill
       : coreSkills
-          .concat(customSkills)
-          .sort((a, b) => (a.name > b.name ? 1 : -1));
+        .concat(customSkills)
+        .sort((a, b) => (a.name > b.name ? 1 : -1));
     const sortedAllSkills = SystemUtils.SortItemListByName(allSkills); // Sort these skills by name.
 
     // If we are editing a subability, get name from event data. Then, get the subrole from the name.
@@ -1130,8 +1130,8 @@ export default class CPRItemSheet extends ItemSheet {
     const allSkills = this.object.isOwned
       ? this.actor.itemTypes.skill
       : coreSkills
-          .concat(customSkills)
-          .sort((a, b) => (a.name > b.name ? 1 : -1));
+        .concat(customSkills)
+        .sort((a, b) => (a.name > b.name ? 1 : -1));
 
     const selectOptions = CPRItemSheet._getRoleSelectOptions(allSkills, {
       includeMultiplier: true,
@@ -1157,8 +1157,8 @@ export default class CPRItemSheet extends ItemSheet {
         formData.skill !== "--" && formData.skill !== "varying"
           ? allSkills.find((a) => a.name === formData.skill)
           : formData.skill === "varying"
-          ? "varying"
-          : "--";
+            ? "varying"
+            : "--";
       formData.skill = skillObject;
       abilities.push(formData);
     }
@@ -1213,8 +1213,8 @@ export default class CPRItemSheet extends ItemSheet {
         formData.skill !== "--" && formData.skill !== "varying"
           ? allSkills.find((a) => a.name === formData.skill)
           : formData.skill === "varying"
-          ? "varying"
-          : "--";
+            ? "varying"
+            : "--";
       formData.skill = skillObject;
       abilities.splice(
         index,
@@ -1312,12 +1312,12 @@ export default class CPRItemSheet extends ItemSheet {
     const dialogPromptText =
       installableItems.length > 0
         ? SystemUtils.Format("CPR.dialog.selectInstallableItems.text", {
-            type: dialogItemType,
-            target: installTarget.name,
-          })
+          type: dialogItemType,
+          target: installTarget.name,
+        })
         : `${SystemUtils.Format("CPR.dialog.selectInstallableItems.noOptions", {
-            target: installTarget.name,
-          })}`;
+          target: installTarget.name,
+        })}`;
 
     // Prepare the form data.
     let formData = {
