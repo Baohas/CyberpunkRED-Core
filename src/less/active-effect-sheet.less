@@ -1,3 +1,32 @@
+.active-effects-sheet {
+  display: grid;
+  grid-gap: 0.313rem;
+  grid-template-rows:
+    auto
+    auto
+    1fr
+    auto;
+  grid-template-areas:
+    "header"
+    "tabs"
+    "tab-content"
+    "footer";
+  height: 100%;
+
+  .sheet-header {
+    grid-area: header;
+  }
+  .tabs {
+    grid-area: tabs;
+  }
+  .tab {
+    grid-area: tab-content;
+  }
+  .sheet-footer {
+    grid-area: footer;
+  }
+}
+
 .summary-effect-name {
   text-overflow: ellipsis;
   overflow: hidden;

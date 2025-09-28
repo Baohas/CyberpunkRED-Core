@@ -17,7 +17,7 @@ export default class CPRItemSheet extends ItemSheet {
   /** @override */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      height: 750,
+      height: 400,
       resizable: true,
       tabs: [
         {
