@@ -19,8 +19,13 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @override
    */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
-      height: 850,
+      height: resizeCPRSheets ? 850 : "auto",
       resizable: true,
       scrollY: [".right-content-section", ".top-pane-gear"],
       tabs: [

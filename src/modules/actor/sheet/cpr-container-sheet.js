@@ -20,8 +20,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @returns - sheet options merged with default options in ActorSheet
    */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
-      height: 750,
+      height: resizeCPRSheets ? 750 : "auto",
       resizable: true,
       template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
       width: 1000,

@@ -35,13 +35,18 @@ export default class CPRLedger extends CPRDialog {
    * @override
    */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
       // The title is set in the constructor above.
+      closeOnSubmit: false,
+      height: resizeCPRSheets ? 340 : "auto",
+      submitOnChange: false,
       template: `systems/${game.system.id}/templates/dialog/cpr-ledger-form.hbs`,
       width: 600,
-      height: 340,
-      submitOnChange: false,
-      closeOnSubmit: false,
     });
   }
 
