@@ -1,15 +1,14 @@
 // Overall Sheet Layout
 .actor-sheet {
+  background-color: var(--cpr-background-window);
   display: grid;
   grid-gap: 0.313rem;
   grid-template-columns: 17.3rem auto;
   grid-template-rows: 34rem auto;
-
   grid-template-areas:
     "pane-left pane-right"
     "pane-bottom pane-bottom";
-
-  background-color: var(--cpr-background-window);
+  height: 100%;
 
   // Pane for main and stats
   .left-pane {
@@ -362,7 +361,9 @@
     display: grid;
 
     grid-template-columns: auto;
-    grid-template-rows: auto auto;
+    grid-template-rows:
+      auto
+      1fr;
     grid-template-areas:
       "tabs-bottom"
       "content-bottom";
@@ -487,13 +488,14 @@
 }
 
 .fight-tab {
+  background-color: var(--cpr-background-border);
   display: grid;
+  grid-gap: 0.313rem;
+  grid-template-areas: "injuries armor weapon";
   grid-template-columns: 25% 25% auto;
   grid-template-rows: auto;
-  grid-template-areas: "injuries armor weapon";
+  height: 100%;
   width: inherit;
-  grid-gap: 0.313rem;
-  background-color: var(--cpr-background-border);
 
   .fight-tab > div {
     background-color: var(--cpr-background-box);
