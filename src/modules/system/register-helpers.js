@@ -905,7 +905,7 @@ export default function registerHandlebarsHelpers() {
 
   /**
    * Returns true if an item type has a particular template applied in the data model
-   * To Do: isupgradable should use this instead
+   * To Do: isUpgradable should use this instead
    */
   Handlebars.registerHelper("cprHasTemplate", (itemType, templateName) => {
     return SystemUtils.hasMixin(itemType, templateName);
