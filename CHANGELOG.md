@@ -7,6 +7,7 @@
 ### Bug Fixes
 
 - Fix HP/Humanity interacting with the mouse scrollwheel
+- Fix bug preventing extended magazines from modifying weapon ammo count
 
 ## Version 0.92
 
