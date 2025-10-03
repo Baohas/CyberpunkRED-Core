@@ -188,7 +188,7 @@ const Loadable = function Loadable() {
     // Sometimes we are checking the magazine of an item upgrade,
     // e.g., an underbarrel weapon, which themselves cannot be upgraded.
     // Early return with just the base magazine size, if so.
-    if (!SystemUtils.hasMixin(this.type, "upgradeable")) {
+    if (!SystemUtils.hasMixin(this.type, "upgradable")) {
       return magazineData.max - magazineData.value;
     }
 
