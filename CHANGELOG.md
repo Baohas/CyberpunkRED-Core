@@ -8,6 +8,7 @@
 
 - Fix HP/Humanity interacting with the mouse scrollwheel
 - Fix bug preventing extended magazines from modifying weapon ammo count
+- Set `ammoVariety: vHeavyPistol` on Westwood Pistol
 
 ## Version 0.92
 

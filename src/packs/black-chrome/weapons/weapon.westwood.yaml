@@ -9,7 +9,8 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/weapons/veryHeavyPistol.svg
 name: Westwood
 system:
-  ammoVariety: []
+  ammoVariety:
+    - vHeavyPistol
   attackmod: 0
   brand: Nova Arms
   canIgnoreArmor: false
