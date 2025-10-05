@@ -11,3 +11,4 @@ export { default as AmmoIsInstallable } from "./032-ammo-is-installable.js";
 export { default as UUIDsToIds } from "./033-uuids-to-ids.js";
 export { default as CPRInstallTreeFlagMigration } from "./034-migrate-cprInstallTree-flag.js";
 export { default as SetActorSheetCreatedWeaponSkill } from "./035-set-weapon-skill.js";
+export { default as ReplaceProgramsWithProgram } from "./036-correct-allowed-types.js";
