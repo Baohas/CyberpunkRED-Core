@@ -8,7 +8,7 @@
 
 - Fix HP/Humanity interacting with the mouse scrollwheel
 - Fix bug preventing extended magazines from modifying weapon ammo count
-- Set `ammoVariety: vHeavyPistol` on Westwood Pistol
+- Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
 
 ## Version 0.92
 
