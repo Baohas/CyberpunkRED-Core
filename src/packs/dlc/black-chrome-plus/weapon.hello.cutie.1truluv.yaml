@@ -9,7 +9,8 @@ flags:
 img: systems/cyberpunk-red-core/icons/compendium/weapons/SniperRifle.svg
 name: Hello Cutie 1TruLuv
 system:
-  ammoVariety: []
+  ammoVariety:
+    - rifle
   attackmod: 0
   brand: Sanroo
   canIgnoreArmor: false
