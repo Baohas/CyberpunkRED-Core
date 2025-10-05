@@ -6,10 +6,11 @@
 
 ### Bug Fixes
 
-- Fix HP/Humanity interacting with the mouse scrollwheel
-- Fix bug preventing extended magazines from modifying weapon ammo count
-- Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
-- Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
+- #1134 - Fix HP/Humanity interacting with the mouse scrollwheel
+- #1137 - Fix bug preventing extended magazines from modifying weapon ammo count
+- #1149 - Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
+- #1152 - Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
+- #1146 - Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
 
 ## Version 0.92
 
