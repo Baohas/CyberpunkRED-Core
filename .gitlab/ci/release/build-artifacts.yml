@@ -1,6 +1,5 @@
 # Builds the system for release then uploads the artifacts to the GitLab
 # Package Registry.
-
 build-artifacts:
   stage: build
   before_script:
@@ -15,8 +14,6 @@ build-artifacts:
     - job: code-localization
     - job: compendia-use
     - job: game-id
-    - job: test-less-units
-    - job: test-less-colors
     - job: handlebars-tags
     - job: handlebars-attributes
     - job: handlebars-inlinestyles
@@ -28,6 +25,7 @@ build-artifacts:
     - job: language-unused-strings
     - job: language-exists
     - job: lint-code
+    - job: lint-css
     - job: lint-json
     - job: lint-yaml
     - job: lint-markdown
