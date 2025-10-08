@@ -1,6 +1,6 @@
-/*--------------------
+/* --------------------
   Text modifiers
----------------------*/
+--------------------- */
 .smallcaps {
   font-variant: small-caps;
 }
@@ -285,10 +285,6 @@
     margin-right: 1rem;
   }
 
-  &padding-right-smallest {
-    padding-right: 0.125rem !important;
-  }
-
   &padding-left-smallest {
     padding-left: 0.125rem !important;
   }
@@ -457,10 +453,6 @@
     padding-right: 1rem;
   }
 
-  &padding-right-smallest {
-    padding-right: 0.125rem;
-  }
-
   &rotate {
     transform: rotate(-90deg);
   }
@@ -468,6 +460,7 @@
   &vert-center {
     align-self: center;
   }
+
   &space-around {
     justify-content: space-around;
   }

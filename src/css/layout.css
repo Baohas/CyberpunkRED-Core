@@ -1,4 +1,4 @@
-// For stats that have 2 values (HP, Humanity, Luck, Emp)
+/* For stats that have 2 values (HP, Humanity, Luck, Emp) */
 .min-of-max-container {
   display: flex;
 
@@ -10,7 +10,7 @@
     outline: 0;
     border-radius: unset;
 
-    // Workaround for suspected webkit bug
+    /* Workaround for suspected webkit bug */
     &:hover {
       backface-visibility: visible;
     }
@@ -20,26 +20,25 @@
     flex: 0 1;
     font-size: 75%;
     align-self: center;
-    padding: 0 0.125rem 0.063rem 0.125rem;
+    padding: 0 0.125rem 0.063rem;
   }
 
   .of {
     flex: 0 1;
     font-size: 75%;
     align-self: center;
-    padding: 0 0.125rem 0 0.125rem;
+    padding: 0 0.125rem;
   }
 }
 
 .side-banner {
   writing-mode: vertical-lr;
   transform: rotate(180deg);
-  // align-self: center;
   min-height: -webkit-fill-available;
   text-align: center;
 }
 
-// Used to spread space between fields
+/* Used to spread space between fields */
 .flex-space-between {
   display: flex;
   justify-content: space-between;

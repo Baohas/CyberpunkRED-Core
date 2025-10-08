@@ -1,24 +1,22 @@
-// Overall Sheet Layout
+/* Overall Sheet Layout */
 .actor-sheet {
   display: grid;
-  grid-gap: 0.313rem;
+  gap: 0.313rem;
   grid-template-columns: 17.3rem auto;
   grid-template-rows: 34rem auto;
-
   grid-template-areas:
     "pane-left pane-right"
     "pane-bottom pane-bottom";
-
   background-color: var(--cpr-background-window);
 
-  // Pane for main and stats
+  /* Pane for main and stats */
   .left-pane {
     display: grid;
     grid-template-columns: 13rem 4rem;
     grid-template-rows: 1fr;
     grid-auto-columns: 1fr;
     grid-auto-rows: 1fr;
-    gap: 0rem 0.313rem;
+    gap: 0 0.313rem;
     grid-auto-flow: row;
     grid-template-areas: "actor-details actor-stats";
     width: 100%;
@@ -29,7 +27,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 12.4rem 2.8rem 1.5rem 3.2em 3.2rem 3.2rem 3.2rem auto;
-      gap: 0.313rem 0.313rem;
+      gap: 0.313rem;
       grid-auto-flow: row;
       grid-template-areas:
         "actor-details-image actor-details-image"
@@ -61,7 +59,7 @@
         position: absolute;
         bottom: 0.625rem;
         left: 0.625rem;
-        color: white;
+        color: var(--cpr-color-white);
         font-size: 1.5rem;
         -webkit-text-stroke-width: 0.125rem;
         -webkit-text-fill-color: var(--cpr-icon-actor-image-overlay);
@@ -86,7 +84,7 @@
       grid-area: actor-details-hp;
       grid-template-columns: 1fr 0fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 0rem 0rem;
+      gap: 0;
       grid-template-areas:
         "actor-details-hp-title actor-details-hp-title actor-details-hp-title"
         "actor-details-hp-current actor-details-hp-of actor-details-hp-max";
@@ -98,14 +96,17 @@
       overflow: hidden;
       text-overflow: clip;
     }
+
     .actor-details-hp-current {
       grid-area: actor-details-hp-current;
       align-items: center;
     }
+
     .actor-details-hp-of {
       grid-area: actor-details-hp-of;
       align-items: center;
     }
+
     .actor-details-hp-max {
       grid-area: actor-details-hp-max;
       align-items: center;
@@ -115,7 +116,7 @@
       grid-area: actor-details-humanity;
       grid-template-columns: 1fr 0fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 0rem 0rem;
+      gap: 0;
       grid-template-areas:
         "actor-details-humanity-title actor-details-humanity-title actor-details-humanity-title"
         "actor-details-humanity-current actor-details-humanity-of actor-details-humanity-max";
@@ -126,14 +127,17 @@
       overflow: hidden;
       text-overflow: clip;
     }
+
     .actor-details-humanity-current {
       grid-area: actor-details-humanity-current;
       align-items: center;
     }
+
     .actor-details-humanity-of {
       grid-area: actor-details-humanity-of;
       align-items: center;
     }
+
     .actor-details-humanity-max {
       grid-area: actor-details-humanity-max;
       align-items: center;
@@ -143,7 +147,7 @@
       grid-area: actor-details-death-save;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 0rem 0rem;
+      gap: 0;
       grid-template-areas:
         "actor-details-death-save-title actor-details-death-save-title actor-details-death-save-title"
         "actor-details-death-save-reset actor-details-death-save-value actor-details-death-save-actions";
@@ -159,9 +163,11 @@
       overflow: hidden;
       text-overflow: clip;
     }
+
     .actor-details-death-save-value {
       grid-area: actor-details-death-save-value;
     }
+
     .actor-details-death-save-actions {
       grid-area: actor-details-death-save-actions;
       padding-top: 0.188rem;
@@ -169,10 +175,9 @@
 
     .actor-details-wound-state {
       grid-area: actor-details-wound-state;
-
       grid-template-columns: 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 0rem 0rem;
+      gap: 0;
       grid-template-areas:
         "actor-details-wound-state-title"
         "actor-details-wound-state-value";
@@ -183,6 +188,7 @@
       overflow: hidden;
       text-overflow: clip;
     }
+
     .actor-details-wound-state-value {
       grid-area: actor-details-wound-state-value;
       justify-content: center;
@@ -192,7 +198,7 @@
       grid-area: actor-details-improvement-points;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 0rem 0rem;
+      gap: 0;
       grid-template-areas:
         "actor-details-improvement-points-title actor-details-improvement-points-title actor-details-improvement-points-title"
         "actor-details-wound-state-blank        actor-details-improvement-points-value actor-details-improvement-points-actions";
@@ -203,13 +209,16 @@
       overflow: hidden;
       text-overflow: clip;
     }
+
     .actor-details-improvement-points-value {
       grid-area: actor-details-improvement-points-value;
     }
+
     .actor-details-improvement-points-actions {
       grid-area: actor-details-improvement-points-actions;
       padding-top: 0.188rem;
     }
+
     .actor-details-wound-statee-blank {
       grid-area: actor-details-wound-state-blank;
     }
@@ -219,7 +228,7 @@
       grid-auto-columns: 1fr;
       grid-template-columns: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 0rem 0rem;
+      gap: 0;
       grid-template-areas:
         "actor-details-reputation-title actor-details-reputation-title actor-details-reputation-title"
         "actor-details-reputation-facedown actor-details-reputation-value actor-details-reputation-actions";
@@ -230,13 +239,16 @@
       overflow: hidden;
       text-overflow: clip;
     }
+
     .actor-details-reputation-value {
       grid-area: actor-details-reputation-value;
     }
+
     .actor-details-reputation-actions {
       grid-area: actor-details-reputation-actions;
       padding-top: 0.188rem;
     }
+
     .actor-details-reputation-facedown {
       grid-area: actor-details-reputation-facedown;
       padding-top: 0.188rem;
@@ -246,7 +258,7 @@
       grid-area: actor-details-eurobucks;
       grid-template-columns: 2rem 1fr 2rem;
       grid-template-rows: 1fr 1fr;
-      gap: 0rem 0rem;
+      gap: 0;
       grid-template-areas:
         "actor-details-eurobucks-title actor-details-eurobucks-title actor-details-eurobucks-title"
         "actor-details-eurobucks-blank actor-details-eurobucks-value actor-details-eurobucks-ledger";
@@ -276,7 +288,7 @@
       grid-area: actor-details-filter;
       grid-template-columns: 5fr 1fr;
       grid-template-rows: 1fr;
-      gap: 0.313rem 0rem;
+      gap: 0.313rem 0;
       grid-auto-flow: row;
       grid-template-areas: "actor-details-filter-box actor-details-filter-actions";
     }
@@ -291,6 +303,7 @@
         }
       }
     }
+
     .actor-details-filter-actions {
       grid-area: actor-details-filter-actions;
       align-items: center;
@@ -299,7 +312,7 @@
 
     .actor-stats {
       display: grid;
-      gap: 0.313rem 0rem;
+      gap: 0.313rem 0;
       padding: 0.313rem;
       background-color: var(--cpr-background-border);
 
@@ -360,18 +373,15 @@
   .bottom-pane {
     grid-area: pane-bottom;
     display: grid;
-
     grid-template-columns: auto;
     grid-template-rows: auto auto;
     grid-template-areas:
       "tabs-bottom"
       "content-bottom";
-
     overflow-y: hidden;
 
     .bottom-tabs-section {
       grid-area: tabs-bottom;
-
       width: 100%;
       height: 1.438rem;
     }
@@ -380,7 +390,6 @@
       grid-area: content-bottom;
       display: flex;
       width: 100%;
-
       border-style: solid;
       border-width: 0.313rem;
       overflow-y: auto;
@@ -447,17 +456,11 @@
 }
 
 .lifepath-tab {
-  display: flex;
-  flex-flow: wrap;
-  justify-content: space-between;
-  flex: 1;
-}
-
-.lifepath-tab {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   grid-template-rows: auto;
   grid-template-areas: "notes-pane lifepath-pane";
+  justify-content: space-between;
 
   .section-name {
     background-color: var(--cpr-background-header);
@@ -488,11 +491,11 @@
 
 .fight-tab {
   display: grid;
+  gap: 0.313rem;
+  grid-template-areas: "injuries armor weapon";
   grid-template-columns: 25% 25% auto;
   grid-template-rows: auto;
-  grid-template-areas: "injuries armor weapon";
   width: inherit;
-  grid-gap: 0.313rem;
   background-color: var(--cpr-background-border);
 
   .fight-tab > div {
@@ -559,28 +562,30 @@
       grid-template-areas: "program-name program-attack-and-damage program-actions";
 
       .installed-program-name {
-        grid-area: "program-name";
+        grid-area: program-name;
       }
 
       .installed-program-attack-and-damage {
-        grid-area: "program-attack-and-damage";
+        grid-area: program-attack-and-damage;
         display: grid;
         grid-template-columns: 0.938rem 0.938rem;
         grid-template-areas: "program-attack program-damage";
 
         .installed-program-attack {
-          grid-area: "program-attack";
+          grid-area: program-attack;
         }
+
         .installed-program-defense {
-          grid-area: "program-defense";
+          grid-area: program-defense;
         }
+
         .installed-program-damage {
-          grid-area: "program-damage";
+          grid-area: program-damage;
         }
       }
 
       .installed-program-actions {
-        grid-area: "program-actions";
+        grid-area: program-actions;
 
         .fa-folder-minus {
           color: var(--cpr-text-icon-highlight);
@@ -603,38 +608,42 @@
       grid-template-areas: "program-name program-per  program-spd program-atk program-def program-rez-and-decrement program-reset";
 
       .rezzed-program-name {
-        grid-area: "program-name";
+        grid-area: program-name;
       }
 
       .rezzed-program-per {
-        grid-area: "program-per";
+        grid-area: program-per;
       }
+
       .rezzed-program-spd {
-        grid-area: "program-spd";
+        grid-area: program-spd;
       }
+
       .rezzed-program-atk {
-        grid-area: "program-atk";
+        grid-area: program-atk;
       }
+
       .rezzed-program-def {
-        grid-area: "program-def";
+        grid-area: program-def;
       }
 
       .rezzed-program-rez-and-decrement {
-        grid-area: "program-rez-and-decrement";
+        grid-area: program-rez-and-decrement;
         display: grid;
         grid-template-columns: 0.938rem 0.938rem;
         grid-template-areas: "program-rez program-rez-decrement";
 
         .rezzed-program-rez {
-          grid-area: "program-rez";
+          grid-area: program-rez;
         }
+
         .rezzed-program-rez-decrement {
-          grid-area: "program-rez-decrement";
+          grid-area: program-rez-decrement;
         }
       }
 
       .rezzed-program-reset {
-        grid-area: "program-reset";
+        grid-area: program-reset;
       }
     }
   }
@@ -647,6 +656,7 @@
   .profile-img {
     clip-path: polygon(20.313rem 0, 100% 0, 100% 100%, 0 100%, 0 1.563rem);
   }
+
   overflow: hidden;
 }
 
@@ -735,7 +745,7 @@
 }
 
 .button-disabled {
-  color: gray;
+  color: var(--cpr-color-dark-grey);
   cursor: default;
 
   &:hover {
@@ -746,6 +756,7 @@
 .pinned {
   color: var(--cpr-text-icon-normal);
 }
+
 .unpinned {
   color: var(--cpr-text-icon-dimmed);
 }

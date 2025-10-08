@@ -15,7 +15,7 @@ export const clean = gulp.series(bld.cleanDist);
 // Functions that can run in parallel
 export const assets = gulp.parallel(
   generatePacks,
-  bld.compileLess,
+  bld.compileCss,
   bld.processSvgs,
   bld.processImages,
   bld.buildManifest,

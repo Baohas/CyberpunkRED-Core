@@ -1,10 +1,8 @@
 .item-sheet {
-  font-family: "Jost";
-
+  font-family: var(--cpr-font-primary);
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 4.5rem auto;
-
   grid-template-areas:
     "item-top-pane"
     "item-bottom-pane";
@@ -23,7 +21,8 @@
     width: auto;
     height: auto;
     background-color: var(--cpr-background-border);
-    // If the item has an upgrade icon, show it on the top right corner
+
+    /* If the item has an upgrade icon, show it on the top right corner */
     .item-image {
       position: relative;
       grid-area: item-image;
@@ -33,13 +32,14 @@
         position: absolute;
         top: 0.5rem;
         right: 0.2rem;
-        color: white;
+        color: var(--cpr-color-white);
       }
+
       i.fa-circle-info {
         position: absolute;
         top: 0.5rem;
         left: 0.17rem;
-        color: white;
+        color: var(--cpr-color-white);
       }
 
       img {
@@ -65,7 +65,7 @@
         display: grid;
         justify-content: left;
         align-content: start;
-        padding: 0rem 0.118rem;
+        padding: 0 0.118rem;
         overflow: hidden;
         white-space: nowrap;
       }
@@ -75,7 +75,7 @@
         display: grid;
         justify-content: left;
         align-content: center;
-        padding: 0rem 0.125rem;
+        padding: 0 0.125rem;
         margin-bottom: 0.125rem;
       }
 
@@ -84,7 +84,7 @@
         display: flex;
         justify-content: right;
         align-content: center;
-        padding: 0rem 0.118rem;
+        padding: 0 0.118rem;
       }
 
       .item-details-source {
@@ -92,7 +92,7 @@
         display: grid;
         justify-content: right;
         align-content: center;
-        padding: 0rem 0.118rem;
+        padding: 0 0.118rem;
       }
 
       .item-details-other {
@@ -100,7 +100,7 @@
         display: grid;
         justify-content: right;
         align-content: center;
-        padding: 0rem 0.118rem;
+        padding: 0 0.118rem;
       }
     }
   }
@@ -112,13 +112,11 @@
   .item-bottom-pane {
     display: grid;
     grid-area: item-bottom-pane;
-
     grid-template-columns: auto;
     grid-template-rows: 1.125rem auto;
     grid-template-areas:
       "item-bottom-tabs"
       "item-bottom-content";
-
     height: fit-content;
     overflow-y: hidden;
 
@@ -130,7 +128,6 @@
     .item-bottom-content-section {
       grid-area: item-bottom-content;
       display: flex;
-
       border-style: solid;
       border-width: 0.313rem;
       overflow-y: hidden;
@@ -164,7 +161,6 @@
   grid-template-areas: "item-summary-pane item-description-pane";
   gap: 0.313rem;
   background-color: var(--cpr-background-border);
-
   flex: 1 0 auto;
   min-height: 9.375rem;
   width: inherit;
@@ -181,6 +177,7 @@
       display: flex;
       justify-content: space-between;
     }
+
     .summary-value {
       align-self: center;
     }
@@ -202,6 +199,7 @@
   width: auto;
   flex: 1;
   background-color: var(--cpr-background-box);
+
   .item-settings-section,
   .item-effects-section {
     display: list-item;
@@ -226,7 +224,7 @@
   display: grid;
   grid-template-columns: 1.875rem 1.875rem 1fr 5rem;
   grid-template-areas: "netarch-level netarch-dv netarch-content netarch-actions";
-  gap: 0.25rem 0.25rem;
+  gap: 0.25rem;
 }
 
 .netarch-level {
@@ -251,24 +249,8 @@
   text-align: end;
 }
 
-.netarch-list-content {
-  li:nth-child(even) {
-  }
-
-  li:nth-child(odd) {
-  }
-}
-
 .item-role-section {
   padding-top: 0.313rem;
-}
-
-.role-list-content {
-  li:nth-child(even) {
-  }
-
-  li:nth-child(odd) {
-  }
 }
 
 .help-article,

@@ -1,0 +1,69 @@
+@import url("active-effect-sheet.css");
+@import url("actor-sheet.css");
+@import url("apps.css");
+@import url("armor-list.css");
+@import url("black-ice-sheet.css");
+@import url("chat.css");
+@import url("container-sheet.css");
+@import url("demon-sheet.css");
+@import url("dialogs.css");
+@import url("flex.css");
+@import url("fonts.css");
+@import url("foundry-overrides.css");
+@import url("glitch.css");
+@import url("injuries-list.css");
+@import url("item-card.css");
+@import url("item-directory.css");
+@import url("item-sheet.css");
+@import url("layout.css");
+@import url("ledger.css");
+@import url("lists.css");
+@import url("migration.css");
+@import url("module-support.css");
+@import url("mook-sheet.css");
+@import url("text.css");
+@import url("variables.css");
+@import url("weapon-list.css");
+@import url("progress-bar.css");
+
+div,
+section {
+  scrollbar-width: thin;
+}
+
+.window-app .window-content,
+.application .window-content {
+  font-family: var(--cpr-font-primary) !important;
+  color: var(--cpr-text-normal);
+  background: var(--cpr-background-window);
+
+  button {
+    color: var(--cpr-text-foundry-input);
+    background-color: var(--cpr-background-foundry-input);
+  }
+
+  select {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-window);
+  }
+
+  .entry-name,
+  .directory-list {
+    color: var(--cpr-text-dir-list);
+  }
+}
+
+.editor {
+  flex: 1 0 auto;
+  padding: 0;
+  min-height: 100%;
+
+  .tox-toolbar-overlord,
+  .tox-toolbar__primary {
+    background: none;
+  }
+}
+
+.editor-content {
+  padding: 0.313rem;
+}
