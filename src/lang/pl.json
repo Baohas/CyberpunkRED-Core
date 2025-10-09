@@ -1237,6 +1237,8 @@
   "CPR.settings.preventDuplicateCriticalInjuries.off": "Wył.",
   "CPR.settings.preventDuplicateCriticalInjuries.reroll": "Przerzut",
   "CPR.settings.preventDuplicateCriticalInjuries.warn": "Ostrzeżenie",
+  "CPR.settings.resizeCPRSheets.name": "Sheets can be resized",
+  "CPR.settings.resizeCPRSheets.hint": "When checked, a user can drag resize the height of most sheets. When unchecked, sheets set height automatically and users can resize width. Toggling requires a refresh.",
   "CPR.settings.saveSettings": "Save Settings",
   "CPR.settings.systemDataModelVersion.hint": "Przypnij model danych systemowych do sprecyzowanej wersji. To wymusi lub zapobiegnie migracji danych is jest BARDZO NIEBEZPIECZNE. Używej tego tylko jeśli jesteś testerem lub deweloperem modułów systemu.",
   "CPR.settings.systemDataModelVersion.name": "Wersja Modelu Danych Systemu",

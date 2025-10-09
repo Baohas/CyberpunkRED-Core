@@ -1237,6 +1237,8 @@
   "CPR.settings.preventDuplicateCriticalInjuries.off": "オフ",
   "CPR.settings.preventDuplicateCriticalInjuries.reroll": "再ロール",
   "CPR.settings.preventDuplicateCriticalInjuries.warn": "警告",
+  "CPR.settings.resizeCPRSheets.name": "Sheets can be resized",
+  "CPR.settings.resizeCPRSheets.hint": "When checked, a user can drag resize the height of most sheets. When unchecked, sheets set height automatically and users can resize width. Toggling requires a refresh.",
   "CPR.settings.saveSettings": "設定を保存",
   "CPR.settings.systemDataModelVersion.hint": "システムデータモデルを特定のバージョンにピン留めします。これは強制的またはデータ移行を回避し、非常に危険です。 システムモジュールでテスターまたは開発者である場合にのみこれを使用してください。",
   "CPR.settings.systemDataModelVersion.name": "システム データ モデル バージョン",
