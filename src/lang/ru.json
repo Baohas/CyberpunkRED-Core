@@ -1237,6 +1237,8 @@
   "CPR.settings.preventDuplicateCriticalInjuries.off": "Выключить",
   "CPR.settings.preventDuplicateCriticalInjuries.reroll": "Перебрасывать",
   "CPR.settings.preventDuplicateCriticalInjuries.warn": "Предупреждать",
+  "CPR.settings.resizeCPRSheets.name": "Sheets can be resized",
+  "CPR.settings.resizeCPRSheets.hint": "When checked, a user can drag resize the height of most sheets. When unchecked, sheets set height automatically and users can resize width. Toggling requires a refresh.",
   "CPR.settings.saveSettings": "Сохранить настройки",
   "CPR.settings.systemDataModelVersion.hint": "Установить версию модели данных. Таким образом можно принудительно запустить перенос или избежать его. Изменение этой настройки ОЧЕНЬ ОПАСНО. Только для тестировщиков и разработчиков модулей для системы.",
   "CPR.settings.systemDataModelVersion.name": "Версия модели данных системы",
