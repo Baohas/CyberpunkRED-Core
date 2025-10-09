@@ -248,7 +248,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.86.1 | Datum: 6023-02-05
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
