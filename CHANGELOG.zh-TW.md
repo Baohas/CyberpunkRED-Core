@@ -2,7 +2,7 @@
 
 # Changelog
 
-## Version 0.89.3
+## Version 0.92
 
 ### Bug Fixes
 
