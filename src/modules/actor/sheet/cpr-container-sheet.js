@@ -634,21 +634,12 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }).catch((err) => LOGGER.debug(err));
 
     if (formData !== undefined) {
-      promptData.itemTypes.forEach((itemType) => {
-        const { isPurchasing } = formData.currentConfig.itemTypes[itemType];
-        const { purchasePercentage } =
-          formData.currentConfig.itemTypes[itemType];
-        promptData.currentConfig.itemTypes[itemType] = {
-          isPurchasing,
-          purchasePercentage,
-        };
-      });
-      foundry.utils.setProperty(
-        cprActorData,
-        "data.vendor",
-        promptData.currentConfig
+      const newConfig = foundry.utils.mergeObject(
+        promptData.currentConfig,
+        formData.currentConfig,
+        { recursive: true }
       );
-      this.actor.update(cprActorData);
+      await this.actor.update({ "system.vendor": newConfig });
     }
   }
 

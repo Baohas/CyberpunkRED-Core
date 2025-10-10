@@ -11,6 +11,7 @@
 - #1149 - Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
 - #1152 - Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
 - #1146 - Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
+- #1161 - Fix shop container config not saving
 
 ## Version 0.92
 
