@@ -1,5 +1,4 @@
 # Check that any Handlebars templates we have are actually used.
-
 handlebars-templates:
   stage: test
   script:
@@ -13,7 +12,7 @@ handlebars-templates:
       when: never
     # Run on MRs
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    # Run on merge to 'master'
+    # Run on merge to 'dev'
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     # Run on git tag
     - if: $CI_COMMIT_TAG
