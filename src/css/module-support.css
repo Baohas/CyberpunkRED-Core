@@ -2,7 +2,7 @@
  *  DF Chat Enhancements
  */
 
-// This colors the chat card for some reason, so overwrite it.
+/* This colors the chat card for some reason, so overwrite it. */
 
 .dfce-cm-top {
   background-color: var(--cpr-background-chat-card) !important;

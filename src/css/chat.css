@@ -37,6 +37,7 @@
   padding-left: 0.313rem;
   align-items: center;
 }
+
 .rollcard-subtitle {
   display: grid;
   grid-template-columns: 1.25rem auto 1.25rem;
@@ -117,6 +118,7 @@
 .roll-success {
   color: var(--cpr-text-chat-success);
 }
+
 .roll-failure {
   color: var(--cpr-text-chat-failure);
 }
@@ -131,7 +133,6 @@
   padding-right: 0.313rem;
 }
 
-///
 .d6-rollcard-data {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
@@ -188,10 +189,12 @@
   display: block;
   border: none;
   align-self: center;
+
   &-20 {
     height: 1.25rem;
     width: 1.25rem;
   }
+
   &-30 {
     height: 1.875rem;
     width: 1.875rem;
@@ -202,14 +205,17 @@
   display: block;
   border: none;
   align-self: center;
+
   &-20 {
     height: 1.25rem;
     width: 1.25rem;
   }
+
   &-30 {
     height: 1.875rem;
     width: 1.875rem;
   }
+
   &-40 {
     height: 2.5rem;
     width: 2.5rem;
@@ -231,9 +237,9 @@ a.inline-roll {
   }
 }
 
-/*-------------------------
+/* -------------------------
 | Chat visibility design  |
--------------------------*/
+------------------------- */
 
 .chat-mode-indicator {
   display: inline-block;
@@ -245,9 +251,9 @@ a.inline-roll {
   background: var(--cpr-background-chat-card);
 }
 
-/*--------------------
+/* --------------------
   cpr-block element styling
----------------------*/
+--------------------- */
 
 .cpr-block {
   background-color: var(--cpr-background-chat-card-block);
@@ -263,7 +269,6 @@ a.inline-roll {
     width: calc(100% - 0.5rem);
     top: 0.25rem;
     left: 0.25rem;
-
     content: "";
     background-color: var(--cpr-background-chat-card-block-before);
     clip-path: polygon(0 0.875rem, 0 100%, 100% 100%, 100% 0, 0.875rem 0);

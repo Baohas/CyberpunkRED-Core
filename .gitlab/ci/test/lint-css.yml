@@ -1,12 +1,7 @@
-# Test we are using relative untis for sizing things in CSS
-#
-# This is important so applications in the system resize properly when a user
-# adjusts the Font Size in Foundry.
-
-test-less-units:
+lint-css:
   stage: test
   script:
-    - ./.gitlab/pipeline_tests/test-less-units.sh
+    - npx stylelint src/css
   needs:
     - job: init
       artifacts: true

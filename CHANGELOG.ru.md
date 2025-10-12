@@ -2,7 +2,7 @@
 
 # Журнал изменений
 
-## Version 0.89.3
+## Version 0.92
 
 ### Исправления
 
@@ -112,7 +112,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
   - Бренд больше не добавляется в название программно
 - Ensure all SVGs have `width`/`height` set corectly to prevent known Firefox/PIXI bug
 
-### Исправления
+### Bug Fixes
 
 - #933 - Исправлено множество ошибок/отсуствующих значений в библиотеках благодаря @Alexander Fokin
 - #950 - Проверки СЛ выделены жирным в некоторых предметах библиотеки
@@ -154,7 +154,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Bug Fixes
+### Исправления
 
 - #856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -184,7 +184,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 
-### Исправления
+### Bug Fixes
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
@@ -230,7 +230,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Версия 0.87.6
 
-### Bug Fixes
+### Исправления
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
@@ -1302,7 +1302,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added localization to places where it was not implemented. (!325)
 - Removed "Core" tag from Critical Injury and DV compendia (which should be imported) to make them distinct from "Skills - Core" and "Cyberware - Core" (which should NOT be imported). (!379)
 
-### Исправления
+### Bug Fixes
 
 - fixed #49 - The equipped glyph now takes the same space as the other two
 - fixed #158 - Stat padding fixed for LUCK and EMP, so that they have the same font size as the others

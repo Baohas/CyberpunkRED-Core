@@ -2,16 +2,16 @@
 
 # Journal des modifications
 
-## Version 0.89.3
+## Version 0.92
 
-### Corrections de bugs
+### Correction de bugs
 
 - Remove `templateVersion` from `system.json` which was causing a warning message in the Foundry Admin page.
 - Fixed issue where deleting a Compendia item that has installed items within it, would prompt the user to delete those internal installed items. Since Compendia items only store ephemeral installed-item data (and no real in-world) items exist, this would error or incorrectly delete corresponding in-world items.
 
 ## Version 0.89.2
 
-### Correction de bugs
+### Bug Fixes
 
 - #1130 - Fixed loading ammo into weapon upgrades.
 - #1131 - Fixed issue where migration app would not scroll when many compendia caused overflow.
@@ -230,7 +230,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.6
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
@@ -273,7 +273,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.3
 
-### Corrections de bugs
+### Bug Fixes
 
 - #808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - #812 - Some roles were missing the bonuses data point as an empty array.
@@ -296,7 +296,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.2
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -308,7 +308,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.1
 
-### Corrections de bugs
+### Bug Fixes
 
 Correction des migrations cassées
 
@@ -475,7 +475,7 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
 - Removed duplicated suffixes on ammo selection
 - Clicking reload when you are out of an ammo type will bring up the switch ammo dialogue
 
-### Bug Fixes
+### Corrections de bugs
 
 - Fixed a capitalisation issue in the medical grade cyber limbs. Thanks ButchAmy!
 - Fixed incorrect page reference numbers for medical grade cyber limbs
@@ -523,7 +523,7 @@ Les munitions peuvent désormais modifier les dégâts des armes et le maximum d
 
 ## Version 0.86.1 | Date: 2023-02-05
 
-### Corrections de bugs
+### Bug Fixes
 
 - #683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor. This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
@@ -624,13 +624,13 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.2 (Hotfix) | Date: 2022-12-15
 
-### Bug Fixes
+### Corrections de bugs
 
 - Corrected a capitalisation error that was causing the included Dystopian City Streets map to disappear. Thanks to Latcher for spotting this!
 
 ## Version 0.85.1 (Hotfix) | Date: 2022-12-14
 
-### Corrections de bugs
+### Bug Fixes
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
@@ -676,7 +676,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 - Where weapon features aren't currently supported, a note has been added to that weapons description
 - Changed the magazine upgrades to use `override` instead of `modifier`
 
-### Bug Fixes
+### Corrections de bugs
 
 - Aligned the second column on the gear tab so it is not all over the place
 - Fixed missing thumbnail image for the included Dystopian City Junction map
@@ -695,7 +695,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
-### Corrections de bugs
+### Bug Fixes
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
@@ -749,7 +749,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.83.1 (Hotfix) | Date: 2022-10-23
 
-### Bug Fixes
+### Corrections de bugs
 
 - #529 - Fix non-shop containers having the wrong button
 - #536 - Spelling mistake: "Ememies" (English)
@@ -778,7 +778,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Mook portrait is always shown
 - A few minor UI improvements to the Mook sheet
 
-### Corrections de bugs
+### Bug Fixes
 
 - #476 - Vehicles cost can now be edited
 - Cyberware & Upgrade templates still had some references to .data causing the shim to fire

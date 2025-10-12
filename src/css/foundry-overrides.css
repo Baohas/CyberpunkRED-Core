@@ -1,3 +1,5 @@
+@import url("glitch.css");
+
 form {
   .notes,
   .hint {
@@ -66,7 +68,7 @@ form {
   color: var(--cpr-text-hint) !important;
 }
 
-// User config pop out
+/* User config pop out */
 .user-config {
   font-family: var(--cpr-font-primary);
 
@@ -92,7 +94,7 @@ code {
 .mook-sheet {
   font-family: var(--cpr-font-primary);
 
-  // Undo Foundry Base Style settings for elements
+  /* Undo Foundry Base Style settings for elements */
   img {
     border: none;
   }
@@ -117,7 +119,6 @@ code {
     margin: 0;
     line-height: inherit;
     user-select: text;
-    border: none;
     height: 100%;
     background: none;
 
@@ -240,11 +241,11 @@ html[data-cpr-theme="default"] .application {
 html[data-cpr-theme="default"] body.theme-dark {
   form.region-config {
     label {
-      color: #eaeaea !important;
+      color: var(--cpr-darkmode-text-main) !important;
     }
 
     .hint {
-      color: #c0c0c0 !important;
+      color: var(--cpr-text-foundry-hint) !important;
     }
   }
 }
@@ -285,7 +286,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
       color: var(--cpr-text-foundry-input) !important;
       background: var(--cpr-background-editor-button) !important;
 
-      // Set the color of the icons in the dropdowns
+      /* Set the color of the icons in the dropdowns */
       i,
       i:hover {
         color: var(--cpr-text-foundry-input) !important;
@@ -318,7 +319,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
 
   .editor-content {
     height: 100%;
-    padding: 0rem;
+    padding: 0;
   }
 }
 
@@ -326,8 +327,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   min-height: 10rem;
 }
 
-// Override the content link element use when linking to another foundry
-// actor, item etc.
+/* Override the content link element use when linking to another foundry actor, item etc. */
 .content-link {
   background: var(--cpr-background-content-link) !important;
   color: var(--cpr-text-normal);
@@ -341,7 +341,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
  * Journals
  */
 
-// This is not in the general journal divs as you would expect
+/* This is not in the general journal divs as you would expect */
 .journal-header {
   input {
     color: var(--cpr-text-chat-normal) !important;
@@ -368,8 +368,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   font-family: var(--cpr-font-primary);
   color: var(--cpr-text-normal) !important;
 
-  // Normally we wouldn't use <strong> but it's how the WYSIWYG editor
-  // does bold, style this to be more semi-bold.
+  /* Normally we wouldn't use <strong> but it's how the WYSIWYG editor does bold, style this to be more semi-bold. */
   strong {
     font-weight: 550;
   }
@@ -378,19 +377,20 @@ html[data-cpr-theme="darkmode"] body.theme-light {
     border-bottom: 0.125rem solid var(--cpr-background-dialog-border);
   }
 
-  // We don't want no stinkin' borders
+  /* We don't want no stinkin' borders */
   img {
     border: none;
   }
 
-  // This only supports tables with alternating color rows (90% of tables in the
-  // the book), will need some more rules for alternating color columns.
-  //
-  // This mess is because when using the markdown editor (vs. TinyMCE /
-  // Prosemirror) it add a 'thead' element so we need to account for that when
-  // coloring the rows. The only difference is that tables with a 'thead' start
-  // with pink rows rather than white rows. This shouldn't really matter as
-  // they should be consistent across all uses of tables with 'thead'.
+  /*
+  This only supports tables with alternating color rows (90% of tables in the
+  the book), will need some more rules for alternating color columns.
+  This mess is because when using the markdown editor (vs. TinyMCE /
+  Prosemirror) it add a 'thead' element so we need to account for that when
+  coloring the rows. The only difference is that tables with a 'thead' start
+  with pink rows rather than white rows. This shouldn't really matter as
+  they should be consistent across all uses of tables with 'thead'.
+  */
 
   /* First row of every table */
   table tr:first-of-type {
@@ -402,7 +402,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   }
 
   table thead + tbody tr:first-of-type {
-    background-color: blue;
+    background-color: var(--cpr-background-progress);
   }
 
   table tbody tr:nth-of-type(even):not(:first-of-type),
@@ -436,7 +436,7 @@ html[data-cpr-theme="darkmode"] body.theme-light {
     }
   }
 
-  // Catchall for headers
+  /* Catchall for headers */
   h1,
   h2,
   h3,
@@ -555,23 +555,22 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   }
 
   section.secret.revealed {
-    border: 0rem;
+    border: 0;
     background: var(--cpr-background-box);
   }
 
-  // This isn't supported by the GUI editors but can be done when editing the HTML
-  // But it allows us to create nice info boxes in journals as needed.
+  /* This isn't supported by the GUI editors but can be done when editing the HTML, but it allows us to create nice info boxes in journals as needed. */
   section.info::before {
     content: "ℹ️";
     position: absolute;
-    margin: 0.5rem 0rem 0rem -1.45rem;
+    margin: 0.5rem 0 0 -1.45rem;
   }
 
   section.info {
     padding: 0.313rem 0.313rem 0.313rem 2rem;
     background: var(--cpr-background-journal-info);
     border-radius: 0.313rem;
-    margin: 0.313rem 0rem;
+    margin: 0.313rem 0;
   }
 }
 
@@ -581,19 +580,22 @@ html[data-cpr-theme="darkmode"] body.theme-light {
 #tooltip {
   font-family: var(--cpr-font-primary);
   padding: 0.313rem 0.626rem;
-  border: 0rem;
-  border-radius: 0rem;
+  border: 0;
+  border-radius: 0;
   background: var(--cpr-background-header);
   clip-path: polygon(0 0.626rem, 0 100%, 100% 100%, 100% 0, 0.626rem 0);
 }
 
 /* -------------------------------------------- */
+
 /* Override pause menu with glitch effect       */
+
 /* IF enabled in settings.enablePauseAnimation  */
+
 /* -------------------------------------------- */
 #pause {
   .pause-image {
-    background: url("icons/pause.png");
+    background: url("../icons/pause.png");
     background-size: 8rem;
     width: 8rem;
     height: 8rem;
@@ -601,7 +603,8 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   }
 
   .pause-glitch {
-    .glitch;
+    @mixin glitch;
+
     text-transform: uppercase;
     font-family: var(--cpr-font-pause);
     font-weight: 800;

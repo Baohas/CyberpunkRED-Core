@@ -12,7 +12,7 @@ code-formatting:
       src/**/*.yaml
       src/*.json
       src/**/*.json
-      src/less/**/*.less
+      src/css/**/*.css
   needs:
     - job: init
       artifacts: true

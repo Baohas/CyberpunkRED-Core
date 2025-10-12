@@ -1,7 +1,7 @@
 .item-card-grid-container {
   display: grid;
   grid-template-columns: 0.2fr 1.8fr;
-  gap: 0.25rem 0.25rem;
+  gap: 0.25rem;
   grid-template-areas:
     "item-card-icon item-card-header"
     "item-card-description item-card-description";
@@ -12,6 +12,7 @@
   width: 3.25rem;
   height: 3.25rem;
 }
+
 .item-card-icon-img {
   width: 3.25rem;
   height: 3.25rem;
@@ -29,7 +30,7 @@
 .item-card-header {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  gap: 0rem 0rem;
+  gap: 0;
   grid-template-areas:
     "item-card-name"
     "item-card-type";

@@ -1,11 +1,17 @@
+import { optimize } from "svgo";
+import autoprefixer from "autoprefixer";
 import chalk from "chalk";
 import fs from "fs-extra";
-import log from "fancy-log";
 import gulp from "gulp";
-import less from "gulp-less";
+import log from "fancy-log";
+import mixins from "postcss-mixins";
 import path from "path";
-import { optimize } from "svgo";
+import postcss from "gulp-postcss";
+import postcssImport from "postcss-import";
+import postcssNested from "postcss-nested";
+// import stylelint from "stylelint";
 import through2 from "through2";
+
 import ChangelogUtils from "./utils/changelogUtils.mjs";
 
 import {
@@ -41,23 +47,32 @@ async function cleanDist() {
   }
 }
 
-// Compile less in to CSS
-async function compileLess() {
+// Process CSS through PostCSS
+async function compileCss() {
   return new Promise((cb) => {
     log("Building CSS...");
     _createDist();
     gulp
-      .src(path.resolve(SRC_DIR, "less/main.less"))
-      .pipe(less({ javascriptEnabled: true }))
-      .on("error", () => {
+      .src(path.resolve(SRC_DIR, "css/*.css"))
+      .pipe(
+        postcss([
+          postcssImport({
+            // plugins: [stylelint()], // Do we want to styleline here?
+          }),
+          mixins(),
+          postcssNested(),
+          autoprefixer(),
+        ])
+      )
+      .on("error", (error) => {
         // If we're in CI throw a hard error, else a soft error
         if (CI) {
           throw new Error("CSS failed to compile.");
         } else {
-          log.error(chalk.red("CSS failed to compile."));
+          log.error(chalk.red("CSS failed to compile."), error.message);
         }
       })
-      .pipe(gulp.dest(path.resolve(DEST_DIR)))
+      .pipe(gulp.dest(path.resolve(DEST_DIR, "css")))
       .on("finish", () => {
         log("Finished Building CSS.");
         cb();
@@ -383,7 +398,7 @@ async function watchSrc() {
 
   SOURCE_FILES.forEach((file) => watcher(file.from, file.to));
   SOURCE_DIRS.forEach((folder) => watcher(folder.from, folder.to));
-  gulp.watch("src/**/*.less").on("all", () => compileLess());
+  gulp.watch("src/css/*.css").on("all", () => compileCss());
   // disabling while we fix Crowdin
   // gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
   gulp
@@ -398,7 +413,7 @@ export {
   buildDiscordMessage,
   cleanDist,
   copyAssets,
-  compileLess,
+  compileCss,
   watchSrc,
   processImages,
   processSvgs,

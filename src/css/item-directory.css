@@ -35,10 +35,10 @@
         padding: 0.1rem 0.2rem 0.1rem 0.8rem;
       }
 
-      [data-row-level="1"]:before,
-      [data-row-level="2"]:before,
-      [data-row-level="3"]:before,
-      [data-row-level="4"]:before {
+      [data-row-level="1"]::before,
+      [data-row-level="2"]::before,
+      [data-row-level="3"]::before,
+      [data-row-level="4"]::before {
         margin-right: 0.25rem;
         content: "";
         display: block;

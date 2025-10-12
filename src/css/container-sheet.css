@@ -1,6 +1,6 @@
 .container-sheet {
-  font-family: "Jost";
   display: grid;
+  font-family: var(--cpr-font-primary);
   grid-template-columns: 13.125rem auto;
   grid-template-areas: "pane-left pane-right";
   background-color: var(--cpr-background-border);
@@ -34,15 +34,12 @@
       grid-area: name;
       background-color: var(--cpr-background-box);
       padding: 0.125rem;
-      display: grid;
-      justify-content: center;
       align-content: center;
 
       input {
         width: 100%;
         height: 100%;
         text-align: center;
-        text-justify: center;
       }
     }
 
@@ -79,15 +76,6 @@
       .eurobucks-modify-reason-label {
         max-width: fit-content;
       }
-
-      .container-type-settings {
-      }
-
-      .container-shop-settings {
-      }
-
-      .container-eurobucks-ledger {
-      }
     }
 
     .eurobucks-section {
@@ -106,7 +94,6 @@
   .right-pane {
     grid-area: pane-right;
     background-color: var(--cpr-background-box);
-
     display: flex;
     height: auto;
 
