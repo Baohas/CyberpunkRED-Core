@@ -2,12 +2,6 @@
 
 # Changelog
 
-## Version 0.94
-
-### Changes
-
-- System Chat Messages now provide `rolls` data.
-
 ## Version 0.92
 
 ### Bug Fixes
