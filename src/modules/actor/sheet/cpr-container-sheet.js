@@ -14,15 +14,22 @@ import CPRDialog from "../../dialog/cpr-dialog-application.js";
  */
 export default class CPRContainerActorSheet extends CPRActorSheet {
   /**
-   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
+   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
    *
    * @override
    * @returns - sheet options merged with default options in ActorSheet
    */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
+      height: resizeCPRSheets ? 750 : "auto",
+      resizable: true,
       template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
-      width: 990,
+      width: 1000,
     });
   }
 
@@ -627,21 +634,12 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }).catch((err) => LOGGER.debug(err));
 
     if (formData !== undefined) {
-      promptData.itemTypes.forEach((itemType) => {
-        const { isPurchasing } = formData.currentConfig.itemTypes[itemType];
-        const { purchasePercentage } =
-          formData.currentConfig.itemTypes[itemType];
-        promptData.currentConfig.itemTypes[itemType] = {
-          isPurchasing,
-          purchasePercentage,
-        };
-      });
-      foundry.utils.setProperty(
-        cprActorData,
-        "data.vendor",
-        promptData.currentConfig
+      const newConfig = foundry.utils.mergeObject(
+        promptData.currentConfig,
+        formData.currentConfig,
+        { recursive: true }
       );
-      this.actor.update(cprActorData);
+      await this.actor.update({ "system.vendor": newConfig });
     }
   }
 

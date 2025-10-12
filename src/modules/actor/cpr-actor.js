@@ -692,7 +692,7 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Get all mods provided by equippable and upgradeable items for a specific thing
+   * Get all mods provided by equippable and upgradable items for a specific thing
    *
    * @param {String} baseName - name of the thing (e.g. stat) getting mods
    * @returns {Number}

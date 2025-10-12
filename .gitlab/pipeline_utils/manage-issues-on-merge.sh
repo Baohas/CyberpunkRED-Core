@@ -53,7 +53,7 @@ LABELS_TO_ADD=(
 )
 
 # Note to add to each issue mentioned in the MR
-NOTE="We have just merged !${MR_IID} into \`master\` to address this issue.
+NOTE="We have just merged !${MR_IID} into \`dev\` to address this issue.
 
 This means it's on track to be in the next release. You can track the next release on the [milestones page](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/milestones).
 

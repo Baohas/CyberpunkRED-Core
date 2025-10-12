@@ -17,21 +17,14 @@ export default class CPRDialog extends FormApplication {
 
   /**
    * Set default options for the ledger.
-   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
+   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
    *
    * @static
    * @override
    */
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`,
-      title: "CPR.global.generic.title",
-      width: 400,
-      height: "auto",
-      resizable: true,
-      closeOnSubmit: false,
-      submitOnChange: true,
-      submitOnClose: false,
+      buttonDefault: "confirm",
       buttons: {
         confirm: {
           icon: "fas fa-check",
@@ -44,8 +37,16 @@ export default class CPRDialog extends FormApplication {
           callback: (dialog) => dialog.closeDialog(),
         },
       },
-      buttonDefault: "confirm",
+      classes: super.defaultOptions.classes.concat(["dialog"]),
+      closeOnSubmit: false,
+      height: "auto",
       overwriteButtons: false, // If calling showDialog with custom buttons, override defaults or not.
+      resizable: true,
+      submitOnChange: true,
+      submitOnClose: false,
+      template: `systems/${game.system.id}/templates/dialog/cpr-default-prompt.hbs`,
+      title: "CPR.global.generic.title",
+      width: 400,
     });
   }
 

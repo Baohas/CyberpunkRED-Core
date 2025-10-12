@@ -1,6 +1,6 @@
 # Delete dev releases from the GitLab Package Repository
 #
-# As we build a new release each time we merge to `master` for testers we need
+# As we build a new release each time we merge to `dev` for testers we need
 # some garbage collection of these releases so we don't have hundreds of old
 # builds laying about.
 

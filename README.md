@@ -36,7 +36,7 @@ Alternatively you can grab the manifest directly [here](https://gitlab.com/api/v
 
 Release notes for each release are available on our [Releases Page](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/releases).
 
-If you want a sneak peak of what is coming in the next update, you can check out the [development changelog](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/blob/master/CHANGELOG.md).
+If you want a sneak peak of what is coming in the next update, you can check out the [development changelog](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/blob/dev/CHANGELOG.md).
 
 ## Join the Community!
 

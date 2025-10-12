@@ -42,17 +42,23 @@ export default class CPRActorSheet extends ActorSheet {
    * The scrollY option identifies elements where the
    * vertical position should be preserved during a re-render.
    *
-   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
+   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
    *
    * @override
    * @returns - sheet options merged with default options in ActorSheet
    */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: super.defaultOptions.classes.concat(["sheet", "actor"]),
+      height: resizeCPRSheets ? 500 : "auto",
+      resizable: true,
       scrollY: [".right-content-section", ".top-pane-gear"],
-      width: "auto",
-      height: "auto",
+      width: 800,
     });
   }
 

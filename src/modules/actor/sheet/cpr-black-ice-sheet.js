@@ -13,16 +13,22 @@ import CPRDialog from "../../dialog/cpr-dialog-application.js";
 export default class CPRBlackIceActorSheet extends ActorSheet {
   /**
    * Set up the default options for this Foundry "app".
-   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
+   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
    *
    * @override
    * @static
    */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
+      height: resizeCPRSheets ? 250 : "auto",
+      resizable: true,
       template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
       width: 575,
-      height: "auto",
     });
   }
 

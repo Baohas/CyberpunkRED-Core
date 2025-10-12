@@ -93,8 +93,8 @@ function check_changelog() {
   fi
 }
 
-# If not during a MR related job this will not be set, so default to master
-BRANCH="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-master}"
+# If not during a MR related job this will not be set, so default to dev
+BRANCH="${CI_MERGE_REQUEST_TARGET_BRANCH_NAME:-dev}"
 
 function main() {
   check=0

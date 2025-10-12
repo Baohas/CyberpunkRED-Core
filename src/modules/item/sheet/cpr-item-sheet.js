@@ -16,16 +16,22 @@ export default class CPRItemSheet extends ItemSheet {
   /* -------------------------------------------- */
   /** @override */
   static get defaultOptions() {
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
+      height: resizeCPRSheets ? 400 : "auto",
+      resizable: true,
       tabs: [
         {
-          navSelector: ".navtabs-item",
           contentSelector: ".item-bottom-content-section",
           initial: "item-description",
+          navSelector: ".navtabs-item",
         },
       ],
       width: 715,
-      height: "auto",
     });
   }
 

@@ -19,9 +19,15 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @override
    */
   static get defaultOptions() {
-    const defaultWidth = 800;
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
-      width: defaultWidth,
+      height: resizeCPRSheets ? 600 : "auto",
+      resizable: true,
+      width: 800,
     });
   }
 

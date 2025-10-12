@@ -13,18 +13,19 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   /**
    * Set default options for character sheets, which include making sure vertical scrollbars do not
    * get reset when re-rendering.
-   * See https://foundryvtt.com/api/Application.html for the complete list of options available.
+   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
    *
    * @static
    * @override
    */
   static get defaultOptions() {
-    const defaultWidth = 1050;
-    const defaultHeight = "auto";
+    const resizeCPRSheets = game.settings.get(
+      game.system.id,
+      "resizeCPRSheets"
+    );
+
     return foundry.utils.mergeObject(super.defaultOptions, {
-      template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
-      width: defaultWidth,
-      height: defaultHeight,
+      height: resizeCPRSheets ? 850 : "auto",
       resizable: true,
       scrollY: [".right-content-section", ".top-pane-gear"],
       tabs: [
@@ -39,6 +40,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
           initial: "fight",
         },
       ],
+      template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
+      width: 1050,
     });
   }
 

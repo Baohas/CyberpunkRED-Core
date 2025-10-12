@@ -17,8 +17,8 @@
     "prettier": "npx prettier --check gulpfile.mjs gulp/*.mjs src/*.js src/modules src/lang/en.json src/**/*.json src/css/**/*.css",
     "prettier:fix": "npm run prettier -- --write",
     "start": "npx gulp",
-    "stylelint": "npx stylelint '**/*.css'",
-    "stylelint:fix": "npx stylelint '**/*.css' --fix",
+    "stylelint": "npx stylelint 'src/**/*.css'",
+    "stylelint:fix": "npx stylelint 'src/**/*.css' --fix",
     "watch": "npx gulp watch"
   },
   "engines": {
