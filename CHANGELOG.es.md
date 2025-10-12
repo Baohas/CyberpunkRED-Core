@@ -11,10 +11,13 @@
 - \#1149 - Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
 - \#1152 - Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
 - \#1146 - Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
+- \#1161 - Fix shop container config not saving
+- \#1139 - Remove items from weapons that do not exist in the game and in the actor owner of the item
+- \#1162 - Fix Condition Lab and Triggler configutation styling in Dark Mode
 
 ## Version 0.92
 
-### Bug Fixes
+### Corrección de Errores
 
 - Remove `templateVersion` from `system.json` which was causing a warning message in the Foundry Admin page.
 - Fixed issue where deleting a Compendia item that has installed items within it, would prompt the user to delete those internal installed items. Since Compendia items only store ephemeral installed-item data (and no real in-world) items exist, this would error or incorrectly delete corresponding in-world items.
@@ -283,7 +286,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.3
 
-### Bug Fixes
+### Corrección de Errores
 
 - \#808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - \#812 - Some roles were missing the bonuses data point as an empty array.
@@ -318,7 +321,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.1
 
-### Bug Fixes
+### Corrección de Errores
 
 Reparar migraciones rotas
 
@@ -533,7 +536,7 @@ La munición ahora puede modificar el daño de arma / máximo de disparo automá
 
 ## Versión 0.86.1 | Fecha: 2023-02-05
 
-### Bug Fixes
+### Corrección de Errores
 
 - \#683 - Dragging a World Item which has another World Items installed in it and THAT item also has another world item installed in it (Cyberarm->Cyberdeck (Hardwired)->Cyberdeck) results in two cyberdecks being created on the actor. This would exponentiate every level of installation if there were more.
 - Add text for missing localized string `CPR.messages.installInvalidType`
@@ -640,7 +643,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.85.1 (Hotfix) | Date: 2022-12-14
 
-### Bug Fixes
+### Corrección de Errores
 
 - Fixed #624 - NET architecture sheet can't click generation button
 
@@ -705,7 +708,7 @@ We **HIGHLY** recommend that when migration is completed, you **ALWAYS** check t
 
 ## Version 0.84.1 (Hotfix) | Date: 2022-11-30
 
-### Bug Fixes
+### Corrección de Errores
 
 - Fix HTML Stripping in item descriptions on character sheets
 - Fix Create/Edit Role Ability dialog not submitting.
@@ -788,7 +791,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Mook portrait is always shown
 - A few minor UI improvements to the Mook sheet
 
-### Bug Fixes
+### Corrección de Errores
 
 - \#476 - Vehicles cost can now be edited
 - Cyberware & Upgrade templates still had some references to .data causing the shim to fire
