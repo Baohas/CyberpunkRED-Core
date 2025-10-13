@@ -10,7 +10,7 @@ const PauseAnimation = () => {
    * @public
    * @memberof hookEvents
    */
-  Hooks.on("renderPause", () => {
+  Hooks.on("renderGamePause", () => {
     enablePauseAnimation();
   });
 };
