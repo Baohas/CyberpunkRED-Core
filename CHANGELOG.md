@@ -7,6 +7,7 @@
 ### Bug Fixes
 
 - #1474 - Fix term "Optional Slots" to "Option Slots"
+- Fix small layout bug with Item Sheet: Source/Page display
 
 ## Version 0.92.1
 
