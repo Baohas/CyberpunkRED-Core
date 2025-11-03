@@ -34,10 +34,12 @@
       </div>
 
       <div class="item-details-source">
-        {{item.system.source.book}}
-        {{#if (cprCompare item.system.source.page "!==" null)}}
-          {{localize "CPR.global.generic.pageShort"}}
-          {{item.system.source.page}}
+        {{#if item.system.source.book}}
+          {{item.system.source.book}}
+          {{#unless (or (eq item.system.source.page "") (eq item.system.source.page null) (eq item.system.source.page undefined) (eq item.system.source.page 0))}}
+            {{localize "CPR.global.generic.pageShort"}}
+            {{item.system.source.page}}
+          {{/unless}}
         {{/if}}
       </div>
 
