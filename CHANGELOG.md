@@ -61,6 +61,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Fix `Techtronica Russia BMG 500` price/hands
 - Fix incorrect option slot details for melee weapons, gear items, and upgrade attachments in the core compendiums
 - Fix options slots for exotic weapons
+- Fix term "Optional Slots" to "Option Slots"
 
 ## Version 0.92.1
 
