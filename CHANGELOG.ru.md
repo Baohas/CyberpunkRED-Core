@@ -2,6 +2,57 @@
 
 # Журнал изменений
 
+## Version 0.92.2
+
+### Требует внимания
+
+#### Weapon Quality/Attack Mod
+
+We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compendia for the below weapons. If any of your Characters/Mooks/Containers use any of these weapons the quickest way to fix them is to remove the old weapons from their sheet and replace them from the Compendia.
+
+- Arasaka Weeping Reaver Katana
+- SlamDance FangFist
+- SlamDance Tasmanskiy Klô
+- Malorian Arms 3516
+- Arasaka Minami 10
+- Arasaka WSSA Sniper System
+- Chadran Arms City Reaper
+- Chadran Arms Jungle Reaper
+- Dai Lung Magnum
+- Dai Lung Streetmaster
+- Eagletech Bearcat
+- Eagletech Scorpion
+- Federated Arms Super Chief
+- Federated Arms Tech-Assault III
+- GunMart Home Defender
+- GunMart Snipe-Star
+- Militech Avenger
+- Militech Boomer Buster
+- Militech Bulldog
+- Militech Dragon
+- Militech Hotshot
+- Militech Viper
+- Nova Cityhunter
+- Towa Manufacturing Type-G
+- Towa Manufacturing Type-R
+- Tsunami Arms Type-18
+- Chainknife
+- Sub-Flechette Gun
+- Archimedes
+- TearJerker
+
+### Нововведения
+
+- Add Ukrainian Language support
+
+### Исправления
+
+- Fix term "Optional Slots" to "Option Slots"
+- Fix small layout bug with Item Sheet: Source/Page display
+- Corrected armor penetration settings for Federated Arms X-9mm
+- Fix Weapon Quality/Attack Mod mismatches
+- Fix `Techtronica Russia BMG 500` price/hands
+
 ## Version 0.92.1
 
 ### Исправления
@@ -11,6 +62,9 @@
 - \#1149 - Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
 - \#1152 - Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
 - \#1146 - Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
+- \#1161 - Fix shop container config not saving
+- \#1139 - Remove items from weapons that do not exist in the game and in the actor owner of the item
+- \#1162 - Fix Condition Lab and Triggler configutation styling in Dark Mode
 
 ## Version 0.92
 
