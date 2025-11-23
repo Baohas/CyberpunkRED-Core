@@ -7,6 +7,57 @@
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 
+## Version 0.92.2
+
+### Action Needed
+
+#### Weapon Quality/Attack Mod
+
+We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compendia for the below weapons. If any of your Characters/Mooks/Containers use any of these weapons the quickest way to fix them is to remove the old weapons from their sheet and replace them from the Compendia.
+
+- Arasaka Weeping Reaver Katana
+- SlamDance FangFist
+- SlamDance Tasmanskiy Klô
+- Malorian Arms 3516
+- Arasaka Minami 10
+- Arasaka WSSA Sniper System
+- Chadran Arms City Reaper
+- Chadran Arms Jungle Reaper
+- Dai Lung Magnum
+- Dai Lung Streetmaster
+- Eagletech Bearcat
+- Eagletech Scorpion
+- Federated Arms Super Chief
+- Federated Arms Tech-Assault III
+- GunMart Home Defender
+- GunMart Snipe-Star
+- Militech Avenger
+- Militech Boomer Buster
+- Militech Bulldog
+- Militech Dragon
+- Militech Hotshot
+- Militech Viper
+- Nova Cityhunter
+- Towa Manufacturing Type-G
+- Towa Manufacturing Type-R
+- Tsunami Arms Type-18
+- Chainknife
+- Sub-Flechette Gun
+- Archimedes
+- TearJerker
+
+### New Features
+
+- Add Ukrainian Language support
+
+### Correzioni di bug
+
+- Fix term "Optional Slots" to "Option Slots"
+- Fix small layout bug with Item Sheet: Source/Page display
+- Corrected armor penetration settings for Federated Arms X-9mm
+- Fix Weapon Quality/Attack Mod mismatches
+- Fix `Techtronica Russia BMG 500` price/hands
+
 ## Version 0.92.1
 
 ### Correzioni di bug
