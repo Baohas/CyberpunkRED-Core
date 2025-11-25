@@ -874,8 +874,7 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {*} value - value to set the property to
    */
   _updateOwnedItemProp(item, prop, value) {
-    foundry.utils.setProperty(item, prop, value);
-    this._updateOwnedItem(item);
+    item.update({[prop]: value});
   }
 
   /**
