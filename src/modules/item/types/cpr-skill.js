@@ -15,8 +15,8 @@ export default class CPRSkillItem extends CPRItem {
    * @callback
    * @param {Number} value
    */
-  setSkillLevel(value) {
-    this.getRollData().level = Math.clamp(-99, value, 99);
+  async setSkillLevel(value) {
+    await this.update({ "system.level": Math.clamp(-99, value, 99) });
   }
 
   /**

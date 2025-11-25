@@ -235,17 +235,19 @@ const Loadable = function Loadable() {
    * @param {String} value - a number with an optional + or - prefixing it
    */
   this.setWeaponAmmo = function setWeaponAmmo(value) {
-    const maxAmmo = this.system.magazine.max;
     if (this.type === "weapon") {
+      const maxAmmo = this.system.magazine.max;
+      let newValue = 0;
       if (value.charAt(0) === "+" || value.charAt(0) === "-") {
-        this.system.magazine.value = Math.clamp(
+        newValue = Math.clamp(
           0,
           this.system.magazine.value + parseInt(value, 10),
           maxAmmo
         );
       } else {
-        this.system.magazine.value = Math.clamp(0, value, maxAmmo);
+        newValue = Math.clamp(0, value, maxAmmo);
       }
+      this.update({"system.magazine.value": newValue});
     }
   };
 

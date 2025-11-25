@@ -44,19 +44,11 @@ const Attackable = function Attackable() {
   /**
    * reduces the ammo count for this item after firing it
    *
-   * @returns updated actor data
+   * @param {CPRRoll} cprRoll - a roll (presumably an attack roll)
    */
   this.dischargeItem = function dischargeItem(cprRoll) {
     const discharged = this.bulletConsumption(cprRoll);
-    LOGGER.debug(discharged);
-    // don't go negative
-    this.system.magazine.value = Math.max(
-      this.system.magazine.value - discharged,
-      0
-    );
-    return this.actor.updateEmbeddedDocuments("Item", [
-      { _id: this.id, system: this.system },
-    ]);
+    this.setWeaponAmmo(`${-discharged}`);
   };
 
   /**
