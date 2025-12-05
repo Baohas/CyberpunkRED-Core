@@ -51,7 +51,7 @@ export class CPRRoll {
     // path to the roll card template for chat
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-base-rollcard.hbs`;
     // Any additional data we want to pass to the roll card
-    this.rollCardExtraArgs = [];
+    this.rollCardExtraArgs = {};
   }
 
   /**
