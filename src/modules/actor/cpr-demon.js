@@ -39,7 +39,7 @@ export default class CPRDemonActor extends Actor {
     const statValue = parseInt(this.system.stats[statName], 10);
     const cprRoll = new CPRRolls.CPRProgramStatRoll(niceStatName, statValue);
 
-    if (cprRoll.rollCardExtraArgs.length === 0) {
+    if (!cprRoll.rollCardExtraArgs.program) {
       cprRoll.rollCardExtraArgs.program = {
         system: {
           class: "demon",

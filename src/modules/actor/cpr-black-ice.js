@@ -52,7 +52,7 @@ export default class CPRBlackIceActor extends Actor {
       }
     }
 
-    if (cprRoll.rollCardExtraArgs.length === 0) {
+    if (!cprRoll.rollCardExtraArgs.program) {
       cprRoll.rollCardExtraArgs.program = {
         system: {
           blackIceType: this.system.class,
