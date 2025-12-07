@@ -243,7 +243,7 @@ export default class CPRSystemUtils {
         if (result.type === "text") {
           const { range } = result;
           const key = `${range[0]}_${range[1]}`;
-          const dv = result.text;
+          const dv = result.description;
           dvSetting.table[key.toString()] = dv;
         }
       }

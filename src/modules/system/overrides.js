@@ -1,50 +1,37 @@
-const { Ruler } = foundry.canvas.interaction;
-
 export default function overrideRulerFunctions() {
-  const foundryPrototype = Ruler.prototype._getSegmentLabel;
-  Ruler.prototype._getSegmentLabel = function _getSegmentLabel(
-    segment,
-    totalDistance
-  ) {
-    const { distance } = segment;
-    let returnLabel = foundryPrototype.call(this, segment, totalDistance);
+  const proto = Object.getPrototypeOf(canvas.controls.ruler);
+  const originalContext = proto._getWaypointLabelContext;
+
+  proto._getWaypointLabelContext = function (waypoint, state) {
+    const context = originalContext.call(this, waypoint, state);
+
+    if (!context) return context;
+
     if (this.user.isSelf) {
-      let token = canvas.tokens.controlled["0"];
-      if (!token) {
-        const ownedTokens = canvas.tokens.ownedTokens.filter(
-          (t) =>
-            t.actor.constructor.name === "CPRCharacterActor" ||
-            t.actor.constructor.name === "CPRMookActor"
-        );
-        token = ownedTokens.length === 1 ? ownedTokens[0] : false;
-      }
-      if (token) {
-        const DvTable = token.document.getFlag(game.system.id, "cprDvTable");
-        if (DvTable && typeof DvTable === "object") {
-          const displayTable = DvTable.name.replace(/^DV /, "");
-          const table = foundry.utils.duplicate(DvTable.table);
-          if (typeof table === "object" && Object.keys(table).length > 0) {
-            let DV = 0;
-            for (const range of Object.keys(table)) {
-              const [start, end] = range.split("_");
-              if (
-                parseInt(distance, 10) >= parseInt(start, 10) &&
-                parseInt(distance, 10) <= parseInt(end, 10)
-              ) {
-                DV = table[range];
-              }
+      const token = canvas.tokens.controlled[0];
+      const dvTableFlag = token?.document.getFlag(game.system.id, "cprDvTable");
+      if (dvTableFlag) {
+        const distance = Number(context.distance.total);
+
+        let DV = 0;
+        for (const range of Object.keys(dvTableFlag.table)) {
+          const [start, end] = range.split("_");
+          if (distance >= +start && distance <= +end) {
+            DV = dvTableFlag.table[range];
+            if (typeof DV === "object") {
+              DV = DV.description;
             }
-            if (DV > 0) {
-              returnLabel = `${returnLabel}\nDV: ${DV} ${displayTable}`;
-            }
+            break;
           }
         }
-      } else {
-        const noToken = game.i18n.localize("CPR.messages.warningRulerNoToken");
-        returnLabel = `${returnLabel}\nDV: ${noToken}`;
+
+        if (DV) {
+          context.dvLabel = `DV: ${DV} ${dvTableFlag.name.replace(/^DV /, "")}`;
+        }
       }
     }
-    return returnLabel;
+
+    return context;
   };
 }
 
