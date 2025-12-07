@@ -275,7 +275,6 @@ Hooks.once("init", async () => {
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();
   registerSystemSettings();
-  overrideRulerFunctions();
 
   // This MUST occur after templates, helpers, and system settings are loaded or registered.
   MigrationRunner.instantiate();
@@ -290,6 +289,10 @@ Hooks.once("init", async () => {
  * but then we moved to integers for maintainability's sake.
  */
 Hooks.once("ready", async () => {
+  overrideRulerFunctions();
+  const proto = Object.getPrototypeOf(canvas.controls.ruler);
+  proto.constructor.WAYPOINT_LABEL_TEMPLATE = `systems/${game.system.id}/templates/hud/waypoint-label-dv.hbs`;
+
   if (!game.user.isGM) return;
   const { settings } = game;
 
