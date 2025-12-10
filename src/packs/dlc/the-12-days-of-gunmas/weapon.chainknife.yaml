@@ -10,7 +10,7 @@ img: systems/cyberpunk-red-core/icons/compendium/weapons/Chainsaw_excellent.svg
 name: Chainknife
 system:
   ammoVariety: []
-  attackmod: 1
+  attackmod: 0
   brand: IMI
   canIgnoreArmor: true
   concealable:

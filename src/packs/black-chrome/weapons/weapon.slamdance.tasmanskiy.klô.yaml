@@ -11,7 +11,7 @@ img: systems/cyberpunk-red-core/icons/compendium/cyberweapons/wolvers.svg
 name: SlamDance Tasmanskiy Klô
 system:
   ammoVariety: []
-  attackmod: 0
+  attackmod: 1
   brand: Slamdance Inc.
   canIgnoreArmor: true
   concealable:

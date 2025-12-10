@@ -10,7 +10,7 @@ img: systems/cyberpunk-red-core/icons/compendium/weapons/Sword_excellent.svg
 name: Arasaka Weeping Reaver Katana
 system:
   ammoVariety: []
-  attackmod: 0
+  attackmod: 1
   brand: Arasaka
   canIgnoreArmor: true
   concealable:

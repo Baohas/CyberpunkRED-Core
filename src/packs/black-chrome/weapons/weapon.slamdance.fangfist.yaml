@@ -10,7 +10,7 @@ img: systems/cyberpunk-red-core/icons/compendium/black-chrome/fangfist.svg
 name: SlamDance FangFist
 system:
   ammoVariety: []
-  attackmod: 0
+  attackmod: 1
   brand: Slamdance Inc.
   canIgnoreArmor: true
   concealable:
