@@ -89,12 +89,6 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Fix options slots for exotic weapons
 - Fix term "Optional Slots" to "Option Slots"
 
-## Version 0.92.2
-
-### Bug Fixes
-
-- #1474 - Fix term "Optional Slots" to "Option Slots"
-
 ## Version 0.92.1
 
 ### Bug Fixes
