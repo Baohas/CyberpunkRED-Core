@@ -4,6 +4,10 @@
 
 ## Version 0.92.2
 
+### New Features
+
+- Add Ukrainian Language support
+
 ### Bug Fixes
 
 - Fix term "Optional Slots" to "Option Slots"

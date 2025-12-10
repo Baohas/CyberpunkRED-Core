@@ -641,6 +641,11 @@
       "lang": "ru",
       "name": "Russian",
       "path": "lang/ru.json"
+    },
+    {
+      "lang": "uk-UA",
+      "name": "Ukrainian",
+      "path": "lang/uk-UA.json"
     }
   ],
   "initiative": "1d10 + @stats.ref.value",
