@@ -31,7 +31,7 @@ system:
   fireModes:
     autoFire: 4
     suppressiveFire: true
-  handsReq: 1
+  handsReq: 2
   ignoreArmorPercent: 0
   ignoreBelowSP: 0
   installedItems:
@@ -48,7 +48,7 @@ system:
     max: 500
     value: 0
   price:
-    market: 5000
+    market: 1000
   quality: standard
   revealed: true
   rof: 1
