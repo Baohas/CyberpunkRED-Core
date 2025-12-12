@@ -1,6 +1,7 @@
 import CPRSystemUtils from "../../utils/cpr-systemUtils.js";
 import Progress from "../../utils/Progress.js";
 import CPR from "../config.js";
+import DEV_MODE from "../devMode.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -221,15 +222,6 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Get the devMode options for the MigrationApp.
-   *
-   * @returns {object}
-   */
-  get devMode() {
-    return this.migrationRunner.constructor.devMode.app;
-  }
-
-  /**
    * Not explicitly an override, but rather Foundry itself merges this object
    * up the prototype chain.
    */
@@ -315,7 +307,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   /** @override */
   _onFirstRender(_context, _options) {
     const { element } = this;
-    const devModeShowModal = this.devMode.modal;
+    const devModeShowModal = DEV_MODE.migrations.app.modal;
     if (this.options.modal && devModeShowModal) element.showModal();
     else element.show();
 
@@ -510,7 +502,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   static returnToSetup() {
     if (this.currentPhase === "userConfirm") this.rejectMigration();
     if (this.errorPhase) MigrationApp.downloadReport();
-    if (!this.devMode.returnToSetup) return;
+    if (!DEV_MODE.migrations.returnToSetup) return;
     game.shutDown();
   }
 
