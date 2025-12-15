@@ -16,6 +16,7 @@ if grep -r \
   --include="*.js" \
   --exclude="config.js" \
   --exclude="migration-app.js" \
+  --exclude="038-split-packs.js" \
   "${SYSTEM_NAME}" ./*; then
   echo "❌ '${SYSTEM_NAME}' string found, use 'game.system.id' instead."
   exit 1
