@@ -2,6 +2,11 @@
 
 # Changelog
 
+## Version 0.93
+
+- Remove all non-core compendia.
+  - These compendia have been moved to the `cyberpunk-red-dlc` module
+
 ## Version 0.92.1
 
 ### Bug Fixes
