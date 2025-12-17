@@ -52,8 +52,6 @@ const IMG_MAP = {
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/cyberfinger.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/budget-chipware-socket.svg":
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/budget-chipware-socket.svg",
-  "systems/cyberpunk-red-core/icons/compendium/cyberware/cyberaudio_suite.svg":
-    "modules/cyberpunk-red-dlc/icons/dlc/cyberware/cyberaudio_suite.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/modular-hand.svg":
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/modular-hand.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/explicit-memory-stimulator.svg":
@@ -64,12 +62,8 @@ const IMG_MAP = {
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/extra-joined-cyberleg.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/flash-bulb.svg":
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/flash-bulb.svg",
-  "systems/cyberpunk-red-core/icons/compendium/cyberware/hardend_shielding.svg":
-    "modules/cyberpunk-red-dlc/icons/dlc/cyberware/hardend_shielding.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/heuristic-health-monitor.svg":
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/heuristic-health-monitor.svg",
-  "systems/cyberpunk-red-core/icons/compendium/cyberware/cyberdeck.svg":
-    "modules/cyberpunk-red-dlc/icons/dlc/cyberware/cyberdeck.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/neo-soviet-cyberarm.svg":
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/neo-soviet-cyberarm.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/popup-net.svg":
@@ -84,10 +78,6 @@ const IMG_MAP = {
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/reinforced-cyberarm.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/reinforced-cyberleg.svg":
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/reinforced-cyberleg.svg",
-  "systems/cyberpunk-red-core/icons/compendium/cyberware/cybereye.svg":
-    "modules/cyberpunk-red-dlc/icons/dlc/cyberware/cybereye.svg",
-  "systems/cyberpunk-red-core/icons/compendium/cyberware/subdermal_armor.svg":
-    "modules/cyberpunk-red-dlc/icons/dlc/cyberware/subdermal_armor.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/mechaman-smartglove.svg":
     "modules/cyberpunk-red-dlc/icons/black-chrome/cyberware/mechaman-smartglove.svg",
   "systems/cyberpunk-red-core/icons/compendium/black-chrome/chipvault.svg":
