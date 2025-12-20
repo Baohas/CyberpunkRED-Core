@@ -440,6 +440,14 @@ const IMG_MAP = {
     "modules/cyberpunk-red-dlc/icons/dlc/vehicles/zonda_metrocar.svg",
   "systems/cyberpunk-red-core/icons/compendium/night-city-weather/tactical-umbrella.svg":
     "modules/cyberpunk-red-dlc/icons/dlc/weapons/tactical-umbrella.svg",
+  "systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/appetite_controller.svg":
+    "modules/cyberpunk-red-dlc/icons/dlc/cyberware/appetite_controller.svg",
+  "systems/cyberpunk-red-core/icons/compendium/exotics-of-2045/neutongue.svg":
+    "modules/cyberpunk-red-dlc/icons/dlc/cyberware/neutongue.svg",
+  "systems/cyberpunk-red-core/icons/compendium/must_have_cyberware_deals/neutongue.svg":
+    "modules/cyberpunk-red-dlc/icons/dlc/cyberware/neutongue.svg",
+  "systems/cyberpunk-red-core/icons/compendium/the_12_days_of_gearmas/green_light_go_sniffer.svg":
+    "modules/cyberpunk-red-dlc/icons/dlc/gear/green_light_go_sniffer.svg",
 };
 
 const PACK_MAP = {
@@ -728,6 +736,7 @@ const PACK_MAP = {
   D7TFt1EHP20nKr8S: "dlc_cyberware",
   hoHJUv9O3dPEZk2m: "dlc_cyberware",
   YaBhjpiiLwydzqGt: "dlc_cyberware",
+  mTL4ZsBLRd6dO7Hv: "dlc_cyberware",
   us01uD7Iko8X91G8: "dlc_gear",
   s6f9GxYUg6IUgehg: "dlc_gear",
   YdXY7sRFUX8KBKzq: "dlc_gear",
@@ -778,6 +787,7 @@ const PACK_MAP = {
   KNY6BomYkUOkpctH: "dlc_gear",
   qLpYhxmPD1u2lMG8: "dlc_gear",
   oNzue3FRO2CpslGJ: "dlc_gear",
+  "8M7yCgP1P29TVFcK": "dlc_gear",
   B1qjlWJWYKwXwdOD: "dlc_rolltables",
   uq1cseo3a1hAx7Pg: "dlc_rolltables",
   xWZowpQzG7fpmoP7: "dlc_rolltables",
