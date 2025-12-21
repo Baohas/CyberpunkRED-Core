@@ -736,7 +736,6 @@ const PACK_MAP = {
   D7TFt1EHP20nKr8S: "dlc_cyberware",
   hoHJUv9O3dPEZk2m: "dlc_cyberware",
   YaBhjpiiLwydzqGt: "dlc_cyberware",
-  nFysJU3aqxEIYpwb: "dlc_cyberware",
   mTL4ZsBLRd6dO7Hv: "dlc_cyberware",
   us01uD7Iko8X91G8: "dlc_gear",
   s6f9GxYUg6IUgehg: "dlc_gear",
