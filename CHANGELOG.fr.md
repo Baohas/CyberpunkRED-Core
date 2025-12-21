@@ -2,6 +2,11 @@
 
 # Journal des modifications
 
+## Version 0.93
+
+- Remove all non-core compendia.
+  - These compendia have been moved to the `cyberpunk-red-dlc` module
+
 ## Version 0.92.1
 
 ### Corrections de bugs
@@ -243,7 +248,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.6
 
-### Corrections de bugs
+### Bug Fixes
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
