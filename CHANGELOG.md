@@ -49,6 +49,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 ### New Features
 
 - Add Ukrainian Language support
+- Pre-Installed smartgun-link upgrade into Malorian Arms 3516
 
 ### Bug Fixes
 
@@ -58,6 +59,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Fix Weapon Quality/Attack Mod mismatches
 - Fix `Techtronica Russia BMG 500` price/hands
 - Fix incorrect option slot details for melee weapons, gear items, and upgrade attachments in the core compendiums
+- Fix options slots for exotic weapons
 
 ## Version 0.92.1
 
