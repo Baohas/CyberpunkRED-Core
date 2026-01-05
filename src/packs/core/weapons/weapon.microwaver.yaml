@@ -26,6 +26,13 @@ system:
         rendered inoperable for a minute unless the target passes a
         <strong>DV15 Cybertech Check</strong>.
       </p>
+      <p>
+        <em
+          >Select target token and use
+          @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get
+          EMP'd Items} to determine what items are affected.</em
+        >
+      </p>
   dvTable: DV Pistol
   equipped: owned
   favorite: false
@@ -38,10 +45,9 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - itemUpgrade
       - ammo
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isRanged: true
   magazine:

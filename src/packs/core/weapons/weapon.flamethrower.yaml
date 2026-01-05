@@ -11,7 +11,6 @@ name: Flamethrower
 system:
   ammoVariety:
     - shotgunShell
-    - shotgunSlug
   attackmod: 0
   brand: ""
   canIgnoreArmor: false
