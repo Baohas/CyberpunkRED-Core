@@ -34,12 +34,11 @@ system:
   ignoreArmorPercent: 50
   ignoreBelowSP: 0
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
-      - ammo
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isRanged: false
   magazine:
