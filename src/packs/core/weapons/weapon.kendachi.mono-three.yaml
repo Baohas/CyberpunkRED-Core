@@ -32,7 +32,7 @@ system:
     suppressiveFire: false
   handsReq: 2
   ignoreArmorPercent: 50
-  ignoreBelowSP: 0
+  ignoreBelowSP: 11
   installedItems:
     allowed: false
     allowedTypes:

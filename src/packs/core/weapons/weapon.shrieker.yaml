@@ -24,8 +24,9 @@ system:
       <p>
         An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear
         critical injuries. The target must beat a
-        <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the Damaged Ear
-        critical injury.
+        <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the
+        @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged
+        Ear} critical injury.
       </p>
   dvTable: DV Pistol
   equipped: owned
@@ -39,10 +40,9 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - itemUpgrade
       - ammo
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isRanged: true
   magazine:
