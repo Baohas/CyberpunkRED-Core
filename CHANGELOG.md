@@ -52,6 +52,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Corrected armor penetration settings for Federated Arms X-9mm
 - Fix Weapon Quality/Attack Mod mismatches
 - Fix `Techtronica Russia BMG 500` price/hands
+- Fix incorrect option slot details for melee weapons, gear items, and upgrade attachments in the core compendiums
 
 ## Version 0.92.1
 
