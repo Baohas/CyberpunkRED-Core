@@ -65,14 +65,14 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 
 ### Bug Fixes
 
-- #1134 - Fix HP/Humanity interacting with the mouse scrollwheel
-- #1137 - Fix bug preventing extended magazines from modifying weapon ammo count
-- #1149 - Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
-- #1152 - Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
-- #1146 - Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
-- #1161 - Fix shop container config not saving
-- #1139 - Remove items from weapons that do not exist in the game and in the actor owner of the item
-- #1162 - Fix Condition Lab and Triggler configutation styling in Dark Mode
+- Fix HP/Humanity interacting with the mouse scrollwheel
+- Fix bug preventing extended magazines from modifying weapon ammo count
+- Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
+- Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
+- Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
+- Fix shop container config not saving
+- Remove items from weapons that do not exist in the game and in the actor owner of the item
+- Fix Condition Lab and Triggler configutation styling in Dark Mode
 
 ## Version 0.92
 
