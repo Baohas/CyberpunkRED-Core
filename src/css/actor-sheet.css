@@ -375,8 +375,7 @@
     grid-area: pane-bottom;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows:
-      auto 1fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
       "tabs-bottom"
       "content-bottom";
@@ -494,14 +493,14 @@
 .fight-tab {
   background-color: var(--cpr-background-border);
   display: grid;
-  grid-gap: 0.313rem;
+  gap: 0.313rem;
   grid-template-areas: "injuries armor weapon";
   grid-template-columns: 25% 25% auto;
   grid-template-rows: auto;
   height: 100%;
   width: inherit;
 
-  .fight-tab>div {
+  .fight-tab > div {
     background-color: var(--cpr-background-box);
   }
 
@@ -709,24 +708,24 @@
   justify-content: flex-start;
 }
 
-.cpr-tabs>* {
+.cpr-tabs > * {
   flex: 1;
 }
 
-.cpr-tabs>.flex0 {
+.cpr-tabs > .flex0 {
   display: block;
   flex: 0;
 }
 
-.cpr-tabs>.flex1 {
+.cpr-tabs > .flex1 {
   flex: 1;
 }
 
-.cpr-tabs>.flex2 {
+.cpr-tabs > .flex2 {
   flex: 2;
 }
 
-.cpr-tabs>.flex3 {
+.cpr-tabs > .flex3 {
   flex: 3;
 }
 
