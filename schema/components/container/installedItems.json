@@ -9,7 +9,13 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["ammo", "cyberdeck", "cyberware", "itemUpgrade", "program"]
+        "enum": [
+          "ammo",
+          "cyberdeck",
+          "cyberware",
+          "itemUpgrade",
+          "program"
+        ]
       }
     },
     "list": {
@@ -22,9 +28,14 @@
     },
     "usedSlots": {
       "description": "Number of slots used, not supported in compendia so must be 0",
-      "type": "integer",
-      "const": 0
+      "type": "integer"
     }
   },
-  "required": ["allowed", "allowedTypes", "list", "slots", "usedSlots"]
+  "required": [
+    "allowed",
+    "allowedTypes",
+    "list",
+    "slots",
+    "usedSlots"
+  ]
 }
