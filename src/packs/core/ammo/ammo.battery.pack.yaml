@@ -4,9 +4,9 @@ effects: []
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
-img: systems/cyberpunk-red-core/icons/compendium/ammo/battery.png
+      current: 39
+      previous: "38"
+img: systems/cyberpunk-red-core/icons/compendium/ammo/battery.svg
 name: Battery Pack
 system:
   ablationValue: 1
@@ -22,6 +22,7 @@ system:
         Contains 8 shots and can be recharged.
       </p>
   favorite: false
+  installLocation: mall
   overrides:
     autofire:
       minimum: 3
@@ -33,6 +34,7 @@ system:
       value: 3d6
   price:
     market: 50
+  size: 0
   source:
     book: Core
     page: 349

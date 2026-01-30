@@ -4,9 +4,9 @@ effects: []
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
-img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_rubber.png
+      current: 39
+      previous: "38"
+img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolheavy_rubber.svg
 name: Heavy Pistol (Rubber)
 system:
   ablationValue: 0
@@ -22,6 +22,7 @@ system:
         minimum 1hp. Counts as Basic ammo for exotic weapons
       </p>
   favorite: false
+  installLocation: mall
   overrides:
     autofire:
       minimum: 3
@@ -33,6 +34,7 @@ system:
       value: 3d6
   price:
     market: 10
+  size: 0
   source:
     book: Core
     page: 346

@@ -4,9 +4,9 @@ effects: []
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
-img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball_basic.png
+      current: 39
+      previous: "38"
+img: systems/cyberpunk-red-core/icons/compendium/ammo/paintball_basic.svg
 name: Paintball (Basic)
 system:
   ablationValue: 0
@@ -19,6 +19,7 @@ system:
     value: |
       <p>Regular paintballs that don't do any damage. Annoying though.</p>
   favorite: false
+  installLocation: mall
   overrides:
     autofire:
       minimum: 3
@@ -30,6 +31,7 @@ system:
       value: "0"
   price:
     market: 10
+  size: 0
   source:
     book: Core
     page: 347
