@@ -17,8 +17,15 @@
       "url": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core"
     }
   ],
-  "esmodules": ["cpr.js"],
-  "styles": ["css/main.css"],
+  "esmodules": [
+    "cpr.js"
+  ],
+  "styles": [
+    {
+      "src": "css/main.css",
+      "layer": null
+    }
+  ],
   "packFolders": [
     {
       "name": "Cyberpunk RED: Core",
@@ -48,7 +55,11 @@
     {
       "name": "Cyberpunk RED: Other",
       "sorting": "m",
-      "packs": ["other_macros", "other_scenes", "other_changelog"]
+      "packs": [
+        "other_macros",
+        "other_scenes",
+        "other_changelog"
+      ]
     }
   ],
   "packs": [

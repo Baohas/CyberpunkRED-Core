@@ -1,0 +1,60 @@
+/*
+ * Monk's Active Tile Triggers
+ */
+
+.monks-active-tiles {
+  div[data-tab="triggers"] {
+    .action-items {
+      .action-style {
+        color: var(--cpr-text-normal) !important;
+      }
+
+      .entity-style {
+        color: var(--cpr-text-icon-normal) !important;
+      }
+
+      .details-style {
+        color: var(--cpr-text-normal) !important;
+      }
+    }
+  }
+
+  .file-list {
+    .image-name {
+      color: var(--cpr-text-normal) !important;
+    }
+
+    li {
+      a {
+        color: var(--cpr-text-normal) !important;
+      }
+    }
+  }
+}
+
+.monks-active-tiles.sheet {
+  .items-list {
+    .item-name {
+      h4 {
+        color: var(--cpr-text-icon-normal) !important;
+      }
+    }
+
+    .item-header {
+      background: var(--cpr-background-editor-button) !important;
+      color: var(--cpr-text-normal) !important;
+    }
+
+    .item-controls {
+      a {
+        color: var(--cpr-text-normal) !important;
+      }
+    }
+  }
+}
+
+.action-sheet {
+  .display-value {
+    color: var(--cpr-text-normal) !important;
+  }
+}

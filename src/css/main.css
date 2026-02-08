@@ -1,30 +1,10 @@
-@import url("active-effect-sheet.css");
-@import url("actor-sheet.css");
-@import url("apps.css");
-@import url("armor-list.css");
-@import url("black-ice-sheet.css");
-@import url("chat.css");
-@import url("container-sheet.css");
-@import url("demon-sheet.css");
-@import url("dialogs.css");
-@import url("flex.css");
-@import url("fonts.css");
-@import url("foundry-overrides.css");
-@import url("glitch.css");
-@import url("injuries-list.css");
-@import url("item-card.css");
-@import url("item-directory.css");
-@import url("item-sheet.css");
-@import url("layout.css");
-@import url("ledger.css");
-@import url("lists.css");
-@import url("migration.css");
-@import url("module-support.css");
-@import url("mook-sheet.css");
-@import url("text.css");
-@import url("variables.css");
-@import url("weapon-list.css");
-@import url("progress-bar.css");
+@import url("apps/index.css");
+@import url("chat/index.css");
+@import url("compatability/index.css");
+@import url("elements/index.css");
+@import url("layout/index.css");
+@import url("sheets/index.css");
+@import url("variables/index.css");
 
 div,
 section {

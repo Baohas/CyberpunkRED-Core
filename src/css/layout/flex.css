@@ -5,6 +5,12 @@
   justify-content: flex-start;
 }
 
+/* Used to spread space between fields */
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .flex-center {
   display: flex;
   align-items: center;

@@ -49,13 +49,14 @@ async function cleanDist() {
   }
 }
 
-// Process CSS through PostCSS
 async function compileCss() {
   return new Promise((cb) => {
     log("Building CSS...");
     _createDist();
     gulp
-      .src(path.resolve(SRC_DIR, "css/*.css"))
+      // main.css includes all other src/css files and then is compieled to
+      // a single file by postcss to a single main.css in dist/css
+      .src(path.resolve(SRC_DIR, "css/main.css"))
       .pipe(
         postcss([
           postcssImport({

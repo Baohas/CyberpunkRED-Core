@@ -127,7 +127,6 @@
 
     .item-bottom-content-section {
       grid-area: item-bottom-content;
-
       border-style: solid;
       border-width: 0.313rem;
       overflow-y: hidden;

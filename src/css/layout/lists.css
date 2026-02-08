@@ -65,7 +65,7 @@
         padding-right: 0.1rem;
       }
 
-      .action-container > a {
+      .action-container>a {
         display: inline;
       }
     }
@@ -175,7 +175,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 600px;
+    max-width: 37.5rem;
   }
 
   /* Hide a row in the list */
@@ -379,7 +379,7 @@
     flex: 0 0 33%;
   }
 
-  .name.item-edit > sup {
+  .name.item-edit>sup {
     margin-left: 0.313rem;
   }
 
