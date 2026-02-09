@@ -84,8 +84,8 @@
   --cpr-migration-overlay-error: rgb(156 18 18 / 70%);
   --cpr-migration-overlay-success: rgb(30 125 34 / 70%);
   --cpr-migration-overlay-warning: rgb(156 123 30 / 70%);
-  --cpr-pause-highlight1: #2388d2;
-  --cpr-pause-highlight2: #8ef104;
+  --cpr-pause-highlight1: #1bc7fb;
+  --cpr-pause-highlight2: #e0287d;
   --cpr-pause-text: var(--cpr-color-white);
 
   /* Text Colors */
