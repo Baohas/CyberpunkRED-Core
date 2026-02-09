@@ -431,7 +431,9 @@ async function watchSrc() {
 
   SOURCE_FILES.forEach((file) => watcher(file.from, file.to));
   SOURCE_DIRS.forEach((folder) => watcher(folder.from, folder.to));
-  gulp.watch("src/css/*.css").on("all", () => compileCss());
+  gulp
+    .watch(["src/css/*.css", "src/css/**/*.css"])
+    .on("all", () => compileCss());
   // disabling while we fix Crowdin
   // gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
   gulp
