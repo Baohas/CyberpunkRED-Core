@@ -39,8 +39,8 @@ export default {
   },
   overrides: [
     {
-      // Allow colors only in variables.css
-      files: ["src/css/variables.css"],
+      // Allow colors only in variables/
+      files: ["src/css/variables/*.css", "src/css/variables/**/*.css"],
       rules: {
         "color-no-hex": null,
         "function-disallowed-list": null,
