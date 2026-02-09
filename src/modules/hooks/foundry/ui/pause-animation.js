@@ -10,7 +10,7 @@ const PauseAnimation = () => {
    * @public
    * @memberof hookEvents
    */
-  Hooks.on("renderGamePause", (html) => {
+  Hooks.on("renderGamePause", (_, html) => {
     // Avoid conflicts if multiple systems register this hook
     if (Hooks.events.renderGamePause.length > 1) return;
 

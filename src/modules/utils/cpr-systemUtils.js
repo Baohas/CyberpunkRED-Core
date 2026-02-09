@@ -101,22 +101,42 @@ export default class CPRSystemUtils {
   }
 
   /**
-   * Set the selected theme
+   * Set the selected theme based on priority:
+   * 1. Manual selection (if user chose a specific theme)
+   * 2. Follow Foundry's color scheme setting
+   * 3. Browser default (when Foundry returns "")
    *
    * @static
+   * @param {HTMLElement} [node] - Optional node for popped out windows
    */
   static SetTheme(node) {
-    const theme = game.settings.get(game.system.id, "theme")
-      ? game.settings.get(game.system.id, "theme")
-      : "default";
+    const themeSetting = game.settings.get(game.system.id, "theme") || "auto";
+    let theme;
 
-    // `node` is passed from the `PopOut:popout` hook, so if we have that set the
-    // theme in the popped out window, else just set it in the primary window
-    if (node) {
-      node.ownerDocument.documentElement.setAttribute("data-cpr-theme", theme);
+    if (themeSetting === "auto") {
+      // Follow Foundry's color scheme preference
+      const foundryColorScheme = game.settings.get("core", "uiConfig")
+        ?.colorScheme?.applications;
+
+      if (foundryColorScheme === "light") {
+        theme = "default";
+      } else if (foundryColorScheme === "dark") {
+        theme = "dark";
+      } else {
+        // foundryColorScheme is "" (browser default)
+        // Check browser preference
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)"
+        ).matches;
+        theme = prefersDark ? "dark" : "default";
+      }
     } else {
-      document.documentElement.setAttribute("data-cpr-theme", theme);
+      // User has manually selected a theme
+      theme = themeSetting;
     }
+
+    const targetDocument = node ? node.ownerDocument : document;
+    targetDocument.documentElement.setAttribute("data-cpr-theme", theme);
   }
 
   /**

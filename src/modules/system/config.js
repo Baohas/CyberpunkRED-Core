@@ -869,8 +869,9 @@ CPR.defaultSituationalMods = {
 };
 
 CPR.themes = {
-  default: "CPR.settings.theme.name.default",
-  darkmode: "CPR.settings.theme.name.darkmode",
+  auto: "CPR.settings.theme.name.auto",
+  light: "CPR.settings.theme.name.light",
+  dark: "CPR.settings.theme.name.dark",
 };
 
 CPR.migrationDocTypes = {
