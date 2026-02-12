@@ -14,6 +14,8 @@
 
 ### Bug Fixes
 
+- Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
+
 ### New Features
 
 ## Version 0.92.2
