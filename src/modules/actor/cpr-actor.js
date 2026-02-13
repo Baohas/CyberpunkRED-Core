@@ -1307,6 +1307,7 @@ export default class CPRActor extends Actor {
     damageLethal,
     formData
   ) {
+    let rawDamageDealt = 0;
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
     let takenDamage = 0;
@@ -1463,6 +1464,7 @@ export default class CPRActor extends Actor {
         damage,
         bonusDamage,
         hpReduction: takenDamage,
+        rawDamageDealt,
         totalDamageDealt,
         location,
         totalDamageReduction,
@@ -1483,9 +1485,11 @@ export default class CPRActor extends Actor {
     // If damage did penetrate armor, deal the regular damage.
     if (location === "head") {
       // Damage taken against the head is doubled.
-      totalDamageDealt += 2 * (damage - armorSPRef);
+      rawDamageDealt = 2 * (damage - armorSPRef);
+      totalDamageDealt += rawDamageDealt;
     } else {
-      totalDamageDealt += damage - armorSPRef;
+      rawDamageDealt = damage - armorSPRef;
+      totalDamageDealt += rawDamageDealt;
     }
 
     // Tally up takenDamage. If takenDamage is negative from damageReduction, make 0. This way negative takenDamage doesn't heal.
@@ -1514,6 +1518,7 @@ export default class CPRActor extends Actor {
       damage,
       bonusDamage,
       hpReduction: takenDamage,
+      rawDamageDealt,
       totalDamageDealt,
       location,
       totalDamageReduction,
