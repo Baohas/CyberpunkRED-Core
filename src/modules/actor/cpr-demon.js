@@ -54,17 +54,16 @@ export default class CPRDemonActor extends Actor {
   /**
    * Apply damage to the rez of the deamon.
    * @param {int} damage - direct damage dealt
-   * @param {int} bonusDamage - bonus damage dealt
    */
-  async _applyDamage(damage, bonusDamage) {
-    // As a Demon does not have any armor, the damage will be simply subtracted from the REZ.
+  async _applyDamage(damage) {
+    // As a Demon does not have any armor, and do not suffer crit damage, the damage will be simply subtracted from the REZ.
     const currentRez = this.system.stats.rez.value;
     await this.update({
-      "system.stats.rez.value": currentRez - damage - bonusDamage,
+      "system.stats.rez.value": currentRez - damage,
     });
     CPRChat.RenderDamageApplicationCard({
       actor: this,
-      hpReduction: damage + bonusDamage,
+      hpReduction: damage,
       rezReduction: true,
     });
   }
