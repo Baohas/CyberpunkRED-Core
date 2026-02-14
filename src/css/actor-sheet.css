@@ -505,149 +505,148 @@
       background-color: var(--cpr-background-box);
     }
 
-    .section-name {
+  .section-name {
+    background-color: var(--cpr-background-header);
+    color: var(--cpr-text-header);
+  }
+
+  .injuries-section {
+    grid-area: injuries;
+    min-height: 2.188rem;
+
+    .fa-trash-can {
+      color: var(--cpr-text-icon-highlight);
+    }
+  }
+
+  .armor-section {
+    grid-area: armor;
+    min-height: 2.188rem;
+    background-color: var(--cpr-background-box);
+  }
+
+  .weapon-section {
+    grid-area: weapon;
+    min-height: 2.188rem;
+    background-color: var(--cpr-background-box);
+
+    .items-header {
       background-color: var(--cpr-background-header);
       color: var(--cpr-text-header);
     }
+  }
 
-    .injuries-section {
-      grid-area: injuries;
-      min-height: 2.188rem;
+  .interface-abilities-section {
+    grid-area: injuries;
+    min-height: 2.188rem;
 
-      .fa-trash-can {
-        color: var(--cpr-text-icon-highlight);
-      }
-    }
-
-    .armor-section {
-      grid-area: armor;
-      min-height: 2.188rem;
-      background-color: var(--cpr-background-box);
-    }
-
-    .weapon-section {
-      grid-area: weapon;
-      min-height: 2.188rem;
-      background-color: var(--cpr-background-box);
-
-      .items-header {
-        background-color: var(--cpr-background-header);
-        color: var(--cpr-text-header);
-      }
-    }
-
-    .interface-abilities-section {
-      grid-area: injuries;
-      min-height: 2.188rem;
-
-      .items-header {
-        height: 1.25rem;
-      }
-    }
-
-    .select-net-role {
+    .items-header {
       height: 1.25rem;
-      max-width: 50%;
-      background-color: var(--cpr-background-box);
+    }
+  }
+
+  .select-net-role {
+    height: 1.25rem;
+    max-width: 50%;
+    background-color: var(--cpr-background-box);
+  }
+
+  .cyberdeck-installed-section {
+    grid-area: armor;
+    min-height: 2.188rem;
+
+    .items-header {
+      background-color: var(--cpr-background-cyberdeck-section-header);
     }
 
-    .cyberdeck-installed-section {
-      grid-area: armor;
-      min-height: 2.188rem;
+    .cyberdeck-installed-software-list {
+      display: grid;
+      grid-template-columns: 1fr 1.875rem 1.875rem;
+      grid-template-areas: "program-name program-attack-and-damage program-actions";
 
-      .items-header {
-        background-color: var(--cpr-background-cyberdeck-section-header);
+      .installed-program-name {
+        grid-area: program-name;
       }
 
-      .cyberdeck-installed-software-list {
+      .installed-program-attack-and-damage {
+        grid-area: program-attack-and-damage;
         display: grid;
-        grid-template-columns: 1fr 1.875rem 1.875rem;
-        grid-template-areas: "program-name program-attack-and-damage program-actions";
+        grid-template-columns: 0.938rem 0.938rem;
+        grid-template-areas: "program-attack program-damage";
 
-        .installed-program-name {
-          grid-area: program-name;
+        .installed-program-attack {
+          grid-area: program-attack;
         }
 
-        .installed-program-attack-and-damage {
-          grid-area: program-attack-and-damage;
-          display: grid;
-          grid-template-columns: 0.938rem 0.938rem;
-          grid-template-areas: "program-attack program-damage";
-
-          .installed-program-attack {
-            grid-area: program-attack;
-          }
-
-          .installed-program-defense {
-            grid-area: program-defense;
-          }
-
-          .installed-program-damage {
-            grid-area: program-damage;
-          }
+        .installed-program-defense {
+          grid-area: program-defense;
         }
 
-        .installed-program-actions {
-          grid-area: program-actions;
+        .installed-program-damage {
+          grid-area: program-damage;
+        }
+      }
 
-          .fa-folder-minus {
-            color: var(--cpr-text-icon-highlight);
-          }
+      .installed-program-actions {
+        grid-area: program-actions;
+
+        .fa-folder-minus {
+          color: var(--cpr-text-icon-highlight);
         }
       }
     }
+  }
 
-    .cyberdeck-rezzed-section {
-      grid-area: weapon;
-      min-height: 2.188rem;
+  .cyberdeck-rezzed-section {
+    grid-area: weapon;
+    min-height: 2.188rem;
 
-      .items-header {
-        background-color: var(--cpr-background-cyberdeck-section-header);
+    .items-header {
+      background-color: var(--cpr-background-cyberdeck-section-header);
+    }
+
+    .cyberdeck-rezzed-software-list {
+      display: grid;
+      grid-template-columns: 1fr 1.875rem 1.875rem 1.875rem 1.875rem 1.875rem 4.375rem;
+      grid-template-areas: "program-name program-per  program-spd program-atk program-def program-rez-and-decrement program-reset";
+
+      .rezzed-program-name {
+        grid-area: program-name;
       }
 
-      .cyberdeck-rezzed-software-list {
+      .rezzed-program-per {
+        grid-area: program-per;
+      }
+
+      .rezzed-program-spd {
+        grid-area: program-spd;
+      }
+
+      .rezzed-program-atk {
+        grid-area: program-atk;
+      }
+
+      .rezzed-program-def {
+        grid-area: program-def;
+      }
+
+      .rezzed-program-rez-and-decrement {
+        grid-area: program-rez-and-decrement;
         display: grid;
-        grid-template-columns: 1fr 1.875rem 1.875rem 1.875rem 1.875rem 1.875rem 4.375rem;
-        grid-template-areas: "program-name program-per  program-spd program-atk program-def program-rez-and-decrement program-reset";
+        grid-template-columns: 0.938rem 0.938rem;
+        grid-template-areas: "program-rez program-rez-decrement";
 
-        .rezzed-program-name {
-          grid-area: program-name;
+        .rezzed-program-rez {
+          grid-area: program-rez;
         }
 
-        .rezzed-program-per {
-          grid-area: program-per;
+        .rezzed-program-rez-decrement {
+          grid-area: program-rez-decrement;
         }
+      }
 
-        .rezzed-program-spd {
-          grid-area: program-spd;
-        }
-
-        .rezzed-program-atk {
-          grid-area: program-atk;
-        }
-
-        .rezzed-program-def {
-          grid-area: program-def;
-        }
-
-        .rezzed-program-rez-and-decrement {
-          grid-area: program-rez-and-decrement;
-          display: grid;
-          grid-template-columns: 0.938rem 0.938rem;
-          grid-template-areas: "program-rez program-rez-decrement";
-
-          .rezzed-program-rez {
-            grid-area: program-rez;
-          }
-
-          .rezzed-program-rez-decrement {
-            grid-area: program-rez-decrement;
-          }
-        }
-
-        .rezzed-program-reset {
-          grid-area: program-reset;
-        }
+      .rezzed-program-reset {
+        grid-area: program-reset;
       }
     }
   }
