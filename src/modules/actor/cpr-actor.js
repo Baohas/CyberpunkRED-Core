@@ -1349,7 +1349,8 @@ export default class CPRActor extends Actor {
     if (location === "brain") {
       // This is damage done in a netrun, which completely ignores armor
       const currentHp = this.system.derivedStats.hp.value;
-      totalDamageDealt = damage + bonusDamage;
+      // Critical bonusDamage is not applied to brain damage (or any net combat)
+      totalDamageDealt = damage;
       if (formData.brainDamageReduction) {
         totalDamageReduction += this.bonuses.brainDamageReduction;
       }
