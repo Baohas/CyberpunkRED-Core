@@ -22,10 +22,12 @@
 - Fix damage calculations to include upgrades for armors
 - Update popup weapon cyberware details and register them as `concealable`
 - Fix mook crit injuries from not appearing in chat when rolled
+- Prevent net combat from dealing critical damage
 
 ### New Features
 
 - Actors created as "Mooks" will now use the mook sheet layout by default. Mooks may still be configured to use the character sheet layout as before.
+- Reformat chatcards to make the expanded damage roll calculations easier to read
 
 ## Version 0.92.2
 
