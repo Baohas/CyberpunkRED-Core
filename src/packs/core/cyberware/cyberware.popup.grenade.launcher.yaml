@@ -14,8 +14,9 @@ system:
     - grenade
   attackmod: 0
   brand: ""
+  canIgnoreArmor: false
   concealable:
-    concealable: false
+    concealable: true
     isConcealed: false
   core: false
   critFailEffect: jammed
@@ -24,7 +25,9 @@ system:
     value: |
       <p>
         A concealable one-shot Grenade Launcher. Can't hold anything with this hand
-        while activated.
+        while activated. Incompatible with all upgrades except
+        @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun
+        Link}.
       </p>
   dvTable: DV Grenade Launcher
   favorite: false
@@ -34,6 +37,8 @@ system:
   humanityLoss:
     roll: 2d6
     static: 7
+  ignoreArmorPercent: 0
+  ignoreBelowSP: 0
   installLocation: clinic
   installedItems:
     allowed: true
@@ -41,7 +46,7 @@ system:
       - itemUpgrade
       - ammo
     list: []
-    slots: 3
+    slots: 2
     usedSlots: 0
   isElectronic: true
   isFoundational: false
