@@ -15,10 +15,12 @@
   - Rank allocation follows the same process as described on page 149 of the Core Rule Book. Allocate one point to `Medical Tech Skills` For each point allocated to `Medical Tech (Cryosystem)` & `Medical Tech (Pharmaceuticals)` and allocate two points to `Surgery Skill` for each point allocated to `Surgery`.
 - Fix damage calculations to include upgrades for armors
 - Update popup weapon cyberware details and register them as `concealable`
+- Prevent net combat from dealing critical damage
 
 ### New Features
 
 - Actors created as "Mooks" will now use the mook sheet layout by default. Mooks may still be configured to use the character sheet layout as before.
+- Reformat chatcards to make the expanded damage roll calculations easier to read
 
 ## Version 0.92.2
 
