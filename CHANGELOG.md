@@ -14,6 +14,7 @@
   - Medtech role abilities should no longer notify users to `Check your role rank abilities, they don’t look right, Choomba”` when correctly allocating rank points.
   - Rank allocation follows the same process as described on page 149 of the Core Rule Book. Allocate one point to `Medical Tech Skills` For each point allocated to `Medical Tech (Cryosystem)` & `Medical Tech (Pharmaceuticals)` and allocate two points to `Surgery Skill` for each point allocated to `Surgery`.
 - Fix damage calculations to include upgrades for armors
+- Update popup weapon cyberware details and register them as `concealable`
 
 ### New Features
 
