@@ -18,6 +18,8 @@
 
 ### New Features
 
+- Actors created as "Mooks" will now use the mook sheet layout by default. Mooks may still be configured to use the character sheet layout as before.
+
 ## Version 0.92.2
 
 ### Action Needed
