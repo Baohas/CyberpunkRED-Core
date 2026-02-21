@@ -9,6 +9,7 @@
 ### Bug Fixes
 
 - Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
+- Fix location of upgrade element for equipped armor
 
 ### New Features
 
