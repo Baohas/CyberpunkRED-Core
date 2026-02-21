@@ -56,8 +56,9 @@ import MigrationError from "./modules/system/migrate/migration-error.js";
 Hooks.once("init", async () => {
   LOGGER.log("THANK YOU TO EVERYONE WHO HELPED!!!!");
   LOGGER.credits();
-  // Register Actor Sheet Application Classes
+  // Removes "Default Actor Sheet" option from sheet style selection and prevents users from breaking blackICE, containers, and demons
   Actors.unregisterSheet("core", ActorSheet);
+  // Register Actor Sheet Application Classes
   Actors.registerSheet(game.system.id, CPRCharacterActorSheet, {
     label: SystemUtils.Localize("CPR.sheets.characterSheet"),
     types: ["character"],
