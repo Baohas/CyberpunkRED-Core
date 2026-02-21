@@ -60,8 +60,21 @@ Hooks.once("init", async () => {
   Actors.unregisterSheet("core", ActorSheet);
   Actors.registerSheet(game.system.id, CPRCharacterActorSheet, {
     label: SystemUtils.Localize("CPR.sheets.characterSheet"),
-    types: ["character", "mook"],
+    types: ["character"],
     makeDefault: true,
+  });
+  Actors.registerSheet(game.system.id, CPRCharacterActorSheet, {
+    label: SystemUtils.Localize("CPR.sheets.characterSheet"),
+    types: ["mook"],
+  });
+  Actors.registerSheet(game.system.id, CPRMookActorSheet, {
+    label: SystemUtils.Localize("CPR.sheets.mookSheet"),
+    types: ["mook"],
+    makeDefault: true,
+  });
+  Actors.registerSheet(game.system.id, CPRMookActorSheet, {
+    label: SystemUtils.Localize("CPR.sheets.mookSheet"),
+    types: ["character"],
   });
   Actors.registerSheet(game.system.id, CPRBlackIceActorSheet, {
     label: SystemUtils.Localize("CPR.sheets.blackiceSheet"),
@@ -77,10 +90,6 @@ Hooks.once("init", async () => {
     label: SystemUtils.Localize("CPR.sheets.demonSheet"),
     types: ["demon"],
     makeDefault: true,
-  });
-  Actors.registerSheet(game.system.id, CPRMookActorSheet, {
-    label: SystemUtils.Localize("CPR.sheets.mookSheet"),
-    types: ["character", "mook"],
   });
 
   // Register Item Sheet Application Classes
