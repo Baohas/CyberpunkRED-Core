@@ -8,6 +8,14 @@
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
 
+## Version 0.92.3
+
+### Action Needed
+
+### Bug Fixes
+
+### New Features
+
 ## Version 0.92.2
 
 ### Action Needed
