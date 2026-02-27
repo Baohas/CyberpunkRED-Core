@@ -35,6 +35,7 @@ if [[ $(echo "${CHOOM_TEST_RESPONSE}" | jq -r '.state') == "active" ]]; then
   exit 0
 else
   echo "❌ CHOOM_BOT_API cannot authenticate. See the wiki for more information."
+  echo "API Response: ${CHOOM_TEST_RESPONSE}"
   echo "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/wikis/ops/GitLab#bot-accounts--access-tokens"
   exit 1
 fi

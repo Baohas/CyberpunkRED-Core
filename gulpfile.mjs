@@ -19,7 +19,8 @@ export const assets = gulp.parallel(
   bld.processSvgs,
   bld.processImages,
   bld.buildManifest,
-  bld.copyAssets
+  bld.copyAssets,
+  bld.generateDevMode
 );
 
 // Export packs from Foundry to src/packs

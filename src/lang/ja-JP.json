@@ -876,7 +876,7 @@
   "CPR.itemSheet.cyberdeck.eraseProgram": "プログラムを削除",
   "CPR.itemSheet.cyberware.hasOptionSlots": "オプションスロットを持つ",
   "CPR.itemSheet.cyberware.option": "オプション",
-  "CPR.itemSheet.cyberware.optionalSlots": "オプションスロット",
+  "CPR.itemSheet.cyberware.optionalSlots": "Option slots",
   "CPR.itemSheet.cyberware.requiresFoundational": "基礎になるウェアが必要",
   "CPR.itemSheet.cyberware.rolled": "ロール時",
   "CPR.itemSheet.cyberware.slotSize": "オプションスロット使用量(サイズ)",

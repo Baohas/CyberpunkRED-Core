@@ -375,9 +375,7 @@
     grid-area: pane-bottom;
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows:
-      auto
-      1fr;
+    grid-template-rows: auto 1fr;
     grid-template-areas:
       "tabs-bottom"
       "content-bottom";

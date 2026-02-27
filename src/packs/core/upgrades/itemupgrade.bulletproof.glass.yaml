@@ -34,11 +34,11 @@ system:
   ignoreArmorPercent: 50
   installLocation: mall
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isElectronic: false
   isRanged: false

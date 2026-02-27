@@ -13,7 +13,9 @@ import postcssNested from "postcss-nested";
 import through2 from "through2";
 
 import ChangelogUtils from "./utils/changelogUtils.mjs";
+import DataUtils from "./utils/DataUtils.mjs";
 
+import DEV_MODE_DEFAULTS from "./devMode.mjs";
 import {
   CI,
   DEBUG,
@@ -93,6 +95,36 @@ async function copyAssets() {
       gulp.src(asset.from).pipe(gulp.dest(path.resolve(DEST_DIR, asset.to)));
     });
     log("Finished copying static assets.");
+    cb();
+  });
+}
+
+async function generateDevMode() {
+  return new Promise((cb) => {
+    log("Generating devMode.js...");
+    _createDist();
+    let foundryConfig = {};
+    if (fs.existsSync("foundryconfig.json")) {
+      // Read foundryconfig.json
+      const foundryConfigRaw = fs.readFileSync(
+        path.resolve(process.cwd(), "foundryconfig.json")
+      );
+      foundryConfig = JSON.parse(foundryConfigRaw);
+    }
+
+    // Generate merged devMode
+    const mergedDevMode = DataUtils.deepMerge(
+      DEV_MODE_DEFAULTS.devMode,
+      foundryConfig.devMode || {}
+    );
+    const devModeJsContent =
+      "// Auto-generated during build - DO NOT EDIT\n" +
+      `const DEV_MODE = ${JSON.stringify(mergedDevMode, null, 2)};\n` +
+      "export default DEV_MODE;";
+    const devModePath = path.join(DEST_DIR, "modules", "system", "devMode.js");
+    fs.ensureDirSync(path.dirname(devModePath));
+    fs.writeFileSync(devModePath, devModeJsContent, "utf8");
+    log("Generated devMode.js");
     cb();
   });
 }
@@ -414,6 +446,7 @@ export {
   cleanDist,
   copyAssets,
   compileCss,
+  generateDevMode,
   watchSrc,
   processImages,
   processSvgs,

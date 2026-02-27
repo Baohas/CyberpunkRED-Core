@@ -4,6 +4,7 @@ import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import MigrationApp from "./migration-app.js";
 import CPR from "../config.js";
+import DEV_MODE from "../devMode.js";
 import MigrationError from "./migration-error.js";
 
 /**
@@ -15,7 +16,7 @@ import MigrationError from "./migration-error.js";
  */
 export default class MigrationRunner {
   /** The latest data model version we want to migrate to. */
-  static #LATEST_VERSION = 37;
+  static #LATEST_VERSION = 39;
 
   /**
    * The minimum data model version we allow users to migrate from.
@@ -60,24 +61,6 @@ export default class MigrationRunner {
     const MR = new MigrationRunner();
     game.cpr.MigrationRunner = MR;
   }
-
-  /**
-   * Change default behaviors so migrations are easier to test.
-   * The following booleans represent the default behavior.
-   *
-   * NOTE: DO NOT commit changes to these booleans.
-   */
-  static devMode = {
-    enforceMinimumVersion: true,
-    remigrateAlreadyMigrated: false,
-    batchMigrations: true,
-    migrateSystemCompendia: false,
-    simulateMigrationError: false,
-    app: {
-      returnToSetup: true,
-      modal: true,
-    },
-  };
 
   /** @type {MigrationError} */
   error;
@@ -230,7 +213,7 @@ export default class MigrationRunner {
     const migrationApp = new MigrationApp({ migrationRunner: this });
     await migrationApp.render({ force: true });
 
-    if (MigrationRunner.devMode.simulateMigrationError) {
+    if (DEV_MODE.migrations.simulateMigrationError) {
       throw new Error("Simulated migration error");
     }
 
@@ -241,7 +224,7 @@ export default class MigrationRunner {
     const MINIMUM_VERSION = MigrationRunner.#MINIMUM_VERSION;
     const belowMinimumVersion =
       currentDataModelVersion < MINIMUM_VERSION.dataModel;
-    const { enforceMinimumVersion } = MigrationRunner.devMode;
+    const { enforceMinimumVersion } = DEV_MODE.migrations;
     if (belowMinimumVersion && enforceMinimumVersion) {
       await migrationApp.setCurrentPhase("userPrevented", {
         messageData: {
@@ -410,7 +393,7 @@ export default class MigrationRunner {
     }
 
     // Filter for docs that are not already migrated, in the case of an incomplete migration.
-    const { remigrateAlreadyMigrated } = MigrationRunner.devMode;
+    const { remigrateAlreadyMigrated } = DEV_MODE.migrations;
     const nonMigratedDocs = docList.filter((doc) => {
       return !this.alreadyMigrated(doc, remigrateAlreadyMigrated);
     });
@@ -471,7 +454,7 @@ export default class MigrationRunner {
      NOTE: During dev you might want to run migrations on our own packs
      rather than migrate by hand. If so, uncomment the following line.
      */
-    if (this.devMode.migrateSystemCompendia) sourceTypes.push("system");
+    if (DEV_MODE.migrations.migrateSystemCompendia) sourceTypes.push("system");
 
     // Get a list of packs to migrate based on the above
     // and modules selected by the user in the app.
@@ -541,7 +524,7 @@ export default class MigrationRunner {
    */
   async migrateDocuments(
     documents,
-    { batch = MigrationRunner.devMode.batchMigrations, pack = null } = {}
+    { batch = DEV_MODE.migrations.batchMigrations, pack = null } = {}
   ) {
     if (!documents.length) return;
     const [firstEntry] = documents;

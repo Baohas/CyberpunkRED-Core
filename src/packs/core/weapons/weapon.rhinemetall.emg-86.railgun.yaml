@@ -23,13 +23,7 @@ system:
     value: |
       <p>
         An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY
-        11 or higher (unless mounted). Ignores any armor below SP11*.
-      </p>
-      <p>
-        <em
-          >*Not currently supported to will need to manually apply damage to armoured
-          targets</em
-        >
+        11 or higher (unless mounted). Ignores any armor below SP11.
       </p>
   dvTable: DV Assault Rifle
   equipped: owned
@@ -43,10 +37,9 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - itemUpgrade
       - ammo
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isRanged: true
   magazine:

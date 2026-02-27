@@ -13,3 +13,5 @@ export { default as CPRInstallTreeFlagMigration } from "./034-migrate-cprInstall
 export { default as SetActorSheetCreatedWeaponSkill } from "./035-set-weapon-skill.js";
 export { default as ReplaceProgramsWithProgram } from "./036-correct-allowed-types.js";
 export { default as RemoveInvalidUpgrates } from "./037-remove-invalid-upgrates.js";
+export { default as SplitPacks } from "./038-split-packs.js";
+export { default as AmmoIconConversion } from "./039-ammo-icons.js";

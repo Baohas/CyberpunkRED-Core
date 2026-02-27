@@ -8,9 +8,9 @@ import LOGGER from "./cpr-logger.js";
 export default class CPRSystemUtils {
   /* COMPENDIA AND FOLDER UTILS */
 
-  static GetWorldCompendia(ctype = null) {
+  static GetCompendiaByType(ptype, ctype = null) {
     if (!game.packs) return [];
-    const packs = game.packs.filter((p) => p.metadata.packageType === "world");
+    const packs = game.packs.filter((p) => p.metadata.packageType === ptype);
     if (ctype) {
       return packs.filter((p) => p.metadata.type === ctype);
     }

@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "$ref": "#/definitions/CPRC-Weapon",
   "definitions": {
     "CPRC-Weapon": {
@@ -123,6 +123,42 @@
           "$ref": "./components/attackable/weaponType.json"
         }
       },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "quality": {
+                "const": "excellent"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "attackmod": {
+                "const": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "quality": {
+                "not": {
+                  "const": "excellent"
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "attackmod": {
+                "const": 0
+              }
+            }
+          }
+        }
+      ],
       "required": [
         "ammoVariety",
         "attackmod",
