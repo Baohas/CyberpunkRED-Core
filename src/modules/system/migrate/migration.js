@@ -16,7 +16,7 @@ import MigrationError from "./migration-error.js";
  */
 export default class MigrationRunner {
   /** The latest data model version we want to migrate to. */
-  static #LATEST_VERSION = 39;
+  static #LATEST_VERSION = 40;
 
   /**
    * The minimum data model version we allow users to migrate from.
@@ -426,7 +426,7 @@ export default class MigrationRunner {
         // with this token. We skip it.
         LOGGER.warn(
           `WARNING: Token "${token.name}" (${token.actorId}) on Scene "${token.parent.name}" (${token.parent.id})` +
-          ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`
+            ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`
         );
         return false;
       }
