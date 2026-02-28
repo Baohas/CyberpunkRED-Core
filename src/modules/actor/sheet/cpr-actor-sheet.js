@@ -874,7 +874,7 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {*} value - value to set the property to
    */
   _updateOwnedItemProp(item, prop, value) {
-    item.update({[prop]: value});
+    item.update({ [prop]: value });
   }
 
   /**
@@ -1123,7 +1123,11 @@ export default class CPRActorSheet extends ActorSheet {
       // if the flag was already set to firemode, that means we unchecked a box
       await this.actor.unsetFlag(game.system.id, `firetype-${weaponID}`);
     } else {
-      await this.actor.setFlag(game.system.id, `firetype-${weaponID}`, firemode);
+      await this.actor.setFlag(
+        game.system.id,
+        `firetype-${weaponID}`,
+        firemode
+      );
     }
   }
 

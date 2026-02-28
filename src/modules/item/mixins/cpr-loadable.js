@@ -247,7 +247,7 @@ const Loadable = function Loadable() {
       } else {
         newValue = Math.clamp(0, value, maxAmmo);
       }
-      this.update({"system.magazine.value": newValue});
+      this.update({ "system.magazine.value": newValue });
     }
   };
 

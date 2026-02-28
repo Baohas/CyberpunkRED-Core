@@ -1590,22 +1590,24 @@ export default class CPRActor extends Actor {
     if (!cfg) return; // exit if location not supported
 
     armorList.forEach((armor) => {
-      const  sp = Number(foundry.utils.getProperty(armor, cfg.spPath));
-      const  ablationValue = Number(foundry.utils.getProperty(armor, cfg.path));
+      const sp = Number(foundry.utils.getProperty(armor, cfg.spPath));
+      const ablationValue = Number(foundry.utils.getProperty(armor, cfg.path));
 
       // Calculate effective SP (skip if no upgradeData)
       let armorSp = sp;
       if (cfg.upgradeKey) {
         const upgradeData = armor.getTotalUpgradeValues(cfg.upgradeKey);
-        armorSp = upgradeData.type === "override"
-          ? upgradeData.value
-          : sp + upgradeData.value;
+        armorSp =
+          upgradeData.type === "override"
+            ? upgradeData.value
+            : sp + upgradeData.value;
       }
 
       // Clamp new ablation
-      const newAblation = ablation < 0
-        ? Math.max(ablationValue + ablation, 0)
-        : Math.min(ablationValue + ablation, armorSp);
+      const newAblation =
+        ablation < 0
+          ? Math.max(ablationValue + ablation, 0)
+          : Math.min(ablationValue + ablation, armorSp);
 
       updateList.push({
         _id: armor.id,
@@ -1616,9 +1618,10 @@ export default class CPRActor extends Actor {
     await this.updateEmbeddedDocuments("Item", updateList);
 
     // Update actor external data as armor is ablated:
-    const currentArmorValue = ablation < 0
-      ? Math.min(cfg.externalValue - ablation, cfg.externalMax)
-      : Math.max(cfg.externalValue - ablation, 0);
+    const currentArmorValue =
+      ablation < 0
+        ? Math.min(cfg.externalValue - ablation, cfg.externalMax)
+        : Math.max(cfg.externalValue - ablation, 0);
 
     await this.update({ [cfg.externalPath]: currentArmorValue });
   }
