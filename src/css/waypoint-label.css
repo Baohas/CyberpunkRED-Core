@@ -1,0 +1,4 @@
+#measurement .waypoint-label.dvTable {
+  flex-direction: column;
+  gap: 0.25rem;
+}
