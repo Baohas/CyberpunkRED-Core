@@ -1095,7 +1095,7 @@ export default class CPRActorSheet extends ActorSheet {
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
 
-    if (this.token && firemode === "autofire") {
+    if (this.token !== null && firemode === "autofire") {
       const weapon = this.actor.items.get(weaponID);
       const weaponDvTable = weapon?.system.dvTable ?? "";
       const currentDvTable =
@@ -1103,7 +1103,7 @@ export default class CPRActorSheet extends ActorSheet {
           ? foundry.utils.getProperty(this.token.document, "flags.cprDvTable")
           : weaponDvTable;
 
-      if (currentDvTable) {
+      if (typeof currentDvTable !== "undefined") {
         const dvTableName = currentDvTable.replace(" (Autofire)", "");
         const dvTables = await SystemUtils.GetDvTables();
         const afTable = dvTables.find(
