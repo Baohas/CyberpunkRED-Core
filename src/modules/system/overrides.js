@@ -28,6 +28,10 @@ export default function overrideRulerFunctions() {
         if (DV) {
           context.dvLabel = `DV: ${DV} ${dvTableFlag.name.replace(/^DV /, "")}`;
         }
+      } else {
+        context.dvLabel = `DV: ${game.i18n.localize(
+          "CPR.messages.warningRulerNoToken"
+        )}`;
       }
     }
 
