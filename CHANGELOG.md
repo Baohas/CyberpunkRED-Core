@@ -21,13 +21,15 @@
 
 - Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
 - Fix location of upgrade element for equipped armor
-- Added `Medical Tech Skill` & `Surgery Skill` to Medetech role abilities
 - Fixed error where users were incorrectly notified to check their role abilities after allocating ranks for the Medtech Role
 - Fix damage calculations to include upgrades for armors
 - Update popup weapon cyberware details and register them as `concealable`
 - Fix mook crit injuries from not appearing in chat when rolled
 - Prevent net combat from dealing critical damage
 - Crit injuries rolled on mook sheets now appear in chat properly
+- Added `Medical Tech Skill` & `Surgery Skill` to Medetech role abilities.
+  - Medtech role abilities should no longer notify users to `Check your role rank abilities, they don’t look right, Choomba”` when correctly allocating rank points.
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book. Allocate one point to `Medical Tech Skills` For each point allocated to `Medical Tech (Cryosystem)` & `Medical Tech (Pharmaceuticals)` and allocate two points to `Surgery Skill` for each point allocated to `Surgery`.
 
 ### New Features
 
@@ -37,6 +39,8 @@
 ## Version 0.92.2
 
 ### Action Needed
+
+- Actors with the `Medtech` role should review their rank abilities and correct any errors.
 
 #### Weapon Quality/Attack Mod
 
