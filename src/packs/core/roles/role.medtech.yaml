@@ -12,24 +12,20 @@ system:
   abilities:
     - bonusRatio: 1
       bonuses: []
-      description: ""
-      hasRoll: true
-      index: 0
+      hasRoll: false
       isSituational: false
       multiplier: 0.5
       name: Surgery
       onByDefault: false
       rank: 0
       skill: "--"
-      stat: tech
+      stat: "--"
       universalBonuses: []
     - bonusRatio: 1
       bonuses: []
-      description: ""
       hasRoll: false
-      index: 2
       isSituational: false
-      multiplier: 1
+      multiplier: 0.5
       name: Medical Tech (Pharmaceuticals)
       onByDefault: false
       rank: 0
@@ -39,11 +35,21 @@ system:
     - bonusRatio: 1
       bonuses: []
       description: ""
-      hasRoll: false
-      index: 3
+      hasRoll: true
       isSituational: false
-      multiplier: 1
-      name: Medical Tech (Cryosystem Operation)
+      multiplier: 0.5
+      name: Medical Tech Skill
+      onByDefault: false
+      rank: 0
+      skill: "--"
+      stat: tech
+      universalBonuses: []
+    - bonusRatio: 1
+      bonuses: []
+      hasRoll: false
+      isSituational: false
+      multiplier: 0.5
+      name: Surgery
       onByDefault: false
       rank: 0
       skill: "--"
@@ -51,12 +57,10 @@ system:
       universalBonuses: []
     - bonusRatio: 1
       bonuses: []
-      description: ""
       hasRoll: true
-      index: 1
       isSituational: false
-      multiplier: 1
-      name: Medical Tech
+      multiplier: 0.25
+      name: Surgery Skill
       onByDefault: false
       rank: 0
       skill: "--"

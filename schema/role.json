@@ -164,10 +164,11 @@
             "Invention Expertise",
             "Medical Tech (Cryosystem Operation)",
             "Medical Tech (Pharmaceuticals)",
-            "Medical Tech",
+            "Medical Tech Skill",
             "Precision Attack",
             "Spot Weakness",
             "Surgery",
+            "Surgery Skill",
             "Threat Detection",
             "Upgrade Expertise",
             "Haggle"
@@ -201,16 +202,20 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["initiative", "attack", "damage", "damageReduction", "fumbleRecovery"]
+            "enum": [
+              "initiative",
+              "attack",
+              "damage",
+              "damageReduction",
+              "fumbleRecovery"
+            ]
           }
         }
       },
       "required": [
         "bonusRatio",
         "bonuses",
-        "description",
         "hasRoll",
-        "index",
         "multiplier",
         "name",
         "rank",
