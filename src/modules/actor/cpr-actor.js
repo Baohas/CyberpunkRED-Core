@@ -1561,7 +1561,7 @@ export default class CPRActor extends Actor {
     let currentArmorValue;
     switch (location) {
       case "head": {
-        armorList.forEach(async (a) => {
+        await armorList.forEach(async (a) => {
           const cprArmorData = a.system;
           const armorSp = await CPRActorUtils.calculateArmorSP(a, "head");
           cprArmorData.headLocation.ablation =
@@ -1591,7 +1591,7 @@ export default class CPRActor extends Actor {
         break;
       }
       case "body": {
-        armorList.forEach(async (a) => {
+        await armorList.forEach(async (a) => {
           const cprArmorData = a.system;
           const armorSp = await CPRActorUtils.calculateArmorSP(a, "body");
           cprArmorData.bodyLocation.ablation =
