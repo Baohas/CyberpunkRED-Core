@@ -6,6 +6,7 @@ import CPRMookActorSheet from "./sheet/cpr-mook-sheet.js";
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
+import CPRActorUtils from "../utils/ActorUtils.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
@@ -1372,13 +1373,13 @@ export default class CPRActor extends Actor {
     // const armors = this.getEquippedArmors(location);
     const shields = this.getEquippedArmors("shield");
     // Determine the highest value of all the equipped armors in the specific location
-    armors.forEach((a) => {
-      let newValue;
-      if (location === "head") {
-        newValue = a.system.headLocation.sp - a.system.headLocation.ablation;
-      } else {
-        newValue = a.system.bodyLocation.sp - a.system.bodyLocation.ablation;
+    await armors.forEach(async (a) => {
+      if (location !== "head" && location !== "body") {
+        return;
       }
+
+      const newValue = await CPRActorUtils.calculateArmorSP(a, location, true);
+
       if (newValue > armorData.value) {
         armorData.value = newValue;
       }
@@ -1560,17 +1561,9 @@ export default class CPRActor extends Actor {
     let currentArmorValue;
     switch (location) {
       case "head": {
-        armorList.forEach((a) => {
+        armorList.forEach(async (a) => {
           const cprArmorData = a.system;
-          const upgradeData = a.getTotalUpgradeValues("headSp");
-          cprArmorData.headLocation.sp = Number(cprArmorData.headLocation.sp);
-          cprArmorData.headLocation.ablation = Number(
-            cprArmorData.headLocation.ablation
-          );
-          const armorSp =
-            upgradeData.type === "override"
-              ? upgradeData.value
-              : cprArmorData.headLocation.sp + upgradeData.value;
+          const armorSp = await CPRActorUtils.calculateArmorSP(a, "head");
           cprArmorData.headLocation.ablation =
             ablation < 0
               ? Math.max(cprArmorData.headLocation.ablation + ablation, 0)
@@ -1598,17 +1591,9 @@ export default class CPRActor extends Actor {
         break;
       }
       case "body": {
-        armorList.forEach((a) => {
+        armorList.forEach(async (a) => {
           const cprArmorData = a.system;
-          cprArmorData.bodyLocation.sp = Number(cprArmorData.bodyLocation.sp);
-          cprArmorData.bodyLocation.ablation = Number(
-            cprArmorData.bodyLocation.ablation
-          );
-          const upgradeData = a.getTotalUpgradeValues("bodySp");
-          const armorSp =
-            upgradeData.type === "override"
-              ? upgradeData.value
-              : cprArmorData.bodyLocation.sp + upgradeData.value;
+          const armorSp = await CPRActorUtils.calculateArmorSP(a, "body");
           cprArmorData.bodyLocation.ablation =
             ablation < 0
               ? Math.max(cprArmorData.bodyLocation.ablation + ablation, 0)
