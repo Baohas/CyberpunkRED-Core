@@ -1847,6 +1847,10 @@ export default class CPRActor extends Actor {
    * @returns {Promise}
    */
   async handleMookDraggedItem(item) {
+    if (item.type === "criticalInjury") {
+      return item;
+    }
+
     // auto-install this cyberware
     const allInstalled = item.recursiveGetAllInstalledItems();
 
