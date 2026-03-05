@@ -79,12 +79,14 @@
             "aimedLocation" location)}}
           </div>
         {{/if}}
+        <!-- Net damage does not critical
         {{#if criticalCard }}
           <div class="text-normal text-semi">
             {{localize "CPR.rolls.criticalDamage"}}:
             {{bonusDamage}}
           </div>
         {{/if}}
+        -->
         <div class="d6-data-details hide">
           {{#if (cprCompare mods.length "||" additionalMods.length) }}
             {{> "systems/cyberpunk-red-core/templates/chat/cpr-rollcard-modifiers.hbs" this}}
