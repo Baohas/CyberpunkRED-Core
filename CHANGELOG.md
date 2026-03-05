@@ -16,6 +16,7 @@
 - Fix damage calculations to include upgrades for armors
 - Update popup weapon cyberware details and register them as `concealable`
 - Prevent net combat from dealing critical damage
+- Crit injuries rolled on mook sheets now appear in chat properly
 
 ### New Features
 
