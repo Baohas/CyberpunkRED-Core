@@ -23,6 +23,7 @@
 - Update popup weapon cyberware details and register them as `concealable`
 - Fix mook crit injuries from not appearing in chat when rolled
 - Prevent net combat from dealing critical damage
+- Crit injuries rolled on mook sheets now appear in chat properly
 
 ### New Features
 
