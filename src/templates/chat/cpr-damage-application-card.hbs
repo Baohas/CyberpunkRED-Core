@@ -150,11 +150,16 @@
                         {{localize "CPR.chat.damageApplication.ignoreArmorPercent"}} <span class="text-semi">100%</span>
                       </div>
                   {{else}}
-                    <!-- use ">" instead of "!==" to prevent edgecase caused by high SP and crit damage -->
-                    {{#if (cprCompare ignoreArmorPercent ">" 0)}}
+                    <!-- If damge was dealt and some armor was ignored -->
+                    {{#if (cprCompare ignoreArmorPercent "!==" 0)}}
                       <div class="text-right text-normal">
                         {{localize "CPR.chat.damageApplication.ignoreArmorPercent"}} <span class="text-semi">{{ignoreArmorPercent}}%</span>
                       </div>
+                      <div class="text-right text-normal">
+                        {{localize "CPR.chat.damageApplication.armorSP"}} <span class="text-semi">-{{armorData.value}}</span>
+                      </div>
+                    {{else}}
+                      <!-- If damage was dealt and no armor was ignored -->
                       <div class="text-right text-normal">
                         {{localize "CPR.chat.damageApplication.armorSP"}} <span class="text-semi">-{{armorData.value}}</span>
                       </div>
