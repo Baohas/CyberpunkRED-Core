@@ -6,19 +6,74 @@
 
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
+- Transition ammo icons from `.png` to `.svg`
+
+## Version 0.92.2
+
+### Action Needed
+
+#### Weapon Quality/Attack Mod
+
+We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compendia for the below weapons. If any of your Characters/Mooks/Containers use any of these weapons the quickest way to fix them is to remove the old weapons from their sheet and replace them from the Compendia.
+
+- Arasaka Weeping Reaver Katana
+- SlamDance FangFist
+- SlamDance Tasmanskiy Klô
+- Malorian Arms 3516
+- Arasaka Minami 10
+- Arasaka WSSA Sniper System
+- Chadran Arms City Reaper
+- Chadran Arms Jungle Reaper
+- Dai Lung Magnum
+- Dai Lung Streetmaster
+- Eagletech Bearcat
+- Eagletech Scorpion
+- Federated Arms Super Chief
+- Federated Arms Tech-Assault III
+- GunMart Home Defender
+- GunMart Snipe-Star
+- Militech Avenger
+- Militech Boomer Buster
+- Militech Bulldog
+- Militech Dragon
+- Militech Hotshot
+- Militech Viper
+- Nova Cityhunter
+- Towa Manufacturing Type-G
+- Towa Manufacturing Type-R
+- Tsunami Arms Type-18
+- Chainknife
+- Sub-Flechette Gun
+- Archimedes
+- TearJerker
+
+### Nuevas Características
+
+- Add Ukrainian Language support
+- Pre-Installed smartgun-link upgrade into Malorian Arms 3516
+
+### Corrección de Errores
+
+- Fix term "Optional Slots" to "Option Slots"
+- Fix small layout bug with Item Sheet: Source/Page display
+- Corrected armor penetration settings for Federated Arms X-9mm
+- Fix Weapon Quality/Attack Mod mismatches
+- Fix `Techtronica Russia BMG 500` price/hands
+- Fix incorrect option slot details for melee weapons, gear items, and upgrade attachments in the core compendiums
+- Fix options slots for exotic weapons
 
 ## Version 0.92.1
 
 ### Corrección de Errores
 
-- \#1134 - Fix HP/Humanity interacting with the mouse scrollwheel
-- \#1137 - Fix bug preventing extended magazines from modifying weapon ammo count
-- \#1149 - Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
-- \#1152 - Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
-- \#1146 - Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
-- \#1161 - Fix shop container config not saving
-- \#1139 - Remove items from weapons that do not exist in the game and in the actor owner of the item
-- \#1162 - Fix Condition Lab and Triggler configutation styling in Dark Mode
+- Fix HP/Humanity interacting with the mouse scrollwheel
+- Fix bug preventing extended magazines from modifying weapon ammo count
+- Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
+- Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
+- Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
+- Fix shop container config not saving
+- Remove items from weapons that do not exist in the game and in the actor owner of the item
+- Fix Condition Lab and Triggler configutation styling in Dark Mode
 
 ## Version 0.92
 
@@ -221,7 +276,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
 - Support for editing Active Effects on owned items
 
-### Corrección de Errores
+### Bug Fixes
 
 - A couple of minor CSS fixes
 - Facedown rolls correctly include reputation value.
@@ -248,7 +303,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.6
 
-### Bug Fixes
+### Corrección de Errores
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
@@ -1277,7 +1332,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Versión 0.76.0 | Fecha: 2021-05-26
 
-### Nuevas Características
+### New Features
 
 - FnWeather made a great video demonstrating some of the following changes which you can find here: <https://www.youtube.com/watch?v=csgB6c5KhkU>. Thanks to him!
 - Added "Option Slots Size" for optional cyberware. This allows proper tracking of cyberware that can use no slots, or multiple slots. By default when first updating to this version all cyberware has an assumed slot size of 1. Please update your optional cyberware accordingly in line with the core rulebook.
@@ -1437,7 +1492,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Foundation for roll glyphs embedded into chat cards implemented.
 - Many changes and fixes for data migration during updates.
 
-### Corrección de Errores
+### Bug Fixes
 
 - Applying status condition icons no longer fails.
 - Custom pause animation no longer disappears on unpause/re-pause.
