@@ -876,7 +876,7 @@
   "CPR.itemSheet.cyberdeck.eraseProgram": "Стереть программу",
   "CPR.itemSheet.cyberware.hasOptionSlots": "Наличие слотов расширений",
   "CPR.itemSheet.cyberware.option": "Расширение",
-  "CPR.itemSheet.cyberware.optionalSlots": "Слотов расширений",
+  "CPR.itemSheet.cyberware.optionalSlots": "Option slots",
   "CPR.itemSheet.cyberware.requiresFoundational": "Требует киберимплант-основу",
   "CPR.itemSheet.cyberware.rolled": "Бросок",
   "CPR.itemSheet.cyberware.slotSize": "Занимает слотов расширений (размер)",
