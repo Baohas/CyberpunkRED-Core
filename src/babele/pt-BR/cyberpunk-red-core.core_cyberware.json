@@ -250,21 +250,21 @@
     },
     "Popup Grenade Launcher": {
       "name": "Lançador de Granadas Popup",
-      "description": "<p>Um lança granada oculta de disparo único. Não pode segurar nada enquanto essa mão está ativa.</p>",
+      "description": "<p>\n  A concealable one-shot Grenade Launcher. Can't hold anything with this hand\n  while activated. Incompatible with all upgrades except\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun\n  Link}.\n</p>\n",
       "dvTable": "DV Lançador de Granadas"
     },
     "Popup Melee Weapon": {
       "name": "Popup Arma Corpo à Corpo",
-      "description": "<p>Uma arma Corpo à Corpo oculta. Não pode segurar nada enquanto essa mão está ativa.</p>"
+      "description": "<p>\n  A concealable One-Handed Melee Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n"
     },
     "Popup Ranged Weapon": {
       "name": "Arma de Distância Popup",
-      "description": "<p>Uma arma uma mão, ataque à distância e oculta. Não pode segurar nada enquanto essa mão está ativa.</p>",
+      "description": "<p>\n  A concealable One-Handed Ranged Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n",
       "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Escudo Popup",
-      "description": "<p>Um escudo retrátil e oculto. Não pode segurar nada enquanto essa mão está ativa.</p>"
+      "description": "<p>\n  A foldable bulletproof shield that can be drawn or concealed easily. Can't\n  hold anything with this hand while activated.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet\n    Proof Shield} to inventory to manage shield HP.\n  </p>\n</blockquote>\n"
     },
     "Quick Change Mount": {
       "name": "Mudança Rápida de Montagem",
