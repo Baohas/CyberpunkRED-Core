@@ -56,12 +56,26 @@ import MigrationError from "./modules/system/migrate/migration-error.js";
 Hooks.once("init", async () => {
   LOGGER.log("THANK YOU TO EVERYONE WHO HELPED!!!!");
   LOGGER.credits();
-  // Register Actor Sheet Application Classes
+  // Removes "Default Actor Sheet" option from sheet style selection and prevents users from breaking blackICE, containers, and demons
   Actors.unregisterSheet("core", ActorSheet);
+  // Register Actor Sheet Application Classes
   Actors.registerSheet(game.system.id, CPRCharacterActorSheet, {
     label: SystemUtils.Localize("CPR.sheets.characterSheet"),
-    types: ["character", "mook"],
+    types: ["character"],
     makeDefault: true,
+  });
+  Actors.registerSheet(game.system.id, CPRCharacterActorSheet, {
+    label: SystemUtils.Localize("CPR.sheets.characterSheet"),
+    types: ["mook"],
+  });
+  Actors.registerSheet(game.system.id, CPRMookActorSheet, {
+    label: SystemUtils.Localize("CPR.sheets.mookSheet"),
+    types: ["mook"],
+    makeDefault: true,
+  });
+  Actors.registerSheet(game.system.id, CPRMookActorSheet, {
+    label: SystemUtils.Localize("CPR.sheets.mookSheet"),
+    types: ["character"],
   });
   Actors.registerSheet(game.system.id, CPRBlackIceActorSheet, {
     label: SystemUtils.Localize("CPR.sheets.blackiceSheet"),
@@ -77,10 +91,6 @@ Hooks.once("init", async () => {
     label: SystemUtils.Localize("CPR.sheets.demonSheet"),
     types: ["demon"],
     makeDefault: true,
-  });
-  Actors.registerSheet(game.system.id, CPRMookActorSheet, {
-    label: SystemUtils.Localize("CPR.sheets.mookSheet"),
-    types: ["character", "mook"],
   });
 
   // Register Item Sheet Application Classes

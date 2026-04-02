@@ -15,3 +15,4 @@ export { default as ReplaceProgramsWithProgram } from "./036-correct-allowed-typ
 export { default as RemoveInvalidUpgrates } from "./037-remove-invalid-upgrates.js";
 export { default as SplitPacks } from "./038-split-packs.js";
 export { default as AmmoIconConversion } from "./039-ammo-icons.js";
+export { default as UpdateMedtechRole } from "./040-update-medtech-role.js";
