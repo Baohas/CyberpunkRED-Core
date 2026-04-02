@@ -8,6 +8,32 @@
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
 
+## Version 0.92.3
+
+### Требует внимания
+
+- Actors with the `Medtech` role should review their rank abilities and correct any errors
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book
+  - Allocate one point to Medical Tech Skills for each point allocated to Medical Tech (Cryosystem) & Medical Tech (Pharmaceuticals)
+  - Allocate two points to Surgery Skill for each point allocated to Surgery
+
+### Исправления
+
+- Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
+- Fix location of upgrade element for equipped armor
+- Added `Medical Tech Skill` & `Surgery Skill` to Medetech role abilities
+- Fixed error where users were incorrectly notified to check their role abilities after allocating ranks for the Medtech Role
+- Fix damage calculations to include upgrades for armors
+- Update popup weapon cyberware details and register them as `concealable`
+- Fix mook crit injuries from not appearing in chat when rolled
+- Prevent net combat from dealing critical damage
+- Crit injuries rolled on mook sheets now appear in chat properly
+
+### Нововведения
+
+- Actors created as "Mooks" will now use the mook sheet layout by default. Mooks may still be configured to use the character sheet layout as before.
+- Reformat chatcards to make the expanded damage roll calculations easier to read
+
 ## Version 0.92.2
 
 ### Требует внимания
@@ -61,6 +87,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Fix `Techtronica Russia BMG 500` price/hands
 - Fix incorrect option slot details for melee weapons, gear items, and upgrade attachments in the core compendiums
 - Fix options slots for exotic weapons
+- Fix term "Optional Slots" to "Option Slots"
 
 ## Version 0.92.1
 
@@ -257,13 +284,13 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 
-### Исправления
+### Bug Fixes
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
 ## Версия 0.88.0
 
-### Требует внимания
+### Action Needed
 
 We have renamed all Compendia in the system utilizing the new Compendium Folders feature which has meant some changes behind the scenes which mean the pack names themselves have changed.
 
@@ -276,7 +303,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
 - Support for editing Active Effects on owned items
 
-### Bug Fixes
+### Исправления
 
 - A couple of minor CSS fixes
 - Facedown rolls correctly include reputation value.
@@ -1225,7 +1252,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Migrated the source code to work with foundry version 0.8.X
 - Rewrote the migration code support new features from foundry 0.8.X
 
-### Нововведения
+### New Features
 
 - Improvements have been added to the cyberware tab. For foundational cyberware that has no optional slots (such as Borgware), no Used/Total is displayed in the title.
 - Added options to choose how to display the skill values for the mook character sheet. Now one can show it in the same way as it is printed in the book. Please look at the settings for this.
@@ -1448,7 +1475,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added a field for a static attack modifier on weapons.
 - Added a warning on cyberware install to remind users that installing cyberware also deducts from maximum humanity.
 
-### Исправления
+### Bug Fixes
 
 - 'Basic' skills (the ones that all characters have points in) now display as bold again (no issue to reference)
 - Token name now correctly displays in chat when rolling from a macro.
