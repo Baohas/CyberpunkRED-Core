@@ -22,7 +22,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets",
+      "resizeCPRSheets"
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -157,7 +157,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     } else {
       const playersCanModify = foundry.utils.getProperty(
         this.actor,
-        `flags.${game.system.id}.players-modify`,
+        `flags.${game.system.id}.players-modify`
       );
       if (playersCanModify || game.user.isGM) {
         item.sheet.render(true, { editable: true });
@@ -195,7 +195,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       } else {
         SystemUtils.DisplayMessage(
           "warn",
-          SystemUtils.Localize("CPR.messages.tradeWithWarn"),
+          SystemUtils.Localize("CPR.messages.tradeWithWarn")
         );
         return;
       }
@@ -205,7 +205,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (!this.actor.isOwner) {
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.insufficientPermissions"),
+        SystemUtils.Localize("CPR.messages.insufficientPermissions")
       );
       return;
     }
@@ -256,7 +256,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       if (newAmount < 1 || newAmount >= inventoryAmount) {
         SystemUtils.DisplayMessage(
           "warn",
-          SystemUtils.Localize("CPR.dialog.purchasePart.wrongAmountWarning"),
+          SystemUtils.Localize("CPR.dialog.purchasePart.wrongAmountWarning")
         );
         return;
       }
@@ -272,13 +272,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (
       !foundry.utils.getProperty(
         this.actor,
-        `flags.${game.system.id}.items-free`,
+        `flags.${game.system.id}.items-free`
       )
     ) {
       if (tradePartnerActor.system.wealth.value < cost) {
         SystemUtils.DisplayMessage(
           "warn",
-          SystemUtils.Localize("CPR.messages.tradePriceWarn"),
+          SystemUtils.Localize("CPR.messages.tradePriceWarn")
         );
         return;
       }
@@ -288,12 +288,12 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       if (amount > 1) {
         reason = `${SystemUtils.Format(
           "CPR.containerSheet.tradeLog.multiplePurchased",
-          { amount, name: item.name, price: cost },
+          { amount, name: item.name, price: cost }
         )} - ${username}`;
       } else {
         reason = `${SystemUtils.Format(
           "CPR.containerSheet.tradeLog.singlePurchased",
-          { name: item.name, price: cost },
+          { name: item.name, price: cost }
         )} - ${username}`;
       }
       const vendorReason = `${SystemUtils.Format(
@@ -303,14 +303,14 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
           quantity: amount,
           purchaser: tradePartnerActor.name,
           price: cost,
-        },
+        }
       )} - ${username}`;
       await tradePartnerActor.deltaLedgerProperty("wealth", -1 * cost, reason);
       await this.actor.recordTransaction(cost, vendorReason, this.actor);
     }
     if (
       tradePartnerActor.automaticallyStackItems(
-        new CPRItem(transferredItemData),
+        new CPRItem(transferredItemData)
       ).length === 0
     ) {
       await tradePartnerActor.createEmbeddedDocuments("Item", [
@@ -320,7 +320,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (
       !foundry.utils.getProperty(
         this.actor,
-        `flags.${game.system.id}.infinite-stock`,
+        `flags.${game.system.id}.infinite-stock`
       )
     ) {
       if (all) {
@@ -360,7 +360,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (!this.actor.isOwner) {
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.insufficientPermissions"),
+        SystemUtils.Localize("CPR.messages.insufficientPermissions")
       );
       return;
     }
@@ -387,7 +387,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     }
     const percent = parseInt(
       vendorConfig.itemTypes[item.type].purchasePercentage,
-      10,
+      10
     );
 
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
@@ -397,7 +397,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     if (cprItemData.isUpgraded) {
       cprItemName = `${SystemUtils.Localize(
-        "CPR.global.generic.upgraded",
+        "CPR.global.generic.upgraded"
       )} ${cprItemName}`;
     }
 
@@ -408,7 +408,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         vendorOffer,
         itemName: cprItemName,
         percent,
-      },
+      }
     )}`;
 
     // Show "Default" prompt.
@@ -416,9 +416,9 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       { dialogMessage },
       {
         title: SystemUtils.Localize(
-          "CPR.dialog.container.vendor.purchaseOrderTitle",
+          "CPR.dialog.container.vendor.purchaseOrderTitle"
         ),
-      },
+      }
     ).catch((err) => LOGGER.debug(err));
 
     if (dialogData !== undefined) {
@@ -440,7 +440,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
       const infiniteStock = foundry.utils.getProperty(
         this.actor,
-        `flags.${game.system.id}.infinite-stock`,
+        `flags.${game.system.id}.infinite-stock`
       );
 
       if (infiniteStock) {
@@ -448,7 +448,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         itemList.forEach((infiniteItem) => {
           if (this.actor.items.find((i) => i.name === infiniteItem.name)) {
             createItems = createItems.filter(
-              (ci) => ci._id !== infiniteItem._id,
+              (ci) => ci._id !== infiniteItem._id
             );
           }
         });
@@ -457,13 +457,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       if (createItems.length > 0) {
         const creationSuccess = await this.actor.createEmbeddedDocuments(
           "Item",
-          createItems,
+          createItems
         );
         if (creationSuccess.length > 0) {
           const deletionSuccess =
             await tradePartnerActor.deleteEmbeddedDocuments(
               "Item",
-              deleteItems,
+              deleteItems
             );
           if (deletionSuccess.length > 0) {
             let reason = "";
@@ -475,7 +475,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
                   name: item.name,
                   price: vendorOffer,
                   vendor: this.actor.name,
-                },
+                }
               )} - ${username}`;
             } else {
               reason = `${SystemUtils.Format(
@@ -484,7 +484,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
                   name: item.name,
                   price: vendorOffer,
                   vendor: this.actor.name,
-                },
+                }
               )} - ${username}`;
             }
             const vendorReason = `${SystemUtils.Format(
@@ -494,17 +494,17 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
                 quantity: cprItemData.amount,
                 seller: tradePartnerActor.name,
                 price: vendorOffer,
-              },
+              }
             )} - ${username}`;
             await tradePartnerActor.deltaLedgerProperty(
               "wealth",
               vendorOffer,
-              reason,
+              reason
             );
             await this.actor.recordTransaction(
               vendorOffer,
               vendorReason,
-              tradePartnerActor,
+              tradePartnerActor
             );
           }
         }
@@ -525,7 +525,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (this.token === null) {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.messages.containerSettingsOnToken"),
+        SystemUtils.Localize("CPR.messages.containerSettingsOnToken")
       );
     } else {
       actor.toggleFlag(flagName);
@@ -545,7 +545,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (this.token === null) {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.messages.containerSettingsOnToken"),
+        SystemUtils.Localize("CPR.messages.containerSettingsOnToken")
       );
     } else {
       await actor.setContainerType(containerType);
@@ -563,18 +563,18 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
   async _onDrop(event) {
     const containerType = foundry.utils.getProperty(
       this.actor,
-      `flags.${game.system.id}.container-type`,
+      `flags.${game.system.id}.container-type`
     );
     if (!containerType) {
       await this.actor.setContainerType("shop");
     }
     const playersCanCreate = foundry.utils.getProperty(
       this.actor,
-      `flags.${game.system.id}.players-create`,
+      `flags.${game.system.id}.players-create`
     );
     const playersCanSell = foundry.utils.getProperty(
       this.actor,
-      `flags.${game.system.id}.players-sell`,
+      `flags.${game.system.id}.players-sell`
     );
     if (game.user.isGM || playersCanCreate || playersCanSell) {
       if (!game.user.isGM && !playersCanCreate) {
@@ -592,7 +592,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
           }
           SystemUtils.DisplayMessage(
             "warn",
-            SystemUtils.Localize("CPR.messages.tradeDragNotBuying"),
+            SystemUtils.Localize("CPR.messages.tradeDragNotBuying")
           );
           return;
         }
@@ -601,7 +601,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     } else {
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.tradeDragInWarn"),
+        SystemUtils.Localize("CPR.messages.tradeDragInWarn")
       );
     }
   }
@@ -637,7 +637,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       const newConfig = foundry.utils.mergeObject(
         promptData.currentConfig,
         formData.currentConfig,
-        { recursive: true },
+        { recursive: true }
       );
       await this.actor.update({ "system.vendor": newConfig });
     }
@@ -650,7 +650,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     if (Number.isNaN(value)) {
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.eurobucksModifyWarn"),
+        SystemUtils.Localize("CPR.messages.eurobucksModifyWarn")
       );
       return;
     }
