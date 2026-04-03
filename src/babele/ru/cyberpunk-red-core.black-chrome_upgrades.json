@@ -1,26 +1,26 @@
 {
-  "label": "Улучшения",
+  "label": "Upgrades",
   "mapping": {},
   "entries": {
     "4Tify": {
-      "name": "На6вие",
-      "description": "<p>Приложение для агента.</p>\n<p>Определяет слабые места в жилище. Или в укрытии…</p>"
+      "name": "4Tify",
+      "description": "<p>Agent App.</p>\n<p>Can reveal weak points by scanning your home. Or a section of cover...</p>\n"
     },
     "Digital Gladiator": {
-      "name": "Цифровой гладиатор",
-      "description": "<p>Приложение для агента.</p>\n<p>Может быть тебе лучше мутузиться онлайн, чем на улицах…</p>\n<p>Правила создания Цифрового гладиатора, управления им и ведения поединков можно найти в Чёрном хроме в соответствующем разделе.</p>"
+      "name": "Digital Gladiator",
+      "description": "<p>Agent App.</p>\n<p>Perhaps you're better suited to duking it out online than in the streets…</p>\n<p>\n  Rules related to creating, playing with, and fighting an opponent in Digital\n  Gladiator are contained in Black Chrome rulebook for this item.\n</p>\n"
     },
     "NCPD Crime Database": {
-      "name": "База досье преступлений",
-      "description": "<p>Приложение для агента.</p>\n<p>Требуется доступ к Ситинету. Позволяет пользователю получить доступ к открытым данным о преступлениях.</p>\n"
+      "name": "NCPD Crime Database",
+      "description": "<p>Agent App.</p>\n<p>\n  Requires CitiNet access in Night City. Allows user to research crime database.\n</p>\n"
     },
     "Trauma Team MedScan": {
-      "name": "«МедСкан» от Траума тим",
-      "description": "<p>Приложение для агента.</p>\n<p>Требуется доступ к Ситинету. МедСкан соединит вас с удалённым специалистом Trauma Team, но сколько-нибудь полезная помощь стоит денег.</p>\n<p>За дополнительную плату можно нанять удалённого специалиста Trauma Team, чтобы он проинструктировал проведение медицинской процедуры продолжительностью до четырёх часов.</p>\n<p>Правила стоимости найма и доступных процедур можно найти в Чёрном хроме в соответствующем разделе.</p>"
+      "name": "Trauma Team MedScan",
+      "description": "<p>Agent App.</p>\n<p>\n  Requires CitiNet access. MedScan can connect you to a Trauma Team Remote\n  Specialist but their actual guidance costs extra.\n</p>\n<p>\n  For an increased fee, a remote Trauma Specialist can be hired to direct the\n  user through an entire 4-hour procedure.\n</p>\n<p>\n  Rules related to cost of hiring and procedures allowed to be done with this\n  App are contained in Black Chrome rulebook for this item.\n</p>\n"
     },
     "Ziggurat City Database": {
-      "name": "База данных города от Зиккурат",
-      "description": "<p>Приложение для агента.</p>\n<p>Бонус +1 ко всем проверкам навыка «Знание местности» по поводу сообществ города.</p>"
+      "name": "Ziggurat City Database",
+      "description": "<p>Agent App.</p>\n<p>\n  +1 bonus to all Local Expert Skills Checks related to communities and\n  neighborhoods for that city.\n</p>\n"
     }
   }
 }
