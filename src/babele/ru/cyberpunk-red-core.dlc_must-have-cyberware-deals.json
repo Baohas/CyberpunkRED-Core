@@ -1,58 +1,58 @@
 {
-  "label": "Киберимпланты, без которых не обойтись",
+  "label": "Must Have Cyberware Deals",
   "mapping": {},
   "entries": {
     "Appetite Controller": {
-      "name": "Регулятор аппетита",
-      "description": "<p>Подавляет чувство голода. Персонаж игнорирует потерю человечности, связанную с голодом, однако не исключает голодную смерть. Бросайте на испытание против смерти на утро седьмого для после последнего приёма пищи. +1 к испытаниям против смерти каждый последующий день.</p>\n<p>Требуется киберимплант «Биомонитор».</p>"
+      "name": "Appetite Controller",
+      "description": "<p>\n  Suppresses hunger response. User ignores Humanity Loss penalties from\n  starvation trauma but User can still starve. Roll a Death Save at start of 7th\n  consecutive day without eating. +1 to successive Death Saves each day\n  afterwards.\n</p>\n<p>Requires Biomonitor.</p>\n"
     },
     "Cyberpillow": {
-      "name": "Киберподушка",
-      "description": "<p>Выдвижная подушка для киберруки, чтобы спать на ходу.</p>"
+      "name": "Cyberpillow",
+      "description": "<p>A comfortable Cyberarm popout pillow for naps on the go.</p>\n"
     },
     "External Vidscreen": {
-      "name": "Внешний видеоэкран",
-      "description": "<p>Имплантированный гибкий видеоэкран. На нём можно проигрывать видеозаписи с щепки памяти или агента.</p>"
+      "name": "External Vidscreen",
+      "description": "<p>\n  Implanted flexible video screen. Use a socketed Memory Chip or linked Agent to\n  stream video to Vidscreen.\n</p>\n"
     },
     "Holo Projector Palm": {
-      "name": "Голографический проектор в ладони",
-      "description": "<p>Проецирует небольшую голограмму на ладонь пользователя. Пользователь может взаимодействовать с голограммой при помощи подключённого агента. Можно установить в мясную руку в качестве единственного расширения.</p>"
+      "name": "Holo Projector Palm",
+      "description": "<p>\n  Projects a small hologram from the User&rsquo;s palm. User can interact with\n  hologram to control a linked Agent&rsquo;s functions. Can be installed in meat\n  arm if it&rsquo;s the only piece of cyberware in that arm.\n</p>\n"
     },
     "Kill Display": {
-      "name": "Счётчик убийств",
-      "description": "<p>Ярко светящийся подкожный буквенно-цифровой дисплей. Выводимое сообщение можно настроить с помощью агента. Зачастую используется для отображения количества убийств.<br>Считается за светотату. +2 к проверкам гардероба и стиля если установлено более трёх светотату.</p>"
+      "name": "Kill Display",
+      "description": "<p>\n  Subdermal Alphanumeric display that shines clearly through the skin. Use a\n  linked Agent to customize the output. Commonly used as &ldquo;kill\n  counter.&rdquo;<br />Qualifies as a Light Tattoo. +2 Wardrobe and Style when\n  the user has 3 or more Light Tattoos.\n</p>\n"
     },
     "Lead's Turn-On-Show-Off Nails": {
-      "name": "Ноготочки «Включи-покажи»",
-      "description": "<p>Полный набор ногтей с настраиваемой подсветкой. В комплекте идёт специальный инструмент-стилус для создания узоров. Узоры можно загружать из Ситинета устанавливать при помощи агента.<br>Считается за светотату. +2 к проверкам гардероба и стиля если установлено более трёх светотату.</p>"
+      "name": "Lead's Turn-On-Show-Off Nails",
+      "description": "<p>\n  Customizable illuminated nail for each fingertip. Includes pen tools for\n  creating custom patterns. Nail patterns can be downloaded from the CitiNet and\n  synced with a linked Agent.<br />Qualifies as a Light Tattoo. +2 Wardrobe and\n  Style when the user has 3 or more Light Tattoos.\n</p>\n"
     },
     "Mood Eye": {
-      "name": "Глаз настроения",
-      "description": "<p>Меняющие свой цвет глазные линзы. Цвет зависит от данных, собранных нейронной связью. Проверка <strong>актёрской игры СЛ 21</strong> чтобы обмануть нейронную сеть, сымитировать настроение и изменить цвет линз соответствующим образом. Линзы можно отключить без действия.<p>\n<ul>\n<li>Красный: ярость</li>\n<li>Синий: печаль</li>\n<li>Жёлтый: ужас</li>\n<li>Розовый: сексуальное возбуждение</li>\n<li>Зелёный: зависть</li>\n<li>Серый: обнуление</li>\n</ul>\n<p>Стилевой имплант. Требуется нейронная связь.</p>"
+      "name": "Mood Eye",
+      "description": "<p>\n  Color-shifting eye lenses. Color is dependent on Neural Link \"mood\" scans.\n  <strong>DV 21 Acting</strong> check to fake a mood scan and change color\n  accordingly. Lenses can be deactivated without an action.\n</p>\n<ul>\n  <li>Red: Rage</li>\n  <li>Blue: Sorrow</li>\n  <li>Yellow: Terror</li>\n  <li>Pink: Horny</li>\n  <li>Green: Envy</li>\n  <li>Gray: Flatlined</li>\n</ul>\n<p>Fashionware. Requires Neural Link.</p>\n"
     },
     "NeuTongue": {
-      "name": "НеоЯзык",
-      "description": "<p>Симулирует вкусовые ощущения. При подключении к агенту можно установить различные вкусовые настройки. Можно отключить без действия, тем самым лишившись вкусовых ощущений.</p>\n<p>Заменяет мясной язык.</p>"
+      "name": "NeuTongue",
+      "description": "<p>\n  Simulates flavor sensations. Use a linked Agent to customize flavor profiles.\n  Can be deactivated without an Action. No sense of taste when deactivated.\n</p>\n<p>Replaces Meat tongue.</p>\n"
     },
     "PerfectFit Cyberfoot": {
-      "name": "Киберступня «В самый раз»",
-      "description": "<p>Настройка размера ступни под любую обувь. Пользователь игнорирует штрафы от обуви, которая в обычных условиях была бы неудобной или непрактичной. <br>Можно установить в мясную ногу в качестве единственного расширения.</p>"
+      "name": "PerfectFit Cyberfoot",
+      "description": "<p>\n  Adjust foot size to perfectly fit any footwear. User can ignore penalties for\n  wearing footwear that would otherwise be uncomfortable or impracticable.<br />Can\n  be installed in meat leg if it&rsquo;s the only piece of cyberware in that\n  leg.\n</p>\n"
     },
     "PersonalPak KibbleWarmer": {
-      "name": "Разогреватель комбикорма",
-      "description": "<p>Внутренний отсек с мощным нагревательным элементом. Идеально подходит для разогрева полуфабрикатов.</p>"
+      "name": "PersonalPak KibbleWarmer",
+      "description": "<p>\n  Internal compartment with a high-powered heating element, ideal for warming up\n  pre-packaged meals.\n</p>\n"
     },
     "Pursuit Security Inc. Personal Shredder": {
-      "name": "Измельчитель бумаг",
-      "description": "<p>Промышленный измельчитель бумаг, можно спрятать. Устанавливается вместе с внутренним отсеком для отходов.</p>"
+      "name": "Pursuit Security Inc. Personal Shredder",
+      "description": "<p>\n  Heavy duty paper shredder, can be concealed. Features an internal storage for\n  paper shreds.\n</p>\n"
     },
     "Sponsored Covering (Cyberarm)": {
-      "name": "Спонсорское покрытие (киберрука)",
-      "description": "<p>Зарабатывай 20eb в месяц за светящуюся рекламу на твоей киберруке. Стоимость установки может быть возложена на пользователя. Спонсорская поддержка может быть отозвана в случае нарушения условий использования, в том числе прикрытие рекламы одеждой и участие в мероприятиях, не соответствующих образу бренда.</p>\n<p>Нельзя установить в мясную руку.</p>"
+      "name": "Sponsored Covering (Cyberarm)",
+      "description": "<p>\n  Earn 20eb monthly by sporting a light-up advertisement on your Cyberarm. User\n  may be responsible for paying the installation fee. Corporate sponsorship may\n  be revoked if the terms are violated, such as obscuring the advertisement with\n  clothing or engaging in &ldquo;off-brand&rdquo; activities.\n</p>\n<p>Can not be installed in Meat arm.</p>\n"
     },
     "Sponsored Covering (Cyberleg)": {
-      "name": "Спонсорское покрытие (кибернога)",
-      "description": "<p>Зарабатывай 20eb в месяц за светящуюся рекламу на твоей киберноге. Стоимость установки может быть возложена на пользователя. Спонсорская поддержка может быть отозвана в случае нарушения условий использования, в том числе прикрытие рекламы одеждой и участие в мероприятиях, не соответствующих образу бренда.</p>\n<p>Нельзя установить в мясную ногу.</p>"
+      "name": "Sponsored Covering (Cyberleg)",
+      "description": "<p>\n  Earn 20eb monthly by sporting a light-up advertisement on your Cyberleg. User\n  may be responsible for paying the installation fee. Corporate sponsorship may\n  be revoked if the terms are violated, such as obscuring the advertisement with\n  clothing or engaging in &ldquo;off-brand&rdquo; activities.\n</p>\n<p>Can not be installed in Meat leg.</p>\n"
     }
   }
 }
