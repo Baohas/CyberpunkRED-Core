@@ -1,30 +1,30 @@
 {
-  "label": "Tutto Sui Droni",
+  "label": "All About Drones",
   "mapping": {},
   "entries": {
     "GRAF3": {
       "name": "GRAF3",
-      "description": "<p>Drone da costruzione quadrupede.</p>\n<p>Fare riferimento alla descrizione completa a pagina 59 di Interface Red vol. 1.</p>"
+      "description": "<p>Quadruped construction drone.</p>\n"
     },
     "My First GRAF3": {
-      "name": "Il Mio Primo GRAF3",
-      "description": "<p>Drone Personale. il Mio Primo GRAF3 viene collegato a un Agent.</p>\n<p>Fare riferimento alla descrizione completa a pagina 61 di Interface Red vol. 1.</p>"
+      "name": "My First GRAF3",
+      "description": "<p>Personal Drone. Tiny GRAF3 that can be linked to an Agent.</p>\n"
     },
     "Savannah Eagle": {
       "name": "Savannah Eagle",
-      "description": "<p>Drone aereo di Difesa Attivo.</p>\n<p>Fare riferimento alla descrizione completa a pagina 60 di Interface Red vol. 1.</p>"
+      "description": "<p>Active Airborne Defense Drone.</p>\n"
     },
     "Savannah Panther": {
       "name": "Savannah Panther",
-      "description": "<p>Drone di Difesa Attiva.</p>\n<p>Fare riferimento alla descrizione completa a pagina 60 di Interface Red vol. 1.</p>"
+      "description": "<p>Active Defense Drone.</p>\n"
     },
     "The Observer": {
-      "name": "Observer",
-      "description": "<p>Drone Personale. Camera aerea che può essere collegata a un Agent.</p>\n<p>Fare riferimento alla descrizione completa a pagina 62 di Interface Red vol. 1.</p>"
+      "name": "The Observer",
+      "description": "<p>Personal Drone. Flying camera that can be linked to an Agent.</p>\n"
     },
     "The Transporter": {
-      "name": "Transporter",
-      "description": "<p>Drone Personale. Drone aereo di trasporto che può essere collegato a un agente.</p>\n<p>Fare riferimento alla descrizione completa a pagina 63 di Interface Red vol. 1.</p>"
+      "name": "The Transporter",
+      "description": "<p>Personal Drone. Transporter Drone that can be linked to an Agent.</p>\n"
     }
   }
 }
