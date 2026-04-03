@@ -1,26 +1,26 @@
 {
-  "label": "Elflines Online le jeu de cartes à collectionner",
+  "label": "Elflines Online the Trading Card Game",
   "mapping": {
-    "dvTable": "system.tableSD"
+    "dvTable": "system.dvTable"
   },
   "entries": {
     "Elflines Online Playing Cards": {
-      "name": "Cartes de jeu Elflines Online",
-      "description": "<p>Cartes destinées à être utilisées dans le cadre du jeu de cartes à collectionner Elfines Online.</p>\n"
+      "name": "Elflines Online Playing Cards",
+      "description": "<p>\n  Cards meant to be used as part of playing Elfines Online The Trading Card\n  Game.\n</p>\n"
     },
     "Duel Caster": {
       "name": "Duel Caster",
-      "description": "<p>Un boîtier en plastique et un lanceur de cartes pour les cartes ELO. 3 ATT/tour si c'est la seule arme que vous utilisez sur votre tour. Peut également être chargé avec des cartes de jeu normales mais rend l'arme de mauvaise qualité.</p>",
-      "dvTable": "SD Pistolet"
+      "description": "<p>\n  A plastic housing and card launcher for ELO Cards. ROF 3 if only weapon fired\n  on your turn. Can also be loaded with normal playing cards but makes the\n  weapon Poor Quality.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
     "Scarlet Blackbow": {
       "name": "Scarlet Blackbow",
-      "description": "<p>Un arc revisité qui doit être rechargé après chaque attaque. Si vous lancez 1 lors de l'attaque (échec critique), l'arc est détruit. Il est livré avec un carquois et 6 flèches en caoutchouc.</p>",
-      "dvTable": "SD Arcs et arbalètes"
+      "description": "<p>\n  A revitalized bow that must be reloaded after every attack. If you roll 1 on\n  Attack (Crit fail) the bow's battery pack explodes. Comes bundeled with a\n  Quiver and 6 Rubber Arrows.\n</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Sword of Arvish": {
-      "name": "Épée d'Arvish",
-      "description": "<p>Une épée. Si vous lancez 1 en attaque (échec critique) l'arme inflige la Blessure critique Doigts écrasés au porteur.</p>"
+      "name": "Sword of Arvish",
+      "description": "<p>\n  A bladed, hilted weapon. Specifically designed for cutting or thrusting. If\n  you roll 1 on Attack (Crit Fail) the weapon crushes the wielder's fingers.\n</p>\n"
     }
   }
 }
