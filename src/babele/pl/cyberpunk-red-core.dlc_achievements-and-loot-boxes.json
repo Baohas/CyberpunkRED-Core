@@ -6,12 +6,12 @@
       "name": "A Box Bound Tightly in Rope",
       "results": [
         {
-          "1-1": "Lina (60m/yd)",
-          "2-2": "Gogle wirtualowe",
-          "3-3": "Wyrzutnia haków",
-          "4-4": "Fiolka trucizny",
-          "5-5": "Styl Miejski Biżuteria",
-          "6-6": "Pakiet Baterii"
+          "1-1": "Rope (60m/yd)",
+          "2-2": "Virtuality Goggles",
+          "3-3": "Grapple Gun",
+          "4-4": "Vial of Poison",
+          "5-5": "Urban Flash Jewelry",
+          "6-6": "Battery Pack"
         }
       ]
     },
@@ -19,11 +19,11 @@
       "name": "A Box Covered in Chipped Paint",
       "results": [
         {
-          "1-1": "Granat (Gaz łzawiący)",
+          "1-1": "Grenade (Teargas)",
           "2-2": "Heavy Pistol (Basic)",
           "3-3": "Bicycle",
-          "4-4": "Flara alarmowa",
-          "5-5": "Tarcza kuloodporna",
+          "4-4": "Road Flare",
+          "5-5": "Bullet Proof Shield",
           "6-6": "Shotgun Shell (Basic)"
         }
       ]
@@ -32,11 +32,11 @@
       "name": "A Box Dripping Wet With Fluid",
       "results": [
         {
-          "1-1": "Grzmot",
-          "2-2": "Czarna szpryca",
+          "1-1": "Smash",
+          "2-2": "Black Lace",
           "3-3": "Bodyweight AutoInjector",
           "4-4": "AirWell 50",
-          "5-5": "Granat (Zatruta)",
+          "5-5": "Grenade (Poison)",
           "6-6": "TR-4 Detonator Fluid"
         }
       ]
@@ -45,7 +45,7 @@
       "name": "A Box Freezing Cold To The Touch",
       "results": [
         {
-          "1-1": "Artystyczne Lustrzanki",
+          "1-1": "Bohemian Mirrorshades",
           "2-2": "Street Viper Riding Suit",
           "3-3": "Sponsored Cybereye",
           "4-4": "Skid Row Trench",
@@ -58,10 +58,10 @@
       "name": "A Box Handsomely Gift Wrapped",
       "results": [
         {
-          "1-1": "Lornetka",
-          "2-2": "Lekka kurtka kuloodporna (Ciało)",
+          "1-1": "Binoculars",
+          "2-2": "Light Armorjack (Body)",
           "3-3": "Medium Pistol (Smart)",
-          "4-4": "Kamera wideo",
+          "4-4": "Video Camera",
           "5-5": "NeuTongue",
           "6-6": "Reflex Co-Processor"
         }
@@ -71,12 +71,12 @@
       "name": "A Box Marked With A Lime Green X",
       "results": [
         {
-          "1-1": "Elflines Online Macros",
-          "2-2": "Jednorazowy telefon komórkowy",
+          "1-1": "Elflines Online",
+          "2-2": "Disposable Cell Phone",
           "3-3": "Modular Finger Cyberhand",
-          "4-4": "Sportowa Biżuteria",
+          "4-4": "Leisurewear Jewelry",
           "5-5": "Agent",
-          "6-6": "Smartkulary"
+          "6-6": "Smart Glasses"
         }
       ]
     },
@@ -85,7 +85,7 @@
       "results": [
         {
           "1-1": "Scavenged Armor",
-          "2-2": "Granat (Zapalająca)",
+          "2-2": "Grenade (Incendiary)",
           "3-3": "Neo-Soviet Cyberarm",
           "4-4": "Rifle (Basic)",
           "5-5": "Rifle (Basic)",
@@ -99,10 +99,10 @@
         {
           "1-1": "Shotgun Shell (Basic)",
           "2-2": "Heavy Pistol (Basic)",
-          "3-3": "Skóry Nomady Buty",
+          "3-3": "Nomad Leathers Footwear",
           "4-4": "Rifle (Smart)",
-          "5-5": "Snajperska luneta celownicza",
-          "6-6": "Złącze Smartguna"
+          "5-5": "Sniping Scope",
+          "6-6": "Smartgun Link"
         }
       ]
     },
@@ -110,12 +110,12 @@
       "name": "A Box Sealed With A Lipstick Kiss",
       "results": [
         {
-          "1-1": "Nóż bojowy",
+          "1-1": "Combat Knife",
           "3-3": "Shuriken Tornado Grenade",
-          "4-4": "Azjatycki Pop Buty",
-          "5-5": "Biznesowa Koszula",
+          "4-4": "Asia Pop Footwear",
+          "5-5": "Businesswear Top",
           "6-6": "White Hornet Tanto",
-          "2-2": "Mr. Drąg implant seksualny"
+          "2-2": "Mr. Studd Sexual Implant"
         }
       ]
     },
@@ -125,10 +125,10 @@
         {
           "1-1": "Utility Tomahawk",
           "2-2": "Holo Projector Palm",
-          "3-3": "Technarzędzie",
-          "4-4": "Rejestrator dźwięku",
+          "3-3": "Techtool",
+          "4-4": "Audio Recorder",
           "5-5": "Grenade (Armor-Piercing)",
-          "6-6": "Techskaner"
+          "6-6": "Techscanner"
         }
       ]
     }
