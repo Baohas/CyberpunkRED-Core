@@ -4,8 +4,8 @@ effects: []
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
+      current: 38
+      previous: "33"
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Medtech
 system:
@@ -15,7 +15,7 @@ system:
       hasRoll: false
       isSituational: false
       multiplier: 0.5
-      name: Surgery
+      name: Medical Tech (Cryosystem Operation)
       onByDefault: false
       rank: 0
       skill: "--"
@@ -34,7 +34,6 @@ system:
       universalBonuses: []
     - bonusRatio: 1
       bonuses: []
-      description: ""
       hasRoll: true
       isSituational: false
       multiplier: 0.5
