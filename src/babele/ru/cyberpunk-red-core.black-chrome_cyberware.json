@@ -1,176 +1,176 @@
 {
-  "label": "Киберимпланты",
+  "label": "Cyberware",
   "mapping": {
     "dvTable": "system.dvTable"
   },
   "entries": {
     "Airhypo Cyberfinger": {
-      "name": "Киберпалец-пневмошприц",
-      "description": "<p>Киберпалец со встроенным пневмошприцем. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Airhypo Cyberfinger",
+      "description": "<p>\n  Cyberfinger that holds an Airhypo. Can only be installed on a modular finger\n  cyberhand.\n</p>\n"
     },
     "Ballpoint Cyberfinger": {
-      "name": "Киберпалец-шариковоя ручка",
-      "description": "<p>Киберпалец со встроенной шариковой ручкой. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Ballpoint Cyberfinger",
+      "description": "<p>\n  Cyberfinger with a ballpoint pen inside. Can only be installed on a modular\n  finger cyberhand.\n</p>\n"
     },
     "Budget Chipware Socket": {
-      "name": "Бюджетный разъём для щепок",
-      "description": "<p>Дешёвый разъём только для одной щепки. При получении урона по голове щепка вылетает на расстояние 30 м/ярд и может сломаться.</p>"
+      "name": "Budget Chipware Socket",
+      "description": "<p>\n  A cheap socket for a single installation of chipware. Damage to the head sends\n  the installed chipware 30 m/yds away, potentially breaking it.\n</p>\n"
     },
     "Bullet Storage Cyberfinger": {
-      "name": "Киберпалец с отсеком для патронов",
-      "description": "<p>Киберпалец, в который можно спрятать два патрона любого типа. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Bullet Storage Cyberfinger",
+      "description": "<p>\n  Cyberfinger that can be used to conceal two rounds of ammunition of any type.\n  Can only be installed on a modular finger cyberhand.\n</p>\n"
     },
     "Dartgun Cyberfinger": {
-      "name": "Киберпалец-дротикомёт",
-      "description": "<p>Киберпалец со встроенным дротикомётом. Можно установить только в Киберкисть с модульными пальцами.</p>",
-      "dvTable": "СЛ Пистолет"
+      "name": "Dartgun Cyberfinger",
+      "description": "<p>\n  Cyberfinger that holds a concealed Dartgun. Can only be installed on a modular\n  finger cyberhand.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
     "Discount Cyberaudio Suite": {
-      "name": "Уценённая система кибераудио",
-      "description": "<p>Дешёвый и громоздкий интерфейс для улучшения аудио.</p>"
+      "name": "Discount Cyberaudio Suite",
+      "description": "<p>A cheap and bulky interface for an audio enhancement.</p>\n"
     },
     "Dynalar Modular Finger Enthusiast Cyberhand": {
-      "name": "Киберкисть энтузиаста модульных пальцев от Диналар",
-      "description": "<p>Боргимплант. Требует киберруку. Идёт в комплекте с восемью киберпальцами*.</p>\n<p>*Пальцы необходимо добавить после установки</p>"
+      "name": "Dynalar Modular Finger Enthusiast Cyberhand",
+      "description": "<p>Borgware. Requires cyberarm. Comes with 8 cyberfingers*.</p>\n<p>*Fingers must be added after installation</p>\n"
     },
     "Explicit Memory Stimulator": {
-      "name": "Стимулятор декларативной памяти",
-      "description": "<p>Щепка.</p>\n<p>Улучшает запоминание. +2 концентрации пока установлена.</p>"
+      "name": "Explicit Memory Stimulator",
+      "description": "<p>Chipware.</p>\n<p>Enhances memorization. +2 Concentration while installed.</p>\n"
     },
     "Extra-Jointed Cyberarm Upgrade": {
-      "name": "Дополнительный сустав для киберруки",
-      "description": "<p>Улучшенная артикуляция киберруки. +2 изворотливость.</p>"
+      "name": "Extra-Jointed Cyberarm Upgrade",
+      "description": "<p>Enchances cyberarm articulation. +2 Contortionist.</p>\n"
     },
     "Extra-Jointed Cyberleg Upgrade": {
-      "name": "Дополнительный сустав для киберноги",
-      "description": "<p>Улучшенная артикуляция киберноги. +2 изворотливость.</p>"
+      "name": "Extra-Jointed Cyberleg Upgrade",
+      "description": "<p>Enchances cyberleg articulation. +2 Contortionist.</p>\n"
     },
     "Flashbulb": {
-      "name": "Импульсная лампа",
-      "description": "<p>Требует киберруку. Пользователь может ослепить кого угодно на расстоянии до 25 м/ярд.</p>"
+      "name": "Flashbulb",
+      "description": "<p>Requires cyberarm. User can attempt to blind anyone within 25m/yds.</p>\n"
     },
     "Flashlight Cyberfinger": {
-      "name": "Киберпалец-фонарик",
-      "description": "<p>Киберпалец со встроенным фонариком. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Flashlight Cyberfinger",
+      "description": "<p>\n  Cyberfinger that holds a concealed Flashlight. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Hardened Shielding (Borgware)": {
-      "name": "Усиленное экранирование (боргимплант)",
-      "description": "<p>Боргимплант.</p>\n<p>Имплант с этим расширением игнорируют ЭМИ.</p>"
+      "name": "Hardened Shielding (Borgware)",
+      "description": "<p>Borgware.</p>\n<p>This is installed to is not affected by EMP effects.</p>\n"
     },
     "Hardened Shielding (Cybereye)": {
-      "name": "Усиленное экранирование (киберглаз)",
-      "description": "<p>Глаз и установленные в него расширения игнорируют ЭМИ.</p>"
+      "name": "Hardened Shielding (Cybereye)",
+      "description": "<p>The eye and installed options are not affected by EMP effects.</p>\n"
     },
     "Hardened Shielding (Internal)": {
-      "name": "Усиленное экранирование (внутренние импланты)",
-      "description": "<p>Внутренний киберимплант.</p>\n<p>Все внутренние импланты игнорируют ЭМИ.</p>"
+      "name": "Hardened Shielding (Internal)",
+      "description": "<p>Internal Cyberware.</p>\n<p>All internal cyberware is not affected by EMP effects.</p>\n"
     },
     "Heuristic Health Monitor": {
-      "name": "Эвристический монитор здоровья",
-      "description": "<p>Требуется киберимплант «Биомонитор». Можно видеть собственные ПЗ.</p>"
+      "name": "Heuristic Health Monitor",
+      "description": "<p>Requires biomonitor. Can know HP at a glance.</p>\n"
     },
     "Homing Tracer Cyberfinger": {
-      "name": "Киберпалец-радиопеленгатор",
-      "description": "<p>Киберпалец, который работает как радиопеленгатор. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Homing Tracer Cyberfinger",
+      "description": "<p>\n  Cyberfinger that functions like a Homing Tracer. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Implanted Fūma Kotarō Linear Frame": {
-      "name": "Имплантированный прямоходный остов «Фума Котаро»",
-      "description": "<ul>\n<li>Требует ТЕЛ8, две установки наращенных мышц и укреплённых костей.</li>\n<li>Поднимает ТЕЛ до 12 (влияет на ПЗ, порог ранений и испытание против смерти).</li>\n<li>+2 к скрытности.</li>\n<li>Для того, чтобы извлечь и убрать встроенное оружия остова, не требуется действие.</li>\n<li>Для того, чтобы скрыть встроенное оружие остова, не требуется проверка сокрытия</li>\n<li><p>У остова есть два варианта оснащения*.</p>\n<ul>\n<li>Две единицы экзотического тяжёлого оружия ближнего боя отличного качества</li>\n<li>Одна единица экзотического лёгкого оружия ближнего боя отличного качества и одна единица экзотического очень тяжёлого оружия ближнего боя отличного качества.</li>\n</ul>\n</li>\n</ul>\n<p><em>* Необходимо добавить вручную.</em></p>"
+      "name": "Implanted Fūma Kotarō Linear Frame",
+      "description": "<ul>\n  <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>\n  <li>\n    Increases BODY stat to 12 (adjusting your HP, Wound Threshold, and Death\n    Save)\n  </li>\n  <li>Increase Stealth +2</li>\n  <li>Drawing and sheathing the frame's weapons does not require an Action</li>\n  <li>\n    A Conceal check is not required for the weapons concealed in the frame.\n  </li>\n  <li>\n    <p>Frame has one of two weapon options*:</p>\n    <ul>\n      <li>Two excellent quality exotic heavy melee weapons</li>\n      <li>\n        One excellent quality light melee weapon and one excellent quality\n        exotic very heavy melee weapon\n      </li>\n    </ul>\n  </li>\n</ul>\n<p><em>* Must be manually added.</em></p>\n"
     },
     "Implanted LF-001 SWAT Linear Frame": {
-      "name": "Имплантированный прямоходный остов SWAT ПО-001",
-      "description": "<ul>\n<li>Требует ТЕЛ 8, две установки наращенных мышц и укреплённых костей.</li>\n<li>Поднимает ТЕЛ до 12 (влияет на ПЗ, порог ранений и испытание против смерти).</li>\n<li>Нет штрафа к движению во время лазанья и плаванья.</li>\n</ul>"
+      "name": "Implanted LF-001 SWAT Linear Frame",
+      "description": "<ul>\n  <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>\n  <li>\n    Increases BODY stat to 12 (adjusting your HP, Wound Threshold, and Death\n    Save)\n  </li>\n  <li>Ignores the normal movement penalty for climbing and swimming</li>\n</ul>\n"
     },
     "Implanted Vermilion Linear Frame": {
-      "name": "Имплантированный прямоходный остов «Киноварь»",
-      "description": "<ul>\n<li>Требует ТЕЛ 8, две установки наращенных мышц и укреплённых костей.</li>\n<li>Поднимает ТЕЛ до 12 (влияет на ПЗ, порог ранений и испытание против смерти).</li>\n<li>Нет штрафа к движению во время прыжков.</li>\n<li>Считается, что установлена пара ступней-роликов.</li>\n</ul>"
+      "name": "Implanted Vermilion Linear Frame",
+      "description": "<ul>\n  <li>Requires BODY 8, 2 Grafted Muscle and Bone Lace</li>\n  <li>\n    Increases BODY stat to 12 (adjusting your HP, Wound Threshold, and Death\n    Save)\n  </li>\n  <li>No movement penalty for jumping</li>\n  <li>Operates as if paired Skate Feet are installed</li>\n</ul>\n"
     },
     "Integrated Cyberdeck Upgrade": {
-      "name": "Улучшение интегрированной кибердеки",
-      "description": "<p>Требует кибердеку (встроенную), добавляет к ней ещё один слот.</p>"
+      "name": "Integrated Cyberdeck Upgrade",
+      "description": "<p>Requires Cyberdeck (Hardwired), adds an extra slot to the cyberdeck.</p>\n"
     },
     "Laser Pointer Cyberfinger": {
-      "name": "Киберпалец-лазерная указка",
-      "description": "<p>Киберпалец с встроенной лазерной указкой. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Laser Pointer Cyberfinger",
+      "description": "<p>\n  Cyberfinger holding a concealed Laser Pointer. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Lighter Cyberfinger": {
-      "name": "Киберпалец-зажигалка",
-      "description": "<p>Киберпалец со встроенной зажигалкой. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Lighter Cyberfinger",
+      "description": "<p>\n  Cyberfinger holding a concealed lighter. Can only be installed on a modular\n  finger cyberhand.\n</p>\n"
     },
     "Lockpick Cyberfinger": {
-      "name": "Киберпалец-отмычка",
-      "description": "<p>Киберпалец со встроенным набором медвежатника. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Lockpick Cyberfinger",
+      "description": "<p>\n  Cyberfinger holding a concealed Lock Picking Set. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Microphone Cyberfinger": {
-      "name": "Киберпалец-микрофон",
-      "description": "<p>Киберпалец со встроенным устройством звукозаписи. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Microphone Cyberfinger",
+      "description": "<p>\n  Cyberfinger holding a concealed recording device. Can only be installed on a\n  modular finger cyberhand.\n</p>\n"
     },
     "Mini Air Supply Cyberfinger": {
-      "name": "Киберпалец с контуром дыхания",
-      "description": "<p>Киберпалец со встроенным кислородным баллоном. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Mini Air Supply Cyberfinger",
+      "description": "<p>\n  Cyberfinger with an integrated air tank. Can only be installed on a modular\n  finger cyberhand.\n</p>\n"
     },
     "Modular Finger Cyberhand": {
-      "name": "Киберкисть с модульными пальцами",
-      "description": "<p>Требует киберруку. Идёт в комплекте с пятью киберпальцами*.</p>\n<p>*Пальцы необходимо добавить после установки</p>"
+      "name": "Modular Finger Cyberhand",
+      "description": "<p>Requires cyberarm. Comes with 5 cyberfingers*.</p>\n<p>*Fingers must be added after installation</p>\n"
     },
     "Neo-Soviet Cyberarm": {
-      "name": "Неосоветская киберрука",
-      "description": "<p>Советский кибернетический протез руки. Бесплатная кисть в комплекте. -1 ко всем броскам, требующим руки, пока BODY не 8+.</p>"
+      "name": "Neo-Soviet Cyberarm",
+      "description": "<p>\n  A soviet cybernetical replacement arm. Comes with a free hand pre-installed.\n  -1 to rolls requiring arm without BODY 8+.\n</p>\n"
     },
     "One Shot Special Cyberfinger": {
-      "name": "Киберпалец-однозарядник",
-      "description": "<p>Киберпалец со встроенным экзотическим пистолетом крупного калибра. Можно установить только в Киберкисть с модульными пальцами.</p>",
-      "dvTable": "СЛ Пистолет"
+      "name": "One Shot Special Cyberfinger",
+      "description": "<p>\n  Cyberfinger that holds a concealed Exotic Heavy Pistol. Can only be installed\n  on a modular finger cyberhand.\n</p>\n",
+      "dvTable": "DV Pistol"
     },
     "Popup Net Launcher": {
-      "name": "Выдвижной сеткомёт",
-      "description": "<p>Скрытый экзотический сеткомёт. Во время использования кисть не может ничего держать.</p>",
-      "dvTable": "СЛ Дробовик (Жакан)"
+      "name": "Popup Net Launcher",
+      "description": "<p>\n  A concealable exotic net launcher. Can't hold anything with this hand while\n  activated.\n</p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "Popup Shotgun": {
-      "name": "Выдвижной дробовик",
-      "description": "<p>Скрытый дробовик. Идёт в комплекте со смартлинком*. Во время использования кисть не может ничего держать.</p>\n<p><em>*Необходимо добавить вручную после получения оружия.</em></p>",
-      "dvTable": "СЛ Дробовик (Жакан)"
+      "name": "Popup Shotgun",
+      "description": "<p>\n  A concealable shotgun. Comes with a smartgun link pre-installed*. Can't hold\n  anything with this hand while activated.\n</p>\n<p><em>* Smart Link must be manually added.</em></p>\n",
+      "dvTable": "DV Shotgun (Slug)"
     },
     "RacerBracer": {
-      "name": "Гоночный воротник",
-      "description": "<p>Внутренний киберимплант.</p>\n<p>Нивелирует критическое ранение «Травма шеи».</p>"
+      "name": "RacerBracer",
+      "description": "<p>Internal cyberware. Grants immunity to whiplash.</p>\n"
     },
     "Reflex Co-Processor": {
-      "name": "Сопроцессор рефлексов",
-      "description": "<p>Нейроимплант.</p>\n<p>Нивелирует требования РЕА для уклонения от пуль.</p>"
+      "name": "Reflex Co-Processor",
+      "description": "<p>Neuralware.</p>\n<p>Negates REF requirement to dodge bullets.</p>\n"
     },
     "Reinforced Cyberarm Upgrade": {
-      "name": "Усиление киберруки",
-      "description": "<p>Требует киберруку. Киберруку, в которую установлено это улучшение, невозможно сломать.</p>"
+      "name": "Reinforced Cyberarm Upgrade",
+      "description": "<p>Requires cyberarm. The cyberarm this is installed on cannot be broken.</p>\n"
     },
     "Reinforced Cyberleg Upgrade": {
-      "name": "Усиление киберноги",
-      "description": "<p>Требует киберногу. Киберногу, в которую установлено это улучшение, невозможно сломать.</p>"
+      "name": "Reinforced Cyberleg Upgrade",
+      "description": "<p>Requires cyberleg. The cyberleg this is installed on cannot be broken.</p>\n"
     },
     "Sponsored Cybereye": {
-      "name": "Спонсорский киберглаз",
-      "description": "<p>Глазной протез. Идёт в комплекте с Хироном*. Носящему случайным образом показывают рекламу.</p>\n<p>*Хирон необходимо добавить после установки</p>"
+      "name": "Sponsored Cybereye",
+      "description": "<p>\n  A replacement eye. Chyron comes pre-installed*. User randomly experiences\n  random ads.\n</p>\n<p><em>*Chyron must be added after installation</em></p>\n"
     },
     "Spray Paint Cyberfinger": {
-      "name": "Киберпалец-баллончик с краской",
-      "description": "<p>Киберпалец, выполняющий функции баллончика с краской. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Spray Paint Cyberfinger",
+      "description": "<p>\n  Cyberfinger functioning as a spray can. Can only be installed on a modular\n  finger cyberhand.\n</p>\n"
     },
     "Squirt Cyberfinger": {
-      "name": "Киберпалец-брызгалка",
-      "description": "<p>Киберпалец, который может разбрызгивать различные жидкости. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Squirt Cyberfinger",
+      "description": "<p>\n  Cyberfinger that can hold and spray various liquids. Can only be installed on\n  a modular finger cyberhand.\n</p>\n"
     },
     "Standard Cyberfinger": {
-      "name": "Стандартный киберпалец",
-      "description": "<p>Киберпалец. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Standard Cyberfinger",
+      "description": "<p>Cyberfinger. Can only be installed on a modular finger cyberhand.</p>\n"
     },
     "Trauma Response Nanomatrix": {
-      "name": "Наноматрица травматической реакции",
-      "description": "<p>Полностью чинит «Вплетение в кожу» или «Подкожную броню» раз в сутки.</p>"
+      "name": "Trauma Response Nanomatrix",
+      "description": "<p>Can fully repair skinweave or subdermal armor once a day.</p>\n"
     },
     "Wirecutter/Scissors Cyberfingers": {
-      "name": "Киберпалец-ножницы/кусачки",
-      "description": "<p>Пара киберпалец, которые могут служить ножницами или кусачками. Можно установить только в Киберкисть с модульными пальцами.</p>"
+      "name": "Wirecutter/Scissors Cyberfingers",
+      "description": "<p>\n  Cyberfinger pair that can serve as scissors or wirecutters. Can only be\n  installed on a modular finger cyberhand.\n</p>\n"
     }
   }
 }
