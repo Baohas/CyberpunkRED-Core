@@ -228,7 +228,7 @@
     },
     "Malorian Arms 3516": {
       "name": "Malorian Arms 3516",
-      "description": "<p>Egzotyczny, doskonałej jakości bardzo ciężki pistolet. Standardowo wyposażono w złącze smartguna* które musi zostać użyte.</p>\n<p><em>*Musi zostać dodane manualnie po zdobyciu broni</em></p>",
+      "description": "<p>\n  An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link\n  that cannot be uninstalled.\n</p>\n",
       "dvTable": "PT Pistolety"
     },
     "Martial Arts": {
@@ -264,7 +264,7 @@
     },
     "Microwaver": {
       "name": "Pistolet mikrofalowy",
-      "description": "<p>Egzotyczny bardzo ciężki pistolet. Sprawia że cyborgizacje lub urządzenia elektryczne przestają działać na minutę chyba że cel zda test Cyberinżynierii o PT 15.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be\n  rendered inoperable for a minute unless the target passes a\n  <strong>DV15 Cybertech Check</strong>.\n</p>\n<p>\n  <em\n    >Select target token and use\n    @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get\n    EMP'd Items} to determine what items are affected.</em\n  >\n</p>\n",
       "dvTable": "PT Pistolety"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
@@ -286,7 +286,7 @@
     },
     "Rhinemetall EMG-86 Railgun": {
       "name": "Rhinemetall EMG-86 Railgun",
-      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11.\n</p>\n",
       "dvTable": "DV Assault Rifle"
     },
     "Rocket Launcher (Excellent)": {
@@ -321,7 +321,7 @@
     },
     "Shrieker": {
       "name": "Wrzaskun",
-      "description": "<p>Egzotyczny bardzo ciężki pistolet. Wymaga ochrony ucha aby nie otrzymać rany krytycznej Uraz Ucha. Cel musi zdać test Odporności na tortury/narkotyki o PT 15. W przypadku porażki otrzymuje ranę krytyczną Uraz Ucha.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear\n  critical injuries. The target must beat a\n  <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged\n  Ear} critical injury.\n</p>\n",
       "dvTable": "PT Pistolety"
     },
     "Sledgehammer (Excellent)": {
@@ -419,7 +419,7 @@
     "Tsunami Arms Helix": {
       "name": "Tsunami Arms Helix",
       "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Assault Rifle"
+      "dvTable": "DV Assault Rifle (Autofire)"
     },
     "Unarmed": {
       "name": "Gołe pięści",
