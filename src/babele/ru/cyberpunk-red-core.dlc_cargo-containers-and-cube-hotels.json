@@ -1,42 +1,42 @@
 {
-  "label": "Грузовые контейнеры и кубические отели",
+  "label": "Cargo Containers and Cube Hotels",
   "mapping": {},
   "entries": {
     "A Touch of Luxury Furniture Set": {
-      "name": "Набор мебели «Нотка роскоши»",
-      "description": "<p>С этим набором мебели в грузовом контейнере чувствуешь себя почти как дома.</p>"
+      "name": "A Touch of Luxury Furniture Set",
+      "description": "<p>This Furniture Set makes your Cargo Container almost feel like a home.</p>\n"
     },
     "Cargo Container Chic Furniture Set": {
-      "name": "Набор мебели «Для грузовых контейнеров»",
-      "description": "<p>Дешёвая, но всё-таки настоящая мебель. Такой мебелью оснащено большинство грузовых контейнеров.</p>"
+      "name": "Cargo Container Chic Furniture Set",
+      "description": "<p>\n  It might be cheap, but it is real furniture. This is the starting Furniture\n  Set for most cargo containers.\n</p>\n"
     },
     "Fire Safe": {
-      "name": "Несгораемый сейф",
-      "description": "<p>Небольшой огнеупорный ящик из толстолистовой стали на замке.</p>\n<ul>\n<li>50ПЗ</li>\n<li>30 см / 1 фут</li>\n<li>Замок можно вскрыть проверкой <strong>взлома замков СЛ15</strong></li>\n</ul>"
+      "name": "Fire Safe",
+      "description": "<p>Small fireproof lockbox made of Thick Steel.</p>\n<ul>\n  <li>50HP</li>\n  <li>30cm / 1ft</li>\n  <li>Can be picked with a <strong>DV15 Pick Lock</strong> Skill Check</li>\n</ul>\n"
     },
     "Hidden Compartment": {
-      "name": "Секретный отсек",
-      "description": "<p>Небольшой секретный отсек в грузовом контейнере.</p>\n<ul>\n<li>15,25х30х7,5 см / 6х12х3 дюймов</li>\n<li>Замок можно вскрыть проверкой <strong>взлома замков СЛ15</strong></li>\n</ul>"
+      "name": "Hidden Compartment",
+      "description": "<p>A small hidden compartment inside the Cargo Container.</p>\n<ul>\n  <li>15.25x30x7.5cm / 6x12x3in</li>\n  <li>\n    Can be found with a <strong>DV15 Conceal/Reveal Object</strong> Skill Check\n  </li>\n</ul>\n"
     },
     "Koff Popper": {
-      "name": "Коффоварка",
-      "description": "<p>«Коффоварка» от Континентал брэндз заменит для вас все остальные термосы.</p>\n<ul>\n<li>Термос со встроенной «коффоваркой»</li>\n<li>Объём: 237 мл/8 унций</li>\n<li>Продаются только в магазинах «Оазис»</li>\n</ul>"
+      "name": "Koff Popper",
+      "description": "<p>\n  The Continental Brands Koff Popper is the only specialty thermos you'll need.\n</p>\n<ul>\n  <li>Thermos with built in Kof Pop brewer</li>\n  <li>Holds 237ml/8oz</li>\n  <li>Can only be purchased at an Oasis store</li>\n</ul>\n"
     },
     "Koff Pops": {
-      "name": "Пастилки коффо",
-      "description": "<p>Пастилки коффо используются в «Коффоварке» от Континентал брэндз.</p>\n<ul>\n<li>Упаковка 10 шт.</li>\n<li>Включено в уровень жизни «Комбикорм» и выше</li>\n</ul>"
+      "name": "Koff Pops",
+      "description": "<p>Koff Pops used with the Continental Brands Koff Popper.</p>\n<ul>\n  <li>Pack of 10</li>\n  <li>Included in Kibble or higher lifestyle</li>\n</ul>\n"
     },
     "Second-hand Special Furniture Set": {
-      "name": "Набор мебели «Б/У» (Большая удача)",
-      "description": "<p>На вид она может быть не очень, но свою функцию выполняет. Минимальный набор мебели, необходимый грузовому контейнеру.</p>"
+      "name": "Second-hand Special Furniture Set",
+      "description": "<p>\n  It may not look pretty, but it works. This furniture Set is the bare minimum\n  your Cargo Container needs.\n</p>\n"
     },
     "Smart Vanity": {
-      "name": "Умный туалетный столик",
-      "description": "<p>Умная установка для ухода за собой. В комплекте идут все необходимые инструменты и принадлежности.</p>"
+      "name": "Smart Vanity",
+      "description": "<p>\n  Smart grooming station. Comes fully equipped with any tools and makeup you'll\n  need.\n</p>\n"
     },
     "Wall Art": {
-      "name": "Настенная картина",
-      "description": "<p>Дешёвый плакат.</p>"
+      "name": "Wall Art",
+      "description": "<p>Cheap poster.</p>\n"
     }
   }
 }
