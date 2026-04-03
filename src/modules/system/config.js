@@ -681,8 +681,11 @@ CPR.activeEffectKeys = {
       "CPR.effectSheet.roleAbility.medtech.cryo",
     "bonuses.medicalTechPharmaceuticals":
       "CPR.effectSheet.roleAbility.medtech.pharma",
+    "bonuses.medicalTechSkill":
+      "CPR.effectSheet.roleAbility.medtech.medicalTechSkill",
     "bonuses.medicine": "CPR.effectSheet.roleAbility.medtech.medicine",
     "bonuses.surgery": "CPR.effectSheet.roleAbility.medtech.surgery",
+    "bonuses.surgerySkill": "CPR.effectSheet.roleAbility.medtech.surgerySkill",
     "bonuses.interface": "CPR.effectSheet.roleAbility.netrunner.interface",
     "bonuses.moto": "CPR.effectSheet.roleAbility.nomad.moto",
     "bonuses.charismaticImpact":

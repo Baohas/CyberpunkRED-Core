@@ -14,6 +14,9 @@
 
 ### Bug Fixes
 
+- Add the Medtech's `Medical Tech Skill` & `Surgery Skill` to the list of available Role Abilities when configuring Active Effects
+- Restore `Medical Tech (Cryosystem Operation)` role ability to Medtech role item in the Core compendium.
+
 ### New Features
 
 ## Version 0.92.3
