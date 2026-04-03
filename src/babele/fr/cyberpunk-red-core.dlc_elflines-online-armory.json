@@ -1,81 +1,81 @@
 {
-  "label": "Armurerie d'Elflines Online",
+  "label": "Elflines Online Armory",
   "mapping": {
-    "dvTable": "system.tableSD"
+    "dvTable": "system.dvTable"
   },
   "entries": {
     "Arrow": {
-      "name": "Flèche",
-      "description": "<p>Munition standard, rien de spécial.</p>"
+      "name": "Arrow",
+      "description": "<p>Basic ammo, nothing special.</p>\n"
     },
     "Poison Arrow": {
-      "name": "Flèche empoisonnée",
-      "description": "<p>L'attaque n'inflige aucun dégât immédiat. Quiconque est touché par l'attaque doit à la place effectuer un jet de <strong>Résistance à la torture/aux drogues SD 13.</strong> En cas d'échec 2d6 points de dégâts aux PS. L'armure de la cible n'est pas perforée.</p>\n"
+      "name": "Poison Arrow",
+      "description": "<p>\n  No immediate damage. If meat target hit,\n  <strong>DV13 Resist Torture/Drugs</strong> Check. On a fail 2d6 damage to HP.\n  No Ablation.\n</p>\n"
     },
     "Chainmail Armor (Body)": {
-      "name": "Cotte de mailles (Corps)",
-      "description": "<p>Armure faite d'innombrables anneaux en métal. -2 en REF, DEX et MOUV.</p>"
+      "name": "Chainmail Armor (Body)",
+      "description": "<p>Armor made up of innumerable metal rings. -2 to REF, DEX, and MOVE.</p>\n"
     },
     "Chainmail Armor (Head)": {
-      "name": "Cotte de mailles (Tête)",
-      "description": "<p>Armure faite d'innombrables anneaux en métal pour votre tête. -2 en REF, DEX et MOUV.</p>"
+      "name": "Chainmail Armor (Head)",
+      "description": "<p>\n  Armor made up of innumerable metal rings for your head. -2 to REF, DEX, and\n  MOVE.\n</p>\n"
     },
     "Full Plate Armor (Body)": {
-      "name": "Armure de plate (Corps)",
-      "description": "<p>Armure de plaques métalliques pour résister aux coups les plus puissants. -4 en REF, DEX et MOUV.</p>"
+      "name": "Full Plate Armor (Body)",
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.\n</p>\n"
     },
     "Full Plate Armor (Head)": {
-      "name": "Armure de plate (Tête)",
-      "description": "<p>Casque de plaques métalliques pour résister aux coups les plus puissants. -4 en REF, DEX et MOUV.</p>"
+      "name": "Full Plate Armor (Head)",
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits to your head. -4 to REF,\n  DEX, and MOVE.\n</p>\n"
     },
     "Leather Armor (Body)": {
-      "name": "Armure de cuir (Corps)",
-      "description": "<p>Une simple armure de cuir. Pas de pénalité d'armure.</p>"
+      "name": "Leather Armor (Body)",
+      "description": "<p>Simple Leather armor. No armor penalty.</p>\n"
     },
     "Leather Armor (Head)": {
-      "name": "Armure de cuir (Tête)",
-      "description": "<p>Simple armure de cuir pour la tête. Pas de pénalité d'armure.</p>"
+      "name": "Leather Armor (Head)",
+      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>\n"
     },
     "Shield": {
-      "name": "Bouclier",
-      "description": "<p>Nécessite un bras et possède des PV réduits par des dégâts.</p>"
+      "name": "Shield",
+      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>\n"
     },
     "Studded Leather Armor (Body)": {
-      "name": "Armure de cuir clouté (Corps)",
-      "description": "<p>Une simple armure de cuir clouté. Pas de pénalité d'armure.</p>"
+      "name": "Studded Leather Armor (Body)",
+      "description": "<p>Standard Studded Leather Armor. No armor penalty.</p>\n"
     },
     "Studded Leather Armor (Head)": {
-      "name": "Armure de cuir clouté (Tête)",
-      "description": "<p>Une simple armure de cuir clouté pour votre tête. Pas de pénalité d'armure.</p>"
+      "name": "Studded Leather Armor (Head)",
+      "description": "<p>Standard Studded Leather Armor for your head. No armor penalty.</p>\n"
     },
     "Sacred Herbs": {
-      "name": "Herbes sacrées",
-      "description": "<p>Ingérer des Herbes sacrées soigne immédiatement les PS pour un total de COR+VOL de l'utilisateur.</p>"
+      "name": "Sacred Herbs",
+      "description": "<p>\n  Ingesting Sacred Herbs immediately heals HP equal to the user's BODY plus\n  their WILL.\n</p>\n"
     },
     "Vial of Poison": {
-      "name": "Fiole de poison",
-      "description": "<p>Inflige 2d6 dégâts qui ne sont pas réduits par l'armure. Pour contrer son effet, on utilise Résistance à la torture/aux drogues.</p>"
+      "name": "Vial of Poison",
+      "description": "<p>2d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>\n"
     },
     "Bow": {
-      "name": "Arc",
-      "description": "<p>Un arc revitalisé, rechargement compris dans l'action d'attaque.</p>",
-      "dvTable": "SD Arcs et arbalètes"
+      "name": "Bow",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Dagger": {
-      "name": "Dague",
-      "description": "<p>Un couteau adapté à un chasseur.</p>"
+      "name": "Dagger",
+      "description": "<p>A knife fit for a hunter.</p>\n"
     },
     "Greataxe": {
-      "name": "Hache de guerre",
-      "description": "<p>Un bâton de bois avec une lame incurvée à chaque extrémité. Apprécié par les groupes de raid pour des engagements rapprochés. Nécessite 2 mains pour le manier même par un porteur avec COR 8 ou plus.</p>"
+      "name": "Greataxe",
+      "description": "<p>\n  A wooden pole with a curved blade on each side. Favoured by raid parties for\n  close engagements. Requires 2 hands to wield even by a wielder with Body 8 or\n  higher.\n</p>\n"
     },
     "Longsword": {
-      "name": "Épée longue",
-      "description": "<p>Épée longue. Spécifiquement conçue pour découper et transpercer. 2 Att/round si vous portez deux épées longues.</p>"
+      "name": "Longsword",
+      "description": "<p>\n  A bladed, hilted weapon. Specifically designed for cutting or thrusting. 2 ROF\n  if wielding two longswords.\n</p>\n"
     },
     "Shortsword": {
-      "name": "Épée courte",
-      "description": "<p>Une épée courte. Conçue pour couper et transpercer.</p>"
+      "name": "Shortsword",
+      "description": "<p>\n  A short bladed, hilted weapon. Specifically designed for cutting or thrusting.\n</p>\n"
     }
   }
 }

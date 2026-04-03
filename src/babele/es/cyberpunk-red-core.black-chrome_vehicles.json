@@ -1,5 +1,5 @@
 {
-  "label": "Vehículos",
+  "label": "Vehicles",
   "mapping": {},
   "entries": {
     "AmeriCar EconoCompact": {
@@ -24,23 +24,23 @@
     },
     "Grundy": {
       "name": "Grundy",
-      "description": "<p>Coche compacto de aspecto industrial blindado con arado de combate.</p>\n<p>Detalles completos pueden encontrarse en la página 68.</p>"
+      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n"
     },
     "Harriet 100": {
       "name": "Harriet 100",
-      "description": "<p>Una motocicleta clásica con un aspecto más femenino.</p>\n<p>Puede encontrar todos los detalles en la página 69.</p>"
+      "description": "<p>A classic Roadbike with a more feminine look.</p>\n"
     },
     "Harvey 100": {
       "name": "Harvey 100",
-      "description": "<p>Una motocicleta de ruta clásica.</p>\n<p>Puede encontrar todos los detalles en la página 69.</p>"
+      "description": "<p>A classic Roadbike.</p>\n"
     },
     "Harvey Merc": {
       "name": "Harvey Merc",
       "description": "<p>A classic Roadbike, this time with mounted weapons.</p>\n"
     },
     "Highway Master Artemis": {
-      "name": "Artemis Maestro de las Carreteras",
-      "description": "<p>Una motocicleta de carretera de tipo Low-Rider con cubierta de cristal retráctil. Tiene un modo de sobrecarga que no viene con garantía de seguridad.</p>\n<p>Los detalles completos se pueden encontrar en la página 70.</p>"
+      "name": "Highway Master Artemis",
+      "description": "<p>\n  A low-riding Roadbike with retractable glass cover. Has a surpercharge mode\n  that doesn't come with a safety guarantee.\n</p>\n"
     },
     "Kaukaz Volkhov": {
       "name": "Kaukaz Volkhov",
@@ -55,24 +55,24 @@
       "description": "<p>A monster of an armored van.</p>\n"
     },
     "Paladin 500": {
-      "name": "Paladín 500",
-      "description": "<p>Un coche de alto rendimiento. Ahora puedes ser MadMax. Con dos ametralladoras montadas.</p>\n<p>Puede encontrar todos los detalles en la página 75.</p>"
+      "name": "Paladin 500",
+      "description": "<p>\n  A High Performance Groundcar. Now you can be MadMax. In town. With two mounted\n  Machine Guns.\n</p>\n"
     },
     "Quadra Thunder-X": {
       "name": "Quadra Thunder-X",
       "description": "<p>A top of the line High Performance Groundcar.</p>\n"
     },
     "SH-45 Patroller Law": {
-      "name": "SH-45 Patrullero",
-      "description": "<p>Girocóptero de un asiento. Versión de la policía, con ametralladora montada.</p>\n<p>Estadísticas completas pueden encontrarse en la página 58.</p>"
+      "name": "SH-45 Patroller Law",
+      "description": "<p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>\n"
     },
     "SH-45 Patroller": {
-      "name": "SH-45 Patrullero",
-      "description": "<p>Girocóptero de un asiento. Versión Civil.</p>\n<p>Estadísticas completas pueden encontrarse en la página 58.</p>"
+      "name": "SH-45 Patroller",
+      "description": "<p>One seat Gyrocopter. Civilian version.</p>\n"
     },
     "Street King Combat Vehicle": {
-      "name": "Vehículo de Combate Rey Callejero",
-      "description": "<p>Un vehículo de alto rendimiento que es grande, armado y tiene un aspecto militar.</p>\n<p>Los detalles completos se pueden encontrar en la página 77.</p>"
+      "name": "Street King Combat Vehicle",
+      "description": "<p>\n  A High Performance Groundcar which is large, armored and has a military look.\n</p>\n"
     },
     "Tanson Bellhop": {
       "name": "Tanson Bellhop",
@@ -91,8 +91,8 @@
       "description": "<p>Armored truck transport. As much a train as a car.</p>\n"
     },
     "Yang's Wheels Rickshaw": {
-      "name": "Ruedas Rickshaw de Yang",
-      "description": "<p>Moto de carretera con tráiler acoplado para pasajeros.</p>\n<p>Puede encontrar todos los detalles en la página 81.</p>"
+      "name": "Yang's Wheels Rickshaw",
+      "description": "<p>Roadbike with attached trailer for passengers.</p>\n"
     },
     "Zacatzontli Pickup Truck": {
       "name": "Zacatzontli Pickup Truck",

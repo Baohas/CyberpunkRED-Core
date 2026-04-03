@@ -6,12 +6,12 @@
       "name": "A Box Bound Tightly in Rope",
       "results": [
         {
-          "1-1": "ロープ(60m)",
-          "2-2": "バーチャリティ・ゴーグル",
-          "3-3": "グラップルガン",
-          "4-4": "毒の小瓶",
-          "5-5": "アーバンフラッシュジュエリー",
-          "6-6": "バッテリーパック"
+          "1-1": "Rope (60m/yd)",
+          "2-2": "Virtuality Goggles",
+          "3-3": "Grapple Gun",
+          "4-4": "Vial of Poison",
+          "5-5": "Urban Flash Jewelry",
+          "6-6": "Battery Pack"
         }
       ]
     },
@@ -19,12 +19,12 @@
       "name": "A Box Covered in Chipped Paint",
       "results": [
         {
-          "1-1": "催涙ガス・グレネード",
-          "2-2": "大型拳銃（通常弾）",
+          "1-1": "Grenade (Teargas)",
+          "2-2": "Heavy Pistol (Basic)",
           "3-3": "Bicycle",
           "4-4": "Road Flare",
-          "5-5": "防弾シールド",
-          "6-6": "ショットガンの散弾（通常弾）"
+          "5-5": "Bullet Proof Shield",
+          "6-6": "Shotgun Shell (Basic)"
         }
       ]
     },
@@ -32,11 +32,11 @@
       "name": "A Box Dripping Wet With Fluid",
       "results": [
         {
-          "1-1": "スマッシュ",
-          "2-2": "ブラック・レース",
+          "1-1": "Smash",
+          "2-2": "Black Lace",
           "3-3": "Bodyweight AutoInjector",
           "4-4": "AirWell 50",
-          "5-5": "グレネード（毒弾）",
+          "5-5": "Grenade (Poison)",
           "6-6": "TR-4 Detonator Fluid"
         }
       ]
@@ -45,7 +45,7 @@
       "name": "A Box Freezing Cold To The Touch",
       "results": [
         {
-          "1-1": "ボヘミアンミラーシェード",
+          "1-1": "Bohemian Mirrorshades",
           "2-2": "Street Viper Riding Suit",
           "3-3": "Sponsored Cybereye",
           "4-4": "Skid Row Trench",
@@ -58,10 +58,10 @@
       "name": "A Box Handsomely Gift Wrapped",
       "results": [
         {
-          "1-1": "双眼鏡",
-          "2-2": "軽装アーマージャック (身体)",
-          "3-3": "中型拳銃（スマート弾）",
-          "4-4": "ビデオカメラ",
+          "1-1": "Binoculars",
+          "2-2": "Light Armorjack (Body)",
+          "3-3": "Medium Pistol (Smart)",
+          "4-4": "Video Camera",
           "5-5": "NeuTongue",
           "6-6": "Reflex Co-Processor"
         }
@@ -72,11 +72,11 @@
       "results": [
         {
           "1-1": "Elflines Online",
-          "2-2": "使い捨て携帯電話",
-          "3-3": "モジュラーサイバーフィンガー",
-          "4-4": "レジャーウェアジュエリー",
-          "5-5": "エージェント",
-          "6-6": "スマート グラス"
+          "2-2": "Disposable Cell Phone",
+          "3-3": "Modular Finger Cyberhand",
+          "4-4": "Leisurewear Jewelry",
+          "5-5": "Agent",
+          "6-6": "Smart Glasses"
         }
       ]
     },
@@ -85,11 +85,11 @@
       "results": [
         {
           "1-1": "Scavenged Armor",
-          "2-2": "グレネード（焼夷弾）",
+          "2-2": "Grenade (Incendiary)",
           "3-3": "Neo-Soviet Cyberarm",
-          "4-4": "ライフル（通常弾）",
-          "5-5": "ライフル（通常弾）",
-          "6-6": "ショットガン（焼夷弾）"
+          "4-4": "Rifle (Basic)",
+          "5-5": "Rifle (Basic)",
+          "6-6": "Shotgun Shell (Incendiary)"
         }
       ]
     },
@@ -97,12 +97,12 @@
       "name": "A Box Reeking Of Oil",
       "results": [
         {
-          "1-1": "ショットガンの散弾（通常弾）",
-          "2-2": "大型拳銃（通常弾）",
-          "3-3": "ノーマッドレザーフットウェア",
-          "4-4": "ライフル（スマート弾）",
+          "1-1": "Shotgun Shell (Basic)",
+          "2-2": "Heavy Pistol (Basic)",
+          "3-3": "Nomad Leathers Footwear",
+          "4-4": "Rifle (Smart)",
           "5-5": "Sniping Scope",
-          "6-6": "スマートガンリンク"
+          "6-6": "Smartgun Link"
         }
       ]
     },
@@ -110,12 +110,12 @@
       "name": "A Box Sealed With A Lipstick Kiss",
       "results": [
         {
-          "1-1": "コンバットナイフ",
+          "1-1": "Combat Knife",
           "3-3": "Shuriken Tornado Grenade",
-          "4-4": "アジアポップフットウェア",
-          "5-5": "ビジネスウェアトップス",
+          "4-4": "Asia Pop Footwear",
+          "5-5": "Businesswear Top",
           "6-6": "White Hornet Tanto",
-          "2-2": "Mr. スタッド"
+          "2-2": "Mr. Studd Sexual Implant"
         }
       ]
     },
@@ -123,12 +123,12 @@
       "name": "A Box Showing Signs Of Repair",
       "results": [
         {
-          "1-1": "ユーティリティートマホーク",
+          "1-1": "Utility Tomahawk",
           "2-2": "Holo Projector Palm",
-          "3-3": "テクツール",
+          "3-3": "Techtool",
           "4-4": "Audio Recorder",
-          "5-5": "グレネード（徹甲弾）",
-          "6-6": "テクスキャナ"
+          "5-5": "Grenade (Armor-Piercing)",
+          "6-6": "Techscanner"
         }
       ]
     }

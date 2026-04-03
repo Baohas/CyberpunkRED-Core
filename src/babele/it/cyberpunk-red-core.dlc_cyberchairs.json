@@ -1,14 +1,14 @@
 {
-  "label": "Cyberchair",
+  "label": "Cyberchairs",
   "mapping": {},
   "entries": {
     "Mercurius Cyberchair": {
-      "name": "Cyberchair Mercurio",
-      "description": "<p>Un modello sportivo, con un’impressionante quantità di caratteristiche rispetto al prezzo. Quando si controlla la Mercurius, la VEL del pilota diventa 5 (meno le Penalità dell'Arma- tura) e può usare tutte le normali opzioni di Movimento (Correre, Saltare, Arrampicarsi, Nuotare, Alzarsi ecc.).</p>\n<p>L’utente può controllarla senza mani, collegandosi a un Connettore, oppure usando il pannello inserito nel bracciolo.</p>\n<p>Qualsiasi Ferita Critica che riduca la VEL subita dal pilota, abbassa invece la VEL della Cyberchair.</p>\n<p>La Cyberchair Mercurius non può essere disattivata da effetti EMP, come gli impulsi di un Microwaver o gli effetti di programmi non-Black ICE.</p>"
+      "name": "Mercurius Cyberchair",
+      "description": "<p>\n  An impressively affordable cyberchair, offering great features at this price\n  point. While using it the operator's base MOVE becomes 5, with all regular\n  movement options remaining available.\n</p>\n<p>\n  Operation of the cyberchair requires either a free hand, or interface plugs.\n</p>\n<p>\n  If the operator suffers a critical injury that reduces their MOVE, the MOVE of\n  the cyberchair is instead effected.\n</p>\n<p>\n  The cyberchair cannot be targeted specifically, nor can it be disabled via EMP\n  effects.\n</p>\n"
     },
     "Spider Cyberchair": {
-      "name": "Cyberchair Ragno",
-      "description": "<p>Questa Cyberchair è il modello di punta della Rocklin. Quando si controlla la Mercurius, la VEL del pilota diventa 5 (meno le Penalità dell'Armatura) e può usare tutte le normali opzioni di Movimento (Correre, Saltare, Arrampicarsi, Nuotare, Alzarsi ecc.).</p>\n<p>La Spider ha quattro Slot per opzioni da Cyberbraccia, Cybergambe o Cyberarti*. Installare un'opzione nella Cyberchair costa quanto montarla in un Cyberarto.</p>\n<p>L’utente può controllarla senza mani, collegandosi a un Connettore, oppure usando il pannello inserito nel bracciolo. La mano usata per guidare non può essere impiegata per fare altro.</p>\n<p>Qualsiasi Ferita Critica che riduca la VEL subita dal pilota, abbassa invece la VEL della Cyberchair.</p>\n<p>La Cyberchair Spider e tutte le opzioni installate non possono essere disattivate da effetti EMP, come gli impulsi di un Microwaver o gli effetti di programmi non-Black ICE.</p>\n<p><em>*L'installazione dell'opzione cyberclimp non è attualmente supportata</em></p>"
+      "name": "Spider Cyberchair",
+      "description": "<p>\n  The top of the line cyberchair, giving the premier user many options. While\n  using it the operator's base MOVE becomes 5, with all regular movement options\n  remaining available.\n</p>\n<p>\n  Additionally, this cyberchair has room for 4 cyberlimb options*. Any options\n  installed always count as being paired.\n</p>\n<p>\n  Operation of the cyberchair requires either a free hand, or interface plugs.\n</p>\n<p>\n  If the operator suffers a critical injury that reduces their MOVE, the MOVE of\n  the cyberchair is instead effected.\n</p>\n<p>\n  The cyberchair cannot be targeted specifically, nor can it be disabled via EMP\n  effects.\n</p>\n<p><em>*Installing cyberlimb options currently not supported</em></p>\n"
     }
   }
 }

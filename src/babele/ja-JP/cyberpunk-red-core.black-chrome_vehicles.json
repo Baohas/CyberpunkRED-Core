@@ -1,5 +1,5 @@
 {
-  "label": "ヴィークル",
+  "label": "Vehicles",
   "mapping": {},
   "entries": {
     "AmeriCar EconoCompact": {
@@ -23,24 +23,24 @@
       "description": "<p>Three wheeled Roadbike.</p>\n"
     },
     "Grundy": {
-      "name": "グランディ",
-      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n<p>Full details can be found on page 68.</p>"
+      "name": "Grundy",
+      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n"
     },
     "Harriet 100": {
-      "name": "ハリエット100",
-      "description": "<p>A classic Roadbike with a more feminine look.</p>\n<p>Full details can be found on page 69.</p>"
+      "name": "Harriet 100",
+      "description": "<p>A classic Roadbike with a more feminine look.</p>\n"
     },
     "Harvey 100": {
-      "name": "ハーヴェイ100",
-      "description": "<p>A classic Roadbike.</p>\n<p>Full details can be found on page 69.</p>"
+      "name": "Harvey 100",
+      "description": "<p>A classic Roadbike.</p>\n"
     },
     "Harvey Merc": {
-      "name": "ハーヴェイ・マーク",
+      "name": "Harvey Merc",
       "description": "<p>A classic Roadbike, this time with mounted weapons.</p>\n"
     },
     "Highway Master Artemis": {
-      "name": "ハイウェイマスター・アルテミス",
-      "description": "<p>A low-riding Roadbike with retractable glass cover. Has a surpercharge mode that doesn't come with a safety guarantee.</p>\n<p>Full details can be found on page 70.</p>"
+      "name": "Highway Master Artemis",
+      "description": "<p>\n  A low-riding Roadbike with retractable glass cover. Has a surpercharge mode\n  that doesn't come with a safety guarantee.\n</p>\n"
     },
     "Kaukaz Volkhov": {
       "name": "Kaukaz Volkhov",
@@ -55,24 +55,24 @@
       "description": "<p>A monster of an armored van.</p>\n"
     },
     "Paladin 500": {
-      "name": "パラディン500",
-      "description": "<p>A High Performance Groundcar. Now you can be MadMax. In town. With two mounted Machine Guns.</p>\n<p>Full details can be found on page 75.</p>"
+      "name": "Paladin 500",
+      "description": "<p>\n  A High Performance Groundcar. Now you can be MadMax. In town. With two mounted\n  Machine Guns.\n</p>\n"
     },
     "Quadra Thunder-X": {
       "name": "Quadra Thunder-X",
       "description": "<p>A top of the line High Performance Groundcar.</p>\n"
     },
     "SH-45 Patroller Law": {
-      "name": "SH-45 パトローラー・ロー",
-      "description": "<p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>\n<p>Full stats can be found on page 58.</p>"
+      "name": "SH-45 Patroller Law",
+      "description": "<p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>\n"
     },
     "SH-45 Patroller": {
-      "name": "SH-45 パトローラー",
-      "description": "<p>One seat Gyrocopter. Civilian version.</p>\n<p>Full stats can be found on page 58.</p>"
+      "name": "SH-45 Patroller",
+      "description": "<p>One seat Gyrocopter. Civilian version.</p>\n"
     },
     "Street King Combat Vehicle": {
-      "name": "ストリーㇳキング・コンバットヴィークル",
-      "description": "<p>A High Performance Groundcar which is large, armored and has a military look.</p>\n<p>Full details can be found on page 77.</p>"
+      "name": "Street King Combat Vehicle",
+      "description": "<p>\n  A High Performance Groundcar which is large, armored and has a military look.\n</p>\n"
     },
     "Tanson Bellhop": {
       "name": "Tanson Bellhop",
@@ -91,8 +91,8 @@
       "description": "<p>Armored truck transport. As much a train as a car.</p>\n"
     },
     "Yang's Wheels Rickshaw": {
-      "name": "ヤンズ・ホイールズ・リキシャ",
-      "description": "<p>Roadbike with attached trailer for passengers.</p>\n<p>Full details can be found on page 81.</p>"
+      "name": "Yang's Wheels Rickshaw",
+      "description": "<p>Roadbike with attached trailer for passengers.</p>\n"
     },
     "Zacatzontli Pickup Truck": {
       "name": "Zacatzontli Pickup Truck",

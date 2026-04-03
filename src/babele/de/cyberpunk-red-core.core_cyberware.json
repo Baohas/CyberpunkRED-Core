@@ -250,21 +250,21 @@
     },
     "Popup Grenade Launcher": {
       "name": "Pop-Up-Granatwerfer",
-      "description": "<p>Ein einhändiger Granatwerfer mit nur einer Granate im Magazin. Bei ausgefahrener Waffe kann der\nAnwender nichts anderes in der Hand dieses Arms halten.</p>",
+      "description": "<p>\n  A concealable one-shot Grenade Launcher. Can't hold anything with this hand\n  while activated. Incompatible with all upgrades except\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun\n  Link}.\n</p>\n",
       "dvTable": "SG Granatwerfer"
     },
     "Popup Melee Weapon": {
       "name": "Pop-Up-Nahkampf­waffe",
-      "description": "<p>Eine Leichte, Mittelschwere oder Schwere Nahkampfwaffe wird in einem Cyberarm installiert. Bei gezogener Waffe kann der Anwender nichts anderes in der Hand dieses Arms halten.</p>"
+      "description": "<p>\n  A concealable One-Handed Melee Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n"
     },
     "Popup Ranged Weapon": {
       "name": "Pop-Up-Fernkampfwaffe",
-      "description": "<p>Eine vom Anwender bereitgestellte, einhändige Fernkampfwaffe wird permanent in den Cyberarm installiert. Bei\ngezogener Waffe kann der Anwender nichts anderes in der Hand dieses Arms halten.</p>",
+      "description": "<p>\n  A concealable One-Handed Ranged Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n",
       "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Pop-Up-Schild",
-      "description": "<p>Ein Kugelsicherer Schild, der zusammengefaltet im Cyberarm verborgen ist. Ist der Schild gezogen, kannst du den Cyberarm nur als Schild benutzen und nichts anderes als den Schild in der Hand des Cyberarms halten.</p>"
+      "description": "<p>\n  A foldable bulletproof shield that can be drawn or concealed easily. Can't\n  hold anything with this hand while activated.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet\n    Proof Shield} to inventory to manage shield HP.\n  </p>\n</blockquote>\n"
     },
     "Quick Change Mount": {
       "name": "Schnellwechselgelenk",

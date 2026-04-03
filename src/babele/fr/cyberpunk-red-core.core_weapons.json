@@ -228,7 +228,7 @@
     },
     "Malorian Arms 3516": {
       "name": "3516 de Malorian Arms",
-      "description": "<p>Pistolet exotique très lourd, qualité excellente. Fourni avec une liaison smartgun* qui doit être utilisée.</p>\n<p><em>*Doit être ajouté manuellement après l'acquisition de l'arme</em></p>",
+      "description": "<p>\n  An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link\n  that cannot be uninstalled.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Martial Arts": {
@@ -264,7 +264,7 @@
     },
     "Microwaver": {
       "name": "Canon à ondes",
-      "description": "<p>Pistolet exotique très lourd. Permet de rendre inopérants les cyberimplants ou les composants électriques pendant une minute, à moins que la cible ne réussisse un jet de <strong>Cybertech SD15</strong>.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be\n  rendered inoperable for a minute unless the target passes a\n  <strong>DV15 Cybertech Check</strong>.\n</p>\n<p>\n  <em\n    >Select target token and use\n    @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get\n    EMP'd Items} to determine what items are affected.</em\n  >\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
@@ -286,7 +286,7 @@
     },
     "Rhinemetall EMG-86 Railgun": {
       "name": "Canon électrique Rhinemetall EMG-86",
-      "description": "<p>\n  Un fusil d'assaut exotique. Il ne peut pas faire de tirs ciblés ou automatiques. Nécessite \n  COR 11 ou plus (sauf si elle est montée sur un support). Capable d'ignorer toute armure sous SP11*.\n</p>\n<p>\n  <em\n    >*Non pris en charge pour le moment, appliquer manuellement les dégâts aux cibles \n    blindées</em\n  >\n</p>\n",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11.\n</p>\n",
       "dvTable": "SD Fusil d'assaut"
     },
     "Rocket Launcher (Excellent)": {
@@ -321,7 +321,7 @@
     },
     "Shrieker": {
       "name": "Hurleur",
-      "description": "<p>Pistolet Exotique très lourd. Nécessite une protection auditive contre les blessures critiques. La cible doit réussir un jet de <strong>Résistance à la torture/aux drogues SD15</strong> ou subir la blessure critique Oreilles endommagées.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear\n  critical injuries. The target must beat a\n  <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged\n  Ear} critical injury.\n</p>\n",
       "dvTable": "SD Pistolet"
     },
     "Sledgehammer (Excellent)": {
@@ -419,7 +419,7 @@
     "Tsunami Arms Helix": {
       "name": "Helix de Tsunami Arms",
       "description": "<p>\n  Un fusil d'assaut exotique qui n'utilise que le tir automatique. Contient 40 balles, \n  tire 20 balles à chaque attaque. Utilise les règles de Tir automatique avec un multiplicateur \n  maximum de 5. Nécessite COR 11 ou plus (sauf s'il est monté sur un support)\n</p>\n",
-      "dvTable": "SD Fusil d'assaut"
+      "dvTable": "DV Assault Rifle (Autofire)"
     },
     "Unarmed": {
       "name": "Désarmé",

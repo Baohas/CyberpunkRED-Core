@@ -1,134 +1,134 @@
 {
-  "label": "Accomplissements et Caisses de Butin",
+  "label": "Achievements and Loot Boxes",
   "mapping": {},
   "entries": {
     "A Box Bound Tightly in Rope": {
-      "name": "Une boîte serrée dans une corde",
+      "name": "A Box Bound Tightly in Rope",
       "results": [
         {
-          "1-1": "Corde (60 m)",
-          "2-2": "Lunettes de réalité virtuelle",
-          "3-3": "Lance-grappin",
-          "4-4": "Fiole de poison",
-          "5-5": "Bijou Urbain flash",
-          "6-6": "Batterie"
+          "1-1": "Rope (60m/yd)",
+          "2-2": "Virtuality Goggles",
+          "3-3": "Grapple Gun",
+          "4-4": "Vial of Poison",
+          "5-5": "Urban Flash Jewelry",
+          "6-6": "Battery Pack"
         }
       ]
     },
     "A Box Covered in Chipped Paint": {
-      "name": "Une boîte recouverte de peinture écaillée",
+      "name": "A Box Covered in Chipped Paint",
       "results": [
         {
-          "1-1": "Grenade (Lacrymogène)",
-          "2-2": "Pistolet lourd (Standard)",
-          "3-3": "Vélo",
-          "4-4": "Fusée éclairante",
-          "5-5": "Bouclier balistique",
-          "6-6": "Chevrotine de fusil à pompe (Standard)"
+          "1-1": "Grenade (Teargas)",
+          "2-2": "Heavy Pistol (Basic)",
+          "3-3": "Bicycle",
+          "4-4": "Road Flare",
+          "5-5": "Bullet Proof Shield",
+          "6-6": "Shotgun Shell (Basic)"
         }
       ]
     },
     "A Box Dripping Wet With Fluid": {
-      "name": "Une boîte dégoulinante de liquide",
+      "name": "A Box Dripping Wet With Fluid",
       "results": [
         {
           "1-1": "Smash",
-          "2-2": "Dentelle noire",
-          "3-3": "Auto-injecteur Bodyweight",
+          "2-2": "Black Lace",
+          "3-3": "Bodyweight AutoInjector",
           "4-4": "AirWell 50",
           "5-5": "Grenade (Poison)",
-          "6-6": "Fluide détonateur TR-4"
+          "6-6": "TR-4 Detonator Fluid"
         }
       ]
     },
     "A Box Freezing Cold To The Touch": {
-      "name": "Une boite glaciale au toucher",
+      "name": "A Box Freezing Cold To The Touch",
       "results": [
         {
-          "1-1": "Lunettes miroirs Bohème",
-          "2-2": "Combinaison Street Viper",
-          "3-3": "Cyberoptique sponsorisé",
-          "4-4": "Trench-coat SkidRow",
+          "1-1": "Bohemian Mirrorshades",
+          "2-2": "Street Viper Riding Suit",
+          "3-3": "Sponsored Cybereye",
+          "4-4": "Skid Row Trench",
           "5-5": "Prime Time",
-          "6-6": "Veste de rue Laser Light"
+          "6-6": "Laser Light Street Jacket"
         }
       ]
     },
     "A Box Handsomely Gift Wrapped": {
-      "name": "Une boite emballée dans un beau papier",
+      "name": "A Box Handsomely Gift Wrapped",
       "results": [
         {
-          "1-1": "Jumelles",
-          "2-2": "Tenue pare-balles légère (Corps)",
-          "3-3": "Pistolet moyen (Intelligent)",
-          "4-4": "Caméra vidéo",
-          "5-5": "NovLangue",
-          "6-6": "Coprocesseur de réflexes"
+          "1-1": "Binoculars",
+          "2-2": "Light Armorjack (Body)",
+          "3-3": "Medium Pistol (Smart)",
+          "4-4": "Video Camera",
+          "5-5": "NeuTongue",
+          "6-6": "Reflex Co-Processor"
         }
       ]
     },
     "A Box Marked With A Lime Green X": {
-      "name": "Une boîte marquée avec un X vert fluo",
+      "name": "A Box Marked With A Lime Green X",
       "results": [
         {
           "1-1": "Elflines Online",
-          "2-2": "Téléphone jetable",
-          "3-3": "Cybermain à doigts modulaires",
-          "4-4": "Bijou Décontracté",
+          "2-2": "Disposable Cell Phone",
+          "3-3": "Modular Finger Cyberhand",
+          "4-4": "Leisurewear Jewelry",
           "5-5": "Agent",
-          "6-6": "Lunettes connectées"
+          "6-6": "Smart Glasses"
         }
       ]
     },
     "A Box Melted Out Of Shape": {
-      "name": "Une boite à la forme fondue",
+      "name": "A Box Melted Out Of Shape",
       "results": [
         {
-          "1-1": "Armure de récupération",
-          "2-2": "Grenade (Incendiaire)",
-          "3-3": "Cyberbras néo-soviétique",
-          "4-4": "Fusil d'assaut (Standard)",
-          "5-5": "Fusil (Standard)",
-          "6-6": "Chevrotine de fusil à pompe (Incendiaire)"
+          "1-1": "Scavenged Armor",
+          "2-2": "Grenade (Incendiary)",
+          "3-3": "Neo-Soviet Cyberarm",
+          "4-4": "Rifle (Basic)",
+          "5-5": "Rifle (Basic)",
+          "6-6": "Shotgun Shell (Incendiary)"
         }
       ]
     },
     "A Box Reeking Of Oil": {
-      "name": "Une boîte empestant l'huile",
+      "name": "A Box Reeking Of Oil",
       "results": [
         {
-          "1-1": "Chevrotine de fusil à pompe (Standard)",
-          "2-2": "Pistolet lourd (Standard)",
-          "3-3": "Chaussures Âme nomade",
-          "4-4": "Fusil de précision (Intelligent)",
-          "5-5": "Lunette de précision",
-          "6-6": "Liaison smartgun"
+          "1-1": "Shotgun Shell (Basic)",
+          "2-2": "Heavy Pistol (Basic)",
+          "3-3": "Nomad Leathers Footwear",
+          "4-4": "Rifle (Smart)",
+          "5-5": "Sniping Scope",
+          "6-6": "Smartgun Link"
         }
       ]
     },
     "A Box Sealed With A Lipstick Kiss": {
-      "name": "Une boîte scellée d'un baiser de rouge à lèvres",
+      "name": "A Box Sealed With A Lipstick Kiss",
       "results": [
         {
-          "1-1": "Couteau de combat",
-          "3-3": "Grenade Shuriken Tornado",
-          "4-4": "Chaussures Pop asiatique",
-          "5-5": "Haut de Cadre sup",
-          "6-6": "Tanto Frelon blanc",
-          "2-2": "Implant sexuel Mr. Studd"
+          "1-1": "Combat Knife",
+          "3-3": "Shuriken Tornado Grenade",
+          "4-4": "Asia Pop Footwear",
+          "5-5": "Businesswear Top",
+          "6-6": "White Hornet Tanto",
+          "2-2": "Mr. Studd Sexual Implant"
         }
       ]
     },
     "A Box Showing Signs Of Repair": {
-      "name": "Une boîte montrant des signes de réparation",
+      "name": "A Box Showing Signs Of Repair",
       "results": [
         {
-          "1-1": "Tomahawk utilitaire",
-          "2-2": "Holo projecteur de paume",
-          "3-3": "Technioutil",
-          "4-4": "Enregistreur audio",
-          "5-5": "Grenade (Perforante)",
-          "6-6": "Technoscanner"
+          "1-1": "Utility Tomahawk",
+          "2-2": "Holo Projector Palm",
+          "3-3": "Techtool",
+          "4-4": "Audio Recorder",
+          "5-5": "Grenade (Armor-Piercing)",
+          "6-6": "Techscanner"
         }
       ]
     }
