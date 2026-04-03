@@ -1,81 +1,81 @@
 {
-  "label": "Armeria di Elflines Online",
+  "label": "Elflines Online Armory",
   "mapping": {
     "dvTable": "system.dvTable"
   },
   "entries": {
     "Arrow": {
-      "name": "Freccia",
-      "description": "<p>Munizioni di base, niente di speciale.</p>"
+      "name": "Arrow",
+      "description": "<p>Basic ammo, nothing special.</p>\n"
     },
     "Poison Arrow": {
-      "name": "Freccia Avvelenata",
-      "description": "<p>Nessun danno immediato. Se il bersaglio è colpito sulla carne, una prova di Resistere alla Tortura/Controllo delle Droghe. In caso di falliento 2d6 PF. Nessun Ablazione. </p>"
+      "name": "Poison Arrow",
+      "description": "<p>\n  No immediate damage. If meat target hit,\n  <strong>DV13 Resist Torture/Drugs</strong> Check. On a fail 2d6 damage to HP.\n  No Ablation.\n</p>\n"
     },
     "Chainmail Armor (Body)": {
-      "name": "Cotta di Maglia (Corpo)",
-      "description": "<p>Armor made up of innumerable metal rings. -2 to REF, DEX, and MOVE.</p>"
+      "name": "Chainmail Armor (Body)",
+      "description": "<p>Armor made up of innumerable metal rings. -2 to REF, DEX, and MOVE.</p>\n"
     },
     "Chainmail Armor (Head)": {
-      "name": "Cotta di Maglia (Testa)",
-      "description": "<p>Armor made up of innumerable metal rings for your head. -2 to REF, DEX, and MOVE.</p>"
+      "name": "Chainmail Armor (Head)",
+      "description": "<p>\n  Armor made up of innumerable metal rings for your head. -2 to REF, DEX, and\n  MOVE.\n</p>\n"
     },
     "Full Plate Armor (Body)": {
-      "name": "Armatura di Piastre (Corpo)",
-      "description": "<p>Armatura placcata in metallo per resistere ai colpi più potenti. -4 a RIF, DES e VEL.</p>"
+      "name": "Full Plate Armor (Body)",
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits. -4 to REF, DEX, and MOVE.\n</p>\n"
     },
     "Full Plate Armor (Head)": {
-      "name": "Armatura di Piastre (Testa)",
-      "description": "<p>Armatura placcata in metallo per resistere ai colpi più potenti sulla testa. -4 a RIF, DES e VEL.</p>"
+      "name": "Full Plate Armor (Head)",
+      "description": "<p>\n  Metal plated armor to resist the most powerful hits to your head. -4 to REF,\n  DEX, and MOVE.\n</p>\n"
     },
     "Leather Armor (Body)": {
-      "name": "Armatura di Cuoio (Corpo)",
-      "description": "<p>Armatura in pelle semplice. Nessuna penalità.</p>"
+      "name": "Leather Armor (Body)",
+      "description": "<p>Simple Leather armor. No armor penalty.</p>\n"
     },
     "Leather Armor (Head)": {
-      "name": "Armatura di Cuoio (Testa)",
-      "description": "<p>Armatura in pelle semplice per la tua testa. Nessuna penalità.</p>"
+      "name": "Leather Armor (Head)",
+      "description": "<p>Simple Leather armor for your head. No armor penalty.</p>\n"
     },
     "Shield": {
-      "name": "Scudo",
-      "description": "<p>Richiede l'utilizzo di un braccio e ha 10 HP ridotti dai danni subiti.</p>"
+      "name": "Shield",
+      "description": "<p>Requires an arm and has HP that is reduced by damage.</p>\n"
     },
     "Studded Leather Armor (Body)": {
-      "name": "Armatura di Cuoio Borchiato (Corpo)",
-      "description": "<p>Standard Studded Leather Armor. No armor penalty.</p>"
+      "name": "Studded Leather Armor (Body)",
+      "description": "<p>Standard Studded Leather Armor. No armor penalty.</p>\n"
     },
     "Studded Leather Armor (Head)": {
-      "name": "Armatura di Cuoio Borchiato (Testa)",
-      "description": "<p>Standard Studded Leather Armor for your head. No armor penalty.</p>"
+      "name": "Studded Leather Armor (Head)",
+      "description": "<p>Standard Studded Leather Armor for your head. No armor penalty.</p>\n"
     },
     "Sacred Herbs": {
-      "name": "Erbe Sacre",
-      "description": "<p>Ingesting Sacred Herbs immediately heals HP equal to the user's BODY plus their WILL.</p>"
+      "name": "Sacred Herbs",
+      "description": "<p>\n  Ingesting Sacred Herbs immediately heals HP equal to the user's BODY plus\n  their WILL.\n</p>\n"
     },
     "Vial of Poison": {
-      "name": "Fiala di Veleno",
-      "description": "<p>Una fiala di veleno può essere applicata su un’Arma da Mischia Leggera usando un’Azione. Per i 30 minuti seguenti, l’arma non infligge il normale danno, ma costringe chi viene colpito a effettuare una Prova di Resistere a Tortura/Droghe VD 13. Se fallisce, subisce 3d6 danni diretti ai PF. L’armatura non viene ablata, poiché non viene influenzata.</p>"
+      "name": "Vial of Poison",
+      "description": "<p>2d6 damage unless Resist Torture/Drugs. Armor does not apply.</p>\n"
     },
     "Bow": {
-      "name": "Arco",
-      "description": "<p>Un arco rivitalizzato, ricaricato come parte di un'azione di attacco.</p>",
-      "dvTable": "VD Arco e Balestro"
+      "name": "Bow",
+      "description": "<p>A revitalized bow, reloaded as part of an Attack Action.</p>\n",
+      "dvTable": "DV Bows & Crossbows"
     },
     "Dagger": {
-      "name": "Pugnale",
-      "description": "<p>A knife fit for a hunter.</p>"
+      "name": "Dagger",
+      "description": "<p>A knife fit for a hunter.</p>\n"
     },
     "Greataxe": {
-      "name": "Ascia a Due Mani",
-      "description": "<p>A wooden pole with a curved blade on each side. Favoured by raid parties for close engagements. Requires 2 hands to wield even by a wielder with Body 8 or higher.</p>"
+      "name": "Greataxe",
+      "description": "<p>\n  A wooden pole with a curved blade on each side. Favoured by raid parties for\n  close engagements. Requires 2 hands to wield even by a wielder with Body 8 or\n  higher.\n</p>\n"
     },
     "Longsword": {
-      "name": "Spada Lunga (Cf1 a meno di impugnarne due)",
-      "description": "<p>A bladed, hilted weapon. Specifically designed for cutting or thrusting. 2 ROF if wielding two longswords.</p>"
+      "name": "Longsword",
+      "description": "<p>\n  A bladed, hilted weapon. Specifically designed for cutting or thrusting. 2 ROF\n  if wielding two longswords.\n</p>\n"
     },
     "Shortsword": {
-      "name": "Spada Corta",
-      "description": "<p>A short bladed, hilted weapon. Specifically designed for cutting or thrusting.</p>"
+      "name": "Shortsword",
+      "description": "<p>\n  A short bladed, hilted weapon. Specifically designed for cutting or thrusting.\n</p>\n"
     }
   }
 }
