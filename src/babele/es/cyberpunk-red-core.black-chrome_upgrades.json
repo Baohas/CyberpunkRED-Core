@@ -1,18 +1,18 @@
 {
-  "label": "Actualizaciones",
+  "label": "Upgrades",
   "mapping": {},
   "entries": {
     "4Tify": {
-      "name": "4Tificar",
-      "description": "<p>Una aplicación para tu agente. Puedes ver puntos débiles escaneando tu casa. O una sección de la cobertura...</p>\n<p>Reglas completas se pueden encontrar en la página 13.</p>"
+      "name": "4Tify",
+      "description": "<p>Agent App.</p>\n<p>Can reveal weak points by scanning your home. Or a section of cover...</p>\n"
     },
     "Digital Gladiator": {
-      "name": "Gladiador Digital",
-      "description": "<p>Una aplicación para tu agente. ¡Crea un Mercenario Virtual que lucha por ti en el reino digital!</p>\n<p>Reglas para peleas se pueden encontrar en la página 12.</p>"
+      "name": "Digital Gladiator",
+      "description": "<p>Agent App.</p>\n<p>Perhaps you're better suited to duking it out online than in the streets…</p>\n<p>\n  Rules related to creating, playing with, and fighting an opponent in Digital\n  Gladiator are contained in Black Chrome rulebook for this item.\n</p>\n"
     },
     "NCPD Crime Database": {
-      "name": "Base de Datos del Crimen de NCPD",
-      "description": "<p>Una aplicación para tu agente. Permite al usuario buscar información criminal pública. Las reglas completas para el uso se pueden encontrar en la página 13.</p>\n<p>&nbsp;</p>"
+      "name": "NCPD Crime Database",
+      "description": "<p>Agent App.</p>\n<p>\n  Requires CitiNet access in Night City. Allows user to research crime database.\n</p>\n"
     },
     "Trauma Team MedScan": {
       "name": "Trauma Team MedScan",
