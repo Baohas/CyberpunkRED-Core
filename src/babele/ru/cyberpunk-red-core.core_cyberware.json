@@ -250,21 +250,21 @@
     },
     "Popup Grenade Launcher": {
       "name": "Выдвижной гранатомёт",
-      "description": "<p>Скрытый однозарядный гранатомёт. Во время использования кисть не может ничего держать.</p>",
+      "description": "<p>\n  A concealable one-shot Grenade Launcher. Can't hold anything with this hand\n  while activated. Incompatible with all upgrades except\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun\n  Link}.\n</p>\n",
       "dvTable": "СЛ Гранатомёт"
     },
     "Popup Melee Weapon": {
       "name": "Выдвижное оружие ближнего боя",
-      "description": "<p>Скрытое оружие ближнего боя. Во время использования кисть не может ничего держать.</p>"
+      "description": "<p>\n  A concealable One-Handed Melee Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n"
     },
     "Popup Ranged Weapon": {
       "name": "Выдвижное оружие дальнего боя",
-      "description": "<p>Скрытое одноручное оружие дальнего боя. Во время использования кисть не может ничего держать.</p>",
+      "description": "<p>\n  A concealable One-Handed Ranged Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Popup Shield": {
       "name": "Выдвижной щит",
-      "description": "<p>Складной пулестойкий щит, складывающийся и раскладывающийся с лёгкостью. Во время использования кисть не может ничего держать.</p>"
+      "description": "<p>\n  A foldable bulletproof shield that can be drawn or concealed easily. Can't\n  hold anything with this hand while activated.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet\n    Proof Shield} to inventory to manage shield HP.\n  </p>\n</blockquote>\n"
     },
     "Quick Change Mount": {
       "name": "Быстросменный шарнир",
