@@ -1,58 +1,58 @@
 {
-  "label": "Двенадцать дней Снаряждества",
+  "label": "The 12 Days of Gearmas",
   "mapping": {},
   "entries": {
     "Esporma Environment Suit": {
-      "name": "Скафандр от Эспорма",
-      "description": "<p>Бронированный костюм индивидуальной защиты. Предохраняет от излучения и идёт в комплекте с кислородным баллоном, которого хватает на 30 минут. Баллон заполнится вновь, если провести час на свежем воздухе.</p>\n<p>Наномашины восстанавливают 1ОС каждый час, пока броня не получает повреждений.</p>"
+      "name": "Esporma Environment Suit",
+      "description": "<p>\n  Armored Radiation Suit. Protects the wearer from Radiation and comes with an\n  Oxygen Tank that lasts for 30 minutes which can be refilled by spending an\n  hour in clean air.\n</p>\n<p>Nanomachines restore 1SP every hour SP isn't lost on the armor</p>\n"
     },
     "PackShield": {
-      "name": "КомпактЩит",
-      "description": "<p>Гибрид Рюкзака в деловом стиле и Пуленепробиваемого щита.</p>\n<p>В нём можно носить вещи как в @UUID[Compendium.cyberpunk-red-core.core_gear.Item.y2a4HDhIl7FlJyD7]{Дорожной сумке} или использовать в качестве щита.</p>\n<p>Предоставляет защиту только если взят в руку.</p>\n<p>Нельзя установить в @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.I08f3hOEgAPNG4kJ]{Выдвижной щит}.</p>"
+      "name": "PackShield",
+      "description": "<p>Businesswear Backpack Bulletproof Shield hybrid.</p>\n<p>\n  Can carry items like a\n  @UUID[Compendium.cyberpunk-red-core.core_gear.Item.y2a4HDhIl7FlJyD7]{Carryall},\n  and be equipped in your hand like a shield.\n</p>\n<p>Only provides protection when equipped in a hand.</p>\n<p>\n  Cannot be installed in\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.I08f3hOEgAPNG4kJ]{Popup\n  Shield}.\n</p>\n"
     },
     "Integrated Cyberscanner": {
-      "name": "Интегрированный киберсканер",
-      "description": "<p>Может просканировать человека на расстоянии до 2 м/ярд и предоставить полный перечень установленных киберимплантов, процесс занимает одну минуту. В случае обнаружении экранированных, улучшенных способностями Техника или уникальных киберимплантов, сканер возвращает ошибку.</p>"
+      "name": "Integrated Cyberscanner",
+      "description": "<p>\n  Can scan an individual within 2m/yds and provide a list of all installed\n  Cyberware, takes 1 minute. Spits out an error if a Hardened, Tech Upgraded, or\n  Unique piece of Cyberware is detected.\n</p>\n"
     },
     "Xtra-Dex Smart Glove": {
-      "name": "Умная перчатка Xtra-Dex",
-      "description": "<p>Умная перчатка с поддержкой киберпальцев. Два слота расширений киберруки, а для установки киберпальцев работает как @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Киберкисть с модульными пальцами}.*</p>\n<p>Для управления расширениями киберруки/киберпальцев, установленных в перчатке, требуется Разъём интерфейса.</p>\n<p>После установки необходимо добавить Киберкисть с модульными пальцами.</p>"
+      "name": "Xtra-Dex Smart Glove",
+      "description": "<p>\n  A Smart Glove with Cyberfinger support. Has 2 Option Slots for Cyberarm\n  Options and is treated as a\n  @UUID[Compendium.cyberpunk-red-core.black-chrome_cyberware.Item.f9u0uhwRBcunP0gz]{Modular\n  Finger Cyberhand} for the sake of installing the 5 supported Cyberfingers*.\n</p>\n<p>\n  Requires Interface Plugs to access Cyberarm/Cyberfinger Options installed in\n  the glove.\n</p>\n<p>*Modular Finger Cyberhand must be added after Installation.</p>\n"
     },
     "Cybercam EX-1": {
-      "name": "Киберкамера EX-1",
-      "description": "<p>Камера, установленная на голове. Журналист, ведущий прямую трансляцию при помощи Киберкамеры EX-1 получает +1 к достоверности при использовании своей способности роли. Этот бонус складывается с бонусами на основе доказательств.</p>"
+      "name": "Cybercam EX-1",
+      "description": "<p>\n  Head-mounted camera. A Media presenting a story on a livestream while wearing\n  the Cybercam EX-1 gains +1 Believability when using their role ability. This\n  stacks with evidence based bonuses.\n</p>\n"
     },
     "Cyberscanner": {
-      "name": "Киберсканер",
-      "description": "<p>Может просканировать человека на расстоянии до 2 м/ярд и предоставить полный перечень установленных киберимплантов, процесс занимает одну минуту. В случае обнаружении экранированных, улучшенных способностями Техника или уникальных киберимплантов, сканер возвращает ошибку.</p>"
+      "name": "Cyberscanner",
+      "description": "<p>\n  Can scan an individual within 2m/yds and provide a list of all installed\n  Cyberware, takes 1 minute. Spits out an error if a Hardened, Tech Upgraded, or\n  Unique piece of Cyberware is detected.\n</p>\n"
     },
     "Green Light Go Sniffer": {
-      "name": "Анализатор «Зелёный — погнали»",
-      "description": "<p>Анализатор химических веществ. Загорается зелёным или красным светом в зависимости от того, если проверяемое химическое вещество (например, уличный наркотик или фармацевтический препарат) чистое или содержит какие-то примеси.</p>"
+      "name": "Green Light Go Sniffer",
+      "description": "<p>\n  Chemical Substance Analyzer. Provides a green or red glow depending on if the\n  chemical substance (such as Street Drugs or Pharmaceuticals) is clean or\n  cut/mixed with another substance.\n</p>\n"
     },
     "Ion Cuffs": {
-      "name": "Ионные наручники",
-      "description": "<p>Наручники для боргов. Деактивирует любые неэкранированные расширения киберимплантов, установленные в конечность, на которую надеты наручники. Можно сломать при показателе ТЕЛ 13.</p>"
+      "name": "Ion Cuffs",
+      "description": "<p>\n  Handcuffs meant for borgs. Disables any Non-Hardened Cyberware options\n  installed in the limb the cuffs are binding.\n  <span style=\"font-family: Jost\">BODY</span><span class=\"hgKElc\">≥</span\n  ><span style=\"font-family: Jost\">13 can break.</span>\n</p>\n"
     },
     "MagViewer": {
       "name": "MagViewer",
-      "description": "<p>Бинокль, предназначенный для обнаружения. Позволяет в подробностях разглядеть цель на расстоянии до 800 м/ярд. Пользователь получает дополнительные +1 на бросок атаки про успешной проверке смежного навыка во время атаки цели на расстоянии не менее 51 м/ярд в дополнение к другим проверкам смежных навыков.</p>\n<p>Эффект не складывается с @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.Ryex0KHeeDzPQwmN]{Снайперским прицелом} или @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.uApwuxpuIJMe47Vn]{Телеоптикой}.</p>"
+      "description": "<p>\n  Binoculars meant for spotting. Provides detail up to 800m/yds. Provides the\n  user with an additional +1 to an attack roll with a successful Complimentary\n  Skill Check to assist in attacking a target 51m/yds or farther away in\n  addition to any other Complimentary Skill Checks..\n</p>\n<p>\n  Does not stack with\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.Ryex0KHeeDzPQwmN]{Sniping\n  Scope} or\n  @UUID[Compendium.cyberpunk-red-core.core_cyberware.Item.uApwuxpuIJMe47Vn]{TeleOptics}.\n</p>\n"
     },
     "Master Mechanic's Tool Kit": {
-      "name": "Набор инструментов механика-виртуоза",
-      "description": "<p>Огромный ящик с инструментами. Добавляет +4 к ряду навыков при проверке способности Умелец. Достаточно большой, чтобы считаться за Укрытие из толстой стали. Чтобы сдвинуть, требуется ТЕЛ 10.</p>"
+      "name": "Master Mechanic's Tool Kit",
+      "description": "<p>\n  Massive Tool Chest. Provides a +4 to multiple skills when rolling Maker Skill\n  Checks. Large enough to be considered Thick Steel Cover, requires BODY 10 to\n  move.\n</p>\n"
     },
     "MiniMag Speakers": {
-      "name": "Динамики MiniMag",
-      "description": "<p>Небольшие магнитные динамики. Могут воспроизводить аудио с присоединённого агента в радиусе 100 м/ярд.</p>"
+      "name": "MiniMag Speakers",
+      "description": "<p>\n  Small Magnetic Speakers. Can play audio from a connected Agent within\n  100m/yds.\n</p>\n"
     },
     "Smartsticks": {
-      "name": "Умные палочки",
-      "description": "<p>Умные барабанные палочки. Дают пользователю бонус +1 к проверкам навыка Игра на инструменте (ударные). Не складывается с другими бонусами к навыку Игра на инструменте.</p>"
+      "name": "Smartsticks",
+      "description": "<p>\n  <span style=\"font-family: Jost\"\n    >Smart Drum Sticks. Gives the User a +1 bonus to Play Instrument (Drums)\n    Skill Checks while in use. Doesn't stack with other bonuses to Play\n    Instrument.</span\n  >\n</p>\n"
     },
     "Metrocar": {
-      "name": "Метрокар",
-      "description": "<p>Дешёвый Компактный автомобиль, созданный специально для езды по городу.</p>"
+      "name": "Metrocar",
+      "description": "<p>A Cheap Compact Groundcar built for city driving.</p>\n"
     }
   }
 }
