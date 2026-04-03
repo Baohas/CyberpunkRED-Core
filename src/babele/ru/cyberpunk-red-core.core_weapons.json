@@ -228,7 +228,7 @@
     },
     "Malorian Arms 3516": {
       "name": "Малориан армс 3516",
-      "description": "<p>Экзотически пистолет крупного калибра отличного качества. Идёт в комплекте со Смартлинком*.</p>\n<p><em>*Необходимо добавить вручную после получения оружия.</em></p>",
+      "description": "<p>\n  An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link\n  that cannot be uninstalled.\n</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Martial Arts": {
@@ -264,7 +264,7 @@
     },
     "Microwaver": {
       "name": "Микроволновка",
-      "description": "<p>Экзотический пистолет сверхкрупного калибра. Выводит из строя киберимпланты и электронику на одну минуту если цель не проходит <strong>проверку Кибертехники СЛ15</strong>.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be\n  rendered inoperable for a minute unless the target passes a\n  <strong>DV15 Cybertech Check</strong>.\n</p>\n<p>\n  <em\n    >Select target token and use\n    @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get\n    EMP'd Items} to determine what items are affected.</em\n  >\n</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
@@ -286,7 +286,7 @@
     },
     "Rhinemetall EMG-86 Railgun": {
       "name": "Рельсотрон ЭМП-86 от Рейнметалл",
-      "description": "<p>Экзотическая штурмовая винтовка. С её помощью нельзя вести прицельный или автоогонь. Требуется ТЕЛ 11 или выше (если не стационарная). Игнорирует броню ниже ОС11*.</p>\n<p><em>*На данный момент не поддерживается, повреждения бронированным целям нужно выставлять вручную.</em></p>",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11.\n</p>\n",
       "dvTable": "СЛ Штурмовая винтовка"
     },
     "Rocket Launcher (Excellent)": {
@@ -321,7 +321,7 @@
     },
     "Shrieker": {
       "name": "Крикун",
-      "description": "<p>Экзотический пистолет сверхкрупного калибра. Требуется защита для ушей, чтобы предотвратить получение критического ранения «Повреждение уха». Цель должна пройти <strong>проверку сопротивления пыткам/препаратам СЛ15</strong> или получить критическое ранение Повреждение уха.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear\n  critical injuries. The target must beat a\n  <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged\n  Ear} critical injury.\n</p>\n",
       "dvTable": "СЛ Пистолет"
     },
     "Sledgehammer (Excellent)": {
@@ -419,7 +419,7 @@
     "Tsunami Arms Helix": {
       "name": "«Спираль» от Цунами армс",
       "description": "<p>Экзотическая штурмовая винтовка из которой можно только вести автоогонь. Магазин на 40 патронов, каждая атака потребляет 20 патронов. Использует правила автоогня с умножением до максимума 5. Требуется ТЕЛ 11 или выше (если не стационарная).</p>",
-      "dvTable": "СЛ Штурмовая винтовка"
+      "dvTable": "DV Assault Rifle (Autofire)"
     },
     "Unarmed": {
       "name": "Без оружия",
