@@ -6,12 +6,12 @@
       "name": "A Box Bound Tightly in Rope",
       "results": [
         {
-          "1-1": "Corda (60m)",
-          "2-2": "Visore Virtuality",
-          "3-3": "Pistola con Rampino",
-          "4-4": "Fiala di Veleno",
-          "5-5": "Urban Flash Gioielli",
-          "6-6": "Pacchetto Batteria"
+          "1-1": "Rope (60m/yd)",
+          "2-2": "Virtuality Goggles",
+          "3-3": "Grapple Gun",
+          "4-4": "Vial of Poison",
+          "5-5": "Urban Flash Jewelry",
+          "6-6": "Battery Pack"
         }
       ]
     },
@@ -19,12 +19,12 @@
       "name": "A Box Covered in Chipped Paint",
       "results": [
         {
-          "1-1": "Granata (Lacrimogena)",
-          "2-2": "Pistola Pesante (Base)",
+          "1-1": "Grenade (Teargas)",
+          "2-2": "Heavy Pistol (Basic)",
           "3-3": "Bicycle",
-          "4-4": "Bengala",
-          "5-5": "Scudo Balistico",
-          "6-6": "Cartucce a Pallini (Base)"
+          "4-4": "Road Flare",
+          "5-5": "Bullet Proof Shield",
+          "6-6": "Shotgun Shell (Basic)"
         }
       ]
     },
@@ -36,7 +36,7 @@
           "2-2": "Black Lace",
           "3-3": "Bodyweight AutoInjector",
           "4-4": "AirWell 50",
-          "5-5": "Granata (Velenosa)",
+          "5-5": "Grenade (Poison)",
           "6-6": "TR-4 Detonator Fluid"
         }
       ]
@@ -45,7 +45,7 @@
       "name": "A Box Freezing Cold To The Touch",
       "results": [
         {
-          "1-1": "Bohémien Occhiali a Specchio",
+          "1-1": "Bohemian Mirrorshades",
           "2-2": "Street Viper Riding Suit",
           "3-3": "Sponsored Cybereye",
           "4-4": "Skid Row Trench",
@@ -58,10 +58,10 @@
       "name": "A Box Handsomely Gift Wrapped",
       "results": [
         {
-          "1-1": "Binocolo",
-          "2-2": "Corazza Leggera (Corpo)",
-          "3-3": "Pistola Media (Smart)",
-          "4-4": "Videocamera",
+          "1-1": "Binoculars",
+          "2-2": "Light Armorjack (Body)",
+          "3-3": "Medium Pistol (Smart)",
+          "4-4": "Video Camera",
           "5-5": "NeuTongue",
           "6-6": "Reflex Co-Processor"
         }
@@ -71,12 +71,12 @@
       "name": "A Box Marked With A Lime Green X",
       "results": [
         {
-          "1-1": "Elflines Online Macros",
-          "2-2": "Cellulare Usa-e-Getta",
+          "1-1": "Elflines Online",
+          "2-2": "Disposable Cell Phone",
           "3-3": "Modular Finger Cyberhand",
-          "4-4": "Casual Gioielli",
+          "4-4": "Leisurewear Jewelry",
           "5-5": "Agent",
-          "6-6": "Occhiali Intelligenti"
+          "6-6": "Smart Glasses"
         }
       ]
     },
@@ -85,11 +85,11 @@
       "results": [
         {
           "1-1": "Scavenged Armor",
-          "2-2": "Granata (Incendiaria)",
+          "2-2": "Grenade (Incendiary)",
           "3-3": "Neo-Soviet Cyberarm",
-          "4-4": "Fucile (Base)",
-          "5-5": "Fucile (Base)",
-          "6-6": "Cartucce a Pallini (Incendiarie)"
+          "4-4": "Rifle (Basic)",
+          "5-5": "Rifle (Basic)",
+          "6-6": "Shotgun Shell (Incendiary)"
         }
       ]
     },
@@ -97,12 +97,12 @@
       "name": "A Box Reeking Of Oil",
       "results": [
         {
-          "1-1": "Cartucce a Pallini (Base)",
-          "2-2": "Pistola Pesante (Base)",
-          "3-3": "Cuoio da Nomade Calzature",
-          "4-4": "Fucile (Smart)",
-          "5-5": "Mirino di Precisione",
-          "6-6": "Collegamento Smartgun"
+          "1-1": "Shotgun Shell (Basic)",
+          "2-2": "Heavy Pistol (Basic)",
+          "3-3": "Nomad Leathers Footwear",
+          "4-4": "Rifle (Smart)",
+          "5-5": "Sniping Scope",
+          "6-6": "Smartgun Link"
         }
       ]
     },
@@ -110,12 +110,12 @@
       "name": "A Box Sealed With A Lipstick Kiss",
       "results": [
         {
-          "1-1": "Coltello da Combattimento",
+          "1-1": "Combat Knife",
           "3-3": "Shuriken Tornado Grenade",
-          "4-4": "Asia Pop Calzature",
-          "5-5": "Business Sopra",
+          "4-4": "Asia Pop Footwear",
+          "5-5": "Businesswear Top",
           "6-6": "White Hornet Tanto",
-          "2-2": "Impianto Sessuale Mr. Studd "
+          "2-2": "Mr. Studd Sexual Implant"
         }
       ]
     },
@@ -125,10 +125,10 @@
         {
           "1-1": "Utility Tomahawk",
           "2-2": "Holo Projector Palm",
-          "3-3": "Tecnoattrezzo",
-          "4-4": "Registratore Audio",
-          "5-5": "Granata (Perforante)",
-          "6-6": "Tecnoscanner"
+          "3-3": "Techtool",
+          "4-4": "Audio Recorder",
+          "5-5": "Grenade (Armor-Piercing)",
+          "6-6": "Techscanner"
         }
       ]
     }
