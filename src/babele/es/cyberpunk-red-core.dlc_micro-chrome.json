@@ -1,20 +1,20 @@
 {
-  "label": "MicroCromo",
+  "label": "Micro Chrome",
   "mapping": {
-    "dvTable": "sistema.Tablavd"
+    "dvTable": "system.dvTable"
   },
   "entries": {
     "Superflash Jacket": {
-      "name": "Chaqueta Superflash",
-      "description": "<p>Una bonita chaqueta que contiene una sorpresa; con una acción, cualquier persona que use esta chaqueta puede consumir una batería para encender una luz cegadora. Trata como una granada de Flashbang sin la lesión de oído crítica, centrada en el portador.</p>"
+      "name": "Superflash Jacket",
+      "description": "<p>\n  A nice jacket carrying a surprise; using an action anyone wearing this jacket\n  can consume a battery to let off a blinding light.\n</p>\n"
     },
     "Chipware Compartment": {
-      "name": "Compartimiento de Chipware",
-      "description": "<p>Te permite ocultar hasta cuatro piezas de chipware, no se requiere Chequeo. La recuperación se hace gastando una acción para girar el ojo en su ranura</p>"
+      "name": "Chipware Compartment",
+      "description": "<p>Lets you conceal up to four pieces of chipware, no Check required.</p>\n"
     },
     "Smart Lens": {
-      "name": "Lente Inteligente",
-      "description": "<p>Da a un usuario una única opción de ciberóptico. Puede usar una lente inteligente por ojo.</p>"
+      "name": "Smart Lens",
+      "description": "<p>Gives a user a single Cybereye Option. Can use one Smart Lens per eye.</p>\n"
     },
     "MicroCutie by HelloCutie": {
       "name": "MicroCutie by HelloCutie",
