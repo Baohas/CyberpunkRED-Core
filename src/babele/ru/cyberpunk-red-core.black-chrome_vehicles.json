@@ -1,130 +1,130 @@
 {
-  "label": "Транспорт",
+  "label": "Vehicles",
   "mapping": {},
   "entries": {
     "AmeriCar EconoCompact": {
-      "name": "«ЭконоКомпакт» от АмериКар",
-      "description": "<p>Маленький и дешёвый компактный автомобиль.</p>"
+      "name": "AmeriCar EconoCompact",
+      "description": "<p>Small and low-cost Compact Groundcar.</p>\n"
     },
     "AmeriCar Family Star Van": {
-      "name": "Фургон «Фэмили Стар» от АмериКар",
-      "description": "<p>Комфортный компактный автомобиль для всей семьи.</p>"
+      "name": "AmeriCar Family Star Van",
+      "description": "<p>Comfortable family Compact Groundcar.</p>\n"
     },
     "Dayton TDT 004": {
-      "name": "«TDT 004» от Дэйтон",
-      "description": "<p>Десантный транспортный вертолёт.</p>"
+      "name": "Dayton TDT 004",
+      "description": "<p>Troop transport Helicopter.</p>\n"
     },
     "Diego Motors Chupacabra": {
-      "name": "«Чупакабра» от Диего моторс",
-      "description": "<p>Компактный автомобиль, собранный из б/у запчастей, снятых со старых машин. Видок не очень, но топит как надо.</p>"
+      "name": "Diego Motors Chupacabra",
+      "description": "<p>\n  Compact Groundcar built from recycled parts from older vehicles. Low-tech but\n  high-horse-power.\n</p>\n"
     },
     "Diego Motors Range Trike": {
-      "name": "«Разъездной трицикл» от Диего моторс",
-      "description": "<p>Трёхколёсный дорожный мотоцикл.</p>"
+      "name": "Diego Motors Range Trike",
+      "description": "<p>Three wheeled Roadbike.</p>\n"
     },
     "Grundy": {
-      "name": "Резонёр",
-      "description": "<p>Бронированный компактный автомобиль промышленного вида, оснащённый боевым кенгурятником.</p>"
+      "name": "Grundy",
+      "description": "<p>Armored industrial looking Compact Grouncar, with a powerful combat plow.</p>\n"
     },
     "Harriet 100": {
-      "name": "Хэрриет 100",
-      "description": "<p>Классический дорожный мотоцикл, отличающийся особой женственностью.</p>"
+      "name": "Harriet 100",
+      "description": "<p>A classic Roadbike with a more feminine look.</p>\n"
     },
     "Harvey 100": {
-      "name": "Харви 100",
-      "description": "<p>Классический дорожный мотоцикл.</p>"
+      "name": "Harvey 100",
+      "description": "<p>A classic Roadbike.</p>\n"
     },
     "Harvey Merc": {
-      "name": "Харви-наёмник",
-      "description": "<p>Классический дорожный мотоцикл, но с бортовым оружием.</p>"
+      "name": "Harvey Merc",
+      "description": "<p>A classic Roadbike, this time with mounted weapons.</p>\n"
     },
     "Highway Master Artemis": {
-      "name": "Артемида, владычица дорог",
-      "description": "<p>Дорожный мотоцикл с малым дорожным просветом и выдвижной стеклянной крышкой. Обладает турборежимом, но при его использовании безопасность не гарантирована.</p>"
+      "name": "Highway Master Artemis",
+      "description": "<p>\n  A low-riding Roadbike with retractable glass cover. Has a surpercharge mode\n  that doesn't come with a safety guarantee.\n</p>\n"
     },
     "Kaukaz Volkhov": {
-      "name": "«Волхов» от Кавказ",
-      "description": "<p>Бронированный пикап с бортовым пулемётом. Бутылка водки в подарок.</p>"
+      "name": "Kaukaz Volkhov",
+      "description": "<p>\n  An armored pickup Compact Groundcar with mounted machine gun. Comes with a\n  bottle of vodka.\n</p>\n"
     },
     "Makigai Ebi": {
-      "name": "«Эби» от Макигай",
-      "description": "<p>Маленький, да удаленький компактный автомобиль.</p>"
+      "name": "Makigai Ebi",
+      "description": "<p>Small but well thought out Compact Groundcar.</p>\n"
     },
     "Militech Gorgon Security Van": {
-      "name": "Охранный фургон «Горгона» от Милитех",
-      "description": "<p>Чудовищный бронированный фургон.</p>"
+      "name": "Militech Gorgon Security Van",
+      "description": "<p>A monster of an armored van.</p>\n"
     },
     "Paladin 500": {
-      "name": "Паладин 500",
-      "description": "<p>Спортивный автомобиль. Стань Безумным Максом. Местного пошиба. С двумя пулемётами на борту.</p>"
+      "name": "Paladin 500",
+      "description": "<p>\n  A High Performance Groundcar. Now you can be MadMax. In town. With two mounted\n  Machine Guns.\n</p>\n"
     },
     "Quadra Thunder-X": {
-      "name": " «Гром-X» от Квадра",
-      "description": "<p>Первоклассный спортивный автомобиль.</p>"
+      "name": "Quadra Thunder-X",
+      "description": "<p>A top of the line High Performance Groundcar.</p>\n"
     },
     "SH-45 Patroller Law": {
-      "name": "SH-45 «Полицейский дозорный»",
-      "description": "<p>Одноместный автожир. Полицейская версия с бортовым пулемётом.</p>"
+      "name": "SH-45 Patroller Law",
+      "description": "<p>One seat Gyrocopter. Police version, with mounted Machine Gun.</p>\n"
     },
     "SH-45 Patroller": {
-      "name": "SH-45 «Дозорный»",
-      "description": "<p>Одноместный автожир. Гражданская версия.</p>"
+      "name": "SH-45 Patroller",
+      "description": "<p>One seat Gyrocopter. Civilian version.</p>\n"
     },
     "Street King Combat Vehicle": {
-      "name": "Боевая машина «Король улиц»",
-      "description": "<p>Большой, бронированный, военный на вид спортивный автомобиль.</p>"
+      "name": "Street King Combat Vehicle",
+      "description": "<p>\n  A High Performance Groundcar which is large, armored and has a military look.\n</p>\n"
     },
     "Tanson Bellhop": {
-      "name": "«Посыльный» от Тэнсон",
-      "description": "<p>Одноместный автожир, который можно сложить до размера большого чемодана.</p>"
+      "name": "Tanson Bellhop",
+      "description": "<p>\n  A one seat Gyrocopter which can be folded to the size of a large suitcase.\n</p>\n"
     },
     "Tanson JetBoy Hoverboard": {
-      "name": "Ховерборд «ДжетБой» от Тэнсон",
-      "description": "<p>Ховерборд, управление которым осуществляется с помощью навыка «Атлетика». Нельзя установить улучшения.</p>"
+      "name": "Tanson JetBoy Hoverboard",
+      "description": "<p>A hoverboard driven with Athletics Skill. Can't be upgraded.</p>\n"
     },
     "TetraCorp America Badger Corporate Bus": {
-      "name": "Корпоративный автобус «Барсук» от ТетраКорп Америка",
-      "description": "<p>Роскошный автобус для корпоративных поездок. Превосходно оборудован как для деловых встреч, так и для вечеринок после.</p>"
+      "name": "TetraCorp America Badger Corporate Bus",
+      "description": "<p>\n  A luxurious bus for corporate road trips. Equally well equipped for work\n  meetings and after meeting drinks.\n</p>\n"
     },
     "TetraCorp America MegaHauler": {
-      "name": "«Мегагрузовоз» от ТетраКорп Америка",
-      "description": "<p>Бронированный грузовик. В равной степени и автомобиль, и поезд.</p>"
+      "name": "TetraCorp America MegaHauler",
+      "description": "<p>Armored truck transport. As much a train as a car.</p>\n"
     },
     "Yang's Wheels Rickshaw": {
-      "name": "Рикша",
-      "description": "<p>Дорожный мотоцикл с прицепом для пассажиров.</p>"
+      "name": "Yang's Wheels Rickshaw",
+      "description": "<p>Roadbike with attached trailer for passengers.</p>\n"
     },
     "Zacatzontli Pickup Truck": {
-      "name": "Пикап «Цакацонтли»",
-      "description": "<p>Компактный автомобиль, приспособленный для путешествий по бездорожью.</p>"
+      "name": "Zacatzontli Pickup Truck",
+      "description": "<p>A Compact Groundcar equipped for off-road travel.</p>\n"
     },
     "Zetatech AeroCop": {
-      "name": "«АэроКоп» от Зетатех",
-      "description": "<p>Аэродин AV-4. Полицейская версия.</p>"
+      "name": "Zetatech AeroCop",
+      "description": "<p>AV4 type Aerodyne. Police version.</p>\n"
     },
     "Zetatech AeroVox": {
-      "name": "«АэроВокс» от Зетатех",
-      "description": "<p>Аэродин AV-4. Гражданская версия.</p>"
+      "name": "Zetatech AeroVox",
+      "description": "<p>AV4 type Aerodyne. Civilian version.</p>\n"
     },
     "Zetatech Destination": {
-      "name": "«Назначение» от Зетатех",
-      "description": "<p>Аэродин AV-4. Гражданская модель.</p>"
+      "name": "Zetatech Destination",
+      "description": "<p>AV4 style Aerodyne, civilian model.</p>\n"
     },
     "Zetatech Herakles": {
-      "name": "«Геракл» от Зетатех",
-      "description": "<p>Десантный аэродин AV-4, бронированный и оснащённый вооружением.</p>"
+      "name": "Zetatech Herakles",
+      "description": "<p>AV4 type troop transport, armored and armed.</p>\n"
     },
     "Zonda Molly 1K": {
-      "name": "«Молли 1К» от Зонда",
-      "description": "<p>Компактный автомобиль-внедорожник.</p>"
+      "name": "Zonda Molly 1K",
+      "description": "<p>Off-road Compact Groundcar.</p>\n"
     },
     "Zonda Parallax Cybercycle": {
-      "name": "Киберцикл «Параллакс» от Зонда",
-      "description": "<p>Первоклассный супербайк.</p>"
+      "name": "Zonda Parallax Cybercycle",
+      "description": "<p>Top of the line Superbike.</p>\n"
     },
     "Zonda Sliver": {
-      "name": "«Серебринка» от Зонда",
-      "description": "<p>Дорожный мотоцикл, под завязку напичканный всякими гаджетами.</p>"
+      "name": "Zonda Sliver",
+      "description": "<p>A Roadbike with all the gadgets you'd ever need.</p>\n"
     }
   }
 }
