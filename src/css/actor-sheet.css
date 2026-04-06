@@ -493,11 +493,7 @@
 .fight-tab {
   background-color: var(--cpr-background-border);
   display: grid;
-<<<<<<< HEAD:src/css/actor-sheet.css
   gap: 0.313rem;
-=======
-  grid-gap: 0.313rem;
->>>>>>> 1b800227f (improve Character sheet visuals):src/less/actor-sheet.less
   grid-template-areas: "injuries armor weapon";
   grid-template-columns: 25% 25% auto;
   grid-template-rows: auto;
