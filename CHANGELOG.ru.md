@@ -49,6 +49,8 @@
 
 ## Version 0.92.2
 
+### Требует внимания
+
 #### Weapon Quality/Attack Mod
 
 We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compendia for the below weapons. If any of your Characters/Mooks/Containers use any of these weapons the quickest way to fix them is to remove the old weapons from their sheet and replace them from the Compendia.
@@ -425,7 +427,7 @@ Fix broken migrations
 
 ## Версия 0.87.0
 
-### Требует внимания
+### Action Needed
 
 #### New Discord
 
