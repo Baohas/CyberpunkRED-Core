@@ -21,6 +21,7 @@ errors.txt
 results.json
 
 # Local config
+.foundry
 foundryconfig.json
 
 # Build
