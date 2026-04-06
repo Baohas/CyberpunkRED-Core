@@ -8,6 +8,17 @@
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
 
+## Version 0.92.4
+
+### Action Needed
+
+### Fehlerbehebungen
+
+- Add the Medtech's `Medical Tech Skill` & `Surgery Skill` to the list of available Role Abilities when configuring Active Effects
+- Restore `Medical Tech (Cryosystem Operation)` role ability to Medtech role item in the Core compendium.
+
+### Neue Funktionen
+
 ## Version 0.92.3
 
 ### Action Needed
@@ -21,13 +32,15 @@
 
 - Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
 - Fix location of upgrade element for equipped armor
-- Added `Medical Tech Skill` & `Surgery Skill` to Medetech role abilities
 - Fixed error where users were incorrectly notified to check their role abilities after allocating ranks for the Medtech Role
 - Fix damage calculations to include upgrades for armors
 - Update popup weapon cyberware details and register them as `concealable`
 - Fix mook crit injuries from not appearing in chat when rolled
 - Prevent net combat from dealing critical damage
 - Crit injuries rolled on mook sheets now appear in chat properly
+- Added `Medical Tech Skill` & `Surgery Skill` to Medetech role abilities.
+  - Medtech role abilities should no longer notify users to `Check your role rank abilities, they don’t look right, Choomba”` when correctly allocating rank points.
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book. Allocate one point to `Medical Tech Skills` For each point allocated to `Medical Tech (Cryosystem)` & `Medical Tech (Pharmaceuticals)` and allocate two points to `Surgery Skill` for each point allocated to `Surgery`.
 
 ### Neue Funktionen
 
@@ -254,7 +267,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Fehlerbehebungen
+### Bug Fixes
 
 - \#856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -284,7 +297,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 
-### Bug Fixes
+### Fehlerbehebungen
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
@@ -396,7 +409,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.86.1 | Datum: 2023-02-05
 
-### Fehlerbehebungen
+### Bug Fixes
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -1167,7 +1180,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.78.0 | Datum: 2021-08-03
 
-### Neue Funktionen
+### New Features
 
 - Cyberware Items which act as weapons can now be configured as such
   - Core Rule Book Examples: Popup Weapons, Big Knucks, Wolvers, etc
@@ -1402,7 +1415,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added localization to places where it was not implemented. (!325)
 - Removed "Core" tag from Critical Injury and DV compendia (which should be imported) to make them distinct from "Skills - Core" and "Cyberware - Core" (which should NOT be imported). (!379)
 
-### Fehlerbehebungen
+### Bug Fixes
 
 - fixed #49 - The equipped glyph now takes the same space as the other two
 - fixed #158 - Stat padding fixed for LUCK and EMP, so that they have the same font size as the others
