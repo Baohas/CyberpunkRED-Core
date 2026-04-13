@@ -889,7 +889,7 @@ const PACK_MAP = {
 };
 
 export default class SplitPacks extends BaseMigrationScript {
-  static version = 38;
+  static version = 39;
 
   static name = "Migrate Image paths and references following pack split";
 
