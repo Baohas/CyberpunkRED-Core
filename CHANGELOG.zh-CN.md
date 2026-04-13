@@ -7,6 +7,7 @@
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
+- Fix orientation of non-english characters in Mook nameplates
 
 ## Version 0.92.4
 
