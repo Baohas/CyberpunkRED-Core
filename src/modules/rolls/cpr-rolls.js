@@ -766,7 +766,7 @@ export class CPRDamageRoll extends CPRRoll {
       this.autofireMultiplierMax
     );
     const damageMultiplier = this.isAutofire ? this.autofireMultiplier : 1;
-    return (this.initialRoll + this.totalMods()) * damageMultiplier;
+    return this.initialRoll * damageMultiplier + this.totalMods();
   }
 
   /**
@@ -810,7 +810,6 @@ export class CPRDamageRoll extends CPRRoll {
   setAutofire() {
     this.isAutofire = true;
     this.formula = "2d6";
-    this.mods = [];
   }
 
   /**

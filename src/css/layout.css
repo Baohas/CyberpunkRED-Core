@@ -36,6 +36,7 @@
   transform: rotate(180deg);
   min-height: -webkit-fill-available;
   text-align: center;
+  text-orientation: sideways;
 }
 
 /* Used to spread space between fields */

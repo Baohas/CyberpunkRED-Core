@@ -7,6 +7,46 @@
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
+- Fix orientation of non-english characters in Mook nameplates
+
+## Version 0.92.4
+
+### Action Needed
+
+### Bug Fixes
+
+- Add the Medtech's `Medical Tech Skill` & `Surgery Skill` to the list of available Role Abilities when configuring Active Effects
+- Restore `Medical Tech (Cryosystem Operation)` role ability to Medtech role item in the Core compendium.
+
+### New Features
+
+## Version 0.92.3
+
+### Action Needed
+
+- Actors with the `Medtech` role should review their rank abilities and correct any errors
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book
+  - Allocate one point to Medical Tech Skills for each point allocated to Medical Tech (Cryosystem) & Medical Tech (Pharmaceuticals)
+  - Allocate two points to Surgery Skill for each point allocated to Surgery
+
+### Bug Fixes
+
+- Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
+- Fix location of upgrade element for equipped armor
+- Fixed error where users were incorrectly notified to check their role abilities after allocating ranks for the Medtech Role
+- Fix damage calculations to include upgrades for armors
+- Update popup weapon cyberware details and register them as `concealable`
+- Fix mook crit injuries from not appearing in chat when rolled
+- Prevent net combat from dealing critical damage
+- Crit injuries rolled on mook sheets now appear in chat properly
+- Added `Medical Tech Skill` & `Surgery Skill` to Medetech role abilities.
+  - Medtech role abilities should no longer notify users to `Check your role rank abilities, they don’t look right, Choomba”` when correctly allocating rank points.
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book. Allocate one point to `Medical Tech Skills` For each point allocated to `Medical Tech (Cryosystem)` & `Medical Tech (Pharmaceuticals)` and allocate two points to `Surgery Skill` for each point allocated to `Surgery`.
+
+### New Features
+
+- Actors created as "Mooks" will now use the mook sheet layout by default. Mooks may still be configured to use the character sheet layout as before.
+- Reformat chatcards to make the expanded damage roll calculations easier to read
 
 ## Version 0.92.2
 
@@ -61,6 +101,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Fix `Techtronica Russia BMG 500` price/hands
 - Fix incorrect option slot details for melee weapons, gear items, and upgrade attachments in the core compendiums
 - Fix options slots for exotic weapons
+- Fix term "Optional Slots" to "Option Slots"
 
 ## Version 0.92.1
 

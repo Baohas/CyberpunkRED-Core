@@ -8,6 +8,9 @@ node_modules
 **/*.swp
 **/*~
 
+# direnv
+.direnv/
+
 # MacOS clutter
 **/.DS_Store
 

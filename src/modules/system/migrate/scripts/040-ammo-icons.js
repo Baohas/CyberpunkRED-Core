@@ -149,7 +149,7 @@ const IMG_MAP = {
 };
 
 export default class AmmoIconConversion extends BaseMigrationScript {
-  static version = 39;
+  static version = 40;
 
   static name = "Item: Convert Ammo Icons from '.png' to '.svg'";
 

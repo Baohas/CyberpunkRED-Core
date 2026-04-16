@@ -4,45 +4,17 @@ effects: []
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
+      current: 38
+      previous: "33"
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Medtech
 system:
   abilities:
     - bonusRatio: 1
       bonuses: []
-      description: ""
-      hasRoll: true
-      index: 0
+      hasRoll: false
       isSituational: false
       multiplier: 0.5
-      name: Surgery
-      onByDefault: false
-      rank: 0
-      skill: "--"
-      stat: tech
-      universalBonuses: []
-    - bonusRatio: 1
-      bonuses: []
-      description: ""
-      hasRoll: false
-      index: 2
-      isSituational: false
-      multiplier: 1
-      name: Medical Tech (Pharmaceuticals)
-      onByDefault: false
-      rank: 0
-      skill: "--"
-      stat: "--"
-      universalBonuses: []
-    - bonusRatio: 1
-      bonuses: []
-      description: ""
-      hasRoll: false
-      index: 3
-      isSituational: false
-      multiplier: 1
       name: Medical Tech (Cryosystem Operation)
       onByDefault: false
       rank: 0
@@ -51,12 +23,43 @@ system:
       universalBonuses: []
     - bonusRatio: 1
       bonuses: []
-      description: ""
-      hasRoll: true
-      index: 1
+      hasRoll: false
       isSituational: false
-      multiplier: 1
-      name: Medical Tech
+      multiplier: 0.5
+      name: Medical Tech (Pharmaceuticals)
+      onByDefault: false
+      rank: 0
+      skill: "--"
+      stat: "--"
+      universalBonuses: []
+    - bonusRatio: 1
+      bonuses: []
+      hasRoll: true
+      isSituational: false
+      multiplier: 0.5
+      name: Medical Tech Skill
+      onByDefault: false
+      rank: 0
+      skill: "--"
+      stat: tech
+      universalBonuses: []
+    - bonusRatio: 1
+      bonuses: []
+      hasRoll: false
+      isSituational: false
+      multiplier: 0.5
+      name: Surgery
+      onByDefault: false
+      rank: 0
+      skill: "--"
+      stat: "--"
+      universalBonuses: []
+    - bonusRatio: 1
+      bonuses: []
+      hasRoll: true
+      isSituational: false
+      multiplier: 0.25
+      name: Surgery Skill
       onByDefault: false
       rank: 0
       skill: "--"

@@ -47,7 +47,7 @@ CPR.roleAbilityList = {
   inventionExpertise: "CPR.global.role.tech.ability.inventionExpertise",
   maker: "CPR.global.role.tech.ability.maker",
   medicine: "CPR.global.role.medtech.ability.medicine",
-  medicalTech: "CPR.global.role.medtech.ability.medicalTech",
+  medicalTechSkill: "CPR.global.role.medtech.ability.medicalTechSkill",
   "medicalTech(CryosystemOperation)":
     "CPR.global.role.medtech.ability.medicalTech(CryosystemOperation)",
   "medicalTech(Pharmaceuticals)":
@@ -57,6 +57,7 @@ CPR.roleAbilityList = {
   precisionAttack: "CPR.global.role.solo.ability.precisionAttack",
   spotWeakness: "CPR.global.role.solo.ability.spotWeakness",
   surgery: "CPR.global.role.medtech.ability.surgery",
+  surgerySkill: "CPR.global.role.medtech.ability.surgerySkill",
   teamwork: "CPR.global.role.exec.ability.teamwork",
   threatDetection: "CPR.global.role.solo.ability.threatDetection",
   upgradeExpertise: "CPR.global.role.tech.ability.upgradeExpertise",
@@ -680,8 +681,11 @@ CPR.activeEffectKeys = {
       "CPR.effectSheet.roleAbility.medtech.cryo",
     "bonuses.medicalTechPharmaceuticals":
       "CPR.effectSheet.roleAbility.medtech.pharma",
+    "bonuses.medicalTechSkill":
+      "CPR.effectSheet.roleAbility.medtech.medicalTechSkill",
     "bonuses.medicine": "CPR.effectSheet.roleAbility.medtech.medicine",
     "bonuses.surgery": "CPR.effectSheet.roleAbility.medtech.surgery",
+    "bonuses.surgerySkill": "CPR.effectSheet.roleAbility.medtech.surgerySkill",
     "bonuses.interface": "CPR.effectSheet.roleAbility.netrunner.interface",
     "bonuses.moto": "CPR.effectSheet.roleAbility.nomad.moto",
     "bonuses.charismaticImpact":
