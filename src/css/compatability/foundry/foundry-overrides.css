@@ -1,5 +1,3 @@
-@import url("glitch.css");
-
 form {
   .notes,
   .hint {
@@ -223,7 +221,7 @@ html[data-cpr-theme="default"] .application {
   }
 }
 
-[data-cpr-theme="darkmode"] .theme-dark .application {
+[data-cpr-theme="dark"] .theme-dark .application {
   input[type="checkbox"]::before {
     color: var(--cpr-color-light-grey);
   }
@@ -241,7 +239,7 @@ html[data-cpr-theme="default"] .application {
 html[data-cpr-theme="default"] body.theme-dark {
   form.region-config {
     label {
-      color: var(--cpr-darkmode-text-main) !important;
+      color: var(--cpr-dark-text-main) !important;
     }
 
     .hint {
@@ -250,7 +248,7 @@ html[data-cpr-theme="default"] body.theme-dark {
   }
 }
 
-html[data-cpr-theme="darkmode"] body.theme-light {
+html[data-cpr-theme="dark"] body.theme-light {
   form.region-config {
     label {
       color: var(--cpr-color-black) !important;
@@ -584,35 +582,4 @@ html[data-cpr-theme="darkmode"] body.theme-light {
   border-radius: 0;
   background: var(--cpr-background-header);
   clip-path: polygon(0 0.626rem, 0 100%, 100% 100%, 100% 0, 0.626rem 0);
-}
-
-/* -------------------------------------------- */
-
-/* Override pause menu with glitch effect       */
-
-/* IF enabled in settings.enablePauseAnimation  */
-
-/* -------------------------------------------- */
-#pause {
-  .pause-image {
-    background: url("../icons/pause.png");
-    background-size: 8rem;
-    width: 8rem;
-    height: 8rem;
-    padding-left: 8rem;
-  }
-
-  .pause-glitch {
-    @mixin glitch;
-
-    text-transform: uppercase;
-    font-family: var(--cpr-font-pause);
-    font-weight: 800;
-    color: var(--cpr-text-pause);
-
-    &::before,
-    &::after {
-      content: attr(data-text);
-    }
-  }
 }

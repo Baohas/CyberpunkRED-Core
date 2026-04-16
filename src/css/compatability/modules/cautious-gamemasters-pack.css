@@ -1,0 +1,8 @@
+#chat-log .message.cgmp-desc {
+  background: var(--cpr-background-chat-card) !important;
+}
+
+#chat-log .message.emote .message-content,
+#chat-log .message.cgmp-desc .message-content {
+  color: var(--cpr-text-chat-normal) !important;
+}

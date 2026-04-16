@@ -4,6 +4,10 @@
 
 ## Version 0.93
 
+### New Features
+
+- Add Foundry v13 Support
+- Remove Foundry v12 Support
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`

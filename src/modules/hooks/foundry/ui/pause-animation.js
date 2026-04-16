@@ -1,4 +1,4 @@
-import enablePauseAnimation from "../../../system/pause-animation.js";
+import LOGGER from "../../../utils/cpr-logger.js";
 
 const PauseAnimation = () => {
   /**
@@ -10,8 +10,34 @@ const PauseAnimation = () => {
    * @public
    * @memberof hookEvents
    */
-  Hooks.on("renderGamePause", () => {
-    enablePauseAnimation();
+  Hooks.on("renderGamePause", (_, html) => {
+    // Avoid conflicts if multiple systems register this hook
+    if (Hooks.events.renderGamePause.length > 1) return;
+
+    // Check settings
+    const animationEnabled = game.settings.get("core", "photosensitiveMode")
+      ? false
+      : game.settings.get(game.system.id, "enablePauseAnimation");
+
+    // Set up the text
+    const caption = html.querySelector("figcaption");
+    if (caption) {
+      // Apply different class based on animation setting
+      caption.className = animationEnabled ? "pause-glitch" : "pause-static";
+      caption.setAttribute("data-text", game.i18n.localize("GAME.Paused"));
+    }
+
+    // Hide the pause image
+    const img = html.querySelector("img");
+    if (img) {
+      img.className = "pause-image";
+    }
+
+    if (animationEnabled) {
+      LOGGER.log("Enabling pause animation");
+    } else {
+      LOGGER.log("Using static pause text");
+    }
   });
 };
 

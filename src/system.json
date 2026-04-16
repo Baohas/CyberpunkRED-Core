@@ -18,7 +18,12 @@
     }
   ],
   "esmodules": ["cpr.js"],
-  "styles": ["css/main.css"],
+  "styles": [
+    {
+      "src": "css/main.css",
+      "layer": null
+    }
+  ],
   "packFolders": [
     {
       "name": "Cyberpunk RED: Core",
