@@ -72,12 +72,28 @@ export default class ArmorDataModel extends CPRSystemDataModel.mixin(
           min: 0,
         }),
       }),
-      penalty: new fields.NumberField({
-        required: true,
-        nullable: false,
-        integer: true,
-        initial: 0,
-        min: -10,
+      penalty: new fields.SchemaField({
+        ref: new fields.NumberField({
+          required: true,
+          nullable: false,
+          integer: true,
+          initial: 0,
+          min: 0,
+        }),
+        dex: new fields.NumberField({
+          required: true,
+          nullable: false,
+          integer: true,
+          initial: 0,
+          min: 0,
+        }),
+        move: new fields.NumberField({
+          required: true,
+          nullable: false,
+          integer: true,
+          initial: 0,
+          min: 0,
+        }),
       }),
     });
   }
