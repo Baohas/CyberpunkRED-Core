@@ -493,6 +493,7 @@
 .fight-tab.active {
   width: inherit;
   background-color: var(--cpr-background-border);
+  height: 100%;
 
   .fight-tab-grid {
     display: grid;
@@ -500,8 +501,9 @@
     grid-template-rows: auto;
     grid-template-areas: "injuries armor weapon";
     gap: 0.313rem;
+    height: 100%;
 
-    .fight-tab>div {
+    .fight-tab > div {
       background-color: var(--cpr-background-box);
     }
 
@@ -513,6 +515,7 @@
     .injuries-section {
       grid-area: injuries;
       min-height: 2.188rem;
+      background-color: var(--cpr-background-box);
 
       .fa-trash-can {
         color: var(--cpr-text-icon-highlight);
@@ -539,6 +542,7 @@
     .interface-abilities-section {
       grid-area: injuries;
       min-height: 2.188rem;
+      background-color: var(--cpr-background-box);
 
       .items-header {
         height: 1.25rem;
@@ -554,6 +558,7 @@
     .cyberdeck-installed-section {
       grid-area: armor;
       min-height: 2.188rem;
+      background-color: var(--cpr-background-box);
 
       .items-header {
         background-color: var(--cpr-background-cyberdeck-section-header);
@@ -600,6 +605,7 @@
     .cyberdeck-rezzed-section {
       grid-area: weapon;
       min-height: 2.188rem;
+      background-color: var(--cpr-background-box);
 
       .items-header {
         background-color: var(--cpr-background-cyberdeck-section-header);
@@ -710,24 +716,24 @@
   justify-content: flex-start;
 }
 
-.cpr-tabs>* {
+.cpr-tabs > * {
   flex: 1;
 }
 
-.cpr-tabs>.flex0 {
+.cpr-tabs > .flex0 {
   display: block;
   flex: 0;
 }
 
-.cpr-tabs>.flex1 {
+.cpr-tabs > .flex1 {
   flex: 1;
 }
 
-.cpr-tabs>.flex2 {
+.cpr-tabs > .flex2 {
   flex: 2;
 }
 
-.cpr-tabs>.flex3 {
+.cpr-tabs > .flex3 {
   flex: 3;
 }
 
