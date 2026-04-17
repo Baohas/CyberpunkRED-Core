@@ -16,4 +16,3 @@ export { default as RemoveInvalidUpgrates } from "./037-remove-invalid-upgrates.
 export { default as UpdateMedtechRole } from "./038-update-medtech-role.js";
 export { default as SplitPacks } from "./039-split-packs.js";
 export { default as AmmoIconConversion } from "./040-ammo-icons.js";
-export { default as ArmorPenaltyMigrationSplit } from "./041-penalty-is-split.js";
