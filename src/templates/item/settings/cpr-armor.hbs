@@ -3,8 +3,29 @@
   <div class="item flexrow setting-name text-nowrap">
     {{localize "CPR.itemSheet.armor.armorPenalty"}}
   </div>
+</li>
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-padding-left-largest text-nowrap">
+    {{localize "CPR.itemSheet.armor.armorRefPenalty"}}
+  </div>
   <div class="item flexrow setting-value text-nowrap item-end">
-    <input name="system.penalty"  type="number" value="{{item.system.penalty}}"/>
+    <input name="system.penalty.ref"  type="number" value="{{item.system.penalty.ref}}"/>
+  </div>
+</li>
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-padding-left-largest text-nowrap">
+    {{localize "CPR.itemSheet.armor.armorDexPenalty"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+    <input name="system.penalty.dex"  type="number" value="{{item.system.penalty.dex}}"/>
+  </div>
+</li>
+<li class="item flexrow">
+  <div class="item flexrow setting-name text-padding-left-largest text-nowrap">
+    {{localize "CPR.itemSheet.armor.armorMovePenalty"}}
+  </div>
+  <div class="item flexrow setting-value text-nowrap item-end">
+    <input name="system.penalty.move"  type="number" value="{{item.system.penalty.move}}"/>
   </div>
 </li>
 {{#unless (cprCompare item.system.isBodyLocation "||" item.system.isHeadLocation)}}
