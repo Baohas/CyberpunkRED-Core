@@ -4,6 +4,10 @@
 
 ## Version 0.93
 
+### Nouvelles fonctionnalités
+
+- Add Foundry v13 Support
+- Remove Foundry v12 Support
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
@@ -344,7 +348,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Version 0.87.6
 
-### Corrections de bugs
+### Bug Fixes
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
@@ -1130,7 +1134,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Version 0.79.0 | Date: 2021-09-11
 
-### Nouvelles fonctionnalités
+### New Features
 
 - Added support for automatic damage application on Characters and Mooks.
   - The damage chat card of weapon attacks now has an additional button to apply the damage to the selected tokens.
