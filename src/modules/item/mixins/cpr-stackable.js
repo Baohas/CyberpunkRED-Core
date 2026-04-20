@@ -16,7 +16,7 @@ const Stackable = function Stackable() {
       // set to what the user provided
       newValue = parseInt(value, 10);
     }
-    this.update({["system.amount"]: newValue});
+    this.update({ "system.amount": newValue });
   };
 
   /**

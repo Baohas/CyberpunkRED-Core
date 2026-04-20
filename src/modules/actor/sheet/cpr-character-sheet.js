@@ -403,7 +403,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _updateSkill(event) {
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
-    await item.setSkillLevel(parseInt(event.target.value, 10))
+    await item.setSkillLevel(parseInt(event.target.value, 10));
   }
 
   /**
