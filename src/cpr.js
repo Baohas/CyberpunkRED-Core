@@ -53,6 +53,10 @@ import VehicleDataModel from "./modules/datamodels/item/vehicle-datamodel.js";
 import WeaponDataModel from "./modules/datamodels/item/weapon-datamodel.js";
 import MigrationError from "./modules/system/migrate/migration-error.js";
 
+const { ActorSheet, ItemSheet } = foundry.appv1.sheets;
+const { DocumentSheetConfig } = foundry.applications.apps;
+const { Actors, Items } = foundry.documents.collections;
+
 Hooks.once("init", async () => {
   LOGGER.log("THANK YOU TO EVERYONE WHO HELPED!!!!");
   LOGGER.credits();
@@ -271,7 +275,6 @@ Hooks.once("init", async () => {
   preloadHandlebarsTemplates();
   registerHandlebarsHelpers();
   registerSystemSettings();
-  overrideRulerFunctions();
 
   // This MUST occur after templates, helpers, and system settings are loaded or registered.
   MigrationRunner.instantiate();
@@ -286,6 +289,10 @@ Hooks.once("init", async () => {
  * but then we moved to integers for maintainability's sake.
  */
 Hooks.once("ready", async () => {
+  overrideRulerFunctions();
+  const proto = Object.getPrototypeOf(canvas.controls.ruler);
+  proto.constructor.WAYPOINT_LABEL_TEMPLATE = `systems/${game.system.id}/templates/hud/waypoint-label-dv.hbs`;
+
   if (!game.user.isGM) return;
   const { settings } = game;
 

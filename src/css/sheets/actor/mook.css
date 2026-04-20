@@ -5,6 +5,13 @@
   outline: none;
 }
 
+.side-banner {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  min-height: -webkit-fill-available;
+  text-align: center;
+}
+
 .mook-sheet {
   font-family: var(--cpr-font-primary);
   display: grid;

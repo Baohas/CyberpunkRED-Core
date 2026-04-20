@@ -11,7 +11,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
-import Container from "../item/mixins/cpr-container.js";
+import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 /**
  * CPRActor contains common code between mooks and characters (NPCs and players).
@@ -247,7 +247,7 @@ export default class CPRActor extends Actor {
         // eslint-disable-next-line no-continue
         if (!item.system.hasInstalled) continue;
         // The item will only have this flag if it is imported/coming from another actor.
-        const imported = !!item.flags.cprInstallTree;
+        const imported = !!ContainerUtils.getInstallTreeFlag(item);
         // The following function recusrively creates and installs all items in the install tree.
         await item.createInstalledItemsOnActor(imported);
       }
@@ -1564,105 +1564,73 @@ export default class CPRActor extends Actor {
   async _ablateArmor(location, ablation) {
     const armorList = this.getEquippedArmors(location);
     const updateList = [];
-    let currentArmorValue;
-    switch (location) {
-      case "head": {
-        await armorList.forEach(async (a) => {
-          const cprArmorData = a.system;
-          const armorSp = await CPRActorUtils.calculateArmorSP(a, "head");
-          cprArmorData.headLocation.ablation =
-            ablation < 0
-              ? Math.max(cprArmorData.headLocation.ablation + ablation, 0)
-              : Math.min(
-                  cprArmorData.headLocation.ablation + ablation,
-                  armorSp
-                );
-          updateList.push({ _id: a.id, system: cprArmorData });
-        });
-        await this.updateEmbeddedDocuments("Item", updateList);
-        // Update actor external data as head armor is ablated:
-        currentArmorValue =
-          ablation < 0
-            ? Math.min(
-                this.system.externalData.currentArmorHead.value - ablation,
-                this.system.externalData.currentArmorHead.max
-              )
-            : Math.max(
-                this.system.externalData.currentArmorHead.value - ablation,
-                0
-              );
-        await this.update({
-          "system.externalData.currentArmorHead.value": currentArmorValue,
-        });
-        break;
+    //
+    // Define config for each location
+    const config = {
+      head: {
+        path: "system.headLocation.ablation",
+        spPath: "system.headLocation.sp",
+        upgradeKey: "headSp",
+        externalPath: "system.externalData.currentArmorHead.value",
+        externalMax: this.system.externalData.currentArmorHead.max,
+        externalValue: this.system.externalData.currentArmorHead.value,
+      },
+      body: {
+        path: "system.bodyLocation.ablation",
+        spPath: "system.bodyLocation.sp",
+        upgradeKey: "bodySp",
+        externalPath: "system.externalData.currentArmorBody.value",
+        externalMax: this.system.externalData.currentArmorBody.max,
+        externalValue: this.system.externalData.currentArmorBody.value,
+      },
+      shield: {
+        path: "system.shieldHitPoints.value",
+        spPath: "system.shieldHitPoints.max",
+        upgradeKey: null, // shields dont use upgradeData
+        externalPath: "system.externalData.currentArmorShield.value",
+        externalMax: this.system.externalData.currentArmorShield.max,
+        externalValue: this.system.externalData.currentArmorShield.value,
+      },
+    };
+
+    const cfg = config[location];
+    if (!cfg) return; // exit if location not supported
+
+    armorList.forEach((armor) => {
+      const sp = Number(foundry.utils.getProperty(armor, cfg.spPath));
+      const ablationValue = Number(foundry.utils.getProperty(armor, cfg.path));
+
+      // Calculate effective SP (skip if no upgradeData)
+      let armorSp = sp;
+      if (cfg.upgradeKey) {
+        const upgradeData = armor.getTotalUpgradeValues(cfg.upgradeKey);
+        armorSp =
+          upgradeData.type === "override"
+            ? upgradeData.value
+            : sp + upgradeData.value;
       }
-      case "body": {
-        await armorList.forEach(async (a) => {
-          const cprArmorData = a.system;
-          const armorSp = await CPRActorUtils.calculateArmorSP(a, "body");
-          cprArmorData.bodyLocation.ablation =
-            ablation < 0
-              ? Math.max(cprArmorData.bodyLocation.ablation + ablation, 0)
-              : Math.min(
-                  cprArmorData.bodyLocation.ablation + ablation,
-                  armorSp
-                );
-          updateList.push({ _id: a.id, system: cprArmorData });
-        });
-        await this.updateEmbeddedDocuments("Item", updateList);
-        // Update actor external data as body armor is ablated:
-        currentArmorValue =
-          ablation < 0
-            ? Math.min(
-                this.system.externalData.currentArmorBody.value - ablation,
-                this.system.externalData.currentArmorBody.max
-              )
-            : Math.max(
-                this.system.externalData.currentArmorBody.value - ablation,
-                0
-              );
-        await this.update({
-          "system.externalData.currentArmorBody.value": currentArmorValue,
-        });
-        break;
-      }
-      case "shield": {
-        armorList.forEach((a) => {
-          const cprArmorData = a.system;
-          cprArmorData.shieldHitPoints.value = Number(
-            cprArmorData.shieldHitPoints.value
-          );
-          cprArmorData.shieldHitPoints.max = Number(
-            cprArmorData.shieldHitPoints.max
-          );
-          cprArmorData.shieldHitPoints.value =
-            ablation < 0
-              ? Math.min(
-                  a.system.shieldHitPoints.value - ablation,
-                  a.system.shieldHitPoints.max
-                )
-              : Math.max(a.system.shieldHitPoints.value - ablation, 0);
-          updateList.push({ _id: a.id, system: cprArmorData });
-        });
-        await this.updateEmbeddedDocuments("Item", updateList);
-        // Update actor external data as shield is damaged:
-        currentArmorValue =
-          ablation < 0
-            ? Math.min(
-                this.system.externalData.currentArmorShield.value - ablation,
-                this.system.externalData.currentArmorShield.max
-              )
-            : Math.max(
-                this.system.externalData.currentArmorShield.value - ablation,
-                0
-              );
-        await this.update({
-          "system.externalData.currentArmorShield.value": currentArmorValue,
-        });
-        break;
-      }
-      default:
-    }
+
+      // Clamp new ablation
+      const newAblation =
+        ablation < 0
+          ? Math.max(ablationValue + ablation, 0)
+          : Math.min(ablationValue + ablation, armorSp);
+
+      updateList.push({
+        _id: armor.id,
+        [cfg.path]: newAblation,
+      });
+    });
+
+    await this.updateEmbeddedDocuments("Item", updateList);
+
+    // Update actor external data as armor is ablated:
+    const currentArmorValue =
+      ablation < 0
+        ? Math.min(cfg.externalValue - ablation, cfg.externalMax)
+        : Math.max(cfg.externalValue - ablation, 0);
+
+    await this.update({ [cfg.externalPath]: currentArmorValue });
   }
 
   /**

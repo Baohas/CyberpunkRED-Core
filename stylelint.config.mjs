@@ -39,8 +39,16 @@ export default {
   },
   overrides: [
     {
-      // Allow colors only in variables.css
-      files: ["src/css/variables.css"],
+      files: ["src/css/compatability/foundry/pause-animation.css"],
+      rules: {
+        // Allow use of px in the pause animation as this shouldn't scale
+        // with the rest of the UI
+        "unit-disallowed-list": ["cm", "mm", "Q", "in", "pc", "pt"],
+      },
+    },
+    {
+      // Allow colors only in variables/
+      files: ["src/css/variables/*.css", "src/css/variables/**/*.css"],
       rules: {
         "color-no-hex": null,
         "function-disallowed-list": null,

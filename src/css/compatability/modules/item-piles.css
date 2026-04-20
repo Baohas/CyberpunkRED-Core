@@ -1,0 +1,36 @@
+.item-piles-even-color:nth-child(even) {
+  background-color: var(--cpr-background-row-even) !important;
+}
+
+.item-piles-even-color:nth-child(odd) {
+  background-color: var(--cpr-background-row-odd) !important;
+}
+
+.item-piles-child-even-color > * {
+  background-color: var(--cpr-background-row-even) !important;
+}
+
+.item-piles-child-odd-color > * {
+  background-color: var(--cpr-background-row-odd) !important;
+}
+
+.item.active.underscore {
+  border-bottom-color: var(--cpr-background-border) !important;
+}
+
+.item-piles-config-container p {
+  color: var(--cpr-text-normal) !important;
+}
+
+.item-piles-disabled {
+  background-color: var(--cpr-text-icon-dimmed) !important;
+}
+
+.item-piles-chat-card li:nth-child(odd) {
+  background-color: var(--cpr-background-foundry-input) !important;
+  border: 0.063rem solid var(--color-border-light-primary) !important;
+}
+
+.item-piles-item-take-button {
+  background-color: var(--cpr-background-foundry-button) !important;
+}

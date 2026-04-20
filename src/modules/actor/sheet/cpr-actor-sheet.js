@@ -9,6 +9,9 @@ import CPRMod from "../../rolls/cpr-modifiers.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 import { ContainerUtils } from "../../item/mixins/cpr-container.js";
 
+const { ActorSheet } = foundry.appv1.sheets;
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
+
 /**
  * Extend the basic ActorSheet, which comes from Foundry. Not all sheets used in
  * this system module may extend from this. Others also extend ActorSheet. CPRActor
@@ -871,8 +874,7 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {*} value - value to set the property to
    */
   _updateOwnedItemProp(item, prop, value) {
-    foundry.utils.setProperty(item, prop, value);
-    this._updateOwnedItem(item);
+    item.update({ [prop]: value });
   }
 
   /**
@@ -1088,29 +1090,35 @@ export default class CPRActorSheet extends ActorSheet {
       this.actor,
       `flags.${game.system.id}.firetype-${weaponID}`
     );
+
     LOGGER.debug(`firemode is ${firemode}`);
     LOGGER.debug(`weaponID is ${weaponID}`);
     LOGGER.debug(`flag is ${flag}`);
-    if (this.token !== null && firemode === "autofire") {
-      const weaponDvTable = this.actor.getOwnedItem(weaponID).system.dvTable;
+
+    if (this.token && firemode === "autofire") {
+      const weapon = this.actor.items.get(weaponID);
+      const weaponDvTable = weapon?.system.dvTable ?? "";
       const currentDvTable =
         weaponDvTable === ""
-          ? foundry.utils.getProperty(this.token, "flags.cprDvTable")
+          ? foundry.utils.getProperty(this.token.document, "flags.cprDvTable")
           : weaponDvTable;
-      if (typeof currentDvTable !== "undefined") {
-        const dvTable = currentDvTable.replace(" (Autofire)", "");
+
+      if (currentDvTable) {
+        const dvTableName = currentDvTable.replace(" (Autofire)", "");
         const dvTables = await SystemUtils.GetDvTables();
-        const afTable = dvTables.filter(
+        const afTable = dvTables.find(
           (table) =>
-            table.name.includes(dvTable) && table.name.includes("Autofire")
+            table.name.includes(dvTableName) && table.name.includes("Autofire")
         );
+
         let newDvTable = currentDvTable;
-        if (afTable.length > 0) {
-          newDvTable = flag === firemode ? dvTable : afTable[0];
+        if (afTable) {
+          newDvTable = flag === firemode ? dvTableName : afTable.name;
         }
         await this.token.update({ "flags.cprDvTable": newDvTable });
       }
     }
+
     if (flag === firemode) {
       // if the flag was already set to firemode, that means we unchecked a box
       await this.actor.unsetFlag(game.system.id, `firetype-${weaponID}`);

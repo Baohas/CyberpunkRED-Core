@@ -1,0 +1,6 @@
+.dice-tray {
+  button {
+    color: var(--cpr-text-content-link-icon) !important;
+    background: transparent !important;
+  }
+}

@@ -5,10 +5,10 @@
   justify-content: flex-start;
 }
 
-.flexcol {
+/* Used to spread space between fields */
+.flex-space-between {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .flex-center {

@@ -5,6 +5,9 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRItem from "../../item/cpr-item.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { ContainerUtils } from "../../item/mixins/cpr-container.js";
+
+const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 /**
  * Implement the sheet for containers and shop keepers. This extends CPRActorSheet to make use
@@ -215,7 +218,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
     if (SystemUtils.hasMixin(item.type, "container")) {
       const cprInstallTree = item.createInstalledObjectData();
-      transferredItemData.flags.cprInstallTree = cprInstallTree;
+      ContainerUtils.setInstallTreeFlag(transferredItemData, cprInstallTree);
     }
 
     let cost = 0;

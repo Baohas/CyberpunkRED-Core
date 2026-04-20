@@ -401,10 +401,9 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @private
    * @param {*} event - object with details of the event
    */
-  _updateSkill(event) {
+  async _updateSkill(event) {
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
-    item.setSkillLevel(parseInt(event.target.value, 10));
-    this._updateOwnedItem(item);
+    await item.setSkillLevel(parseInt(event.target.value, 10));
   }
 
   /**
@@ -427,7 +426,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         );
       }
     }
-    this._updateOwnedItem(item);
   }
 
   /**
@@ -447,7 +445,6 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         SystemUtils.Localize("CPR.messages.amountNotNumber")
       );
     }
-    this._updateOwnedItem(item);
   }
 
   /**

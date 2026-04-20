@@ -175,6 +175,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    max-width: 37.5rem;
   }
 
   /* Hide a row in the list */
