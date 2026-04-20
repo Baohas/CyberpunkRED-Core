@@ -4,6 +4,10 @@
 
 ## Version 0.93
 
+### New Features
+
+- Add Foundry v13 Support
+- Remove Foundry v12 Support
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
@@ -344,7 +348,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versione 0.87.6
 
-### Correzioni di bug
+### Bug Fixes
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
