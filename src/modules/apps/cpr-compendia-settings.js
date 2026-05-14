@@ -1,28 +1,51 @@
 import CPR from "../system/config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+
 /**
  * Defines behaviors for a window that pops up when the Config Compendia button in
  * system settings is clicked. We go this route because the options available are
  * based on content in game.packs, but game.packs is not defined when settings are
  * configured. So we have present options dynamically when a button is clicked.
  */
-export default class CPRCompendiaSettings extends FormApplication {
-  /**
-   * set up default things like the html template and window size
-   *
-   * @override
-   * @static
-   */
-  static get defaultOptions() {
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      title: SystemUtils.Localize("CPR.settings.compendiumMenu.title"),
-      id: "compendia-config",
-      template: `systems/${game.system.id}/templates/apps/compendia-settings.hbs`,
-      width: "auto",
+export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
+  ApplicationV2
+) {
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    id: "compendia-config",
+    tag: "form",
+    position: {
+      width: 540,
       height: "auto",
+    },
+    window: {
+      icon: "fa-solid fa-book",
+      contentClasses: ["standard-form"],
+      title: "CPR.settings.compendiumMenu.title",
+      resizable: false,
+    },
+    form: {
+      handler: CPRCompendiaSettings.#onSubmit,
       closeOnSubmit: true,
-    });
+    },
+  };
+
+  /** @inheritDoc */
+  static PARTS = {
+    form: {
+      template: `systems/cyberpunk-red-core/templates/apps/compendia-settings.hbs`,
+    },
+    footer: {
+      template: "templates/generic/form-footer.hbs",
+    },
+  };
+
+  get title() {
+    return `${game.system.title}: ${SystemUtils.Localize(
+      this.options.window.title
+    )}`;
   }
 
   /**
@@ -32,11 +55,11 @@ export default class CPRCompendiaSettings extends FormApplication {
    *
    * @async
    * @override
-   * @param {Object} options (not used here)
+   * @param {Object} options (unused here)
    * @returns {Object}
    */
   // eslint-disable-next-line class-methods-use-this
-  async getData() {
+  async _prepareContext() {
     const critCurr = await game.settings.get(
       game.system.id,
       "criticalInjuryRollTableCompendium"
@@ -60,7 +83,7 @@ export default class CPRCompendiaSettings extends FormApplication {
     const choicesDv = {
       [CPR.defaultDvTable]: "CPR.settings.dvRollTableCompendium.default",
     };
-    const comps = SystemUtils.GetWorldCompendia("RollTable");
+    const comps = SystemUtils.GetCompendiaByType("world", "RollTable");
     for (const comp of comps) {
       choicesCrit[`world.${comp.metadata.name}`] = comp.metadata.label;
       choicesNet[`world.${comp.metadata.name}`] = comp.metadata.label;
@@ -73,35 +96,65 @@ export default class CPRCompendiaSettings extends FormApplication {
       critCurr,
       netCurr,
       dvCurr,
+      formText: {
+        description: SystemUtils.Localize("CPR.settings.compendiumMenu.desc"),
+        criticalInjuryRollTableCompendium: {
+          label: SystemUtils.Localize(
+            "CPR.settings.criticalInjuryRollTableCompendium.name"
+          ),
+          help: SystemUtils.Localize(
+            "CPR.settings.criticalInjuryRollTableCompendium.help"
+          ),
+        },
+        netArchRollTableCompendium: {
+          label: SystemUtils.Localize(
+            "CPR.settings.netArchRollTableCompendium.name"
+          ),
+          help: SystemUtils.Localize(
+            "CPR.settings.netArchRollTableCompendium.help"
+          ),
+        },
+        dvRollTableCompendium: {
+          label: SystemUtils.Localize(
+            "CPR.settings.dvRollTableCompendium.name"
+          ),
+          help: SystemUtils.Localize("CPR.settings.dvRollTableCompendium.help"),
+        },
+      },
+      buttons: [
+        { type: "submit", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
+      ],
     };
   }
 
   /**
-   * Called when the sub menu application (this thing) is submitted. Responsible for updating
-   * internal settings with what the user chose.
-   *
-   * @async
-   * @override
-   * @param {*} event (not used here)
-   * @param {Object} formData - choices made with the dropdowns in the sub menus
+   * Handle form submission
+   * @this {CPRCompendiaSettings}
+   * @param {SubmitEvent} event
+   * @param {HTMLFormElement} form
+   * @param {FormDataExtended} formData
    */
   // eslint-disable-next-line class-methods-use-this
-  async _updateObject(event, formData) {
+  static async #onSubmit(event, form, formData) {
+    event.preventDefault();
+
+    const formObject = formData.object;
     await game.settings.set(
       game.system.id,
       "criticalInjuryRollTableCompendium",
-      formData.injuryChoice
+      formObject.injuryChoice
     );
     await game.settings.set(
       game.system.id,
       "netArchRollTableCompendium",
-      formData.netArchChoice
+      formObject.netArchChoice
     );
     await game.settings.set(
       game.system.id,
       "dvRollTableCompendium",
-      formData.dvChoice
+      formObject.dvChoice
     );
+
     SystemUtils.DisplayMessage(
       "notify",
       SystemUtils.Localize("CPR.settings.compendiumMenu.update")
