@@ -96,31 +96,6 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
       critCurr,
       netCurr,
       dvCurr,
-      formText: {
-        description: SystemUtils.Localize("CPR.settings.compendiumMenu.desc"),
-        criticalInjuryRollTableCompendium: {
-          label: SystemUtils.Localize(
-            "CPR.settings.criticalInjuryRollTableCompendium.name"
-          ),
-          help: SystemUtils.Localize(
-            "CPR.settings.criticalInjuryRollTableCompendium.help"
-          ),
-        },
-        netArchRollTableCompendium: {
-          label: SystemUtils.Localize(
-            "CPR.settings.netArchRollTableCompendium.name"
-          ),
-          help: SystemUtils.Localize(
-            "CPR.settings.netArchRollTableCompendium.help"
-          ),
-        },
-        dvRollTableCompendium: {
-          label: SystemUtils.Localize(
-            "CPR.settings.dvRollTableCompendium.name"
-          ),
-          help: SystemUtils.Localize("CPR.settings.dvRollTableCompendium.help"),
-        },
-      },
       buttons: [
         { type: "submit", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
       ],
