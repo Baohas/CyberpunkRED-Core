@@ -28,6 +28,23 @@ code {
 .item-sheet,
 .mook-sheet {
   font-family: var(--cpr-font-primary);
+  color: var(--cpr-text-normal);
+  background: var(--cpr-background-window);
+
+  button {
+    color: var(--cpr-text-foundry-input);
+    background-color: var(--cpr-background-foundry-input);
+  }
+
+  select, option, optgroup {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-window);
+  }
+
+  .entry-name,
+  .directory-list {
+    color: var(--cpr-text-dir-list);
+  }
 
   /* Undo Foundry Base Style settings for elements */
   img {
@@ -62,12 +79,6 @@ code {
 /****************************
  * Application V2 Overrides *
  ****************************/
-
-html[data-cpr-theme="default"] .application {
-  a {
-    color: var(--cpr-color-red);
-  }
-}
 
 [data-cpr-theme="dark"] .theme-dark .application {
   input[type="checkbox"]::before {
@@ -142,16 +153,6 @@ html[data-cpr-theme="default"] .application {
 
 .editor.prosemirror {
   min-height: 10rem;
-}
-
-/* Override the content link element use when linking to another foundry actor, item etc. */
-.content-link {
-  background: var(--cpr-background-content-link) !important;
-  color: var(--cpr-text-normal);
-
-  i::before {
-    color: var(--cpr-text-normal);
-  }
 }
 
 /*
