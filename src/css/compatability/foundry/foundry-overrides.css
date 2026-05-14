@@ -1,12 +1,6 @@
 form {
-  .notes,
-  .hint {
-    color: var(--cpr-text-foundry-hint) !important;
-  }
-
   input {
     &::placeholder {
-      color: var(--cpr-text-normal);
       opacity: 0.6;
     }
 
@@ -14,68 +8,11 @@ form {
       width: 1.875rem;
     }
   }
-
-  .form-group {
-    label {
-      color: var(--cpr-text-window) !important;
-    }
-  }
-
-  span.units {
-    color: var(--cpr-text-hint) !important;
-  }
-
-  .form-group.slim {
-    .form-fields {
-      label {
-        color: var(--cpr-text-hint) !important;
-      }
-    }
-  }
-
-  textarea:read-only {
-    color: var(--cpr-text-hint);
-  }
-
-  textarea {
-    color: var(--cpr-text-normal);
-  }
-}
-
-.filepicker .display-modes {
-  a {
-    background: var(--cpr-background-editor-button);
-  }
-
-  a.active {
-    background: var(--cpr-background-editor-button-selected);
-    text-shadow: var(--cpr-text-foundry-hover);
-  }
-}
-
-.filepicker .favorites .path {
-  background: var(--cpr-background-foundry-input);
-  color: var(--cpr-text-foundry-input);
-
-  a.link[data-source]::before {
-    color: var(--cpr-text-foundry-input);
-  }
-}
-
-.card-control {
-  color: var(--cpr-text-hint) !important;
 }
 
 /* User config pop out */
 .user-config {
   font-family: var(--cpr-font-primary);
-
-  .window-content {
-    .directory-list {
-      background: var(--cpr-background-box) !important;
-      color: var(--cpr-text-normal) !important;
-    }
-  }
 }
 
 code {
@@ -119,95 +56,6 @@ code {
     user-select: text;
     height: 100%;
     background: none;
-
-    &:hover {
-      color: var(--cpr-text-foundry-hover) !important;
-    }
-  }
-}
-
-option,
-optgroup {
-  background: var(--cpr-background-window);
-}
-
-#invitation-links .connection.closed {
-  color: var(--cpr-text-icon-highlight);
-}
-
-#module-management {
-  label {
-    color: var(--cpr-text-icon-normal) !important;
-  }
-}
-
-#keybindings {
-  .binding {
-    .key.uneditable {
-      background: var(--cpr-background-row-odd);
-    }
-  }
-}
-
-#actors-popout,
-#cards-popout,
-#chat-popout,
-#combat-popout,
-#compendium-popout,
-#items-popout,
-#journal-popout,
-#playlists-popout,
-#scenes-popout,
-#settings-popout,
-#tables-popout,
-#macros-popout,
-#ui-right {
-  color: var(--cpr-text-header);
-
-  button {
-    color: var(--cpr-text-foundry-input);
-    background-color: var(--cpr-background-foundry-input);
-  }
-}
-
-#chat-form {
-  textarea {
-    background: none;
-    color: var(--cpr-text-foundry-input);
-    background-color: var(--cpr-background-foundry-input);
-  }
-}
-
-#chat-controls {
-  .roll-type-select {
-    color: var(--cpr-text-foundry-input);
-    background-color: var(--cpr-background-foundry-input);
-  }
-}
-
-input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="date"],
-input[type="time"],
-input[type="search"],
-input,
-select,
-button,
-.sidebar-tab .directory-header .header-search input,
-.dialog .dialog-buttons button,
-.dialog .dialog-buttons button.default {
-  color: var(--cpr-text-foundry-input);
-  background: var(--cpr-background-foundry-input);
-}
-
-input::placeholder {
-  color: var(--cpr-text-normal);
-}
-
-.header-search {
-  input {
-    background: var(--cpr-background-foundry-input) !important;
   }
 }
 
@@ -228,35 +76,6 @@ html[data-cpr-theme="default"] .application {
 
   input[type="checkbox"]:checked::before {
     color: var(--cpr-color-faded-black);
-  }
-}
-
-/*
- * As of V12 Foundry has it's own dark/light mode based on the browser. In cases
- * where the user in in dark mode and the system is in light mode we want to correct
- * the styling for Foundry specific menus.
- */
-html[data-cpr-theme="default"] body.theme-dark {
-  form.region-config {
-    label {
-      color: var(--cpr-dark-text-main) !important;
-    }
-
-    .hint {
-      color: var(--cpr-text-foundry-hint) !important;
-    }
-  }
-}
-
-html[data-cpr-theme="dark"] body.theme-light {
-  form.region-config {
-    label {
-      color: var(--cpr-color-black) !important;
-    }
-
-    .hint {
-      color: var(--cpr-color-near-black) !important;
-    }
   }
 }
 

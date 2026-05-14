@@ -14,23 +14,6 @@ section {
 .window-app .window-content,
 .application .window-content {
   font-family: var(--cpr-font-primary) !important;
-  color: var(--cpr-text-normal);
-  background: var(--cpr-background-window);
-
-  button {
-    color: var(--cpr-text-foundry-input);
-    background-color: var(--cpr-background-foundry-input);
-  }
-
-  select {
-    color: var(--cpr-text-normal);
-    background: var(--cpr-background-window);
-  }
-
-  .entry-name,
-  .directory-list {
-    color: var(--cpr-text-dir-list);
-  }
 }
 
 .editor {
