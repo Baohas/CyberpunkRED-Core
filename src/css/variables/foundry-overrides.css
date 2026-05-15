@@ -1,0 +1,13 @@
+.themed.theme-light,
+body.theme-light .application,
+body.theme-light.application {
+  --background: var(--cpr-color-white);
+  --sidebar-background: var(--cpr-color-white);
+}
+
+.themed.theme-dark,
+body.theme-dark .application,
+body.theme-dark.application {
+    --background: var(--cpr-color-black);
+    --sidebar-background: var(--cpr-color-black);
+}

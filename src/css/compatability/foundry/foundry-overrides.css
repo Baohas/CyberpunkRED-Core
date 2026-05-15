@@ -172,7 +172,7 @@ code {
 /*
  * TextEditor/Prosemirror Overides
  */
-
+.journal-entry-page .window-content,
 .journal-entry-content {
   background: var(--cpr-background-box) !important;
 }
@@ -180,6 +180,7 @@ code {
 .prosemirror,
 .editor-content,
 .releasenotes,
+.journal-entry-page .window-content,
 .journal-entry-content,
 .journal-page-content,
 .journal-sheet-container {
