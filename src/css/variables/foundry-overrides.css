@@ -8,6 +8,6 @@ body.theme-light.application {
 .themed.theme-dark,
 body.theme-dark .application,
 body.theme-dark.application {
-    --background: var(--cpr-color-black);
-    --sidebar-background: var(--cpr-color-black);
+  --background: var(--cpr-color-black);
+  --sidebar-background: var(--cpr-color-black);
 }
