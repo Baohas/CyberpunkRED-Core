@@ -4,6 +4,9 @@
  */
 const CPR = {};
 
+// Sometimes we need to access this before the game.system can be referenced
+CPR.systemId = "cyberpunk-red-core";
+
 // Sorted as shown on char sheet (with resources pushed to bottom)
 CPR.statList = {
   int: "CPR.global.stats.int",
@@ -400,12 +403,10 @@ CPR.netArchDifficulty = {
   advanced: "CPR.dialog.netArchitectureRolltableSelection.advanced",
 };
 
-// game.system is not defined when this file is read, so there is a magic string here
-CPR.defaultCriticalInjuryTable =
-  "cyberpunk-red-core.internal_critical-injury-tables";
-CPR.defaultNetArchTable = "cyberpunk-red-core.internal_net-rolltables";
-CPR.defaultDvTable = "cyberpunk-red-core.internal_dv-tables";
-CPR.changelogCompendium = "cyberpunk-red-core.other_changelog";
+CPR.defaultCriticalInjuryTable = `${CPR.systemId}.internal_critical-injury-tables`;
+CPR.defaultNetArchTable = `${CPR.systemId}.internal_net-rolltables`;
+CPR.defaultDvTable = `${CPR.systemId}.internal_dv-tables`;
+CPR.changelogCompendium = `${CPR.systemId}.other_changelog`;
 
 CPR.criticalInjuryLocation = {
   body: "CPR.global.location.body",
