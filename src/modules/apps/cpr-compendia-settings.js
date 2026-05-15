@@ -35,7 +35,7 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
   /** @inheritDoc */
   static PARTS = {
     form: {
-      template: `systems/cyberpunk-red-core/templates/apps/compendia-settings.hbs`,
+      template: `systems/${CPR.systemId}/templates/apps/compendia-settings.hbs`,
     },
     footer: {
       template: "templates/generic/form-footer.hbs",
@@ -97,7 +97,7 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
       netCurr,
       dvCurr,
       buttons: [
-        { type: "submit", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
+        { type: "submit", icon: "fas fa-floppy-disk", label: "SETTINGS.Save" },
       ],
     };
   }
