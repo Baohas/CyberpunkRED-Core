@@ -68,7 +68,7 @@ function _prepareSubList(element) {
   if (item.system.hasInstalled && !item.system.isInstalled) {
     const showInstallFlag = game.user.getFlag(
       game.system.id,
-      "showInstalledList"
+      "showInstalledList",
     );
     const showNested = showInstallFlag?.[item.id];
     // Is nested list hidden or not
@@ -103,7 +103,7 @@ function _prepareChevron(element) {
   const itemID = element.dataset.entryId;
   const showInstallFlag = game.user.getFlag(
     game.system.id,
-    "showInstalledList"
+    "showInstalledList",
   );
   const display = showInstallFlag?.[itemID] ? "fa-flip-vertical" : "";
   return `<a class="toggle-install-list-button"><i class="fas fa-chevron-down ${display}"></i></a>`;
@@ -141,7 +141,7 @@ function _toggleInstalledVisibility(event) {
 
   // Step 3: Identify the HTML elements in the sub-list involved in the toggling.
   const installedRow = $(event.currentTarget.closest(".directory-list")).find(
-    `div[data-items-wrapper-for-parent="${itemId}"]`
+    `div[data-items-wrapper-for-parent="${itemId}"]`,
   );
 
   installedRow.toggleClass("item-hidden");
@@ -151,7 +151,7 @@ function _toggleInstalledVisibility(event) {
     // A per-user flag that stores whether or not to show the nested list on a particular contaier item.
     const showInstallFlag = game.user.getFlag(
       game.system.id,
-      "showInstalledList"
+      "showInstalledList",
     );
     const showNested = showInstallFlag?.[itemId];
     const flagUpdate = { [itemId]: !showNested };

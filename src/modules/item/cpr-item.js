@@ -51,7 +51,7 @@ export default class CPRItem extends Item {
       !ContainerUtils.getInstallTreeFlag(item)
     ) {
       const installedItemList = item.system.installedItems.list.map((id) =>
-        game.items.get(id)
+        game.items.get(id),
       );
       // Reset the new item's install list and used slots.
       await item.update({

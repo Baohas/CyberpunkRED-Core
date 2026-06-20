@@ -37,7 +37,7 @@ export default class MigrationRunner {
   constructor() {
     this.currentDataModelVersion = game.settings.get(
       game.system.id,
-      "dataModelVersion"
+      "dataModelVersion",
     );
     this.newDataModelVersion = MigrationRunner.#LATEST_VERSION;
 
@@ -181,7 +181,7 @@ export default class MigrationRunner {
             JSON.stringify({
               ...deprecate,
               path: newPath.split(".").toSpliced(1, 0, path).join("."),
-            })
+            }),
           );
           continue;
         }
@@ -247,7 +247,7 @@ export default class MigrationRunner {
     await migrationApp.setCurrentPhase("prepareDocuments");
     // Initialize necessary properties, now that we know migration is needed.
     this.migrationInstances = this.migrationClasses.map(
-      (Migration) => new Migration()
+      (Migration) => new Migration(),
     );
     this.allowedDocTypes = this.getAllowedDocTypes();
     this.documents = await this.prepareDocumentsForMigration();
@@ -295,7 +295,7 @@ export default class MigrationRunner {
         this.error = new MigrationError(
           {},
           `Unknown Migration Error: '${error.message}'`,
-          { cause: error }
+          { cause: error },
         );
       }
       await app.setCurrentPhase("error");
@@ -361,7 +361,7 @@ export default class MigrationRunner {
         // no entries have that property, so we assign it manually to the first entry in the array.
         index[0].documentName = metadata.type;
         const filteredIds = this.filterDocuments(index).map(
-          (docData) => docData._id
+          (docData) => docData._id,
         );
 
         filteredDocuments = await pack.getDocuments({ _id__in: filteredIds });
@@ -426,7 +426,7 @@ export default class MigrationRunner {
         // with this token. We skip it.
         LOGGER.warn(
           `WARNING: Token "${token.name}" (${token.actorId}) on Scene "${token.parent.name}" (${token.parent.id})` +
-            ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`
+            ` is missing the source Actor, so we will skip migrating it. Consider replacing or deleting it.`,
         );
         return false;
       }
@@ -463,7 +463,7 @@ export default class MigrationRunner {
       (p) =>
         (packTypes.includes(p.metadata.type) &&
           sourceTypes.includes(p.metadata.packageType)) ||
-        modPackChoiceIds.includes(p.metadata.id)
+        modPackChoiceIds.includes(p.metadata.id),
     );
 
     return packsToMigrate;
@@ -490,7 +490,7 @@ export default class MigrationRunner {
           break;
         }
         finalTypes[docName] = (finalTypes[docName] || new Set()).union(
-          allowedDocTypes
+          allowedDocTypes,
         );
       }
     }
@@ -524,7 +524,7 @@ export default class MigrationRunner {
    */
   async migrateDocuments(
     documents,
-    { batch = DEV_MODE.migrations.batchMigrations, pack = null } = {}
+    { batch = DEV_MODE.migrations.batchMigrations, pack = null } = {},
   ) {
     if (!documents.length) return;
     const [firstEntry] = documents;
@@ -668,7 +668,7 @@ export default class MigrationRunner {
         this.error = new MigrationError(
           {},
           `Miscellaneous Migration Error: '${error.message}'`,
-          { cause: error }
+          { cause: error },
         );
         throw this.error;
       }
@@ -781,7 +781,7 @@ export default class MigrationRunner {
         uuid,
       },
       `${migrationFailString}${dataStr}`,
-      { cause: error }
+      { cause: error },
     );
     this.error = migrationError;
     return migrationError;

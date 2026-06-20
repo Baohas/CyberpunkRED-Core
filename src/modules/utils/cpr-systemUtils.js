@@ -1,5 +1,3 @@
-/* eslint-env jquery */
-
 import LOGGER from "./cpr-logger.js";
 
 /**
@@ -29,7 +27,7 @@ export default class CPRSystemUtils {
   static async GetCompendiumDoc(cname, dname) {
     const comp = game.packs.get(cname);
     return comp.getDocument(
-      comp.index.contents.filter((i) => i.name === dname)[0]._id
+      comp.index.contents.filter((i) => i.name === dname)[0]._id,
     );
   }
 
@@ -57,12 +55,12 @@ export default class CPRSystemUtils {
     if (comps.length > 1) {
       this.DisplayMessage(
         "warn",
-        `${this.Localize("CPR.messages.duplicateCompendiumLabel")} "${label}"`
+        `${this.Localize("CPR.messages.duplicateCompendiumLabel")} "${label}"`,
       );
     } else if (comps.length === 0) {
       this.DisplayMessage(
         "error",
-        `${this.Localize("CPR.messages.noCompendiumLabel")} "${label}"`
+        `${this.Localize("CPR.messages.noCompendiumLabel")} "${label}"`,
       );
       return null;
     }
@@ -126,7 +124,7 @@ export default class CPRSystemUtils {
         // foundryColorScheme is "" (browser default)
         // Check browser preference
         const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)"
+          "(prefers-color-scheme: dark)",
         ).matches;
         theme = prefersDark ? "dark" : "default";
       }
@@ -147,7 +145,7 @@ export default class CPRSystemUtils {
    */
   static async GetCoreSkills() {
     return CPRSystemUtils.GetCompendiumDocs(
-      `${game.system.id}.internal_skills`
+      `${game.system.id}.internal_skills`,
     );
   }
 
@@ -165,7 +163,7 @@ export default class CPRSystemUtils {
           acc.push(this.slugify(item.name));
         }
         return acc;
-      }, [])
+      }, []),
     );
 
     return martialArtSkills;
@@ -194,7 +192,7 @@ export default class CPRSystemUtils {
           acc.push(itemName);
         }
         return acc;
-      }, [])
+      }, []),
     );
 
     // Get the martialArt Skills
@@ -212,7 +210,7 @@ export default class CPRSystemUtils {
           // Return null to be filtered out
           return null;
         })
-        .filter((skill) => skill !== null)
+        .filter((skill) => skill !== null),
     );
 
     // Combine the above into a Set and return it
@@ -233,7 +231,7 @@ export default class CPRSystemUtils {
    */
   static async GetCoreCyberware() {
     return CPRSystemUtils.GetCompendiumDocs(
-      `${game.system.id}.internal_cyberware-core`
+      `${game.system.id}.internal_cyberware-core`,
     );
   }
 
@@ -243,7 +241,7 @@ export default class CPRSystemUtils {
    */
   static async GetDvTables() {
     const tableList = await CPRSystemUtils.GetCompendiumDocs(
-      game.settings.get(game.system.id, "dvRollTableCompendium")
+      game.settings.get(game.system.id, "dvRollTableCompendium"),
     );
     tableList.sort((a, b) => (a.name > b.name ? 1 : -1));
     return tableList;
@@ -252,7 +250,7 @@ export default class CPRSystemUtils {
   static async SetDvTable(token, tableName) {
     const dvTables = await CPRSystemUtils.GetDvTables();
     const [selectedTable] = dvTables.filter(
-      (table) => table.name === tableName
+      (table) => table.name === tableName,
     );
     const dvSetting = selectedTable
       ? { name: selectedTable.name, table: {} }
@@ -307,10 +305,10 @@ export default class CPRSystemUtils {
   static async GetFolder(
     type,
     name,
-    options = { parent: null, forceCreate: false }
+    options = { parent: null, forceCreate: false },
   ) {
     const folderList = game.folders.filter(
-      (folder) => folder.name === name && folder.type === type
+      (folder) => folder.name === name && folder.type === type,
     );
     // If the folder does not exist, we create it.
     return folderList.length === 1 && !options.forceCreate
@@ -431,7 +429,7 @@ export default class CPRSystemUtils {
         const newItemData = foundry.utils.duplicate(itemData);
         const localizedValue =
           `CPR.global.itemType.${newItemData.type}.`.concat(
-            this.slugify(newItemData.name)
+            this.slugify(newItemData.name),
           );
         if (this.Localize(localizedValue) !== localizedValue) {
           newItemData.name = this.Localize(localizedValue);
@@ -693,7 +691,7 @@ export default class CPRSystemUtils {
    */
   static getMixins(docType, docClass = "Item") {
     return CONFIG[docClass].dataModels[docType].mixins.filter(
-      (t) => t !== "common"
+      (t) => t !== "common",
     );
   }
 
@@ -724,7 +722,7 @@ export default class CPRSystemUtils {
     let id = $(event.currentTarget).attr(datum);
     if (typeof id === "undefined") {
       LOGGER.debug(
-        `Could not find ${datum} in currentTarget trying .item parents`
+        `Could not find ${datum} in currentTarget trying .item parents`,
       );
       id = $(event.currentTarget).parents(".item").attr(datum);
       if (typeof id === "undefined") {

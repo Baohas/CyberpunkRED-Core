@@ -69,7 +69,7 @@ const Installable = function Installable() {
       {
         title: SystemUtils.Localize("CPR.dialog.selectInstallTarget.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-select-install-targets-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
     if (dialogData === undefined || dialogData.selectedTarget === null) {
       return;
@@ -120,7 +120,7 @@ const Installable = function Installable() {
             "CPR.dialog.uninstallConfirmation.message",
             {
               installableItemName: this.name,
-            }
+            },
           ),
           isAmmo: this.type === "ammo", // Size isn't relevant for ammo items.
           selectedItems: containers.map((c) => c.id), // All items checked by default.
@@ -130,7 +130,7 @@ const Installable = function Installable() {
         {
           template: `systems/${game.system.id}/templates/dialog/cpr-uninstall-single-item-prompt.hbs`,
           title: SystemUtils.Localize("CPR.dialog.uninstallConfirmation.title"),
-        }
+        },
       ).catch((err) => LOGGER.debug(err));
 
       if (!dialogData) {

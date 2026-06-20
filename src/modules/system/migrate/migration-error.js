@@ -48,7 +48,7 @@ export default class MigrationError extends Error {
       /\b(https?|wss?):\/\/([^/:]+)(:\d+)?/g,
       (match, protocol, host, port) => {
         return `${protocol}://host${port || ""}`;
-      }
+      },
     );
   }
 }

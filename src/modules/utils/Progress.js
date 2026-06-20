@@ -67,7 +67,7 @@ export default class Progress {
     const progress = new Progress(options);
     const rawTemplate = await foundry.applications.handlebars.renderTemplate(
       `systems/${game.system.id}/${this.TEMPLATE}`,
-      progress
+      progress,
     );
     const htmlTemplate = document.createElement("template");
     htmlTemplate.innerHTML = rawTemplate;

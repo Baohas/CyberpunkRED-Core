@@ -82,7 +82,7 @@ export default class BaseMigrationScript {
       let docTypeSet = new Set(types);
       for (const mixin of mixins) {
         const mixinTypes = new Set(
-          CPRSystemUtils.getDocTypesFromMixin(mixin, docName)
+          CPRSystemUtils.getDocTypesFromMixin(mixin, docName),
         );
         docTypeSet = docTypeSet.union(mixinTypes);
       }

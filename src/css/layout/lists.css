@@ -22,7 +22,9 @@
     min-width: 100%;
     display: grid;
     grid-template-rows: 1fr;
-    transition: grid-template-rows 150ms ease-in-out, opacity 200ms linear;
+    transition:
+      grid-template-rows 150ms ease-in-out,
+      opacity 200ms linear;
 
     ol {
       overflow: hidden;

@@ -11,7 +11,7 @@ export default class AmmoDataModel extends CPRSystemDataModel.mixin(
   InstallableSchema,
   PhysicalSchema,
   StackableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

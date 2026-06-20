@@ -22,13 +22,13 @@ const CheckEmpAndLuck = () => {
       if (updatedValue && Number(updatedValue) > 99) {
         SystemUtils.DisplayMessage(
           "warn",
-          SystemUtils.Localize("CPR.messages.tripleDigitStatValueWarn")
+          SystemUtils.Localize("CPR.messages.tripleDigitStatValueWarn"),
         );
       }
       if (updatedMax && Number(updatedMax) > 99) {
         SystemUtils.DisplayMessage(
           "warn",
-          SystemUtils.Localize("CPR.messages.tripleDigitStatMaxWarn")
+          SystemUtils.Localize("CPR.messages.tripleDigitStatMaxWarn"),
         );
       }
     }

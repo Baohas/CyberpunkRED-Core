@@ -15,7 +15,9 @@
     display: grid;
     grid-template-rows: 1fr;
     padding: 0;
-    transition: grid-template-rows 150ms ease-in-out, opacity 200ms linear,
+    transition:
+      grid-template-rows 150ms ease-in-out,
+      opacity 200ms linear,
       padding 150ms ease-in-out;
 
     .sub-list-header {

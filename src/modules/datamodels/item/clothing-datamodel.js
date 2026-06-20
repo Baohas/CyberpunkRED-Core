@@ -19,7 +19,7 @@ export default class ClothingDataModel extends CPRSystemDataModel.mixin(
   PhysicalSchema,
   StackableSchema,
   UpgradableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

@@ -15,7 +15,7 @@ const AddDvTokenHud = () => {
     const dvHudTemplate = `systems/${game.system.id}/templates/hud/dv.hbs`;
     const dvDisplay = await foundry.applications.handlebars.renderTemplate(
       dvHudTemplate,
-      token.flags
+      token.flags,
     );
     html.find("div.left").append(dvDisplay);
     html.find(".dv-table-selector").click(() => {

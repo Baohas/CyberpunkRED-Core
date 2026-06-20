@@ -1,5 +1,3 @@
-/* eslint-env jquery */
-
 /**
  * CPR-C utilities that are used for Text manipulation.
  *
@@ -52,7 +50,7 @@ export default class CPRTextUtils {
     const uuidRegex = /@UUID\[[^\]]+\]{([^}]+)}/g;
     const strippedUuids = str.replace(
       uuidRegex,
-      (match, capturedText) => capturedText
+      (match, capturedText) => capturedText,
     );
     // Then strip any HTML
     const sanitizedText = this.stripHTML(strippedUuids).toString();

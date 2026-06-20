@@ -10,7 +10,7 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
  * configured. So we have present options dynamically when a button is clicked.
  */
 export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
-  ApplicationV2
+  ApplicationV2,
 ) {
   /** @inheritDoc */
   static DEFAULT_OPTIONS = {
@@ -44,7 +44,7 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
 
   get title() {
     return `${game.system.title}: ${SystemUtils.Localize(
-      this.options.window.title
+      this.options.window.title,
     )}`;
   }
 
@@ -62,15 +62,15 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
   async _prepareContext() {
     const critCurr = await game.settings.get(
       game.system.id,
-      "criticalInjuryRollTableCompendium"
+      "criticalInjuryRollTableCompendium",
     );
     const netCurr = await game.settings.get(
       game.system.id,
-      "netArchRollTableCompendium"
+      "netArchRollTableCompendium",
     );
     const dvCurr = await game.settings.get(
       game.system.id,
-      "dvRollTableCompendium"
+      "dvRollTableCompendium",
     );
     const choicesCrit = {
       [CPR.defaultCriticalInjuryTable]:
@@ -117,22 +117,22 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
     await game.settings.set(
       game.system.id,
       "criticalInjuryRollTableCompendium",
-      formObject.injuryChoice
+      formObject.injuryChoice,
     );
     await game.settings.set(
       game.system.id,
       "netArchRollTableCompendium",
-      formObject.netArchChoice
+      formObject.netArchChoice,
     );
     await game.settings.set(
       game.system.id,
       "dvRollTableCompendium",
-      formObject.dvChoice
+      formObject.dvChoice,
     );
 
     SystemUtils.DisplayMessage(
       "notify",
-      SystemUtils.Localize("CPR.settings.compendiumMenu.update")
+      SystemUtils.Localize("CPR.settings.compendiumMenu.update"),
     );
   }
 }

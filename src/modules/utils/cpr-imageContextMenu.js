@@ -12,7 +12,7 @@ const ContextMenu = foundry.applications.ux.ContextMenu.implementation;
 export default function createImageContextMenu(
   [html],
   contextMenuTargetSelector,
-  data
+  data,
 ) {
   const menuItems = [
     {

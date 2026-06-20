@@ -33,11 +33,11 @@ export default class LoadableSchema extends CPRSystemDataModel {
               reason: "This data now exists in installedItems.list",
             },
             nullable: true,
-          }
+          },
         ),
       }),
       ammoVariety: new fields.ArrayField(
-        new fields.StringField({ choices: Object.keys(CPR.ammoVarieties) })
+        new fields.StringField({ choices: Object.keys(CPR.ammoVarieties) }),
       ),
     };
   }

@@ -22,7 +22,7 @@ import {
 async function extPacks() {
   const fragmentDir = path.resolve(SRC_DIR, PACKS_DIR);
   const sysFile = JSON.parse(
-    fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE))
+    fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE)),
   );
   let { packs } = sysFile;
 
@@ -81,7 +81,7 @@ async function genPacks() {
   log("Generating Packs...");
   const packsDir = path.resolve(DEST_DIR, PACKS_DIR);
   const sysFile = JSON.parse(
-    fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE))
+    fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE)),
   );
   const { packs } = sysFile;
 
@@ -129,7 +129,7 @@ async function genPacksBabele() {
   // We only care about translating certian pack types
   const babeleDir = path.resolve(SRC_DIR, "babele", "en");
   const sysFile = JSON.parse(
-    fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE))
+    fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE)),
   );
   const { packs } = sysFile;
 
@@ -153,7 +153,7 @@ async function genPacksBabele() {
     const outputFile = path.resolve(
       SRC_DIR,
       babeleDir,
-      `${SYSTEM_NAME}.${packName}.json`
+      `${SYSTEM_NAME}.${packName}.json`,
     );
 
     if (DEBUG) {

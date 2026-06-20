@@ -6,8 +6,8 @@ export default class LedgerSchema extends CPRSystemDataModel {
     return {
       transactions: new fields.ArrayField(
         new fields.ArrayField(
-          new fields.StringField({ required: true, blank: true })
-        )
+          new fields.StringField({ required: true, blank: true }),
+        ),
       ),
       value: new fields.NumberField({
         required: true,

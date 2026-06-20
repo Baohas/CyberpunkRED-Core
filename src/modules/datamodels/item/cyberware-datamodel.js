@@ -22,7 +22,7 @@ export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
   LoadableSchema,
   PhysicalSchema,
   UpgradableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;
@@ -49,7 +49,7 @@ export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
           }),
           roll: new fields.StringField({ initial: "1d6" }),
         }),
-      }
+      },
     );
   }
 
@@ -73,7 +73,7 @@ export default class CyberwareDataModel extends CPRSystemDataModel.mixin(
     const item = this.parent;
     if (!item.isEmbedded)
       return LOGGER.debug(
-        "Don't call this for world items. This getter should only be called on actor items."
+        "Don't call this for world items. This getter should only be called on actor items.",
       );
     const topLevelItem = getTopLevelParentItem(item);
     return topLevelItem.system.isInstalled;

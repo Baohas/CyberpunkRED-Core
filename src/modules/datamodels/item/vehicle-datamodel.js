@@ -10,7 +10,7 @@ export default class VehicleDataModel extends CPRSystemDataModel.mixin(
   ContainerSchema,
   PhysicalSchema,
   UpgradableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

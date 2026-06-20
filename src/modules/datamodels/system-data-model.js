@@ -63,7 +63,7 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
     for (const template of this._schemaTemplates) {
       if (!template.defineSchema) {
         throw new Error(
-          `Invalid CPR template mixin ${template} defined on class ${this.constructor}`
+          `Invalid CPR template mixin ${template} defined on class ${this.constructor}`,
         );
       }
       this.mergeSchema(schema, template.defineSchema(...args));
@@ -126,14 +126,14 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
       // Compile the mixin names into a single array.
       if (!template.mixinName) {
         throw new Error(
-          `No mixinName property defined on template ${template.name}`
+          `No mixinName property defined on template ${template.name}`,
         );
       }
       mixinNames.push(template.mixinName);
 
       // Take all static methods and fields from template and mix in to base class
       for (const [key, descriptor] of Object.entries(
-        Object.getOwnPropertyDescriptors(template)
+        Object.getOwnPropertyDescriptors(template),
       )) {
         if (this._immiscible.has(key)) continue;
         Object.defineProperty(CombinedCPRModel, key, descriptor);
@@ -141,7 +141,7 @@ export default class CPRSystemDataModel extends foundry.abstract.DataModel {
 
       // Take all instance methods and fields from template and mix in to base class
       for (const [key, descriptor] of Object.entries(
-        Object.getOwnPropertyDescriptors(template.prototype)
+        Object.getOwnPropertyDescriptors(template.prototype),
       )) {
         if (["constructor"].includes(key)) continue;
         Object.defineProperty(CombinedCPRModel.prototype, key, descriptor);

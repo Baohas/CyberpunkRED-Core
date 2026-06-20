@@ -60,7 +60,7 @@ export default class UpdateMedtechRole extends BaseMigrationScript {
       });
 
       const oldSurgeryRank = doc.system.abilities.find(
-        (oa) => oa.name === "Surgery"
+        (oa) => oa.name === "Surgery",
       )?.rank;
       const newSurgery = {
         bonusRatio: 1,

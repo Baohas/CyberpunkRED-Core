@@ -37,7 +37,7 @@ export default class CPRSkillItem extends CPRItem {
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
     const skillMods = CPRMod.getRelevantMods(filteredMods, [
@@ -58,14 +58,14 @@ export default class CPRSkillItem extends CPRItem {
       roleSkillMods = roleSkillMods.concat(r.getRoleMods(skillName));
     });
     roleSkillMods = roleSkillMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
     const cprRoll = new CPRRolls.CPRSkillRoll(
       niceStatName,
       statValue,
       skillName,
-      skillLevel
+      skillLevel,
     );
     cprRoll.addMod([
       {
@@ -79,7 +79,7 @@ export default class CPRSkillItem extends CPRItem {
       {
         value: actor.getWoundStateMods(),
         source: SystemUtils.Localize(
-          "CPR.rolls.modifiers.sources.woundStatePenalty"
+          "CPR.rolls.modifiers.sources.woundStatePenalty",
         ),
       },
     ]);

@@ -103,7 +103,7 @@ export default class CPRDialog extends FormApplication {
     } else {
       LOGGER.error(
         `The target (${target}) does not exist in the dialogData.`,
-        dialogData
+        dialogData,
       );
     }
     this.render();

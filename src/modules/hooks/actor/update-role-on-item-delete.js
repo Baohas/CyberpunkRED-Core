@@ -18,7 +18,7 @@ const UpdateRoleOnItemDelete = () => {
         actor.system.roleInfo.activeRole === doc.name
       ) {
         const actorRoles = actor.itemTypes.role.sort((a, b) =>
-          a.name > b.name ? 1 : -1
+          a.name > b.name ? 1 : -1,
         );
         if (actorRoles.length >= 1) {
           // If the actor has other roles besides the one being deleted:
@@ -28,7 +28,7 @@ const UpdateRoleOnItemDelete = () => {
           // actor get replaced during a data migration.
           let newRole;
           const sameNameRoles = actorRoles.filter(
-            (r) => r.name === actor.system.roleInfo.activeRole
+            (r) => r.name === actor.system.roleInfo.activeRole,
           );
           if (sameNameRoles.length >= 1) {
             newRole = sameNameRoles.find((r) => r.id !== doc.id);
@@ -36,7 +36,7 @@ const UpdateRoleOnItemDelete = () => {
             // no other roles with the same name, pick the next in the list
             [newRole] = actorRoles;
             const warning = `${SystemUtils.Localize(
-              "CPR.messages.warnDeleteActiveRole"
+              "CPR.messages.warnDeleteActiveRole",
             )} ${newRole.name}`;
             SystemUtils.DisplayMessage("warn", warning);
           }
@@ -52,8 +52,8 @@ const UpdateRoleOnItemDelete = () => {
           SystemUtils.DisplayMessage(
             "warn",
             SystemUtils.Localize(
-              "CPR.characterSheet.bottomPane.role.noRolesWarning"
-            )
+              "CPR.characterSheet.bottomPane.role.noRolesWarning",
+            ),
           );
         }
       }

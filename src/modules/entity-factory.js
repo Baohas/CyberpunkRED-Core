@@ -62,7 +62,7 @@ function factory(entities, baseClass) {
             const constructor = entities[data.type];
             if (!constructor)
               throw new Error(
-                `Unsupported Entity type for create(): ${data.type}`
+                `Unsupported Entity type for create(): ${data.type}`,
               );
             return constructor.create(data, options);
           };

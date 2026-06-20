@@ -30,7 +30,7 @@ export default class ModuleMigrationSettings extends FormApplication {
     const data = await super.getData();
 
     const moduleIdSet = new Set(
-      game.settings.get(game.system.id, "moduleMigrationIds")
+      game.settings.get(game.system.id, "moduleMigrationIds"),
     );
     data.selectedMods = Array.from(moduleIdSet);
 
@@ -40,7 +40,7 @@ export default class ModuleMigrationSettings extends FormApplication {
     // Gather modules with relevant compendia.
     game.modules.forEach((module) => {
       const filteredPacks = module.packs.filter((p) =>
-        compendiaTypes.includes(p.type)
+        compendiaTypes.includes(p.type),
       );
       if (filteredPacks.size === 0) return;
       data.modules[module.id] = module.title;

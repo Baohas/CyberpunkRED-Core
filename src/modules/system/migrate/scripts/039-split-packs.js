@@ -971,7 +971,7 @@ export default class SplitPacks extends BaseMigrationScript {
       if ("lifestyle" in doc.system) {
         for (const ls of Object.keys(lifestyle)) {
           lifestyle[ls].description = this._processString(
-            lifestyle[ls].description
+            lifestyle[ls].description,
           );
         }
       }
@@ -991,11 +991,11 @@ export default class SplitPacks extends BaseMigrationScript {
     const journalsWorld = game.journal;
     const journalsWorldComp = CPRSystemUtils.GetCompendiaByType(
       "world",
-      "JournalEntry"
+      "JournalEntry",
     );
     const journalsModuleComp = CPRSystemUtils.GetCompendiaByType(
       "module",
-      "JournalEntry"
+      "JournalEntry",
     );
 
     const journalComps = [...journalsWorldComp, ...journalsModuleComp];
@@ -1028,11 +1028,11 @@ export default class SplitPacks extends BaseMigrationScript {
     const tablesWorld = game.tables;
     const tablesWorldComp = CPRSystemUtils.GetCompendiaByType(
       "world",
-      "RollTable"
+      "RollTable",
     );
     const tablesModuleComp = CPRSystemUtils.GetCompendiaByType(
       "module",
-      "RollTable"
+      "RollTable",
     );
 
     const tablesComps = [...tablesWorldComp, ...tablesModuleComp];
@@ -1066,7 +1066,7 @@ export default class SplitPacks extends BaseMigrationScript {
     const scenesWorldComp = CPRSystemUtils.GetCompendiaByType("world", "Scene");
     const scenesModuleComp = CPRSystemUtils.GetCompendiaByType(
       "module",
-      "Scene"
+      "Scene",
     );
 
     const scenesComps = [...scenesWorldComp, ...scenesModuleComp];

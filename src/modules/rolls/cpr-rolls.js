@@ -83,7 +83,7 @@ export class CPRRoll {
             {
               value: Number(mod),
               source: SystemUtils.Localize(
-                "CPR.rolls.modifiers.sources.rollFormula"
+                "CPR.rolls.modifiers.sources.rollFormula",
               ),
             },
           ]);
@@ -110,7 +110,7 @@ export class CPRRoll {
         if (this.mods.find((mod) => m.id && mod.id === m.id)) {
           LOGGER.warn(
             "Mod already exists on the roll. Skipping addition of mod:",
-            m
+            m,
           );
           return;
         }
@@ -119,7 +119,7 @@ export class CPRRoll {
     } else {
       LOGGER.error(
         "Arg for addMod must be an Array of CPRMod-like objects. See argument:",
-        modArray
+        modArray,
       );
     }
   }
@@ -264,7 +264,7 @@ export class CPRRoll {
     if (event.type === "click") {
       const ctrlSetting = game.settings.get(
         game.system.id,
-        "invertRollCtrlFunction"
+        "invertRollCtrlFunction",
       );
       skipDialog = ctrlSetting ? !skipDialog : skipDialog;
     }
@@ -287,7 +287,7 @@ export class CPRRoll {
 
       // Call the dialog. Catch and throw an error if the promise is not returned.
       const dialogData = await DialogClass.showDialog(this, actor, item).catch(
-        (err) => LOGGER.debug(err)
+        (err) => LOGGER.debug(err),
       );
       if (dialogData === undefined) {
         // returns false if the dialog was closed
@@ -321,7 +321,7 @@ export class CPRInitiative extends CPRRoll {
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-initiative-rollcard.hbs`;
     this.calculateCritical = game.settings.get(
       game.system.id,
-      "criticalInitiative"
+      "criticalInitiative",
     );
   }
 
@@ -397,11 +397,11 @@ export class CPRSkillRoll extends CPRStatRoll {
     this.skillValue = skillValue;
     this.rollTitle =
       SystemUtils.Localize(
-        `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
+        `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`,
       ) === `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
         ? skillName
         : SystemUtils.Localize(
-            `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
+            `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`,
           );
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-skill-rollcard.hbs`;
   }
@@ -464,7 +464,7 @@ export class CPRHumanityLossRoll extends CPRRoll {
     super(name, humanityLoss);
     LOGGER.debug(`formula is ${this.formula}`);
     this.rollTitle = SystemUtils.Localize(
-      "CPR.dialog.installCyberware.humanityLoss"
+      "CPR.dialog.installCyberware.humanityLoss",
     );
     this.calculateCritical = false;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-humanity-loss-rollcard.hbs`;
@@ -498,7 +498,7 @@ export class CPRAttackRoll extends CPRSkillRoll {
     statValue,
     skillName,
     skillValue,
-    weaponType
+    weaponType,
   ) {
     super(statName, statValue, skillName, skillValue);
     this.rollTitle = `${attackName}`;
@@ -530,7 +530,7 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
     statValue,
     skillName,
     skillValue,
-    weaponType
+    weaponType,
   ) {
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
@@ -559,7 +559,7 @@ export class CPRAutofireRoll extends CPRAttackRoll {
     statValue,
     skillName,
     skillValue,
-    weaponType
+    weaponType,
   ) {
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
@@ -586,7 +586,7 @@ export class CPRSuppressiveFireRoll extends CPRAttackRoll {
     statValue,
     skillName,
     skillValue,
-    weaponType
+    weaponType,
   ) {
     super(weaponName, statName, statValue, skillName, skillValue, weaponType);
     this.rollTitle = `${weaponName}`;
@@ -615,7 +615,7 @@ export class CPRRoleRoll extends CPRRoll {
     skillValue,
     statName,
     statValue,
-    skillList
+    skillList,
   ) {
     super(roleName, "1d10");
     this.skillList = skillList;
@@ -740,7 +740,7 @@ export class CPRDamageRoll extends CPRRoll {
     ) {
       SystemUtils.DisplayMessage(
         "warn",
-        "CPR.chat.damageApplication.noTokenTargeted"
+        "CPR.chat.damageApplication.noTokenTargeted",
       );
     }
 
@@ -771,7 +771,7 @@ export class CPRDamageRoll extends CPRRoll {
   _computeBase() {
     this.autofireMultiplier = Math.min(
       this.autofireMultiplier,
-      this.autofireMultiplierMax
+      this.autofireMultiplierMax,
     );
     const damageMultiplier = this.isAutofire ? this.autofireMultiplier : 1;
     return this.initialRoll * damageMultiplier + this.totalMods();
@@ -831,7 +831,7 @@ export class CPRDamageRoll extends CPRRoll {
     autofireMultiplier,
     // eslint-disable-next-line default-param-last
     autofireMultiplierMax = 0,
-    ammoOverride
+    ammoOverride,
   ) {
     this.autofireMultiplier = autofireMultiplier;
 
@@ -841,7 +841,7 @@ export class CPRDamageRoll extends CPRRoll {
     } else if (ammoOverride?.mode === "modify") {
       const trueMax = Math.max(
         autofireMultiplierMax + ammoOverride.value,
-        ammoOverride.minimum
+        ammoOverride.minimum,
       );
       this.autofireMultiplierMax = trueMax;
     } else if (autofireMultiplierMax > this.autofireMultiplierMax) {

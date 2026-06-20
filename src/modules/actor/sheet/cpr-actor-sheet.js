@@ -34,7 +34,7 @@ export default class CPRActorSheet extends ActorSheet {
     const collapsedSections = SystemUtils.GetUserSetting(
       "sheetConfig",
       "sheetCollapsedSections",
-      this.id
+      this.id,
     );
     if (collapsedSections) {
       this.options.collapsedSections = collapsedSections;
@@ -53,7 +53,7 @@ export default class CPRActorSheet extends ActorSheet {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets"
+      "resizeCPRSheets",
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -83,7 +83,7 @@ export default class CPRActorSheet extends ActorSheet {
       cprData.isHardened = this.actor.system.derivedStats.isHardened;
 
       cprData.fightData.fightOptions = this.actor.hasItemTypeEquipped(
-        "cyberdeck"
+        "cyberdeck",
       )
         ? "both"
         : "";
@@ -110,7 +110,7 @@ export default class CPRActorSheet extends ActorSheet {
         this.actor.system.information.notes,
         {
           async: true,
-        }
+        },
       );
     }
     if (this.actor.type === "demon") {
@@ -118,7 +118,7 @@ export default class CPRActorSheet extends ActorSheet {
         this.actor.system.notes,
         {
           async: true,
-        }
+        },
       );
     }
     if (this.actor.type === "character") {
@@ -161,17 +161,17 @@ export default class CPRActorSheet extends ActorSheet {
       cprData.enrichedHTML.systemLifepathValuedPossession =
         await TextEditor.enrichHTML(
           this.actor.system.lifepath.valuedPossession,
-          { async: true }
+          { async: true },
         );
       cprData.enrichedHTML.systemLifepathFamilyBackground =
         await TextEditor.enrichHTML(
           this.actor.system.lifepath.familyBackground,
-          { async: true }
+          { async: true },
         );
       cprData.enrichedHTML.systemLifepathChildhoodEnvironment =
         await TextEditor.enrichHTML(
           this.actor.system.lifepath.childhoodEnvironment,
-          { async: true }
+          { async: true },
         );
       cprData.enrichedHTML.systemLifepathFamilyCrisis =
         await TextEditor.enrichHTML(this.actor.system.lifepath.familyCrisis, {
@@ -189,18 +189,18 @@ export default class CPRActorSheet extends ActorSheet {
         this.actor.system.lifepath.friends,
         {
           async: true,
-        }
+        },
       );
       cprData.enrichedHTML.systemLifepathTragicLoveAffairs =
         await TextEditor.enrichHTML(
           this.actor.system.lifepath.tragicLoveAffairs,
-          { async: true }
+          { async: true },
         );
       cprData.enrichedHTML.systemLifepathEnemies = await TextEditor.enrichHTML(
         this.actor.system.lifepath.enemies,
         {
           async: true,
-        }
+        },
       );
     }
 
@@ -218,21 +218,21 @@ export default class CPRActorSheet extends ActorSheet {
       permanent: {
         type: "permanent",
         label: SystemUtils.Localize(
-          "CPR.characterSheet.rightPane.effects.permanent"
+          "CPR.characterSheet.rightPane.effects.permanent",
         ),
         effects: [],
       },
       situational: {
         type: "situational",
         label: SystemUtils.Localize(
-          "CPR.characterSheet.rightPane.effects.situational"
+          "CPR.characterSheet.rightPane.effects.situational",
         ),
         effects: [],
       },
       inactive: {
         type: "inactive",
         label: SystemUtils.Localize(
-          "CPR.characterSheet.rightPane.effects.inactive"
+          "CPR.characterSheet.rightPane.effects.inactive",
         ),
         effects: [],
       },
@@ -240,7 +240,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     const setting = game.settings.get(
       game.system.id,
-      "displayStatusAsActiveEffects"
+      "displayStatusAsActiveEffects",
     );
     // Iterate over active effects, classifying them into categories
     for (const e of this.actor.allApplicableEffects()) {
@@ -279,7 +279,7 @@ export default class CPRActorSheet extends ActorSheet {
         // Get situational, non-disabled effects.
         if (!e.disabled && !e.system.isSuppressed) {
           const situationalMods = CPRMod.getAllModifiers([e]).filter(
-            (m) => m.isSituational
+            (m) => m.isSituational,
           );
           // To avoid repeats, duplicate simplifiedEffect to situationalEffect, and push that.
           const situationalEffect = foundry.utils.duplicate(simplifiedEffect);
@@ -297,7 +297,7 @@ export default class CPRActorSheet extends ActorSheet {
           // Get permanent, non-disabled effects.
         } else if (CPRMod.getAllModifiers([e]).some((m) => !m.isSituational)) {
           const permanentMods = CPRMod.getAllModifiers([e]).filter(
-            (m) => !m.isSituational
+            (m) => !m.isSituational,
           );
           simplifiedEffect.changes = permanentMods;
           categories.permanent.effects.push(simplifiedEffect);
@@ -387,7 +387,7 @@ export default class CPRActorSheet extends ActorSheet {
       (event) => {
         // hide edit and delete buttons
         $(event.currentTarget).contents().contents().removeClass("show");
-      }
+      },
     );
 
     // Item Dragging
@@ -448,7 +448,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     if (this.options.collapsedSections.includes(event.currentTarget.id)) {
       this.options.collapsedSections = this.options.collapsedSections.filter(
-        (sectionName) => sectionName !== event.currentTarget.id
+        (sectionName) => sectionName !== event.currentTarget.id,
       );
     } else {
       this.options.collapsedSections.push(event.currentTarget.id);
@@ -474,7 +474,7 @@ export default class CPRActorSheet extends ActorSheet {
 
     const collapsibleContainer = event.currentTarget.closest(".collapsible");
     const installedRow = collapsibleContainer.querySelector(
-      `div[data-items-wrapper-for-parent="${itemId}"]`
+      `div[data-items-wrapper-for-parent="${itemId}"]`,
     );
 
     installedRow.classList.toggle("item-hidden");
@@ -489,7 +489,7 @@ export default class CPRActorSheet extends ActorSheet {
           await this.actor.setFlag(
             game.system.id,
             "showInstalled",
-            installFlags
+            installFlags,
           );
         } else {
           await this.actor.setFlag(game.system.id, "showInstalled", {
@@ -497,7 +497,7 @@ export default class CPRActorSheet extends ActorSheet {
           });
         }
       },
-      { once: true }
+      { once: true },
     );
   }
 
@@ -524,7 +524,7 @@ export default class CPRActorSheet extends ActorSheet {
         const itemId = CPRActorSheet._getItemId(event);
         const rollSubType = SystemUtils.GetEventDatum(
           event,
-          "data-roll-subtype"
+          "data-roll-subtype",
         );
         const subRoleName = SystemUtils.GetEventDatum(event, "data-roll-title");
         const rollInfo = {
@@ -562,20 +562,20 @@ export default class CPRActorSheet extends ActorSheet {
       case CPRRolls.rollTypes.INTERFACEABILITY: {
         const interfaceAbility = SystemUtils.GetEventDatum(
           event,
-          "data-interface-ability"
+          "data-interface-ability",
         );
         const cyberdeckId = SystemUtils.GetEventDatum(
           event,
-          "data-cyberdeck-id"
+          "data-cyberdeck-id",
         );
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
         item = cyberdeck;
         const netRoleItem = this.actor.itemTypes.role.find(
-          (r) => r.id === this.actor.system.roleInfo.activeNetRole
+          (r) => r.id === this.actor.system.roleInfo.activeNetRole,
         );
         if (!netRoleItem) {
           const error = SystemUtils.Localize(
-            "CPR.messages.noNetrunningRoleConfigured"
+            "CPR.messages.noNetrunningRoleConfigured",
           );
           SystemUtils.DisplayMessage("error", error);
           return;
@@ -591,20 +591,20 @@ export default class CPRActorSheet extends ActorSheet {
         const programId = SystemUtils.GetEventDatum(event, "data-program-id");
         const cyberdeckId = SystemUtils.GetEventDatum(
           event,
-          "data-cyberdeck-id"
+          "data-cyberdeck-id",
         );
         const executionType = SystemUtils.GetEventDatum(
           event,
-          "data-execution-type"
+          "data-execution-type",
         );
         const cyberdeck = this.actor.getOwnedItem(cyberdeckId);
         item = cyberdeck;
         const netRoleItem = this.actor.itemTypes.role.find(
-          (r) => r.id === this.actor.system.roleInfo.activeNetRole
+          (r) => r.id === this.actor.system.roleInfo.activeNetRole,
         );
         if (!netRoleItem) {
           const error = SystemUtils.Localize(
-            "CPR.messages.noNetrunningRoleConfigured"
+            "CPR.messages.noNetrunningRoleConfigured",
           );
           SystemUtils.DisplayMessage("error", error);
           return;
@@ -782,14 +782,14 @@ export default class CPRActorSheet extends ActorSheet {
               canvas.tokens.ownedTokens.filter(
                 (t) =>
                   t.actor.constructor.name === "CPRCharacterActor" ||
-                  t.actor.constructor.name === "CPRMookActor"
+                  t.actor.constructor.name === "CPRMookActor",
               ).length !== 1
             ) {
               SystemUtils.DisplayMessage(
                 "warn",
                 SystemUtils.Localize(
-                  "CPR.messages.warningTokenNotSelectedForDV"
-                )
+                  "CPR.messages.warningTokenNotSelectedForDV",
+                ),
               );
             }
           }
@@ -945,7 +945,7 @@ export default class CPRActorSheet extends ActorSheet {
     let id = SystemUtils.GetEventDatum(event, "data-item-id");
     if (typeof id === "undefined") {
       LOGGER.debug(
-        "Could not find itemId in parent elements, trying currentTarget"
+        "Could not find itemId in parent elements, trying currentTarget",
       );
       id = SystemUtils.GetEventDatum(event, "data-item-id");
     }
@@ -989,7 +989,7 @@ export default class CPRActorSheet extends ActorSheet {
         .map((i) => i.name)
         .reduce((accumulator, name) => `${accumulator}, ${name}`);
       const dialogMessage = `${SystemUtils.Localize(
-        "CPR.dialog.deleteInstalledConfirmation.message"
+        "CPR.dialog.deleteInstalledConfirmation.message",
       )} ${installedInSlug}`;
 
       // Show "Default" dialog.
@@ -998,9 +998,9 @@ export default class CPRActorSheet extends ActorSheet {
         // Set the options for the dialog.
         {
           title: SystemUtils.Localize(
-            "CPR.dialog.deleteInstalledConfirmation.title"
+            "CPR.dialog.deleteInstalledConfirmation.title",
           ),
-        }
+        },
       ).catch((err) => LOGGER.debug(err));
 
       if (!confirmDelete) {
@@ -1010,14 +1010,14 @@ export default class CPRActorSheet extends ActorSheet {
       // show the delete confirmation.
     } else if (setting && !skipConfirm) {
       const dialogMessage = `${SystemUtils.Localize(
-        "CPR.dialog.deleteConfirmation.message"
+        "CPR.dialog.deleteConfirmation.message",
       )} ${item.name}?`;
 
       // Show "Default" dialog.
       const confirmDelete = await CPRDialog.showDialog(
         { dialogMessage },
         // Set the options for the dialog.
-        { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") }
+        { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") },
       ).catch((err) => LOGGER.debug(err));
 
       if (!confirmDelete) {
@@ -1088,7 +1088,7 @@ export default class CPRActorSheet extends ActorSheet {
     const firemode = SystemUtils.GetEventDatum(event, "data-fire-mode");
     const flag = foundry.utils.getProperty(
       this.actor,
-      `flags.${game.system.id}.firetype-${weaponID}`
+      `flags.${game.system.id}.firetype-${weaponID}`,
     );
 
     LOGGER.debug(`firemode is ${firemode}`);
@@ -1108,7 +1108,7 @@ export default class CPRActorSheet extends ActorSheet {
         const dvTables = await SystemUtils.GetDvTables();
         const afTable = dvTables.find(
           (table) =>
-            table.name.includes(dvTableName) && table.name.includes("Autofire")
+            table.name.includes(dvTableName) && table.name.includes("Autofire"),
         );
 
         let newDvTable = currentDvTable;
@@ -1126,7 +1126,7 @@ export default class CPRActorSheet extends ActorSheet {
       await this.actor.setFlag(
         game.system.id,
         `firetype-${weaponID}`,
-        firemode
+        firemode,
       );
     }
   }
@@ -1149,10 +1149,10 @@ export default class CPRActorSheet extends ActorSheet {
       {
         // Set options for the dialog.
         title: SystemUtils.Localize(
-          "CPR.dialog.rollCriticalInjury.criticalinjurytitleprompt"
+          "CPR.dialog.rollCriticalInjury.criticalinjurytitleprompt",
         ),
         template: `systems/${game.system.id}/templates/dialog/cpr-roll-critical-injury-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return undefined;
@@ -1170,7 +1170,7 @@ export default class CPRActorSheet extends ActorSheet {
   async _rollCriticalInjury() {
     const tableSetting = game.settings.get(
       game.system.id,
-      "criticalInjuryRollTableCompendium"
+      "criticalInjuryRollTableCompendium",
     );
     const tableName = await CPRActorSheet._setCriticalInjuryTable(tableSetting);
     if (tableName === undefined) {
@@ -1178,7 +1178,7 @@ export default class CPRActorSheet extends ActorSheet {
     }
     const rollTable = await SystemUtils.GetCompendiumDoc(
       tableSetting,
-      tableName
+      tableName,
     );
     const injuryCompName = SystemUtils.GetCompendiumIdByLabel(tableName);
     this._drawCriticalInjuryTable(rollTable, injuryCompName, 0);
@@ -1199,14 +1199,14 @@ export default class CPRActorSheet extends ActorSheet {
   async _drawCriticalInjuryTable(table, injuryCompName, iteration) {
     const dupeSetting = game.settings.get(
       game.system.id,
-      "preventDuplicateCriticalInjuries"
+      "preventDuplicateCriticalInjuries",
     );
 
     // check how many times we've been rolling. If this gets excessive maybe something is wrong with the table.
     if (iteration > 1000) {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning")
+        SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateLoopWarning"),
       );
       return;
     }
@@ -1216,7 +1216,7 @@ export default class CPRActorSheet extends ActorSheet {
     for (const injury of table.results) {
       if (
         this.actor.itemTypes.criticalInjury.filter(
-          (i) => i.name === injury.text
+          (i) => i.name === injury.text,
         ).length > 0
       ) {
         hurts += 1;
@@ -1229,7 +1229,7 @@ export default class CPRActorSheet extends ActorSheet {
       // actor has every injury already, we cannot reroll for more
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning")
+        SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateAllWarning"),
       );
       return;
     }
@@ -1246,8 +1246,8 @@ export default class CPRActorSheet extends ActorSheet {
         SystemUtils.DisplayMessage(
           "warn",
           SystemUtils.Localize(
-            "CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning"
-          )
+            "CPR.dialog.rollCriticalInjury.criticalInjuryNoneWarning",
+          ),
         );
         return;
       }
@@ -1260,14 +1260,14 @@ export default class CPRActorSheet extends ActorSheet {
           await this._drawCriticalInjuryTable(
             table,
             injuryCompName,
-            iteration + 1
+            iteration + 1,
           );
           return;
         }
         if (dupeSetting === "warn") {
           SystemUtils.DisplayMessage(
             "warn",
-            SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning")
+            SystemUtils.Localize("CPR.messages.criticalInjuryDuplicateWarning"),
           );
         }
       }
@@ -1285,7 +1285,7 @@ export default class CPRActorSheet extends ActorSheet {
       const cprRoll = new CPRRolls.CPRTableRoll(
         injury.name,
         res.roll,
-        `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`
+        `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`,
       );
 
       // Creates card data for critical injury, entityData.actor and entityData.token are vestigial since they're
@@ -1403,7 +1403,7 @@ export default class CPRActorSheet extends ActorSheet {
     const ledgerProp = this.actor.deltaLedgerProperty(
       ledgerName,
       tempVal,
-      reason
+      reason,
     );
     return ledgerProp;
   }
@@ -1416,12 +1416,12 @@ export default class CPRActorSheet extends ActorSheet {
   async showLedger(prop) {
     if (this.actor.isLedgerProperty(prop)) {
       await CPRLedger.showDialog(this.actor, prop).catch((err) =>
-        LOGGER.debug(err)
+        LOGGER.debug(err),
       );
     } else {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.messages.ledgerErrorIsNoLedger")
+        SystemUtils.Localize("CPR.messages.ledgerErrorIsNoLedger"),
       );
     }
   }
@@ -1470,7 +1470,7 @@ export default class CPRActorSheet extends ActorSheet {
           data: item,
           root: SystemUtils.GetEventDatum(event, "root"),
         },
-      })
+      }),
     );
   }
 
@@ -1499,7 +1499,7 @@ export default class CPRActorSheet extends ActorSheet {
     if (sourceItem.type === "cyberware" && sourceItem.system?.isInstalled) {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError")
+        SystemUtils.Localize("CPR.messages.tradeDragInstalledCyberwareError"),
       );
       return;
     }
@@ -1508,14 +1508,14 @@ export default class CPRActorSheet extends ActorSheet {
     if (transferItem) {
       // Transfer ownership from one player to another
       sourceActor = Object.keys(game.actors.tokens).includes(
-        dragData.system.tokenId
+        dragData.system.tokenId,
       )
         ? game.actors.tokens[dragData.system.tokenId]
         : game.actors.find((a) => a.id === dragData.system.actorId);
       if (sourceActor.type === "container" && !game.user.isGM) {
         SystemUtils.DisplayMessage(
           "warn",
-          SystemUtils.Localize("CPR.messages.tradeDragOutWarn")
+          SystemUtils.Localize("CPR.messages.tradeDragOutWarn"),
         );
         return;
       }
@@ -1533,7 +1533,7 @@ export default class CPRActorSheet extends ActorSheet {
         ) {
           SystemUtils.DisplayMessage(
             "error",
-            SystemUtils.Localize("CPR.messages.cannotDropInstalledCyberware")
+            SystemUtils.Localize("CPR.messages.cannotDropInstalledCyberware"),
           );
           return;
         }
@@ -1585,7 +1585,7 @@ export default class CPRActorSheet extends ActorSheet {
     if (item.system.installedUpgrades?.length !== 0) {
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Format("CPR.dialog.splitItem.warningUpgrade")
+        SystemUtils.Format("CPR.dialog.splitItem.warningUpgrade"),
       );
     }
 
@@ -1605,7 +1605,7 @@ export default class CPRActorSheet extends ActorSheet {
       {
         title: SystemUtils.Localize("CPR.dialog.splitItem.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
@@ -1618,7 +1618,7 @@ export default class CPRActorSheet extends ActorSheet {
           amountSplit: formData.splitAmount,
           amountOld: oldAmount,
           itemName: item.name,
-        }
+        },
       );
       SystemUtils.DisplayMessage("warn", warningMessage);
       return;
@@ -1643,7 +1643,7 @@ export default class CPRActorSheet extends ActorSheet {
           effects: cprNewItemEffects,
         },
       ],
-      { CPRsplitStack: true }
+      { CPRsplitStack: true },
     );
   }
 

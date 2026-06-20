@@ -55,7 +55,7 @@ function _getDestDir() {
   if (localConfigExists) {
     const localDataPath = fs.readJSONSync(localConfigPath).dataPath;
     const dataPath = path.resolve(
-      path.join(localDataPath, "Data", "systems", SYSTEM_NAME)
+      path.join(localDataPath, "Data", "systems", SYSTEM_NAME),
     );
     if (fs.existsSync(path.join(dataPath, ".git"))) {
       // Check if a .git directoy exists in the dataPath. This will hopefully
@@ -68,7 +68,7 @@ function _getDestDir() {
           `cloned the git repo to ` +
           `'${dataPath}'\n` +
           `please check CONTRIBUTING.md and clone the repo to another ` +
-          `location.`
+          `location.`,
       );
     } else {
       return dataPath;
@@ -76,8 +76,8 @@ function _getDestDir() {
   } else {
     log(
       `${chalk.yellow(
-        "WARNING"
-      )}: foundryconfig.json not found building to ${DEFAULT_DESTINATION_FOLDER}`
+        "WARNING",
+      )}: foundryconfig.json not found building to ${DEFAULT_DESTINATION_FOLDER}`,
     );
   }
   return DEFAULT_DESTINATION_FOLDER;

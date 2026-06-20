@@ -75,7 +75,7 @@ const Upgradable = function Upgradable() {
 
       // Get all installed upgrades of type override.
       const overrides = installedUpgrades.filter(
-        (u) => u.system.modifiers[dataPoint]?.type === "override"
+        (u) => u.system.modifiers[dataPoint]?.type === "override",
       );
 
       // Key and category are used to display what the bonus upgrades.
@@ -102,7 +102,7 @@ const Upgradable = function Upgradable() {
         overrides.sort(
           (a, b) =>
             b.system.modifiers[dataPoint].value -
-            a.system.modifiers[dataPoint].value
+            a.system.modifiers[dataPoint].value,
         );
         const mod = overrides[0].system.modifiers[dataPoint];
         mod.id = `${overrides[0].name}-${key}-0`; // This should create a unique ID for the mod.

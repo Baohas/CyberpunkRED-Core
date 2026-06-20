@@ -224,7 +224,7 @@ const registerSystemSettings = () => {
       onChange: (value) => {
         LOGGER.log(`Changed warnAboutNoTargetsWhenRollingDamage to ${value}`);
       },
-    }
+    },
   );
 
   // Always delete or uninstall child items from Container item.

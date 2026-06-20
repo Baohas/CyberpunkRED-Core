@@ -28,7 +28,7 @@ export default class RemoveInvalidUpgrates extends BaseMigrationScript {
             const actorDataItem = actorData.items?.find(
               (actorItem) =>
                 actorItem._id === item &&
-                ["ammo", "itemUpgrade"].includes(actorItem.type)
+                ["ammo", "itemUpgrade"].includes(actorItem.type),
             );
             const gameItem = game.items.get(item)?.toObject();
             const itemObject = actorData ? actorDataItem : gameItem;

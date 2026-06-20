@@ -8,7 +8,7 @@ import ContainerSchema from "../shared/container-schema.js";
 export default class CharacterDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
   ContainerSchema,
-  WealthSchema
+  WealthSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;
@@ -55,7 +55,7 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
                 path: "character",
                 reason: "The extras are now part of the character sheet",
               },
-            }
+            },
           ),
           fashion: new fields.SchemaField({
             desription: new fields.HTMLField(),
@@ -64,17 +64,17 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
             LifestyleSchema.defineSchema({
               initialCost: 1000,
               initialDescription: "Cargo Container",
-            })
+            }),
           ),
           lifeStyle: new fields.SchemaField(
             LifestyleSchema.defineSchema({
               initialCost: 100,
               initialDescription: "Kibble",
-            })
+            }),
           ),
           traumaTeam: new fields.SchemaField(LifestyleSchema.defineSchema()),
         }),
-      }
+      },
     );
   }
 

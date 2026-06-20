@@ -61,7 +61,7 @@ export default class ActorWeaponsSchema extends CPRSystemDataModel {
     const allUpgrades = this.parent.parent.items.filter(isWeaponUpgrade);
 
     const allInstalledCyberWeapons = allWeapons.filter(
-      (item) => item.system.isInstalledInActor
+      (item) => item.system.isInstalledInActor,
     );
 
     // Helper function to determine if an item is available based on its
@@ -79,7 +79,7 @@ export default class ActorWeaponsSchema extends CPRSystemDataModel {
     const filterUpgrades = (upgrades, condition) =>
       upgrades.filter((upgrade) => {
         const parent = this.parent.parent.items.get(
-          upgrade.system.installedIn[0]
+          upgrade.system.installedIn[0],
         );
         return parent && condition(parent);
       });

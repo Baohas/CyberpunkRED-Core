@@ -24,7 +24,7 @@ const InitializeDSNPreset = () => {
         name: SystemUtils.Localize("CPR.module.dsn.themeBrandedLogo"),
         group: SystemUtils.Localize("CPR.module.dsn.groupName"),
       },
-      "preferred"
+      "preferred",
     );
     dice3d.addSystem(
       {
@@ -32,7 +32,7 @@ const InitializeDSNPreset = () => {
         name: SystemUtils.Localize("CPR.module.dsn.themeNumbersOnly"),
         group: SystemUtils.Localize("CPR.module.dsn.groupName"),
       },
-      "default"
+      "default",
     );
     /**
      * Add a colorset (theme)
@@ -53,7 +53,7 @@ const InitializeDSNPreset = () => {
         edge: "#000000",
         material: "glass",
       },
-      "preferred"
+      "preferred",
     );
 
     dice3d.addColorset(
@@ -65,7 +65,7 @@ const InitializeDSNPreset = () => {
         edge: "#000000",
         material: "glass",
       },
-      "default"
+      "default",
     );
 
     dice3d.addColorset(
@@ -77,7 +77,7 @@ const InitializeDSNPreset = () => {
         edge: "#000000",
         material: "glass",
       },
-      "default"
+      "default",
     );
 
     /**

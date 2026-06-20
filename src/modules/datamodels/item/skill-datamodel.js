@@ -3,7 +3,7 @@ import CPRSystemDataModel from "../system-data-model.js";
 import CommonSchema from "./mixins/common-schema.js";
 
 export default class SkillDataModel extends CPRSystemDataModel.mixin(
-  CommonSchema
+  CommonSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

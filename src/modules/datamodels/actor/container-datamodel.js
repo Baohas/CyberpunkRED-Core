@@ -3,7 +3,7 @@ import HpSchema from "./components/hp-schema.js";
 import WealthSchema from "./mixins/wealth-schema.js";
 
 export default class ContainerDataModel extends CPRSystemDataModel.mixin(
-  WealthSchema
+  WealthSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

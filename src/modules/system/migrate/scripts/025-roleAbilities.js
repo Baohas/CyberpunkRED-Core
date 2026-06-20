@@ -14,7 +14,7 @@ export default class RoleAbilityNaNMigration extends BaseMigrationScript {
 
   async updateItem(doc) {
     const nanAbilities = doc.system.abilities.filter((a) =>
-      Number.isNaN(a.multiplier)
+      Number.isNaN(a.multiplier),
     );
     for (const ability of nanAbilities) {
       ability.multiplier = 1;

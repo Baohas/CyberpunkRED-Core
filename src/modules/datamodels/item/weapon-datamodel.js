@@ -21,7 +21,7 @@ export default class WeaponDataModel extends CPRSystemDataModel.mixin(
   PhysicalSchema,
   QualitySchema,
   UpgradableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

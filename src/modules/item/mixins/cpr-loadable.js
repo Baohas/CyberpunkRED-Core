@@ -39,7 +39,7 @@ const Loadable = function Loadable() {
   this._setDvTable = async function _setDvTable(actor, dvTable) {
     const flag = foundry.utils.getProperty(
       actor,
-      `flags.${game.system.id}.firetype-${this._id}`
+      `flags.${game.system.id}.firetype-${this._id}`,
     );
     const activeTable = flag === "autofire" ? `${dvTable} (Autofire)` : dvTable;
     if (actor.sheet.token !== null)
@@ -80,7 +80,7 @@ const Loadable = function Loadable() {
     if (validAmmo.length === 0) {
       return SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.noValidAmmo")
+        SystemUtils.Localize("CPR.messages.noValidAmmo"),
       );
     }
     // Prepare select options for ammo.
@@ -91,7 +91,7 @@ const Loadable = function Loadable() {
       ];
       // Only programatically show the ammo type if it's not in the name.
       const showAmmoType = !ammoTypeSubstrings.some((substring) =>
-        ammo.name.toLowerCase().includes(substring.toLowerCase())
+        ammo.name.toLowerCase().includes(substring.toLowerCase()),
       );
 
       let label = ammo.name;
@@ -158,7 +158,7 @@ const Loadable = function Loadable() {
     if (loadedAmmo.system.amount === 0) {
       return SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.reloadOutOfAmmo")
+        SystemUtils.Localize("CPR.messages.reloadOutOfAmmo"),
       );
     }
     const magazineSpace = this.getMagazineSpace();
@@ -242,7 +242,7 @@ const Loadable = function Loadable() {
         newValue = Math.clamp(
           0,
           this.system.magazine.value + parseInt(value, 10),
-          maxAmmo
+          maxAmmo,
         );
       } else {
         newValue = Math.clamp(0, value, maxAmmo);

@@ -5,7 +5,7 @@ import EffectsSchema from "./mixins/effects-schema.js";
 
 export default class CriticalInjuryDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
-  EffectsSchema
+  EffectsSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

@@ -65,7 +65,7 @@ async function compileCss() {
           mixins(),
           postcssNested(),
           autoprefixer(),
-        ])
+        ]),
       )
       .on("error", (error) => {
         // If we're in CI throw a hard error, else a soft error
@@ -108,7 +108,7 @@ async function generateDevMode() {
     if (fs.existsSync("foundryconfig.json")) {
       // Read foundryconfig.json
       const foundryConfigRaw = fs.readFileSync(
-        path.resolve(process.cwd(), "foundryconfig.json")
+        path.resolve(process.cwd(), "foundryconfig.json"),
       );
       foundryConfig = JSON.parse(foundryConfigRaw);
     }
@@ -116,7 +116,7 @@ async function generateDevMode() {
     // Generate merged devMode
     const mergedDevMode = DataUtils.deepMerge(
       DEV_MODE_DEFAULTS.devMode,
-      foundryConfig.devMode || {}
+      foundryConfig.devMode || {},
     );
     const devModeJsContent =
       "// Auto-generated during build - DO NOT EDIT\n" +
@@ -154,7 +154,7 @@ async function buildManifest() {
 
     fs.writeFileSync(
       path.resolve(DEST_DIR, SYSTEM_FILE),
-      JSON.stringify(system, null, 2)
+      JSON.stringify(system, null, 2),
     );
     log(`Finished building ${SYSTEM_FILE}.`);
     cb();
@@ -173,7 +173,7 @@ async function buildDiscordMessage() {
     // Make an array of each H3 section from the latest release Data
     const releaseSections = ChangelogUtils.markdownToJson(
       releaseData.content,
-      3
+      3,
     );
 
     // The main Message can only be 2000 chars long, so we'll build it from
@@ -183,7 +183,7 @@ async function buildDiscordMessage() {
     message.push(
       DISCORD_MESSAGE_INTROS[
         Math.floor(Math.random() * DISCORD_MESSAGE_INTROS.length)
-      ]
+      ],
     );
     message.push(DISCORD_MESSAGE_BACKUP);
     message.push(DISCORD_MESSAGE_CHANGELOG);
@@ -234,10 +234,10 @@ async function buildDiscordMessage() {
       const sectionColor = sectionHeading.includes("Action Needed")
         ? 16711680
         : sectionHeading.includes("Bug Fixes")
-        ? 5814783
-        : sectionHeading.includes("Changes")
-        ? 15300864
-        : 962304;
+          ? 5814783
+          : sectionHeading.includes("Changes")
+            ? 15300864
+            : 962304;
 
       if (sectionData !== "") {
         jsonData.embeds.push({
@@ -252,7 +252,7 @@ async function buildDiscordMessage() {
     fs.writeFileSync(
       path.join(DEST_DIR, "lang/release-notes/", `discord.json`),
       JSON.stringify(jsonData, null, "  "),
-      { mode: 0o644 }
+      { mode: 0o644 },
     );
     log("Finished Generating Discord Release Notes.");
     cb();
@@ -291,7 +291,7 @@ async function buildChangelog() {
     await ChangelogUtils.GenerateChangelogJournal(
       changelog,
       langFull,
-      changelogDir
+      changelogDir,
     );
   });
 
@@ -309,8 +309,8 @@ async function processImages() {
           log(
             `DEBUG: Processing Image: ${path.relative(
               process.cwd(),
-              file.path
-            )}`
+              file.path,
+            )}`,
           );
         }
       })
@@ -382,8 +382,8 @@ async function processSvgs() {
             log(
               `DEBUG: Processing SVG: ${path.relative(
                 process.cwd(),
-                file.path
-              )}`
+                file.path,
+              )}`,
             );
           }
 
@@ -405,7 +405,7 @@ async function processSvgs() {
             log(`Error processing ${file.path}: ${error.message}`);
             callback(error);
           }
-        })
+        }),
       )
       .pipe(gulp.dest(DEST_DIR))
       .on("error", (err) => {
@@ -425,7 +425,7 @@ async function watchSrc() {
     gulp
       .watch(pattern)
       .on("all", () =>
-        gulp.src(pattern).pipe(gulp.dest(path.resolve(DEST_DIR, out)))
+        gulp.src(pattern).pipe(gulp.dest(path.resolve(DEST_DIR, out))),
       );
   }
 

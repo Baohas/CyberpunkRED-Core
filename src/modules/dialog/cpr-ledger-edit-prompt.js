@@ -6,7 +6,7 @@ export default class LedgerEditPrompt {
   static async RenderPrompt(title) {
     return new Promise((resolve, reject) => {
       renderTemplate(
-        `systems/${game.system.id}/templates/dialog/cpr-ledger-edit-prompt.hbs`
+        `systems/${game.system.id}/templates/dialog/cpr-ledger-edit-prompt.hbs`,
       ).then((html) => {
         const _onCancel = () => {
           reject(new Error("Promise rejected: Window Closed"));

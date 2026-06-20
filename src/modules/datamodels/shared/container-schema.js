@@ -43,11 +43,11 @@ export default class ContainerSchema extends CPRSystemDataModel {
           blank: true,
           choices: SystemUtils.getDocTypesFromMixin("installable"),
         }),
-        { initial: initialAllowedTypes }
+        { initial: initialAllowedTypes },
       ),
       list: new fields.ArrayField(
         new fields.DocumentIdField({ required: true }),
-        { initial: [] }
+        { initial: [] },
       ),
     };
     const slotsSchema = {

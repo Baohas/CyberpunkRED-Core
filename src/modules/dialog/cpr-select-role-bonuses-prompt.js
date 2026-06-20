@@ -16,7 +16,7 @@ export default class SelectRoleBonuses extends CPRDialog {
     this.roleData = dialogData.roleData;
     this.options.template = `systems/${game.system.id}/templates/dialog/cpr-select-role-bonuses-prompt.hbs`;
     this.options.title = SystemUtils.Localize(
-      "CPR.dialog.selectRoleBonuses.title"
+      "CPR.dialog.selectRoleBonuses.title",
     );
   }
 
