@@ -20,7 +20,10 @@
   "ignorePatterns": [
     "gulpfile.mjs",
     "gulp/**",
-    "stylelint.config.mjs"
+    "stylelint.config.mjs",
+    ".playwright/**",
+    "tools/**",
+    "tests/**"
   ],
 
   // These are all build / lint / CLI tooling (or build-time deps used by the gulp
@@ -29,6 +32,7 @@
   // scoped-to-runtime analysis sees them as unused. They ARE used — by the gulp build
   // we exclude above — so treat them as always-used rather than flagging them.
   "ignoreDependencies": [
+    "@playwright/test",
     "lint",
     "abstract-level",
     "autoprefixer",
