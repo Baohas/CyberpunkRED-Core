@@ -93,7 +93,12 @@ async function copyAssets() {
       if (DEBUG) {
         log(`DEBUG: Copying ${asset.from}`);
       }
-      gulp.src(asset.from).pipe(gulp.dest(path.resolve(DEST_DIR, asset.to)));
+      // encoding:false reads files as raw Buffers — required under gulp 5 /
+      // vinyl-fs 4, which otherwise decode contents as UTF-8 and corrupt binary
+      // assets (fonts, etc.).
+      gulp
+        .src(asset.from, { encoding: false })
+        .pipe(gulp.dest(path.resolve(DEST_DIR, asset.to)));
     });
     log("Finished copying static assets.");
     cb();
@@ -303,7 +308,10 @@ async function processImages() {
   return new Promise((cb) => {
     log("Processing Images...");
     gulp
-      .src("src/**/*.{jpg,jpeg,png,webp,webm}", { base: SRC_DIR })
+      .src("src/**/*.{jpg,jpeg,png,webp,webm}", {
+        base: SRC_DIR,
+        encoding: false,
+      })
       .on("data", (file) => {
         if (DEBUG) {
           log(
@@ -425,7 +433,9 @@ async function watchSrc() {
     gulp
       .watch(pattern)
       .on("all", () =>
-        gulp.src(pattern).pipe(gulp.dest(path.resolve(DEST_DIR, out))),
+        gulp
+          .src(pattern, { encoding: false })
+          .pipe(gulp.dest(path.resolve(DEST_DIR, out))),
       );
   }
 
