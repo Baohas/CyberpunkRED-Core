@@ -91,7 +91,7 @@ export default class CPRNetArchItem extends CPRItem {
     if (floorData.length === 0) {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.netArchitecture.generation.noFloorError")
+        SystemUtils.Localize("CPR.netArchitecture.generation.noFloorError"),
       );
       return;
     }
@@ -106,7 +106,7 @@ export default class CPRNetArchItem extends CPRItem {
           await this._duplicateScene(`${this.name} (animated)`);
         } else {
           this.scene = game.scenes.find(
-            (f) => f.name === `${this.name} (animated)`
+            (f) => f.name === `${this.name} (animated)`,
           );
           await this._removeAllTiles();
         }
@@ -124,7 +124,7 @@ export default class CPRNetArchItem extends CPRItem {
       if (this.scene === null) {
         SystemUtils.DisplayMessage(
           "error",
-          SystemUtils.Localize("CPR.netArchitecture.generation.noSceneError")
+          SystemUtils.Localize("CPR.netArchitecture.generation.noSceneError"),
         );
         return;
       }
@@ -141,8 +141,8 @@ export default class CPRNetArchItem extends CPRItem {
         SystemUtils.DisplayMessage(
           "error",
           SystemUtils.Localize(
-            "CPR.netArchitecture.generation.floorFormattingError"
-          )
+            "CPR.netArchitecture.generation.floorFormattingError",
+          ),
         );
         return;
       }
@@ -340,7 +340,7 @@ export default class CPRNetArchItem extends CPRItem {
     await this.scene.view();
     SystemUtils.DisplayMessage(
       "notify",
-      SystemUtils.Localize("CPR.netArchitecture.generation.done")
+      SystemUtils.Localize("CPR.netArchitecture.generation.done"),
     );
   }
 
@@ -356,7 +356,7 @@ export default class CPRNetArchItem extends CPRItem {
       : "Netarch Template";
     const scene = await SystemUtils.GetCompendiumDoc(
       `${game.system.id}.other_scenes`,
-      sceneName
+      sceneName,
     );
     const sceneData = foundry.utils.duplicate(scene);
     sceneData.id = null;

@@ -20,7 +20,7 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
   InstallableSchema,
   LoadableSchema,
   PhysicalSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;
@@ -38,7 +38,7 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
         }),
         attackmod: new fields.SchemaField(
           UpgradeModifierSchema.defineSchema(),
-          { required: false }
+          { required: false },
         ),
         damage: new fields.SchemaField(UpgradeModifierSchema.defineSchema(), {
           required: false,
@@ -59,7 +59,7 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
           UpgradeModifierSchema.defineSchema(),
           {
             required: false,
-          }
+          },
         ),
         slots: new fields.SchemaField(UpgradeModifierSchema.defineSchema(), {
           required: false,
@@ -75,7 +75,7 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
         }),
         "Wardrobe & Style": new fields.SchemaField(
           UpgradeModifierSchema.defineSchema(),
-          { required: false }
+          { required: false },
         ),
         cool: new fields.SchemaField(UpgradeModifierSchema.defineSchema(), {
           required: false,

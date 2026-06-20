@@ -4,7 +4,7 @@ import ValuableSchema from "./mixins/valuable-schema.js";
 
 export default class NetArchDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   // Most of these should be moved to `config.js`
   // or converted into ints rather than int-like strings.
@@ -92,7 +92,7 @@ export default class NetArchDataModel extends CPRSystemDataModel.mixin(
             integer: true,
             min: 0,
           }),
-        })
+        }),
       ),
     });
   }

@@ -32,21 +32,21 @@ export default class CommonSchema extends CPRSystemDataModel {
         move: new fields.SchemaField(StatSchema.defineSchema()),
         body: new fields.SchemaField(StatSchema.defineSchema()),
         emp: new fields.SchemaField(
-          StatSchema.defineSchema({ includeMax, min: -10 })
+          StatSchema.defineSchema({ includeMax, min: -10 }),
         ),
       }),
       externalData: new fields.SchemaField({
         currentArmorBody: new fields.SchemaField(
-          ExternalResourceSchema.defineSchema()
+          ExternalResourceSchema.defineSchema(),
         ),
         currentArmorHead: new fields.SchemaField(
-          ExternalResourceSchema.defineSchema()
+          ExternalResourceSchema.defineSchema(),
         ),
         currentArmorShield: new fields.SchemaField(
-          ExternalResourceSchema.defineSchema()
+          ExternalResourceSchema.defineSchema(),
         ),
         currentWeapon: new fields.SchemaField(
-          ExternalResourceSchema.defineSchema()
+          ExternalResourceSchema.defineSchema(),
         ),
       }),
       derivedStats: new fields.EmbeddedDataField(DerivedStatsSchema),
@@ -104,7 +104,7 @@ export default class CommonSchema extends CPRSystemDataModel {
     const effects = Array.from(this.parent.allApplicableEffects());
     const allMods = CPRMod.getAllModifiers(effects);
     const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
     const output = {};
@@ -114,7 +114,7 @@ export default class CommonSchema extends CPRSystemDataModel {
       // Get the total Mods from Active Effects
       const skillMods = CPRMod.getRelevantMods(
         filteredMods,
-        SystemUtils.slugify(skill.name)
+        SystemUtils.slugify(skill.name),
       ).reduce((acc, mod) => {
         if (mod.changeMode === 2) {
           return acc + mod.value;

@@ -16,7 +16,7 @@ export class ContainerUtils {
         // Set options for dialog.
         title: SystemUtils.Localize("CPR.dialog.deleteContainer.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-delete-container-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
   }
 
@@ -29,7 +29,7 @@ export class ContainerUtils {
   static getInstallTreeFlag(containerObj) {
     return foundry.utils.getProperty(
       containerObj.flags,
-      `${game.system.id}.cprInstallTree`
+      `${game.system.id}.cprInstallTree`,
     );
   }
 
@@ -43,7 +43,7 @@ export class ContainerUtils {
     foundry.utils.setProperty(
       containerObj.flags,
       `${game.system.id}.cprInstallTree`,
-      installTree
+      installTree,
     );
   }
 }
@@ -128,11 +128,11 @@ const Container = function Container() {
     let installableItems = [];
     if (actor) {
       installableItems = actor.items.filter((i) =>
-        allowedTypes.includes(i.type)
+        allowedTypes.includes(i.type),
       );
     } else {
       installableItems = game.items.filter((i) =>
-        allowedTypes.includes(i.type)
+        allowedTypes.includes(i.type),
       );
     }
 
@@ -194,7 +194,7 @@ const Container = function Container() {
   this.canInstallItems = function canInstallItems(itemList) {
     if (!Array.isArray(itemList)) {
       LOGGER.debug(
-        `CPRActor.canInstallItems argument is not an array: ${itemList}`
+        `CPRActor.canInstallItems argument is not an array: ${itemList}`,
       );
       return false;
     }
@@ -218,7 +218,7 @@ const Container = function Container() {
           SystemUtils.Format("CPR.messages.installInvalidType", {
             target: this.name,
             item: item.name,
-          })
+          }),
         );
         result = false;
       }
@@ -231,7 +231,7 @@ const Container = function Container() {
           "error",
           SystemUtils.Format("CPR.messages.installInsufficientSlots", {
             item: this.name,
-          })
+          }),
         );
         result = false;
       }
@@ -249,7 +249,7 @@ const Container = function Container() {
     // Make sure this function is passed an array.
     if (!Array.isArray(itemList)) {
       Promise.reject(
-        new Error(`CPRItem.installItems argument is not an array: ${itemList}`)
+        new Error(`CPRItem.installItems argument is not an array: ${itemList}`),
       );
       return false;
     }
@@ -259,7 +259,7 @@ const Container = function Container() {
     if (!this.canInstallItems(itemList)) {
       SystemUtils.DisplayMessage(
         "warn",
-        "CPR.messages.installableNotConfigured"
+        "CPR.messages.installableNotConfigured",
       );
       return false;
     }
@@ -330,7 +330,7 @@ const Container = function Container() {
    */
   this.installWorldItems = async function installWorldItems(
     itemList,
-    installedItems
+    installedItems,
   ) {
     // Create duplicates of all installed items in the world.
     const newItems = await Item.createDocuments(itemList);
@@ -342,7 +342,7 @@ const Container = function Container() {
     const oldItemIDs = itemList.map((i) => i.id);
     const currentInstalledIDs = installedItems.list;
     const difference = currentInstalledIDs.filter(
-      (id) => !oldItemIDs.includes(id)
+      (id) => !oldItemIDs.includes(id),
     );
     installedItems.list = [...difference, ...newItemIDs];
 
@@ -353,7 +353,7 @@ const Container = function Container() {
 
       // Get the list of installed items to duplicate and reinstall.
       const reinstallList = item.system.installedItems.list.map((id) =>
-        game.items.get(id)
+        game.items.get(id),
       );
       // Call this function recursively on the new item.
       await item.installWorldItems(reinstallList, item.system.installedItems);
@@ -385,20 +385,20 @@ const Container = function Container() {
    */
   this.uninstallItems = async function uninstallItems(
     uninstallList,
-    options = { recursive: false, unloadAmmo: true }
+    options = { recursive: false, unloadAmmo: true },
   ) {
     if (!Array.isArray(uninstallList)) {
       return Promise.reject(
         new Error(
-          `Container.uninstallItems argument is not an array: ${uninstallList}`
-        )
+          `Container.uninstallItems argument is not an array: ${uninstallList}`,
+        ),
       );
     }
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
     const actor = this.isOwned ? this.actor : false;
     // Duplicate the currenlty installed items.
     const installedIds = foundry.utils.duplicate(
-      this.system.installedItems.list
+      this.system.installedItems.list,
     );
 
     const uninstallPromises = [];
@@ -413,7 +413,7 @@ const Container = function Container() {
         const recursiveUninstalled = item.getInstalledItems();
         if (recursiveUninstalled.length > 0) {
           uninstallPromises.push(
-            item.uninstallItems(recursiveUninstalled, { recursive: true })
+            item.uninstallItems(recursiveUninstalled, { recursive: true }),
           );
         }
       }
@@ -424,7 +424,7 @@ const Container = function Container() {
     // and deleting any Black Ice tokens from the canvas, if applicable.
     // Those are handled in `cyberdeck.uninstallPrograms()`.
     const uninstalledPrograms = uninstallList.filter(
-      (i) => i.type === "program"
+      (i) => i.type === "program",
     );
     if (uninstalledPrograms.length > 0 && this.type === "cyberdeck") {
       await this.uninstallPrograms(uninstalledPrograms);
@@ -434,7 +434,7 @@ const Container = function Container() {
     // When uninstalling an upgrade that increases magazine size, make sure any extra ammo
     // that would be in the upgrade is returned to the ammo item. Do this before unloading ammo.
     const uninstalledMagUpgrade = uninstallList.find(
-      (i) => i.type === "itemUpgrade" && i.system.modifiers.magazine.value
+      (i) => i.type === "itemUpgrade" && i.system.modifiers.magazine.value,
     );
     if (loadableTypes.includes(this.type) && uninstalledMagUpgrade) {
       await this.syncMagazine();
@@ -505,7 +505,7 @@ const Container = function Container() {
     const installableTypes = SystemUtils.getDocTypesFromMixin("installable");
     const relevantItems = installedItems.filter(
       (i) =>
-        containerTypes.includes(i.type) || installableTypes.includes(i.type)
+        containerTypes.includes(i.type) || installableTypes.includes(i.type),
     );
     const keepInstalledList = [];
     const updateList = [];
@@ -546,7 +546,7 @@ const Container = function Container() {
    * @returns {Promise} - Promise of updated document
    */
   this.createInstalledItemsOnActor = async function createInstalledItemsOnActor(
-    imported = false
+    imported = false,
   ) {
     const actor = this.parent;
     const creationList = [];
@@ -577,7 +577,7 @@ const Container = function Container() {
           // This ensures we don't call the function we're currently in from `createEmbeddedDocuments`.
           // Just create the items normally, and let the function we're in handle the recursion.
           createInstalled: false,
-        }
+        },
       );
 
       for (const item of createdItems) {
@@ -585,7 +585,7 @@ const Container = function Container() {
         newInstalledList.push(item.id);
         if (item.system.hasInstalled) {
           await item.createInstalledItemsOnActor(
-            !!ContainerUtils.getInstallTreeFlag(item)
+            !!ContainerUtils.getInstallTreeFlag(item),
           );
         }
       }
@@ -611,12 +611,12 @@ const Container = function Container() {
    * @returns {CPRItem(container)} - the updated item
    */
   this.importInstalledToWorld = async function importInstalledToWorld(
-    recursive
+    recursive,
   ) {
     const newInstalledList = [];
     // Create the item from the object data.
     const newItems = await Item.createDocuments(
-      ContainerUtils.getInstallTreeFlag(this)
+      ContainerUtils.getInstallTreeFlag(this),
     );
     for (const newItem of newItems) {
       newInstalledList.push(newItem.id);
@@ -642,7 +642,7 @@ const Container = function Container() {
    * @returns {Array<Object>|undefined} - Array of Items converted into just plain JS Objects.
    */
   this.convertInstalledIdsToObjects = function convertInstalledIdsToObject(
-    actor
+    actor,
   ) {
     const installedIds = this.system.installedItems.list;
     const installedItemData = installedIds.map((id) => {
@@ -687,7 +687,7 @@ const Container = function Container() {
 
       // Convert all of the parent item's installed list to objects.
       const cprInstallTree = parentItem.convertInstalledIdsToObjects(
-        parentItem.actor
+        parentItem.actor,
       );
       // For each child item installed in the parent item...
       for (const childItem of installedItems) {
@@ -698,14 +698,14 @@ const Container = function Container() {
         ) {
           // ...find the corresponding child object...
           const childObject = cprInstallTree.find(
-            (o) => o._id === childItem._id
+            (o) => o._id === childItem._id,
           );
           // ...and set its flags equal to the function, called recursively.
           // This will set the flags with installed object data for each installed item,
           // no matter the depth.
           ContainerUtils.setInstallTreeFlag(
             childObject,
-            nestItemObjects(childItem)
+            nestItemObjects(childItem),
           );
         }
       }

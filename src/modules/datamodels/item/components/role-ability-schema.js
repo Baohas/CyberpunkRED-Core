@@ -31,7 +31,7 @@ export default class RoleAbilitySchema extends CPRSystemDataModel {
       skill: new fields.AnyField({ required: true, initial: "--" }), // This field can either be a string ("--" or "varying"), OR a Skill object. This should eventually be changed so that the type is consistent.
       bonuses: new fields.ArrayField(new fields.ObjectField()),
       universalBonuses: new fields.ArrayField(
-        new fields.StringField({ choices: Object.keys(CPR.universalBonuses) })
+        new fields.StringField({ choices: Object.keys(CPR.universalBonuses) }),
       ),
       bonusRatio: new fields.NumberField({
         required: true,

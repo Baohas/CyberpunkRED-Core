@@ -83,7 +83,7 @@ export default class CPRMod {
 
     // Get effects relevant to the roll.
     const allSituationalMods = CPRMod.getAllModifiers(effects).filter(
-      (m) => m.isSituational
+      (m) => m.isSituational,
     );
     let filteredMods = [];
 
@@ -98,7 +98,7 @@ export default class CPRMod {
           "bonuses.allActions",
           "bonuses.allActionsSpeech",
           "bonuses.allActionsHands",
-        ].includes(m.key)
+        ].includes(m.key),
       );
       filteredMods = filteredMods.concat(globalMods);
     }
@@ -120,7 +120,7 @@ export default class CPRMod {
           `bonuses.${SystemUtils.slugify(rollData.skillName)}`,
           `bonuses.${SystemUtils.slugify(rollData.skillName)}Hearing`,
           `bonuses.${SystemUtils.slugify(rollData.skillName)}Sight`,
-        ].includes(m.key)
+        ].includes(m.key),
       );
       filteredMods = filteredMods.concat(skillMods);
 
@@ -136,7 +136,7 @@ export default class CPRMod {
     // Initiative Mods.
     if (prototypeChain.includes("CPRInitiative")) {
       const initiativeMods = allSituationalMods.filter(
-        (m) => m.key === `bonuses.initiative`
+        (m) => m.key === `bonuses.initiative`,
       );
       filteredMods = filteredMods.concat(initiativeMods);
 
@@ -177,7 +177,7 @@ export default class CPRMod {
         attackRollBonusKeys.push("bonuses.suppressive");
       }
       const attackMods = allSituationalMods.filter((m) =>
-        attackRollBonusKeys.includes(m.key)
+        attackRollBonusKeys.includes(m.key),
       );
 
       // Attack mods from upgrades.
@@ -200,7 +200,7 @@ export default class CPRMod {
     // Damage Mods.
     if (prototypeChain.includes("CPRDamageRoll")) {
       const damageMods = allSituationalMods.filter(
-        (m) => m.key === `bonuses.universalDamage`
+        (m) => m.key === `bonuses.universalDamage`,
       );
 
       // Damage mods from upgrades.
@@ -223,7 +223,7 @@ export default class CPRMod {
     // Role Mods.
     if (prototypeChain.includes("CPRRoleRoll")) {
       const roleMods = allSituationalMods.filter(
-        (m) => m.key === `bonuses.${SystemUtils.slugify(rollData.roleName)}`
+        (m) => m.key === `bonuses.${SystemUtils.slugify(rollData.roleName)}`,
       );
       filteredMods = filteredMods.concat(roleMods);
     }
@@ -231,7 +231,7 @@ export default class CPRMod {
     // Netrunner Mods.
     if (prototypeChain.includes("CPRInterfaceRoll")) {
       let netrunnerMods = allSituationalMods.filter(
-        (m) => m.key === `bonuses.${rollData.ability}`
+        (m) => m.key === `bonuses.${rollData.ability}`,
       );
 
       // Zap is an attack, so we need to add relevant attack bonuses to it.
@@ -239,15 +239,15 @@ export default class CPRMod {
         netrunnerMods = netrunnerMods.concat(
           allSituationalMods.filter(
             (m) =>
-              m.key === "bonuses.attack" || m.key === "bonuses.universalAttack"
-          )
+              m.key === "bonuses.attack" || m.key === "bonuses.universalAttack",
+          ),
         );
       }
 
       // Bonus to all attacks, meat or net.
       if (rollData.ability === "attack") {
         netrunnerMods = netrunnerMods.concat(
-          allSituationalMods.filter((m) => m.key === "bonuses.universalAttack")
+          allSituationalMods.filter((m) => m.key === "bonuses.universalAttack"),
         );
       }
 
@@ -257,7 +257,7 @@ export default class CPRMod {
     // Death Save Mods.
     if (prototypeChain.includes("CPRDeathSaveRoll")) {
       const deathSavePenaltyMods = allSituationalMods.filter(
-        (m) => m.key === "bonuses.deathSavePenalty"
+        (m) => m.key === "bonuses.deathSavePenalty",
       );
       filteredMods = filteredMods.concat(deathSavePenaltyMods);
     }

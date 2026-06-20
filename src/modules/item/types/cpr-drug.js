@@ -23,7 +23,7 @@ export default class CPRDrugItem extends CPRItem {
   async snort() {
     Rules.lawyer(
       this.system.amount > 0,
-      SystemUtils.Localize("CPR.messages.notEnoughDrugs")
+      SystemUtils.Localize("CPR.messages.notEnoughDrugs"),
     );
     if (!(await this._confirmSnort())) return;
     const newAmount = Math.max(0, this.system.amount - 1);
@@ -51,7 +51,7 @@ export default class CPRDrugItem extends CPRItem {
     }
     SystemUtils.DisplayMessage(
       "notify",
-      `${this.name} ${SystemUtils.Localize("CPR.messages.consumedDrug")}`
+      `${this.name} ${SystemUtils.Localize("CPR.messages.consumedDrug")}`,
     );
   }
 
@@ -64,12 +64,12 @@ export default class CPRDrugItem extends CPRItem {
    */
   async _confirmSnort() {
     const dialogMessage = `${SystemUtils.Localize(
-      "CPR.dialog.snortConfirmation.message"
+      "CPR.dialog.snortConfirmation.message",
     )} ${this.name}?`;
     return CPRDialog.showDialog(
       { dialogMessage },
       // Set the options for the dialog.
-      { title: SystemUtils.Localize("CPR.dialog.snortConfirmation.title") }
+      { title: SystemUtils.Localize("CPR.dialog.snortConfirmation.title") },
     ).catch((err) => LOGGER.debug(err));
   }
 }

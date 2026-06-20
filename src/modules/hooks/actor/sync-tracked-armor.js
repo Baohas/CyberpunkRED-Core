@@ -33,13 +33,13 @@ const SyncTrackedArmor = () => {
                     if (diff > 0) {
                       armorData.bodyLocation.ablation = Math.min(
                         armorData.bodyLocation.ablation + diff,
-                        armorData.bodyLocation.sp
+                        armorData.bodyLocation.sp,
                       );
                     }
                     if (diff < 0 && item._id === a._id) {
                       armorData.bodyLocation.ablation = Math.max(
                         armorData.bodyLocation.ablation + diff,
-                        0
+                        0,
                       );
                     }
                     updateList.push({ _id: a.id, system: armorData });
@@ -58,13 +58,13 @@ const SyncTrackedArmor = () => {
                     if (diff > 0) {
                       armorData.headLocation.ablation = Math.min(
                         armorData.headLocation.ablation + diff,
-                        armorData.headLocation.sp
+                        armorData.headLocation.sp,
                       );
                     }
                     if (diff < 0 && item._id === a._id) {
                       armorData.headLocation.ablation = Math.max(
                         armorData.headLocation.ablation + diff,
-                        0
+                        0,
                       );
                     }
                     updateList.push({ _id: a.id, system: armorData });

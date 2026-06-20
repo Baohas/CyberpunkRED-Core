@@ -22,7 +22,7 @@ export default class CPRItemSheet extends ItemSheet {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets"
+      "resizeCPRSheets",
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -105,7 +105,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     if (itemType === "role") {
       const selectOptions = CPRItemSheet._getRoleSelectOptions(
-        cprData.relativeSkills
+        cprData.relativeSkills,
       );
       cprData.selectOptions = selectOptions;
     }
@@ -113,7 +113,7 @@ export default class CPRItemSheet extends ItemSheet {
     // Enrich the description so that links to foundry documents in item descriptions have proper functionality.
     foundryData.enrichedHTMLDescription = await TextEditor.enrichHTML(
       foundryData.item.system.description.value,
-      { async: true }
+      { async: true },
     );
     return { ...foundryData, ...cprData };
   }
@@ -172,7 +172,7 @@ export default class CPRItemSheet extends ItemSheet {
     // Prepare Option Groups for Select Element.
     const optionGroups = {
       specialOptions: SystemUtils.Localize(
-        "CPR.dialog.createEditRoleAbility.specialOptions"
+        "CPR.dialog.createEditRoleAbility.specialOptions",
       ),
       list: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.skillList"),
     };
@@ -247,7 +247,7 @@ export default class CPRItemSheet extends ItemSheet {
     for (const [key, value] of Object.entries(upgradableConfigData)) {
       // Omit this datapoint if its type is not "modifier" or "override".
       const omitDataPoint = !Object.keys(dataPointModTypes).includes(
-        value.type
+        value.type,
       );
       if (omitDataPoint) continue;
 
@@ -337,7 +337,7 @@ export default class CPRItemSheet extends ItemSheet {
       } else {
         SystemUtils.DisplayMessage(
           "error",
-          SystemUtils.Localize("CPR.netArchitecture.generation.noGMError")
+          SystemUtils.Localize("CPR.netArchitecture.generation.noGMError"),
         );
       }
     });
@@ -348,7 +348,7 @@ export default class CPRItemSheet extends ItemSheet {
       } else {
         SystemUtils.DisplayMessage(
           "error",
-          SystemUtils.Localize("CPR.netArchitecture.generation.noGMError")
+          SystemUtils.Localize("CPR.netArchitecture.generation.noGMError"),
         );
       }
     });
@@ -412,7 +412,7 @@ export default class CPRItemSheet extends ItemSheet {
         "CPR.dialog.selectCompatibleAmmo.selectCompatibleAmmo",
         {
           name: this.item.name,
-        }
+        },
       ),
       selectedAmmo: cprItemData.ammoVariety,
     };
@@ -466,7 +466,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     // Call dialog and await results. Return if dialog is cancelled.
     dialogData = await SelectRoleBonuses.showDialog(dialogData).catch((err) =>
-      LOGGER.debug(err)
+      LOGGER.debug(err),
     );
     if (dialogData === undefined) {
       return;
@@ -479,7 +479,7 @@ export default class CPRItemSheet extends ItemSheet {
     } else {
       foundry.utils.mergeObject(
         cprRoleData.abilities.find((a) => a.name === subRole.name),
-        dialogData.subRole
+        dialogData.subRole,
       );
       this.item.update({ "system.abilities": cprRoleData.abilities });
     }
@@ -492,35 +492,35 @@ export default class CPRItemSheet extends ItemSheet {
       // Set options for dialog.
       {
         title: SystemUtils.Localize(
-          "CPR.dialog.netArchitectureRolltableSelection.title"
+          "CPR.dialog.netArchitectureRolltableSelection.title",
         ),
         template: `systems/${game.system.id}/templates/dialog/cpr-netarch-rolltable-generation-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
     }
     const tableSetting = game.settings.get(
       game.system.id,
-      "netArchRollTableCompendium"
+      "netArchRollTableCompendium",
     );
     const lobby = await SystemUtils.GetCompendiumDoc(
       tableSetting,
-      "First Two Floors (The Lobby)"
+      "First Two Floors (The Lobby)",
     );
     const other = await SystemUtils.GetCompendiumDoc(
       tableSetting,
-      "All Other Floors (".concat(formData.difficulty.capitalize(), ")")
+      "All Other Floors (".concat(formData.difficulty.capitalize(), ")"),
     );
     const numberOfFloorsRoll = new CPRRoll(
       SystemUtils.Localize("CPR.rolls.roll"),
-      "3d6"
+      "3d6",
     );
     await numberOfFloorsRoll.roll();
     const numberOfFloors = numberOfFloorsRoll.resultTotal;
     const branchCheck = new CPRRoll(
       SystemUtils.Localize("CPR.rolls.roll"),
-      "1d10"
+      "1d10",
     );
     await branchCheck.roll();
     let branchCounter = 0;
@@ -535,7 +535,7 @@ export default class CPRItemSheet extends ItemSheet {
     let floors = await this._netarchDrawFromTableCustom(lobby, 2);
     if (numberOfFloors > 2) {
       floors = floors.concat(
-        await this._netarchDrawFromTableCustom(other, numberOfFloors - 2)
+        await this._netarchDrawFromTableCustom(other, numberOfFloors - 2),
       );
     }
     const prop = [];
@@ -624,7 +624,7 @@ export default class CPRItemSheet extends ItemSheet {
         description: "Roll ".concat(
           floor.roll.total.toString(),
           ": ",
-          floor.results[0].text
+          floor.results[0].text,
         ),
       });
       index += 1;
@@ -660,7 +660,7 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _netarchLevelAction(event) {
     const target = Number(
-      SystemUtils.GetEventDatum(event, "data-action-target")
+      SystemUtils.GetEventDatum(event, "data-action-target"),
     );
     const action = SystemUtils.GetEventDatum(event, "data-action-type");
     const cprItemData = foundry.utils.duplicate(this.item.system);
@@ -668,13 +668,13 @@ export default class CPRItemSheet extends ItemSheet {
     if (action === "delete") {
       const setting = game.settings.get(
         game.system.id,
-        "deleteItemConfirmation"
+        "deleteItemConfirmation",
       );
       if (setting) {
         const dialogMessage = `${SystemUtils.Localize(
-          "CPR.dialog.deleteConfirmation.message"
+          "CPR.dialog.deleteConfirmation.message",
         )} ${SystemUtils.Localize(
-          "CPR.netArchitecture.floor.deleteConfirmation"
+          "CPR.netArchitecture.floor.deleteConfirmation",
         )}?`;
 
         // Show "Default" dialog.
@@ -683,7 +683,7 @@ export default class CPRItemSheet extends ItemSheet {
           // Set the options for the dialog.
           {
             title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-          }
+          },
         ).catch((err) => LOGGER.debug(err));
         if (!confirmDelete) {
           return;
@@ -801,67 +801,67 @@ export default class CPRItemSheet extends ItemSheet {
         ],
         contentoptions: {
           "CPR.netArchitecture.floor.options.password": SystemUtils.Localize(
-            "CPR.netArchitecture.floor.options.password"
+            "CPR.netArchitecture.floor.options.password",
           ),
           "CPR.netArchitecture.floor.options.file": SystemUtils.Localize(
-            "CPR.netArchitecture.floor.options.file"
+            "CPR.netArchitecture.floor.options.file",
           ),
           "CPR.netArchitecture.floor.options.controlnode": SystemUtils.Localize(
-            "CPR.netArchitecture.floor.options.controlnode"
+            "CPR.netArchitecture.floor.options.controlnode",
           ),
           "CPR.global.programClass.blackice": SystemUtils.Localize(
-            "CPR.global.programClass.blackice"
+            "CPR.global.programClass.blackice",
           ),
         },
         blackiceoptions: {
           "--": "--",
           "CPR.netArchitecture.floor.options.blackIce.asp":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.asp"
+              "CPR.netArchitecture.floor.options.blackIce.asp",
             ),
           "CPR.netArchitecture.floor.options.blackIce.giant":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.giant"
+              "CPR.netArchitecture.floor.options.blackIce.giant",
             ),
           "CPR.netArchitecture.floor.options.blackIce.hellhound":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.hellhound"
+              "CPR.netArchitecture.floor.options.blackIce.hellhound",
             ),
           "CPR.netArchitecture.floor.options.blackIce.kraken":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.kraken"
+              "CPR.netArchitecture.floor.options.blackIce.kraken",
             ),
           "CPR.netArchitecture.floor.options.blackIce.liche":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.liche"
+              "CPR.netArchitecture.floor.options.blackIce.liche",
             ),
           "CPR.netArchitecture.floor.options.blackIce.raven":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.raven"
+              "CPR.netArchitecture.floor.options.blackIce.raven",
             ),
           "CPR.netArchitecture.floor.options.blackIce.scorpion":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.scorpion"
+              "CPR.netArchitecture.floor.options.blackIce.scorpion",
             ),
           "CPR.netArchitecture.floor.options.blackIce.skunk":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.skunk"
+              "CPR.netArchitecture.floor.options.blackIce.skunk",
             ),
           "CPR.netArchitecture.floor.options.blackIce.wisp":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.wisp"
+              "CPR.netArchitecture.floor.options.blackIce.wisp",
             ),
           "CPR.netArchitecture.floor.options.blackIce.dragon":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.dragon"
+              "CPR.netArchitecture.floor.options.blackIce.dragon",
             ),
           "CPR.netArchitecture.floor.options.blackIce.killer":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.killer"
+              "CPR.netArchitecture.floor.options.blackIce.killer",
             ),
           "CPR.netArchitecture.floor.options.blackIce.sabertooth":
             SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.blackIce.sabertooth"
+              "CPR.netArchitecture.floor.options.blackIce.sabertooth",
             ),
         },
         floor: "1",
@@ -972,68 +972,68 @@ export default class CPRItemSheet extends ItemSheet {
           ],
           contentoptions: {
             "CPR.netArchitecture.floor.options.password": SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.password"
+              "CPR.netArchitecture.floor.options.password",
             ),
             "CPR.netArchitecture.floor.options.file": SystemUtils.Localize(
-              "CPR.netArchitecture.floor.options.file"
+              "CPR.netArchitecture.floor.options.file",
             ),
             "CPR.netArchitecture.floor.options.controlnode":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.controlnode"
+                "CPR.netArchitecture.floor.options.controlnode",
               ),
             "CPR.global.programClass.blackice": SystemUtils.Localize(
-              "CPR.global.programClass.blackice"
+              "CPR.global.programClass.blackice",
             ),
           },
           blackiceoptions: {
             "--": "--",
             "CPR.netArchitecture.floor.options.blackIce.asp":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.asp"
+                "CPR.netArchitecture.floor.options.blackIce.asp",
               ),
             "CPR.netArchitecture.floor.options.blackIce.giant":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.giant"
+                "CPR.netArchitecture.floor.options.blackIce.giant",
               ),
             "CPR.netArchitecture.floor.options.blackIce.hellhound":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.hellhound"
+                "CPR.netArchitecture.floor.options.blackIce.hellhound",
               ),
             "CPR.netArchitecture.floor.options.blackIce.kraken":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.kraken"
+                "CPR.netArchitecture.floor.options.blackIce.kraken",
               ),
             "CPR.netArchitecture.floor.options.blackIce.liche":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.liche"
+                "CPR.netArchitecture.floor.options.blackIce.liche",
               ),
             "CPR.netArchitecture.floor.options.blackIce.raven":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.raven"
+                "CPR.netArchitecture.floor.options.blackIce.raven",
               ),
             "CPR.netArchitecture.floor.options.blackIce.scorpion":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.scorpion"
+                "CPR.netArchitecture.floor.options.blackIce.scorpion",
               ),
             "CPR.netArchitecture.floor.options.blackIce.skunk":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.skunk"
+                "CPR.netArchitecture.floor.options.blackIce.skunk",
               ),
             "CPR.netArchitecture.floor.options.blackIce.wisp":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.wisp"
+                "CPR.netArchitecture.floor.options.blackIce.wisp",
               ),
             "CPR.netArchitecture.floor.options.blackIce.dragon":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.dragon"
+                "CPR.netArchitecture.floor.options.blackIce.dragon",
               ),
             "CPR.netArchitecture.floor.options.blackIce.killer":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.killer"
+                "CPR.netArchitecture.floor.options.blackIce.killer",
               ),
             "CPR.netArchitecture.floor.options.blackIce.sabertooth":
               SystemUtils.Localize(
-                "CPR.netArchitecture.floor.options.blackIce.sabertooth"
+                "CPR.netArchitecture.floor.options.blackIce.sabertooth",
               ),
           },
           floor: editElement.floor,
@@ -1049,7 +1049,7 @@ export default class CPRItemSheet extends ItemSheet {
         formData = await CPRDialog.showDialog(formData, {
           // Set the options for the dialog.
           title: SystemUtils.Localize(
-            "CPR.dialog.netArchitectureNewFloor.title"
+            "CPR.dialog.netArchitectureNewFloor.title",
           ),
           template: `systems/${game.system.id}/templates/dialog/cpr-netarch-level-prompt.hbs`,
         }).catch((err) => LOGGER.debug(err));
@@ -1084,7 +1084,7 @@ export default class CPRItemSheet extends ItemSheet {
         "error",
         SystemUtils.Format("CPR.messages.itemDoesNotExistError", {
           itemid: itemId,
-        })
+        }),
       );
     }
   }
@@ -1114,7 +1114,7 @@ export default class CPRItemSheet extends ItemSheet {
     if (this.item.pack)
       return SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.warningCannotModifyInstalledInPack")
+        SystemUtils.Localize("CPR.messages.warningCannotModifyInstalledInPack"),
       );
     const installedItemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const actor = this.item.isEmbedded ? this.item.actor : null;
@@ -1163,8 +1163,8 @@ export default class CPRItemSheet extends ItemSheet {
         formData.skill !== "--" && formData.skill !== "varying"
           ? allSkills.find((a) => a.name === formData.skill)
           : formData.skill === "varying"
-          ? "varying"
-          : "--";
+            ? "varying"
+            : "--";
       formData.skill = skillObject;
       abilities.push(formData);
     }
@@ -1172,11 +1172,11 @@ export default class CPRItemSheet extends ItemSheet {
     if (action === "delete") {
       const setting = game.settings.get(
         game.system.id,
-        "deleteItemConfirmation"
+        "deleteItemConfirmation",
       );
       if (setting) {
         const dialogMessage = `${SystemUtils.Localize(
-          "CPR.dialog.deleteConfirmation.message"
+          "CPR.dialog.deleteConfirmation.message",
         )} ${SystemUtils.Localize("CPR.itemSheet.role.deleteConfirmation")}?`;
 
         // Show "Default" dialog.
@@ -1185,7 +1185,7 @@ export default class CPRItemSheet extends ItemSheet {
           // Set the options for the dialog.
           {
             title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-          }
+          },
         ).catch((err) => LOGGER.debug(err));
         if (!confirmDelete) {
           return;
@@ -1221,17 +1221,17 @@ export default class CPRItemSheet extends ItemSheet {
         formData.skill !== "--" && formData.skill !== "varying"
           ? allSkills.find((a) => a.name === formData.skill)
           : formData.skill === "varying"
-          ? "varying"
-          : "--";
+            ? "varying"
+            : "--";
       formData.skill = skillObject;
       abilities.splice(
         index,
         1,
-        foundry.utils.mergeObject(abilityData, formData)
+        foundry.utils.mergeObject(abilityData, formData),
       );
     }
     const sortedAbilities = abilities.sort((a, b) =>
-      a.name > b.name ? -1 : 1
+      a.name > b.name ? -1 : 1,
     );
     foundry.utils.setProperty(cprItemData, "abilities", sortedAbilities);
     this.item.update({ system: cprItemData });
@@ -1311,10 +1311,10 @@ export default class CPRItemSheet extends ItemSheet {
 
     const dialogPromptTitle = `${SystemUtils.Format(
       "CPR.dialog.selectInstallableItems.title",
-      { type: dialogItemType }
+      { type: dialogItemType },
     )}
     | ${SystemUtils.Localize("CPR.global.generic.item")} ${SystemUtils.Localize(
-      "CPR.global.generic.slots"
+      "CPR.global.generic.slots",
     )}: ${totalSlots}`;
 
     const dialogPromptText =
@@ -1409,7 +1409,7 @@ export default class CPRItemSheet extends ItemSheet {
     // render its sheet.
     if (this.item.pack) {
       const flattenedTree = this.item.flattenInstallTree(
-        ContainerUtils.getInstallTreeFlag(this.item)
+        ContainerUtils.getInstallTreeFlag(this.item),
       );
       const itemData = flattenedTree.find((i) => i._id === itemId);
       // eslint-disable-next-line new-cap
@@ -1436,7 +1436,7 @@ export default class CPRItemSheet extends ItemSheet {
       {
         title: SystemUtils.Localize("CPR.dialog.manageItemTypes.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-manage-installable-types-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
@@ -1446,7 +1446,7 @@ export default class CPRItemSheet extends ItemSheet {
     if (allowedTypes.length === 0 && this.item.system.hasInstalled) {
       SystemUtils.DisplayMessage(
         "error",
-        "CPR.messages.hasInstalledItemsOfRemovedType"
+        "CPR.messages.hasInstalledItemsOfRemovedType",
       );
       return;
     }

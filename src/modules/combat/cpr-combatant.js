@@ -32,20 +32,20 @@ export default class CPRCombatant extends Combatant {
           actor.name,
           formula,
           statName,
-          statValue
+          statValue,
         );
         break;
       }
       case "demon": {
         statName = SystemUtils.Localize(
-          "CPR.global.role.netrunner.ability.interface"
+          "CPR.global.role.netrunner.ability.interface",
         );
         statValue = actor.getStat("interface");
         cprInitiative = new CPRRolls.CPRInitiative(
           actor.name,
           formula,
           statName,
-          statValue
+          statValue,
         );
         break;
       }
@@ -56,7 +56,7 @@ export default class CPRCombatant extends Combatant {
           actor.name,
           formula,
           statName,
-          statValue
+          statValue,
         );
         break;
       }
@@ -68,7 +68,7 @@ export default class CPRCombatant extends Combatant {
           actor.name,
           formula,
           statName,
-          statValue
+          statValue,
         );
         break;
     }
@@ -77,7 +77,7 @@ export default class CPRCombatant extends Combatant {
       const effects = Array.from(actor.allApplicableEffects());
       const allMods = CPRMod.getAllModifiers(effects);
       const filteredMods = allMods.filter(
-        (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+        (m) => !m.isSituational || (m.isSituational && m.onByDefault),
       );
 
       const initiativeMods = CPRMod.getRelevantMods(filteredMods, "initiative");
@@ -90,7 +90,7 @@ export default class CPRCombatant extends Combatant {
         roleMods = roleMods.concat(r.getRoleMods("initiative", true));
       });
       roleMods = roleMods.filter(
-        (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+        (m) => !m.isSituational || (m.isSituational && m.onByDefault),
       );
 
       cprInitiative.addMod(roleMods); // add bonus from role abilities and subabilities

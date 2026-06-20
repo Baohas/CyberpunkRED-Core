@@ -23,12 +23,12 @@ const createDefaultBlackIceActor = () => {
       return game.actors.filter(
         (bi) =>
           bi.type === "blackIce" &&
-          bi.name.toLowerCase().replace(/\s+/g, "") === name
+          bi.name.toLowerCase().replace(/\s+/g, "") === name,
       );
     };
 
     const blackIceSearch = SystemUtils.Localize(
-      "CPR.global.programClass.blackice"
+      "CPR.global.programClass.blackice",
     )
       .toLowerCase()
       .replace(/\s+/g, "");

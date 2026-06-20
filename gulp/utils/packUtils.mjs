@@ -322,6 +322,8 @@ export default class PackUtils {
       keyEncoding: "utf8",
       valueEncoding: "json",
     });
+    // classic-level v3 no longer lazily auto-opens before iterator(); open explicitly
+    await db.open();
 
     // Iterate over all entries in the db, writing them as individual YAML files
     for await (const [key, data] of db.iterator()) {
@@ -329,7 +331,7 @@ export default class PackUtils {
       // and for when we need to re-pack the data
       data._key = key;
       // Clean up the data
-      const cleanData = this.cleanPackData(data);
+      const cleanData = await this.cleanPackData(data);
       // work out the filename
       const fileName = `${fragmentDir}/${this.getFragmentName(data)}`;
       // Dump out to a YAML fragment file
@@ -370,6 +372,8 @@ export default class PackUtils {
       keyEncoding: "utf8",
       valueEncoding: "json",
     });
+    // classic-level v3 no longer lazily auto-opens before batch(); open explicitly
+    await db.open();
     const batch = db.batch();
 
     const files = fs.readdirSync(fragmentDir);
@@ -383,7 +387,7 @@ export default class PackUtils {
       // We don't want to store the key in the data so delete it from data
       delete data._key;
       // Scrub the data of anything we don't need
-      const cleanData = this.cleanPackData(data);
+      const cleanData = await this.cleanPackData(data);
       // Generate the `_stats` key
       const finalData = this.generateStats(cleanData);
       // Add the data to the batch to be written to the db
@@ -543,7 +547,7 @@ export default class PackUtils {
    * @returns {Object} - The cleaned pack data after performing the necessary
    *                     clean-up operations.
    */
-  static cleanPackData(data) {
+  static async cleanPackData(data) {
     if (TRACE) {
       log(`TRACE: PackUtils | cleanPackData called.`);
     }
@@ -669,7 +673,8 @@ export default class PackUtils {
         if (data.label) data.label = this.cleanString(data.label);
         if (data.system?.description?.value) {
           const cleanDesc = this.cleanString(data.system.description.value);
-          data.system.description.value = prettier.format(cleanDesc, {
+          // prettier 3's format() is async (returned a string in v2)
+          data.system.description.value = await prettier.format(cleanDesc, {
             parser: "html",
           });
         }

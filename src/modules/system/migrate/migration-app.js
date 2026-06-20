@@ -7,7 +7,7 @@ const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 const { renderTemplate } = foundry.applications.handlebars;
 
 export default class MigrationApp extends HandlebarsApplicationMixin(
-  ApplicationV2
+  ApplicationV2,
 ) {
   constructor(options = {}) {
     super(options);
@@ -297,7 +297,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
       .filter(
         (p) =>
           ["Actor", "Item", "Scene"].includes(p.metadata.type) &&
-          p.metadata.packageType === "world"
+          p.metadata.packageType === "world",
       )
       .forEach((p) => {
         context.worldPacks[p.metadata.id] = p.metadata.label;
@@ -316,7 +316,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
 
     // Hide the close button in the window header.
     const headerCloseButton = element.querySelector(
-      ".window-header [data-action='close']"
+      ".window-header [data-action='close']",
     );
     headerCloseButton.style = "display: none";
   }
@@ -373,7 +373,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     const modPackOptions = {};
     game.modules.forEach((module) => {
       const filteredPacks = module.packs.filter((p) =>
-        compendiaTypes.includes(p.type)
+        compendiaTypes.includes(p.type),
       );
       if (filteredPacks.size === 0) return;
       const packIds = filteredPacks.map((p) => p.id);
@@ -465,7 +465,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     // Pop Up the relevant Changelog Journal from
     const changelog = await CPRSystemUtils.GetCompendiumDoc(
       CPR.changelogCompendium,
-      `Changelog ${CONFIG.supportedLanguages[game.i18n.lang]}`
+      `Changelog ${CONFIG.supportedLanguages[game.i18n.lang]}`,
     );
     changelog.sheet.render(true);
   }
@@ -533,7 +533,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     saveDataToFile(
       JSON.stringify(error, replacer, 2),
       "text/json",
-      `${filename}.json`
+      `${filename}.json`,
     );
   }
 
@@ -610,7 +610,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    */
   async onUserConfirm() {
     const confirmButton = this.element.querySelector(
-      ".migration-button[data-action='confirmMigration']"
+      ".migration-button[data-action='confirmMigration']",
     );
     // Set button's position relative, so that the hold-meter
     // we create can be positioned correctly.
@@ -670,7 +670,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     // Replace compendia selection form with progress section.
     const progressTemplate = await renderTemplate(
       `systems/${game.system.id}/templates/migration/migration-progress.hbs`,
-      { progress: this.progress }
+      { progress: this.progress },
     );
 
     // Create dummy element.
@@ -698,7 +698,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   async onDocumentsReady() {
     for (const [docType, progress] of Object.entries(this.progress)) {
       progress.element = this.element.querySelector(
-        `#migration-progress-${docType}`
+        `#migration-progress-${docType}`,
       );
       progress.max = this.migrationRunner.totalDocs[docType];
       progress.render();
@@ -817,7 +817,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     if (messageData) {
       message = game.i18n.format(
         `CPR.migration.messages.${phase}`,
-        messageData
+        messageData,
       );
     }
     this.messages.push(message);
@@ -870,7 +870,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
           messages: Array.from(this.unreadMessages)
             .map((i) => i + 1)
             .join(", "),
-        })
+        }),
       );
     }
 
@@ -905,7 +905,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
     if (!this.buttons) return;
     const buttonsTemplate = await renderTemplate(
       `systems/${game.system.id}/templates/migration/migration-buttons.hbs`,
-      this.buttons
+      this.buttons,
     );
     const messagesElement = this.element.querySelector(".messages");
     const htmlTemplate = document.createElement("template");

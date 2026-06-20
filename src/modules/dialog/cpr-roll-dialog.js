@@ -66,7 +66,7 @@ export class CPRRollDialog extends CPRDialog {
       this.rollData,
       Array.from(this.actor.allApplicableEffects()),
       this.item,
-      this.actor
+      this.actor,
     );
     this.filteredMods = data.filteredMods;
 
@@ -99,7 +99,7 @@ export class CPRRollDialog extends CPRDialog {
         value: standardDamage,
         label: `${SystemUtils.Format("CPR.itemSheet.program.damageTo", {
           programType: SystemUtils.Localize(
-            "CPR.itemSheet.program.nonBlackIce"
+            "CPR.itemSheet.program.nonBlackIce",
           ),
         })}: (${standardDamage})`,
       },
@@ -203,7 +203,7 @@ export class CPRRollDialog extends CPRDialog {
       if (fd.additionalMods.some((m) => isNaN(m))) {
         SystemUtils.DisplayMessage(
           "warn",
-          "CPR.rolls.modifiers.additionalModWarning"
+          "CPR.rolls.modifiers.additionalModWarning",
         );
       }
       fd.additionalMods.forEach((m, i) => {
@@ -241,7 +241,7 @@ export class CPRRoleRollDialog extends CPRRollDialog {
         // so all form data are consistent with the what the dropdown menu displays by default.
         // Note, this will only happen when the dialog is first opened, which is by design.
         const firstSkill = this.rollData.skillList.sort((a, b) =>
-          a.name > b.name ? 1 : -1
+          a.name > b.name ? 1 : -1,
         )[0];
         data.rollData.skillName = firstSkill.name;
         data.rollData.skillValue = firstSkill.system.level;
@@ -273,7 +273,7 @@ export class CPRRoleRollDialog extends CPRRollDialog {
    */
   _updateSkillValue(event) {
     const skill = this.rollData.skillList.find(
-      (s) => s.name === event.currentTarget.value
+      (s) => s.name === event.currentTarget.value,
     );
 
     // Set skill level.
@@ -317,7 +317,7 @@ export class CPRRoleRollDialog extends CPRRollDialog {
       previousSkillMods.forEach((previousMod) => {
         if (
           this.rollData.mods.some(
-            (currentMod) => previousMod.id === currentMod.id
+            (currentMod) => previousMod.id === currentMod.id,
           )
         ) {
           this.rollData.removeMod(previousMod.id);
@@ -325,11 +325,11 @@ export class CPRRoleRollDialog extends CPRRollDialog {
 
         if (
           this.filteredMods.some(
-            (currentMod) => previousMod.id === currentMod.id
+            (currentMod) => previousMod.id === currentMod.id,
           )
         ) {
           const modIndex = this.filteredMods.findIndex(
-            (currentMod) => previousMod.id === currentMod.id
+            (currentMod) => previousMod.id === currentMod.id,
           );
           this.filteredMods.splice(modIndex, 1);
         }

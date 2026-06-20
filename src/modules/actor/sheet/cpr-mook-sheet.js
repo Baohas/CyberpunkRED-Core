@@ -21,7 +21,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets"
+      "resizeCPRSheets",
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -61,17 +61,17 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     const foundryData = await super.getData();
     const cprActorData = foundryData.actor.system;
     cprActorData.equippedArmor = this.actor.itemTypes.armor.filter(
-      (item) => item.system.equipped === "equipped"
+      (item) => item.system.equipped === "equipped",
     );
     cprActorData.equippedWeapons = this.actor.itemTypes.weapon.filter(
-      (item) => item.system.equipped === "equipped"
+      (item) => item.system.equipped === "equipped",
     );
 
     const installedCyberware = this.actor.itemTypes.cyberware.filter(
-      (cw) => cw.system.isInstalled
+      (cw) => cw.system.isInstalled,
     );
     const installedWeapons = installedCyberware.filter(
-      (c) => c.system.isWeapon === true
+      (c) => c.system.isWeapon === true,
     );
     cprActorData.equippedWeapons =
       cprActorData.equippedWeapons.concat(installedWeapons);
@@ -119,7 +119,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     const skillObj = {};
 
     const sortedArray = SystemUtils.SortItemListByName(
-      this.actor.itemTypes.skill
+      this.actor.itemTypes.skill,
     );
     sortedArray.forEach((s) => {
       const skillRef = {
@@ -138,7 +138,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       {
         title: "CPR.mookSheet.dialog.modSkillTitle",
         template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;
@@ -150,10 +150,10 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       const newSkill = formData[oldSkill.id];
       if (oldSkill.level !== newSkill.level) {
         LOGGER.debug(
-          `you changed ${oldSkill.name} from ${oldSkill.level} to ${newSkill.level}`
+          `you changed ${oldSkill.name} from ${oldSkill.level} to ${newSkill.level}`,
         );
         const [updatedSkill] = this.actor.itemTypes.skill.filter(
-          (s) => oldSkill.name === s.name
+          (s) => oldSkill.name === s.name,
         );
         updatedSkill.setSkillLevel(newSkill.level);
         updatedSkills.push({
@@ -171,8 +171,8 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     SystemUtils.DisplayMessage(
       "notify",
       `${updatedSkills.length} ${SystemUtils.Localize(
-        "CPR.mookSheet.skills.updated"
-      )}`
+        "CPR.mookSheet.skills.updated",
+      )}`,
     );
   }
 
@@ -192,7 +192,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       {
         title: SystemUtils.Localize("CPR.mookSheet.dialog.modNameTitle"),
         template: `systems/${game.system.id}/templates/dialog/cpr-mook-name-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
     if (dialogData === undefined) {
       return;
@@ -224,13 +224,13 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     ) {
       mookImageToggle.attr(
         "data-text",
-        SystemUtils.Localize("CPR.mookSheet.image.expand")
+        SystemUtils.Localize("CPR.mookSheet.image.expand"),
       );
       collapsedImage = true;
     } else {
       mookImageToggle.attr(
         "data-text",
-        SystemUtils.Localize("CPR.mookSheet.image.collapse")
+        SystemUtils.Localize("CPR.mookSheet.image.collapse"),
       );
       collapsedImage = false;
     }
@@ -268,25 +268,25 @@ export default class CPRMookActorSheet extends CPRActorSheet {
           if (item.system.core === true) {
             SystemUtils.DisplayMessage(
               "error",
-              SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware")
+              SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"),
             );
           } else {
             const foundationalId = SystemUtils.GetEventDatum(
               event,
-              "data-foundational-id"
+              "data-foundational-id",
             );
             const dialogTitle = SystemUtils.Localize(
-              "CPR.dialog.removeCyberware.title"
+              "CPR.dialog.removeCyberware.title",
             );
             const dialogMessage = `${SystemUtils.Localize(
-              "CPR.dialog.removeCyberware.text"
+              "CPR.dialog.removeCyberware.text",
             )} ${item.name}?`;
 
             // Show "Default" dialog.
             const confirmRemove = await CPRDialog.showDialog(
               { dialogMessage },
               // Set the options for the dialog.
-              { title: dialogTitle }
+              { title: dialogTitle },
             ).catch((err) => LOGGER.debug(err));
             if (!confirmRemove) return;
 
@@ -322,27 +322,27 @@ export default class CPRMookActorSheet extends CPRActorSheet {
         if (item.system.core === true) {
           SystemUtils.DisplayMessage(
             "error",
-            SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware")
+            SystemUtils.Localize("CPR.messages.cannotDeleteCoreCyberware"),
           );
         } else if (item.system.isInstalled === false) {
           await this.actor.installCyberware(itemId);
         } else {
           const foundationalId = SystemUtils.GetEventDatum(
             event,
-            "data-foundational-id"
+            "data-foundational-id",
           );
           const dialogTitle = SystemUtils.Localize(
-            "CPR.dialog.removeCyberware.title"
+            "CPR.dialog.removeCyberware.title",
           );
           const dialogMessage = `${SystemUtils.Localize(
-            "CPR.dialog.removeCyberware.text"
+            "CPR.dialog.removeCyberware.text",
           )} ${item.name}?`;
 
           // Show "Default" dialog.
           const confirmRemove = await CPRDialog.showDialog(
             { dialogMessage },
             // Set the options for the dialog.
-            { title: dialogTitle }
+            { title: dialogTitle },
           ).catch((err) => LOGGER.debug(err));
           if (!confirmRemove) return;
 

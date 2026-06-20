@@ -33,7 +33,7 @@ export default class CPRChat {
 
     if (["gmroll", "blindroll"].includes(chatData.rollMode)) {
       chatData.whisper = ChatMessage.getWhisperRecipients("GM").map(
-        (u) => u.id
+        (u) => u.id,
       );
     }
 
@@ -114,7 +114,7 @@ export default class CPRChat {
     if (trimmedItem.name === null || trimmedItem.trimName.length > maxNameLen) {
       trimmedItem.trimName = `${trimmedItem.trimName.slice(
         0,
-        maxNameLen - 1
+        maxNameLen - 1,
       )}…`;
     }
     const maxDescLen = 5000;
@@ -125,7 +125,7 @@ export default class CPRChat {
       // here is the dangerous code
       trimmedItem.trimDesc = `${trimmedItem.trimDesc.slice(
         0,
-        maxDescLen - 1
+        maxDescLen - 1,
       )}…`;
     }
 
@@ -133,7 +133,7 @@ export default class CPRChat {
       const chatOptions = this.ChatDataSetup(html);
       if (item.entityData !== undefined && item.entityData !== null) {
         const actor = game.actors.filter(
-          (a) => a.id === item.entityData.actor
+          (a) => a.id === item.entityData.actor,
         )[0];
         let alias = actor.name;
         if (item.entityData.token !== null) {
@@ -180,7 +180,7 @@ export default class CPRChat {
           chatOptions.speaker = { actor, alias };
         }
         return ChatMessage.create(chatOptions);
-      }
+      },
     );
   }
 
@@ -220,7 +220,7 @@ export default class CPRChat {
         }
         cprRoll = new CPRDamageRoll(
           SystemUtils.Localize("CPR.rolls.roll"),
-          formula
+          formula,
         );
         cprRoll.rollCardExtraArgs.ablationValue = ablation;
       } else {
@@ -255,7 +255,7 @@ export default class CPRChat {
         case "toggleVisibility": {
           const elementName = SystemUtils.GetEventDatum(
             event,
-            "data-visible-element"
+            "data-visible-element",
           );
           $(html).find(`.${elementName}`).toggleClass("hide");
           break;
@@ -267,11 +267,11 @@ export default class CPRChat {
           const tokenId = SystemUtils.GetEventDatum(event, "data-token-id");
           const location = SystemUtils.GetEventDatum(
             event,
-            "data-damage-location"
+            "data-damage-location",
           );
           const attackType = SystemUtils.GetEventDatum(
             event,
-            "data-attack-type"
+            "data-attack-type",
           );
           const actor = Object.keys(game.actors.tokens).includes(tokenId)
             ? game.actors.tokens[tokenId]
@@ -282,8 +282,8 @@ export default class CPRChat {
             SystemUtils.DisplayMessage(
               "warn",
               `[${displayName}] ${SystemUtils.Localize(
-                "CPR.actormissingitem"
-              )} ${itemId}`
+                "CPR.actormissingitem",
+              )} ${itemId}`,
             );
             return;
           }
@@ -300,7 +300,7 @@ export default class CPRChat {
           } else {
             const programId = SystemUtils.GetEventDatum(
               event,
-              "data-program-id"
+              "data-program-id",
             );
             // Warn if no damage is configured.
             const program = actor.getOwnedItem(programId);
@@ -312,13 +312,13 @@ export default class CPRChat {
             ) {
               SystemUtils.DisplayMessage(
                 "warn",
-                SystemUtils.Localize("CPR.chat.rollDamage.warningProgramDmg")
+                SystemUtils.Localize("CPR.chat.rollDamage.warningProgramDmg"),
               );
               return;
             }
             rollType = programId === "zap" ? "interfaceAbility" : rollType; // reassign rollType to "interfaceAbility" if this is a Zap roll.
             const netRoleItem = actor.itemTypes.role.find(
-              (r) => r.id === actor.system.roleInfo.activeNetRole
+              (r) => r.id === actor.system.roleInfo.activeNetRole,
             );
             cprRoll = item.createRoll(rollType, actor, {
               cyberdeckId: itemId,
@@ -336,7 +336,7 @@ export default class CPRChat {
           const keepRolling = await cprRoll.handleRollDialog(
             event,
             actor,
-            item
+            item,
           );
           if (!keepRolling) {
             return;
@@ -374,7 +374,7 @@ export default class CPRChat {
           const injuryComp = SystemUtils.GetEventDatum(event, "data-item-comp");
           const injury = await SystemUtils.GetCompendiumDoc(
             injuryComp,
-            injuryName
+            injuryName,
           );
           injury.sheet.render(true, { editable: false });
           break;
@@ -390,16 +390,16 @@ export default class CPRChat {
           const tokenId = SystemUtils.GetEventDatum(event, "data-token-id");
           const hpReduction = parseInt(
             SystemUtils.GetEventDatum(event, "data-hp-reduction"),
-            10
+            10,
           );
           const location = SystemUtils.GetEventDatum(event, "data-location");
           const ablation = parseInt(
             SystemUtils.GetEventDatum(event, "data-ablation"),
-            10
+            10,
           );
           const shieldAblation = parseInt(
             SystemUtils.GetEventDatum(event, "data-shield-ablation"),
-            10
+            10,
           );
           const actor = Object.keys(game.actors.tokens).includes(tokenId)
             ? game.actors.tokens[tokenId]
@@ -458,19 +458,19 @@ export default class CPRChat {
   static async damageApplication(event) {
     // Define a bunch of constants to be used in the rest of the function.
     const totalDamage = SystemUtils.isNumeric(
-      parseInt(SystemUtils.GetEventDatum(event, "data-total-damage"), 10)
+      parseInt(SystemUtils.GetEventDatum(event, "data-total-damage"), 10),
     )
       ? parseInt(SystemUtils.GetEventDatum(event, "data-total-damage"), 10)
       : 0;
 
     const bonusDamage = SystemUtils.isNumeric(
-      parseInt(SystemUtils.GetEventDatum(event, "data-bonus-damage"), 10)
+      parseInt(SystemUtils.GetEventDatum(event, "data-bonus-damage"), 10),
     )
       ? parseInt(SystemUtils.GetEventDatum(event, "data-bonus-damage"), 10)
       : 0;
 
     const damageLethal = /true/i.test(
-      SystemUtils.GetEventDatum(event, "data-damage-lethal")
+      SystemUtils.GetEventDatum(event, "data-damage-lethal"),
     );
     const ammoVariety = SystemUtils.GetEventDatum(event, "data-ammo-variety");
     let location = SystemUtils.GetEventDatum(event, "data-damage-location");
@@ -479,21 +479,21 @@ export default class CPRChat {
     }
 
     const ablation = SystemUtils.isNumeric(
-      parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10)
+      parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10),
     )
       ? parseInt(SystemUtils.GetEventDatum(event, "data-ablation"), 10)
       : 0;
 
     const ignoreArmorPercent = SystemUtils.isNumeric(
-      parseFloat(SystemUtils.GetEventDatum(event, "data-ignore-armor-percent"))
+      parseFloat(SystemUtils.GetEventDatum(event, "data-ignore-armor-percent")),
     )
       ? parseFloat(
-          SystemUtils.GetEventDatum(event, "data-ignore-armor-percent")
+          SystemUtils.GetEventDatum(event, "data-ignore-armor-percent"),
         )
       : 0;
 
     const ignoreBelowSP = SystemUtils.isNumeric(
-      parseInt(SystemUtils.GetEventDatum(event, "data-ignore-below-sp"), 10)
+      parseInt(SystemUtils.GetEventDatum(event, "data-ignore-below-sp"), 10),
     )
       ? parseInt(SystemUtils.GetEventDatum(event, "data-ignore-below-sp"), 10)
       : 0;
@@ -503,7 +503,7 @@ export default class CPRChat {
 
     const allowedTypesMessage = `${SystemUtils.Format(
       "CPR.chat.damageApplication.prompt.allowedTypes",
-      { location }
+      { location },
     )}`;
     const scope = SystemUtils.GetEventDatum(event, "data-scope");
 
@@ -540,7 +540,7 @@ export default class CPRChat {
         // Show "Damage Application" prompt.
         dialogData = await CPRDialog.showDialog(
           dialogData,
-          dialogOptions
+          dialogOptions,
         ).catch((err) => LOGGER.debug(err));
       }
       if (!dialogData) {
@@ -555,14 +555,14 @@ export default class CPRChat {
         ignoreArmorPercent,
         ignoreBelowSP,
         damageLethal,
-        dialogData
+        dialogData,
       );
     } else {
       const tokens = SystemUtils.getUserTargetedOrSelected("selected"); // get user selected tokens
       if (tokens.length === 0) {
         SystemUtils.DisplayMessage(
           "warn",
-          "CPR.chat.damageApplication.noTokenSelected"
+          "CPR.chat.damageApplication.noTokenSelected",
         );
         return;
       }
@@ -592,7 +592,7 @@ export default class CPRChat {
           // eslint-disable-next-line no-await-in-loop
           dialogData = await CPRDialog.showDialog(
             dialogData,
-            dialogOptions
+            dialogOptions,
           ).catch((err) => LOGGER.debug(err));
         }
         if (dialogData) {
@@ -605,7 +605,7 @@ export default class CPRChat {
             ignoreArmorPercent,
             ignoreBelowSP,
             damageLethal,
-            dialogData
+            dialogData,
           );
         }
         count += 1;

@@ -80,7 +80,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const program = actor.getOwnedItem(programId);
     if (!program) {
       LOGGER.error(
-        `_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programId}.`
+        `_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programId}.`,
       );
       return new CPRRolls.CPRRoll("Unknown Program", "1d10");
     }
@@ -91,7 +91,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const { executionType } = extraData;
     const statValue = program.system[executionType];
     const statName = SystemUtils.Localize(
-      `CPR.global.blackIce.stats.${executionType}`
+      `CPR.global.blackIce.stats.${executionType}`,
     );
 
     const damageFormula = program.system.damage.standard;
@@ -104,7 +104,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           roleName,
           roleValue,
           statName,
-          statValue
+          statValue,
         );
         cprRoll.rollCardExtraArgs.program = program;
         cprRoll.rollCardExtraArgs.cyberdeck = this;
@@ -118,7 +118,7 @@ export default class CPRCyberdeckItem extends CPRItem {
           roleName,
           roleValue,
           statName,
-          statValue
+          statValue,
         );
         cprRoll.ability = "defense";
         break;
@@ -138,7 +138,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
@@ -146,7 +146,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     const netrunnerMods = CPRMod.getRelevantMods(filteredMods, cprRoll.ability);
     const roleMods = CPRMod.getRelevantMods(
       filteredMods,
-      SystemUtils.slugify(roleName)
+      SystemUtils.slugify(roleName),
     );
 
     // Mods that affect all actions.
@@ -167,7 +167,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         {
           value: actor.getWoundStateMods(),
           source: SystemUtils.Localize(
-            "CPR.rolls.modifiers.sources.woundStatePenalty"
+            "CPR.rolls.modifiers.sources.woundStatePenalty",
           ),
         },
       ]);
@@ -202,7 +202,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       }
       default: {
         rollTitle = SystemUtils.Localize(
-          CPR.interfaceAbilities[interfaceAbility]
+          CPR.interfaceAbilities[interfaceAbility],
         );
       }
     }
@@ -213,7 +213,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     // If interfaceAbility is anything else, we will handle roll as as an Interface Roll.
     if (rollInfo.executionType === "damage") {
       const zap = SystemUtils.Localize(
-        "CPR.global.role.netrunner.interfaceAbility.zap"
+        "CPR.global.role.netrunner.interfaceAbility.zap",
       );
       cprRoll = new CPRRolls.CPRDamageRoll(zap, "1d6", "program");
       cprRoll.setNetCombat(zap);
@@ -232,17 +232,17 @@ export default class CPRCyberdeckItem extends CPRItem {
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
     const netrunnerMods = CPRMod.getRelevantMods(
       filteredMods,
-      interfaceAbility
+      interfaceAbility,
     );
     const roleMods = CPRMod.getRelevantMods(
       filteredMods,
-      SystemUtils.slugify(roleName)
+      SystemUtils.slugify(roleName),
     );
 
     // Mods that affect all actions.
@@ -263,7 +263,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         {
           value: actor.getWoundStateMods(),
           source: SystemUtils.Localize(
-            "CPR.rolls.modifiers.sources.woundStatePenalty"
+            "CPR.rolls.modifiers.sources.woundStatePenalty",
           ),
         },
       ]);
@@ -290,18 +290,18 @@ export default class CPRCyberdeckItem extends CPRItem {
       // Search for a token associated with this Actor ID.
       const tokenList = game.scenes
         .map((tokenDoc) =>
-          tokenDoc.tokens.filter((t) => t.id === this.actor.id)
+          tokenDoc.tokens.filter((t) => t.id === this.actor.id),
         )
         .filter((s) => s.length > 0);
       if (tokenList.length === 1) {
         [netrunnerToken] = tokenList;
       } else {
         LOGGER.error(
-          `Attempting to create a Black ICE Token failed because we were unable to find a Token associated with World Actor "${this.actor.name}".`
+          `Attempting to create a Black ICE Token failed because we were unable to find a Token associated with World Actor "${this.actor.name}".`,
         );
         SystemUtils.DisplayMessage(
           "error",
-          SystemUtils.Localize("CPR.messages.rezBlackIceWithoutToken")
+          SystemUtils.Localize("CPR.messages.rezBlackIceWithoutToken"),
         );
         return;
       }
@@ -311,11 +311,11 @@ export default class CPRCyberdeckItem extends CPRItem {
       scene = netrunnerToken.parent;
     } else {
       LOGGER.error(
-        `_rezBlackIceToken | CPRItem | Attempting to create a Black ICE Token failed because the token does not appear to be part of a scene.`
+        `_rezBlackIceToken | CPRItem | Attempting to create a Black ICE Token failed because the token does not appear to be part of a scene.`,
       );
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.rezbiwithoutscene")
+        SystemUtils.Localize("CPR.rezbiwithoutscene"),
       );
       return;
     }
@@ -323,7 +323,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     // First, let's see if an Actor exists that is a blackIce Actor with the same name, if so, we will use that
     // to model the token Actor Data.
     const blackIceActors = game.actors.filter(
-      (bi) => bi.type === "blackIce" && bi.name === blackIceName
+      (bi) => bi.type === "blackIce" && bi.name === blackIceName,
     );
     let blackIce;
     if (blackIceActors.length === 0) {
@@ -334,7 +334,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         const dynamicFolderName = "CPR Autogenerated";
         const dynamicFolder = await SystemUtils.GetFolder(
           "Actor",
-          dynamicFolderName
+          dynamicFolderName,
         );
         // Create a new Black ICE Actor
         blackIce = await Actor.create({
@@ -356,7 +356,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         });
       } catch (error) {
         LOGGER.error(
-          `_rezBlackIceToken | CPRItem | Attempting to create a Black ICE Actor failed. Error: ${error}`
+          `_rezBlackIceToken | CPRItem | Attempting to create a Black ICE Actor failed. Error: ${error}`,
         );
         return;
       }
@@ -386,14 +386,14 @@ export default class CPRCyberdeckItem extends CPRItem {
     try {
       const biTokenList = await scene.createEmbeddedDocuments(
         "Token",
-        tokenData
+        tokenData,
       );
       const biToken = biTokenList.length > 0 ? biTokenList[0] : null;
       if (biToken !== null) {
         // Ensure Token has Black Ice image for token
         biToken.update(
           { texture: { src: blackIce.img } },
-          { animation: { duration: 0 } }
+          { animation: { duration: 0 } },
         );
         // Update the Token Actor based on the Black ICE Program Stats, leaving any effect description in place.
         biToken.actor.update({
@@ -419,7 +419,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       }
     } catch (error) {
       LOGGER.error(
-        `_rezBlackIceToken | CPRItem | Attempting to create a Black ICE Token failed. Error: ${error}`
+        `_rezBlackIceToken | CPRItem | Attempting to create a Black ICE Token failed. Error: ${error}`,
       );
     }
   }
@@ -457,22 +457,22 @@ export default class CPRCyberdeckItem extends CPRItem {
             await scene.deleteEmbeddedDocuments("Token", [biTokenId]);
           } else {
             LOGGER.warn(
-              `_derezBlackIceToken | CPRItem | Unable to find biTokenId (${biTokenId}) in scene ${Scene.name} (${Scene.id}). May have been already deleted.`
+              `_derezBlackIceToken | CPRItem | Unable to find biTokenId (${biTokenId}) in scene ${Scene.name} (${Scene.id}). May have been already deleted.`,
             );
           }
         } else {
           LOGGER.error(
-            `_derezBlackIceToken | CPRItem | Unable to locate sceneId ${Scene.id}`
+            `_derezBlackIceToken | CPRItem | Unable to locate sceneId ${Scene.id}`,
           );
         }
       } else {
         LOGGER.error(
-          `_derezBlackIceToken | CPRItem | Unable to retrieve biTokenId and sceneId from programData: ${programData.name} (${programData._id})`
+          `_derezBlackIceToken | CPRItem | Unable to retrieve biTokenId and sceneId from programData: ${programData.name} (${programData._id})`,
         );
       }
     } else {
       LOGGER.error(
-        `_derezBlackIceToken | CPRItem | No flags found in programData.`
+        `_derezBlackIceToken | CPRItem | No flags found in programData.`,
       );
     }
   }

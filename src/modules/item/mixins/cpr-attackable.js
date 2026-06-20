@@ -63,7 +63,7 @@ const Attackable = function Attackable() {
     const weaponName = this.name;
     const { weaponType } = cprWeaponData;
     let skillItem = actor.items.find(
-      (i) => i.name === cprWeaponData.weaponSkill
+      (i) => i.name === cprWeaponData.weaponSkill,
     );
 
     if (
@@ -103,7 +103,7 @@ const Attackable = function Attackable() {
       roleMods = roleMods.concat(r.getRoleMods("attack", true));
     });
     roleMods = roleMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
     const fumbleRecovery = actor.itemTypes.role.reduce((rr, role) => {
@@ -119,7 +119,7 @@ const Attackable = function Attackable() {
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
     const skillMods = CPRMod.getRelevantMods(filteredMods, [
@@ -152,7 +152,7 @@ const Attackable = function Attackable() {
           statValue,
           skillName,
           skillValue,
-          weaponType
+          weaponType,
         );
         cprRoll.addMod(aimedShotMods);
         if (cprWeaponData.isRanged) {
@@ -169,7 +169,7 @@ const Attackable = function Attackable() {
           statValue,
           skillName,
           skillValue,
-          weaponType
+          weaponType,
         );
         cprRoll.addMod(autofireMods);
         cprRoll.addMod(rangedMods);
@@ -182,7 +182,7 @@ const Attackable = function Attackable() {
           statValue,
           skillName,
           skillValue,
-          weaponType
+          weaponType,
         );
         cprRoll.addMod(suppressiveMods);
         cprRoll.addMod(rangedMods);
@@ -195,7 +195,7 @@ const Attackable = function Attackable() {
           statValue,
           skillName,
           skillValue,
-          weaponType
+          weaponType,
         );
         if (cprWeaponData.isRanged) {
           cprRoll.addMod(singleShotMods);
@@ -218,7 +218,7 @@ const Attackable = function Attackable() {
       {
         value: actor.getWoundStateMods(),
         source: SystemUtils.Localize(
-          "CPR.rolls.modifiers.sources.woundStatePenalty"
+          "CPR.rolls.modifiers.sources.woundStatePenalty",
         ),
       },
     ]);
@@ -230,7 +230,7 @@ const Attackable = function Attackable() {
     // Mod from item upgrades that affect attackmod.
     if (SystemUtils.hasMixin(this.type, "upgradable")) {
       const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter(
-        (m) => (m.isSituational && m.onByDefault) || !m.isSituational
+        (m) => (m.isSituational && m.onByDefault) || !m.isSituational,
       );
       cprRoll.addMod(relevantUpgradeMods);
 
@@ -258,7 +258,7 @@ const Attackable = function Attackable() {
     if (cprRoll instanceof CPRRolls.CPRAttackRoll && cprWeaponData.isRanged) {
       Rules.lawyer(
         this.hasAmmo(cprRoll),
-        "CPR.messages.weaponAttackOutOfBullets"
+        "CPR.messages.weaponAttackOutOfBullets",
       );
     }
     return cprRoll;
@@ -291,7 +291,7 @@ const Attackable = function Attackable() {
     cprRoll.configureAutofire(
       1,
       cprWeaponData.fireModes.autoFire,
-      autofireOverride
+      autofireOverride,
     );
 
     switch (type) {
@@ -338,14 +338,14 @@ const Attackable = function Attackable() {
       roleMods = roleMods.concat(r.getRoleMods("damage", true));
     });
     roleMods = roleMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
     cprRoll.addMod(roleMods);
 
     if (SystemUtils.hasMixin(this.type, "upgradable")) {
       // Mod from item upgrades that affect damage.
       const relevantUpgradeMods = this.getAllUpgradeMods("damage").filter(
-        (m) => (m.isSituational && m.onByDefault) || !m.isSituational
+        (m) => (m.isSituational && m.onByDefault) || !m.isSituational,
       );
 
       // If there are no mods of type "override", add the mods. Otherwise, set roll formula appropriately.
@@ -362,7 +362,7 @@ const Attackable = function Attackable() {
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
     // Filter for mods that should always be on (not situational) or are situational but on by default.
     const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault)
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
     const damageMods = CPRMod.getRelevantMods(filteredMods, "universalDamage");
@@ -393,7 +393,7 @@ const Attackable = function Attackable() {
             (c) =>
               c.system.type === "cyberArm" &&
               c.system.isInstalled === true &&
-              c.system.isFoundational === true
+              c.system.isFoundational === true,
           )
         ) {
           // If the user has an installed Cyberarm, which is a foundational. This is only for unarmed damage, not martial arts damage.
@@ -421,7 +421,7 @@ const Attackable = function Attackable() {
       if (!overrideDiceMod) {
         return SystemUtils.DisplayMessage(
           "warn",
-          `This ammo's damage override has an invalid value (${damageOverride.value}). Check the ammo's settings.`
+          `This ammo's damage override has an invalid value (${damageOverride.value}). Check the ammo's settings.`,
         );
       }
       const currentDamageDie = damage.match(/[0-9]+/); // Get current damage's number of dice.
@@ -432,7 +432,7 @@ const Attackable = function Attackable() {
         Number.parseInt(overrideDiceMod[0], 10);
       const minimumDamage = Number.parseInt(
         damageOverride.minimum.match(/[0-9]+/),
-        10
+        10,
       );
       if (newDamage <= minimumDamage) {
         damage = damageOverride.minimum;

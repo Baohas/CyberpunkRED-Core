@@ -24,7 +24,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets"
+      "resizeCPRSheets",
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -49,7 +49,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     foundryData.enrichedHTML = [];
     foundryData.enrichedHTML.notes = await TextEditor.enrichHTML(
       this.actor.system.notes,
-      { async: true }
+      { async: true },
     );
 
     // Get data for the linked program for the Black ICE.
@@ -59,7 +59,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       programUUID: this.actor.token?.getFlag(game.system.id, "programUUID"),
       netrunnerTokenId: this.actor.token?.getFlag(
         game.system.id,
-        "netrunnerTokenId"
+        "netrunnerTokenId",
       ),
       sceneId: this.actor.token?.getFlag(game.system.id, "sceneId"),
     };
@@ -72,7 +72,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       let netrunnerToken;
       sceneList.forEach((scene) => {
         const tokenList = scene.tokens.filter(
-          (t) => t.id === externalData.netrunnerTokenId
+          (t) => t.id === externalData.netrunnerTokenId,
         );
         if (tokenList.length === 1) {
           [netrunnerToken] = tokenList;
@@ -83,7 +83,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       }
     } else {
       const programList = game.items.filter(
-        (i) => i.uuid === externalData.programUUID
+        (i) => i.uuid === externalData.programUUID,
       );
       if (programList.length === 1) {
         [program] = programList;
@@ -91,7 +91,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     }
 
     let damageFormula = SystemUtils.Localize(
-      "CPR.global.generic.notApplicable"
+      "CPR.global.generic.notApplicable",
     );
     if (program) {
       damageFormula =
@@ -142,17 +142,17 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       case "damage": {
         const programUUID = SystemUtils.GetEventDatum(
           event,
-          "data-program-uuid"
+          "data-program-uuid",
         );
         const netrunnerTokenId = SystemUtils.GetEventDatum(
           event,
-          "data-netrunner-id"
+          "data-netrunner-id",
         );
         const sceneId = SystemUtils.GetEventDatum(event, "data-scene-id");
         cprRoll = this.actor.createDamageRoll(
           programUUID,
           netrunnerTokenId,
-          sceneId
+          sceneId,
         );
         break;
       }
@@ -185,12 +185,12 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     if (!this.actor.isToken) {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken")
+        SystemUtils.Localize("CPR.messages.linkBlackIceWithoutToken"),
       );
       return;
     }
     const biPrograms = game.items.filter(
-      (i) => i.type === "program" && i.system.class === "blackice"
+      (i) => i.type === "program" && i.system.class === "blackice",
     );
     // Sorts the biPrograms list before 'selecting Black Ice Actor from Program' link box
     biPrograms.sort((a, b) => {
@@ -207,7 +207,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
 
     const linkedProgramUUID = this.actor.token.getFlag(
       game.system.id,
-      "programUUID"
+      "programUUID",
     );
 
     // Show "Configure Black Ice Actor From Program" prompt
@@ -218,7 +218,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     dialogData = await CPRDialog.showDialog(dialogData, {
       // Set the options for the dialog.
       title: SystemUtils.Localize(
-        "CPR.dialog.configureBlackIceActorFromProgram.title"
+        "CPR.dialog.configureBlackIceActorFromProgram.title",
       ),
       template: `systems/${game.system.id}/templates/dialog/cpr-configure-bi-actor-from-program-prompt.hbs`,
     }).catch((err) => LOGGER.debug(err));
@@ -231,7 +231,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       await this.actor.token.unsetFlag(game.system.id, "programUUID");
     } else {
       const program = biPrograms.filter(
-        (p) => p.uuid === dialogData.programUUID
+        (p) => p.uuid === dialogData.programUUID,
       )[0];
       await this.actor.update({
         name: program.name,
@@ -255,7 +255,7 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       await this.actor.token.setFlag(
         game.system.id,
         "programUUID",
-        program.uuid
+        program.uuid,
       );
     }
     this.render(true, { renderData: this.actor.system });

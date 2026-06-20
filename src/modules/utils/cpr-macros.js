@@ -4,7 +4,7 @@ import SystemUtils from "./cpr-systemUtils.js";
 export default class CPRMacro {
   static async rollItemMacro(
     itemName,
-    extraRollArgs = { skipPrompt: false, rollType: "attack" }
+    extraRollArgs = { skipPrompt: false, rollType: "attack" },
   ) {
     const speaker = ChatMessage.getSpeaker();
     const extraData = extraRollArgs;
@@ -14,7 +14,7 @@ export default class CPRMacro {
     if (!actor) {
       SystemUtils.DisplayMessage(
         "warn",
-        `${SystemUtils.Localize("CPR.macro.itemMissing")} ${itemName}`
+        `${SystemUtils.Localize("CPR.macro.itemMissing")} ${itemName}`,
       );
       return;
     }
@@ -25,8 +25,8 @@ export default class CPRMacro {
       SystemUtils.DisplayMessage(
         "warn",
         `[${displayName}] ${SystemUtils.Localize(
-          "CPR.macro.itemMissing"
-        )} ${itemName}`
+          "CPR.macro.itemMissing",
+        )} ${itemName}`,
       );
       return;
     }
@@ -58,8 +58,8 @@ export default class CPRMacro {
       SystemUtils.DisplayMessage(
         "warn",
         `[${displayName}] ${SystemUtils.Localize(
-          "CPR.macro.invalidRollType"
-        )} ${rollType}`
+          "CPR.macro.invalidRollType",
+        )} ${rollType}`,
       );
       return;
     }
@@ -88,7 +88,7 @@ export default class CPRMacro {
             actor.setFlag(
               game.system.id,
               `firetype-${item._id}`,
-              savedFireType
+              savedFireType,
             );
           } else {
             actor.unsetFlag(game.system.id, `firetype-${item._id}`);

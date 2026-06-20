@@ -54,7 +54,7 @@ export default class CPRCombat extends Combat {
   // eslint-disable-next-line no-unused-vars
   async rollInitiative(
     ids,
-    { formula = null, updateTurn = true, messageOptions = {} } = {}
+    { formula = null, updateTurn = true, messageOptions = {} } = {},
   ) {
     // Structure input data
     const combatantIds = typeof ids === "string" ? [ids] : ids;
@@ -71,14 +71,14 @@ export default class CPRCombat extends Combat {
       // Produce an initiative roll for the Combatant
       if (actor.constructor.name === "CPRContainerActor") {
         const warningMessage = `${SystemUtils.Localize(
-          "CPR.messages.invalidCombatantType"
+          "CPR.messages.invalidCombatantType",
         )}: ${actor.name} (${actor.type})`;
         SystemUtils.DisplayMessage("warn", warningMessage);
         // eslint-disable-next-line no-continue
         continue; // Skip one iteration so that the rest doesn't happen.
       } else {
         cprRoll = await combatant.getInitiativeRoll(
-          CPRCombat._getInitiativeFormula(combatant)
+          CPRCombat._getInitiativeFormula(combatant),
         );
 
         update = { _id: id, initiative: cprRoll.resultTotal };
@@ -90,7 +90,7 @@ export default class CPRCombat extends Combat {
 
       const rollCriticals = game.settings.get(
         game.system.id,
-        "criticalInitiative"
+        "criticalInitiative",
       );
 
       const roll = DiceHandler.handle3dDice(cprRoll._roll);

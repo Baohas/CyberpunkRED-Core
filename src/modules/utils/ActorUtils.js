@@ -1,5 +1,3 @@
-/* eslint-env jquery */
-
 import SystemUtils from "./cpr-systemUtils.js";
 
 /**
@@ -22,7 +20,7 @@ export default class CPRActorUtils {
 
     const currentSP = Number(cprArmorData[`${location}Location`].sp);
     const currentAblation = Number(
-      cprArmorData[`${location}Location`].ablation
+      cprArmorData[`${location}Location`].ablation,
     );
 
     const currentSpWithUpgrades =
@@ -34,7 +32,7 @@ export default class CPRActorUtils {
       currentAblation < 0
         ? Math.min(
             currentSpWithUpgrades - currentAblation,
-            currentSpWithUpgrades
+            currentSpWithUpgrades,
           )
         : Math.max(currentSpWithUpgrades - currentAblation, 0);
 
@@ -65,7 +63,7 @@ export default class CPRActorUtils {
     // Merge the default data with any additional data passed in
     const mergedData = foundry.utils.mergeObject(
       blackIceActorData,
-      additionalData
+      additionalData,
     );
 
     return Actor.create(mergedData);

@@ -15,7 +15,7 @@ const SyncBlackIceWithProgram = () => {
 
       const netrunnerTokenId = biToken.getFlag(
         game.system.id,
-        "netrunnerTokenId"
+        "netrunnerTokenId",
       );
       const programUUID = biToken.getFlag(game.system.id, "programUUID");
       const sceneId = biToken.getFlag(game.system.id, "sceneId");

@@ -1,5 +1,3 @@
-/* eslint-env jquery */
-
 import LOGGER from "./cpr-logger.js";
 
 /**
@@ -38,7 +36,7 @@ export default class CPRSheetUtils {
         .map(function measureWidth() {
           return $(this).width();
         })
-        .get()
+        .get(),
     );
 
     // Remove the cloned elements from the body after measurement
@@ -47,7 +45,7 @@ export default class CPRSheetUtils {
     // Convert the maxWidth from px to rem
     if (maxWidth > 0) {
       const rootFontSize = parseFloat(
-        window.getComputedStyle(document.documentElement).fontSize
+        window.getComputedStyle(document.documentElement).fontSize,
       );
       const maxWidthInRem = maxWidth / rootFontSize;
 
@@ -75,7 +73,7 @@ export default class CPRSheetUtils {
     // Make sure we have a valid element to work with
     if (!input || !input.style) {
       LOGGER.warn(
-        "adjustFontSizeToFit | CPRSheetUtils | No input element found or input element has no style property."
+        "adjustFontSizeToFit | CPRSheetUtils | No input element found or input element has no style property.",
       );
       return;
     }

@@ -222,14 +222,14 @@ const Effects = function Effects() {
     if (usage === "snorted") {
       const aeUpdates = [];
       this.effects.forEach((ae) =>
-        aeUpdates.push({ _id: ae.id, disabled: true })
+        aeUpdates.push({ _id: ae.id, disabled: true }),
       );
       this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
     }
     if (usage === "equipped") {
       const aeUpdates = [];
       this.effects.forEach((ae) =>
-        aeUpdates.push({ _id: ae.id, disabled: false })
+        aeUpdates.push({ _id: ae.id, disabled: false }),
       );
       this.updateEmbeddedDocuments("ActiveEffect", aeUpdates);
     }

@@ -65,7 +65,7 @@ export default class InstallableSchema extends CPRSystemDataModel {
       // If not installed in the actor directly,
       // check if this is installed in other embedded items.
       const ownedItems = actor.items.filter((i) =>
-        i.system?.installedItems?.list?.includes(id)
+        i.system?.installedItems?.list?.includes(id),
       );
       // ...return the list of owned items this is installed in (or an empty array).
       return ownedItems.map((i) => i.id);
@@ -73,7 +73,7 @@ export default class InstallableSchema extends CPRSystemDataModel {
 
     // If the item is not embedded (i.e. it exists in the world)...
     const worldItems = game.items.filter((i) =>
-      i.system?.installedItems?.list?.includes(id)
+      i.system?.installedItems?.list?.includes(id),
     );
     // ... return the list of world items this is installed in (or an empty array).
     return worldItems.map((i) => i.id);

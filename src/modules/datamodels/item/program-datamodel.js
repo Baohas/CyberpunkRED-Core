@@ -10,7 +10,7 @@ export default class ProgramDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
   EffectsSchema,
   InstallableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

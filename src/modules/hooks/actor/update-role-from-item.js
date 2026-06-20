@@ -15,7 +15,7 @@ const UpdateRoleFromItem = () => {
         }
         if (
           !actor.itemTypes.role.some(
-            (r) => r.id === actor.system.roleInfo.activeNetRole
+            (r) => r.id === actor.system.roleInfo.activeNetRole,
           )
         ) {
           // If no roles are designated as activeNetRole, OR if an

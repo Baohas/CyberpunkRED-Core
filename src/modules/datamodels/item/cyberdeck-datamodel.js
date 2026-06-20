@@ -18,7 +18,7 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
   PhysicalSchema,
   QualitySchema,
   UpgradableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     return this.mergeSchema(
@@ -28,7 +28,7 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
         initialSize: 1,
         isElectronic: true,
       }),
-      {}
+      {},
     );
   }
 

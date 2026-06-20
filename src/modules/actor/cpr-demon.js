@@ -77,7 +77,7 @@ export default class CPRDemonActor extends Actor {
     const currentRez = this.system.stats.rez.value;
     const updatedRez = Math.min(
       currentRez + rezReduction,
-      this.system.stats.rez.max
+      this.system.stats.rez.max,
     );
     await this.update({ "system.stats.rez.value": updatedRez });
   }

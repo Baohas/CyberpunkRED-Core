@@ -37,7 +37,7 @@ export default class CPRLedger extends CPRDialog {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets"
+      "resizeCPRSheets",
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -106,7 +106,7 @@ export default class CPRLedger extends CPRDialog {
           this.actor.sheet._gainLedger(
             ledgerProp,
             value,
-            `${reason} - ${game.user.name}`
+            `${reason} - ${game.user.name}`,
           );
           // Update the ledger application's total.
           this.total += value;
@@ -117,7 +117,7 @@ export default class CPRLedger extends CPRDialog {
           this.actor.sheet._loseLedger(
             ledgerProp,
             value,
-            `${reason} - ${game.user.name}`
+            `${reason} - ${game.user.name}`,
           );
           // Update ledger application total.
           // If a user puts in a negative number and then hits the Subtract action, the system assumes the user intended to subtract.
@@ -134,7 +134,7 @@ export default class CPRLedger extends CPRDialog {
           this.actor.sheet._setLedger(
             ledgerProp,
             value,
-            `${reason} - ${game.user.name}`
+            `${reason} - ${game.user.name}`,
           );
           // Update ledger applciation total.
           this.total = value;
@@ -143,21 +143,21 @@ export default class CPRLedger extends CPRDialog {
         default: {
           SystemUtils.DisplayMessage(
             "error",
-            SystemUtils.Localize("CPR.messages.eurobucksModifyInvalidAction")
+            SystemUtils.Localize("CPR.messages.eurobucksModifyInvalidAction"),
           );
           break;
         }
       }
       // Update ledger application contents.
       this.contents = foundry.utils.duplicate(
-        this.actor.listRecords(this.propName)
+        this.actor.listRecords(this.propName),
       );
       this._makeLedgerReadable(this.propName);
       this.render();
     } else {
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.eurobucksModifyWarn")
+        SystemUtils.Localize("CPR.messages.eurobucksModifyWarn"),
       );
     }
   }
@@ -184,7 +184,7 @@ export default class CPRLedger extends CPRDialog {
   async _deleteLedgerLine(event) {
     const lineId = SystemUtils.GetEventDatum(event, "data-line");
     this.contents = foundry.utils.duplicate(
-      this.actor.listRecords(this.propName)
+      this.actor.listRecords(this.propName),
     );
     let numbers = this.contents[lineId][0].match(/\d+/g);
     if (numbers === null) {
@@ -247,7 +247,7 @@ export default class CPRLedger extends CPRDialog {
     foundry.utils.setProperty(
       cprActorData,
       dataPointTransactions,
-      this.contents
+      this.contents,
     );
     // Change the value if desired.
     if (confirmDelete.action && numbers[0] !== "NaN") {
@@ -256,7 +256,7 @@ export default class CPRLedger extends CPRDialog {
       foundry.utils.setProperty(
         cprActorData,
         dataPointValue,
-        value + confirmDelete.sign * numbers[0]
+        value + confirmDelete.sign * numbers[0],
       );
       // Update ledger application total.
       this.total = value + confirmDelete.sign * numbers[0];

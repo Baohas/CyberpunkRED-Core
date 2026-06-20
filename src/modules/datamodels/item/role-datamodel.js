@@ -5,7 +5,7 @@ import CommonSchema from "./mixins/common-schema.js";
 import RoleAbilitySchema from "./components/role-ability-schema.js";
 
 export default class RoleDataModel extends CPRSystemDataModel.mixin(
-  CommonSchema
+  CommonSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;
@@ -30,7 +30,7 @@ export default class RoleDataModel extends CPRSystemDataModel.mixin(
       }),
       bonuses: new fields.ArrayField(new fields.ObjectField()),
       universalBonuses: new fields.ArrayField(
-        new fields.StringField({ choices: Object.keys(CPR.universalBonuses) })
+        new fields.StringField({ choices: Object.keys(CPR.universalBonuses) }),
       ),
       bonusRatio: new fields.NumberField({
         required: true,
@@ -40,7 +40,7 @@ export default class RoleDataModel extends CPRSystemDataModel.mixin(
         min: 1,
       }),
       abilities: new fields.ArrayField(
-        new fields.EmbeddedDataField(RoleAbilitySchema)
+        new fields.EmbeddedDataField(RoleAbilitySchema),
       ),
       isSituational: new fields.BooleanField({ initial: false }),
       onByDefault: new fields.BooleanField({ initial: false }),

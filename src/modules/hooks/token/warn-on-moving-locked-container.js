@@ -23,7 +23,7 @@ const WarnOnMovingLockedContainer = () => {
         ) {
           SystemUtils.DisplayMessage(
             "warn",
-            SystemUtils.Localize("CPR.messages.insufficientPermissions")
+            SystemUtils.Localize("CPR.messages.insufficientPermissions"),
           );
           return false;
         }

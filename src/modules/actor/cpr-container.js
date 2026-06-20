@@ -42,7 +42,7 @@ export default class CPRContainerActor extends Actor {
   async createEmbeddedDocuments(
     embeddedName,
     items,
-    context = { createInstalled: true }
+    context = { createInstalled: true },
   ) {
     if (!embeddedName === "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
@@ -78,7 +78,7 @@ export default class CPRContainerActor extends Actor {
     const createdItems = await super.createEmbeddedDocuments(
       embeddedName,
       items,
-      context
+      context,
     );
 
     if (context.createInstalled) {
@@ -117,7 +117,7 @@ export default class CPRContainerActor extends Actor {
     const installableTypes = SystemUtils.getDocTypesFromMixin("installable");
     const relevantItems = this.items.filter(
       (i) =>
-        containerTypes.includes(i.type) || installableTypes.includes(i.type)
+        containerTypes.includes(i.type) || installableTypes.includes(i.type),
     );
     const updateList = [];
     for (const item of relevantItems) {
@@ -156,7 +156,7 @@ export default class CPRContainerActor extends Actor {
     const itemTemplates = SystemUtils.getMixins(newItem.type);
     if (itemTemplates.includes("stackable")) {
       const itemMatch = this.items.find(
-        (i) => i.type === newItem.type && i.name === newItem.name
+        (i) => i.type === newItem.type && i.name === newItem.name,
       );
       if (itemMatch) {
         const canStack = !(
@@ -176,7 +176,7 @@ export default class CPRContainerActor extends Actor {
           return this.updateEmbeddedDocuments(
             "Item",
             [{ _id: itemMatch.id, "system.amount": newAmount }],
-            { diff: false }
+            { diff: false },
           );
         }
       }
@@ -280,7 +280,7 @@ export default class CPRContainerActor extends Actor {
     if (!foundry.utils.hasProperty(ledgerData, "value")) {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Format("CPR.ledger.errorMessage.missingValue", { prop })
+        SystemUtils.Format("CPR.ledger.errorMessage.missingValue", { prop }),
       );
       return false;
     }
@@ -289,7 +289,7 @@ export default class CPRContainerActor extends Actor {
         "error",
         SystemUtils.Format("CPR.ledger.errorMessage.missingTransactions", {
           prop,
-        })
+        }),
       );
       return false;
     }

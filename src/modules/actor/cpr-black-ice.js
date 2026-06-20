@@ -47,7 +47,7 @@ export default class CPRBlackIceActor extends Actor {
       const cprFlags = this.token.flags[game.system.id];
       if (typeof cprFlags.program !== "undefined") {
         cprRoll.rollCardExtraArgs.program = foundry.utils.duplicate(
-          cprFlags.program
+          cprFlags.program,
         );
       }
     }
@@ -110,7 +110,7 @@ export default class CPRBlackIceActor extends Actor {
     const cprRoll = new CPRRolls.CPRDamageRoll(
       programName,
       damageFormula,
-      "program"
+      "program",
     );
     cprRoll.rollCardExtraArgs.program = programData;
     return cprRoll;
@@ -142,7 +142,7 @@ export default class CPRBlackIceActor extends Actor {
     const currentRez = this.system.stats.rez.value;
     const updatedRez = Math.min(
       currentRez + rezReduction,
-      this.system.stats.rez.max
+      this.system.stats.rez.max,
     );
     await this.update({ "system.stats.rez.value": updatedRez });
   }

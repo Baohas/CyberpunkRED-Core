@@ -115,7 +115,7 @@ const hotbarHooks = () => {
     }
 
     macro = game.macros.contents.find(
-      (m) => m.name === macroObject.name && m.command === command && m.isOwner
+      (m) => m.name === macroObject.name && m.command === command && m.isOwner,
     );
 
     if (!macro) {

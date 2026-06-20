@@ -17,7 +17,7 @@ export default class HudInterface {
    */
   static async SetDvTable(tokenData) {
     const dvTables = (await SystemUtils.GetDvTables()).filter(
-      (table) => table.name !== "DV Generic"
+      (table) => table.name !== "DV Generic",
     );
 
     // Show "Set DV" dialog.
@@ -31,7 +31,7 @@ export default class HudInterface {
       {
         title: SystemUtils.Localize("CPR.dialog.dv.hudPromptTitle"),
         template: `systems/${game.system.id}/templates/dialog/hud/cpr-dv-prompt.hbs`,
-      }
+      },
     ).catch((err) => LOGGER.debug(err));
     if (formData === undefined) {
       return;

@@ -14,7 +14,7 @@ const PersistSectionViews = () => {
       "sheetConfig",
       "sheetCollapsedSections",
       actorSheet.options.collapsedSections,
-      actorSheet.id
+      actorSheet.id,
     );
     // eslint-disable-next-line no-param-reassign
     actorSheet.options.setConfig = true;

@@ -1,4 +1,3 @@
-/* eslint-env jquery */
 import CPRMod from "./rolls/cpr-modifiers.js";
 import CPR from "./system/config.js";
 import LOGGER from "./utils/cpr-logger.js";
@@ -19,7 +18,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets"
+      "resizeCPRSheets",
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -54,7 +53,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
         // Prepare the select drop-down for skill keys.
         case "skill": {
           const skillOptionConfigs = CPRActiveEffectSheet.getSkillOptionConfigs(
-            this.object
+            this.object,
           );
           const select = foundry.applications.fields.createSelectInput({
             name,
@@ -78,7 +77,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
         // Prepare the select drop-down for all other keys.
         default: {
           const otherOptionConfigs = CPRActiveEffectSheet.getOtherOptionConfigs(
-            this.object
+            this.object,
           );
           const select = foundry.applications.fields.createSelectInput({
             name,
@@ -165,12 +164,12 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       await effect.setFlag(
         game.system.id,
         `changes.situational.${modnum}.isSituational`,
-        false
+        false,
       );
       await effect.setFlag(
         game.system.id,
         `changes.situational.${modnum}.onByDefault`,
-        false
+        false,
       );
     }
     return this._forceSubmit();
@@ -212,7 +211,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     await effect.setFlag(
       `${game.system.id}`,
       `changes.situational.${modnum}.isSituational`,
-      isSituational
+      isSituational,
     );
 
     this._forceSubmit();
@@ -233,7 +232,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     await effect.setFlag(
       `${game.system.id}`,
       `changes.situational.${modnum}.onByDefault`,
-      onByDefault
+      onByDefault,
     );
 
     this._forceSubmit();
@@ -287,7 +286,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
     // Second, remove the corresponding flag for the deleted change
     const changeFlags = foundry.utils.getProperty(
       this.object,
-      `flags.${game.system.id}.changes`
+      `flags.${game.system.id}.changes`,
     );
     const newFlags = { cats: {}, situational: {} };
     const flagArrayCats = Object.entries(changeFlags.cats);
@@ -363,7 +362,7 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
 
     const sortedConfigs = skillOptionConfigs.sort((a, b) => {
       return SystemUtils.Localize(a.label).localeCompare(
-        game.i18n.localize(b.label)
+        game.i18n.localize(b.label),
       );
     });
 

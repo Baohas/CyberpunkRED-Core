@@ -21,7 +21,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   static get defaultOptions() {
     const resizeCPRSheets = game.settings.get(
       game.system.id,
-      "resizeCPRSheets"
+      "resizeCPRSheets",
     );
 
     return foundry.utils.mergeObject(super.defaultOptions, {
@@ -201,7 +201,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         if (item.type === "weapon") {
           Rules.lawyer(
             this.actor.canHoldWeapon(item),
-            "CPR.messages.warningTooManyHands"
+            "CPR.messages.warningTooManyHands",
           );
         }
         // If moving from carried to equipped cycle state, auto-track the new armor by slot
@@ -281,7 +281,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     this._updateOwnedItemProp(
       item,
       "system.shieldHitPoints.value",
-      currentArmorShieldValue
+      currentArmorShieldValue,
     );
     // Update actor external data when armor is repaired:
     if (
@@ -325,7 +325,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     if (item.system.isInstalled) {
       const foundationalId = SystemUtils.GetEventDatum(
         event,
-        "data-installation-id"
+        "data-installation-id",
       );
       await this.actor.uninstallCyberware(itemId, foundationalId);
     } else {
@@ -387,7 +387,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       }
     } else {
       this.options.collapsedSections = this.options.collapsedSections.filter(
-        (sectionName) => sectionName !== event.currentTarget.id
+        (sectionName) => sectionName !== event.currentTarget.id,
       );
       $(categoryTarget).click();
     }
@@ -422,7 +422,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       } else {
         SystemUtils.DisplayMessage(
           "error",
-          SystemUtils.Localize("CPR.amountnotnumber")
+          SystemUtils.Localize("CPR.amountnotnumber"),
         );
       }
     }
@@ -442,7 +442,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     } else {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.messages.amountNotNumber")
+        SystemUtils.Localize("CPR.messages.amountNotNumber"),
       );
     }
   }
@@ -464,7 +464,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
       if (foundry.utils.hasProperty(cprItemData, "rank")) {
         if (subskill) {
           const updateSubskill = cprItemData.abilities.filter(
-            (a) => a.name === subskill
+            (a) => a.name === subskill,
           );
           if (updateSubskill.length === 1) {
             updateSubskill[0].rank = value;
@@ -472,8 +472,8 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
             SystemUtils.DisplayMessage(
               "error",
               SystemUtils.Localize(
-                "CPR.messages.multipleAbilitiesWithTheSameName"
-              )
+                "CPR.messages.multipleAbilitiesWithTheSameName",
+              ),
             );
           }
         } else {
@@ -484,7 +484,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     } else {
       SystemUtils.DisplayMessage(
         "error",
-        SystemUtils.Localize("CPR.messages.amountNotNumber")
+        SystemUtils.Localize("CPR.messages.amountNotNumber"),
       );
     }
   }
@@ -502,7 +502,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     const action = SystemUtils.GetEventDatum(event, "data-action");
     const effectUuid = SystemUtils.GetEventDatum(event, "data-effect-id");
     const effect = Array.from(this.actor.allApplicableEffects()).find(
-      (e) => e.uuid === effectUuid
+      (e) => e.uuid === effectUuid,
     );
     switch (action) {
       case "create":
@@ -555,7 +555,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
         default: {
           SystemUtils.DisplayMessage(
             "error",
-            SystemUtils.Localize("CPR.messages.eurobucksModifyInvalidAction")
+            SystemUtils.Localize("CPR.messages.eurobucksModifyInvalidAction"),
           );
           break;
         }
@@ -563,7 +563,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
     } else {
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.eurobucksModifyWarn")
+        SystemUtils.Localize("CPR.messages.eurobucksModifyWarn"),
       );
     }
   }
@@ -596,7 +596,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   async _cyberdeckProgramExecution(event) {
     const executionType = SystemUtils.GetEventDatum(
       event,
-      "data-execution-type"
+      "data-execution-type",
     );
     const programId = SystemUtils.GetEventDatum(event, "data-program-id");
     const program = this.actor.getOwnedItem(programId);

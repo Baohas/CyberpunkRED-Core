@@ -12,7 +12,7 @@ export default class DrugDataModel extends CPRSystemDataModel.mixin(
   EquippableSchema,
   PhysicalSchema,
   StackableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

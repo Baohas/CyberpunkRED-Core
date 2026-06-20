@@ -1,4 +1,3 @@
-/* eslint-env jquery */
 import LOGGER from "../utils/cpr-logger.js";
 import CPR from "./config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -154,7 +153,7 @@ export default function registerHandlebarsHelpers() {
     const num = val.toFixed(Math.max(0, Math.floor(dl)));
     return (ds ? num.replace(".", ds) : num).replace(
       new RegExp(re, "g"),
-      `$&${ts}`
+      `$&${ts}`,
     );
   });
 
@@ -183,7 +182,7 @@ export default function registerHandlebarsHelpers() {
       const warnText =
         "Improper use of the filter helper. This should not occur. Always provide an object list and not an undefined value.";
       LOGGER.warn(
-        `${warnText} The following arguments were passed: objList = ${objList}, key = ${key}, value = ${value}`
+        `${warnText} The following arguments were passed: objList = ${objList}, key = ${key}, value = ${value}`,
       );
       return [];
     }
@@ -256,7 +255,7 @@ export default function registerHandlebarsHelpers() {
         return array.some((o) => o[data] === val);
       }
       return false;
-    }
+    },
   );
 
   /**
@@ -274,7 +273,7 @@ export default function registerHandlebarsHelpers() {
       }
 
       return false;
-    }
+    },
   );
 
   /**
@@ -415,7 +414,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprFireMode", (actor, firemode, weaponID) => {
     const flag = foundry.utils.getProperty(
       actor,
-      `flags.${game.system.id}.firetype-${weaponID}`
+      `flags.${game.system.id}.firetype-${weaponID}`,
     );
     if (flag === firemode) {
       return true;
@@ -429,7 +428,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprFireFlag", (actor, firetype, weaponID) => {
     const flag = foundry.utils.getProperty(
       actor,
-      `flags.${game.system.id}.firetype-${weaponID}`
+      `flags.${game.system.id}.firetype-${weaponID}`,
     );
     if (flag === firetype) {
       return "checked";
@@ -441,7 +440,7 @@ export default function registerHandlebarsHelpers() {
    * Return a system setting value given the name
    */
   Handlebars.registerHelper("cprSystemConfig", (settingName) =>
-    game.settings.get(game.system.id, settingName)
+    game.settings.get(game.system.id, settingName),
   );
 
   /**
@@ -555,7 +554,7 @@ export default function registerHandlebarsHelpers() {
     let tooltip = skillObj.system.description.value;
     if (tooltip === "" && skillObj.system.core) {
       const tooltipKey = `CPR.global.itemType.skill.${SystemUtils.slugify(
-        skillObj.name
+        skillObj.name,
       )}ToolTip`;
       tooltip = SystemUtils.Localize(tooltipKey);
     }
@@ -578,7 +577,7 @@ export default function registerHandlebarsHelpers() {
         case "skill": {
           // "CPR.global.itemType.skill.cybertech"
           localizedKey = `CPR.global.itemType.skill.${SystemUtils.slugify(
-            name
+            name,
           )}`;
           break;
         }
@@ -591,7 +590,7 @@ export default function registerHandlebarsHelpers() {
           // "CPR.global.role.tech.ability.fabricationExpertise":
           for (const role of Object.keys(CPR.roleList)) {
             const localizedRoleKey = `CPR.global.role.${role}.ability.${SystemUtils.slugify(
-              name
+              name,
             )}`;
             if (SystemUtils.Localize(localizedRoleKey) !== localizedRoleKey) {
               localizedKey = localizedRoleKey;
@@ -609,7 +608,7 @@ export default function registerHandlebarsHelpers() {
       return SystemUtils.Localize(localizedKey) === localizedKey
         ? name
         : localizedKey;
-    }
+    },
   );
 
   /**
@@ -625,7 +624,7 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprItemIdFromName", (itemName, itemType) => {
     const item = game.items.find(
-      (i) => i.name === itemName && i.type === itemType
+      (i) => i.name === itemName && i.type === itemType,
     );
     if (item !== undefined) {
       return item._id;
@@ -637,7 +636,7 @@ export default function registerHandlebarsHelpers() {
    * Convert a string with a delimiter (such as a comma or space) to an Array of elements
    */
   Handlebars.registerHelper("cprToArray", (string, delimiter) =>
-    string.split(delimiter)
+    string.split(delimiter),
   );
 
   /**
@@ -750,17 +749,17 @@ export default function registerHandlebarsHelpers() {
           const installedItem = item.actor.getOwnedItem(itemId);
           if (installedItem) {
             const itemType = SystemUtils.Localize(
-              CPR.objectTypes[installedItem.type]
+              CPR.objectTypes[installedItem.type],
             );
             returnString = returnString.concat(
               `${installedItem.name} (${itemType})`,
-              delimiter
+              delimiter,
             );
           }
         }
       }
       return returnString;
-    }
+    },
   );
 
   /**
@@ -818,13 +817,13 @@ export default function registerHandlebarsHelpers() {
       // For each installed item, create an <li> element with information about that item.
       for (const childItem of sortedInstalled) {
         const localizedType = SystemUtils.Localize(
-          `TYPES.Item.${childItem.type}`
+          `TYPES.Item.${childItem.type}`,
         );
 
         let actions = "";
         let uninstallIcon = "fa-arrow-right-from-bracket"; // Most items have the same uninstall icon
         const uninstallTooltip = SystemUtils.Localize(
-          "CPR.actorSheets.commonActions.uninstall"
+          "CPR.actorSheets.commonActions.uninstall",
         );
         switch (childItem.type) {
           case "itemUpgrade": {
@@ -833,7 +832,7 @@ export default function registerHandlebarsHelpers() {
             if (!childItem.system.isRanged) break;
             if (options.hash.isItemSheet) break;
             const reloadTooltip = SystemUtils.Localize(
-              "CPR.actorSheets.commonActions.changeAmmo"
+              "CPR.actorSheets.commonActions.changeAmmo",
             );
             actions += `<a class="item-action data-item-id="${childItem._id}" data-action="select-ammo">`;
             actions += `  <i class="fas fa-arrow-right-arrow-left" data-tooltip="${reloadTooltip}"></i>`;
@@ -885,7 +884,7 @@ export default function registerHandlebarsHelpers() {
           : "item-hidden";
       // Here we wrap the whole sub-list in a div, so that we can animate it
       return new Handlebars.SafeString(
-        `<div class="sub-list ${display}" data-items-wrapper-for-parent="${item.id}" style="padding: 0;"><ol>${html}</ol></div>`
+        `<div class="sub-list ${display}" data-items-wrapper-for-parent="${item.id}" style="padding: 0;"><ol>${html}</ol></div>`,
       );
     }
     // Otherwise return a blank string.
@@ -935,7 +934,7 @@ export default function registerHandlebarsHelpers() {
             : SystemUtils.Localize("CPR.itemSheet.common.upgrades");
         upgradeText = `(${SystemUtils.Format(
           "CPR.itemSheet.common.modifierChange",
-          { modSource, modType: upgradeData.type, value: upgradeData.value }
+          { modSource, modType: upgradeData.type, value: upgradeData.value },
         )})`;
       }
     }
@@ -984,7 +983,7 @@ export default function registerHandlebarsHelpers() {
       return (
         applyToText.toLowerCase().indexOf(filterValue.toLowerCase()) !== -1
       );
-    }
+    },
   );
 
   /**
@@ -1061,7 +1060,7 @@ export default function registerHandlebarsHelpers() {
       if (doc.changes.length === flag.length) {
         returnString = "???";
         LOGGER.error(
-          "Undefined change category! No idea what this effect changes!"
+          "Undefined change category! No idea what this effect changes!",
         );
       }
       return returnString;
@@ -1134,7 +1133,7 @@ export default function registerHandlebarsHelpers() {
         default:
           return LOGGER.error("Did not pass valid string to infoType");
       }
-    }
+    },
   );
 
   /**
@@ -1194,20 +1193,20 @@ export default function registerHandlebarsHelpers() {
         !(property === "mode" || property === "value" || property === "minimum")
       ) {
         return LOGGER.debug(
-          `The only currently valid property parameters are 'mode', 'value', or 'minimum'. '${property}' is not valid.`
+          `The only currently valid property parameters are 'mode', 'value', or 'minimum'. '${property}' is not valid.`,
         );
       }
 
       if (!(override === "damage" || override === "autofire")) {
         return LOGGER.debug(
-          `The only currently valid override keys are 'damage' and 'autofire'. '${override}' is not valid.`
+          `The only currently valid override keys are 'damage' and 'autofire'. '${override}' is not valid.`,
         );
       }
 
       // If no ammo item, return "none". This is a hack to not add extra logic to the handlebars.
       // Prevents melee and unloaded weapons from displaying italicized/tool-tipped damage text-pills.
       return ammoItem ? ammoItem.system.overrides[override][property] : "none";
-    }
+    },
   );
 
   /**
@@ -1242,7 +1241,7 @@ export default function registerHandlebarsHelpers() {
       const ammoAutofireMin = ammoItem.system.overrides.autofire.minimum;
       trueMax = Math.max(
         weaponAutofireMax + ammoAutofireModifier,
-        ammoAutofireMin
+        ammoAutofireMin,
       );
     } else {
       trueMax = weaponAutofireMax;
@@ -1291,11 +1290,11 @@ export default function registerHandlebarsHelpers() {
     if (token !== null && itemDvTable !== null && itemDvTable !== "") {
       const tokenDv = token.object.document.getFlag(
         game.system.id,
-        "cprDvTable"
+        "cprDvTable",
       );
       const firetype = token.actor.getFlag(
         game.system.id,
-        `firetype-${item.id}`
+        `firetype-${item.id}`,
       );
       if (firetype === "autofire") {
         itemDvTable = `${itemDvTable} (Autofire)`;

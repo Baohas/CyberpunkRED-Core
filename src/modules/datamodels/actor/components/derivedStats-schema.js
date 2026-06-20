@@ -48,8 +48,8 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
         }),
         transactions: new fields.ArrayField(
           new fields.ArrayField(
-            new fields.StringField({ required: true, blank: true })
-          )
+            new fields.StringField({ required: true, blank: true }),
+          ),
         ),
         value: new fields.NumberField({
           required: true,
@@ -112,7 +112,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
     const getSkillName = (skillSlug) => {
       // Get the translated skill name
       const translatedSkill = SystemUtils.Localize(
-        `CPR.global.itemType.skill.${skillSlug}`
+        `CPR.global.itemType.skill.${skillSlug}`,
       );
 
       // Convert the translated skill name back to the slugified version
@@ -120,7 +120,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
       // a translation, or it doesn't have a translation in lang/*.json
       if (SystemUtils.slugify(translatedSkill) !== skillSlug) {
         const skillItem = actorData.items.find(
-          (item) => SystemUtils.slugify(item.name) === skillSlug
+          (item) => SystemUtils.slugify(item.name) === skillSlug,
         );
         return skillItem.name;
       }
@@ -155,7 +155,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
         {
           ref,
           evasion,
-        }
+        },
       );
       output.value = true;
       output.reasons.push(reason);
@@ -172,7 +172,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
         const skillName = getSkillName(skill);
         const reason = SystemUtils.Format(
           "CPR.characterSheet.leftPane.hardened.reasons.canAttack",
-          { skillName }
+          { skillName },
         );
         output.value = true;
         output.reasons.push(reason);
@@ -188,7 +188,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
       const body = SystemUtils.Localize("CPR.global.stats.body");
       const reason = SystemUtils.Format(
         "CPR.characterSheet.leftPane.hardened.reasons.willBody",
-        { will, body }
+        { will, body },
       );
       output.value = true;
       output.reasons.push(reason);
@@ -200,7 +200,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
         const weaponName = weapon.name;
         const reason = SystemUtils.Format(
           "CPR.characterSheet.leftPane.hardened.reasons.weaponValue",
-          { weaponName }
+          { weaponName },
         );
         output.value = true;
         output.reasons.push(reason);
@@ -216,7 +216,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
       const move = SystemUtils.Localize("CPR.global.stats.move");
       const reason = SystemUtils.Format(
         "CPR.characterSheet.leftPane.hardened.reasons.dexPlusMove",
-        { dex, move }
+        { dex, move },
       );
       output.value = true;
       output.reasons.push(reason);
@@ -243,7 +243,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
         const skillName = getSkillName(skill);
         const reason = SystemUtils.Format(
           "CPR.characterSheet.leftPane.hardened.reasons.autofireMartialArts",
-          { skillName }
+          { skillName },
         );
         output.value = true;
         output.reasons.push(reason);
@@ -256,7 +256,7 @@ export default class DerivedStatsSchema extends CPRSystemDataModel {
         const roleName = SystemUtils.Localize("CPR.global.role.solo.name");
         const reason = SystemUtils.Format(
           "CPR.characterSheet.leftPane.hardened.reasons.solo",
-          { roleName }
+          { roleName },
         );
         output.value = true;
         output.reasons.push(reason);

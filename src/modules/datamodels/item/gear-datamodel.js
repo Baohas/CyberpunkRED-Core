@@ -18,7 +18,7 @@ export default class GearDataModel extends CPRSystemDataModel.mixin(
   PhysicalSchema,
   StackableSchema,
   UpgradableSchema,
-  ValuableSchema
+  ValuableSchema,
 ) {
   // This one is made only of mixins :).
 }

@@ -140,7 +140,7 @@ Hooks.once("init", async () => {
     CPRActiveEffect,
     game.system.id,
     CPRActiveEffectSheet,
-    { makeDefault: true }
+    { makeDefault: true },
   );
   CONFIG.Actor.documentClass = actorConstructor;
   CONFIG.Combat.documentClass = CPRCombat;
@@ -317,7 +317,7 @@ Hooks.once("ready", async () => {
     MR.error = new MigrationError(
       {},
       `Error occurred outside of migration scripts: '${error.message}'`,
-      { cause: error, type: "NonMigrationScriptError" }
+      { cause: error, type: "NonMigrationScriptError" },
     );
     await MR.app.setCurrentPhase("error");
     LOGGER.error(error);
@@ -328,7 +328,7 @@ Hooks.once("ready", async () => {
     await settings.set(
       game.system.id,
       "dataModelVersion",
-      MR.newDataModelVersion
+      MR.newDataModelVersion,
     );
   }
   if (game.system.version !== settings.get(game.system.id, "systemVersion")) {

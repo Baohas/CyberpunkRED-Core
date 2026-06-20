@@ -4,7 +4,7 @@ import ContainerSchema from "../shared/container-schema.js";
 
 export default class MookDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
-  ContainerSchema
+  ContainerSchema,
 ) {
   static defineSchema() {
     return this.mergeSchema(
@@ -12,7 +12,7 @@ export default class MookDataModel extends CPRSystemDataModel.mixin(
         initialAllowedTypes: ["cyberware"],
         includeSlots: false,
       }),
-      {}
+      {},
     );
   }
 }
