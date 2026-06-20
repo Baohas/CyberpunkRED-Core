@@ -37,6 +37,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "fallow": "^2.100.0",
     "fancy-log": "^2.0.0",
     "fancylog": "^4.0.5",
     "fs-extra": "^10.1.0",

@@ -8,6 +8,7 @@ mapfile -t SCRIPTS < <(
   find . \
     -not \( -path "./dist" -prune \) \
     -not \( -path "./node_modules" -prune \) \
+    -not \( -path "./.claude" -prune \) \
     -iname "*.sh"
 )
 

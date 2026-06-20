@@ -8,6 +8,7 @@ ERRORS=0
 # `dist`             Is the default build dir and we don't care abut it
 # `node_modules`     Is the not our code
 # `.vscode`          We don't care about
+# `.claude`          Claude Code config, not part of the module
 # `.gitlab`          Doesn't need checking
 # `.gitlab-ci-local` Is just local stuff
 # `src/babele/*`     Are translation files that are machine generated
@@ -16,11 +17,13 @@ ERRORS=0
 # `schema`           Are JSONSchema files, if incorrect they will fail during the
 #                    validate-packs job
 # `package*.json`    Is npm stuff we don't care about
+# `.fallowrc.json`   Is JSONC (has comments) which jsonlint can't parse
 mapfile -t DOCS < <(
   find . \
     -not \( -path "./dist" -prune \) \
     -not \( -path "./node_modules" -prune \) \
     -not \( -path "./.vscode" -prune \) \
+    -not \( -path "./.claude" -prune \) \
     -not \( -path "./.gitlab" -prune \) \
     -not \( -path "./.gitlab-ci-local" -prune \) \
     -not \( -path "./src/babele/cz" -prune \) \
@@ -33,6 +36,7 @@ mapfile -t DOCS < <(
     -not \( -path "./src/babele/ru" -prune \) \
     -not \( -path "./schema" -prune \) \
     -not \( -name "package*.json" \) \
+    -not \( -name ".fallowrc.json" \) \
     -iname "*.json"
 )
 
