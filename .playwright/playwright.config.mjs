@@ -29,7 +29,17 @@ export default defineConfig({
     screenshot: "only-on-failure",
   },
   projects: [
-    { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "firefox", use: { ...devices["Desktop Firefox"] } },
+    // Foundry's UI needs at least 1920x1080 — the device presets default to
+    // 1280x720, which is too small (it parks the docked sidebar/dialogs awkwardly
+    // and can push controls off-canvas). Override the viewport after the device
+    // spread so it takes precedence.
+    {
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"], viewport: { width: 1920, height: 1080 } },
+    },
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"], viewport: { width: 1920, height: 1080 } },
+    },
   ],
 });
