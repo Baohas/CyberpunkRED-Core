@@ -23,6 +23,7 @@ results.json
 # Local config
 .foundry
 foundryconfig.json
+.claude/settings.local.json
 
 # Build
 dist/
