@@ -1,3 +1,15 @@
 {
-  "dataPath": "/path/to/foundryvtt"
+  "foundry": {
+    "description": "Your local Foundry VTT install. dataPath: Foundry's user-data directory (worlds/systems/modules; the build deploys into <dataPath>/Data/systems). appPath: the base directory holding per-version installs — the matching v<version> subdir (from src/system.json) is appended automatically. licenseKey: your Foundry license key, or leave blank and set FOUNDRY_LICENSE_KEY.",
+    "dataPath": "/absolute/path/to/foundry/userdata",
+    "appPath": "/absolute/path/to/foundry",
+    "licenseKey": ""
+  },
+  "repos": {
+    "description": "Absolute paths to the sibling cyberpunk-red-team repositories used by tooling (dlc, templates, system, cicd) — typically checked out next to this one.",
+    "dlc": "/absolute/path/to/dlc",
+    "templates": "/absolute/path/to/templates",
+    "system": "/absolute/path/to/system",
+    "cicd": "/absolute/path/to/cicd"
+  }
 }

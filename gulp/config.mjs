@@ -53,7 +53,7 @@ function _getDestDir() {
   const localConfigExists = fs.existsSync(localConfigPath);
 
   if (localConfigExists) {
-    const localDataPath = fs.readJSONSync(localConfigPath).dataPath;
+    const localDataPath = fs.readJSONSync(localConfigPath).foundry?.dataPath;
     const dataPath = path.resolve(
       path.join(localDataPath, "Data", "systems", SYSTEM_NAME),
     );

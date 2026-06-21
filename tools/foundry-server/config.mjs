@@ -1,0 +1,139 @@
+import fs from "fs-extra";
+import path from "path";
+import crypto from "crypto";
+
+// Where per-run state (saved GM auth, the ephemeral world id, the Foundry pid)
+// lives. Collected under .playwright/ alongside the rest of the Playwright
+// output; the suite reads the saved storage state from here via STORAGE_STATE.
+export const RUN_DIR = path.resolve(".playwright", "auth");
+const WORLD_ID_FILE = path.join(RUN_DIR, "world-id");
+const PID_FILE = path.join(RUN_DIR, "foundry.pid");
+export const STORAGE_STATE = path.join(RUN_DIR, "gm.json");
+
+// System id mirrors gulp/config.mjs SYSTEM_NAME. The built system is deployed to
+// <dataPath>/Data/systems/<SYSTEM_NAME> by `gulp build`; the browser-test world selects it.
+export const SYSTEM_NAME = process.env.SYSTEM_NAME || "cyberpunk-red-core";
+
+function readLocalConfig() {
+  const localConfigPath = path.resolve("foundryconfig.json");
+  return fs.existsSync(localConfigPath) ? fs.readJSONSync(localConfigPath) : {};
+}
+
+/*
+ * The Foundry version this system targets, read from src/system.json's
+ * `compatibility.verified`. Developers keep a separate Foundry install per major
+ * version, so `appPath` is a base dir and we append `v<version>` to reach the
+ * right install (e.g. <appPath>/v13/resources/app/main.js). FOUNDRY_VERSION
+ * overrides it for ad-hoc runs against another version.
+ */
+export function foundryVersion() {
+  if (process.env.FOUNDRY_VERSION) return String(process.env.FOUNDRY_VERSION);
+  const system = fs.readJSONSync(path.resolve("src", "system.json"));
+  const verified = system?.compatibility?.verified;
+  if (verified === undefined || verified === null) {
+    throw new Error(
+      "Could not determine the Foundry version: src/system.json has no " +
+        "compatibility.verified. Set FOUNDRY_VERSION to override.",
+    );
+  }
+  return String(verified);
+}
+
+/*
+ * Resolve everything the launcher needs. Environment variables win over
+ * foundryconfig.json so CI / one-off runs can override without editing the file.
+ */
+export function resolveConfig() {
+  const local = readLocalConfig();
+  const appPath = process.env.FOUNDRY_APP_PATH || local.foundry?.appPath;
+  const dataPath = process.env.FOUNDRY_DATA_PATH || local.foundry?.dataPath;
+  const licenseKey = process.env.FOUNDRY_LICENSE_KEY || local.foundry?.licenseKey || "";
+  const port = Number(process.env.FOUNDRY_TEST_PORT || 30001);
+
+  if (!appPath) {
+    throw new Error(
+      "Foundry application path is not set. Add 'foundry.appPath' to " +
+        "foundryconfig.json (the base dir holding a per-version Foundry install) " +
+        "or set FOUNDRY_APP_PATH.",
+    );
+  }
+  if (!dataPath) {
+    throw new Error(
+      "Foundry data path is not set. Add 'foundry.dataPath' to foundryconfig.json " +
+        "or set FOUNDRY_DATA_PATH.",
+    );
+  }
+
+  // appPath is a base dir; the `v<version>` subdirectory (version from
+  // src/system.json) holds that Foundry install.
+  const version = foundryVersion();
+  const appDir = path.join(appPath, `v${version}`);
+
+  return {
+    appPath,
+    version,
+    appDir,
+    dataPath,
+    licenseKey,
+    port,
+    url: `http://localhost:${port}`,
+  };
+}
+
+/*
+ * Locate main.js within a version's install dir. v13's NodeJS package puts it
+ * under resources/app; older/other layouts keep it at the application root.
+ */
+export function resolveMainJs(appDir) {
+  const candidates = [
+    path.join(appDir, "resources", "app", "main.js"),
+    path.join(appDir, "main.js"),
+  ];
+  const found = candidates.find((candidate) => fs.existsSync(candidate));
+  if (!found) {
+    throw new Error(
+      `Could not find Foundry main.js under '${appDir}'. Looked at:\n  ` +
+        candidates.join("\n  ") +
+        `\n(appPath is a base dir; the Foundry version from src/system.json is ` +
+        `appended — set FOUNDRY_VERSION to target a different version.)`,
+    );
+  }
+  return found;
+}
+
+// A fresh, unique world per run avoids any collision with the user's real worlds.
+export function newWorldId() {
+  const id = `cyberpunk-red-${crypto.randomBytes(4).toString("hex")}`;
+  fs.ensureDirSync(RUN_DIR);
+  fs.writeFileSync(WORLD_ID_FILE, id, "utf8");
+  return id;
+}
+
+export function readWorldId() {
+  return fs.existsSync(WORLD_ID_FILE)
+    ? fs.readFileSync(WORLD_ID_FILE, "utf8").trim()
+    : null;
+}
+
+export function clearWorldId() {
+  fs.removeSync(WORLD_ID_FILE);
+}
+
+export function worldDir(dataPath, worldId) {
+  return path.join(dataPath, "Data", "worlds", worldId);
+}
+
+export function writePid(pid) {
+  fs.ensureDirSync(RUN_DIR);
+  fs.writeFileSync(PID_FILE, String(pid), "utf8");
+}
+
+export function readPid() {
+  if (!fs.existsSync(PID_FILE)) return null;
+  const pid = Number(fs.readFileSync(PID_FILE, "utf8").trim());
+  return Number.isInteger(pid) ? pid : null;
+}
+
+export function clearPid() {
+  fs.removeSync(PID_FILE);
+}

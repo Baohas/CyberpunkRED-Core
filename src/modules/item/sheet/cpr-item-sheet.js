@@ -258,7 +258,9 @@ export default class CPRItemSheet extends ItemSheet {
         selectOptions: foundry.utils.duplicate(dataPointModTypes),
         modData,
         disableSituational: typeof value.isSituational === "undefined",
-        disableOnByDefault: !modData.isSituational,
+        // A freshly-created upgrade has no data for its type's modifiers yet
+        // (the schema fields are optional), so modData can be undefined here.
+        disableOnByDefault: !modData?.isSituational,
       }; /* eslint-enable no-continue */
 
       if (upgradeType === "clothing") delete dataPoint.selectOptions.override;
