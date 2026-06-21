@@ -19,9 +19,9 @@
     "start": "npx gulp",
     "stylelint": "npx stylelint 'src/**/*.css'",
     "stylelint:fix": "npx stylelint 'src/**/*.css' --fix",
-    "test:e2e": "npx gulp build && npx playwright test -c .playwright/playwright.config.mjs",
-    "e2e:serve": "node tools/foundry-server/serve.mjs",
-    "e2e:install": "npx playwright install chromium firefox",
+    "test:browser": "(npx gulp build > .playwright/build.log 2>&1 || (cat .playwright/build.log; exit 1)) && env -u PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS npx playwright test -c .playwright/playwright.config.mjs",
+    "browser:serve": "node tools/foundry-server/serve.mjs",
+    "browser:install": "npx playwright install chromium",
     "watch": "npx gulp watch"
   },
   "engines": {

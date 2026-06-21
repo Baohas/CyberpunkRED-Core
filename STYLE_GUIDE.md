@@ -1034,10 +1034,10 @@ Behavioural changes (sheets, rolls, combat, migrations) must be verified by hand
 
 ### End-to-End Tests (Playwright)
 
-Browser-level regression tests drive a real Foundry world to catch breakages like a sheet failing to render. They are **opt-in** (require a local Foundry install) and not yet wired into CI. The pieces:
+Browser-level regression tests drive a real Foundry world to catch breakages like a sheet failing to render. They are **opt-in** locally (require a local Foundry install) and also run in CI (see **CI** below). The pieces:
 
 - `tools/foundry-server/` — the harness (plain Node, _not_ tests): starts/stops Foundry and drives the startup gates.
-- `tests/e2e/` — the Playwright suite: lifecycle hooks (`setup.mjs`/`teardown.mjs`) and specs, co-located by feature (`actors/`, `items/`, …).
+- `tests/browser/` — the Playwright suite: lifecycle hooks (`setup.mjs`/`teardown.mjs`), a shared `fixtures.mjs`, and specs grouped by feature (`actors/`, `items/`, …).
 - `.playwright/` — the Playwright + MCP config files and all generated output (the output is gitignored; the two config files are not).
 
 **Setup.** Copy `foundryconfig.json.example` to `foundryconfig.json` and fill in the `foundry` block:
@@ -1048,15 +1048,17 @@ Browser-level regression tests drive a real Foundry world to catch breakages lik
 
 Path values must be **absolute and literal** — `~`, `$HOME`, and `%LOCALAPPDATA%` are not expanded. Each can be overridden by an env var: `FOUNDRY_DATA_PATH`, `FOUNDRY_APP_PATH`, `FOUNDRY_LICENSE_KEY`, `FOUNDRY_TEST_PORT` (default `30001`).
 
-**Install browsers.** On most OSes: `npm run e2e:install` (Linux may also need OS libs — `npx playwright install --with-deps chromium firefox`). **On NixOS do _not_ run that** — the browsers come from `pkgs.playwright-driver.browsers` in `shell.nix`; just enter the dev shell. The `@playwright/test` version in `package.json` is pinned to match the nixpkgs `playwright-driver` (`nix eval --raw nixpkgs#playwright-driver.version`); bump both together.
+**Install browsers.** On most OSes: `npm run browser:install` (Linux may also need OS libs — `npx playwright install --with-deps chromium`). **On NixOS do _not_ run that** — the browsers come from `pkgs.playwright-driver.browsers` in `shell.nix`; just enter the dev shell. The `@playwright/test` version in `package.json` is pinned to match the nixpkgs `playwright-driver` (`nix eval --raw nixpkgs#playwright-driver.version`); bump both together.
 
-**Run.** `npm run test:e2e` builds the system into `foundry.dataPath` and runs the suite in chromium and firefox. It starts Foundry on the test port, drives the license → EULA → decline-data-sharing → setup gates (dismissing onboarding tours), creates and launches a throwaway `cyberpunk-red-<randomhash>` world, runs the specs, then stops Foundry and deletes that world.
+**Run.** `npm run test:browser` builds the system into `foundry.dataPath` and runs the suite in **Chromium only** (headless Firefox can't supply the WebGL context Foundry initialises at startup, so it never reaches `game.ready`). It starts Foundry on the test port, drives the license → EULA → decline-data-sharing → setup gates (dismissing onboarding tours), creates and launches a throwaway `cyberpunk-red-<randomhash>` world, runs the specs, then stops Foundry and deletes that world.
 
-**Lock constraint.** Foundry holds **exclusive LevelDB locks** on the open world _and_ on the system's compendium packs, so you cannot run the e2e suite while a dev Foundry has the same `dataPath` open, and `gulp extractPacks` (or any pack-reading task) must run with **all** Foundry instances stopped.
+**CI.** The `test-browser` job (`.gitlab/ci/test/test-browser.yml`) runs the suite on MRs and `dev` that touch rendering code, templates, styles, or the specs/harness — and on release tags. CI has no Foundry, so `.gitlab/pipeline_utils/download-foundry.sh` fetches the latest Node build of the generation in `src/system.json` using the `FOUNDRY_USER` / `FOUNDRY_PASS` / `FOUNDRY_LICENSE_KEY` CI/CD variables; results surface as a JUnit report.
+
+**Lock constraint.** Foundry holds **exclusive LevelDB locks** on the open world _and_ on the system's compendium packs, so you cannot run the browser suite while a dev Foundry has the same `dataPath` open, and `gulp extractPacks` (or any pack-reading task) must run with **all** Foundry instances stopped.
 
 **Writing specs.** Drive the **real UI** — create actors/items through the sidebar's create dialog rather than `Actor.create()`, so the system's own creation logic runs (created that way, a `character` gets its full skill/cyberware loadout; a bare `Actor.create()` produces an empty actor). The scene canvas is WebGL (Pixi) and invisible to the DOM, so assert on the resulting **HTML sheet**, not the canvas. CPR sheets are ApplicationV1, so open windows live in `ui.windows` (not `foundry.applications.instances`) — close them when done. Resolve document subtypes from `game.documentTypes` rather than hard-coding them.
 
-**Driving Foundry live.** `npm run e2e:serve` brings up a ready throwaway world and stays in the foreground; combined with the `playwright` MCP server in `.mcp.json`, an AI assistant can open sheets, click, and screenshot against it. The MCP drives a standalone Chromium via `PLAYWRIGHT_MCP_EXECUTABLE_PATH` (exported by `shell.nix`), so on NixOS launch the editor/agent from inside the dev shell.
+**Driving Foundry live.** `npm run browser:serve` brings up a ready throwaway world and stays in the foreground; combined with the `playwright` MCP server in `.mcp.json`, an AI assistant can open sheets, click, and screenshot against it. The MCP drives a standalone Chromium via `PLAYWRIGHT_MCP_EXECUTABLE_PATH` (exported by `shell.nix`), so on NixOS launch the editor/agent from inside the dev shell.
 
 ### If You Add Unit Tests
 
