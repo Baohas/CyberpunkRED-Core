@@ -37,9 +37,10 @@ import {
 
 // Helter function to create the target directory we're building into
 async function _createDist() {
-  if (!fs.existsSync(DEST_DIR)) {
-    fs.mkdirSync(DEST_DIR);
-  }
+  // ensureDirSync (not a bare mkdirSync) so a fresh deploy target works: on a
+  // clean Foundry data dir the parent Data/systems/ doesn't exist yet, and a
+  // non-recursive mkdir would throw ENOENT for the missing parent.
+  fs.ensureDirSync(DEST_DIR);
 }
 
 // Blast the build directory to ensure it's fresh
