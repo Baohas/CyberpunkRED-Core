@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process";
-import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname } from "node:path";
+import { mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { dirname, resolve } from "node:path";
 
 /*
  * Cross-platform runner for `npm run test:browser`.
@@ -24,6 +24,24 @@ const BUILD_LOG = ".playwright/build.log";
 // Windows); harmless on POSIX. The commands contain no shell metacharacters.
 const run = (command, options) =>
   spawnSync(command, { shell: true, ...options });
+
+// Tests run against an isolated, project-local Foundry data dir — never the
+// developer's real dataPath, which can carry pollution (an admin access key,
+// leftover worlds, custom settings) that derails the unattended setup/login
+// flow. CI sets FOUNDRY_DATA_PATH itself; honour any explicit value, otherwise
+// default to .playwright/foundry-data. A fresh world is created per run while
+// the dir is kept warm (licensed, EULA-accepted) between runs for speed.
+// FOUNDRY_FRESH wipes it for a true cold boot (re-runs the license/EULA/setup
+// gates) — only ever the dir we manage, never one a developer pointed
+// FOUNDRY_DATA_PATH at.
+const ownsDataDir = !process.env.FOUNDRY_DATA_PATH;
+if (ownsDataDir) {
+  process.env.FOUNDRY_DATA_PATH = resolve(".playwright", "foundry-data");
+}
+if (process.env.FOUNDRY_FRESH && ownsDataDir) {
+  rmSync(process.env.FOUNDRY_DATA_PATH, { recursive: true, force: true });
+}
+process.stdout.write(`Foundry data dir: ${process.env.FOUNDRY_DATA_PATH}\n`);
 
 mkdirSync(dirname(BUILD_LOG), { recursive: true });
 
