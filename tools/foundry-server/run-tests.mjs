@@ -1,6 +1,6 @@
 import { spawnSync } from "node:child_process";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { dirname, resolve } from "node:path";
 import { RUN_DIR } from "./config.mjs";
 
 /*
@@ -58,18 +58,20 @@ const test = run("npx playwright test -c .playwright/playwright.config.mjs", {
 });
 
 // On completion (pass or fail), clean up the artifacts of a local run we own:
-// the isolated data dir and the Foundry server log, so nothing lingers in
-// .playwright and the next run starts cold. maxRetries/retryDelay ride out
-// Windows file locks (Foundry's LevelDB handles release a beat after it stops).
-// Skipped in CI, where we don't own the dir and the log is kept as an artifact.
+// the isolated data dir and the auth run-state (the saved GM session gm.json and
+// the Foundry server log), so nothing lingers in .playwright and the next run
+// starts cold. maxRetries/retryDelay ride out Windows file locks (Foundry's
+// LevelDB handles release a beat after it stops). Skipped in CI, where we don't
+// own the dir and the log is kept as a job artifact.
 if (ownsDataDir) {
-  const retry = { maxRetries: 20, retryDelay: 200 };
-  rmSync(process.env.FOUNDRY_DATA_PATH, {
+  const retry = {
     recursive: true,
     force: true,
-    ...retry,
-  });
-  rmSync(join(RUN_DIR, "foundry.log"), { force: true, ...retry });
+    maxRetries: 20,
+    retryDelay: 200,
+  };
+  rmSync(process.env.FOUNDRY_DATA_PATH, retry);
+  rmSync(RUN_DIR, retry);
 }
 
 process.exit(test.status ?? 1);
