@@ -1032,9 +1032,40 @@ The GitLab pipeline runs the lint/format/build checks above plus shell-based val
 
 Behavioural changes (sheets, rolls, combat, migrations) must be verified by hand in a running Foundry world. When changing persisted data shapes, test the migration path from a pre-change world, not just a fresh one.
 
-### If You Add Tests
+### End-to-End Tests (Playwright)
 
-There is no established harness, so introducing one is a deliberate decision — discuss it with maintainers first. Pure helpers in `src/modules/utils` (which avoid Foundry globals) are the most natural candidates for unit testing.
+Browser-level regression tests drive a real Foundry world to catch breakages like a sheet failing to render. They are **opt-in** locally (require a local Foundry install) and also run in CI (see **CI** below). The pieces:
+
+- `tools/foundry-server/` — the harness (plain Node, _not_ tests): starts/stops Foundry and drives the startup gates.
+- `tests/browser/` — the Playwright suite: lifecycle hooks (`setup.mjs`/`teardown.mjs`), a shared `fixtures.mjs`, and specs grouped by feature (`actors/`, `items/`, …).
+- `.playwright/` — the Playwright + MCP config files and all generated output (the output is gitignored; the two config files are not).
+
+**Setup.** Copy `foundryconfig.json.example` to `foundryconfig.json` and fill in the `foundry` block:
+
+- `foundry.dataPath` — Foundry **user data** dir (where `Data/`, `Config/` live); the build also deploys the system here.
+- `foundry.appPath` — your Foundry **application** install (the dir whose `resources/app/main.js` — or root `main.js` for older layouts — the launcher runs).
+- `foundry.versionPrefix` — prefix for the `{VERSION}` placeholder (below); omit it to default to `v`, or set it to `""` for a bare version like `13`.
+- `foundry.licenseKey` — your Foundry license key (used to pass the activation screen on a cold data dir).
+
+**`{VERSION}` placeholder.** `dataPath` and `appPath` may contain `{VERSION}`, replaced anywhere it appears by `<versionPrefix><version>` (version from `src/system.json`'s `compatibility.verified`, overridable with `FOUNDRY_VERSION`) — so devs with different layouts can put the version wherever they keep per-version installs, e.g. `appPath: "/foundry/{VERSION}"` → `/foundry/v13`. For backwards compatibility, if `appPath` has **no** `{VERSION}`, the `<versionPrefix><version>` subdir is appended automatically (the historical `<appPath>/v13` behaviour).
+
+Path values must be **absolute and literal** — `~`, `$HOME`, and `%LOCALAPPDATA%` are not expanded (`{VERSION}` is the only substitution). Each can be overridden by an env var: `FOUNDRY_DATA_PATH`, `FOUNDRY_APP_PATH`, `FOUNDRY_LICENSE_KEY`, `FOUNDRY_TEST_PORT` (default `30001`).
+
+**Install browsers.** On most OSes: `npm run browser:install` (Linux may also need OS libs — `npx playwright install --with-deps chromium`). **On NixOS do _not_ run that** — the browsers come from `pkgs.playwright-driver.browsers` in `shell.nix`; just enter the dev shell. The `@playwright/test` version in `package.json` is pinned to match the nixpkgs `playwright-driver` (`nix eval --raw nixpkgs#playwright-driver.version`); bump both together.
+
+**Run.** `npm run test:browser` builds the system and runs the suite in **Chromium only** (headless Firefox can't supply the WebGL context Foundry initialises at startup, so it never reaches `game.ready`). The tests use an **isolated, project-local data dir** (`.playwright/foundry-data`, gitignored) — never your real `foundry.dataPath` — so an admin access key, leftover worlds, or custom settings in a developer's Foundry data can't derail the unattended run (override with `FOUNDRY_DATA_PATH`). It starts Foundry on the test port, drives the license → EULA → decline-data-sharing → setup gates (dismissing onboarding tours), creates and launches a throwaway `cyberpunk-red-<randomhash>` world, runs the specs, then stops Foundry and deletes that world. The whole isolated data dir (and the `.playwright/auth/` run-state — the saved GM session and Foundry log) is **deleted when the run finishes**, pass or fail, so nothing lingers and **every run is a clean, cold boot** — which means `licenseKey` / `FOUNDRY_LICENSE_KEY` must be set, as the harness re-activates the license at that gate each run. (CI supplies its own throwaway data dir and keeps the log as a job artifact, so its cleanup is skipped.)
+
+**CI.** The `test-browser` job (`.gitlab/ci/test/test-browser.yml`) runs the suite on MRs and `dev` that touch rendering code, templates, styles, or the specs/harness — and on release tags. CI has no Foundry, so `.gitlab/pipeline_utils/download-foundry.sh` fetches the latest Node build of the generation in `src/system.json` using the `FOUNDRY_USER` / `FOUNDRY_PASS` / `FOUNDRY_LICENSE_KEY` CI/CD variables; results surface as a JUnit report.
+
+**Lock constraint.** Foundry holds **exclusive LevelDB locks** on the open world _and_ on the system's compendium packs. Because the suite now runs in its own isolated data dir, it no longer collides with a dev Foundry open on your real `dataPath` — you can run both at once. The pack lock still applies to the build's deploy target, so `gulp extractPacks` (or any pack-reading task) must run with **all** Foundry instances stopped.
+
+**Writing specs.** Drive the **real UI** — create actors/items through the sidebar's create dialog rather than `Actor.create()`, so the system's own creation logic runs (created that way, a `character` gets its full skill/cyberware loadout; a bare `Actor.create()` produces an empty actor). The scene canvas is WebGL (Pixi) and invisible to the DOM, so assert on the resulting **HTML sheet**, not the canvas. CPR sheets are ApplicationV1, so open windows live in `ui.windows` (not `foundry.applications.instances`) — close them when done. Resolve document subtypes from `game.documentTypes` rather than hard-coding them.
+
+**Driving Foundry live.** `npm run browser:serve` brings up a ready throwaway world and stays in the foreground; combined with the `playwright` MCP server in `.mcp.json`, an AI assistant can open sheets, click, and screenshot against it. The MCP drives a standalone Chromium via `PLAYWRIGHT_MCP_EXECUTABLE_PATH` (exported by `shell.nix`), so on NixOS launch the editor/agent from inside the dev shell.
+
+### If You Add Unit Tests
+
+There is no unit-test harness, so introducing one is a deliberate decision — discuss it with maintainers first. Pure helpers in `src/modules/utils` (which avoid Foundry globals) are the most natural candidates.
 
 ---
 

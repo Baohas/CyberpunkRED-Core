@@ -2,6 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import log from "fancy-log";
 import chalk from "chalk";
+import { expandVersion } from "../tools/foundry-server/config.mjs";
 
 export const CI = process.env.CI ? process.env.CI : false;
 export const DEBUG = process.env.DEBUG ? process.env.DEBUG : false;
@@ -50,37 +51,46 @@ export const SOURCE_DIRS = [
  */
 function _getDestDir() {
   const localConfigPath = path.resolve("foundryconfig.json");
-  const localConfigExists = fs.existsSync(localConfigPath);
+  const localConfig = fs.existsSync(localConfigPath)
+    ? fs.readJSONSync(localConfigPath).foundry
+    : undefined;
 
-  if (localConfigExists) {
-    const localDataPath = fs.readJSONSync(localConfigPath).dataPath;
-    const dataPath = path.resolve(
-      path.join(localDataPath, "Data", "systems", SYSTEM_NAME),
-    );
-    if (fs.existsSync(path.join(dataPath, ".git"))) {
-      // Check if a .git directoy exists in the dataPath. This will hopefully
-      // prevent people blasting their repo if they stored it in their
-      // Foundry datapath previously.
-      throw Error(
-        `'dataPath' appears to contain a '.git' directory.\n\n` +
-          `Please check your foundryconfig.json and update 'dataPath' ` +
-          `If you have previously \n` +
-          `cloned the git repo to ` +
-          `'${dataPath}'\n` +
-          `please check CONTRIBUTING.md and clone the repo to another ` +
-          `location.`,
-      );
-    } else {
-      return dataPath;
-    }
-  } else {
+  // FOUNDRY_DATA_PATH (set by the browser-test runner and in CI) wins over the
+  // configured dataPath, so tests build into their isolated data dir rather than
+  // the developer's real Foundry data.
+  const rawDataPath = process.env.FOUNDRY_DATA_PATH || localConfig?.dataPath;
+  if (!rawDataPath) {
     log(
       `${chalk.yellow(
         "WARNING",
       )}: foundryconfig.json not found building to ${DEFAULT_DESTINATION_FOLDER}`,
     );
+    return DEFAULT_DESTINATION_FOLDER;
   }
-  return DEFAULT_DESTINATION_FOLDER;
+
+  // Expand a {VERSION} placeholder the same way the launcher does, so the build
+  // deploys into exactly the directory the server later reads from.
+  const localDataPath = expandVersion(rawDataPath, {
+    versionPrefix: localConfig?.versionPrefix,
+  });
+  const dataPath = path.resolve(
+    path.join(localDataPath, "Data", "systems", SYSTEM_NAME),
+  );
+  if (fs.existsSync(path.join(dataPath, ".git"))) {
+    // Check if a .git directoy exists in the dataPath. This will hopefully
+    // prevent people blasting their repo if they stored it in their
+    // Foundry datapath previously.
+    throw Error(
+      `'dataPath' appears to contain a '.git' directory.\n\n` +
+        `Please check your foundryconfig.json and update 'dataPath' ` +
+        `If you have previously \n` +
+        `cloned the git repo to ` +
+        `'${dataPath}'\n` +
+        `please check CONTRIBUTING.md and clone the repo to another ` +
+        `location.`,
+    );
+  }
+  return dataPath;
 }
 
 export const DEST_DIR = _getDestDir();
