@@ -21,6 +21,14 @@ if [[ -z "${MR_IID}" ]]; then
   exit 0
 fi
 
+# No results.json means the job failed before the tests ran (image pull, Foundry
+# download, build, or harness launch). There's nothing test-related to report, so
+# don't post a comment at all — the job log has the failure.
+if [[ ! -f "${RESULTS}" ]]; then
+  echo "No test results at ${RESULTS}; the job failed before tests ran — skipping report."
+  exit 0
+fi
+
 readonly PROJECT_URL="${CI_API_V4_URL}/projects/${CI_PROJECT_ID}"
 readonly MR_URL="${PROJECT_URL}/merge_requests/${MR_IID}"
 readonly AUTH=(--header "PRIVATE-TOKEN: ${CHOOM_BOT_API}")
@@ -35,30 +43,25 @@ trap 'rm -f "${body}"' EXIT
 } >"${body}"
 
 # --- Status / failed-tests table (from the Playwright JSON report) ----------
-if [[ ! -f "${RESULTS}" ]]; then
-  echo "⚠️ No test results were produced — the browser job did not complete (check the [job log](${CI_JOB_URL}))." >>"${body}"
-  echo >>"${body}"
+mapfile -t failed < <(
+  jq -r \
+    '[.. | .specs? // empty | .[] | select(.ok == false) | .title] | unique | .[]' \
+    "${RESULTS}"
+)
+if [[ "${#failed[@]}" -gt 0 ]]; then
+  {
+    echo "### ❌ ${#failed[@]} failed"
+    echo
+    echo "| Failed test |"
+    echo "| --- |"
+    for title in "${failed[@]}"; do
+      echo "| ${title} |"
+    done
+    echo
+  } >>"${body}"
 else
-  mapfile -t failed < <(
-    jq -r \
-      '[.. | .specs? // empty | .[] | select(.ok == false) | .title] | unique | .[]' \
-      "${RESULTS}"
-  )
-  if [[ "${#failed[@]}" -gt 0 ]]; then
-    {
-      echo "### ❌ ${#failed[@]} failed"
-      echo
-      echo "| Failed test |"
-      echo "| --- |"
-      for title in "${failed[@]}"; do
-        echo "| ${title} |"
-      done
-      echo
-    } >>"${body}"
-  else
-    echo "✅ All browser tests passed." >>"${body}"
-    echo >>"${body}"
-  fi
+  echo "✅ All browser tests passed." >>"${body}"
+  echo >>"${body}"
 fi
 
 # --- Rendered-sheet gallery -------------------------------------------------
