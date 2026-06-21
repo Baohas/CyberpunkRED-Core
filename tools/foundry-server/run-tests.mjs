@@ -1,6 +1,7 @@
 import { spawnSync } from "node:child_process";
 import { mkdirSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { RUN_DIR } from "./config.mjs";
 
 /*
  * Cross-platform runner for `npm run test:browser`.
@@ -28,18 +29,13 @@ const run = (command, options) =>
 // Tests run against an isolated, project-local Foundry data dir — never the
 // developer's real dataPath, which can carry pollution (an admin access key,
 // leftover worlds, custom settings) that derails the unattended setup/login
-// flow. CI sets FOUNDRY_DATA_PATH itself; honour any explicit value, otherwise
-// default to .playwright/foundry-data. A fresh world is created per run while
-// the dir is kept warm (licensed, EULA-accepted) between runs for speed.
-// FOUNDRY_FRESH wipes it for a true cold boot (re-runs the license/EULA/setup
-// gates) — only ever the dir we manage, never one a developer pointed
-// FOUNDRY_DATA_PATH at.
+// flow. CI provides its own throwaway FOUNDRY_DATA_PATH; honour any explicit
+// value, otherwise default to .playwright/foundry-data. When we own that default
+// dir we delete it (and the Foundry log) once the run finishes — see the cleanup
+// at the end — so every local run is a clean, cold boot.
 const ownsDataDir = !process.env.FOUNDRY_DATA_PATH;
 if (ownsDataDir) {
   process.env.FOUNDRY_DATA_PATH = resolve(".playwright", "foundry-data");
-}
-if (process.env.FOUNDRY_FRESH && ownsDataDir) {
-  rmSync(process.env.FOUNDRY_DATA_PATH, { recursive: true, force: true });
 }
 process.stdout.write(`Foundry data dir: ${process.env.FOUNDRY_DATA_PATH}\n`);
 
@@ -60,4 +56,20 @@ const test = run("npx playwright test -c .playwright/playwright.config.mjs", {
   stdio: "inherit",
   env,
 });
+
+// On completion (pass or fail), clean up the artifacts of a local run we own:
+// the isolated data dir and the Foundry server log, so nothing lingers in
+// .playwright and the next run starts cold. maxRetries/retryDelay ride out
+// Windows file locks (Foundry's LevelDB handles release a beat after it stops).
+// Skipped in CI, where we don't own the dir and the log is kept as an artifact.
+if (ownsDataDir) {
+  const retry = { maxRetries: 20, retryDelay: 200 };
+  rmSync(process.env.FOUNDRY_DATA_PATH, {
+    recursive: true,
+    force: true,
+    ...retry,
+  });
+  rmSync(join(RUN_DIR, "foundry.log"), { force: true, ...retry });
+}
+
 process.exit(test.status ?? 1);
