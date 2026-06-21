@@ -1,8 +1,12 @@
-import fs from "fs-extra";
 import { chromium } from "@playwright/test";
 import { startServer, stopServer } from "./server.mjs";
 import { driveSetup } from "./setup.mjs";
-import { newWorldId, readWorldId, clearWorldId, worldDir } from "./config.mjs";
+import {
+  newWorldId,
+  readWorldId,
+  clearWorldId,
+  removeWorld,
+} from "./config.mjs";
 
 /*
  * `npm run browser:serve` — brings Foundry up with a fresh ephemeral world launched
@@ -23,7 +27,9 @@ try {
 
 /* eslint-disable no-console */
 console.log(`\nFoundry is up at ${config.url} (world: ${worldId}).`);
-console.log("Drive it live (e.g. via the Playwright MCP). Press Ctrl-C to stop.\n");
+console.log(
+  "Drive it live (e.g. via the Playwright MCP). Press Ctrl-C to stop.\n",
+);
 /* eslint-enable no-console */
 
 let shuttingDown = false;
@@ -33,7 +39,7 @@ async function shutdown() {
   await stopServer(child);
   const id = readWorldId();
   if (id) {
-    await fs.remove(worldDir(config.dataPath, id));
+    await removeWorld(config.dataPath, id);
     clearWorldId();
   }
   process.exit(0);

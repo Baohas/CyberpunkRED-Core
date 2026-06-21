@@ -1,10 +1,9 @@
-import fs from "fs-extra";
 import { stopServer } from "../../tools/foundry-server/server.mjs";
 import {
   resolveConfig,
   readWorldId,
   clearWorldId,
-  worldDir,
+  removeWorld,
 } from "../../tools/foundry-server/config.mjs";
 
 /*
@@ -18,7 +17,7 @@ export default async function globalTeardown() {
   const worldId = readWorldId();
   if (worldId) {
     const { dataPath } = resolveConfig();
-    await fs.remove(worldDir(dataPath, worldId));
+    await removeWorld(dataPath, worldId);
     clearWorldId();
   }
 }

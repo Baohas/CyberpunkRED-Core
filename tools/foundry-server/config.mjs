@@ -1,4 +1,5 @@
 import fs from "fs-extra";
+import { rm } from "node:fs/promises";
 import path from "path";
 import crypto from "crypto";
 
@@ -153,6 +154,22 @@ export function clearWorldId() {
 
 export function worldDir(dataPath, worldId) {
   return path.join(dataPath, "Data", "worlds", worldId);
+}
+
+/*
+ * Delete an ephemeral world directory. Uses fs.rm with retries because Windows
+ * cannot unlink a file another process still holds open: after Foundry stops,
+ * its LevelDB pack handles (e.g. the world's combats DB) can take a moment to be
+ * released, so a plain delete races and throws EBUSY. The retries ride that out.
+ * (POSIX unlinks open files fine, so this only bites on Windows.)
+ */
+export async function removeWorld(dataPath, worldId) {
+  await rm(worldDir(dataPath, worldId), {
+    recursive: true,
+    force: true,
+    maxRetries: 20,
+    retryDelay: 200,
+  });
 }
 
 export function writePid(pid) {
