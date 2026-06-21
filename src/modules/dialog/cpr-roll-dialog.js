@@ -184,6 +184,31 @@ export class CPRRollDialog extends CPRDialog {
   }
 
   /**
+   * Block confirming the roll when the requested LUCK exceeds the actor's
+   * available pool. We warn and return without resolving/closing, so the dialog
+   * stays open and the user can lower the amount and try again. The live form
+   * value is read directly (rather than the merged roll data) because the form
+   * may not have re-submitted by the time the confirm button fires.
+   *
+   * @override
+   * @param {Event} event
+   * @param {Object} options - options forwarded to the parent confirm/close
+   * @returns {Promise<void>}
+   */
+  async confirmDialog(event, options) {
+    const availableLuck = this.actor?.system?.stats?.luck?.value ?? 0;
+    const requestedLuck = Number(this.form?.luck?.value ?? this.rollData.luck);
+    if (Number.isFinite(requestedLuck) && requestedLuck > availableLuck) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.rolls.luckExceedsAvailable"),
+      );
+      return undefined;
+    }
+    return super.confirmDialog(event, options);
+  }
+
+  /**
    * We ovverride this function to process Additional Mods added by the user in the dialog.
    *
    * @param {*} event

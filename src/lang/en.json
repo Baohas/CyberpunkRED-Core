@@ -1168,6 +1168,7 @@
   "CPR.rolls.failed": "Failure",
   "CPR.rolls.location": "Location",
   "CPR.rolls.luck": "Spend LUCK",
+  "CPR.rolls.luckExceedsAvailable": "You cannot spend more LUCK than you have available.",
   "CPR.rolls.modifiers.additionalModWarning": "The additional mod field only accepts numbers separated by commas or spaces.",
   "CPR.rolls.modifiers.additionalMods": "Additional Mods",
   "CPR.rolls.modifiers.additionalModsPlaceholder": "e.g. 1,-2",
