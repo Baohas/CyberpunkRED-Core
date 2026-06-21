@@ -15,6 +15,11 @@
 
 test-browser:
   stage: test
+  # The official Playwright image ships the browsers and their OS deps already
+  # installed (matched to the pinned @playwright/test), so there is no flaky
+  # `playwright install` step. node_modules from the cache is N-API/prebuilt and
+  # works under this image's Node too.
+  image: mcr.microsoft.com/playwright:v1.59.1-noble
   variables:
     # Where this job installs Foundry and points its user data. The harness reads
     # these from the environment; gulp's build reads dataPath from the
@@ -29,8 +34,6 @@ test-browser:
     # gulp build deploys the system into <dataPath>/Data/systems and reads that
     # path from foundryconfig.json; the license is taken from FOUNDRY_LICENSE_KEY.
     - printf '{"foundry":{"appPath":"%s","dataPath":"%s"}}\n' "$FOUNDRY_APP_PATH" "$FOUNDRY_DATA_PATH" > foundryconfig.json
-    # Playwright's Chromium plus its OS libraries.
-    - npx playwright install --with-deps chromium
   script:
     - npm run test:browser
   # Post/refresh the single MR comment (sheet gallery + any failed-test table) on
@@ -44,8 +47,12 @@ test-browser:
     # are Playwright traces/screenshots kept for failures.
     reports:
       junit: .playwright/test-results/junit.xml
+    # Keep the silenced build/Foundry logs too, so a failure in those phases is
+    # diagnosable from artifacts without un-silencing the job log.
     paths:
       - .playwright/test-results/
+      - .playwright/build.log
+      - .playwright/auth/foundry.log
   needs:
     - job: init
       artifacts: true

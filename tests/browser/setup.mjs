@@ -16,7 +16,9 @@ export default async function globalSetup() {
   const { config } = await startServer({ silent: true });
   const worldId = newWorldId();
 
-  const browser = await chromium.launch();
+  // --no-sandbox so this launch also works on root CI runners (the test
+  // browsers get the same via chromiumSandbox:false in the Playwright config).
+  const browser = await chromium.launch({ args: ["--no-sandbox"] });
   try {
     const page = await browser.newPage();
     await driveSetup(page, { config, worldId });

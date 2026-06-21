@@ -43,6 +43,9 @@ export default defineConfig({
     storageState: STORAGE_STATE,
     trace: "retain-on-failure",
     screenshot: "only-on-failure",
+    // CI runs as root, where Chromium's setuid sandbox can't start; the board
+    // canvas is disabled anyway, so dropping the sandbox is safe here.
+    chromiumSandbox: false,
   },
   projects: [
     // Foundry's UI needs at least 1920x1080 — the device preset defaults to
