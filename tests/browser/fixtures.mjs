@@ -178,9 +178,39 @@ export async function expectSheetRendered(page, { collection, id }) {
   return elementId;
 }
 
+// Clear Foundry's transient ui.notifications before a capture. They render as
+// `.notification` toasts layered above the windows, and an element screenshot
+// still includes whatever overlaps the element's box — so a toast sitting over
+// the top of a sheet bleeds into the shot. Flush the queue (if this build
+// supports it), let any active toast auto-expire, then strip any straggler.
+async function dismissNotifications(page) {
+  await page.evaluate(() => {
+    try {
+      globalThis.ui?.notifications?.clear?.();
+    } catch {
+      /* older build without clear(); the wait/strip below still handle it */
+    }
+  });
+  // Toasts auto-dismiss after a few seconds; wait for that, bounded so a
+  // permanent toast can't stall the capture.
+  await page
+    .waitForFunction(() => !document.querySelector(".notification"), null, {
+      timeout: 6000,
+    })
+    .catch(() => {});
+  // Final guarantee for this capture: remove anything still showing. Foundry may
+  // re-render it a tick later, but the screenshot is taken immediately after.
+  await page.evaluate(() => {
+    document
+      .querySelectorAll(".notification")
+      .forEach((toast) => toast.remove());
+  });
+}
+
 // Save an element-scoped screenshot of a rendered sheet (just that window, not
 // the page) into the test-results so CI can attach it to the MR report.
 export async function captureSheet(page, sheetId, name) {
+  await dismissNotifications(page);
   await page.locator(`#${sheetId}`).screenshot({
     path: `.playwright/test-results/sheets/${name}.png`,
   });
