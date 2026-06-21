@@ -1,4 +1,6 @@
 import { spawn } from "child_process";
+import fs from "fs";
+import path from "path";
 import net from "net";
 import {
   resolveConfig,
@@ -6,6 +8,7 @@ import {
   writePid,
   readPid,
   clearPid,
+  RUN_DIR,
 } from "./config.mjs";
 
 function portInUse(port) {
@@ -69,16 +72,25 @@ export async function startServer({ silent = false } = {}) {
     throw new Error(
       `Port ${config.port} is already in use. A Foundry instance may already be ` +
         `running on this dataPath — stop it first (the LevelDB lock is exclusive, ` +
-        `so e2e and a dev instance cannot share a data dir). Override the port with ` +
+        `so the browser tests and a dev instance cannot share a data dir). Override the port with ` +
         `FOUNDRY_TEST_PORT if you intend to run a second, separate data dir.`,
     );
   }
 
   const mainJs = resolveMainJs(config.appDir);
+  // When silent (the Playwright suite), keep Foundry's chatty server log out of
+  // the test reporter's stream — but capture it to a file so failures are still
+  // debuggable — instead of inheriting the parent's stdio.
+  let stdio = "inherit";
+  if (silent) {
+    fs.mkdirSync(RUN_DIR, { recursive: true });
+    const logFd = fs.openSync(path.join(RUN_DIR, "foundry.log"), "a");
+    stdio = ["ignore", logFd, logFd];
+  }
   const child = spawn(
     "node",
     [mainJs, `--dataPath=${config.dataPath}`, `--port=${config.port}`, "--noupnp"],
-    { stdio: silent ? "ignore" : "inherit" },
+    { stdio },
   );
   writePid(child.pid);
 

@@ -6,7 +6,7 @@ import { SYSTEM_NAME } from "./config.mjs";
  * IMPORTANT: the exact selectors for the license / EULA / setup screens are
  * Foundry-version-specific (v13 moved everything to ApplicationV2). They are
  * written defensively here but SHOULD be confirmed against a live instance on
- * first run — `npm run e2e:serve` + the Playwright MCP is the intended way to
+ * first run — `npm run browser:serve` + the Playwright MCP is the intended way to
  * inspect the real DOM and adjust these. Each step is a no-op if its screen is
  * not present, so a warm dataPath (already licensed, EULA accepted) skips ahead.
  */
@@ -116,12 +116,20 @@ async function createAndLaunchWorld(page, worldId) {
   // over the launch control — clear it before launching.
   await dismissTours(page);
 
-  // Launch the world we just created (or that already existed).
-  const launch = page
-    .locator(`[data-package-id="${worldId}"] [data-action="worldLaunch"]`)
-    .first();
-  if (await present(launch)) {
-    await launch.click();
+  // Launch the world we just created (or that already existed). The launch
+  // control is revealed on hover over the world tile in v13, so hover the tile
+  // first; if it still isn't actionable, dispatch the click directly (the anchor
+  // is in the DOM regardless of the hover-reveal styling).
+  const tile = page.locator(`[data-package-id="${worldId}"]`).first();
+  if (await present(tile)) {
+    await tile.hover().catch(() => {});
+    const launch = tile.locator('[data-action="worldLaunch"]').first();
+    if (await present(launch, 1500)) {
+      await launch.click().catch(() => {});
+    } else {
+      await launch.dispatchEvent("click").catch(() => {});
+    }
+    await page.waitForLoadState("networkidle").catch(() => {});
   }
 }
 

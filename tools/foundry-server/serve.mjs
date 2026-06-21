@@ -5,7 +5,7 @@ import { driveSetup } from "./setup.mjs";
 import { newWorldId, readWorldId, clearWorldId, worldDir } from "./config.mjs";
 
 /*
- * `npm run e2e:serve` — brings Foundry up with a fresh ephemeral world launched
+ * `npm run browser:serve` — brings Foundry up with a fresh ephemeral world launched
  * and ready, then stays in the foreground so it can be driven live (e.g. via the
  * Playwright MCP at the printed URL). Ctrl-C stops Foundry cleanly and removes
  * the ephemeral world, mirroring teardown.

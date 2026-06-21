@@ -11,7 +11,7 @@ const PID_FILE = path.join(RUN_DIR, "foundry.pid");
 export const STORAGE_STATE = path.join(RUN_DIR, "gm.json");
 
 // System id mirrors gulp/config.mjs SYSTEM_NAME. The built system is deployed to
-// <dataPath>/Data/systems/<SYSTEM_NAME> by `gulp build`; the e2e world selects it.
+// <dataPath>/Data/systems/<SYSTEM_NAME> by `gulp build`; the browser-test world selects it.
 export const SYSTEM_NAME = process.env.SYSTEM_NAME || "cyberpunk-red-core";
 
 function readLocalConfig() {
