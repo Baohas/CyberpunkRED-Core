@@ -22,9 +22,9 @@ function readLocalConfig() {
 /*
  * The Foundry version this system targets, read from src/system.json's
  * `compatibility.verified`. Developers keep a separate Foundry install per major
- * version, so `appPath` is a base dir and we append `v<version>` to reach the
- * right install (e.g. <appPath>/v13/resources/app/main.js). FOUNDRY_VERSION
- * overrides it for ad-hoc runs against another version.
+ * version; the version is used to expand the `{VERSION}` placeholder in
+ * appPath/dataPath (see expandVersion). FOUNDRY_VERSION overrides it for ad-hoc
+ * runs against another version.
  */
 export function foundryVersion() {
   if (process.env.FOUNDRY_VERSION) return String(process.env.FOUNDRY_VERSION);
@@ -39,35 +39,66 @@ export function foundryVersion() {
   return String(verified);
 }
 
+// Default prefix prepended to the version when expanding a `{VERSION}`
+// placeholder, overridable per config via `foundry.versionPrefix`.
+export const DEFAULT_VERSION_PREFIX = "v";
+
+/*
+ * Expand a `{VERSION}` placeholder in a configured path so developers can place
+ * the Foundry version anywhere their own directory layout needs it. `{VERSION}`
+ * is replaced (everywhere it appears) by `<versionPrefix><version>` — e.g.
+ * "/foundry/{VERSION}/data" -> "/foundry/v13/data", or "/foundry/13/data" when
+ * versionPrefix is "". A path without the placeholder is returned unchanged, and
+ * the version is only resolved when a placeholder is actually present.
+ */
+export function expandVersion(rawPath, { version, versionPrefix } = {}) {
+  if (typeof rawPath !== "string" || !rawPath.includes("{VERSION}")) {
+    return rawPath;
+  }
+  const prefix = versionPrefix ?? DEFAULT_VERSION_PREFIX;
+  const resolved = version ?? foundryVersion();
+  return rawPath.replaceAll("{VERSION}", `${prefix}${resolved}`);
+}
+
 /*
  * Resolve everything the launcher needs. Environment variables win over
  * foundryconfig.json so CI / one-off runs can override without editing the file.
  */
 export function resolveConfig() {
   const local = readLocalConfig();
-  const appPath = process.env.FOUNDRY_APP_PATH || local.foundry?.appPath;
-  const dataPath = process.env.FOUNDRY_DATA_PATH || local.foundry?.dataPath;
-  const licenseKey = process.env.FOUNDRY_LICENSE_KEY || local.foundry?.licenseKey || "";
+  const versionPrefix = local.foundry?.versionPrefix;
+  const rawAppPath = process.env.FOUNDRY_APP_PATH || local.foundry?.appPath;
+  const rawDataPath = process.env.FOUNDRY_DATA_PATH || local.foundry?.dataPath;
+  const licenseKey =
+    process.env.FOUNDRY_LICENSE_KEY || local.foundry?.licenseKey || "";
   const port = Number(process.env.FOUNDRY_TEST_PORT || 30001);
 
-  if (!appPath) {
+  if (!rawAppPath) {
     throw new Error(
       "Foundry application path is not set. Add 'foundry.appPath' to " +
-        "foundryconfig.json (the base dir holding a per-version Foundry install) " +
-        "or set FOUNDRY_APP_PATH.",
+        "foundryconfig.json or set FOUNDRY_APP_PATH.",
     );
   }
-  if (!dataPath) {
+  if (!rawDataPath) {
     throw new Error(
       "Foundry data path is not set. Add 'foundry.dataPath' to foundryconfig.json " +
         "or set FOUNDRY_DATA_PATH.",
     );
   }
 
-  // appPath is a base dir; the `v<version>` subdirectory (version from
-  // src/system.json) holds that Foundry install.
   const version = foundryVersion();
-  const appDir = path.join(appPath, `v${version}`);
+  const appPath = expandVersion(rawAppPath, { version, versionPrefix });
+  const dataPath = expandVersion(rawDataPath, { version, versionPrefix });
+
+  // If the dev placed `{VERSION}` in appPath themselves, it already points at the
+  // versioned install. Otherwise append `<versionPrefix><version>` as the
+  // per-version subdirectory (the long-standing default layout).
+  const appDir = rawAppPath.includes("{VERSION}")
+    ? appPath
+    : path.join(
+        appPath,
+        `${versionPrefix ?? DEFAULT_VERSION_PREFIX}${version}`,
+      );
 
   return {
     appPath,
@@ -94,8 +125,9 @@ export function resolveMainJs(appDir) {
     throw new Error(
       `Could not find Foundry main.js under '${appDir}'. Looked at:\n  ` +
         candidates.join("\n  ") +
-        `\n(appPath is a base dir; the Foundry version from src/system.json is ` +
-        `appended — set FOUNDRY_VERSION to target a different version.)`,
+        `\n(appPath may use a {VERSION} placeholder; if it omits one, the ` +
+        `<versionPrefix><version> subdir from src/system.json is appended — ` +
+        `set FOUNDRY_VERSION to target a different version.)`,
     );
   }
   return found;

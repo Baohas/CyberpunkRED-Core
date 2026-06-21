@@ -2,6 +2,7 @@ import fs from "fs-extra";
 import path from "path";
 import log from "fancy-log";
 import chalk from "chalk";
+import { expandVersion } from "../tools/foundry-server/config.mjs";
 
 export const CI = process.env.CI ? process.env.CI : false;
 export const DEBUG = process.env.DEBUG ? process.env.DEBUG : false;
@@ -53,7 +54,12 @@ function _getDestDir() {
   const localConfigExists = fs.existsSync(localConfigPath);
 
   if (localConfigExists) {
-    const localDataPath = fs.readJSONSync(localConfigPath).foundry?.dataPath;
+    const localConfig = fs.readJSONSync(localConfigPath).foundry;
+    // Expand a {VERSION} placeholder the same way the launcher does, so the
+    // build deploys into exactly the directory the server later reads from.
+    const localDataPath = expandVersion(localConfig?.dataPath, {
+      versionPrefix: localConfig?.versionPrefix,
+    });
     const dataPath = path.resolve(
       path.join(localDataPath, "Data", "systems", SYSTEM_NAME),
     );

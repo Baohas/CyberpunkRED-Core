@@ -1043,10 +1043,13 @@ Browser-level regression tests drive a real Foundry world to catch breakages lik
 **Setup.** Copy `foundryconfig.json.example` to `foundryconfig.json` and fill in the `foundry` block:
 
 - `foundry.dataPath` — Foundry **user data** dir (where `Data/`, `Config/` live); the build also deploys the system here.
-- `foundry.appPath` — **base** dir holding a per-version Foundry application install in a `v<version>` subdirectory (e.g. `v13/`). The version is read from `src/system.json`'s `compatibility.verified` and appended, so the launcher uses `<appPath>/v13/resources/app/main.js`; `FOUNDRY_VERSION` overrides it.
+- `foundry.appPath` — your Foundry **application** install (the dir whose `resources/app/main.js` — or root `main.js` for older layouts — the launcher runs).
+- `foundry.versionPrefix` — prefix for the `{VERSION}` placeholder (below); omit it to default to `v`, or set it to `""` for a bare version like `13`.
 - `foundry.licenseKey` — your Foundry license key (used to pass the activation screen on a cold data dir).
 
-Path values must be **absolute and literal** — `~`, `$HOME`, and `%LOCALAPPDATA%` are not expanded. Each can be overridden by an env var: `FOUNDRY_DATA_PATH`, `FOUNDRY_APP_PATH`, `FOUNDRY_LICENSE_KEY`, `FOUNDRY_TEST_PORT` (default `30001`).
+**`{VERSION}` placeholder.** `dataPath` and `appPath` may contain `{VERSION}`, replaced anywhere it appears by `<versionPrefix><version>` (version from `src/system.json`'s `compatibility.verified`, overridable with `FOUNDRY_VERSION`) — so devs with different layouts can put the version wherever they keep per-version installs, e.g. `appPath: "/foundry/{VERSION}"` → `/foundry/v13`. For backwards compatibility, if `appPath` has **no** `{VERSION}`, the `<versionPrefix><version>` subdir is appended automatically (the historical `<appPath>/v13` behaviour).
+
+Path values must be **absolute and literal** — `~`, `$HOME`, and `%LOCALAPPDATA%` are not expanded (`{VERSION}` is the only substitution). Each can be overridden by an env var: `FOUNDRY_DATA_PATH`, `FOUNDRY_APP_PATH`, `FOUNDRY_LICENSE_KEY`, `FOUNDRY_TEST_PORT` (default `30001`).
 
 **Install browsers.** On most OSes: `npm run browser:install` (Linux may also need OS libs — `npx playwright install --with-deps chromium`). **On NixOS do _not_ run that** — the browsers come from `pkgs.playwright-driver.browsers` in `shell.nix`; just enter the dev shell. The `@playwright/test` version in `package.json` is pinned to match the nixpkgs `playwright-driver` (`nix eval --raw nixpkgs#playwright-driver.version`); bump both together.
 
