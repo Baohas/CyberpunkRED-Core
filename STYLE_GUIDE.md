@@ -1153,7 +1153,7 @@ Data-shape changes are handled by versioned scripts under `src/modules/system/mi
 - [ ] No Foundry globals are imported (`game`, `CONFIG`, `Hooks`, …)
 - [ ] Public classes/methods have JSDoc blocks
 - [ ] No hardcoded user-facing strings — all via `CPR.*` localization keys
-- [ ] New `CPR.*` keys added to `src/lang/en.json` only — no other `src/lang/` translation files edited, no `src/babele/` files touched (flagged for review)
+- [ ] New `CPR.*` keys added to `src/lang/en.json` only — no other `src/lang/` translation files edited, no `src/babele/` files touched
 - [ ] Persisted data shape changes ship with a migration script
 - [ ] Manually verified in a running Foundry world
 
