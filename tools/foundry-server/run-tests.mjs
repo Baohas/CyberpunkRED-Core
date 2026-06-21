@@ -52,10 +52,24 @@ if (build.status !== 0) {
 const env = { ...process.env };
 delete env.PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS;
 
-const test = run("npx playwright test -c .playwright/playwright.config.mjs", {
-  stdio: "inherit",
-  env,
-});
+// Forward any extra args (after `--`) to Playwright so a subset can be run with
+// the full harness (isolated data dir, cold-boot login, cleanup) — e.g.
+// `npm run test:browser -- rolls/luck.spec.mjs` or `-- -g "LUCK"`. Each arg is
+// quoted so paths/patterns with spaces survive the shell:true invocation.
+const forwarded = process.argv
+  .slice(2)
+  .map((arg) => `"${arg.replace(/"/g, '\\"')}"`)
+  .join(" ");
+
+const test = run(
+  `npx playwright test -c .playwright/playwright.config.mjs${
+    forwarded ? ` ${forwarded}` : ""
+  }`,
+  {
+    stdio: "inherit",
+    env,
+  },
+);
 
 // On completion (pass or fail), clean up the artifacts of a local run we own:
 // the isolated data dir and the auth run-state (the saved GM session gm.json and
