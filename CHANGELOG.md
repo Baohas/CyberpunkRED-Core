@@ -12,6 +12,7 @@
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
 - Fix orientation of non-english characters in Mook nameplates
+- Disable input fields for Skill, Stat and Role values within the roll dialogue
 
 ## Version 0.92.4
 
