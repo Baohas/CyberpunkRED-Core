@@ -21,7 +21,8 @@
           ({{localize rollData.statName}}):
         </div>
         <div class="dialog-item-input text-nowrap">
-          <input name="statValue"
+          <input disabled
+                 name="statValue"
                  type="number"
                  data-dtype="Number"
                  value="{{rollData.statValue}}"/>
@@ -34,7 +35,8 @@
             ({{localize (cprGetLocalizedlNameKey rollData.skillName "skill")}}):
           </div>
           <div class="dialog-item-input text-nowrap">
-            <input name="skillValue"
+            <input disabled
+                   name="skillValue"
                    type="number"
                    data-dtype="Number"
                    value="{{rollData.skillValue}}"/>
