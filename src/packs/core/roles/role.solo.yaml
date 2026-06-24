@@ -6,15 +6,29 @@ flags:
     _migration:
       current: 33
       previous: "24"
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Solo
+ownership:
+  default: 0
+sort: 0
 system:
   abilities:
+    - bonusRatio: 2
+      bonuses: []
+      hasRoll: false
+      isSituational: true
+      multiplier: 1
+      name: Damage Deflection
+      onByDefault: true
+      rank: 0
+      skill: "--"
+      stat: "--"
+      universalBonuses:
+        - damageReduction
     - bonusRatio: 4
       bonuses: []
-      description: ""
       hasRoll: false
-      index: 1
       isSituational: false
       multiplier: 1
       name: Fumble Recovery
@@ -26,9 +40,7 @@ system:
         - fumbleRecovery
     - bonusRatio: 1
       bonuses: []
-      description: ""
       hasRoll: false
-      index: 2
       isSituational: false
       multiplier: 1
       name: Initiative Reaction
@@ -40,9 +52,7 @@ system:
         - initiative
     - bonusRatio: 3
       bonuses: []
-      description: ""
       hasRoll: false
-      index: 3
       isSituational: false
       multiplier: 1
       name: Precision Attack
@@ -54,9 +64,7 @@ system:
         - attack
     - bonusRatio: 1
       bonuses: []
-      description: ""
       hasRoll: false
-      index: 4
       isSituational: true
       multiplier: 1
       name: Spot Weakness
@@ -91,9 +99,7 @@ system:
             default: 0
           sort: 0
           type: skill
-      description: ""
       hasRoll: false
-      index: 5
       isSituational: false
       multiplier: 1
       name: Threat Detection
@@ -102,20 +108,6 @@ system:
       skill: "--"
       stat: "--"
       universalBonuses: []
-    - bonusRatio: 2
-      bonuses: []
-      description: ""
-      hasRoll: false
-      index: 0
-      isSituational: true
-      multiplier: 1
-      name: Damage Deflection
-      onByDefault: true
-      rank: 0
-      skill: "--"
-      stat: "--"
-      universalBonuses:
-        - damageReduction
   addRoleAbilityRank: true
   bonusRatio: 1
   bonuses: []
