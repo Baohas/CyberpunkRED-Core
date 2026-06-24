@@ -22,7 +22,7 @@ export default class CPRChat {
    */
   static ChatDataSetup(content, modeOverride, forceWhisper, isRoll = false) {
     const chatData = {
-      user: game.user.id,
+      author: game.user.id,
       rollMode: modeOverride || game.settings.get("core", "rollMode"),
       content,
     };
