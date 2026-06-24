@@ -172,4 +172,19 @@ export async function joinAsGM(page, config) {
   await page.waitForFunction(() => globalThis.game?.ready === true, null, {
     timeout: 60000,
   });
+
+  // A freshly launched world starts paused, which blocks many in-game
+  // interactions (and silently makes driven actions miss). Unpause as GM with
+  // `broadcast: true` so the server records the change — pause is shared,
+  // server-side session state, so it then persists for any later client that
+  // joins the same running world. Settle briefly afterwards to let the socket
+  // emit flush before a caller (e.g. serve.mjs) closes the page.
+  await page
+    .evaluate(
+      () =>
+        globalThis.game?.paused &&
+        globalThis.game.togglePause(false, { broadcast: true }),
+    )
+    .catch(() => {});
+  await page.waitForTimeout(750);
 }
