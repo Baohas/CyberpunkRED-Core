@@ -1,5 +1,8 @@
 export default function overrideRulerFunctions() {
-  const proto = Object.getPrototypeOf(canvas.controls.ruler);
+  // Patch the ruler class prototype directly rather than a live instance from
+  // `canvas.controls.ruler` — the latter is null when no scene is active (the
+  // ruler is only constructed once the canvas is drawn), which threw on `ready`.
+  const proto = CONFIG.Canvas.rulerClass.prototype;
   const originalContext = proto._getWaypointLabelContext;
 
   proto._getWaypointLabelContext = function (waypoint, state) {

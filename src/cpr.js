@@ -290,8 +290,9 @@ Hooks.once("init", async () => {
  */
 Hooks.once("ready", async () => {
   overrideRulerFunctions();
-  const proto = Object.getPrototypeOf(canvas.controls.ruler);
-  proto.constructor.WAYPOINT_LABEL_TEMPLATE = `systems/${game.system.id}/templates/hud/waypoint-label-dv.hbs`;
+  // Set the waypoint label template on the ruler class directly — reading it from
+  // `canvas.controls.ruler` threw when launching into a world with no active scene.
+  CONFIG.Canvas.rulerClass.WAYPOINT_LABEL_TEMPLATE = `systems/${game.system.id}/templates/hud/waypoint-label-dv.hbs`;
 
   if (!game.user.isGM) return;
   const { settings } = game;
