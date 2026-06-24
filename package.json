@@ -21,6 +21,7 @@
     "stylelint:fix": "npx stylelint 'src/**/*.css' --fix",
     "test:browser": "node tools/foundry-server/run-tests.mjs",
     "browser:serve": "node tools/foundry-server/serve.mjs",
+    "generate-schemas": "node tools/foundry-server/generate-schemas.mjs",
     "browser:install": "npx playwright install chromium",
     "watch": "npx gulp watch"
   },
@@ -30,11 +31,13 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@foundryvtt/foundryvtt-cli": "^3.0.3",
     "@playwright/test": "1.59.1",
     "abstract-level": "^3.1.1",
     "autoprefixer": "^10.5.0",
     "chalk": "^5.6.2",
     "classic-level": "^3.0.0",
+    "date-fns": "^4.4.0",
     "docdash": "^2.0.2",
     "editorconfig-checker": "^6.1.1",
     "eslint": "^10.5.0",

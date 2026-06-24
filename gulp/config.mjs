@@ -1,127 +1,534 @@
-import fs from "fs-extra";
+import fs from "fs";
 import path from "path";
 import log from "fancy-log";
 import chalk from "chalk";
-import { expandVersion } from "../tools/foundry-server/config.mjs";
+import { format } from "date-fns";
 
-export const CI = process.env.CI ? process.env.CI : false;
-export const DEBUG = process.env.DEBUG ? process.env.DEBUG : false;
-export const TRACE = process.env.TRACE ? process.env.TRACE : false;
-export const DEFAULT_DESTINATION_FOLDER = "dist";
-export const SRC_DIR = "src";
-export const PACKS_DIR = "packs";
-
-export const CHANGELOG_FILE = process.env.CHANGELOG_FILE
-  ? process.env.CHANGELOG_FILE
-  : "CHANGELOG.md";
-
-export const SYSTEM_NAME = process.env.SYSTEM_NAME
-  ? process.env.SYSTEM_NAME
-  : "cyberpunk-red-core";
-
-export const SYSTEM_FILE = process.env.SYSTEM_FILE
-  ? process.env.SYSTEM_FILE
-  : "system.json";
-
-export const SYSTEM_TITLE = process.env.SYSTEM_TITLE
-  ? process.env.SYSTEM_TITLE
-  : "Cyberpunk RED - CORE";
-
-export const SYSTEM_VERSION = process.env.SYSTEM_VERSION
-  ? process.env.SYSTEM_VERSION
-  : "v0.0.0dev";
-
-export const SOURCE_FILES = [
-  { from: `${SRC_DIR}/cpr.js`, to: "" },
-  { from: `${SRC_DIR}/environment.js`, to: "" },
-  { from: `${SRC_DIR}/template.json`, to: "" },
-];
-
-export const SOURCE_DIRS = [
-  { from: `${SRC_DIR}/babele/**/*`, to: "babele" },
-  { from: `${SRC_DIR}/fonts/**/*`, to: "fonts" },
-  { from: `${SRC_DIR}/lang/**/*`, to: "lang" },
-  { from: `${SRC_DIR}/modules/**/*`, to: "modules" },
-  { from: `${SRC_DIR}/templates/**/*`, to: "templates" },
-];
-
-/*
- * Determines the destination directory based on the local configuration or
- * returns a default path.
+/**
+ * Configuration manager for CPRC Foundry Project Build Systems
  */
-function _getDestDir() {
-  const localConfigPath = path.resolve("foundryconfig.json");
-  const localConfig = fs.existsSync(localConfigPath)
-    ? fs.readJSONSync(localConfigPath).foundry
-    : undefined;
+class Config {
+  // Set defaults if no options passed.
+  static VARS_FILE = "vars.env";
+  static FOUNDRY_CONFIG = "foundryconfig.json";
+  static MANIFEST_FILE = "src/module.json";
+  static CHANGELOG_FILE = "CHANGELOG.md";
+  static DEFAULT_VERSION = "v0.0.0dev";
+  static SRC_DIR = "src";
+  static BUILD_DIR = "dist";
+  static STATIC_EXTS = [".json", ".hbs", ".css", ".js"];
+  static EXCLUDE_DIRS = [];
+  static IMAGE_EXTS = [".svg", ".png", ".webp"];
+  static BABELE = { enabled: false, dir: "babele" };
+  static CSS = { enabled: false, entry: "css/main.css", out: "css/main.css" };
+  static CHANGELOG = { enabled: false, packName: "changelog" };
+  static DEV_MODE = {
+    enabled: false,
+    outPath: "modules/system/devMode.js",
+    defaults: {},
+  };
+  static PACKS = {
+    transformEntry: null,
+    transformName: null,
+    excludePacks: [],
+    generatedPacks: [],
+    stats: false,
+    lastModifiedBy: "0000000000000000",
+  };
+  static CI = process.env.CI || false;
+  static CI_COMMIT_TAG = process.env.CI_COMMIT_TAG || undefined;
+  static GITLAB_CI = process.env.GITLAB_CI || false;
+  static GITLAB_HOST = process.env.CI_SERVER_FQDN || "example.com";
+  static GITLAB_GROUP_NAME = process.env.CI_PROJECT_NAMESPACE || "group";
+  static GITLAB_PROJECT_NAME = process.env.CI_PROJECT_NAME || "project";
+  static GITLAB_PROJECT_ID = process.env.CI_PROJECT_ID || "0123456789";
 
-  // FOUNDRY_DATA_PATH (set by the browser-test runner and in CI) wins over the
-  // configured dataPath, so tests build into their isolated data dir rather than
-  // the developer's real Foundry data.
-  const rawDataPath = process.env.FOUNDRY_DATA_PATH || localConfig?.dataPath;
-  if (!rawDataPath) {
-    log(
-      `${chalk.yellow(
-        "WARNING",
-      )}: foundryconfig.json not found building to ${DEFAULT_DESTINATION_FOLDER}`,
-    );
-    return DEFAULT_DESTINATION_FOLDER;
+  /**
+   * Creates a new Config instance with optional configuration overrides.
+   * @param {Object} [options={}] - Configuration options to override defaults
+   * @param {string} [options.varsFile] - vars file used by gitlab scripts
+   * @param {string} [options.foundryConfig] - Path to the foundry config file
+   * @param {string} [options.manifestFile] - Path to the manifest file
+   * @param {string} [options.changelogFile] - Path to the changelog file
+   * @param {string} [options.srcDir] - Source directory name
+   * @param {string} [options.buildDir] - Build directory name
+   * @param {string[]} [options.staticExts] - File extensions to copy to build
+   * @param {string[]} [options.excludeDirs] - Directories to exclude (applies to both static assets and images)
+   * @param {string[]} [options.imageExts] - Array of supported image file extensions
+   * @param {Object} [options.babele] - Babele translation file generation options
+   * @param {boolean} [options.babele.enabled] - Whether to generate Babele files (default: false)
+   * @param {string} [options.babele.dir] - Directory for Babele files relative to srcDir (default: "babele")
+   * @param {Object} [options.css] - CSS/PostCSS pipeline options
+   * @param {boolean} [options.css.enabled] - Whether to compile CSS with PostCSS (default: false)
+   * @param {string} [options.css.entry] - Entry CSS file relative to srcDir (default: "css/main.css")
+   * @param {string} [options.css.out] - Output CSS file relative to buildDir (default: "css/main.css")
+   * @param {Object} [options.changelog] - Changelog journal generation options
+   * @param {boolean} [options.changelog.enabled] - Whether to build changelog journals (default: false)
+   * @param {string} [options.changelog.packName] - Manifest pack name to write journals into (default: "changelog")
+   * @param {Object} [options.devMode] - DevMode module generation options
+   * @param {boolean} [options.devMode.enabled] - Whether to generate the devMode module (default: false)
+   * @param {string} [options.devMode.outPath] - Output path relative to buildDir (default: "modules/system/devMode.js")
+   * @param {Object} [options.devMode.defaults] - Default devMode object merged under foundryconfig's devMode
+   * @param {Object} [options.packs] - Pack extract/compile options
+   * @param {Function} [options.packs.transformEntry] - Hook to clean/transform each entry on compile
+   * @param {Function} [options.packs.transformName] - Hook to name each fragment on extract
+   * @param {string[]} [options.packs.excludePacks] - Pack names to skip when generating Babele files
+   * @param {string[]} [options.packs.generatedPacks] - Pack names produced by other build tasks; skipped entirely on extract (never round-tripped)
+   * @param {boolean} [options.packs.stats] - Whether to stamp `_stats` on entries during compile (default: false)
+   * @param {string} [options.packs.lastModifiedBy] - Identity stamped into `_stats.lastModifiedBy`
+   * @param {string} [options.defaultVersion] - Default version string
+   * @param {string} [options.gitlabHost] - GitLab host URL
+   * @param {string} [options.gitlabProjectId] - GitLab project ID
+   * @param {string} [options.gitlabProjectName] - GitLab project name
+   * @param {string} [options.gitlabGroupName] - GitLab group name
+   */
+  constructor(options = {}) {
+    this._varsFile = options.varsFile || Config.VARS_FILE;
+    this._foundryConfig = options.foundryConfig || Config.FOUNDRY_CONFIG;
+    this._manifestFile = options.manifestFile || Config.MANIFEST_FILE;
+    this._changelogFile = options.changelogFile || Config.CHANGELOG_FILE;
+    this._srcDir = options.srcDir || Config.SRC_DIR;
+    this._buildDir = options.buildDir || Config.BUILD_DIR;
+    this._staticExts = options.staticExts || Config.STATIC_EXTS;
+    this._excludeDirs = options.excludeDirs || Config.EXCLUDE_DIRS;
+    this._imageExts = options.imageExts || Config.IMAGE_EXTS;
+    this._babele = { ...Config.BABELE, ...options.babele };
+    this._css = { ...Config.CSS, ...options.css };
+    this._changelog = { ...Config.CHANGELOG, ...options.changelog };
+    this._devMode = { ...Config.DEV_MODE, ...options.devMode };
+    this._packs = { ...Config.PACKS, ...options.packs };
+    this._defaultVersion = options.defaultVersion || Config.DEFAULT_VERSION;
+    this._gitlabHost = options.gitlabHost || Config.GITLAB_HOST;
+    this._gitlabProjectId = options.gitlabProjectId || Config.GITLAB_PROJECT_ID;
+    this._gitlabProjectName =
+      options.gitlabProjectName || Config.GITLAB_PROJECT_NAME;
+    this._gitlabGroupName = options.gitlabGroupName || Config.GITLAB_GROUP_NAME;
   }
 
-  // Expand a {VERSION} placeholder the same way the launcher does, so the build
-  // deploys into exactly the directory the server later reads from.
-  const localDataPath = expandVersion(rawDataPath, {
-    versionPrefix: localConfig?.versionPrefix,
-  });
-  const dataPath = path.resolve(
-    path.join(localDataPath, "Data", "systems", SYSTEM_NAME),
-  );
-  if (fs.existsSync(path.join(dataPath, ".git"))) {
-    // Check if a .git directoy exists in the dataPath. This will hopefully
-    // prevent people blasting their repo if they stored it in their
-    // Foundry datapath previously.
-    throw Error(
-      `'dataPath' appears to contain a '.git' directory.\n\n` +
-        `Please check your foundryconfig.json and update 'dataPath' ` +
-        `If you have previously \n` +
-        `cloned the git repo to ` +
-        `'${dataPath}'\n` +
-        `please check CONTRIBUTING.md and clone the repo to another ` +
-        `location.`,
+  /**
+   * Finds the project root by searching for package.json or .git
+   *
+   * @returns {string} Resolved path to project root
+   * @throws {Error} If project root cannot be found
+   */
+  #findProjectRoot() {
+    let currentDir = process.cwd();
+
+    while (currentDir !== path.parse(currentDir).root) {
+      // Check for package.json or .git directory
+      if (
+        fs.existsSync(path.join(currentDir, "package.json")) ||
+        fs.existsSync(path.join(currentDir, ".git"))
+      ) {
+        return currentDir;
+      }
+      currentDir = path.dirname(currentDir);
+    }
+
+    throw new Error(
+      "Could not find project root (no package.json or .git found)",
     );
   }
-  return dataPath;
+
+  /**
+   * Loads and parses the manifest file
+   *
+   * @returns {Object} Parsed manifest data
+   * @throws {Error} If manifest cannot be read or parsed
+   */
+  #loadManifestData() {
+    try {
+      const filePath = path.join(this.root, this._manifestFile);
+      const fileContent = fs.readFileSync(filePath, "utf-8");
+      const manifest = JSON.parse(fileContent);
+      return manifest;
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        throw new Error(`Manifest file not found: ${error.path}`, {
+          cause: error,
+        });
+      } else if (error instanceof SyntaxError) {
+        throw new Error(`Invalid JSON in manifest file: ${error.message}`, {
+          cause: error,
+        });
+      }
+      throw error;
+    }
+  }
+
+  /**
+   * Loads and parses the foundryConfig file
+   *
+   * @returns {Object} Parsed foundryConfig OR Empty Object if file not found
+   * @throws {Error} If manifest cannot be parsed as valid JSON
+   */
+  #loadFoundryConfig() {
+    if (this._cachedFoundryConfig !== undefined) {
+      return this._cachedFoundryConfig;
+    }
+
+    try {
+      const filePath = path.join(this.root, this._foundryConfig);
+      const fileContent = fs.readFileSync(filePath, "utf-8");
+      const config = JSON.parse(fileContent);
+      this._cachedFoundryConfig = config;
+      return config;
+    } catch (error) {
+      if (error.code === "ENOENT") {
+        log(
+          `${chalk.yellow("WARNING")} ${this._foundryConfig} not found. Using defaults.`,
+        );
+        this._cachedFoundryConfig = {};
+        return {};
+      } else if (error instanceof SyntaxError) {
+        throw new Error(
+          `Invalid JSON in Foundry Config file: ${error.message}`,
+          {
+            cause: error,
+          },
+        );
+      }
+      throw error;
+    }
+  }
+
+  /**
+   * Generates the zip file name based on project id and version.
+   * @returns {string} The zip file name
+   */
+  #generateZipName() {
+    const zipFile = `${this.id}-${this.version}.zip`;
+    return zipFile;
+  }
+
+  /**
+   * Generates GitLab URLs for the project, manifest, and download.
+   * @returns {Object} Object containing GitLab URLs
+   * @returns {string} return.url - Project URL
+   * @returns {string} return.manifest - Manifest URL
+   * @returns {string} return.download - Download URL
+   */
+  #generateGitlabUrls() {
+    const zipFile = this.zipName;
+    const manifestFile = path.basename(this._manifestFile);
+    const baseUrl = `https://${this._gitlabHost}`;
+    const groupUrl = `${baseUrl}/${this._gitlabGroupName}`;
+    const projectUrl = `${groupUrl}/${this._gitlabProjectName}`;
+    const apiUrl = `${baseUrl}/api/v4`;
+    const packageUrl = `${apiUrl}/projects/${this._gitlabProjectId}/packages/generic/${this.id}`;
+    const manifestUrl = `${packageUrl}/latest/${manifestFile}`;
+    const zipUrl = `${packageUrl}/${this.version}/${zipFile}`;
+
+    const url = projectUrl;
+    const manifest = manifestUrl;
+    const download = zipUrl;
+
+    const output = {
+      url: url,
+      repoUrl: packageUrl,
+      manifest: manifest,
+      download: download,
+    };
+
+    return output;
+  }
+
+  /**
+   * Determines the version string based on priority order: CI tag, CI date, manifest version, or default.
+   *
+   * @private
+   * @returns {string} The determined version string
+   */
+  #getVersion() {
+    // 1st priority: CI tag
+    if (Config.CI && Config.CI_COMMIT_TAG) {
+      return process.env.CI_COMMIT_TAG;
+    }
+
+    // 2nd priority: Date version, if we're in CI but no tag this is probably a
+    // dev build
+    if (Config.CI && !Config.CI_COMMIT_TAG) {
+      return `v${format(new Date(), "yyyyMMdd.HHmm")}`;
+    }
+
+    // 3rd priority: manifest version
+    try {
+      const manifest = this.manifest;
+      if (manifest.version) {
+        return manifest.version;
+      }
+    } catch {
+      // just skip errors as we don't care here.
+    }
+
+    // 4th priority: default
+    return this._defaultVersion;
+  }
+
+  /**
+   * Gets the absolute path to the project root directory.
+   *
+   * @returns {string} Absolute path to the project root
+   */
+  get root() {
+    return path.resolve(this.#findProjectRoot());
+  }
+
+  /**
+   * Gets the build directory path. When a Foundry data path is available the
+   * build deploys into `<dataPath>/Data/<type>s/<id>`; otherwise it falls back
+   * to the configured build directory. The data path is resolved, in order,
+   * from the `FOUNDRY_DATA_PATH` env var (used by the test harness for an
+   * isolated dir), then `foundryconfig.json`'s top-level `dataPath`, then its
+   * nested `foundry.dataPath` block.
+   *
+   * @returns {string} Resolved path to build directory
+   */
+  get buildDirPath() {
+    const config = this.#loadFoundryConfig();
+    const dataPath =
+      process.env.FOUNDRY_DATA_PATH ||
+      config?.dataPath ||
+      config?.foundry?.dataPath;
+    if (dataPath) {
+      const moduleType = path.basename(
+        this._manifestFile,
+        path.extname(this._manifestFile),
+      );
+      return path.resolve(
+        path.join(dataPath, "Data", `${moduleType}s`, this.id),
+      );
+    }
+    return path.resolve(this.root, this._buildDir);
+  }
+
+  /**
+   * Gets the source directory path
+   *
+   * @returns {string} Resolved path to source directory
+   */
+  get srcDirPath() {
+    return path.resolve(this.root, this._srcDir);
+  }
+
+  /**
+   * Gets the full manifest object
+   *
+   * @returns {Object} Complete manifest data
+   */
+  get manifest() {
+    if (!this._cachedManifest) {
+      this._cachedManifest = this.#loadManifestData();
+    }
+    return this._cachedManifest;
+  }
+
+  /**
+   * Gets version from CI environment, manifest, or default
+   *
+   * @returns {string} Version string
+   */
+  get version() {
+    return this.#getVersion();
+  }
+
+  /**
+   * Gets the project ID from manifest
+   *
+   * @returns {string} Project ID
+   * @throws {Error} If id is not defined in manifest
+   */
+  get id() {
+    const manifest = this.manifest;
+    if (!manifest.id) {
+      throw new Error("Module id is not defined in manifest file");
+    }
+    return manifest.id;
+  }
+
+  /**
+   * Gets the project title from manifest
+   *
+   * @returns {string} Project title
+   * @throws {Error} If title is not defined in manifest
+   */
+  get title() {
+    const manifest = this.manifest;
+    if (!manifest.title) {
+      throw new Error("Module title is not defined in manifest file");
+    }
+    return manifest.title;
+  }
+
+  /**
+   * Gets the static file extensions to copy during build.
+   *
+   * @returns {string[]} Array of static file extensions (e.g., [".json", ".hbs", ".css", ".js"])
+   */
+  get staticExts() {
+    return [...this._staticExts];
+  }
+
+  /**
+   * Gets the directories to exclude from static asset and image processing.
+   *
+   * @returns {string[]} Array of directory names/paths to exclude
+   */
+  get excludeDirs() {
+    return [...this._excludeDirs];
+  }
+
+  /**
+   * Gets the supported image file extensions for processing.
+   *
+   * @returns {string[]} Array of supported image extensions (e.g., [".svg", ".png", ".webp"])
+   */
+  get imageExts() {
+    return [...this._imageExts];
+  }
+
+  /**
+   * Gets the Babele translation file generation options.
+   *
+   * @returns {Object} Babele options with enabled and dir properties
+   */
+  get babele() {
+    return { ...this._babele };
+  }
+
+  /**
+   * Gets the CSS/PostCSS pipeline options.
+   *
+   * @returns {Object} CSS options with enabled, entry, and out properties
+   */
+  get css() {
+    return { ...this._css };
+  }
+
+  /**
+   * Gets whether the build is running in a CI environment.
+   *
+   * @returns {boolean} True when running under CI
+   */
+  get ci() {
+    return Boolean(Config.CI);
+  }
+
+  /**
+   * Gets the changelog journal generation options.
+   *
+   * @returns {Object} Changelog options with enabled and packName properties
+   */
+  get changelog() {
+    return { ...this._changelog };
+  }
+
+  /**
+   * Gets the devMode module generation options.
+   *
+   * @returns {Object} DevMode options with enabled, outPath, and defaults
+   */
+  get devMode() {
+    return { ...this._devMode };
+  }
+
+  /**
+   * Gets the parsed `foundryconfig.json` (or an empty object when absent).
+   *
+   * @returns {Object} Parsed foundry config
+   */
+  get foundryConfig() {
+    return this.#loadFoundryConfig();
+  }
+
+  /**
+   * Gets the pack processing options (extract/compile hooks, Babele
+   * exclusions, and `_stats` stamping). The returned object preserves the
+   * original hook function references.
+   *
+   * @returns {Object} Pack options
+   */
+  get packs() {
+    return { ...this._packs };
+  }
+
+  /**
+   * Gets the path to the changelog file.
+   *
+   * @returns {string} Resolved path to the changelog file
+   */
+  get changelogPath() {
+    return path.resolve(path.join(this.root, this._changelogFile));
+  }
+
+  /**
+   * Gets the generated zip file name.
+   * @returns {string} The zip file name
+   */
+  get zipName() {
+    return this.#generateZipName();
+  }
+
+  /**
+   * Gets the release name (zip basename without extension), used as the
+   * top-level directory name inside the release archive.
+   * @returns {string} The release name
+   */
+  get releaseName() {
+    return `${this.id}-${this.version}`;
+  }
+
+  /**
+   * Gets the GitLab generic package base URL for this project's package.
+   * Release artifacts are uploaded under `{repoUrl}/{version}/{file}` and the
+   * latest manifest under `{repoUrl}/latest/{manifest}`.
+   * @returns {string} The package base URL
+   */
+  get repoUrl() {
+    return this.#generateGitlabUrls().repoUrl;
+  }
+
+  /**
+   * Gets the `latest` manifest URL for this project's package.
+   * @returns {string} The manifest URL
+   */
+  get manifestUrl() {
+    return this.#generateGitlabUrls().manifest;
+  }
+
+  /**
+   * Gets the versioned download (zip) URL for this project's package.
+   * @returns {string} The download URL
+   */
+  get downloadUrl() {
+    return this.#generateGitlabUrls().download;
+  }
+
+  /**
+   * Gets the path of the vars.env file used by the CI system
+   * @returns {path} The path to the varsFile
+   */
+  get varsFile() {
+    return path.join(this.root, this._varsFile);
+  }
+
+  /**
+   * Gets the distribution manifest with GitLab URLs added.
+   * @returns {Object} The manifest object with url, manifest, and download properties
+   */
+  get generateManifest() {
+    const gitlab = this.#generateGitlabUrls();
+    const manifest = { ...this.manifest };
+    if (!Config.CI_COMMIT_TAG) {
+      manifest.relationships = {};
+    }
+    return {
+      ...manifest,
+      url: gitlab.url,
+      manifest: gitlab.manifest,
+      download: gitlab.download,
+    };
+  }
 }
 
-export const DEST_DIR = _getDestDir();
-
-// These are used for the discord announcement, they live here so the build file
-// isn't completely unreadable :D
-export const DISCORD_BOT_NAME = "Choom Bot";
-export const DISCORD_BOT_AVATAR =
-  "https://gitlab.com/uploads/-/system/project/avatar/22820629/Repo-Icon.png";
-export const DISCORD_MESSAGE_HEADER = `**Version ${SYSTEM_VERSION}**`;
-export const DISCORD_MESSAGE_BACKUP =
-  ":rotating_light: Don't forget to [backup your data](https://www.youtube.com/watch?v=E04Z7UMc-ic) before upgrading! :rotating_light:";
-export const DISCORD_MESSAGE_CHANGELOG = `Check out the full CHANGELOG [here](https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core/-/blob/${SYSTEM_VERSION}/CHANGELOG.md?pain=0)\n\n`;
-export const DISCORD_MESSAGE_INTROS = [
-  `Listen up, gonks! Choom Bot is here to deliver the news you've been waiting for. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system has been released with an update from the hard-working CPRC Community! Brace yourselves for an adrenaline-fueled ride through a neon-soaked world teeming with exciting new features!`,
-  `Attention, Night City runners! Choom Bot coming at you with breaking news. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is now available, courtesy of the relentless CPRC Community. Strap in, jack up your skills, and dominate the dark underbelly of Night City like never before!`,
-  `Hey there, chooms and choombas! Choom Bot's got a message for you. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system just dropped, thanks to the hard work of the CPRC Community. It's time to upgrade your arsenal and rewrite the rules in the neon-soaked playground of Night City!`,
-  `Calling all edgerunners! Choom Bot here with the latest news. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system has arrived, courtesy of the dedicated CPRC Community. Prepare for mind-blowing gameplay and thrilling adventures in the sprawling metropolis of Night City!`,
-  `Attention, chooms! Choom Bot's got something special for you. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system just hit the net, brought to you by the tireless CPRC Community. Dive into a world where danger lurks in every shadow, and your choices shape the future of Night City!`,
-  `Listen up, Night City dwellers! Choom Bot is here to deliver the news you've been waiting for. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is now available, thanks to the dedicated efforts of the CPRC Community. Prepare to explore a dystopian world where survival is everything!`,
-  `Hey there, fellow runners! Choom Bot has an exciting announcement. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system just dropped, courtesy of the relentless CPRC Community. It's time to jack in, upgrade your skills, and run wild in the gritty streets of Night City!`,
-  `Attention, choombas and gonks! Choom Bot's got some big news for you. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is now live, thanks to the hardworking CPRC Community. Brace yourselves for an immersive journey through the neon-lit abyss of Night City!`,
-  `Listen up, Night City! Choom Bot is back with a vengeance. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system has just been released by the dedicated CPRC Community. Prepare for an explosive upgrade that will redefine the way you play cyberpunk!`,
-  `Hey there, chooms and choombas! Choom Bot has the latest scoop for you. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is now available, courtesy of the hardworking CPRC Community. Get ready to embark on a thrilling journey through the neon-soaked streets of Night City!`,
-  `Attention, choombas! Choom Bot has breaking news for you. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system has just hit the streets, brought to you by the relentless CPRC Community. It's time to gear up, dive into the shadows, and claim your place in the unforgiving world of Night City!`,
-  `Listen up, Night City dwellers! Choom Bot is here with a transmission you won't want to miss. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is now available, thanks to the tireless efforts of the CPRC Community. Prepare to navigate the treacherous streets of Night City with enhanced features and endless possibilities!`,
-  `Hey there, fellow runners! Choom Bot is back with electrifying news. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system has just been released, courtesy of the dedicated CPRC Community. It's time to plug in, level up your skills, and seize control of the neon-lit underworld of Night City!`,
-  `Attention, chooms and gonks! Choom Bot has some exciting tidbits for you. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is now live, thanks to the relentless work of the CPRC Community. Get ready to immerse yourself in a world where high-tech meets low-life, and your destiny awaits!`,
-  `Listen up, Night City runners! Choom Bot is your guide to the future. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is available now, brought to you by the visionary CPRC Community. Prepare to hack, shoot, and survive in the neon-soaked urban jungle of Night City like never before!`,
-  `Hey there, choombas and choombattas! Choom Bot has a revelation for you. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system has just been unleashed, thanks to the tireless work of the CPRC Community. It's time to venture into the shadows and carve your name into the dark history of Night City!`,
-  `Attention, Night City dwellers! Choom Bot is back with the latest scoop. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is now available, courtesy of the dedicated CPRC Community. Prepare to immerse yourself in a world of high-tech gadgets, dangerous missions, and thrilling adventures!`,
-  `Listen closely, choombas! Choom Bot, your digital guide, is here with groundbreaking news. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system has just been unleashed by the relentless CPRC Community. Get ready to embrace the chaos, challenge the powerful, and become a legend in the dark heart of Night City!`,
-  `Hey there, Night City runners! Choom Bot is here to drop a bombshell. Version **${SYSTEM_VERSION}** of the 'Cyberpunk RED - Core' system is now live, thanks to the tireless efforts of the CPRC Community. It's time to rewrite your story, outsmart your enemies, and conquer the sprawling cityscape of Night City!`,
-];
+export default Config;

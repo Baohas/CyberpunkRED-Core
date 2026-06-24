@@ -1,36 +1,99 @@
 import gulp from "gulp";
+import * as BuildTools from "./gulp/build.mjs";
+import * as ImageTools from "./gulp/images.mjs";
+import * as CssTools from "./gulp/css.mjs";
+import { buildChangelog } from "./gulp/changelog.mjs";
+import { PackUtils } from "./gulp/utils/PackUtils.mjs";
+import { cprTransformEntry } from "./gulp/utils/cprPackData.mjs";
+import Config from "./gulp/config.mjs";
 
-import * as bld from "./gulp/build.mjs";
-import * as packs from "./gulp/packs.mjs";
+// DevMode defaults are project-specific, so they live here rather than in the
+// shared build system. Merged with any `devMode` block in foundryconfig.json.
+const DEV_MODE_DEFAULTS = {
+  migrations: {
+    enforceMinimumVersion: true,
+    remigrateAlreadyMigrated: false,
+    batchMigrations: true,
+    migrateSystemCompendia: false,
+    simulateMigrationError: false,
+    app: {
+      returnToSetup: true,
+      modal: true,
+    },
+  },
+};
 
-// Build the changelog journal pack files
-export const changelog = gulp.series(bld.buildChangelog);
+const config = new Config({
+  manifestFile: "src/system.json",
+  // Code, data, templates, and fonts are copied as-is; CSS is compiled and
+  // images are processed by their own tasks; packs are compiled.
+  staticExts: [".js", ".json", ".hbs", ".ttf"],
+  imageExts: [".svg", ".png", ".webp", ".jpg", ".jpeg", ".webm"],
+  excludeDirs: ["packs"],
+  css: { enabled: true },
+  changelog: { enabled: true, packName: "other_changelog" },
+  devMode: {
+    enabled: true,
+    outPath: "modules/system/devMode.js",
+    defaults: DEV_MODE_DEFAULTS,
+  },
+  babele: { enabled: true },
+  packs: {
+    transformEntry: cprTransformEntry,
+    stats: true,
+    lastModifiedBy: "00CPRCBuildBot00",
+    excludePacks: [
+      "internal_skills",
+      "other_changelog",
+      "other_scenes",
+      "other_macros",
+    ],
+    generatedPacks: ["other_changelog"],
+    babeleMappings: { dvTable: "system.dvTable" },
+  },
+});
 
-// Generate the changelog then build packs, must be one after other
-export const generatePacks = gulp.series(changelog, packs.genPacks);
+gulp.task("generateEnvFile", BuildTools.generateEnvFile(config));
+gulp.task("cleanBuildDir", BuildTools.cleanBuildDir(config));
+gulp.task("buildManifest", BuildTools.buildManifest(config));
+gulp.task("copyStaticAssets", BuildTools.copyStaticAssets(config));
+gulp.task("generateDevMode", BuildTools.generateDevMode(config));
+gulp.task("compileCss", CssTools.compileCss(config));
+gulp.task("processImages", ImageTools.processImages(config));
+gulp.task("buildChangelog", buildChangelog(config));
+gulp.task("compilePacks", PackUtils.compilePacks(config));
+gulp.task("extractPacksTask", PackUtils.extractPacks(config));
+gulp.task("watchStaticAssets", BuildTools.watchStaticAssets(config));
+gulp.task("watchImages", ImageTools.watchImages(config));
+gulp.task("watchCss", CssTools.watchCss(config));
 
-// Cleans the target dir. MUST Be run on it's own in series
-export const clean = gulp.series(bld.cleanDist);
-
-// Functions that can run in parallel
-export const assets = gulp.parallel(
-  generatePacks,
-  bld.compileCss,
-  bld.processSvgs,
-  bld.processImages,
-  bld.buildManifest,
-  bld.copyAssets,
-  bld.generateDevMode,
+// All asset building, without cleaning first. Used by `watch` so we don't blow
+// away the build dir while Foundry holds open file descriptors to the packs.
+const assets = gulp.series(
+  "generateEnvFile",
+  "buildManifest",
+  "buildChangelog",
+  "compileCss",
+  "processImages",
+  "copyStaticAssets",
+  "compilePacks",
+  "generateDevMode",
 );
 
-// Export packs from Foundry to src/packs
-export const extractPacks = gulp.series(packs.extPacks, packs.genPacksBabele);
-export const generateBabele = gulp.series(packs.genPacksBabele);
+export const build = gulp.series("cleanBuildDir", assets);
 
-// Clean target dir then build
-export const build = gulp.series(clean, assets);
+// Build the changelog journal, then compile all packs.
+export const generatePacks = gulp.series("buildChangelog", "compilePacks");
 
-// Don't just call `build` & `bld.watch` because `build` cleans the directory
-// so we have a clean build, but if we clean the directory foundry dies because
-// the file descriptors to the packs change which it does not like.
-export const watch = gulp.series(assets, bld.watchSrc);
+// Extract compiled packs back to YAML fragments (also regenerates Babele).
+export const extractPacks = gulp.series("extractPacksTask");
+
+// Babele files are regenerated as part of extraction.
+export const generateBabele = gulp.series("extractPacksTask");
+
+export const watch = gulp.series(
+  assets,
+  gulp.parallel("watchStaticAssets", "watchImages", "watchCss"),
+);
+
+export default watch;
