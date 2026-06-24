@@ -18,6 +18,10 @@
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
 
+### Bug Fixes
+
+- Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
+
 ## Version 0.92.4
 
 ### Action Needed
