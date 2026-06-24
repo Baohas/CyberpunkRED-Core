@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
-  "additionalProperties": true,
+  "additionalProperties": false,
   "properties": {
     "_key": {
       "$ref": "./components/key.json"
@@ -14,27 +14,44 @@
     },
     "type": {
       "type": "string",
-      "enum": [
-        "script",
-        "chat"
-      ]
-    },
-    "author": {
-      "type": "string"
+      "const": "drug"
     },
     "img": {
       "$ref": "./components/img.json"
     },
-    "scope": {
-      "type": "string",
-      "enum": [
-        "global",
-        "actors",
-        "actor"
-      ]
+    "system": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "./components/common.json"
+        },
+        {
+          "$ref": "./components/effects.json"
+        },
+        {
+          "$ref": "./components/equippable.json"
+        },
+        {
+          "$ref": "./components/physical.json"
+        },
+        {
+          "$ref": "./components/stackable.json"
+        },
+        {
+          "$ref": "./components/valuable.json"
+        }
+      ],
+      "properties": {
+        "consumed": {
+          "type": "string"
+        }
+      }
     },
-    "command": {
-      "type": "string"
+    "effects": {
+      "type": "array",
+      "items": {
+        "$ref": "./components/effect.json"
+      }
     },
     "folder": {
       "type": [
@@ -58,14 +75,13 @@
   "required": [
     "_id",
     "_key",
-    "author",
-    "command",
+    "effects",
     "flags",
     "folder",
     "name",
     "ownership",
-    "scope",
     "sort",
+    "system",
     "type"
   ]
 }

@@ -1,183 +1,498 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/CPRC-Item-Upgrade",
-  "definitions": {
-    "CPRC-Item-Upgrade": {
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_key": {
+      "$ref": "./components/key.json"
+    },
+    "_id": {
+      "$ref": "./components/id.json"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "const": "itemUpgrade"
+    },
+    "img": {
+      "$ref": "./components/img.json"
+    },
+    "system": {
       "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "_id": {
-          "$ref": "./components/id.json"
+      "allOf": [
+        {
+          "$ref": "./components/attackable.json"
         },
-        "_key": {
-          "$ref": "./components/key.json"
+        {
+          "$ref": "./components/common.json"
         },
-        "effects": {
+        {
+          "$ref": "./components/container.json"
+        },
+        {
           "$ref": "./components/effects.json"
         },
-        "flags": {
-          "$ref": "./components/flags.json"
+        {
+          "$ref": "./components/electronic.json"
         },
-        "img": {
-          "$ref": "./components/img.json"
+        {
+          "$ref": "./components/installable.json"
         },
-        "name": {
-          "$ref": "./components/name.json"
+        {
+          "$ref": "./components/loadable.json"
         },
-        "type": {
-          "type": "string",
-          "const": "itemUpgrade"
+        {
+          "$ref": "./components/physical.json"
         },
-        "system": {
-          "$ref": "#/definitions/System"
+        {
+          "$ref": "./components/valuable.json"
         }
-      },
-      "required": [
-        "_id",
-        "_key",
-        "effects",
-        "img",
-        "name",
-        "system",
-        "type"
-      ]
-    },
-    "System": {
-      "type": "object",
-      "additionalProperties": false,
+      ],
       "properties": {
-        "ammoVariety": {
-          "$ref": "./components/loadable/ammoVarietyArray.json"
-        },
-        "attackmod": {
-          "$ref": "./components/attackable/attackMod.json"
-        },
-        "brand": {
-          "$ref": "./components/physical/brand.json"
-        },
-        "concealable": {
-          "$ref": "./components/physical/concealable.json"
-        },
-        "ignoreArmorPercent": {
-          "$ref": "./components/attackable/ignoreArmorPercent.json"
-        },
-        "canIgnoreArmor": {
-          "$ref": "./components/attackable/canIgnoreArmor.json"
-        },
-        "critFailEffect": {
-          "$ref": "./components/attackable/critFailEffect.json"
-        },
-        "damage": {
-          "$ref": "./components/attackable/damage.json"
-        },
-        "description": {
-          "$ref": "./components/common/description.json"
-        },
-        "dvTable": {
-          "$ref": "./components/attackable/dvTable.json"
-        },
-        "favorite": {
-          "$ref": "./components/common/favorite.json"
-        },
-        "fireModes": {
-          "$ref": "./components/attackable/fireModes.json"
-        },
         "handsReq": {
-          "$ref": "./components/attackable/handsReq.json"
-        },
-        "installLocation": {
-          "$ref": "./components/installable/installLocation.json"
-        },
-        "installedItems": {
-          "$ref": "./components/container/installedItems.json"
-        },
-        "isElectronic": {
-          "$ref": "./components/electronic/isElectronic.json"
-        },
-        "isRanged": {
-          "$ref": "./components/attackable/isRanged.json"
-        },
-        "magazine": {
-          "$ref": "./components/attackable/magazine.json"
+          "type": "integer",
+          "minimum": 0
         },
         "modifiers": {
-          "$ref": "#/definitions/Modifiers"
-        },
-        "price": {
-          "$ref": "./components/valuable/price.json"
-        },
-        "providesHardening": {
-          "$ref": "./components/electronic/providesHardening.json"
-        },
-        "revealed": {
-          "$ref": "./components/effects/revealed.json"
-        },
-        "rof": {
-          "$ref": "./components/attackable/rof.json"
-        },
-        "size": {
-          "$ref": "./components/installable/size.json"
-        },
-        "source": {
-          "$ref": "./components/common/source.json"
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "secondaryWeapon": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "configured": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "configured"
+              ]
+            },
+            "attackmod": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "damage": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "rof": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "magazine": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "sdp": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "seats": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "speedCombat": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "slots": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "bodySp": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "headSp": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "shieldHp": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "Wardrobe & Style": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            },
+            "cool": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
+            }
+          },
+          "required": [
+            "secondaryWeapon"
+          ]
         },
         "type": {
           "type": "string",
           "enum": [
+            "armor",
             "clothing",
             "cyberdeck",
+            "cyberware",
             "gear",
             "vehicle",
             "weapon"
           ]
-        },
-        "unarmedAutomaticCalculation": {
-          "$ref": "./components/attackable/unarmedAutomaticCalculation.json"
-        },
-        "usage": {
-          "$ref": "./components/effects/usage.json"
-        },
-        "usesType": {
-          "$ref": "./components/loadable/usesType.json"
-        },
-        "weaponSkill": {
-          "$ref": "./components/attackable/weaponSkill.json"
-        },
-        "weaponType": {
-          "$ref": "./components/attackable/weaponType.json"
         }
       },
       "required": [
-        "ammoVariety",
-        "attackmod",
-        "brand",
-        "concealable",
-        "damage",
-        "description",
-        "dvTable",
-        "favorite",
-        "fireModes",
         "handsReq",
-        "installLocation",
-        "installedItems",
-        "isRanged",
-        "magazine",
-        "modifiers",
-        "price",
-        "rof",
-        "size",
-        "source",
-        "type",
-        "unarmedAutomaticCalculation",
-        "usesType",
-        "weaponSkill",
-        "weaponType"
+        "modifiers"
       ]
     },
-    "Modifiers": {
-      "type": "object",
-      "description": "TODO: Work out what needs to go here, current compendia entries are a bit mad",
-      "properties": {}
+    "effects": {
+      "type": "array",
+      "items": {
+        "$ref": "./components/effect.json"
+      }
+    },
+    "folder": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "ownership": {
+      "type": "object"
+    },
+    "flags": {
+      "type": "object"
+    },
+    "_stats": {
+      "$ref": "./components/stats.json"
     }
-  }
+  },
+  "required": [
+    "_id",
+    "_key",
+    "effects",
+    "flags",
+    "folder",
+    "name",
+    "ownership",
+    "sort",
+    "system",
+    "type"
+  ]
 }

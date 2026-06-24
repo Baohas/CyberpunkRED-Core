@@ -1,71 +1,53 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "$ref": "#/definitions/CPRC-Armor",
-  "definitions": {
-    "CPRC-Armor": {
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_key": {
+      "$ref": "./components/key.json"
+    },
+    "_id": {
+      "$ref": "./components/id.json"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "const": "armor"
+    },
+    "img": {
+      "$ref": "./components/img.json"
+    },
+    "system": {
       "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "_id": {
-          "$ref": "./components/id.json"
+      "allOf": [
+        {
+          "$ref": "./components/common.json"
         },
-        "_key": {
-          "$ref": "./components/key.json"
+        {
+          "$ref": "./components/container.json"
         },
-        "effects": {
+        {
           "$ref": "./components/effects.json"
         },
-        "flags": {
-          "$ref": "./components/flags.json"
+        {
+          "$ref": "./components/electronic.json"
         },
-        "img": {
-          "$ref": "./components/img.json"
+        {
+          "$ref": "./components/equippable.json"
         },
-        "name": {
-          "$ref": "./components/name.json"
+        {
+          "$ref": "./components/physical.json"
         },
-        "system": {
-          "$ref": "#/definitions/System"
+        {
+          "$ref": "./components/upgradable.json"
         },
-        "type": {
-          "description": "The Foundry/System Item type",
-          "type": "string",
-          "const": "armor"
+        {
+          "$ref": "./components/valuable.json"
         }
-      },
-      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
-    },
-    "System": {
-      "type": "object",
-      "additionalProperties": false,
+      ],
       "properties": {
-        "brand": {
-          "$ref": "./components/physical/brand.json"
-        },
-        "bodyLocation": {
-          "$ref": "#/definitions/Location"
-        },
-        "concealable": {
-          "$ref": "./components/physical/concealable.json"
-        },
-        "description": {
-          "$ref": "./components/common/description.json"
-        },
-        "equipped": {
-          "$ref": "./components/equippable/equipped.json"
-        },
-        "favorite": {
-          "$ref": "./components/common/favorite.json"
-        },
-        "headLocation": {
-          "$ref": "#/definitions/Location"
-        },
-        "installedItems": {
-          "$ref": "./components/container/installedItems.json"
-        },
-        "isElectronic": {
-          "$ref": "./components/electronic/isElectronic.json"
-        },
         "isBodyLocation": {
           "type": "boolean"
         },
@@ -75,74 +57,110 @@
         "isShield": {
           "type": "boolean"
         },
-        "penalty": {
-          "type": "integer",
-          "minimum": 0
+        "bodyLocation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sp": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "ablation": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "sp",
+            "ablation"
+          ]
         },
-        "price": {
-          "$ref": "./components/valuable/price.json"
-        },
-        "providesHardening": {
-          "$ref": "./components/electronic/providesHardening.json"
-        },
-        "revealed": {
-          "$ref": "./components/effects/revealed.json"
+        "headLocation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "sp": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "ablation": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "sp",
+            "ablation"
+          ]
         },
         "shieldHitPoints": {
-          "$ref": "#/definitions/ShieldHitPoints"
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "value": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "max": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "value",
+            "max"
+          ]
         },
-        "source": {
-          "$ref": "./components/common/source.json"
-        },
-        "usage": {
-          "$ref": "./components/effects/usage.json"
+        "penalty": {
+          "type": "integer",
+          "minimum": -10
         }
       },
       "required": [
-        "brand",
-        "bodyLocation",
-        "concealable",
-        "description",
-        "equipped",
-        "favorite",
-        "headLocation",
-        "installedItems",
         "isBodyLocation",
         "isHeadLocation",
         "isShield",
-        "penalty",
-        "price",
-        "revealed",
+        "bodyLocation",
+        "headLocation",
         "shieldHitPoints",
-        "source",
-        "usage"
+        "penalty"
       ]
     },
-    "Location": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "ablation": {
-          "type": "integer"
-        },
-        "sp": {
-          "type": "integer"
-        }
-      },
-      "required": ["ablation", "sp"]
+    "effects": {
+      "type": "array",
+      "items": {
+        "$ref": "./components/effect.json"
+      }
     },
-    "ShieldHitPoints": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "max": {
-          "type": "integer"
-        },
-        "value": {
-          "type": "integer"
-        }
-      },
-      "required": ["max", "value"]
+    "folder": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "ownership": {
+      "type": "object"
+    },
+    "flags": {
+      "type": "object"
+    },
+    "_stats": {
+      "$ref": "./components/stats.json"
     }
-  }
+  },
+  "required": [
+    "_id",
+    "_key",
+    "effects",
+    "flags",
+    "folder",
+    "name",
+    "ownership",
+    "sort",
+    "system",
+    "type"
+  ]
 }

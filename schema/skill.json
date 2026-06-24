@@ -1,45 +1,50 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/CPRC-Skill",
-  "definitions": {
-    "CPRC-Skill": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "_id": {
-          "$ref": "./components/id.json"
-        },
-        "_key": {
-          "$ref": "./components/key.json"
-        },
-        "effects": {
-          "$ref": "./components/effects.json"
-        },
-        "flags": {
-          "$ref": "./components/flags.json"
-        },
-        "img": {
-          "$ref": "./components/img.json"
-        },
-        "name": {
-          "$ref": "./components/name.json"
-        },
-        "type": {
-          "type": "string",
-          "const": "skill"
-        },
-        "system": {
-          "$ref": "#/definitions/System"
-        }
-      },
-      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_key": {
+      "$ref": "./components/key.json"
     },
-    "System": {
+    "_id": {
+      "$ref": "./components/id.json"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "const": "skill"
+    },
+    "img": {
+      "$ref": "./components/img.json"
+    },
+    "system": {
       "type": "object",
-      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "./components/common.json"
+        }
+      ],
       "properties": {
-        "basic": {
-          "type": "boolean"
+        "level": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stat": {
+          "type": "string",
+          "enum": [
+            "int",
+            "ref",
+            "dex",
+            "tech",
+            "cool",
+            "will",
+            "move",
+            "body",
+            "luck",
+            "emp"
+          ]
         },
         "category": {
           "type": "string",
@@ -55,22 +60,16 @@
             "techniqueSkills"
           ]
         },
-        "core": {
-          "type": "boolean"
-        },
-        "description": {
-          "$ref": "./components/common/description.json"
-        },
         "difficulty": {
-          "type": "string"
-        },
-        "favorite": {
-          "$ref": "./components/common/favorite.json"
-        },
-        "level": {
-          "type": "integer"
+          "type": "string",
+          "enum": [
+            "typical",
+            "difficult",
+            "role"
+          ]
         },
         "skillType": {
+          "type": "string",
           "enum": [
             "generic",
             "language",
@@ -80,25 +79,54 @@
             "science"
           ]
         },
-        "source": {
-          "$ref": "./components/common/source.json"
+        "core": {
+          "type": "boolean"
         },
-        "stat": {
-          "type": "string"
+        "basic": {
+          "type": "boolean"
         }
       },
       "required": [
-        "basic",
-        "category",
-        "core",
-        "description",
-        "difficulty",
-        "favorite",
         "level",
-        "skillType",
-        "source",
-        "stat"
+        "core",
+        "basic"
       ]
+    },
+    "effects": {
+      "type": "array",
+      "items": {
+        "$ref": "./components/effect.json"
+      }
+    },
+    "folder": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "ownership": {
+      "type": "object"
+    },
+    "flags": {
+      "type": "object"
+    },
+    "_stats": {
+      "$ref": "./components/stats.json"
     }
-  }
+  },
+  "required": [
+    "_id",
+    "_key",
+    "effects",
+    "flags",
+    "folder",
+    "name",
+    "ownership",
+    "sort",
+    "system",
+    "type"
+  ]
 }

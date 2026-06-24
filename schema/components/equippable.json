@@ -1,12 +1,12 @@
 {
   "type": "object",
   "properties": {
-    "quality": {
+    "equipped": {
       "type": "string",
       "enum": [
-        "standard",
-        "poor",
-        "excellent"
+        "carried",
+        "equipped",
+        "owned"
       ]
     }
   }

@@ -1,8 +1,24 @@
 {
-  "type": "array",
-  "uniqueItems": true,
-  "items": {
-    "type": "string",
-    "pattern": "^[0-9a-zA-Z]{16}$"
-  }
+  "type": "object",
+  "properties": {
+    "revealed": {
+      "type": "boolean",
+      "const": true
+    },
+    "usage": {
+      "type": "string",
+      "enum": [
+        "always",
+        "carried",
+        "equipped",
+        "installed",
+        "rezzed",
+        "snorted",
+        "toggled"
+      ]
+    }
+  },
+  "required": [
+    "revealed"
+  ]
 }

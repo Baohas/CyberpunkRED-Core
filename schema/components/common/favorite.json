@@ -1,5 +1,0 @@
-{
-  "description": "Is the item a favorite? Always false in a compendia",
-  "type": "boolean",
-  "const": false
-}
