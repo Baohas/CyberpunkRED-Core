@@ -39,7 +39,7 @@ export default class CPRBlackIceActor extends Actor {
   createStatRoll(statName) {
     const niceStatName = SystemUtils.Localize(CPR.blackIceStatList[statName]);
     const statValue = parseInt(this.system.stats[statName], 10);
-    const cprRoll = new CPRRolls.CPRProgramStatRoll(niceStatName, statValue);
+    const cprRoll = CPRRolls.CPRProgramStatRoll.create(niceStatName, statValue);
     if (
       this.isToken &&
       typeof this.token.flags[game.system.id] !== "undefined"
@@ -107,7 +107,7 @@ export default class CPRBlackIceActor extends Actor {
       programData = program.system;
     }
 
-    const cprRoll = new CPRRolls.CPRDamageRoll(
+    const cprRoll = CPRRolls.CPRDamageRoll.create(
       programName,
       damageFormula,
       "program",

@@ -28,7 +28,7 @@ export default class CPRCombatant extends Combatant {
       case "mook": {
         statName = SystemUtils.Localize("CPR.global.stats.ref");
         statValue = actor.getStat("ref");
-        cprInitiative = new CPRRolls.CPRInitiative(
+        cprInitiative = CPRRolls.CPRInitiative.create(
           actor.name,
           formula,
           statName,
@@ -41,7 +41,7 @@ export default class CPRCombatant extends Combatant {
           "CPR.global.role.netrunner.ability.interface",
         );
         statValue = actor.getStat("interface");
-        cprInitiative = new CPRRolls.CPRInitiative(
+        cprInitiative = CPRRolls.CPRInitiative.create(
           actor.name,
           formula,
           statName,
@@ -52,7 +52,7 @@ export default class CPRCombatant extends Combatant {
       case "blackIce": {
         statName = SystemUtils.Localize("CPR.global.generic.speed");
         statValue = actor.getStat("spd");
-        cprInitiative = new CPRRolls.CPRInitiative(
+        cprInitiative = CPRRolls.CPRInitiative.create(
           actor.name,
           formula,
           statName,
@@ -64,7 +64,7 @@ export default class CPRCombatant extends Combatant {
         // The only way we get here is if someone tries to roll initiative for something that
         // should not have an initiative roll (container?), so we will just roll whatever formula is passed with
         // no base value
-        cprInitiative = new CPRRolls.CPRInitiative(
+        cprInitiative = CPRRolls.CPRInitiative.create(
           actor.name,
           formula,
           statName,
