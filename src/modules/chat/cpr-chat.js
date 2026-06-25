@@ -60,10 +60,15 @@ export default class CPRChat {
    */
   static RenderRollCard(incomingRoll) {
     const cprRoll = incomingRoll;
+    const rolls = [cprRoll._roll];
 
     cprRoll.criticalCard = cprRoll.wasCritical();
     if (cprRoll instanceof CPRInitiative && !cprRoll.calculateCritical) {
       cprRoll.criticalCard = false;
+    }
+
+    if (cprRoll.wasCritical() && cprRoll.calculateCritical) {
+      rolls.push(cprRoll._critRoll);
     }
 
     return renderTemplate(cprRoll.rollCard, cprRoll).then((html) => {
@@ -83,6 +88,10 @@ export default class CPRChat {
         const alias = actor.name;
         chatOptions.speaker = { actor, alias };
       }
+
+      // Add the roll data to chat so modules can see it.
+      chatOptions.rolls = rolls;
+
       return ChatMessage.create(chatOptions);
     });
   }
@@ -418,9 +427,6 @@ export default class CPRChat {
    * This is called from a hook in chat.js. Whenever a chat message is displayed, a few
    * tag elements are injected into the chat message to indicate if it was a whisper, or
    * the type of roll that occurred, such as blind or self.
-   *
-   * There is a minor design flaw here too. This code cannot tell if the messageData is a roll
-   * because CPR never sets roll information to chat messages. This is due to our Dice So Nice integration.
    *
    * @param {*} html - html DOM
    * @param {*} messageData - an object with a bunch of chat message data (see ChatDataSetup above)
