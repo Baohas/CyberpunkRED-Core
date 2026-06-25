@@ -76,8 +76,7 @@
           "type": "boolean"
         },
         "penalty": {
-          "type": "integer",
-          "minimum": 0
+          "$ref": "./components/effects/penalty.json"
         },
         "price": {
           "$ref": "./components/valuable/price.json"

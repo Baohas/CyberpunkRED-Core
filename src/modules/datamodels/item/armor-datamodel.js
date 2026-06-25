@@ -1,3 +1,4 @@
+import LOGGER from "../../utils/cpr-logger.js";
 import CPRSystemDataModel from "../system-data-model.js";
 import CommonSchema from "./mixins/common-schema.js";
 import ContainerSchema from "../shared/container-schema.js";
@@ -72,14 +73,45 @@ export default class ArmorDataModel extends CPRSystemDataModel.mixin(
           min: 0,
         }),
       }),
-      penalty: new fields.NumberField({
-        required: true,
-        nullable: false,
-        integer: true,
-        initial: 0,
-        min: -10,
+      penalty: new fields.SchemaField({
+        ref: new fields.NumberField({
+          required: true,
+          nullable: false,
+          integer: true,
+          initial: 0,
+          min: 0,
+        }),
+        dex: new fields.NumberField({
+          required: true,
+          nullable: false,
+          integer: true,
+          initial: 0,
+          min: 0,
+        }),
+        move: new fields.NumberField({
+          required: true,
+          nullable: false,
+          integer: true,
+          initial: 0,
+          min: 0,
+        }),
       }),
     });
+  }
+
+  static migrateData(data) {
+    console.log("armor data? ", data);
+    // Migrate Armor Penalty to Map
+    if (data.penalty && typeof data.penalty != "object" && Number.isInteger(data.penalty)) {
+      const previous_penalty = data.penalty;
+      LOGGER.log(`Migrating armor penalty from single penalty ${previous_penalty} to mapped {ref: ${previous_penalty}, dex: ${previous_penalty}, move: ${previous_penalty}}`);
+      data.penalty = {
+        ref: previous_penalty,
+        dex: previous_penalty,
+        move: previous_penalty
+      }
+    }
+    return super.migrateData(data);
   }
 
   /**
