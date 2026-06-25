@@ -146,7 +146,7 @@ const Attackable = function Attackable() {
     // Create the roll based on the type and apply relevant mods to it.
     switch (type) {
       case CPRRolls.rollTypes.AIMED: {
-        cprRoll = new CPRRolls.CPRAimedAttackRoll(
+        cprRoll = CPRRolls.CPRAimedAttackRoll.create(
           weaponName,
           niceStatName,
           statValue,
@@ -163,7 +163,7 @@ const Attackable = function Attackable() {
         break;
       }
       case CPRRolls.rollTypes.AUTOFIRE: {
-        cprRoll = new CPRRolls.CPRAutofireRoll(
+        cprRoll = CPRRolls.CPRAutofireRoll.create(
           weaponName,
           niceStatName,
           statValue,
@@ -176,7 +176,7 @@ const Attackable = function Attackable() {
         break;
       }
       case CPRRolls.rollTypes.SUPPRESSIVE: {
-        cprRoll = new CPRRolls.CPRSuppressiveFireRoll(
+        cprRoll = CPRRolls.CPRSuppressiveFireRoll.create(
           weaponName,
           niceStatName,
           statValue,
@@ -189,7 +189,7 @@ const Attackable = function Attackable() {
         break;
       }
       default:
-        cprRoll = new CPRRolls.CPRAttackRoll(
+        cprRoll = CPRRolls.CPRAttackRoll.create(
           weaponName,
           niceStatName,
           statValue,
@@ -276,7 +276,32 @@ const Attackable = function Attackable() {
     const { weaponType } = cprWeaponData;
     const damage = this.getWeaponDamage();
 
-    const cprRoll = new CPRRolls.CPRDamageRoll(rollName, damage, weaponType);
+    // Resolve the damage-critical config: when the loaded ammo's crit override is enabled, the ammo's
+    // crit values replace the weapon's own damageCrit; otherwise the weapon's config is used, defaulting
+    // to RAW (2+ dice at max face → +5). A `cprDamageCrit` hook lets modules tweak it for homebrew rules
+    // the datamodel knobs can't express.
+    const weaponCrit = cprWeaponData.damageCrit ?? {};
+    const ammoCrit = this._getLoadedAmmoProp("overrides")?.crit;
+    const critConfig =
+      ammoCrit?.override === true
+        ? {
+            threshold: ammoCrit.threshold,
+            count: ammoCrit.count,
+            bonus: ammoCrit.bonus,
+          }
+        : {
+            threshold: weaponCrit.threshold ?? 0,
+            count: weaponCrit.count ?? 2,
+            bonus: weaponCrit.bonus ?? 5,
+          };
+    Hooks.callAll("cprDamageCrit", { item: this, actor, config: critConfig });
+
+    const cprRoll = CPRRolls.CPRDamageRoll.create(
+      rollName,
+      damage,
+      weaponType,
+      critConfig,
+    );
     if (
       cprWeaponData.fireModes.autoFire === 0 &&
       (cprWeaponData.weaponType === "smg" ||

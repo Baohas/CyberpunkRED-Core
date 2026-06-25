@@ -1,265 +1,301 @@
 /* eslint-disable max-classes-per-file */
 import LOGGER from "../utils/cpr-logger.js";
-import DiceHandler from "../extern/cpr-dice-handler.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import * as CPRRollDialogs from "../dialog/cpr-roll-dialog.js";
 
+const { Roll } = foundry.dice;
+
 /**
- * This is a generic CPR roll object. It builds in critical success and failure
- * mechanics on top of using the Foundry roll objects.
+ * The generic CPR roll. It now **extends Foundry's Roll** rather than wrapping it: the dice (including
+ * Cyberpunk RED's critical mechanics via the `red`/`dmg` die modifiers) are evaluated natively, so the
+ * roll is serialisable, reconstructable on other clients, and animated by Dice So Nice for free.
+ *
+ * CPR-specific state (title, mods, stat/skill values, luck, template paths, …) lives as flat instance
+ * properties so the existing roll dialog and chat-card templates keep working unchanged. {@link toJSON}
+ * snapshots that state into `options.cprState` for the serialisation round-trip, and the constructor
+ * restores it — which also captures any mutations the dialog made before the roll was sent to chat.
+ *
+ * Ergonomic construction is done through the static `create()` factories (one per subclass); the
+ * constructor itself takes Foundry's `(formula, data, options)` signature because that is how
+ * `Roll.fromData` reconstructs a roll.
  */
-export class CPRRoll {
+export class CPRRoll extends Roll {
   /**
-   * See the property comments below for details. Note that after constructing the object
-   * the roll() method still needs to be called to actually "roll."
-   *
-   * @constructor
-   * @param {String} rollTitle - a name for the roll which is used in the roll card (chat message)
-   * @param {String} formula - a string representing what should be rolled using Foundry roll logic
+   * @param {String} formula - the dice formula evaluated by Foundry (e.g. "1d10red", "2d6dmg").
+   * @param {Object} data - roll data for @-substitution (unused for now).
+   * @param {Object} options - Roll options; CPR state is restored from `options.cprState`.
    */
-  constructor(rollTitle, formula) {
-    // (private) the resulting Roll() object from Foundry for intial roll
-    this._roll = null;
-    // (private) the resulting Roll() object from Foundry for critical roll
-    this._critRoll = null;
-    // (private) an array of mod objects to apply to the roll. The mod objects contain useful information about the mods themselves.
+  constructor(formula = "1d10", data = {}, options = {}) {
+    super(formula, data, options);
+
+    // Defaults for a freshly-built or directly-constructed roll.
+    this.rollTitle = this.constructor.name;
+    this.die = CPRRoll.dieOf(formula);
     this.mods = [];
-    // User inputted mods that can be added in the roll dialogs just before the roll.
     this.additionalMods = [];
-    // a name for the roll, used in the UI
-    this.rollTitle = rollTitle || this.template;
-    // Store the die type and it can be used when displaying on the rollcard
-    this.die = null;
-    // this assumes exactly 1 term, "XdY", which is passed to Foundry's Roll()
-    // any +A or -B terms are converted to mods
-    // Cast to lowercase to catch XdY and XDY
-    this.formula = this._processFormula(formula.toLowerCase());
-    // the values of each face after a roll
     this.faces = [];
-    // the result of the roll before applying mods or critical effects
     this.initialRoll = 0;
-    // the amount of luck used on this roll
-    this.luck = 0;
-    // skip rolling a critical die, such as with death saves
-    this.calculateCritical = true;
-    // if a critical die was rolled, this is the stored result
     this.criticalRoll = 0;
-    // the complete result of the roll after applying everything
     this.resultTotal = 0;
-    // path to the right dialog box to pop up before rolling
+    this.luck = 0;
+    this.calculateCritical = true;
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-base-verify-roll-prompt.hbs`;
-    // path to the roll card template for chat
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-base-rollcard.hbs`;
-    // Any additional data we want to pass to the roll card
     this.rollCardExtraArgs = {};
+
+    // Restore snapshotted CPR state (from a factory's cprState, or a fromData round-trip).
+    if (options.cprState) Object.assign(this, options.cprState);
   }
 
   /**
-   * In our roll object we separate out mods (+1, -2, etc) into a property. This is convenient for checking
-   * for an applying critical events (success or failure) to the result.
+   * Foundry's `Roll.formula` is getter-only, but some verify-roll dialog forms include a display-only
+   * `formula` field. `mergeObject(roll, formData)` would then throw trying to set it, so expose a
+   * delegating getter and a no-op setter.
    *
-   * @param {String} formula - a string representing what should be rolled using Foundry roll logic
-   * @returns {String} - the dice formula itself, in the form (XdY)
+   * @returns {String}
    */
-  _processFormula(formula) {
-    // If formula is just a number string, return that number.
-    // This allows us to pass flat numbers as the roll formula, if a weapon or its ammo do flat damage.
-    // See: "https://stackoverflow.com/questions/175739/how-can-i-check-if-a-string-is-a-valid-number"
-    if (!Number.isNaN(+formula)) {
-      return formula;
-    }
-    const dice = /[0-9][0-9]*d[0-9][0-9]*/;
-    const die = /d[0-9][0-9]*/;
-    // cut out the XdY term, leaving only + or - terms after
-    let rollMods = formula.replace(dice, "");
-    if (rollMods !== "") {
-      rollMods = rollMods.replace("+", " +");
-      rollMods = rollMods.replace("-", " -");
-      // split remaining terms into an array, add to mods
-      const modArray = rollMods.split(" ");
-      modArray.forEach((mod) => {
-        if (mod !== "") {
-          this.addMod([
-            {
-              value: Number(mod),
-              source: SystemUtils.Localize(
-                "CPR.rolls.modifiers.sources.rollFormula",
-              ),
-            },
-          ]);
-        }
-      });
-    }
+  get formula() {
+    return super.formula;
+  }
 
-    [this.die] = formula.match(die);
-    return formula.match(dice)[0];
+  set formula(_value) {
+    // Display-only dialog field; the real formula is fixed at construction.
   }
 
   /**
-   * Apply a mod object to the roll. Any mod object needs to be composed of at least two entires: value and source.
+   * Extract the "dXX" denomination from a formula for display on the roll card.
    *
-   * @param {Array<CPRMod-like-object>} modArray -
-   *    - Array of CPRMod-like objects containing information for the modifier.
-   *      - At minimum, a mod to be added here needs to be an object with
-   *        the following entries: { value: number, source: "string" }.
-   *      - CPRMods have the above information and more (see cpr-modifiers.js).
+   * @param {String} formula
+   * @returns {String}
+   */
+  static dieOf(formula) {
+    const match = String(formula).match(/d[0-9]+/i);
+    return match ? match[0].toLowerCase() : "d10";
+  }
+
+  /**
+   * Split a user/legacy formula ("2d6+3", "5") into the dice term and a list of flat numeric mods.
+   *
+   * @param {String} formula
+   * @returns {{dice: String, die: String, mods: Array<{value:Number, source:String}>}}
+   */
+  static splitFormula(formula) {
+    const lower = String(formula).toLowerCase();
+    // A bare number is a static value (e.g. flat damage).
+    if (!Number.isNaN(+lower)) {
+      return { dice: lower, die: CPRRoll.dieOf(lower), mods: [] };
+    }
+    const diceRgx = /[0-9]*d[0-9]+/;
+    const [dice] = lower.match(diceRgx) ?? ["1d10"];
+    const mods = [];
+    const remainder = lower.replace(diceRgx, "").replace(/\s+/g, "");
+    const modMatches = remainder.match(/[+-][0-9]+/g) ?? [];
+    modMatches.forEach((m) => {
+      mods.push({
+        value: Number(m),
+        source: SystemUtils.Localize("CPR.rolls.modifiers.sources.rollFormula"),
+      });
+    });
+    return { dice, die: CPRRoll.dieOf(dice), mods };
+  }
+
+  /**
+   * Build the CPR state object (the source of truth that gets snapshotted) from a legacy formula plus
+   * overrides. Subclass `create()` factories call this, then construct themselves with the resulting
+   * dice formula and cprState.
+   *
+   * @param {String} formula - the legacy formula (dice + optional flat mods)
+   * @param {String} modifier - die modifier to append ("red", "dmg", or "")
+   * @param {Object} state - extra CPR state (rollTitle, rollCard, statName, statValue, …)
+   * @returns {{evalFormula: String, cprState: Object}}
+   */
+  static buildState(formula, modifier, state = {}) {
+    const { dice, die, mods } = CPRRoll.splitFormula(formula);
+    const evalFormula = modifier ? `${dice}${modifier}` : dice;
+    const cprState = {
+      die,
+      mods,
+      ...state,
+    };
+    return { evalFormula, cprState };
+  }
+
+  /**
+   * Generic factory for a base roll.
+   *
+   * @param {String} rollTitle
+   * @param {String} formula
+   * @returns {CPRRoll}
+   */
+  static create(rollTitle, formula) {
+    const { evalFormula, cprState } = CPRRoll.buildState(formula, "", {
+      rollTitle,
+    });
+    return new CPRRoll(evalFormula, {}, { cprState });
+  }
+
+  /**
+   * Serialise only the native roll (dice terms, formula, total). The bespoke card is delivered as static
+   * HTML in the chat message's `content`, so a serialised/reconstructed roll only needs its dice — for
+   * Dice So Nice and inline expansion. The rich CPR state is dropped here because it can reference
+   * Documents (combatant, items in `rollCardExtraArgs`/`entityData`) and CPRMods, which would otherwise
+   * bloat or break message serialisation. Reconstruction falls back to default CPR state, which is never
+   * read once the card is rendered.
+   *
+   * @override
+   * @returns {Object}
+   */
+  toJSON() {
+    const json = super.toJSON();
+    json.options = {};
+    return json;
+  }
+
+  /**
+   * Apply a mod object to the roll. A mod needs at least `{ value: Number, source: String }`.
+   *
+   * @param {Array} modArray
    */
   addMod(modArray) {
     if (Array.isArray(modArray)) {
       modArray.forEach((m) => {
         if (this.mods.find((mod) => m.id && mod.id === m.id)) {
-          LOGGER.warn(
-            "Mod already exists on the roll. Skipping addition of mod:",
-            m,
-          );
+          LOGGER.warn("Mod already exists on the roll. Skipping:", m);
           return;
         }
         if (m && m.value !== 0) this.mods.push(m);
       });
     } else {
-      LOGGER.error(
-        "Arg for addMod must be an Array of CPRMod-like objects. See argument:",
-        modArray,
-      );
+      LOGGER.error("addMod expects an Array of CPRMod-like objects:", modArray);
     }
   }
 
   /**
-   * Remove a mod from the roll.
+   * Remove a mod from the roll by id.
    *
-   * @param {String} id - id of mod to remove
+   * @param {String} id
    */
   removeMod(id) {
     const modIndex = this.mods.findIndex((m) => m.id === id);
-    this.mods.splice(modIndex, 1);
+    if (modIndex !== -1) this.mods.splice(modIndex, 1);
   }
 
   /**
-   * Assuming there are mods for the roll, add them all up.
+   * Sum all permanent and user-entered mods.
    *
-   * @returns {Number} - the sum of the mods applied so far
+   * @returns {Number}
    */
   totalMods() {
     let modTotal = 0;
-    // Total up regular mods.
     this.mods.forEach((mod) => {
       modTotal += mod.value;
     });
-
-    // Total up additional mods inputted by the user.
     this.additionalMods.forEach((value) => {
-      const valueInt = value ? Number.parseInt(value, 10) : 0;
-      modTotal += valueInt;
+      modTotal += value ? Number.parseInt(value, 10) : 0;
     });
-
     return this.mods.length > 0 || this.additionalMods.length > 0
       ? modTotal
       : 0;
   }
 
   /**
-   * The most important method. Perform the roll and save the results to the CPRRoll object.
-   * Because of the integration with DiceHandler, this is intentionally an async method.
+   * Perform the roll: evaluate the dice natively (Foundry handles the `red`/`dmg` modifiers), then read
+   * the critical results off the evaluated term and compute the final displayed total.
    *
    * @async
+   * @returns {CPRRoll}
    */
   async roll() {
-    // calculate the initial roll
-    this._roll = await new Roll(this.formula).evaluate();
-
-    // eslint-disable-next-line no-use-before-define
-    if (!(this instanceof CPRInitiative)) {
-      await DiceHandler.handle3dDice(this._roll);
-    }
-
-    this.initialRoll = this._roll.total;
-    this.resultTotal = this.initialRoll + this.totalMods();
-
-    // Handle scenario where the "roll" was a static value
-    if (this._roll.terms[0].formula !== String(this._roll.terms[0].total)) {
-      this.faces = this._roll.terms[0].results.map((r) => r.result);
-    } else {
-      this.faces = [];
-    }
-
-    // check and consider criticals (min or max # on die)
-    if (this.wasCritical() && this.calculateCritical) {
-      this._critRoll = await new Roll(this.formula).evaluate();
-      // eslint-disable-next-line no-use-before-define
-      if (!(this instanceof CPRInitiative)) {
-        await DiceHandler.handle3dDice(this._critRoll);
-      }
-      this.criticalRoll = this._critRoll.total;
-    }
+    if (!this._evaluated) await this.evaluate();
+    this._readDiceResults();
     this._computeResult();
+    return this;
   }
 
   /**
-   * Simple method to compute the initial roll result plus mods and luck. This
-   * does not take critical events into account.
-   * Important: This MUST be called from roll()!
+   * Populate `faces`, `initialRoll` and `criticalRoll` from the evaluated dice term. `red`'s bonus and
+   * penalty dice are flagged `cprBonus`; everything else is the base roll.
    *
    * @private
-   * @returns {Number} - the results of a roll without considering critical events
    */
-  _computeBase() {
-    return this.initialRoll + this.totalMods() + this.luck;
+  _readDiceResults() {
+    const term = this.dice[0];
+    if (!term) {
+      this.faces = [];
+      this.initialRoll = 0;
+      this.criticalRoll = 0;
+      return;
+    }
+    const base = term.results.filter((r) => r.active && !r.cprBonus);
+    const bonus = term.results.filter((r) => r.cprBonus);
+    this.faces = base.map((r) => r.result);
+    this.initialRoll = base.reduce((t, r) => t + (r.count ?? r.result), 0);
+    this.criticalRoll = bonus.reduce((t, r) => t + (r.count ?? r.result), 0);
   }
 
   /**
-   * After rolling the initial die (d10) and handling critical events (like another
-   * die roll to subtract another d10 for a crit fail), sum and save the results.
+   * Compute the base result (dice total — already including any red explode/implode — plus mods and
+   * luck). Subclasses add stat/skill/role/etc. values.
+   *
+   * @private
+   * @returns {Number}
+   */
+  _computeBase() {
+    return this._diceTotal() + this.totalMods() + this.luck;
+  }
+
+  /**
+   * The native dice total once evaluated (includes red's explode/implode contributions).
+   *
+   * @private
+   * @returns {Number}
+   */
+  _diceTotal() {
+    return this._evaluated ? this.total : 0;
+  }
+
+  /**
+   * Save the final displayed result. Criticals are already baked into the native dice total, so this is
+   * just the base computation.
    *
    * @private
    */
   _computeResult() {
     this.resultTotal = this._computeBase();
-    if (this.wasCritFail()) {
-      this.resultTotal += -1 * this.criticalRoll;
-    } else {
-      this.resultTotal += this.criticalRoll;
-    }
   }
 
   /**
-   * Return a boolean indicating whether a critical event (fail or success) happened
-   *
+   * @returns {Boolean} whether the check die explode-d (a natural max under the `red` modifier).
+   */
+  wasCritSuccess() {
+    const term = this.dice[0];
+    return !!term && term.results.some((r) => r.cprSuccess);
+  }
+
+  /**
+   * @returns {Boolean} whether the check die implode-d (a natural 1 under the `red` modifier).
+   */
+  wasCritFail() {
+    const term = this.dice[0];
+    return !!term && term.results.some((r) => r.cprFailure);
+  }
+
+  /**
    * @returns {Boolean}
    */
   wasCritical() {
-    // return true or false indicating if a roll was critical
     return this.wasCritFail() || this.wasCritSuccess();
   }
 
   /**
-   * Return T/F whether a critical failure happened. This is separated out to be overridden
-   * by child classes later on.
+   * Pop up the roll confirmation dialog, then merge any changes back onto this roll.
    *
-   * @returns {Boolean}
-   */
-  wasCritFail() {
-    return this.initialRoll === 1;
-  }
-
-  /**
-   * Return T/F whether a critical success happened. This is separated out to be overridden
-   * by child classes later on.
-   *
-   * @returns {Boolean}
-   */
-  wasCritSuccess() {
-    return this.initialRoll === this._roll.terms[0].faces;
-  }
-
-  /**
-   * Pop up the roll confirmation dialog box. This enables a player to confirm the stat, skill,
-   * and any mods before making the roll.
-   *
-   * @param {} event - an object representing a click event
+   * @param {Object} event
+   * @param {CPRActor} actor
+   * @param {CPRItem} item
    * @returns {Boolean}
    */
   async handleRollDialog(event, actor, item) {
-    // Handle skipping of the user verification step
     let skipDialog = event.ctrlKey || event.metaKey;
     if (event.type === "click") {
       const ctrlSetting = game.settings.get(
@@ -270,29 +306,21 @@ export class CPRRoll {
     }
 
     if (!skipDialog) {
-      // We want to call the dialog from the right place.
-      // There are two roll dialogs: RoleDialog and RoleRollDialog.
-      // Depending on the type of the roll, we will choose one or the other.
       let DialogClass;
       switch (this.constructor) {
         // eslint-disable-next-line no-use-before-define
         case CPRRoleRoll:
           DialogClass = CPRRollDialogs.CPRRoleRollDialog;
           break;
-
         default:
           DialogClass = CPRRollDialogs.CPRRollDialog;
           break;
       }
 
-      // Call the dialog. Catch and throw an error if the promise is not returned.
       const dialogData = await DialogClass.showDialog(this, actor, item).catch(
         (err) => LOGGER.debug(err),
       );
-      if (dialogData === undefined) {
-        // returns false if the dialog was closed
-        return false;
-      }
+      if (dialogData === undefined) return false;
       foundry.utils.mergeObject(this, dialogData, { overwrite: true });
     }
     return true;
@@ -300,76 +328,71 @@ export class CPRRoll {
 }
 
 /**
- * Initiative rolls are basically stat rolls specifically with REF and some additional
- * modifiers.
+ * Initiative rolls are stat rolls on REF (or a substitute) with combatant context.
  */
 export class CPRInitiative extends CPRRoll {
-  constructor(combatant, formula, statName, statValue) {
-    const die = /d[0-9][0-9]*/;
-    if (formula.match(die)) {
-      super(SystemUtils.Localize("CPR.chat.initiative"), formula);
-    } else {
-      // Handle static initiative for Black ICE & Demons
-      super(SystemUtils.Localize("CPR.chat.initiative"), "1d10");
-      this.formula = formula;
-    }
-
-    this.combatant = combatant;
-    this.statName = statName;
-    this.statValue = statValue;
-
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-initiative-rollcard.hbs`;
-    this.calculateCritical = game.settings.get(
+  static create(combatant, formula, statName, statValue) {
+    const hasDice = /d[0-9]+/.test(String(formula));
+    const calculateCritical = game.settings.get(
       game.system.id,
       "criticalInitiative",
     );
+    const { evalFormula, cprState } = CPRRoll.buildState(
+      hasDice ? formula : "1d10",
+      // Only explode/implode initiative when the setting is enabled.
+      calculateCritical ? "red" : "",
+      {
+        rollTitle: SystemUtils.Localize("CPR.chat.initiative"),
+        combatant,
+        statName,
+        statValue,
+        rollCard: `systems/${game.system.id}/templates/chat/cpr-initiative-rollcard.hbs`,
+        calculateCritical,
+      },
+    );
+    // Static initiative for Black ICE & Demons passes a flat value, not dice.
+    if (!hasDice) cprState.staticFormula = formula;
+    return new CPRInitiative(evalFormula, {}, { cprState });
   }
 
   _computeBase() {
-    return this.initialRoll + this.totalMods() + this.statValue + this.luck;
+    if (this.staticFormula !== undefined) {
+      return Number(this.staticFormula) + this.totalMods();
+    }
+    return this._diceTotal() + this.totalMods() + this.statValue + this.luck;
   }
 }
 
 /**
- * A stat roll extends the generic CPRRoll to include the value for a stat in the roll. e.g. "roll INT"
+ * A stat roll: STAT + 1d10.
  */
 export class CPRStatRoll extends CPRRoll {
-  constructor(name, value) {
-    super(name, "1d10");
-    this.statName = name;
-    this.statValue = value;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-stat-rollcard.hbs`;
+  static create(name, value) {
+    const { evalFormula, cprState } = CPRRoll.buildState("1d10", "red", {
+      rollTitle: name,
+      statName: name,
+      statValue: value,
+      rollCard: `systems/${game.system.id}/templates/chat/cpr-stat-rollcard.hbs`,
+    });
+    return new this(evalFormula, {}, { cprState });
   }
 
-  /**
-   * This override is where the stat value is included in the roll results.
-   *
-   * @override
-   * @private
-   * @returns {Number}
-   */
   _computeBase() {
-    return this.initialRoll + this.totalMods() + this.statValue + this.luck;
+    return this._diceTotal() + this.totalMods() + this.statValue + this.luck;
   }
 }
 
 /**
- * A program stat roll extends the CPRStatRoll to use the proper rollPrompt for net combat
+ * A program stat roll uses the net-combat prompt and card.
  */
 export class CPRProgramStatRoll extends CPRStatRoll {
-  constructor(name, value) {
-    super(name, value);
-    this.statName = name;
-    this.statValue = value;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
+  static create(name, value) {
+    const roll = super.create(name, value);
+    roll.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
+    roll.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
+    return roll;
   }
 
-  /**
-   * Flip this roll to stat role from a program, which has a special name and card design.
-   *
-   * @param {String} rollTitle - a title for the roll, shown in the roll card (chat message)
-   */
   setNetCombat(rollTitle) {
     this.rollTitle = rollTitle;
     this.rollCard = `systems/${game.system.id}/templates/chat/cpr-program-stat-rollcard.hbs`;
@@ -377,45 +400,24 @@ export class CPRProgramStatRoll extends CPRStatRoll {
 }
 
 /**
- * The skill roll incorporates the stat, skill, and role details. Roles sometimes influence skill checks
- * (e.g. moto).
- *
- * To Do: when we get to active effects, this design may need to be revisited.
+ * Skill roll: STAT + Skill + 1d10.
  */
 export class CPRSkillRoll extends CPRStatRoll {
-  /**
-   * @constructor
-   * @param {String} statName - name of the stat used with this roll
-   * @param {Number} statValue - value of the stat
-   * @param {String} skillName - name of the skill for the roll
-   * @param {Number} skillValue - value of the skill level
-   */
-  constructor(statName, statValue, skillName, skillValue) {
-    super(skillName, statValue);
-    this.statName = statName;
-    this.skillName = skillName;
-    this.skillValue = skillValue;
-    this.rollTitle =
-      SystemUtils.Localize(
-        `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`,
-      ) === `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`
-        ? skillName
-        : SystemUtils.Localize(
-            `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`,
-          );
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-skill-rollcard.hbs`;
+  static create(statName, statValue, skillName, skillValue) {
+    const roll = super.create(skillName, statValue);
+    roll.statName = statName;
+    roll.skillName = skillName;
+    roll.skillValue = skillValue;
+    const key = `CPR.global.itemType.skill.${SystemUtils.slugify(skillName)}`;
+    roll.rollTitle =
+      SystemUtils.Localize(key) === key ? skillName : SystemUtils.Localize(key);
+    roll.rollCard = `systems/${game.system.id}/templates/chat/cpr-skill-rollcard.hbs`;
+    return roll;
   }
 
-  /**
-   * This override is where the stat, skill, and role values are included in the roll results.
-   *
-   * @override
-   * @private
-   * @returns {Number}
-   */
   _computeBase() {
     return (
-      this.initialRoll +
+      this._diceTotal() +
       this.totalMods() +
       this.statValue +
       this.skillValue +
@@ -425,74 +427,45 @@ export class CPRSkillRoll extends CPRStatRoll {
 }
 
 /**
- * A facedown roll extends the CPRStat to include the HBS files for Facedown
+ * Facedown roll: COOL + Rep + 1d10.
  */
 export class CPRFacedownRoll extends CPRStatRoll {
-  constructor(statName, statValue, repValue) {
-    super(statName, "1d10");
-    this.statName = statName;
-    this.statValue = statValue;
-    this.repValue = repValue;
-    this.rollTitle = SystemUtils.Localize("CPR.dialog.facedown.title");
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-facedown-prompt.hbs`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-facedown-rollcard.hbs`;
+  static create(statName, statValue, repValue) {
+    const roll = super.create(statName, statValue);
+    roll.repValue = repValue;
+    roll.rollTitle = SystemUtils.Localize("CPR.dialog.facedown.title");
+    roll.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-facedown-prompt.hbs`;
+    roll.rollCard = `systems/${game.system.id}/templates/chat/cpr-facedown-rollcard.hbs`;
+    return roll;
   }
 
-  /**
-   * This override is where the stat value is included in the roll results.
-   *
-   * @override
-   * @private
-   * @returns {Number}
-   */
   _computeBase() {
     return super._computeBase() + Number.parseInt(this.repValue, 10);
   }
 }
 
 /**
- * The roll for decreasing Humanity when cyberware is installed, usually a number of d6s.
+ * Humanity loss: Nd6 (or a static value), no criticals.
  */
 export class CPRHumanityLossRoll extends CPRRoll {
-  /**
-   * @constructor
-   * @param {String} name - the name of the cyberware being installed, incurring the loss
-   * @param {String} humanityLoss - a roll formula
-   */
-  constructor(name, humanityLoss) {
-    LOGGER.debug(`humanityLoss is ${humanityLoss}`);
-    super(name, humanityLoss);
-    LOGGER.debug(`formula is ${this.formula}`);
-    this.rollTitle = SystemUtils.Localize(
-      "CPR.dialog.installCyberware.humanityLoss",
-    );
-    this.calculateCritical = false;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-humanity-loss-rollcard.hbs`;
-    this.cyberwareName = name;
+  static create(name, humanityLoss) {
+    const { evalFormula, cprState } = CPRRoll.buildState(humanityLoss, "", {
+      rollTitle: SystemUtils.Localize(
+        "CPR.dialog.installCyberware.humanityLoss",
+      ),
+      calculateCritical: false,
+      cyberwareName: name,
+      rollCard: `systems/${game.system.id}/templates/chat/cpr-humanity-loss-rollcard.hbs`,
+    });
+    return new CPRHumanityLossRoll(evalFormula, {}, { cprState });
   }
 }
 
 /**
- * Attack rolls function just like skill rolls but we keep track of the weapon type for damage calculations
- * later on. They have a specialized roll card too.
- *
- * While it would be cool to just pass in a weapon to the constructor, the data model does not include
- * the skill and stat entities that would be needed with it. Thought was given to extending
- * classes for Ranged and Melee attacks (and hardcoding the stats used), but when considering
- * aimed shots, this got into multiple inheritance. Decided not to cross that line. Maybe mix-ins or interfaces?
+ * Attack roll: like a skill roll, with a weapon type recorded for the linked damage roll.
  */
 export class CPRAttackRoll extends CPRSkillRoll {
-  /**
-   *
-   * @constructor
-   * @param {String} attackName - a name for the attack. Used in the roll card (chat message)
-   * @param {String} statName - name for the stat
-   * @param {Number} statValue - value of said stat
-   * @param {String} skillName - name for the skill to be considered
-   * @param {Number} skillValue - value of said skill
-   * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
-   */
-  constructor(
+  static create(
     attackName,
     statName,
     statValue,
@@ -500,31 +473,20 @@ export class CPRAttackRoll extends CPRSkillRoll {
     skillValue,
     weaponType,
   ) {
-    super(statName, statValue, skillName, skillValue);
-    this.rollTitle = `${attackName}`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-attack-rollcard.hbs`;
-    this.weaponType = weaponType;
-    this.location = "body";
+    const roll = super.create(statName, statValue, skillName, skillValue);
+    roll.rollTitle = `${attackName}`;
+    roll.weaponType = weaponType;
+    roll.location = "body";
+    roll.rollCard = `systems/${game.system.id}/templates/chat/cpr-attack-rollcard.hbs`;
+    return roll;
   }
 }
 
 /**
- * Aimed attack rolls are the same as attack rolls, but they record the location and a -8 mod. The roll prompt
- * and card is slightly different too.
+ * Aimed attack: records location and a -8 mod.
  */
 export class CPRAimedAttackRoll extends CPRAttackRoll {
-  /**
-   * Note: this deliberately does not set the location until after the verify dialog box (in sheet code)
-   *
-   * @constructor
-   * @param {String} attackName - a name for the attack. Used in the roll card (chat message)
-   * @param {String} statName - name for the stat
-   * @param {Number} statValue - value of said stat
-   * @param {String} skillName - name for the skill to be considered
-   * @param {Number} skillValue - value of said skill
-   * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
-   */
-  constructor(
+  static create(
     weaponName,
     statName,
     statValue,
@@ -532,28 +494,27 @@ export class CPRAimedAttackRoll extends CPRAttackRoll {
     skillValue,
     weaponType,
   ) {
-    super(weaponName, statName, statValue, skillName, skillValue, weaponType);
-    this.rollTitle = `${weaponName}`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-aimed-attack-rollcard.hbs`;
-    this.addMod([{ value: -8, source: "Aimed Shot Penalty" }]);
-    this.location = "head";
+    const roll = super.create(
+      weaponName,
+      statName,
+      statValue,
+      skillName,
+      skillValue,
+      weaponType,
+    );
+    roll.rollTitle = `${weaponName}`;
+    roll.rollCard = `systems/${game.system.id}/templates/chat/cpr-aimed-attack-rollcard.hbs`;
+    roll.addMod([{ value: -8, source: "Aimed Shot Penalty" }]);
+    roll.location = "head";
+    return roll;
   }
 }
 
 /**
- * Like an attack roll, but with a specialized title and roll card.
+ * Autofire attack: specialised title and card.
  */
 export class CPRAutofireRoll extends CPRAttackRoll {
-  /**
-   * @constructor
-   * @param {String} attackName - a name for the attack. Used in the roll card (chat message)
-   * @param {String} statName - name for the stat
-   * @param {Number} statValue - value of said stat
-   * @param {String} skillName - name for the skill to be considered
-   * @param {Number} skillValue - value of said skill
-   * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
-   */
-  constructor(
+  static create(
     weaponName,
     statName,
     statValue,
@@ -561,26 +522,25 @@ export class CPRAutofireRoll extends CPRAttackRoll {
     skillValue,
     weaponType,
   ) {
-    super(weaponName, statName, statValue, skillName, skillValue, weaponType);
-    this.rollTitle = `${weaponName}`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-autofire-rollcard.hbs`;
+    const roll = super.create(
+      weaponName,
+      statName,
+      statValue,
+      skillName,
+      skillValue,
+      weaponType,
+    );
+    roll.rollTitle = `${weaponName}`;
+    roll.rollCard = `systems/${game.system.id}/templates/chat/cpr-autofire-rollcard.hbs`;
+    return roll;
   }
 }
 
 /**
- * See CPRAutoFireRoll, this is the same idea.
+ * Suppressive fire: specialised title and card.
  */
 export class CPRSuppressiveFireRoll extends CPRAttackRoll {
-  /**
-   * @constructor
-   * @param {String} attackName - a name for the attack. Used in the roll card (chat message)
-   * @param {String} statName - name for the stat
-   * @param {Number} statValue - value of said stat
-   * @param {String} skillName - name for the skill to be considered
-   * @param {Number} skillValue - value of said skill
-   * @param {String} weaponType - type of the weapon which is embedded in links to damage rolls in the roll card
-   */
-  constructor(
+  static create(
     weaponName,
     statName,
     statValue,
@@ -588,27 +548,25 @@ export class CPRSuppressiveFireRoll extends CPRAttackRoll {
     skillValue,
     weaponType,
   ) {
-    super(weaponName, statName, statValue, skillName, skillValue, weaponType);
-    this.rollTitle = `${weaponName}`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-suppressive-fire-rollcard.hbs`;
+    const roll = super.create(
+      weaponName,
+      statName,
+      statValue,
+      skillName,
+      skillValue,
+      weaponType,
+    );
+    roll.rollTitle = `${weaponName}`;
+    roll.rollCard = `systems/${game.system.id}/templates/chat/cpr-suppressive-fire-rollcard.hbs`;
+    return roll;
   }
 }
 
 /**
- * RoleRolls are rolls for role abilities. I hope this is easier to say in other languages.
+ * Role ability roll: Role + Skill + STAT + 1d10.
  */
 export class CPRRoleRoll extends CPRRoll {
-  /**
-   * @constructor
-   * @param {String} roleName - role ability name
-   * @param {Number} roleValue - role value
-   * @param {String} skillName - skill name used in the roll
-   * @param {Number} skillValue - skill value
-   * @param {String} statName - stat name used in the roll
-   * @param {Number} statValue - stat value
-   * @param {Array} skillList
-   */
-  constructor(
+  static create(
     roleName,
     roleValue,
     skillName,
@@ -617,27 +575,24 @@ export class CPRRoleRoll extends CPRRoll {
     statValue,
     skillList,
   ) {
-    super(roleName, "1d10");
-    this.skillList = skillList;
-    this.roleName = roleName;
-    this.roleValue = roleValue;
-    this.skillName = skillName;
-    this.skillValue = skillValue;
-    this.statName = statName;
-    this.statValue = statValue;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-role-rollcard.hbs`;
+    const { evalFormula, cprState } = CPRRoll.buildState("1d10", "red", {
+      rollTitle: roleName,
+      roleName,
+      roleValue,
+      skillName,
+      skillValue,
+      statName,
+      statValue,
+      skillList,
+      rollPrompt: `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-roleAbility-prompt.hbs`,
+      rollCard: `systems/${game.system.id}/templates/chat/cpr-role-rollcard.hbs`,
+    });
+    return new this(evalFormula, {}, { cprState });
   }
 
-  /**
-   * Override this to include the role, skill, and stat values in the computation
-   *
-   * @override
-   * @returns {Number}
-   */
   _computeBase() {
     return (
-      this.initialRoll +
+      this._diceTotal() +
       this.totalMods() +
       this.roleValue +
       this.skillValue +
@@ -648,28 +603,31 @@ export class CPRRoleRoll extends CPRRoll {
 }
 
 /**
- * Interface Rolls are for most rolls made from the NET section of the Fight tab.
- * This includes regular interface actions like Pathfinder or Slide, but also
- * applies to attacks like Zap or from loaded programs. The only rolls this doesn't cover
- * are damage rolls from loaded programs (or zap).
+ * Interface roll: NET actions/attacks from the Fight tab.
  */
 export class CPRInterfaceRoll extends CPRRoleRoll {
-  /**
-   * @constructor
-   * @param {String} rollType - "action", "attack", or "defense"
-   * @param {String} roleName - role ability name
-   * @param {Number} roleValue - role value
-   * @param {String} statName - Loaded program stat name (ATK or DEF)
-   * @param {Number} statValue - Loaded program stat value
-   */
-  constructor(rollType, roleName, roleValue, statName, statValue) {
-    super(roleName, roleValue);
-    this.rollType = rollType;
-    this.statName = statName;
-    this.statValue = statValue ?? 0;
-
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-cyberdeck-rollcard.hbs`;
+  static create(
+    rollType,
+    roleName,
+    roleValue,
+    statName = null,
+    statValue = null,
+  ) {
+    const roll = super.create(
+      roleName,
+      roleValue,
+      null,
+      0,
+      statName,
+      statValue ?? 0,
+      [],
+    );
+    roll.rollType = rollType;
+    roll.statName = statName;
+    roll.statValue = statValue ?? 0;
+    roll.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-net-roll-prompt.hbs`;
+    roll.rollCard = `systems/${game.system.id}/templates/chat/cpr-cyberdeck-rollcard.hbs`;
+    return roll;
   }
 
   setProgramRollCard() {
@@ -678,7 +636,7 @@ export class CPRInterfaceRoll extends CPRRoleRoll {
 
   _computeBase() {
     return (
-      this.initialRoll +
+      this._diceTotal() +
       this.totalMods() +
       this.roleValue +
       this.statValue +
@@ -688,51 +646,60 @@ export class CPRInterfaceRoll extends CPRRoleRoll {
 }
 
 /**
- * The infamous death save. It is just like a generic d10 roll, but we built in how to calculate ongoing
- * penalties from previous (successful) saves and critical injuries.
+ * Death save: 1d10 roll-under BODY, with penalties; no criticals.
  */
 export class CPRDeathSaveRoll extends CPRRoll {
-  /**
-   * @constructor
-   * @param {Number} penalty - the ever-increasing penalty when death saves are made
-   * @param {Number} basePenalty - a separate penalty from critical injuries
-   * @param {Number} bodyStat - the value of the actor's body stat, used in the roll card
-   */
-  constructor(penalty, basePenalty, bodyStat) {
-    super(SystemUtils.Localize("CPR.rolls.deathSave.title"), "1d10");
-    this.calculateCritical = false;
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-deathsave-rollcard.hbs`;
-    this.penalty = penalty;
-    this.basePenalty = basePenalty;
-    this.bodyStat = bodyStat;
-    // the result of the save, with "Success" or "Failure"
-    this.saveResult = null;
+  static create(penalty, basePenalty, bodyStat) {
+    const { evalFormula, cprState } = CPRRoll.buildState("1d10", "", {
+      rollTitle: SystemUtils.Localize("CPR.rolls.deathSave.title"),
+      calculateCritical: false,
+      penalty,
+      basePenalty,
+      bodyStat,
+      saveResult: null,
+      rollPrompt: `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-deathsave-prompt.hbs`,
+      rollCard: `systems/${game.system.id}/templates/chat/cpr-deathsave-rollcard.hbs`,
+    });
+    return new CPRDeathSaveRoll(evalFormula, {}, { cprState });
   }
 
   _computeBase() {
     return (
-      this.initialRoll + this.basePenalty + this.penalty + this.totalMods()
+      this._diceTotal() + this.basePenalty + this.penalty + this.totalMods()
     );
   }
 }
 
 /**
- * Damage rolls are very different. d6s are used, and critical events are determined differently. Many other
- * things affect damage too, such as aimed shots or autofire.
+ * Damage roll: Nd6 (any die), `dmg` marker, criticals by 2+ max (handled by the modifier + consequence).
  */
 export class CPRDamageRoll extends CPRRoll {
   /**
-   * @constructor
-   * @param {String} rollTitle - a name for the roll, used in the roll card (chat message)
-   * @param {String} formula - of the form Xd6[+Y]
-   * @param {String} weaponType - the weapon type is considered when displaying alt fire modes in the UI
+   * Build the `dmg` marker modifier string from a crit config and the die's faces. RAW (2 dice at the
+   * die's max face) is the bare `dmg`; `count 0` disables crits (`dmg0`); anything else is explicit.
+   *
+   * @param {Object} critConfig - { threshold, count } (threshold 0 = the die's max face)
+   * @param {Number} faces - the damage die's number of faces
+   * @returns {String}
    */
-  constructor(rollTitle, formula, weaponType) {
-    // we assume always d6s
-    super(rollTitle, formula);
+  static dmgModifier(critConfig, faces) {
+    const count = critConfig?.count ?? 2;
+    if (count === 0) return "dmg0";
+    const threshold =
+      critConfig?.threshold && critConfig.threshold > 0
+        ? critConfig.threshold
+        : faces;
+    if (count === 2 && threshold === faces) return "dmg";
+    return `dmg${count}>=${threshold}`;
+  }
 
-    // Warn if no tokens are targeted for a damage roll (and the user settings allow).
+  /**
+   * @param {String} rollTitle
+   * @param {String} formula - the damage dice (e.g. "2d6", "3d6+2")
+   * @param {String} weaponType
+   * @param {Object} critConfig - { threshold, count, bonus }; defaults to RAW (2+ max → +5).
+   */
+  static create(rollTitle, formula, weaponType, critConfig = {}) {
     const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted");
     if (
       targetedTokens.length === 0 &&
@@ -743,31 +710,27 @@ export class CPRDamageRoll extends CPRRoll {
         "CPR.chat.damageApplication.noTokenTargeted",
       );
     }
-
-    this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`;
-    this.rollCard = `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`;
-    // criticals just add 5 damage, they do not need more dice rolled
-    this.calculateCritical = false;
-    this.bonusDamage = 5;
-    // are we aiming at something?
-    this.isAimed = false;
-    // for aimed shots, set to head, leg, or held item; set to body otherwise
-    this.location = "body";
-    // used in the verifyPrompt for damage rolls to show alt firemodes
-    this.weaponType = weaponType;
-    // indicate whether this is an autofire roll. Used when considering the +5 damage in crits
-    this.isAutofire = false;
-    // multiple damage by this amount
-    this.autofireMultiplier = 0;
-    // multiplier max
-    this.autofireMultiplierMax = 0;
+    const { dice, die, mods } = CPRRoll.splitFormula(formula);
+    const faces = parseInt(die.replace(/d/i, ""), 10) || 6;
+    const cprState = {
+      die,
+      mods,
+      rollTitle,
+      weaponType,
+      calculateCritical: false,
+      bonusDamage: critConfig.bonus ?? 5,
+      isAimed: false,
+      location: "body",
+      isAutofire: false,
+      autofireMultiplier: 0,
+      autofireMultiplierMax: 0,
+      rollPrompt: `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`,
+      rollCard: `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`,
+    };
+    const evalFormula = `${dice}${CPRDamageRoll.dmgModifier(critConfig, faces)}`;
+    return new CPRDamageRoll(evalFormula, {}, { cprState });
   }
 
-  /**
-   * The base damage might be subject to multipliers and universal bonus damage, so we handle that here.
-   *
-   * @returns {Number}
-   */
   _computeBase() {
     this.autofireMultiplier = Math.min(
       this.autofireMultiplier,
@@ -777,83 +740,46 @@ export class CPRDamageRoll extends CPRRoll {
     return this.initialRoll * damageMultiplier + this.totalMods();
   }
 
-  /**
-   * Damage rolls cannot critically fail, so we override this to always return false.
-   *
-   * @override
-   * @returns {false}
-   */
   // eslint-disable-next-line class-methods-use-this
   wasCritFail() {
     return false;
   }
 
   /**
-   * 2 or more 6s on a damage roll is a critical success, which is different than the usual d10 rolls.
-   * So we override this method to handle that.
+   * Damage criticals come from the `dmg` marker modifier (2+ dice at max, by default).
    *
    * @override
    * @returns {Boolean}
    */
   wasCritSuccess() {
-    return this.faces.filter((x) => x === 6).length >= 2;
+    const term = this.dice[0];
+    return !!term && term.options.cprDamageIsCrit === true;
   }
 
-  /**
-   * Unlike d10 based rolls in this system, critical events do not trigger another dice roll.
-   * So this override is fairly simple: just call _computeBase().
-   *
-   * @override
-   * @private
-   */
-  _computeResult() {
-    // figure how aimed shots work...
-    this.resultTotal = this._computeBase();
-  }
-
-  /**
-   * Convenience method for turning a damage into a roll for autofire damage which has a set
-   * formula and no extra mods.
-   */
   setAutofire() {
     this.isAutofire = true;
-    this.formula = "2d6";
+    this.terms = this.constructor.parse("2d6dmg", this.data);
+    this.die = "d6";
   }
 
-  /**
-   * Set up the autofire multiplier. This needs to happen before roll() is called.
-   *
-   * @param {Number} autofireMultiplier - damage multiplier that comes from how well the attack roll exceed the DV
-   * @param {Number} autofireMultiplierMax - the maximum damage multiplier for the roll, which is set by the weapon type
-   * @param {Object} ammoOverride - Data from the ammo, which may override the weapon's autofire maximum.
-   */
   configureAutofire(
     autofireMultiplier,
-    // eslint-disable-next-line default-param-last
     autofireMultiplierMax = 0,
     ammoOverride,
   ) {
     this.autofireMultiplier = autofireMultiplier;
-
-    // We account for ammo overriding autofire maximum here.
     if (ammoOverride?.mode === "set") {
       this.autofireMultiplierMax = ammoOverride.value;
     } else if (ammoOverride?.mode === "modify") {
-      const trueMax = Math.max(
+      this.autofireMultiplierMax = Math.max(
         autofireMultiplierMax + ammoOverride.value,
         ammoOverride.minimum,
       );
-      this.autofireMultiplierMax = trueMax;
     } else if (autofireMultiplierMax > this.autofireMultiplierMax) {
       this.autofireMultiplierMax = autofireMultiplierMax;
     }
   }
 
-  /**
-   * Flip this roll to stat role from a program, which has a special name, prompt, and card design.
-   *
-   * @param {String} rollTitle - a title for the roll, shown in the roll card (chat message)
-   */
   setNetCombat(rollTitle) {
     this.rollTitle = rollTitle;
     this.rollPrompt = `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-program-damage-prompt.hbs`;
@@ -862,26 +788,21 @@ export class CPRDamageRoll extends CPRRoll {
 }
 
 /**
- * CPRTableRoll is a wrapper object to handle "rolling" on a rollable table. This is used for critical injuries
- * right now.
+ * Wrapper for a roll already made on a RollTable (e.g. critical injuries).
  */
 export class CPRTableRoll extends CPRRoll {
-  /**
-   * @constructor
-   * @param {String} rollTitle - a title for the roll, used in the roll card (chat message)
-   * @param {RollTable} tableRoll - object representing a rollable table
-   * @param {String} rollCard - path to a roll card template
-   */
-  constructor(rollTitle, tableRoll, rollCard) {
-    // This is just to create a CPR Roll Object from an already rolled RollTable
-    const formula = tableRoll._formula;
-    super(rollTitle, formula);
-    this.rollCard = rollCard;
-    tableRoll.terms[0].results.forEach((die) => {
-      this.faces.push(die.result);
-    });
-    this.resultTotal = tableRoll.result;
-    this._roll = tableRoll;
+  static create(rollTitle, tableRoll, rollCard) {
+    const { evalFormula, cprState } = CPRRoll.buildState(
+      tableRoll._formula,
+      "",
+      { rollTitle, rollCard },
+    );
+    cprState.faces = tableRoll.terms[0].results.map((die) => die.result);
+    cprState.resultTotal = tableRoll.result;
+    cprState.initialRoll = tableRoll.total;
+    const roll = new CPRTableRoll(evalFormula, {}, { cprState });
+    roll._tableRoll = tableRoll;
+    return roll;
   }
 }
 

@@ -53,6 +53,10 @@ import VehicleDataModel from "./modules/datamodels/item/vehicle-datamodel.js";
 import WeaponDataModel from "./modules/datamodels/item/weapon-datamodel.js";
 import MigrationError from "./modules/system/migrate/migration-error.js";
 
+// Dice
+import CPRDie from "./modules/rolls/cpr-die-extended.js";
+import * as CPRRolls from "./modules/rolls/cpr-rolls.js";
+
 const { ActorSheet, ItemSheet } = foundry.appv1.sheets;
 const { DocumentSheetConfig } = foundry.applications.apps;
 const { Actors, Items } = foundry.documents.collections;
@@ -170,6 +174,30 @@ Hooks.once("init", async () => {
   CONFIG.Item.dataModels.skill = SkillDataModel;
   CONFIG.Item.dataModels.vehicle = VehicleDataModel;
   CONFIG.Item.dataModels.weapon = WeaponDataModel;
+
+  // Register extended Die class that supports the 'red'/'dmg' modifiers (1d10red, 2d6dmg notation)
+  CONFIG.Dice.terms.d = CPRDie;
+
+  // Register the CPR Roll subclasses so rolls attached to chat messages serialize and reconstruct as
+  // the correct class on every client (Roll.fromData looks the class up by name in CONFIG.Dice.rolls).
+  CONFIG.Dice.rolls.push(
+    CPRRolls.CPRRoll,
+    CPRRolls.CPRInitiative,
+    CPRRolls.CPRStatRoll,
+    CPRRolls.CPRProgramStatRoll,
+    CPRRolls.CPRSkillRoll,
+    CPRRolls.CPRFacedownRoll,
+    CPRRolls.CPRAttackRoll,
+    CPRRolls.CPRAimedAttackRoll,
+    CPRRolls.CPRAutofireRoll,
+    CPRRolls.CPRSuppressiveFireRoll,
+    CPRRolls.CPRRoleRoll,
+    CPRRolls.CPRInterfaceRoll,
+    CPRRolls.CPRDeathSaveRoll,
+    CPRRolls.CPRDamageRoll,
+    CPRRolls.CPRHumanityLossRoll,
+    CPRRolls.CPRTableRoll,
+  );
 
   // Turn legacy tranferral for active effects off. Necessary for v11.
   CONFIG.ActiveEffect.legacyTransferral = false;
