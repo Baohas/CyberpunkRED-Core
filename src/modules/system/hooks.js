@@ -20,7 +20,6 @@ const hooksImports = [
   "actor/update-role-on-item-delete.js",
   "chat/add-glyphs.js",
   "chat/hide-blind-rolls.js",
-  "chat/parse-red-command.js",
   "external/babele.js",
   "external/dice-so-nice-preset.js",
   "external/drag-ruler.js",
