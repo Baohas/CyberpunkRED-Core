@@ -123,6 +123,17 @@
   color: var(--cpr-text-chat-failure);
 }
 
+/* CPR Dice Critical Styling */
+.cpr-crit-success {
+  color: var(--cpr-text-chat-success);
+  font-weight: bold;
+}
+
+.cpr-crit-failure {
+  color: var(--cpr-text-chat-failure);
+  font-weight: bold;
+}
+
 .generic-data-div,
 .d10-data-div {
   grid-area: d10-data;
