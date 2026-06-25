@@ -1,5 +1,5 @@
 import LOGGER from "../utils/cpr-logger.js";
-import { CPRRoll, CPRDamageRoll, CPRInitiative } from "../rolls/cpr-rolls.js";
+import { CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 
@@ -68,6 +68,11 @@ export default class CPRChat {
 
     return renderTemplate(cprRoll.rollCard, cprRoll).then((html) => {
       const chatOptions = this.ChatDataSetup(html);
+
+      // Attach the native roll so it serializes/reconstructs across clients and Dice So Nice animates
+      // it automatically. The bespoke card stays in `content`; Foundry only renders the roll itself
+      // when content is empty. Table-wrapper rolls aren't evaluated here, so they keep HTML-only.
+      if (cprRoll._evaluated) chatOptions.rolls = [cprRoll];
 
       if (cprRoll.entityData !== undefined && cprRoll.entityData !== null) {
         let actor;
@@ -182,60 +187,6 @@ export default class CPRChat {
         return ChatMessage.create(chatOptions);
       },
     );
-  }
-
-  /**
-   * Process a /red command typed into chat. This rolls dice based on arguments
-   * passed in, among other things.
-   *
-   * @async
-   * @static
-   * @param {*} data - a string of whatever the user typed in with /red
-   */
-  static async HandleCPRCommand(data) {
-    // First, let's see if we can figure out what was passed to /red
-    // Right now, we will assume it is a roll
-    const modifiersRegex = /[+-][0-9][0-9]*/;
-    const diceRegex = /[0-9][0-9]*d[0-9][0-9]*/;
-    const ablationRegex = /a[0-9][0-9]*/;
-    let formula = "1d10";
-    let rollDescription = "";
-    if (data.includes("#")) {
-      rollDescription = data.slice(data.indexOf("#") + 1);
-    }
-    if (data.match(diceRegex)) {
-      [formula] = data.match(diceRegex);
-    }
-    if (data.match(modifiersRegex)) {
-      const formulaModifiers = data.match(modifiersRegex);
-      formula = `${formula}${formulaModifiers}`;
-    }
-    if (formula) {
-      let cprRoll;
-      if (formula.includes("d6")) {
-        let ablation = 1;
-        if (data.match(ablationRegex)) {
-          [ablation] = data.match(ablationRegex);
-          ablation = ablation.slice(1);
-        }
-        cprRoll = new CPRDamageRoll(
-          SystemUtils.Localize("CPR.rolls.roll"),
-          formula,
-        );
-        cprRoll.rollCardExtraArgs.ablationValue = ablation;
-      } else {
-        cprRoll = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), formula);
-      }
-      if (rollDescription !== "") {
-        cprRoll.rollCardExtraArgs.rollDescription = rollDescription;
-      }
-      if (cprRoll.die !== "d6" && cprRoll.die !== "d10") {
-        cprRoll.calculateCritical = false;
-        cprRoll.die = "generic";
-      }
-      await cprRoll.roll();
-      this.RenderRollCard(cprRoll);
-    }
   }
 
   /**
