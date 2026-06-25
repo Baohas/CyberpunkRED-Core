@@ -1041,7 +1041,7 @@ export default class CPRActor extends Actor {
   _createStatRoll(statName) {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
-    const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
+    const cprRoll = CPRRolls.CPRStatRoll.create(niceStatName, statValue);
 
     const effects = Array.from(this.allApplicableEffects());
     const allMods = CPRMod.getAllModifiers(effects);
@@ -1088,7 +1088,7 @@ export default class CPRActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
     const repValue = this.system.reputation.value;
-    const cprRoll = new CPRRolls.CPRFacedownRoll(
+    const cprRoll = CPRRolls.CPRFacedownRoll.create(
       niceStatName,
       statValue,
       repValue,
@@ -1124,7 +1124,7 @@ export default class CPRActor extends Actor {
     const deathSavePenalty = this.system.derivedStats.deathSave.penalty;
     const deathSaveBasePenalty = this.system.derivedStats.deathSave.basePenalty;
     const bodyStat = this.system.stats.body.value;
-    const cprRoll = new CPRRolls.CPRDeathSaveRoll(
+    const cprRoll = CPRRolls.CPRDeathSaveRoll.create(
       deathSavePenalty,
       deathSaveBasePenalty,
       bodyStat,
@@ -1781,7 +1781,7 @@ export default class CPRActor extends Actor {
       // Cast formula to a string for the case of a static loss, which is a Number.
       // If it is already a string, nothing will change.
       const formula = `${item.system.humanityLoss[humanityLossType]}`;
-      const humRoll = new CPRRolls.CPRHumanityLossRoll(item.name, formula);
+      const humRoll = CPRRolls.CPRHumanityLossRoll.create(item.name, formula);
       await humRoll.roll();
       value -= humRoll.resultTotal;
       humRoll.entityData = {

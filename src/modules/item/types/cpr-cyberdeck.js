@@ -82,7 +82,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       LOGGER.error(
         `_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programId}.`,
       );
-      return new CPRRolls.CPRRoll("Unknown Program", "1d10");
+      return CPRRolls.CPRRoll.create("Unknown Program", "1d10");
     }
 
     const roleName = extraData.netRoleItem.system.mainRoleAbility;
@@ -99,7 +99,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     // Damage rolls from programs are treated as normal Damage Rolls.
     switch (executionType) {
       case "atk": {
-        cprRoll = new CPRRolls.CPRInterfaceRoll(
+        cprRoll = CPRRolls.CPRInterfaceRoll.create(
           "attack",
           roleName,
           roleValue,
@@ -113,7 +113,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         break;
       }
       case "def": {
-        cprRoll = new CPRRolls.CPRInterfaceRoll(
+        cprRoll = CPRRolls.CPRInterfaceRoll.create(
           "defense",
           roleName,
           roleValue,
@@ -124,7 +124,11 @@ export default class CPRCyberdeckItem extends CPRItem {
         break;
       }
       case "damage": {
-        cprRoll = new CPRRolls.CPRDamageRoll(pgmName, damageFormula, "program");
+        cprRoll = CPRRolls.CPRDamageRoll.create(
+          pgmName,
+          damageFormula,
+          "program",
+        );
         cprRoll.rollCardExtraArgs.program = program;
         cprRoll.setNetCombat(pgmName);
         break;
@@ -215,11 +219,11 @@ export default class CPRCyberdeckItem extends CPRItem {
       const zap = SystemUtils.Localize(
         "CPR.global.role.netrunner.interfaceAbility.zap",
       );
-      cprRoll = new CPRRolls.CPRDamageRoll(zap, "1d6", "program");
+      cprRoll = CPRRolls.CPRDamageRoll.create(zap, "1d6", "program");
       cprRoll.setNetCombat(zap);
     } else {
       if (interfaceAbility === "zap") rollType = "attack";
-      cprRoll = new CPRRolls.CPRInterfaceRoll(rollType, roleName, roleValue);
+      cprRoll = CPRRolls.CPRInterfaceRoll.create(rollType, roleName, roleValue);
       cprRoll.ability = interfaceAbility;
       cprRoll.rollCardExtraArgs.cyberdeck = this;
     }
