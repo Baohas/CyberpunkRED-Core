@@ -117,7 +117,7 @@ export default class CPRRoleItem extends CPRItem {
       "allActionsHands",
     ]);
 
-    const cprRoll = new CPRRolls.CPRRoleRoll(
+    const cprRoll = CPRRolls.CPRRoleRoll.create(
       roleName,
       roleValue,
       skillName,
