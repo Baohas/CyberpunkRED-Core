@@ -447,6 +447,7 @@ CONFIG.Item.dataModels.weapon = WeaponDataModel;
 - Always set explicit field options (`required`, `nullable`, `initial`, and `min`/`choices` where relevant). Don't rely on implicit defaults.
 - Reference enums by `Object.keys(CPR.someEnum)` for `choices` rather than hardcoding lists.
 - Put derived (non-persisted) values in getters on the data model or in the document's `prepareDerivedData`, not in the schema.
+- **A configurable field is not done until it can be configured.** When you add or change a data-model field that users are meant to set, also: (1) surface it on the relevant item/actor **sheet** template with its **localization** key (don't add a schema field with no UI to edit it); and (2) add a **migration** to backfill existing documents if behaviour depends on it. A field nobody can see or edit, or that only exists on freshly-created documents, is an incomplete feature.
 
 ---
 
