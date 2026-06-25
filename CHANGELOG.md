@@ -4,6 +4,16 @@
 
 ## Version 0.93
 
+### Action Needed
+
+- The `/red` chat command has been removed. Use the `red` die modifier instead — e.g. `/r 1d10red`
+
+#### Weapons & Ammo That Cannot Crit
+
+We have made damage criticals configurable per weapon and ammo, and migrated the weapons and ammo that RAW cannot cause a Critical Injury — such as the Air Pistol, Stun Gun, Stun Baton, and Rubber ammunition — to never crit. This migration matches on item name (including translations), so renamed or homebrew items are not caught.
+
+If you have any such items that should not crit, set them manually: on a weapon, set **Critical Damage → Dice Required** to **0**; on ammo, enable **Modify Critical?** and set its **Dice Required** to **0**.
+
 ### New Features
 
 - Add Foundry v13 Support
@@ -13,6 +23,11 @@
 - Transition ammo icons from `.png` to `.svg`
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
+- Migrate the dice/roll system onto native Foundry rolls (serializable, multiplayer-safe, with automatic Dice So Nice support)
+- Add a `red` die modifier: a single explode-on-max / implode-on-1 for check dice, usable in any roll formula, macro or script (e.g. `1d10red`)
+- Add a `dmg` damage marker modifier that drives the damage card and apply-damage controls and flags critical damage
+- Make damage criticals configurable per weapon and per ammo (critical threshold, dice required, and bonus damage; ammo can override the weapon's rule)
+- Support `@`-roll-data references (e.g. `@stats.ref`) in roll formulas
 
 ## Version 0.92.4
 
