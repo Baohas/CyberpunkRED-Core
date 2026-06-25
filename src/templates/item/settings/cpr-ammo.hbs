@@ -94,3 +94,76 @@
     </li>
   {{/if}}
 {{/if}}
+
+{{!-- Critical Override Information --}}
+<li class="item flexcol cpr-crit-box">
+  <div class="cpr-crit-box-header text-semi">
+    {{localize "CPR.itemSheet.ammo.critOverride"}}
+  </div>
+  <div class="cpr-crit-box-desc text-smaller">
+    {{localize "CPR.itemSheet.ammo.critOverrideHint"}}
+  </div>
+  <div class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+      {{localize "CPR.itemSheet.ammo.modifyCrit"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+      {{#if this.editable }}
+        <a class="item-checkbox" data-target="system.overrides.crit.override">
+          {{#if item.system.overrides.crit.override }}
+            <i class="far fa-circle-check"></i>
+          {{else}}
+            <i class="far fa-circle"></i>
+          {{/if}}
+        </a>
+      {{else}}
+        {{#if item.system.overrides.crit.override }}
+          <i class="far fa-circle-check"></i>
+        {{else}}
+          <i class="far fa-circle"></i>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+  {{#if item.system.overrides.crit.override}}
+    <div class="cpr-crit-field">
+      <div class="item flexrow">
+        <div class="item flexrow setting-name text-nowrap text-padding-left-largest">
+          {{localize "CPR.itemSheet.ammo.critThreshold"}}
+        </div>
+        <div class="item flexrow setting-value text-nowrap item-end">
+          <input name="system.overrides.crit.threshold" type="number" min="0" value="{{item.system.overrides.crit.threshold}}"/>
+        </div>
+      </div>
+      <div class="cpr-crit-field-hint text-smaller">
+        {{localize "CPR.itemSheet.ammo.critThresholdHint"}}
+      </div>
+    </div>
+    <div class="cpr-crit-field">
+      <div class="item flexrow">
+        <div class="item flexrow setting-name text-nowrap text-padding-left-largest">
+          {{localize "CPR.itemSheet.ammo.critCount"}}
+        </div>
+        <div class="item flexrow setting-value text-nowrap item-end">
+          <input name="system.overrides.crit.count" type="number" min="0" value="{{item.system.overrides.crit.count}}"/>
+        </div>
+      </div>
+      <div class="cpr-crit-field-hint text-smaller">
+        {{localize "CPR.itemSheet.ammo.critCountHint"}}
+      </div>
+    </div>
+    <div class="cpr-crit-field">
+      <div class="item flexrow">
+        <div class="item flexrow setting-name text-nowrap text-padding-left-largest">
+          {{localize "CPR.itemSheet.ammo.critBonus"}}
+        </div>
+        <div class="item flexrow setting-value text-nowrap item-end">
+          <input name="system.overrides.crit.bonus" type="number" min="0" value="{{item.system.overrides.crit.bonus}}"/>
+        </div>
+      </div>
+      <div class="cpr-crit-field-hint text-smaller">
+        {{localize "CPR.itemSheet.ammo.critBonusHint"}}
+      </div>
+    </div>
+  {{/if}}
+</li>
