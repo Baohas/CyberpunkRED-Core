@@ -4,8 +4,54 @@
 
 ## Version 0.93
 
+### Nuevas Características
+
+- Add Foundry v13 Support
+- Remove Foundry v12 Support
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
+- Transition ammo icons from `.png` to `.svg`
+- Fix orientation of non-english characters in Mook nameplates
+- Disable input fields for Skill, Stat and Role values within the roll dialogue
+
+## Version 0.92.4
+
+### Action Needed
+
+### Corrección de Errores
+
+- Add the Medtech's `Medical Tech Skill` & `Surgery Skill` to the list of available Role Abilities when configuring Active Effects
+- Restore `Medical Tech (Cryosystem Operation)` role ability to Medtech role item in the Core compendium.
+
+### Nuevas Características
+
+## Version 0.92.3
+
+### Action Needed
+
+- Actors with the `Medtech` role should review their rank abilities and correct any errors
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book
+  - Allocate one point to Medical Tech Skills for each point allocated to Medical Tech (Cryosystem) & Medical Tech (Pharmaceuticals)
+  - Allocate two points to Surgery Skill for each point allocated to Surgery
+
+### Corrección de Errores
+
+- Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
+- Fix location of upgrade element for equipped armor
+- Fixed error where users were incorrectly notified to check their role abilities after allocating ranks for the Medtech Role
+- Fix damage calculations to include upgrades for armors
+- Update popup weapon cyberware details and register them as `concealable`
+- Fix mook crit injuries from not appearing in chat when rolled
+- Prevent net combat from dealing critical damage
+- Crit injuries rolled on mook sheets now appear in chat properly
+- Added `Medical Tech Skill` & `Surgery Skill` to Medetech role abilities.
+  - Medtech role abilities should no longer notify users to `Check your role rank abilities, they don’t look right, Choomba”` when correctly allocating rank points.
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book. Allocate one point to `Medical Tech Skills` For each point allocated to `Medical Tech (Cryosystem)` & `Medical Tech (Pharmaceuticals)` and allocate two points to `Surgery Skill` for each point allocated to `Surgery`.
+
+### Nuevas Características
+
+- Actors created as "Mooks" will now use the mook sheet layout by default. Mooks may still be configured to use the character sheet layout as before.
+- Reformat chatcards to make the expanded damage roll calculations easier to read
 
 ## Version 0.92.2
 
@@ -49,6 +95,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 ### Nuevas Características
 
 - Add Ukrainian Language support
+- Pre-Installed smartgun-link upgrade into Malorian Arms 3516
 
 ### Corrección de Errores
 
@@ -57,19 +104,22 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Corrected armor penetration settings for Federated Arms X-9mm
 - Fix Weapon Quality/Attack Mod mismatches
 - Fix `Techtronica Russia BMG 500` price/hands
+- Fix incorrect option slot details for melee weapons, gear items, and upgrade attachments in the core compendiums
+- Fix options slots for exotic weapons
+- Fix term "Optional Slots" to "Option Slots"
 
 ## Version 0.92.1
 
 ### Corrección de Errores
 
-- \#1134 - Fix HP/Humanity interacting with the mouse scrollwheel
-- \#1137 - Fix bug preventing extended magazines from modifying weapon ammo count
-- \#1149 - Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
-- \#1152 - Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
-- \#1146 - Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
-- \#1161 - Fix shop container config not saving
-- \#1139 - Remove items from weapons that do not exist in the game and in the actor owner of the item
-- \#1162 - Fix Condition Lab and Triggler configutation styling in Dark Mode
+- Fix HP/Humanity interacting with the mouse scrollwheel
+- Fix bug preventing extended magazines from modifying weapon ammo count
+- Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
+- Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
+- Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
+- Fix shop container config not saving
+- Remove items from weapons that do not exist in the game and in the actor owner of the item
+- Fix Condition Lab and Triggler configutation styling in Dark Mode
 
 ## Version 0.92
 
@@ -223,7 +273,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Corrección de Errores
+### Bug Fixes
 
 - \#856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -299,7 +349,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.6
 
-### Corrección de Errores
+### Bug Fixes
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
@@ -365,7 +415,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.2
 
-### Corrección de Errores
+### Bug Fixes
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -1085,7 +1135,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Versión 0.79.0 | Fecha: 2021-09-11
 
-### Nuevas Características
+### New Features
 
 - Added support for automatic damage application on Characters and Mooks.
   - The damage chat card of weapon attacks now has an additional button to apply the damage to the selected tokens.
@@ -1136,7 +1186,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Versión 0.78.0 | Fecha: 2021-08-03
 
-### Nuevas Características
+### New Features
 
 - Cyberware Items which act as weapons can now be configured as such
   - Core Rule Book Examples: Popup Weapons, Big Knucks, Wolvers, etc
@@ -1221,7 +1271,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Migrated the source code to work with foundry version 0.8.X
 - Rewrote the migration code support new features from foundry 0.8.X
 
-### Nuevas Características
+### New Features
 
 - Improvements have been added to the cyberware tab. For foundational cyberware that has no optional slots (such as Borgware), no Used/Total is displayed in the title.
 - Added options to choose how to display the skill values for the mook character sheet. Now one can show it in the same way as it is printed in the book. Please look at the settings for this.
@@ -1328,7 +1378,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 
 ## Versión 0.76.0 | Fecha: 2021-05-26
 
-### Nuevas Características
+### New Features
 
 - FnWeather made a great video demonstrating some of the following changes which you can find here: <https://www.youtube.com/watch?v=csgB6c5KhkU>. Thanks to him!
 - Added "Option Slots Size" for optional cyberware. This allows proper tracking of cyberware that can use no slots, or multiple slots. By default when first updating to this version all cyberware has an assumed slot size of 1. Please update your optional cyberware accordingly in line with the core rulebook.
@@ -1371,7 +1421,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added localization to places where it was not implemented. (!325)
 - Removed "Core" tag from Critical Injury and DV compendia (which should be imported) to make them distinct from "Skills - Core" and "Cyberware - Core" (which should NOT be imported). (!379)
 
-### Corrección de Errores
+### Bug Fixes
 
 - fixed #49 - The equipped glyph now takes the same space as the other two
 - fixed #158 - Stat padding fixed for LUCK and EMP, so that they have the same font size as the others
@@ -1444,7 +1494,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Added a field for a static attack modifier on weapons.
 - Added a warning on cyberware install to remind users that installing cyberware also deducts from maximum humanity.
 
-### Corrección de Errores
+### Bug Fixes
 
 - 'Basic' skills (the ones that all characters have points in) now display as bold again (no issue to reference)
 - Token name now correctly displays in chat when rolling from a macro.
@@ -1488,7 +1538,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Foundation for roll glyphs embedded into chat cards implemented.
 - Many changes and fixes for data migration during updates.
 
-### Corrección de Errores
+### Bug Fixes
 
 - Applying status condition icons no longer fails.
 - Custom pause animation no longer disappears on unpause/re-pause.
