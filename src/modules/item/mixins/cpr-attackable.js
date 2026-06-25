@@ -301,6 +301,7 @@ const Attackable = function Attackable() {
       damage,
       weaponType,
       critConfig,
+      this.getRollData(),
     );
     if (
       cprWeaponData.fireModes.autoFire === 0 &&

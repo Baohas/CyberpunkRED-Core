@@ -695,11 +695,24 @@ export class CPRDamageRoll extends CPRRoll {
 
   /**
    * @param {String} rollTitle
-   * @param {String} formula - the damage dice (e.g. "2d6", "3d6+2")
+   * @param {String} formula - the damage dice (e.g. "2d6", "3d6+2", "2d6 + @stats.body")
    * @param {String} weaponType
    * @param {Object} critConfig - { threshold, count, bonus }; defaults to RAW (2+ max → +5).
+   * @param {Object} rollData - roll data for `@`-references in the formula (e.g. the item's getRollData)
    */
-  static create(rollTitle, formula, weaponType, critConfig = {}) {
+  static create(
+    rollTitle,
+    formula,
+    weaponType,
+    critConfig = {},
+    rollData = {},
+  ) {
+    // Resolve any `@`-references (e.g. `@stats.body`) to numbers before splitting, otherwise
+    // splitFormula would discard them. Unknown references resolve to 0.
+    const resolvedFormula = Roll.replaceFormulaData(String(formula), rollData, {
+      missing: "0",
+      warn: false,
+    });
     const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted");
     if (
       targetedTokens.length === 0 &&
@@ -710,7 +723,7 @@ export class CPRDamageRoll extends CPRRoll {
         "CPR.chat.damageApplication.noTokenTargeted",
       );
     }
-    const { dice, die, mods } = CPRRoll.splitFormula(formula);
+    const { dice, die, mods } = CPRRoll.splitFormula(resolvedFormula);
     const faces = parseInt(die.replace(/d/i, ""), 10) || 6;
     const cprState = {
       die,
