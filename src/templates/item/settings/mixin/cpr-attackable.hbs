@@ -99,6 +99,66 @@
     {{/if}}
   </div>
 </li>
+{{!- Damage Critical Settings --}}
+<li class="item flexcol cpr-crit-box">
+  <div class="cpr-crit-box-header text-semi">
+    {{localize "CPR.itemSheet.weapon.criticalDamage"}}
+  </div>
+  <div class="cpr-crit-box-desc text-smaller">
+    {{localize "CPR.itemSheet.weapon.criticalDamageHint"}}
+  </div>
+  <div class="cpr-crit-field">
+    <div class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.itemSheet.weapon.critThreshold"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap item-end">
+        {{#if this.editable }}
+          <input name="system.damageCrit.threshold" type="number" min="0" value="{{item.system.damageCrit.threshold}}"/>
+        {{else}}
+          <span class="text-flex-end">{{item.system.damageCrit.threshold}}</span>
+        {{/if}}
+      </div>
+    </div>
+    <div class="cpr-crit-field-hint text-smaller">
+      {{localize "CPR.itemSheet.weapon.critThresholdHint"}}
+    </div>
+  </div>
+  <div class="cpr-crit-field">
+    <div class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.itemSheet.weapon.critCount"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap item-end">
+        {{#if this.editable }}
+          <input name="system.damageCrit.count" type="number" min="0" value="{{item.system.damageCrit.count}}"/>
+        {{else}}
+          <span class="text-flex-end">{{item.system.damageCrit.count}}</span>
+        {{/if}}
+      </div>
+    </div>
+    <div class="cpr-crit-field-hint text-smaller">
+      {{localize "CPR.itemSheet.weapon.critCountHint"}}
+    </div>
+  </div>
+  <div class="cpr-crit-field">
+    <div class="item flexrow">
+      <div class="item flexrow setting-name text-nowrap">
+        {{localize "CPR.itemSheet.weapon.critBonus"}}
+      </div>
+      <div class="item flexrow setting-value text-nowrap item-end">
+        {{#if this.editable }}
+          <input name="system.damageCrit.bonus" type="number" min="0" value="{{item.system.damageCrit.bonus}}"/>
+        {{else}}
+          <span class="text-flex-end">{{item.system.damageCrit.bonus}}</span>
+        {{/if}}
+      </div>
+    </div>
+    <div class="cpr-crit-field-hint text-smaller">
+      {{localize "CPR.itemSheet.weapon.critBonusHint"}}
+    </div>
+  </div>
+</li>
 
 {{!- Ignore Armor Settings --}}
 <li class="item flexrow">
