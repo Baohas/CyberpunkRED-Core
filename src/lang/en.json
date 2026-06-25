@@ -1173,6 +1173,7 @@
   "CPR.rolls.modifiers.additionalMods": "Additional Mods",
   "CPR.rolls.modifiers.additionalModsPlaceholder": "e.g. 1,-2",
   "CPR.rolls.modifiers.modsTotal": "Total Mods",
+  "CPR.rolls.modifiers.redSupersedesExplode": "The `{modifier}` modifier was ignored: `red` already handles criticals (a single explode on a max roll / implode on a 1).",
   "CPR.rolls.modifiers.situationalHide": "Hide Situational Modifiers",
   "CPR.rolls.modifiers.situationalShow": "Show Situational Modifiers",
   "CPR.rolls.modifiers.sources.armorPenalty": "Armor Penalty ({stat})",
