@@ -65,6 +65,19 @@ export default class CPRItem extends Item {
   }
 
   /**
+   * Expose roll data for `@`-references in this item's own formulas (e.g. a weapon's damage field).
+   * Merges the owning actor's roll data — so `@stats.body`, `@skills.handgun` resolve — and exposes the
+   * item's own system data under `@item`.
+   *
+   * @override
+   * @returns {Object}
+   */
+  getRollData() {
+    const actorData = this.actor?.getRollData() ?? {};
+    return { ...actorData, item: this.system };
+  }
+
+  /**
    * TODO: figure out what to do with this, hopefully not needed
    * TODO: this should figure out owned vs. not owned items too
    * @override
