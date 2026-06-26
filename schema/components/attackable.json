@@ -115,6 +115,29 @@
       "type": "string",
       "pattern": "(^[0-9]{1,2}d6$)|^0$"
     },
+    "damageCrit": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "threshold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bonus": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "threshold",
+        "count",
+        "bonus"
+      ]
+    },
     "rof": {
       "type": "integer",
       "minimum": 0
@@ -172,6 +195,7 @@
   },
   "required": [
     "fireModes",
+    "damageCrit",
     "rof",
     "isRanged",
     "unarmedAutomaticCalculation",
