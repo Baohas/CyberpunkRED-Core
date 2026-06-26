@@ -6,8 +6,12 @@ flags:
     _migration:
       current: 33
       previous: "24"
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/upgrades/bayonet.svg
 name: Bayonet
+ownership:
+  default: 0
+sort: 0
 system:
   ammoVariety: []
   attackmod: 0
@@ -16,6 +20,7 @@ system:
   concealable:
     concealable: false
     isConcealed: false
+  critFailEffect: jammed
   damage: 1d6
   description:
     value: |
@@ -30,6 +35,7 @@ system:
     suppressiveFire: false
   handsReq: 0
   ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installLocation: mall
   installedItems:
     allowed: false
@@ -110,6 +116,7 @@ system:
   price:
     market: 100
   providesHardening: false
+  revealed: true
   rof: 2
   size: 1
   source:
@@ -117,6 +124,7 @@ system:
     page: 343
   type: weapon
   unarmedAutomaticCalculation: true
+  usage: toggled
   usesType: magazine
   weaponSkill: Melee Weapon
   weaponType: lightMelee

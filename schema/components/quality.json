@@ -1,4 +1,13 @@
 {
-  "type": "string",
-  "enum": ["excellent", "poor", "standard"]
+  "type": "object",
+  "properties": {
+    "quality": {
+      "type": "string",
+      "enum": [
+        "standard",
+        "poor",
+        "excellent"
+      ]
+    }
+  }
 }

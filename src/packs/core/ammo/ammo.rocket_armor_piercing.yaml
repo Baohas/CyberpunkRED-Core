@@ -1,0 +1,44 @@
+_id: dHHTQLHUkd0IX8GI
+_key: "!items!dHHTQLHUkd0IX8GI"
+effects: []
+flags:
+  cyberpunk-red-core:
+    _migration:
+      current: 39
+      previous: "38"
+folder: null
+img: systems/cyberpunk-red-core/icons/compendium/ammo/rocket_armorpiercing.svg
+name: Rocket (Armor-Piercing)
+ownership:
+  default: 0
+sort: 0
+system:
+  ablationValue: 2
+  amount: 1
+  brand: ""
+  concealable:
+    concealable: true
+    isConcealed: false
+  description:
+    value: |
+      <p>Double ablation to armor.</p>
+  favorite: false
+  installLocation: mall
+  overrides:
+    autofire:
+      minimum: 3
+      mode: none
+      value: -1
+    damage:
+      minimum: 1d6
+      mode: none
+      value: 3d6
+  price:
+    market: 100
+  size: 0
+  source:
+    book: Core
+    page: 345
+  type: armorPiercing
+  variety: rocket
+type: ammo

@@ -3,6 +3,9 @@ patterns:
   - "*.yaml"
   - "*.yml"
 outputFormat: json
+# Schemas in schema/ are generated from the Foundry DataModels by
+# `npm run generate-schemas`. Effects/results/pages are embedded in their parent
+# document and validated there, so they have no standalone entries here.
 customCatalog:
   schemas:
     - name: "Ammo"
@@ -23,46 +26,42 @@ customCatalog:
       location: "schema/criticalInjury.json"
     - name: "Cyberdeck"
       description: "Schema for validating Cyberdeck YAML fragments"
-      fileMatch: ["src/packs/**/**/cyberdeck*.yaml"]
+      fileMatch: ["src/packs/**/**/cyberdeck.*.yaml"]
       location: "schema/cyberdeck.json"
     - name: "Cyberware"
-      description: "Schema for validating Cyberware-Items YAML fragments"
+      description: "Schema for validating Cyberware YAML fragments"
       fileMatch: ["src/packs/**/**/cyberware.*.yaml"]
-      location: "schema/cyberware-items.json"
+      location: "schema/cyberware.json"
     - name: "Drugs"
       description: "Schema for validating Drug YAML fragments"
       fileMatch: ["src/packs/**/**/drug.*.yaml"]
-      location: "schema/drugs.json"
-    - name: "Effects"
-      description: "Schema for validating Effect YAML fragments"
-      fileMatch: ["src/packs/**/**/effect.*.yaml"]
-      location: "schema/activeEffects.json"
+      location: "schema/drug.json"
     - name: "Gear"
       description: "Schema for validating Gear YAML fragments"
       fileMatch: ["src/packs/**/**/gear.*.yaml"]
       location: "schema/gear.json"
-    - name: "Macros"
-      description: "Schema for validating Macro YAML fragments"
-      fileMatch: ["src/packs/**/**/macro.*.yaml"]
-      location: "schema/macro.json"
     - name: "Item Upgrade"
       description: "Schema for validating Item Upgrade YAML fragments"
       fileMatch: ["src/packs/**/**/itemupgrade.*.yaml"]
       location: "schema/itemUpgrade.json"
+    - name: "Journal"
+      description: "Schema for validating Journal Entry YAML fragments"
+      fileMatch: ["src/packs/**/**/journal.*.yaml"]
+      location: "schema/journal.json"
+    - name: "Macros"
+      description: "Schema for validating Macro YAML fragments"
+      fileMatch: ["src/packs/**/**/macro.*.yaml"]
+      location: "schema/macro.json"
     - name: "Programs"
       description: "Schema for validating Program YAML fragments"
       fileMatch: ["src/packs/**/**/program.*.yaml"]
       location: "schema/program.json"
-    - name: "Results"
-      description: "Schema for validating Result YAML fragments"
-      fileMatch: ["src/packs/**/**/result.*.yaml"]
-      location: "schema/result.json"
     - name: "Roles"
       description: "Schema for validating Role YAML fragments"
       fileMatch: ["src/packs/**/**/role.*.yaml"]
       location: "schema/role.json"
     - name: "Scenes"
-      description: "Schema for validating Scenes YAML fragments"
+      description: "Schema for validating Scene YAML fragments"
       fileMatch: ["src/packs/**/**/scene.*.yaml"]
       location: "schema/scene.json"
     - name: "Skills"
@@ -70,7 +69,7 @@ customCatalog:
       fileMatch: ["src/packs/**/**/skill.*.yaml"]
       location: "schema/skill.json"
     - name: "Tables"
-      description: "Schema for validating Table YAML fragments"
+      description: "Schema for validating Roll Table YAML fragments"
       fileMatch: ["src/packs/**/**/table.*.yaml"]
       location: "schema/table.json"
     - name: "Vehicles"

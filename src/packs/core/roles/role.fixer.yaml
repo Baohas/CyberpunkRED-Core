@@ -6,15 +6,17 @@ flags:
     _migration:
       current: 33
       previous: "24"
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/default/Default_Role.svg
 name: Fixer
+ownership:
+  default: 0
+sort: 0
 system:
   abilities:
     - bonusRatio: 1
       bonuses: []
-      description: ""
       hasRoll: true
-      index: 0
       isSituational: false
       multiplier: 1
       name: Haggle

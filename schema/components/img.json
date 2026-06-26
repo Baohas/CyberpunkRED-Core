@@ -5,12 +5,17 @@
     {
       "description": "Matching for our own compendia icons",
       "type": "string",
-      "pattern": "^systems\\\/cyberpunk-red-core\\\/icons\\\/.*(\\.png|\\.svg|\\.webp$)"
+      "pattern": "^systems\\/cyberpunk-red-core\\/icons\\/.*(\\.png|\\.svg|\\.webp$)"
+    },
+    {
+      "description": "Matching for icons provided by the DLC module",
+      "type": "string",
+      "pattern": "^modules\\/cyberpunk-red-dlc\\/.*(\\.png|\\.svg|\\.webp$)"
     },
     {
       "description": "Matching for using icons provided by foundry",
       "type": "string",
-      "pattern": "^icons\\\/.*(\\.png|\\.svg|\\.webp$)"
+      "pattern": "^icons\\/.*(\\.png|\\.svg|\\.webp$)"
     }
   ]
 }

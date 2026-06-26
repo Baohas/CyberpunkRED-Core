@@ -1,14 +1,70 @@
 _id: B59L6Lf0RtqTDUw7
 _key: "!items!B59L6Lf0RtqTDUw7"
 effects:
-  - 1UxCurX6zaToNbUY
+  - _id: 1UxCurX6zaToNbUY
+    _key: "!items.effects!B59L6Lf0RtqTDUw7.1UxCurX6zaToNbUY"
+    _stats:
+      compendiumSource: null
+      coreVersion: "13.351"
+      createdTime: null
+      duplicateSource: null
+      exportSource: null
+      lastModifiedBy: null
+      modifiedTime: null
+      systemId: null
+      systemVersion: null
+    changes:
+      - key: bonuses.firstAid
+        mode: 2
+        priority: null
+        value: "2"
+      - key: bonuses.paramedic
+        mode: 2
+        priority: null
+        value: "2"
+    description: ""
+    disabled: false
+    duration:
+      combat: null
+      rounds: null
+      seconds: null
+      startRound: null
+      startTime: null
+      startTurn: null
+      turns: null
+    flags:
+      cyberpunk-red-core:
+        changes:
+          cats:
+            "0": skill
+            "1": skill
+          situational:
+            "0":
+              isSituational: false
+              onByDefault: false
+            "1":
+              isSituational: false
+              onByDefault: false
+    img: systems/cyberpunk-red-core/icons/compendium/cyberware/medscanner.svg
+    name: Medscanner
+    origin: null
+    sort: 0
+    statuses: []
+    system: {}
+    tint: "#ffffff"
+    transfer: true
+    type: base
 flags:
   cyberpunk-red-core:
     _migration:
       current: 33
       previous: "24"
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/medscanner.svg
 name: Medscanner
+ownership:
+  default: 0
+sort: 0
 system:
   ammoVariety: []
   attackmod: 0
@@ -18,6 +74,7 @@ system:
     concealable: false
     isConcealed: false
   core: false
+  critFailEffect: jammed
   damage: 1d6
   description:
     value: |
@@ -34,6 +91,7 @@ system:
     roll: 2d6
     static: 7
   ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installLocation: clinic
   installedItems:
     allowed: false

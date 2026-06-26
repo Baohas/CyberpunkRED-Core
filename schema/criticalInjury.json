@@ -1,119 +1,139 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/CPRC-CriticalInjuries",
-  "definitions": {
-    "CPRC-CriticalInjuries": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "_id": {
-          "$ref": "./components/id.json"
-        },
-        "_key": {
-          "$ref": "./components/key.json"
-        },
-        "effects": {
-          "$ref": "./components/effects.json"
-        },
-        "flags": {
-          "$ref": "./components/flags.json"
-        },
-        "img": {
-          "$ref": "./components/img.json"
-        },
-        "name": {
-          "$ref": "./components/name.json"
-        },
-        "type": {
-          "type": "string",
-          "const": "criticalInjury"
-        },
-        "system": {
-          "$ref": "#/definitions/System"
-        }
-      },
-      "required": ["_id", "_key", "effects", "img", "name", "system", "type"]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "_key": {
+      "$ref": "./components/key.json"
     },
-    "System": {
+    "_id": {
+      "$ref": "./components/id.json"
+    },
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "const": "criticalInjury"
+    },
+    "img": {
+      "$ref": "./components/img.json"
+    },
+    "system": {
       "type": "object",
-      "additionalProperties": false,
+      "allOf": [
+        {
+          "$ref": "./components/common.json"
+        },
+        {
+          "$ref": "./components/effects.json"
+        }
+      ],
       "properties": {
-        "deathSaveIncrease": {
-          "type": "boolean"
-        },
-        "description": {
-          "$ref": "./components/common/description.json"
-        },
-        "favorite": {
-          "$ref": "./components/common/favorite.json"
-        },
         "location": {
           "type": "string",
-          "enum": ["head", "body"]
+          "enum": [
+            "body",
+            "head"
+          ]
         },
         "quickFix": {
-          "$ref": "#/definitions/QuickFix"
-        },
-        "revealed": {
-          "$ref": "./components/effects/revealed.json"
-        },
-        "source": {
-          "$ref": "./components/common/source.json"
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "firstAidParamedic",
+                "paramedic",
+                "notApplicable"
+              ]
+            },
+            "dvFirstAid": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dvParamedic": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "dvFirstAid",
+            "dvParamedic"
+          ]
         },
         "treatment": {
-          "$ref": "#/definitions/Treatment"
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": [
+                "paramedicSurgery",
+                "quickFix",
+                "surgery"
+              ]
+            },
+            "dvParamedic": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "dvSurgery": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "dvParamedic",
+            "dvSurgery"
+          ]
         },
-        "usage": {
-          "$ref": "./components/effects/usage.json"
+        "deathSaveIncrease": {
+          "type": "boolean"
         }
       },
       "required": [
-        "deathSaveIncrease",
-        "description",
-        "favorite",
-        "location",
         "quickFix",
-        "revealed",
-        "source",
         "treatment",
-        "usage"
+        "deathSaveIncrease"
       ]
     },
-    "QuickFix": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "dvFirstAid": {
-          "type": "integer",
-          "enum": [0, 13]
-        },
-        "dvParamedic": {
-          "type": "integer",
-          "enum": [0, 13, 15]
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "required": ["dvFirstAid", "dvParamedic", "type"]
+    "effects": {
+      "type": "array",
+      "items": {
+        "$ref": "./components/effect.json"
+      }
     },
-    "Treatment": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "dvParamedic": {
-          "type": "integer",
-          "enum": [0, 13, 15]
-        },
-        "dvSurgery": {
-          "type": "integer",
-          "enum": [0, 13, 15, 17]
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "required": ["dvParamedic", "dvSurgery", "type"]
+    "folder": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "ownership": {
+      "type": "object"
+    },
+    "flags": {
+      "type": "object"
+    },
+    "_stats": {
+      "$ref": "./components/stats.json"
     }
-  }
+  },
+  "required": [
+    "_id",
+    "_key",
+    "effects",
+    "flags",
+    "folder",
+    "name",
+    "ownership",
+    "sort",
+    "system",
+    "type"
+  ]
 }

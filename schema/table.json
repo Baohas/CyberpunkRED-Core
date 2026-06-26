@@ -1,55 +1,68 @@
 {
-  "$schema": "http://json-schema.org/draft-06/schema#",
-  "$ref": "#/definitions/CPRC-Table",
-  "definitions": {
-    "CPRC-Table": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "_id": {
-          "$ref": "./components/id.json"
-        },
-        "_key": {
-          "$ref": "./components/key.json"
-        },
-        "description": {
-          "type": "string"
-        },
-        "displayRoll": {
-          "type": "boolean"
-        },
-        "formula": {
-          "type": "string",
-          "pattern": "^(?:[0-9]{1,4}d[0-9]{1,4})?$",
-          "description": "This matches XXXXdXXXX which should be plenty..."
-        },
-        "img": {
-          "$ref": "./components/img.json"
-        },
-        "name": {
-          "$ref": "./components/name.json"
-        },
-        "replacement": {
-          "type": "boolean"
-        },
-        "results": {
-          "type": "array",
-          "items": {
-            "$ref": "./components/id.json"
-          }
-        }
-      },
-      "required": [
-        "_id",
-        "_key",
-        "description",
-        "displayRoll",
-        "formula",
-        "img",
-        "name",
-        "replacement",
-        "results"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "_key": {
+      "$ref": "./components/key.json"
+    },
+    "_id": {
+      "$ref": "./components/id.json"
+    },
+    "name": {
+      "type": "string"
+    },
+    "img": {
+      "$ref": "./components/img.json"
+    },
+    "description": {
+      "type": "string"
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "./components/result.json"
+      }
+    },
+    "formula": {
+      "type": "string"
+    },
+    "replacement": {
+      "type": "boolean"
+    },
+    "displayRoll": {
+      "type": "boolean"
+    },
+    "folder": {
+      "type": [
+        "string",
+        "null"
       ]
+    },
+    "sort": {
+      "type": "integer"
+    },
+    "ownership": {
+      "type": "object"
+    },
+    "flags": {
+      "type": "object"
+    },
+    "_stats": {
+      "$ref": "./components/stats.json"
     }
-  }
+  },
+  "required": [
+    "_id",
+    "_key",
+    "description",
+    "displayRoll",
+    "flags",
+    "folder",
+    "name",
+    "ownership",
+    "replacement",
+    "results",
+    "sort"
+  ]
 }

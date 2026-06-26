@@ -1,5 +1,6 @@
 _id: UoK1EaiRmqtwDuXh
 _key: "!macros!UoK1EaiRmqtwDuXh"
+author: y6g1kiYIiIk5W9Fu
 command: |-
   // Get all selected tokens
   const allTokens = canvas.tokens.controlled;
@@ -32,7 +33,12 @@ command: |-
       ChatMessage.create({ content: message });
     }
   });
+flags: {}
+folder: null
 img: systems/cyberpunk-red-core/icons/macros/speedheal.svg
 name: Speedheal
+ownership:
+  default: 0
 scope: global
+sort: 0
 type: script

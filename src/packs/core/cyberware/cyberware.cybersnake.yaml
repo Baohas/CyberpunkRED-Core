@@ -6,8 +6,12 @@ flags:
     _migration:
       current: 33
       previous: "24"
+folder: null
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/cybersnake.svg
 name: Cybersnake
+ownership:
+  default: 0
+sort: 0
 system:
   ammoVariety: []
   attackmod: 0
@@ -17,6 +21,7 @@ system:
     concealable: false
     isConcealed: false
   core: false
+  critFailEffect: jammed
   damage: 4d6
   description:
     value: |
@@ -30,6 +35,7 @@ system:
     roll: 4d6
     static: 14
   ignoreArmorPercent: 50
+  ignoreBelowSP: 0
   installLocation: hospital
   installedItems:
     allowed: false

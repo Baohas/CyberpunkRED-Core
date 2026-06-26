@@ -1,467 +1,249 @@
-import { optimize } from "svgo";
-import autoprefixer from "autoprefixer";
-import chalk from "chalk";
+import path from "node:path";
 import fs from "fs-extra";
-import gulp from "gulp";
-import log from "fancy-log";
-import mixins from "postcss-mixins";
-import path from "path";
-import postcss from "gulp-postcss";
-import postcssImport from "postcss-import";
-import postcssNested from "postcss-nested";
-// import stylelint from "stylelint";
-import through2 from "through2";
-
-import ChangelogUtils from "./utils/changelogUtils.mjs";
+import log from "./utils/logger.mjs";
+import { FileUtils } from "./utils/FileUtils.mjs";
 import DataUtils from "./utils/DataUtils.mjs";
 
-import DEV_MODE_DEFAULTS from "./devMode.mjs";
-import {
-  CI,
-  DEBUG,
-  DEST_DIR,
-  DISCORD_BOT_AVATAR,
-  DISCORD_BOT_NAME,
-  DISCORD_MESSAGE_BACKUP,
-  DISCORD_MESSAGE_CHANGELOG,
-  DISCORD_MESSAGE_HEADER,
-  DISCORD_MESSAGE_INTROS,
-  SRC_DIR,
-  SOURCE_FILES,
-  SOURCE_DIRS,
-  SYSTEM_FILE,
-  SYSTEM_TITLE,
-  SYSTEM_VERSION,
-  PACKS_DIR,
-} from "./config.mjs";
-
-// Helter function to create the target directory we're building into
-async function _createDist() {
-  // ensureDirSync (not a bare mkdirSync) so a fresh deploy target works: on a
-  // clean Foundry data dir the parent Data/systems/ doesn't exist yet, and a
-  // non-recursive mkdir would throw ENOENT for the missing parent.
-  fs.ensureDirSync(DEST_DIR);
-}
-
-// Blast the build directory to ensure it's fresh
-async function cleanDist() {
-  if (fs.existsSync(DEST_DIR)) {
-    fs.emptyDirSync(DEST_DIR);
+/**
+ * Cleans the build directory by removing all contents while preserving
+ * the directory itself. This is typically run at the start of a full
+ * build to ensure a clean state.
+ *
+ * @param {Object} config - Build configuration object
+ * @param {string} config.buildDirPath - Path to the build directory
+ * @returns {Function} Gulp task function that accepts a done callback
+ */
+export const cleanBuildDir = (config) => (done) => {
+  log.debug("Cleaning build directory...");
+  const buildDir = config.buildDirPath;
+  try {
+    fs.emptyDirSync(buildDir);
+    log.debug("Cleaned build directory.");
+    done();
+  } catch (err) {
+    log.error(`Error cleaning build directory: ${err}`);
+    done(err);
   }
-}
+};
 
-async function compileCss() {
-  return new Promise((cb) => {
-    log("Building CSS...");
-    _createDist();
-    gulp
-      // main.css includes all other src/css files and then is compieled to
-      // a single file by postcss to a single main.css in dist/css
-      .src(path.resolve(SRC_DIR, "css/main.css"))
-      .pipe(
-        postcss([
-          postcssImport({
-            // plugins: [stylelint()], // Do we want to styleline here?
-          }),
-          mixins(),
-          postcssNested(),
-          autoprefixer(),
-        ]),
-      )
-      .on("error", (error) => {
-        // If we're in CI throw a hard error, else a soft error
-        if (CI) {
-          throw new Error("CSS failed to compile.");
-        } else {
-          log.error(chalk.red("CSS failed to compile."), error.message);
-        }
-      })
-      .pipe(gulp.dest(path.resolve(DEST_DIR, "css")))
-      .on("finish", () => {
-        log("Finished Building CSS.");
-        cb();
-      });
-  });
-}
+/**
+ * Copies static assets from source to build directory. Finds all files
+ * matching configured extensions and copies them while preserving
+ * directory structure.
+ *
+ * @param {Object} config - Build configuration object
+ * @param {string} config.srcDirPath - Source directory path
+ * @param {string} config.buildDirPath - Build directory path
+ * @param {string[]} config.staticExts - Array of file extensions to copy
+ * @param {string[]} config.excludeDirs - Array of directories to exclude
+ * @returns {Function} Gulp task function that accepts a done callback
+ */
+export const copyStaticAssets = (config) => async (done) => {
+  log.debug("Copying static assets...");
 
-// Copy all static assets into the build directory
-// defined in `./config.mjs`
-async function copyAssets() {
-  return new Promise((cb) => {
-    log("Copying static assets...");
-    _createDist();
-    [...SOURCE_FILES, ...SOURCE_DIRS].forEach((asset) => {
-      if (DEBUG) {
-        log(`DEBUG: Copying ${asset.from}`);
-      }
-      // encoding:false reads files as raw Buffers — required under gulp 5 /
-      // vinyl-fs 4, which otherwise decode contents as UTF-8 and corrupt binary
-      // assets (fonts, etc.).
-      gulp
-        .src(asset.from, { encoding: false })
-        .pipe(gulp.dest(path.resolve(DEST_DIR, asset.to)));
-    });
-    log("Finished copying static assets.");
-    cb();
-  });
-}
+  // Manifest files are handled by buildManifest task
+  const excludedFiles = ["system.json", "module.json"];
 
-async function generateDevMode() {
-  return new Promise((cb) => {
-    log("Generating devMode.js...");
-    _createDist();
-    let foundryConfig = {};
-    if (fs.existsSync("foundryconfig.json")) {
-      // Read foundryconfig.json
-      const foundryConfigRaw = fs.readFileSync(
-        path.resolve(process.cwd(), "foundryconfig.json"),
+  try {
+    const allFiles = await FileUtils.findFilesByExts(
+      config.srcDirPath,
+      config.staticExts,
+      config.excludeDirs,
+    );
+
+    const files = allFiles.filter(
+      (file) => !excludedFiles.includes(path.basename(file)),
+    );
+
+    for (const file of files) {
+      const relativePath = path.relative(config.srcDirPath, file);
+      log.debug(`copying '${relativePath}' to '${config.buildDirPath}'`);
+      FileUtils.copyFilePreservingStructure(
+        file,
+        config.srcDirPath,
+        config.buildDirPath,
       );
-      foundryConfig = JSON.parse(foundryConfigRaw);
     }
 
-    // Generate merged devMode
-    const mergedDevMode = DataUtils.deepMerge(
-      DEV_MODE_DEFAULTS.devMode,
-      foundryConfig.devMode || {},
-    );
-    const devModeJsContent =
-      "// Auto-generated during build - DO NOT EDIT\n" +
-      `const DEV_MODE = ${JSON.stringify(mergedDevMode, null, 2)};\n` +
-      "export default DEV_MODE;";
-    const devModePath = path.join(DEST_DIR, "modules", "system", "devMode.js");
-    fs.ensureDirSync(path.dirname(devModePath));
-    fs.writeFileSync(devModePath, devModeJsContent, "utf8");
-    log("Generated devMode.js");
-    cb();
-  });
-}
-
-async function buildManifest() {
-  return new Promise((cb) => {
-    log(`Building ${SYSTEM_FILE}...`);
-    _createDist();
-    // Read the template system.json from src/
-    const systemRaw = fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE));
-    const system = JSON.parse(systemRaw);
-    // If we're in CI use $VERSION as the version, else use a dummy version
-    const version = SYSTEM_VERSION;
-    // Construct some URLs
-    const repoUrl = process.env.CI
-      ? process.env.REPO_URL
-      : "http://example.com";
-    const zipFile = process.env.CI ? process.env.ZIP_FILE : "cpr.zip";
-    const manifestUrl = `${repoUrl}/latest/${SYSTEM_FILE}`;
-    const downloadUrl = `${repoUrl}/${version}/${zipFile}`;
-
-    system.version = version;
-    system.manifest = manifestUrl;
-    system.download = downloadUrl;
-    system.title = SYSTEM_TITLE;
-
-    fs.writeFileSync(
-      path.resolve(DEST_DIR, SYSTEM_FILE),
-      JSON.stringify(system, null, 2),
-    );
-    log(`Finished building ${SYSTEM_FILE}.`);
-    cb();
-  });
-}
-
-// Create the release notes for the version and put it in the distDir
-async function buildDiscordMessage() {
-  return new Promise((cb) => {
-    log("Generating Release Notes...");
-    const changelogFile = "CHANGELOG.md";
-    const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
-
-    // Get the latest release data from the CHANGELOG
-    const releaseData = ChangelogUtils.markdownToJson(changelog, 2)[0];
-    // Make an array of each H3 section from the latest release Data
-    const releaseSections = ChangelogUtils.markdownToJson(
-      releaseData.content,
-      3,
-    );
-
-    // The main Message can only be 2000 chars long, so we'll build it from
-    // the above string then add the actual changes in as embeds.
-    const message = [];
-    message.push(DISCORD_MESSAGE_HEADER);
-    message.push(
-      DISCORD_MESSAGE_INTROS[
-        Math.floor(Math.random() * DISCORD_MESSAGE_INTROS.length)
-      ],
-    );
-    message.push(DISCORD_MESSAGE_BACKUP);
-    message.push(DISCORD_MESSAGE_CHANGELOG);
-
-    const jsonData = {
-      username: DISCORD_BOT_NAME,
-      avatar_url: DISCORD_BOT_AVATAR,
-      content: message.join("\n\n"),
-      embeds: [],
-    };
-
-    // Generate the embeds
-    releaseSections.forEach((section) => {
-      const sectionTempData = [];
-      const sectionHeading = section.heading.replace("### ", "");
-      const sectionItems = ChangelogUtils.markdownToJson(section.content, 4);
-
-      if (sectionItems.length > 0) {
-        // Loop over each h4 in the parent h3
-        sectionItems.forEach((item) => {
-          const itemHeading = item.heading.replace("#### ", "");
-          // Strip out any unordered lists, we only want the headline changes
-          const itemContent = item.content
-            .replace(/^(\s*)[-+*]\s+.+$/gm, "")
-            .replace(/\n{2,}/g, "");
-          // If once we've stripped the ol/uls the section has no content, skip it
-          if (itemContent !== "") {
-            sectionTempData.push(`**${itemHeading}**\n\n${itemContent}`);
-          }
-        });
-      } else {
-        // Strip out any unordered lists, we only want the headline changes
-        const itemContent = section.content
-          .replace(/^(\s*)[-+*]\s+.+$/gm, "")
-          .replace(/\n{2,}/g, "");
-
-        sectionTempData.push(itemContent);
-      }
-
-      const sectionData = sectionTempData.join("\n\n");
-
-      // Discord uses decimal rather than hex for colors
-      // Set color in the following way:
-      //   Action Needed: red
-      //   Bug Fixes: blue
-      //   Changes: orange
-      //   New Features: green (default)
-      const sectionColor = sectionHeading.includes("Action Needed")
-        ? 16711680
-        : sectionHeading.includes("Bug Fixes")
-          ? 5814783
-          : sectionHeading.includes("Changes")
-            ? 15300864
-            : 962304;
-
-      if (sectionData !== "") {
-        jsonData.embeds.push({
-          title: `**${sectionHeading}**`,
-          description: sectionData,
-          color: sectionColor,
-        });
-      }
-    });
-
-    // Write the discord message data to a file
-    fs.writeFileSync(
-      path.join(DEST_DIR, "lang/release-notes/", `discord.json`),
-      JSON.stringify(jsonData, null, "  "),
-      { mode: 0o644 },
-    );
-    log("Finished Generating Discord Release Notes.");
-    cb();
-  });
-}
+    log.debug("Static assets copied successfully.");
+    done();
+  } catch (err) {
+    log.error(`Error copying static assets: ${err}`);
+    done(err);
+  }
+};
 
 /**
- * Generates YAML changelog files from the CHANGELOG for all different
- * languages and stick them in the PACKS_DIR so we can build them into a
- * compendium.
+ * Watch task for static assets during development. Monitors files
+ * matching configured extensions for additions, modifications,
+ * and deletions. Copies and removes files for fast incremental builds.
+ * Debounces rapid file changes to ensure the latest version is
+ * processed.
  *
- * @returns {Promise<void>} A promise that resolves when the changelog
- * generation is complete.
+ * Watch events:
+ * - add: Copies newly added files to build directory
+ * - change: Updates modified files in build directory (debounced)
+ * - unlink: Removes deleted files from build directory
+ *
+ * @param {Object} config - Build configuration object
+ * @param {string} config.srcDirPath - Source directory path
+ * @param {string} config.buildDirPath - Build directory path
+ * @param {string[]} config.staticExts - Array of file extensions to watch
+ * @param {string[]} config.excludeDirs - Array of directories to exclude
+ * @returns {Function} Gulp task function that returns a watcher object
  */
-async function buildChangelog() {
-  log("Generating Changelog...");
-  const fragmentDir = path.resolve(SRC_DIR, PACKS_DIR);
-  const changelogDir = path.resolve(fragmentDir, "other/changelog");
-  const systemRaw = fs.readFileSync(path.resolve(SRC_DIR, SYSTEM_FILE));
-  const system = JSON.parse(systemRaw);
-  const { languages } = system;
+export const watchStaticAssets = (config) => () => {
+  // Manifest files are handled by buildManifest task
+  const excludedFiles = ["system.json", "module.json"];
 
-  // Delete then re-create
-  if (fs.pathExistsSync(changelogDir)) {
-    fs.rmSync(changelogDir, { recursive: true });
-  }
-  fs.mkdirSync(changelogDir, { recursive: true });
+  const isExcludedFile = (file) => excludedFiles.includes(path.basename(file));
 
-  // Loop over each language
-  const promises = Object.values(languages).map(async (value) => {
-    const langShort = value.lang;
-    const langFull = value.name;
-    const changelogFile =
-      langShort !== "en" ? `CHANGELOG.${langShort}.md` : "CHANGELOG.md";
-    const changelog = fs.readFileSync(path.resolve(changelogFile), "utf-8");
-    await ChangelogUtils.GenerateChangelogJournal(
-      changelog,
-      langFull,
-      changelogDir,
-    );
+  return FileUtils.createExtensionWatcher({
+    srcDir: config.srcDirPath,
+    exts: config.staticExts,
+    excludeDirs: config.excludeDirs,
+    label: "asset",
+    onAdd: (file) => {
+      if (isExcludedFile(file)) return;
+      FileUtils.copyFilePreservingStructure(
+        file,
+        config.srcDirPath,
+        config.buildDirPath,
+      );
+    },
+    onChange: (file) => {
+      if (isExcludedFile(file)) return;
+      FileUtils.copyFilePreservingStructure(
+        file,
+        config.srcDirPath,
+        config.buildDirPath,
+      );
+    },
+    onDelete: (file) => {
+      if (isExcludedFile(file)) return;
+      FileUtils.deleteFilePreservingStructure(
+        file,
+        config.srcDirPath,
+        config.buildDirPath,
+      );
+    },
   });
-
-  await Promise.all(promises);
-  log("Finished Generating Changelog...");
-}
-
-async function processImages() {
-  return new Promise((cb) => {
-    log("Processing Images...");
-    gulp
-      .src("src/**/*.{jpg,jpeg,png,webp,webm}", {
-        base: SRC_DIR,
-        encoding: false,
-      })
-      .on("data", (file) => {
-        if (DEBUG) {
-          log(
-            `DEBUG: Processing Image: ${path.relative(
-              process.cwd(),
-              file.path,
-            )}`,
-          );
-        }
-      })
-      .pipe(gulp.dest(DEST_DIR))
-      .on("finish", () => {
-        log("Finished Processing Images.");
-        cb();
-      });
-  });
-}
+};
 
 /**
- * Processes all SVG files, applying optimization and standardizing dimensions.
- * @returns {Promise<void>} A promise that resolves when SVG processing is complete
+ * Builds the module manifest by generating dynamic data and writing it
+ * to the build directory. The manifest includes project metadata,
+ * version information, and distribution URLs generated from the
+ * configuration.
+ *
+ * @param {Object} config - Build configuration object
+ * @param {Object} config.generateManifest - Generated manifest data with
+ *                                           URLs and metadata
+ * @param {string} config.buildDirPath - Build directory path
+ * @param {string} config._manifestFile - Path to manifest file (relative
+ *                                        to project root)
+ * @returns {Function} Gulp task function that accepts a done callback
  */
-async function processSvgs() {
-  return new Promise((resolve) => {
-    log("Processing SVGs...");
+export const buildManifest = (config) => (done) => {
+  try {
+    const manifestData = config.generateManifest;
+    const buildDir = config.buildDirPath;
+    const manifestFile = path.basename(config._manifestFile);
 
-    // SVGO configuration
-    const svgoConfig = {
-      multipass: true,
-      plugins: [
-        // Basic optimizations
-        "cleanupAttrs",
-        "removeDoctype",
-        "removeComments",
-        "removeXMLProcInst",
-        "removeUselessDefs",
-        "convertStyleToAttrs",
+    fs.ensureDirSync(buildDir);
+    const filePath = path.join(buildDir, manifestFile);
+    FileUtils.writeJSONFile(filePath, manifestData, { spaces: 2 });
+    done();
+  } catch (error) {
+    done(error);
+  }
+};
 
-        // Custom plugin to set dimensions
-        {
-          name: "customSetDimensions",
-          type: "visitor",
-          fn: () => ({
-            element: {
-              enter: (node) => {
-                if (node.name === "svg") {
-                  // Set default dimensions to 512 if value is missing
-                  if (node.attributes.width === undefined) {
-                    node.attributes.width = "512";
-                  }
-                  if (node.attributes.height === undefined) {
-                    node.attributes.height = "512";
-                  }
-                  // Set viewbox if value is missing
-                  if (node.attributes.viewBox === undefined) {
-                    node.attributes.viewBox = `0 0 ${node.attributes.width} ${node.attributes.height}`;
-                  }
-                }
-              },
-            },
-          }),
-        },
-      ],
-    };
-
-    gulp
-      .src("src/**/*.svg", { base: SRC_DIR })
-      .pipe(
-        through2.obj(function (file, enc, callback) {
-          if (file.isNull()) {
-            callback(null, file);
-            return;
-          }
-
-          if (DEBUG) {
-            log(
-              `DEBUG: Processing SVG: ${path.relative(
-                process.cwd(),
-                file.path,
-              )}`,
-            );
-          }
-
-          // Get SVG content as string
-          const svgString = file.contents.toString("utf8");
-
-          try {
-            // Process with SVGO
-            const result = optimize(svgString, {
-              path: file.path,
-              ...svgoConfig,
-            });
-
-            // Update file content with optimized SVG
-            file.contents = Buffer.from(result.data);
-
-            callback(null, file);
-          } catch (error) {
-            log(`Error processing ${file.path}: ${error.message}`);
-            callback(error);
-          }
-        }),
-      )
-      .pipe(gulp.dest(DEST_DIR))
-      .on("error", (err) => {
-        log(`SVG processing error: ${err.message}`);
-        resolve(err);
-      })
-      .on("finish", () => {
-        log("Finished Processing SVGs.");
-        resolve();
-      });
-  });
-}
-
-async function watchSrc() {
-  // Helper - watch the pattern, copy the output on change
-  function watcher(pattern, out) {
-    gulp
-      .watch(pattern)
-      .on("all", () =>
-        gulp
-          .src(pattern, { encoding: false })
-          .pipe(gulp.dest(path.resolve(DEST_DIR, out))),
-      );
+/**
+ * Generates the devMode module from defaults deep-merged with the `devMode`
+ * key of `foundryconfig.json`, writing an ES module that default-exports the
+ * merged object. Disabled by default; enable via the `devMode` config option.
+ * Keeping the defaults in consumer config keeps this task project-agnostic.
+ *
+ * @param {Object} config - Build configuration object
+ * @param {Object} config.devMode - DevMode options
+ * @param {boolean} config.devMode.enabled - Whether to generate the module
+ * @param {string} config.devMode.outPath - Output path relative to buildDir
+ * @param {Object} config.devMode.defaults - Default devMode object
+ * @param {Object} config.foundryConfig - Parsed foundryconfig.json
+ * @param {string} config.buildDirPath - Build directory path
+ * @returns {Function} Gulp task function that accepts a done callback
+ */
+export const generateDevMode = (config) => (done) => {
+  if (!config.devMode.enabled) {
+    log.debug("DevMode generation disabled, skipping generateDevMode.");
+    done();
+    return;
   }
 
-  SOURCE_FILES.forEach((file) => watcher(file.from, file.to));
-  SOURCE_DIRS.forEach((folder) => watcher(folder.from, folder.to));
-  gulp
-    .watch(["src/css/*.css", "src/css/**/*.css"])
-    .on("all", () => compileCss());
-  // disabling while we fix Crowdin
-  // gulp.watch("src/lang/*.json").on("all", () => propagateLangs());
-  gulp
-    .watch("src/**/*.{jpeg,jpg,png,webp,webm}")
-    .on("all", () => processImages());
-  gulp.watch("src/**/*.svg").on("all", () => processSvgs());
-}
+  try {
+    const merged = DataUtils.deepMerge(
+      config.devMode.defaults,
+      config.foundryConfig.devMode || {},
+    );
+    const content =
+      "// Auto-generated during build - DO NOT EDIT\n" +
+      `const DEV_MODE = ${JSON.stringify(merged, null, 2)};\n` +
+      "export default DEV_MODE;\n";
 
-export {
-  buildManifest,
-  buildChangelog,
-  buildDiscordMessage,
-  cleanDist,
-  copyAssets,
-  compileCss,
-  generateDevMode,
-  watchSrc,
-  processImages,
-  processSvgs,
+    const outPath = path.join(config.buildDirPath, config.devMode.outPath);
+    fs.ensureDirSync(path.dirname(outPath));
+    FileUtils.writeTextFile(outPath, content);
+    done();
+  } catch (error) {
+    log.error(`Error generating devMode: ${error.message}`);
+    done(error);
+  }
+};
+
+/**
+ * Generates an environment variables file with module and release
+ * information. Creates vars.env containing module metadata (CHANGELOG_FILE,
+ * MODULE_ID, MODULE_TITLE, MODULE_VERSION) and release vars (RELEASE_NAME,
+ * ZIP_FILE, REPO_URL, MODULE_MANIFEST_URL, MODULE_DOWNLOAD_URL). This file is
+ * the single source of these values for the CI/CD release scripts.
+ *
+ * @param {Object} config - Build configuration object
+ * @param {string} config.changelogPath - Path to changelog file
+ * @param {string} config.id - Module ID from manifest
+ * @param {string} config.title - Module title from manifest
+ * @param {string} config.version - Module version string
+ * @param {string} config.releaseName - Release archive base name
+ * @param {string} config.zipName - Release zip file name
+ * @param {string} config.repoUrl - GitLab generic package base URL
+ * @param {string} config.manifestUrl - Latest manifest URL
+ * @param {string} config.downloadUrl - Versioned download (zip) URL
+ * @param {string} config.varsFile - Path where vars.env should be
+ *                                   written
+ * @returns {Function} Gulp task function that accepts a done callback
+ */
+export const generateEnvFile = (config) => (done) => {
+  try {
+    const vars = [
+      { key: "CHANGELOG_FILE", value: config.changelogPath },
+      { key: "MODULE_ID", value: config.id },
+      { key: "MODULE_TITLE", value: config.title },
+      { key: "MODULE_VERSION", value: config.version },
+      // Release vars consumed by the CI release scripts, derived here so the
+      // scripts stay config-agnostic and just read vars.env.
+      { key: "RELEASE_NAME", value: config.releaseName },
+      { key: "ZIP_FILE", value: config.zipName },
+      { key: "REPO_URL", value: config.repoUrl },
+      { key: "MODULE_MANIFEST_URL", value: config.manifestUrl },
+      { key: "MODULE_DOWNLOAD_URL", value: config.downloadUrl },
+    ];
+
+    const content = vars.map(({ key, value }) => `${key}=${value}`).join("\n");
+
+    fs.ensureDirSync(path.dirname(config.varsFile));
+    FileUtils.writeTextFile(config.varsFile, content);
+    done();
+  } catch (error) {
+    done(error);
+  }
 };
