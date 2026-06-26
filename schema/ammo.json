@@ -91,11 +91,39 @@
                   "type": "string"
                 }
               }
+            },
+            "crit": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "override": {
+                  "type": "boolean"
+                },
+                "threshold": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "count": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "bonus": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "override",
+                "threshold",
+                "count",
+                "bonus"
+              ]
             }
           },
           "required": [
             "autofire",
-            "damage"
+            "damage",
+            "crit"
           ]
         },
         "type": {
