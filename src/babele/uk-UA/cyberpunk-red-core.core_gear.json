@@ -1,7 +1,13 @@
 {
   "label": "Gear",
-  "mapping": {},
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
+    "Cyberdeck": {
+      "name": "Cyberdeck",
+      "description": "<p>Netrunner deck. 7 slots.</p>\n"
+    },
     "Cyberdeck (Excellent)": {
       "name": "Cyberdeck (Excellent)",
       "description": "<p>Netrunner deck. 9 slots.</p>\n"
@@ -10,17 +16,15 @@
       "name": "Cyberdeck (Poor)",
       "description": "<p>Netrunner deck. 5 slots.</p>\n"
     },
-    "Cyberdeck": {
-      "name": "Cyberdeck",
-      "description": "<p>Netrunner deck. 7 slots.</p>\n"
-    },
     "Battleglove": {
       "name": "Battleglove",
-      "description": "<p>\n  An exotic heavy gauntlet, that covers your hand and forearm. Provides three\n  option slots.\n</p>\n"
+      "description": "<p>\n  An exotic heavy gauntlet, that covers your hand and forearm. Provides three\n  option slots.\n</p>\n",
+      "dvTable": ""
     },
     "Smart Glasses": {
       "name": "Smart Glasses",
-      "description": "<p>Eyewear with two options slots for cybereye options.</p>\n"
+      "description": "<p>Eyewear with two options slots for cybereye options.</p>\n",
+      "dvTable": ""
     },
     "Agent": {
       "name": "Agent",
