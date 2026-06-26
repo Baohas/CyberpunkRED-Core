@@ -1,7 +1,13 @@
 {
   "label": "Equipo",
-  "mapping": {},
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
+    "Cyberdeck": {
+      "name": "Cyberterminal",
+      "description": "<p>Terminal de Netrunner. 7 ranuras.</p>"
+    },
     "Cyberdeck (Excellent)": {
       "name": "Cyberterminal (Excelente)",
       "description": "<p>Terminal de Netrunner. 9 ranuras.</p>"
@@ -10,17 +16,15 @@
       "name": "Cyberterminal (Pobre)",
       "description": "<p>Terminal de Netrunner. 5 ranuras.</p>"
     },
-    "Cyberdeck": {
-      "name": "Cyberterminal",
-      "description": "<p>Terminal de Netrunner. 7 ranuras.</p>"
-    },
     "Battleglove": {
       "name": "Guante de Batalla",
-      "description": "<p>Un Guantelete pesado exótico que cubre la mano y el antebrazo. Proporciona tres ranuras de opciones. Consulte la descripción completa del artículo en el pg. 347.</p>"
+      "description": "<p>Un Guantelete pesado exótico que cubre la mano y el antebrazo. Proporciona tres ranuras de opciones. Consulte la descripción completa del artículo en el pg. 347.</p>",
+      "dvTable": ""
     },
     "Smart Glasses": {
       "name": "Gafas inteligentes",
-      "description": "<p>Gafas tecnológicas con dos ranuras para opciones de ciberópticos.</p>"
+      "description": "<p>Gafas tecnológicas con dos ranuras para opciones de ciberópticos.</p>",
+      "dvTable": ""
     },
     "Agent": {
       "name": "Agente",
