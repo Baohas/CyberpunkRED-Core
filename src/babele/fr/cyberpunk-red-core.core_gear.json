@@ -1,7 +1,13 @@
 {
   "label": "Attirail",
-  "mapping": {},
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
+    "Cyberdeck": {
+      "name": "Cyberconsole",
+      "description": "<p>Cyberconsole du netrunner. 7 emplacements.</p>"
+    },
     "Cyberdeck (Excellent)": {
       "name": "Cyberconsole (Excellente qualité)",
       "description": "<p>Console de Netrunner. 9 emplacements.</p>"
@@ -10,17 +16,15 @@
       "name": "Cyberconsole (Mauvaise qualité)",
       "description": "<p>Console de Netrunner. 5 emplacements.</p>"
     },
-    "Cyberdeck": {
-      "name": "Cyberconsole",
-      "description": "<p>Cyberconsole du netrunner. 7 emplacements.</p>"
-    },
     "Battleglove": {
       "name": "Gantelet de combat",
-      "description": "<p>Un lourd gantelet qui couvre la main et l'avant-bras. Contient trois emplacements d'extensions.</p>"
+      "description": "<p>Un lourd gantelet qui couvre la main et l'avant-bras. Contient trois emplacements d'extensions.</p>",
+      "dvTable": ""
     },
     "Smart Glasses": {
       "name": "Lunettes connectées",
-      "description": "<p>Paire de lunettes avec deux emplacements pour options cyberoptiques.</p>"
+      "description": "<p>Paire de lunettes avec deux emplacements pour options cyberoptiques.</p>",
+      "dvTable": ""
     },
     "Agent": {
       "name": "Agent",
