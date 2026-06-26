@@ -228,7 +228,7 @@
     },
     "Malorian Arms 3516": {
       "name": "Malorian Arms 3516",
-      "description": "<p>Una pistola molto pesante insolita, di ottima qualità. Viene fornita con un collegamento Smartgun* che deve essere utilizzato. Consultare la descrizione completa dell'articolo su pg. 348.</p>\n<p><em>*Deve essere aggiunto manualmente dopo l'acquisizione dell'arma</em></p>",
+      "description": "<p>\n  An Exotic, Excellent Quality Very Heavy Pistol. Comes with a Smartgun Link\n  that cannot be uninstalled.\n</p>\n",
       "dvTable": "VD Pistola"
     },
     "Martial Arts": {
@@ -264,7 +264,7 @@
     },
     "Microwaver": {
       "name": "Microwaver",
-      "description": "<p>Una Pistola Insolita molto pesante. Può rendere i cyberware o i componenti elettrici inutilizzabili per un minuto a meno che il bersaglio non superi una prova di Cybertecnologia VD 15. Fare riferimento alla descrizione completa dell'articolo su pg. 348.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Causes cyberware or electrical components to be\n  rendered inoperable for a minute unless the target passes a\n  <strong>DV15 Cybertech Check</strong>.\n</p>\n<p>\n  <em\n    >Select target token and use\n    @UUID[Compendium.cyberpunk-red-core.other_macros.Macro.z8NN97JkdZUUFYud]{Get\n    EMP'd Items} to determine what items are affected.</em\n  >\n</p>\n",
       "dvTable": "VD Pistola"
     },
     "Militech \"Cowboy\" U-56 Grenade Launcher": {
@@ -286,7 +286,7 @@
     },
     "Rhinemetall EMG-86 Railgun": {
       "name": "Rhinemetall EMG-86 Railgun",
-      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11*.\n</p>\n<p>\n  <em\n    >*Not currently supported to will need to manually apply damage to armoured\n    targets</em\n  >\n</p>\n",
+      "description": "<p>\n  An Exotic Assault Rifle. It cannot make Aimed or Autofire Shots. Requires BODY\n  11 or higher (unless mounted). Ignores any armor below SP11.\n</p>\n",
       "dvTable": "DV Assault Rifle"
     },
     "Rocket Launcher (Excellent)": {
@@ -321,7 +321,7 @@
     },
     "Shrieker": {
       "name": "Urlatore",
-      "description": "<p>Una Pistola Insolita Molto Pesante. Richiede protezione dell'orecchio per prevenire Ferita Critica: Orecchio Danneggiato. Il bersaglio deve superare una Prova Resistere a Torture/Droghe VD15 o subire la ferita critica. Fare riferimento alla descrizione completa dell'articolo su pg. 349.</p>",
+      "description": "<p>\n  An Exotic Very Heavy Pistol. Requires ear protection to prevent Damaged Ear\n  critical injuries. The target must beat a\n  <strong>DV15 Resist Torture/Drugs</strong> Check or suffer the\n  @UUID[Compendium.cyberpunk-red-core.core_critical-injuries-head.Item.qRkCxq0KTuBnw2wj]{Damaged\n  Ear} critical injury.\n</p>\n",
       "dvTable": "VD Pistola"
     },
     "Sledgehammer (Excellent)": {
@@ -419,7 +419,7 @@
     "Tsunami Arms Helix": {
       "name": "Tsunami Arms Helix",
       "description": "<p>\n  An Exotic Assault Rifle that uses only Autofire. Holds 40 bullets, using 20\n  bullets with each attack. Uses Autofire rules with a multiplication up to a\n  maximum of 5. Requires BODY 11 or higher (unless mounted).\n</p>\n",
-      "dvTable": "DV Assault Rifle"
+      "dvTable": "DV Assault Rifle (Autofire)"
     },
     "Unarmed": {
       "name": "Disarmato",
