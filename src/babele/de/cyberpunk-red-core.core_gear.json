@@ -1,7 +1,13 @@
 {
   "label": "Ausrüstung",
-  "mapping": {},
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
+    "Cyberdeck": {
+      "name": "Cyberdeck",
+      "description": "<p>Einfaches Deck fürs Netrunning. 7 Slots. Weitere Informationen auf Seite 353.</p>"
+    },
     "Cyberdeck (Excellent)": {
       "name": "Cyberdeck (Hervorragende Qualität)",
       "description": "<p>Hervorragendes Deck fürs Netrunning. 9 Slots. Weitere Informationen auf Seite 353.</p>"
@@ -10,17 +16,15 @@
       "name": "Cyberdeck (Schlechte Qualität)",
       "description": "<p>Schlechtes Deck fürs Netrunning. 5 Slots. Weitere Informationen auf Seite 353.</p>"
     },
-    "Cyberdeck": {
-      "name": "Cyberdeck",
-      "description": "<p>Einfaches Deck fürs Netrunning. 7 Slots. Weitere Informationen auf Seite 353.</p>"
-    },
     "Battleglove": {
       "name": "Kampfhandschuh",
-      "description": "<p>Ein exotischer schwerer Panzerhandschuh, der Hand und Unterarm bedeckt. Bietet drei Optionsslots für Cyberarm- oder Cyberbein-Optionen. Details auf Seite 347.</p>"
+      "description": "<p>Ein exotischer schwerer Panzerhandschuh, der Hand und Unterarm bedeckt. Bietet drei Optionsslots für Cyberarm- oder Cyberbein-Optionen. Details auf Seite 347.</p>",
+      "dvTable": ""
     },
     "Smart Glasses": {
       "name": "Smart-Brille",
-      "description": "<p>Brille mit zwei Optionsslots für Cyberaugen-Optionen.</p>"
+      "description": "<p>Brille mit zwei Optionsslots für Cyberaugen-Optionen.</p>",
+      "dvTable": ""
     },
     "Agent": {
       "name": "Agent",
