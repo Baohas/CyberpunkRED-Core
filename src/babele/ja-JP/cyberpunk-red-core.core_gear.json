@@ -1,7 +1,13 @@
 {
   "label": "装備",
-  "mapping": {},
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
+    "Cyberdeck": {
+      "name": "サイバーデッキ",
+      "description": "<p>Netrunner deck. 7 slots.</p>"
+    },
     "Cyberdeck (Excellent)": {
       "name": "サイバーデッキ(高品質)",
       "description": "<p>Netrunner deck. 9 slots.</p>"
@@ -10,17 +16,15 @@
       "name": "サイバーデッキ(低品質)",
       "description": "<p>Netrunner deck. 5 slots.</p>"
     },
-    "Cyberdeck": {
-      "name": "サイバーデッキ",
-      "description": "<p>Netrunner deck. 7 slots.</p>"
-    },
     "Battleglove": {
       "name": "バトルグローブ",
-      "description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>"
+      "description": "<p>An exotic heavy gauntlet, that covers your hand and forearm. Provides three option slots. Refer to the full item description on pg. 347.</p>",
+      "dvTable": ""
     },
     "Smart Glasses": {
       "name": "スマート・グラス",
-      "description": "<p>Eyewear with two options slots for cybereye options.</p>"
+      "description": "<p>Eyewear with two options slots for cybereye options.</p>",
+      "dvTable": ""
     },
     "Agent": {
       "name": "エージェント",

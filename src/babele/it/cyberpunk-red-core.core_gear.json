@@ -1,7 +1,13 @@
 {
   "label": "Equipaggiamento",
-  "mapping": {},
+  "mapping": {
+    "dvTable": "system.dvTable"
+  },
   "entries": {
+    "Cyberdeck": {
+      "name": "Cyberdeck",
+      "description": "<p>Piattaforma Netrunner. 7 slot.</p>"
+    },
     "Cyberdeck (Excellent)": {
       "name": "Cyberdeck (Alta Qualità)",
       "description": "<p>Piattaforma modulare per Netrunner. 9 slot.</p>"
@@ -10,17 +16,15 @@
       "name": "Cyberdeck (Bassa Qualità)",
       "description": "<p>Piattaforma modulare per Netrunner. 5 slot.</p>"
     },
-    "Cyberdeck": {
-      "name": "Cyberdeck",
-      "description": "<p>Piattaforma Netrunner. 7 slot.</p>"
-    },
     "Battleglove": {
       "name": "Guanto da Battaglia",
-      "description": "<p>Un guanto pesante esotico, che copre la mano e l'avambraccio. Fornisce 3 slot di opzione da Cyberbraccio o Cyberarto. (Vedi pg. 347)</p>"
+      "description": "<p>Un guanto pesante esotico, che copre la mano e l'avambraccio. Fornisce 3 slot di opzione da Cyberbraccio o Cyberarto. (Vedi pg. 347)</p>",
+      "dvTable": ""
     },
     "Smart Glasses": {
       "name": "Occhiali Intelligenti",
-      "description": "<p>Visore che include due Slot Opzioni da Cyberocchio.</p>"
+      "description": "<p>Visore che include due Slot Opzioni da Cyberocchio.</p>",
+      "dvTable": ""
     },
     "Agent": {
       "name": "Agent",
