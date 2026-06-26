@@ -250,21 +250,21 @@
     },
     "Popup Grenade Launcher": {
       "name": "Lance-Grenade escamotable",
-      "description": "<p>Un lance-grenade à un coup installé dans le bras. Lorsque activé, cette main ne peut rien tenir.</p>",
+      "description": "<p>\n  A concealable one-shot Grenade Launcher. Can't hold anything with this hand\n  while activated. Incompatible with all upgrades except\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun\n  Link}.\n</p>\n",
       "dvTable": "SD Lance-grenades"
     },
     "Popup Melee Weapon": {
       "name": "Arme de mêlée escamotable",
-      "description": "<p>Une arme de mêlée installée dans un cyberbras. Lorsque activé, cette main ne peut rien tenir.</p>"
+      "description": "<p>\n  A concealable One-Handed Melee Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n"
     },
     "Popup Ranged Weapon": {
       "name": "Arme à distance escamotable",
-      "description": "<p>Une arme à distance installée dans un cyberbras. Lorsque activé, cette main ne peut rien tenir.</p>",
-      "dvTable": "DV Pistol"
+      "description": "<p>\n  A concealable One-Handed Ranged Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n",
+      "dvTable": "SD Pistolet"
     },
     "Popup Shield": {
       "name": "Bouclier escamotable",
-      "description": "<p>Un bouclier balistique installé dans un cyberbras. Lorsque activé, cette main ne peut rien tenir.</p>"
+      "description": "<p>\n  A foldable bulletproof shield that can be drawn or concealed easily. Can't\n  hold anything with this hand while activated.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet\n    Proof Shield} to inventory to manage shield HP.\n  </p>\n</blockquote>\n"
     },
     "Quick Change Mount": {
       "name": "Monture à changement rapide",
