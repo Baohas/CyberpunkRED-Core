@@ -542,11 +542,20 @@ export default class MigrationRunner {
       const update = await this[migrationFunction](docData);
       this.updateMigrationRecord(update, doc.isToken);
       if (update && batch) updates.push(update);
-      if (!batch) await doc.update(update, { noHook: true });
+      // `diff: false` writes the full datamodel-clean source. Foundry v13 changed
+      // `SchemaField.getInitialValue` to inject a required SchemaField's default object
+      // into `_source`, so a migration that adds an all-default SchemaField produces an
+      // empty diff and would be silently skipped under the default `diff: true`. Writing
+      // the full source keeps stored pack/world data in sync with the data models.
+      if (!batch) await doc.update(update, { noHook: true, diff: false });
       if (progress) progress.advance();
     }
     if (batch)
-      await documentClass.updateDocuments(updates, { noHook: true, pack });
+      await documentClass.updateDocuments(updates, {
+        noHook: true,
+        pack,
+        diff: false,
+      });
   }
 
   async migrateItem(itemData) {
