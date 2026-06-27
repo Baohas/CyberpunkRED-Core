@@ -1226,6 +1226,16 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
+   * Render a string as sanitized HTML (safe tags kept, scripts/handlers
+   * stripped via foundry.utils.cleanHTML). Used where stored text may contain
+   * basic formatting, e.g. ledger reasons.
+   */
+  Handlebars.registerHelper("cprSanitizeHTML", (string) => {
+    if (typeof string !== "string") return "";
+    return new Handlebars.SafeString(foundry.utils.cleanHTML(string));
+  });
+
+  /**
    * Transform a string to upper/lowercase
    */
   Handlebars.registerHelper("cprTextTransform", (string, transform) => {
