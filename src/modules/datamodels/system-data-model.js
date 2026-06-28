@@ -1,6 +1,3 @@
-/* eslint-disable max-classes-per-file */
-/* eslint-disable no-continue */
-
 import { validateOverride } from "../system/overrides.js";
 
 /**

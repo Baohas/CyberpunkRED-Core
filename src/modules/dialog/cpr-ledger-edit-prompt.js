@@ -11,7 +11,6 @@ export default class LedgerEditPrompt {
         const _onCancel = () => {
           reject(new Error("Promise rejected: Window Closed"));
         };
-        // eslint-disable-next-line no-shadow
         const _onConfirm = (html) => {
           const fd = new FormDataExtended(html.find("form")[0]);
           const formData = foundry.utils.expandObject(fd.object);
@@ -24,7 +23,6 @@ export default class LedgerEditPrompt {
             confirm: {
               icon: '<i class="fas fa-check"></i>',
               label: SystemUtils.Localize("CPR.dialog.common.confirm"),
-              // eslint-disable-next-line no-shadow
               callback: (html) => _onConfirm(html),
             },
             cancel: {

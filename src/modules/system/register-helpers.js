@@ -15,7 +15,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprCompare", (v1, operator, v2) => {
     switch (operator) {
       case "==":
-        return v1 == v2; // eslint-disable-line eqeqeq
+        return v1 == v2;
       case "===":
         return v1 === v2;
       case "!==":

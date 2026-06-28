@@ -72,7 +72,6 @@ export default class BaseMigrationScript {
    */
   static getAllowedDocTypes() {
     const docTypes = {};
-    /* eslint-disable no-continue */
     for (const [docName, filters] of Object.entries(this.documentFilters)) {
       const { mixins, types } = filters;
       if (!types.length && !mixins.length) {
@@ -87,7 +86,7 @@ export default class BaseMigrationScript {
         docTypeSet = docTypeSet.union(mixinTypes);
       }
       docTypes[docName] = docTypeSet;
-    } /* eslint-enable no-continue */
+    }
 
     // If we migrate items, then we also need to migrate Actors which may own items.
     if (docTypes.Item) {
@@ -135,7 +134,6 @@ export default class BaseMigrationScript {
    * async changes to the database here (e.g. `await someTile.update()`),
    *
    */
-  // eslint-disable-next-line no-empty-function
   async migrateMisc() {}
 
   /**
@@ -150,7 +148,6 @@ export default class BaseMigrationScript {
    * @param {Object} itemData - Source data for the item. From item.toObject().
    * @param {Object} actorData - Source data for the item's parent actor, if any. From actor.toObject().
    */
-  // eslint-disable-next-line no-empty-function
   async updateItem(itemData, actorData) {}
 
   /**
@@ -164,7 +161,6 @@ export default class BaseMigrationScript {
    *
    * @param {Object} actorData - Source data for the actor.From actor.toObject().
    */
-  // eslint-disable-next-line no-empty-function
   async updateActor(actor) {}
 
   /**

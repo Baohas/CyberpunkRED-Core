@@ -30,7 +30,6 @@ export default class CPRCyberdeckItem extends CPRItem {
     let sceneId;
     for (const program of programs) {
       if (program.system.isRezzed) {
-        // eslint-disable-next-line no-await-in-loop
         await program.update({ "system.isRezzed": false });
       }
       if (program.system.class === "blackice" && program.system.isRezzed) {
@@ -415,7 +414,6 @@ export default class CPRCyberdeckItem extends CPRItem {
         cprFlags.biTokenId = biToken.id;
         cprFlags.sceneId = scene.id;
         // Passed by reference
-        // eslint-disable-next-line no-param-reassign
         program.flags[game.system.id] = cprFlags;
       }
     } catch (error) {

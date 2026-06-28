@@ -75,15 +75,14 @@ export default [
       "import/extensions": [".js"],
     },
     linterOptions: {
-      // eslint 8's .eslintrc setup did not report unused disable directives by
-      // default. The codebase has many inline disables for former airbnb rules;
-      // keep the prior behavior rather than flag them all as unused.
-      reportUnusedDisableDirectives: "off",
+      // Flag inline eslint-disable directives that no longer suppress anything
+      // so stale suppressions get cleaned up rather than lingering.
+      reportUnusedDisableDirectives: "error",
     },
     rules: {
       "no-warning-comments": ["warn", { terms: ["TODO"] }],
       "no-useless-assignment": "error",
-      "import/no-cycle": ["warn"],
+      "import/no-cycle": ["error"],
       "import/no-unresolved": ["error", { ignore: [".*devMode\\.js$"] }],
       "no-underscore-dangle": "off",
       "no-param-reassign": ["error"],
@@ -91,7 +90,7 @@ export default [
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "no-nested-ternary": "off",
       "no-restricted-syntax": [
-        "warn",
+        "error",
         {
           selector: "ForInStatement",
           message:
@@ -108,7 +107,7 @@ export default [
             "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
         },
       ],
-      "import/extensions": ["warn", "always"],
+      "import/extensions": ["error", "always"],
     },
   },
   prettierRecommended,

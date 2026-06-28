@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop */
 import CombatUtils from "../utils/cpr-combatUtils.js";
 import CPRChat from "../chat/cpr-chat.js";
 import DiceHandler from "../extern/cpr-dice-handler.js";
@@ -70,7 +69,6 @@ export default class CPRCombat extends Combat {
           "CPR.messages.invalidCombatantType",
         )}: ${actor.name} (${actor.type})`;
         SystemUtils.DisplayMessage("warn", warningMessage);
-        // eslint-disable-next-line no-continue
         continue; // Skip one iteration so that the rest doesn't happen.
       } else {
         cprRoll = await combatant.getInitiativeRoll(

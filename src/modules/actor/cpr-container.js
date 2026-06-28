@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
@@ -64,7 +63,6 @@ export default class CPRContainerActor extends Actor {
       LOGGER.debug("Attempting to stack items on an actor sheet");
       const dontCreate = [];
       for (const doc of itemsToCreate) {
-        // eslint-disable-next-line no-continue
         if (!doc.system) continue;
         const [returnValue] = await this.automaticallyStackItems(doc);
         if (returnValue) {
@@ -88,7 +86,6 @@ export default class CPRContainerActor extends Actor {
     if (context.createInstalled) {
       // Handle creating and installing any items into the parent item.
       for (const item of createdItems) {
-        // eslint-disable-next-line no-continue
         if (!item.system.hasInstalled) continue;
         // The item will only have this flag if it is imported/coming from another actor.
         const imported = !!ContainerUtils.getInstallTreeFlag(item);
@@ -323,7 +320,6 @@ export default class CPRContainerActor extends Actor {
         transactionType = "subtract";
       }
     } else {
-      // eslint-disable-next-line prefer-destructuring
       transactionType = reason.split(" ")[2];
     }
 

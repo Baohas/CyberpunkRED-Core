@@ -1,5 +1,3 @@
-/* eslint-disable no-await-in-loop, no-continue */
-
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import MigrationApp from "./migration-app.js";

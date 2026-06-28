@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-
 import CPR from "../system/config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 

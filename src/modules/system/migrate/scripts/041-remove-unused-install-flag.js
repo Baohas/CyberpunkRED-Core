@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 import BaseMigrationScript from "../base-migration-script.js";
 import { ContainerUtils } from "../../../item/mixins/cpr-container.js";
 

@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-
 import BaseMigrationScript from "../base-migration-script.js";
 
 // Map of the image moves, old: new
