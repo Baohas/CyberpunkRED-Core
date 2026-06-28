@@ -167,8 +167,8 @@ function _toggleInstalledVisibility(event) {
  */
 const renderItemDirHooks = () => {
   Hooks.on("renderItemDirectory", (_, html) => {
-    html = $(html); // TODO: Remove JQuery.
-    const itemElements = html.find("li.item");
+    const $html = $(html); // TODO: Remove JQuery.
+    const itemElements = $html.find("li.item");
 
     const hiddenElements = itemElements.filter((__, element) => {
       const item = game.items.get(element.dataset.entryId);
@@ -196,7 +196,7 @@ const renderItemDirHooks = () => {
     }
 
     // Give each item in the sublist an event listener for viewing sheets.
-    html
+    $html
       .find(".sub-list")
       .on("click", ".item-view", (event) => _renderViewOnlyItemSheet(event));
 

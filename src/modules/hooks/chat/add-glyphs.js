@@ -13,9 +13,9 @@ const AddGlyphs = () => {
    *                                     the chat message
    */
   Hooks.on("renderChatMessageHTML", async (_, html, msg) => {
-    html = $(html); // TODO: Remove JQuery.
-    CPRChat.chatListeners(html);
-    CPRChat.addMessageTags(html, msg);
+    const $html = $(html); // TODO: Remove JQuery.
+    CPRChat.chatListeners($html);
+    CPRChat.addMessageTags($html, msg);
   });
 };
 

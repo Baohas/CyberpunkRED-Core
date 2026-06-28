@@ -86,7 +86,7 @@ export default [
       "import/no-cycle": ["warn"],
       "import/no-unresolved": ["error", { ignore: [".*devMode\\.js$"] }],
       "no-underscore-dangle": "off",
-      "no-param-reassign": ["warn"],
+      "no-param-reassign": ["error"],
       "class-methods-use-this": ["warn"],
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "no-nested-ternary": "off",
