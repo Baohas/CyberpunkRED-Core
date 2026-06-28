@@ -1,5 +1,4 @@
 import CPRActor from "./cpr-actor.js";
-import LOGGER from "../utils/cpr-logger.js";
 
 /**
  * The mook actor extends CPRActor since there is a lot of overlap behind the scenes with the

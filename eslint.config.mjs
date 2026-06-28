@@ -90,7 +90,7 @@ export default [
       "no-underscore-dangle": "off",
       "no-param-reassign": ["warn"],
       "class-methods-use-this": ["warn"],
-      "no-unused-vars": ["warn"],
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "no-nested-ternary": "off",
       "no-restricted-syntax": [
         "warn",

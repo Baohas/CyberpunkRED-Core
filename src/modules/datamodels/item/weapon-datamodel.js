@@ -1,4 +1,3 @@
-import CPR from "../../system/config.js";
 import CPRSystemDataModel from "../system-data-model.js";
 import AttackableSchema from "./mixins/attackable-schema.js";
 import CommonSchema from "./mixins/common-schema.js";

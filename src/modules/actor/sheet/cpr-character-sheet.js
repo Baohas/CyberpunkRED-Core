@@ -2,7 +2,6 @@ import CPRActorSheet from "./cpr-actor-sheet.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import LedgerEditPrompt from "../../dialog/cpr-ledger-edit-prompt.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 
 /**

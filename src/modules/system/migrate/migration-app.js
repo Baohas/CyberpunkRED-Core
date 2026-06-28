@@ -322,7 +322,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
   }
 
   /** @override */
-  _onRender(context, options) {
+  _onRender(_context, _options) {
     const dialog = this.element;
     dialog.addEventListener("keydown", this._preventEscape.bind(this));
   }
@@ -345,7 +345,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * Prevent user from closing dialog.
    * @override
    */
-  close(options = {}) {
+  close(_options = {}) {
     // Should not be able to close the dialog for any reason.
     // Leaving this empty function as an override, so that the
     // super method cannot be called.
