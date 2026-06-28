@@ -125,7 +125,7 @@ const Container = function Container() {
       : this.system.installedItems.allowedTypes;
 
     // If there is an actor, get owned items. Else, get world items.
-    let installableItems = [];
+    let installableItems;
     if (actor) {
       installableItems = actor.items.filter((i) =>
         allowedTypes.includes(i.type),

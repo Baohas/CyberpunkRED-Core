@@ -237,7 +237,7 @@ const Loadable = function Loadable() {
   this.setWeaponAmmo = function setWeaponAmmo(value) {
     if (this.type === "weapon") {
       const maxAmmo = this.system.magazine.max;
-      let newValue = 0;
+      let newValue;
       if (value.charAt(0) === "+" || value.charAt(0) === "-") {
         newValue = Math.clamp(
           0,

@@ -310,7 +310,7 @@ export default class CPRContainerActor extends Actor {
     const cprData = foundry.utils.duplicate(this.system);
     let newValue = foundry.utils.getProperty(cprData, "wealth.value") || 0;
     let transactionSentence;
-    let transactionType = "set";
+    let transactionType;
 
     if (seller) {
       if (seller._id === this._id) {

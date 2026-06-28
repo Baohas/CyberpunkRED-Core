@@ -1310,9 +1310,9 @@ export default class CPRActor extends Actor {
     let rawDamageDealt = 0;
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
-    let takenDamage = 0;
+    let takenDamage;
     let ignoreArmorEntirely = false;
-    let armorSPRef = 0;
+    let armorSPRef;
     const armors = location === "brain" ? [] : this.getEquippedArmors(location);
     const armorData = {
       value: 0,

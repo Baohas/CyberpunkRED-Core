@@ -82,9 +82,7 @@ export default [
     },
     rules: {
       "no-warning-comments": ["warn", { terms: ["TODO"] }],
-      // New in eslint 10's recommended set; relaxed to a warning to match how
-      // this project treats other quality rules (no-unused-vars, etc.).
-      "no-useless-assignment": "warn",
+      "no-useless-assignment": "error",
       "import/no-cycle": ["warn"],
       "import/no-unresolved": ["error", { ignore: [".*devMode\\.js$"] }],
       "no-underscore-dangle": "off",

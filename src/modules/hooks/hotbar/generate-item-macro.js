@@ -29,7 +29,7 @@ const hotbarHooks = () => {
       img: document.img,
       command: `Hotbar.toggleDocumentSheet("${document.uuid}")`,
     };
-    let macro = null;
+    let macro;
     let command = `Hotbar.toggleDocumentSheet("${document.uuid}")`;
     switch (data.type) {
       case "Item":

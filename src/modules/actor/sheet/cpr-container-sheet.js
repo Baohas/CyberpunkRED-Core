@@ -220,7 +220,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       ContainerUtils.setInstallTreeFlag(transferredItemData, cprInstallTree);
     }
 
-    let cost = 0;
+    let cost;
     if (
       item.type === "ammo" &&
       item.system.variety !== "grenade" &&
@@ -286,7 +286,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       }
       const { amount } = transferredItemData.system;
       const username = game.user.name;
-      let reason = "";
+      let reason;
       if (amount > 1) {
         reason = `${SystemUtils.Format(
           "CPR.containerSheet.tradeLog.multiplePurchased",
@@ -375,7 +375,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     const tradePartnerActor = game.actors.get(tradePartnerId);
     const username = game.user.name;
 
-    let cost = 0;
+    let cost;
 
     if (
       item.type === "ammo" &&
@@ -468,7 +468,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
               deleteItems,
             );
           if (deletionSuccess.length > 0) {
-            let reason = "";
+            let reason;
             if (amount > 1) {
               reason = `${SystemUtils.Format(
                 "CPR.containerSheet.tradeLog.multipleSold",

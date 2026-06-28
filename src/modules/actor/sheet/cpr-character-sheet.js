@@ -190,7 +190,7 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
   _cycleEquipState(event) {
     const item = this.actor.getOwnedItem(CPRActorSheet._getItemId(event));
     const prop = CPRActorSheet._getObjProp(event);
-    let newValue = "owned";
+    let newValue;
     switch (item.system.equipped) {
       case "owned": {
         newValue = "carried";
