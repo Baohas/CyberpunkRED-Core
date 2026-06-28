@@ -93,6 +93,7 @@ export default class MigrationRunner {
     return app || null;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   get app() {
     return MigrationRunner.app;
   }

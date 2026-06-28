@@ -873,6 +873,7 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {String} prop - property to be updated in a dot notation (e.g. "item.name")
    * @param {*} value - value to set the property to
    */
+  // eslint-disable-next-line class-methods-use-this
   _updateOwnedItemProp(item, prop, value) {
     item.update({ [prop]: value });
   }

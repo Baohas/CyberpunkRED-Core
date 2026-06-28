@@ -332,6 +332,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * @param {KeyboardEvent} event  The triggering event.
    * @protected
    */
+  // eslint-disable-next-line class-methods-use-this
   _preventEscape(event) {
     // Capture Escape keypresses for dialogs to ensure that close is called properly.
     // The default behavior of `<dialog>` elements is to close on Escape keypress.
@@ -345,6 +346,7 @@ export default class MigrationApp extends HandlebarsApplicationMixin(
    * Prevent user from closing dialog.
    * @override
    */
+  // eslint-disable-next-line class-methods-use-this
   close(_options = {}) {
     // Should not be able to close the dialog for any reason.
     // Leaving this empty function as an override, so that the

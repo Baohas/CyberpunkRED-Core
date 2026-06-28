@@ -87,7 +87,7 @@ export default [
       "import/no-unresolved": ["error", { ignore: [".*devMode\\.js$"] }],
       "no-underscore-dangle": "off",
       "no-param-reassign": ["error"],
-      "class-methods-use-this": ["warn"],
+      "class-methods-use-this": ["error"],
       "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "no-nested-ternary": "off",
       "no-restricted-syntax": [
@@ -112,4 +112,13 @@ export default [
     },
   },
   prettierRecommended,
+  {
+    // Migration scripts override updateItem/updateActor to transform a passed
+    // document and legitimately never reference `this`. Disable the rule for
+    // the whole directory rather than annotating every script.
+    files: ["src/modules/system/migrate/scripts/**/*.js"],
+    rules: {
+      "class-methods-use-this": "off",
+    },
+  },
 ];
