@@ -4,7 +4,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
-import { ContainerUtils } from "../item/mixins/cpr-container.js";
+import renderInstalledTree from "../utils/cpr-installed-tree.js";
 
 export default function registerHandlebarsHelpers() {
   LOGGER.log("Calling Register Handlebars Helpers");
@@ -727,124 +727,9 @@ export default function registerHandlebarsHelpers() {
    *                                              If false/undefined, this is being called on an actor sheet.
    * @returns {Handlebars.SafeString} - Nested list of installed items.
    */
-  Handlebars.registerHelper("cprNestedInstalledGearTab", (item, options) => {
-    /**
-     * This function is the thing that actually puts the list together. It works
-     * recursively, calling itself if child items also have installed items.
-     *
-     * @param {CPRItem(Container)} parentItem - The parent item (not necessarily the top-most item)
-     * @param {Number} [inItemPack] - Whether or not the top-level item is in an item compendium.
-     * @param {Number} [level = 1] - The amount of indentation.
-     * @returns {String}
-     */
-    function recursiveHTML(parentItem, inItemPack, level = 0) {
-      // Get all items installed in the parent and sort.
-      // If item is in a pack, get this data from the cprInstallTree instead of real world items.
-      const installedItems = inItemPack
-        ? ContainerUtils.getInstallTreeFlag(parentItem)
-        : parentItem.getInstalledItems();
-      const sortedInstalled = installedItems.sort((a, b) => {
-        // If items are the same type, sort alphabetically.
-        if (a.type === b.type) return a.name > b.name ? 1 : -1;
-
-        let sortOrder = [];
-        switch (parentItem.type) {
-          case "weapon":
-          case "itemUpgrade":
-            // For weapons and item upgrades, show loaded ammo at the top.
-            sortOrder = ["ammo"];
-            break;
-          case "cyberdeck":
-            // For cyberdecks, show installed programs at the top.
-            sortOrder = ["program"];
-            break;
-          case "cyberware":
-            // For cyberware, show installed cyberware at the top.
-            sortOrder = ["cyberware"];
-            break;
-          default:
-            break;
-        }
-        return sortOrder.indexOf(a.type) > sortOrder.indexOf(b.type) ? -1 : 1;
-      });
-
-      let html = "";
-      // For each installed item, create an <li> element with information about that item.
-      for (const childItem of sortedInstalled) {
-        const localizedType = SystemUtils.Localize(
-          `TYPES.Item.${childItem.type}`,
-        );
-
-        let actions = "";
-        let uninstallIcon = "fa-arrow-right-from-bracket"; // Most items have the same uninstall icon
-        const uninstallTooltip = SystemUtils.Localize(
-          "CPR.actorSheets.commonActions.uninstall",
-        );
-        switch (childItem.type) {
-          case "itemUpgrade": {
-            // Ranged weapon upgrades get the change ammo icon.
-            if (childItem.system.type !== "weapon") break;
-            if (!childItem.system.isRanged) break;
-            if (options.hash.isItemSheet) break;
-            const reloadTooltip = SystemUtils.Localize(
-              "CPR.actorSheets.commonActions.changeAmmo",
-            );
-            actions += `<a class="item-action data-item-id="${childItem._id}" data-action="select-ammo">`;
-            actions += `  <i class="fas fa-arrow-right-arrow-left" data-tooltip="${reloadTooltip}"></i>`;
-            actions += `</a>`;
-            break;
-          }
-          case "program":
-            // Programs get a unique uninstall icon.
-            uninstallIcon = "fa-folder-minus";
-            break;
-          default:
-            break;
-        }
-        // Every item gets an uninstall icon.
-        actions += `<a class="uninstall-single-item" data-item-id="${childItem._id}" data-direct-parent="${parentItem._id}">`;
-        actions += `  <i class="fas ${uninstallIcon}" data-tooltip="${uninstallTooltip}"></i>`;
-        actions += `</a>`;
-
-        // Build the list item.
-        html += `<li class="item flexrow" data-row-level=${level}
-                       data-item-id="${childItem._id}"
-                       data-item-category="${childItem.type}">`;
-        html += `  <a class="name item-view flex-center"><span class="type-tag">${localizedType}</span> ${childItem.name}</a>`;
-        // Uninstall glyph
-        html += `  <div class="action-container">`;
-        html += `    ${actions}`;
-        html += `  </div>`;
-        html += `</li>`;
-
-        // If the child item has its own installed items, call this function on the child item
-        // and increase the indent.
-        if (childItem.system.installedItems?.list?.length > 0) {
-          html += recursiveHTML(childItem, inItemPack, level + 1);
-        }
-      }
-      return html;
-    }
-
-    // Only create a dropdown if the item isn't installed, and has installed items.
-    // The exception is cyberdecks, cyberdecks remain on gear tab whether or not they are installed.
-    if (item.system.hasInstalled) {
-      const inItemPack = item.pack && !item.isEmbedded; // Check if item is in an item compendium.
-      const html = recursiveHTML(item, inItemPack);
-      // Is subitem hidden or not
-      const display =
-        options.hash.isItemSheet || // Never hide this list on item sheets.
-        item.actor?.flags?.[game.system.id]?.showInstalled?.[item.id]
-          ? ""
-          : "item-hidden";
-      // Here we wrap the whole sub-list in a div, so that we can animate it
-      return new Handlebars.SafeString(
-        `<div class="sub-list ${display}" data-items-wrapper-for-parent="${item.id}" style="padding: 0;"><ol>${html}</ol></div>`,
-      );
-    }
-    // Otherwise return a blank string.
-    return "";
-  });
+  Handlebars.registerHelper("cprNestedInstalledGearTab", (item, options) =>
+    renderInstalledTree(item, { isItemSheet: !!options.hash.isItemSheet }),
+  );
 
   /**
    * Helper to calculate the indent of nested cyberware in the Cyberware tab.

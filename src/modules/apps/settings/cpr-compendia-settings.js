@@ -1,5 +1,5 @@
-import CPR from "../system/config.js";
-import SystemUtils from "../utils/cpr-systemUtils.js";
+import CPR from "../../system/config.js";
+import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -35,7 +35,7 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
   /** @inheritDoc */
   static PARTS = {
     form: {
-      template: `systems/${CPR.systemId}/templates/apps/compendia-settings.hbs`,
+      template: `systems/${CPR.systemId}/templates/apps/settings/compendia-settings.hbs`,
     },
     footer: {
       template: "templates/generic/form-footer.hbs",

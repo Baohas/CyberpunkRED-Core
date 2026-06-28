@@ -1,8 +1,11 @@
 import CPR from "./config.js";
-import CPRCompendiaSettings from "../apps/cpr-compendia-settings.js";
+import CPRCompendiaSettings from "../apps/settings/cpr-compendia-settings.js";
+import CPRBrowserCompendiaSettings from "../apps/settings/cpr-browser-compendia-settings.js";
+import CPRBrowserIndex from "../apps/browser/cpr-browser-index.js";
+import CPRDocumentBrowser from "../apps/browser/cpr-document-browser.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import ModuleMigrationSettings from "./migrate/module-migration-settings.js";
+import ModuleMigrationSettings from "../apps/settings/module-migration-settings.js";
 
 /**
  * This file defines user settings for the system module.
@@ -81,6 +84,32 @@ const registerSystemSettings = () => {
     icon: "fa-solid fa-book",
     type: CPRCompendiaSettings,
     restricted: true, // Don't show to non GMs.
+  });
+
+  // Choose which compendia the document browser includes.
+  game.settings.registerMenu(game.system.id, "browserCompendiaMenu", {
+    name: "CPR.settings.browserCompendiaMenu.name",
+    label: "CPR.settings.browserCompendiaMenu.button",
+    hint: "CPR.settings.browserCompendiaMenu.hint",
+    icon: "fa-solid fa-book-open",
+    type: CPRBrowserCompendiaSettings,
+    restricted: true, // Don't show to non GMs.
+  });
+
+  // Stores which compendia are active in the document browser (id -> boolean).
+  game.settings.register(game.system.id, "browserActiveCompendia", {
+    scope: "world",
+    config: false,
+    type: Object,
+    default: {},
+    onChange: () => {
+      // Which compendia are active changes what the browser should show, so
+      // rebuild the index and refresh any open browser.
+      CPRBrowserIndex.rebuild();
+      for (const app of foundry.applications.instances.values()) {
+        if (app instanceof CPRDocumentBrowser) app.render();
+      }
+    },
   });
 
   // Select Modules to migrate their Compendia by default.

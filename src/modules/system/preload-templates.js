@@ -198,5 +198,12 @@ export default function preloadHandlebarsTemplates() {
 
     // Active Effects Sheet
     `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
+
+    // Apps: Document Browser
+    `systems/${game.system.id}/templates/apps/browser/cpr-browser-globals.hbs`,
+    `systems/${game.system.id}/templates/apps/browser/cpr-browser-sidebar.hbs`,
+    `systems/${game.system.id}/templates/apps/browser/cpr-browser-results.hbs`,
+    `systems/${game.system.id}/templates/apps/browser/cpr-browser-entry.hbs`,
+    `systems/${game.system.id}/templates/apps/browser/cpr-browser-cart.hbs`,
   ]);
 }

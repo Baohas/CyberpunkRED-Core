@@ -25,8 +25,10 @@
 
   /* Used for common colors within the default theme */
   --cpr-color-black: #000;
+  --cpr-color-blue: #2b6cb0;
   --cpr-color-dark-grey: #444;
   --cpr-color-faded-black: rgb(0 0 0 / 60%);
+  --cpr-color-green: #2f855a;
   --cpr-color-light-grey: #9e9f9f;
   --cpr-color-medium-grey: #666;
   --cpr-color-near-black: #0d0b0c;
@@ -34,6 +36,17 @@
   --cpr-color-pink: #ffc3b6;
   --cpr-color-red: #b90202;
   --cpr-color-white: #eaeaea;
+
+  /* Document browser tri-state filter toggles */
+  --cpr-background-tristate-include: var(--cpr-color-blue);
+  --cpr-background-tristate-exclude: var(--cpr-color-red);
+  --cpr-background-tristate-only: var(--cpr-color-green);
+
+  /* Document browser mode buttons (Item / Actor selectors): the active button
+     highlights a readable blue, the inactive one matches the search/price input
+     fields. */
+  --cpr-button-active: var(--cpr-color-blue);
+  --cpr-button-inactive: var(--cpr-background-foundry-input);
 
   /* Background Colors */
   --cpr-background-border: var(--cpr-color-red);

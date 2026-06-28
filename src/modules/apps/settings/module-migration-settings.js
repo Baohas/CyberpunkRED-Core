@@ -12,7 +12,7 @@ export default class ModuleMigrationSettings extends FormApplication {
     return foundry.utils.mergeObject(super.defaultOptions, {
       title: SystemUtils.Localize("CPR.settings.moduleMigrationMenu.name"),
       id: "module-migration-config",
-      template: `systems/${game.system.id}/templates/migration/module-migration-settings.hbs`,
+      template: `systems/${game.system.id}/templates/apps/settings/module-migration-settings.hbs`,
       width: "auto",
       height: "auto",
       closeOnSubmit: true,
