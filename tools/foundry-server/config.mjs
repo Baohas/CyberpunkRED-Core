@@ -11,6 +11,14 @@ const WORLD_ID_FILE = path.join(RUN_DIR, "world-id");
 const PID_FILE = path.join(RUN_DIR, "foundry.pid");
 export const STORAGE_STATE = path.join(RUN_DIR, "gm.json");
 
+// A non-GM player and their assigned character, created by globalSetup so the
+// shop specs can run as a real player (game.user.character set).
+// PLAYER_STORAGE_STATE holds that player's authenticated session, mirroring
+// STORAGE_STATE for the GM.
+export const PLAYER_STORAGE_STATE = path.join(RUN_DIR, "player.json");
+export const PLAYER_NAME = "E2E Player";
+export const PLAYER_CHARACTER_NAME = "E2E Shopper";
+
 // System id mirrors gulp/config.mjs SYSTEM_NAME. The built system is deployed to
 // <dataPath>/Data/systems/<SYSTEM_NAME> by `gulp build`; the browser-test world selects it.
 export const SYSTEM_NAME = process.env.SYSTEM_NAME || "cyberpunk-red-core";
