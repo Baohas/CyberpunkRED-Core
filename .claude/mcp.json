@@ -7,7 +7,7 @@
         "--executable-path",
         "${PLAYWRIGHT_MCP_EXECUTABLE_PATH}",
         "--config",
-        "${CLAUDE_PROJECT_DIR}/.cprc-shared/.playwright/playwright-mcp.config.json"
+        ".cprc-shared/.playwright/playwright-mcp.config.json"
       ]
     }
   }
