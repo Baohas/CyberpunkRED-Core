@@ -250,21 +250,21 @@
     },
     "Popup Grenade Launcher": {
       "name": "Wysuwany granatnik",
-      "description": "<p>Wysuwany granatnik pojedynczego strzału. Nie można nic trzymać w tej ręce, gdy jest wysunięty.</p>",
+      "description": "<p>\n  A concealable one-shot Grenade Launcher. Can't hold anything with this hand\n  while activated. Incompatible with all upgrades except\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun\n  Link}.\n</p>\n",
       "dvTable": "PT Granatniki"
     },
     "Popup Melee Weapon": {
       "name": "Wysuwana broń biała",
-      "description": "<p>Wysuwana broń biała. Nie można nic trzymać w tej ręce, gdy jest wysunięta.</p>"
+      "description": "<p>\n  A concealable One-Handed Melee Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n"
     },
     "Popup Ranged Weapon": {
       "name": "Wysuwana broń dystansowa",
-      "description": "<p>Wysuwana jednoręczna broń dystansowa. Nie można nic trzymać w tej ręce, gdy jest wysunięta.</p>",
+      "description": "<p>\n  A concealable One-Handed Ranged Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n",
       "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Wysuwana tarcza",
-      "description": "<p>Składana tarcza kuloodporna, którą można łatwo wyciągnąć i schować. Nie można nic trzymać w tej ręce, gdy jest wyciągnięta.</p>"
+      "description": "<p>\n  A foldable bulletproof shield that can be drawn or concealed easily. Can't\n  hold anything with this hand while activated.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet\n    Proof Shield} to inventory to manage shield HP.\n  </p>\n</blockquote>\n"
     },
     "Quick Change Mount": {
       "name": "Uniwersalne mocowanie",

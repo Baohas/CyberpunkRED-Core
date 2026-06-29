@@ -250,21 +250,21 @@
     },
     "Popup Grenade Launcher": {
       "name": "Lanciagranate Popup",
-      "description": "<p>Un Lanciagranate a Una Mano con un solo colpo installato nel braccio. Incompatibile con gli Accessori eccetto il Collegamento Smartgun. Occultabile senza alcuna Prova. Quando è in uso la mano non può impugnare nulla. </p>",
+      "description": "<p>\n  A concealable one-shot Grenade Launcher. Can't hold anything with this hand\n  while activated. Incompatible with all upgrades except\n  @UUID[Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC]{Smartgun\n  Link}.\n</p>\n",
       "dvTable": "VD Lanciagranate"
     },
     "Popup Melee Weapon": {
       "name": "Arma da Mischia Popup",
-      "description": "<p>Un'Arma da mischia occultabile. Non è possibile tenere nulla con questa mano mentre è attivata. </p>"
+      "description": "<p>\n  A concealable One-Handed Melee Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n"
     },
     "Popup Ranged Weapon": {
       "name": "Arma a Distanza Popup",
-      "description": "<p>Un'Arma a Distanza ad una mano nascosta. Non è possibile tenere nulla con questa mano mentre è attivata. </p>",
+      "description": "<p>\n  A concealable One-Handed Ranged Weapon. Can't hold anything with this hand\n  while activated.\n</p>\n<blockquote>\n  <p>Configure settings to match the weapon being installed.</p>\n</blockquote>\n",
       "dvTable": "DV Pistol"
     },
     "Popup Shield": {
       "name": "Scudo Popup",
-      "description": "<p>Uno scudo a prova di proiettile pieghevole che può essere estratto o riposto facilmente. Non puoi tenere nulla con questa mano mentre è attivato. </p>"
+      "description": "<p>\n  A foldable bulletproof shield that can be drawn or concealed easily. Can't\n  hold anything with this hand while activated.\n</p>\n<blockquote>\n  <p>\n    Add\n    @UUID[Compendium.cyberpunk-red-core.core_armor.Item.Bg1YEeF25HhfrzOG]{Bullet\n    Proof Shield} to inventory to manage shield HP.\n  </p>\n</blockquote>\n"
     },
     "Quick Change Mount": {
       "name": "Innesto Cambio\nRapido",
