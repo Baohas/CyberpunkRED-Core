@@ -4,8 +4,8 @@ effects: []
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 39
-      previous: "38"
+      current: 42
+      previous: "41"
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/ammo/pistolveryheavy_rubber.svg
 name: Very Heavy Pistol (Rubber)
@@ -32,6 +32,11 @@ system:
       minimum: 3
       mode: none
       value: -1
+    crit:
+      bonus: 5
+      count: 0
+      override: true
+      threshold: 0
     damage:
       minimum: 1d6
       mode: none
