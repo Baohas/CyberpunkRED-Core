@@ -1,24 +1,14 @@
-form {
-  input {
-    &::placeholder {
-      opacity: 0.6;
-    }
+/*
+ * These rules used to apply globally and, because our stylesheet outranked
+ * Foundry's, they re-themed core and other modules' windows too. Everything
+ * here is now scoped to CPR's own windows (sheets, dialogs, apps) and — for the
+ * deliberate journal exception — journal page content. Our stylesheet sits on
+ * the @system cascade layer (see src/system.json).
+ */
 
-    .number {
-      width: 1.875rem;
-    }
-  }
-}
-
-/* User config pop out */
-.user-config {
-  font-family: var(--cpr-font-primary);
-}
-
-code {
-  background-color: var(--cpr-background-code);
-  padding: 0.125rem;
-}
+/****************
+ * CPR windows  *
+ ****************/
 
 .actor-sheet,
 .blackice-sheet,
@@ -36,7 +26,9 @@ code {
     background-color: var(--cpr-background-foundry-input);
   }
 
-  select, option, optgroup {
+  select,
+  option,
+  optgroup {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-window);
   }
@@ -73,20 +65,51 @@ code {
     user-select: text;
     height: 100%;
     background: none;
+
+    /*
+     * Our sheets are always Foundry "theme-light", so Foundry colours these
+     * inputs with its light-theme (dark) text colour. Drive them from our own
+     * theme variable instead, so input values (name, role, HP/Humanity, stats,
+     * skill levels, …) follow the CPR theme — light in dark mode, dark in light.
+     */
+    color: var(--cpr-text-normal);
   }
+
+  input::placeholder {
+    color: var(--cpr-text-normal);
+    opacity: 0.6;
+  }
+
+  /* Inline code in our own windows (Foundry styles its own code elsewhere). */
+  code {
+    background-color: var(--cpr-background-code);
+    padding: 0.125rem;
+  }
+}
+
+/* Inline code in journal page content (journal exception). */
+.journal-entry-content code,
+.journal-page-content code,
+.journal-sheet-container code {
+  background-color: var(--cpr-background-code);
+  padding: 0.125rem;
 }
 
 /****************************
  * Application V2 Overrides *
  ****************************/
 
- html[data-cpr-theme="default"] .application {
-  a {
-    color: var(--cpr-color-red);
-  }
+/*
+ * These target our own ApplicationV2 windows only (the migration dialog and the
+ * compendia settings app). CPR sheets and dialogs are ApplicationV1
+ * (.window-app) and style their own links/inputs, so they must NOT be included
+ * here — doing so turns every rollable <a> header (stats, box labels, tabs) red.
+ */
+html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
+  color: var(--cpr-color-red);
 }
 
-[data-cpr-theme="dark"] .theme-dark .application {
+[data-cpr-theme="dark"] :is(.cpr-migration-dialog, #compendia-config) {
   input[type="checkbox"]::before {
     color: var(--cpr-color-light-grey);
   }
@@ -101,13 +124,25 @@ code {
  *
  * .prosemirror gets a lot of styling from the Journals section below as well
  * the rules here are specific to the editor that don't have styles in the
- * Journal section itself. If the Foundry devs use prosemirror for other editor
- * fields down the line we will need port them to this section or extend the
- * Journal section below to apply to other classes as well.
+ * Journal section itself. Scoped to our own windows and journal page content so
+ * Foundry's and other modules' editors are left alone.
  */
 
-.prosemirror,
-.prosemirror.menu-dialog {
+:is(
+    .actor-sheet,
+    .blackice-sheet,
+    .container-sheet,
+    .demon-sheet,
+    .dialog-sheet,
+    .item-sheet,
+    .mook-sheet,
+    .cpr-migration-dialog,
+    .releasenotes,
+    .journal-entry-content,
+    .journal-page-content,
+    .journal-sheet-container
+  )
+  :is(.prosemirror, .prosemirror.menu-dialog) {
   form {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-box);
@@ -157,12 +192,26 @@ code {
   }
 }
 
-.editor.prosemirror {
+:is(
+    .actor-sheet,
+    .blackice-sheet,
+    .container-sheet,
+    .demon-sheet,
+    .dialog-sheet,
+    .item-sheet,
+    .mook-sheet,
+    .cpr-migration-dialog,
+    .releasenotes,
+    .journal-entry-content,
+    .journal-page-content,
+    .journal-sheet-container
+  )
+  .editor.prosemirror {
   min-height: 10rem;
 }
 
 /*
- * Journals
+ * Journals (journal page content is a deliberate exception we keep theming).
  */
 
 /* This is not in the general journal divs as you would expect */
@@ -176,14 +225,24 @@ code {
 }
 
 /*
- * TextEditor/Prosemirror Overides
+ * TextEditor/Prosemirror Overides — journal page content plus rich-text inside
+ * our own windows.
  */
-.prosemirror,
-.editor-content,
 .releasenotes,
 .journal-entry-content,
 .journal-page-content,
-.journal-sheet-container {
+.journal-sheet-container,
+:is(
+    .actor-sheet,
+    .blackice-sheet,
+    .container-sheet,
+    .demon-sheet,
+    .dialog-sheet,
+    .item-sheet,
+    .mook-sheet,
+    .cpr-migration-dialog
+  )
+  :is(.prosemirror, .editor-content) {
   font-family: var(--cpr-font-primary);
   color: var(--cpr-text-normal) !important;
 
@@ -391,16 +450,4 @@ code {
     border-radius: 0.313rem;
     margin: 0.313rem 0;
   }
-}
-
-/*
- * Tooltips, accessed via the `data-tooltip` element
- */
-#tooltip {
-  font-family: var(--cpr-font-primary);
-  padding: 0.313rem 0.626rem;
-  border: 0;
-  border-radius: 0;
-  background: var(--cpr-background-header);
-  clip-path: polygon(0 0.626rem, 0 100%, 100% 100%, 100% 0, 0.626rem 0);
 }
