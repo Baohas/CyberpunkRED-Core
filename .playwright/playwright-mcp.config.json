@@ -1,8 +1,0 @@
-{
-  "outputDir": ".playwright/mcp",
-  "browser": {
-    "launchOptions": {
-      "args": ["--test-type"]
-    }
-  }
-}
