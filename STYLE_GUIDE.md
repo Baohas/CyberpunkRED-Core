@@ -4,6 +4,8 @@ This guide documents the coding conventions and patterns for the Cyberpunk RED F
 
 The system is written in **JavaScript** (ES modules) and uses **Handlebars** templates with Foundry's **ApplicationV2** application framework. It is linted with **ESLint** (flat config — `@eslint/js` recommended, `eslint-plugin-import-x`, and Prettier), formatted with **Prettier**, styled with plain **CSS** (linted by **stylelint**), analyzed with **fallow** (dead-code / unused-dependency auditing), and built with **gulp**.
 
+> **Game mechanics — source of truth.** When you implement or change anything that encodes a game rule (a value, ratio, threshold, formula, table, or check), the [`tests/mechanics/`](tests/mechanics/) catalog is the authoritative spec (start at `index.md`). Implement **Rules as Written** by default, and where the catalog marks a parameter configurable (`[cfg]`) make it configurable too, defaulting to RAW so homebrew is supported. The catalog is derived from the rulebooks — code conforms to it, never the reverse. See `CLAUDE.md` → "Mechanics catalog" for how it's maintained.
+
 ## Table of Contents
 
 - [Foundational Principles](#foundational-principles)

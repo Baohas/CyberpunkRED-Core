@@ -11,6 +11,9 @@ pkgs.mkShell {
     # below) — driven via --executable-path, so its exact revision need not match
     # the pinned playwright-driver above.
     pkgs.chromium
+    # pdftotext (and friends) for extracting rules/item stats from the source PDFs
+    # (see foundryconfig.json `pdfPath`) into the .rules reference.
+    pkgs.poppler-utils
   ];
 
   # Prebuilt npm binaries (e.g. @fallow-cli) are generic glibc executables

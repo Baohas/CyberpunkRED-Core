@@ -12,5 +12,6 @@
     "templates": "/absolute/path/to/templates",
     "system": "/absolute/path/to/system",
     "cicd": "/absolute/path/to/cicd"
-  }
+  },
+  "pdfPath": ""
 }
