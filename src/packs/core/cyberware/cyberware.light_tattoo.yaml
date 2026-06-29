@@ -49,8 +49,8 @@ effects:
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
+      current: 42
+      previous: "41"
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/light_tattoo.svg
 name: Light Tattoo
@@ -68,10 +68,15 @@ system:
   core: false
   critFailEffect: jammed
   damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
   description:
     value: |
       <p>
-        Glowing tattoos. +2 to Wardrobe & Style if you have at least three installed.
+        Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three
+        installed.
       </p>
   dvTable: ""
   favorite: false

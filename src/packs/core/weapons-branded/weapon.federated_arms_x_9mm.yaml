@@ -4,8 +4,8 @@ effects: []
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
+      current: 42
+      previous: "41"
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/weapons/mediumPistol.svg
 name: Federated Arms X-9mm
@@ -23,6 +23,10 @@ system:
     isConcealed: false
   critFailEffect: jammed
   damage: 2d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
   description:
     value: |
       <p>A concealable, medium-sized pistol.</p>
