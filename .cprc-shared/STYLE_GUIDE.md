@@ -4,6 +4,8 @@ This guide documents the coding conventions and patterns for the Cyberpunk RED F
 
 The system is written in **JavaScript** (ES modules) and uses **Handlebars** templates with Foundry's **ApplicationV2** application framework. It is linted with **ESLint** (flat config — `@eslint/js` recommended, `eslint-plugin-import-x`, and Prettier), formatted with **Prettier**, styled with plain **CSS** (linted by **stylelint**), analyzed with **fallow** (dead-code / unused-dependency auditing), and built with **gulp**.
 
+> **Game mechanics — source of truth.** When you implement or change anything that encodes a game rule (a value, ratio, threshold, formula, table, or check), the [`mechanics/`](mechanics/) catalog is the authoritative spec (start at `index.md`). Implement **Rules as Written** by default, and where the catalog marks a parameter configurable (`[cfg]`) make it configurable too, defaulting to RAW so homebrew is supported. The catalog is derived from the rulebooks — code conforms to it, never the reverse. See `CLAUDE.md` → "Mechanics catalog" for how it's maintained.
+
 ## Table of Contents
 
 - [Foundational Principles](#foundational-principles)
@@ -383,7 +385,7 @@ import CPR from "../../system/config.js";
 
 export default class AmmoDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
-  InstallableSchema
+  InstallableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;
@@ -447,6 +449,24 @@ CONFIG.Item.dataModels.weapon = WeaponDataModel;
 - Always set explicit field options (`required`, `nullable`, `initial`, and `min`/`choices` where relevant). Don't rely on implicit defaults.
 - Reference enums by `Object.keys(CPR.someEnum)` for `choices` rather than hardcoding lists.
 - Put derived (non-persisted) values in getters on the data model or in the document's `prepareDerivedData`, not in the schema.
+- **A configurable field is not done until it can be configured.** When you add or change a data-model field that users are meant to set, also: (1) surface it on the relevant item/actor **sheet** template with its **localization** key (don't add a schema field with no UI to edit it); and (2) add a **migration** to backfill existing documents if behaviour depends on it. A field nobody can see or edit, or that only exists on freshly-created documents, is an incomplete feature.
+- **Regenerate the pack-validation schemas after any DataModel change.** The JSON Schemas under `schema/` are **generated from the live DataModels** (`npm run generate-schemas`) — never hand-edit them. Any field you add, change, or remove must be reflected by re-running the generator and committing its output; otherwise `schema/` silently drifts from the models and `validate-packs` no longer validates what the system actually produces. Run it alongside the migration above whenever the data shape changes.
+
+### Migrating and re-exporting compendium packs
+
+When a DataModel change needs the shipped compendia updated (e.g. a new field that `validate-packs` now requires), re-export them through the **real migration UI** — never hand-edit pack YAML, and never call `game.cpr.MigrationRunner.migrateWorld()` from the console (a manually-driven, half-initialised game does not persist compendium writes). The procedure:
+
+1. **Write the migration** following the existing scripts (`src/modules/system/migrate/scripts/NNN-*.js`): `updateItem(doc)` / `updateActor(doc)` with **direct assignment**, guarded by `foundry.utils.hasProperty` to stay idempotent (don't clobber values a user already set). Bump `#LATEST_VERSION` in `migration.js`.
+2. `npm run generate-schemas`, then `npm run build`.
+3. In `foundryconfig.json` `devMode.migrations`, set `migrateSystemCompendia: true` (this is what pulls the system compendia into the migration).
+4. `npm run browser:serve`, then drive it with the Playwright MCP at the printed URL:
+   - Join as Gamemaster. The serve world has **no active scene**, which trips the ruler override during `setup` and stops the Migration Wizard from auto-launching — **create and activate a Scene first**.
+   - Lower the world below the latest version so the migration fires: `game.settings.set(game.system.id, "dataModelVersion", <#LATEST_VERSION - 1>)`, then reload.
+   - The **Migration Wizard** launches itself (the `ready` hook). **Press and hold** its *Begin Migration* button — it is a hold-to-confirm control — until it completes.
+5. Stop Foundry (release the LevelDB locks), then `npx gulp extractPacks`. Build, serve and extract must all use the **same** `foundryconfig.json` `dataPath`.
+6. Commit `schema/` and the re-exported `src/packs` (+ regenerated `src/babele`) — pack data is its own "just data" commit.
+
+**Foundry v13 gotcha (don't remove `diff: false`):** v13's `SchemaField.getInitialValue` injects a required SchemaField's default object into `_source` during cleaning (v12 left it `undefined`). So a migration that backfills an *all-default* SchemaField produces an empty diff against `_source`, and the v13 backend (`client-backend.mjs`) silently skips the write under the default `diff: true`. `migration.js` therefore updates with **`diff: false`** so the full data-model-clean source is persisted — this is the only reason new defaulted SchemaFields reach pack source at all.
 
 ---
 
@@ -469,7 +489,7 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
-  ApplicationV2
+  ApplicationV2,
 ) {
   /** Static configuration, merged with the parent defaults. */
   static DEFAULT_OPTIONS = {
@@ -917,7 +937,7 @@ const CheckEmpAndLuck = () => {
     if (stat && Number(stat.value) > 99) {
       SystemUtils.DisplayMessage(
         "warn",
-        SystemUtils.Localize("CPR.messages.tripleDigitStatValueWarn")
+        SystemUtils.Localize("CPR.messages.tripleDigitStatValueWarn"),
       );
     }
   });
@@ -965,7 +985,7 @@ const msg = SystemUtils.Format("CPR.messages.appliedDamage", { amount: 10 });
 // Localize + notify the user (and log) in one call
 SystemUtils.DisplayMessage(
   "error",
-  SystemUtils.Localize("CPR.combatUtils.noCombatSelected")
+  SystemUtils.Localize("CPR.combatUtils.noCombatSelected"),
 );
 ```
 
@@ -1002,6 +1022,18 @@ Run these before committing (see [Code Quality Checklist](#code-quality-checklis
 | Static analysis (fallow)                | `fallow audit`                                               |
 | Build                                   | `npm run build` (`npx gulp build`)                           |
 
+### Linting Discipline
+
+Lint rules, formatter rules, and tests exist to catch real problems — **do not disable them as a shortcut.** Suppressing a check (an `eslint-disable` / `stylelint-disable` / `prettier-ignore` directive, broadening an ignore list, or skipping/deleting a test) makes the warning disappear without addressing what it was protecting.
+
+When a rule fires:
+
+1. **Resolve it without disabling the rule.** Restructure the code so the check passes honestly — for example, make a `this`-less method `static` rather than disabling `class-methods-use-this`. This is almost always possible.
+2. **If you genuinely cannot,** raise it to the dev: show the code and explain why disabling the rule is the best available option.
+3. **Never disable a rule (or skip/remove a test) without explicit human permission.** A standing suppression is a deliberate, reviewed decision — not something added in passing.
+
+This applies equally to human contributors and LLM agents.
+
 ### Static Analysis (fallow)
 
 [fallow](https://github.com/fallow-rs/fallow) is a static analyzer that finds **unreachable code, unused files, and unused dependencies**, scoped to the runtime entry tree starting at `src/cpr.js`. It is configured in `.fallowrc.json`, which declares:
@@ -1036,7 +1068,7 @@ Behavioural changes (sheets, rolls, combat, migrations) must be verified by hand
 
 Browser-level regression tests drive a real Foundry world to catch breakages like a sheet failing to render. They are **opt-in** locally (require a local Foundry install) and also run in CI (see **CI** below). The pieces:
 
-- `tools/foundry-server/` — the harness (plain Node, _not_ tests): starts/stops Foundry and drives the startup gates.
+- `tools/foundry-server/` — the harness (plain Node, *not* tests): starts/stops Foundry and drives the startup gates.
 - `tests/browser/` — the Playwright suite: lifecycle hooks (`setup.mjs`/`teardown.mjs`), a shared `fixtures.mjs`, and specs grouped by feature (`actors/`, `items/`, …).
 - `.playwright/` — the Playwright + MCP config files and all generated output (the output is gitignored; the two config files are not).
 
@@ -1051,15 +1083,17 @@ Browser-level regression tests drive a real Foundry world to catch breakages lik
 
 Path values must be **absolute and literal** — `~`, `$HOME`, and `%LOCALAPPDATA%` are not expanded (`{VERSION}` is the only substitution). Each can be overridden by an env var: `FOUNDRY_DATA_PATH`, `FOUNDRY_APP_PATH`, `FOUNDRY_LICENSE_KEY`, `FOUNDRY_TEST_PORT` (default `30001`).
 
-**Install browsers.** On most OSes: `npm run browser:install` (Linux may also need OS libs — `npx playwright install --with-deps chromium`). **On NixOS do _not_ run that** — the browsers come from `pkgs.playwright-driver.browsers` in `shell.nix`; just enter the dev shell. The `@playwright/test` version in `package.json` is pinned to match the nixpkgs `playwright-driver` (`nix eval --raw nixpkgs#playwright-driver.version`); bump both together.
+**Install browsers.** On most OSes: `npm run browser:install` (Linux may also need OS libs — `npx playwright install --with-deps chromium`). **On NixOS do *not* run that** — the browsers come from `pkgs.playwright-driver.browsers` in `shell.nix`; just enter the dev shell. The `@playwright/test` version in `package.json` is pinned to match the nixpkgs `playwright-driver` (`nix eval --raw nixpkgs#playwright-driver.version`); bump both together.
 
 **Run.** `npm run test:browser` builds the system and runs the suite in **Chromium only** (headless Firefox can't supply the WebGL context Foundry initialises at startup, so it never reaches `game.ready`). The tests use an **isolated, project-local data dir** (`.playwright/foundry-data`, gitignored) — never your real `foundry.dataPath` — so an admin access key, leftover worlds, or custom settings in a developer's Foundry data can't derail the unattended run (override with `FOUNDRY_DATA_PATH`). It starts Foundry on the test port, drives the license → EULA → decline-data-sharing → setup gates (dismissing onboarding tours), creates and launches a throwaway `cyberpunk-red-<randomhash>` world, runs the specs, then stops Foundry and deletes that world. The whole isolated data dir (and the `.playwright/auth/` run-state — the saved GM session and Foundry log) is **deleted when the run finishes**, pass or fail, so nothing lingers and **every run is a clean, cold boot** — which means `licenseKey` / `FOUNDRY_LICENSE_KEY` must be set, as the harness re-activates the license at that gate each run. (CI supplies its own throwaway data dir and keeps the log as a job artifact, so its cleanup is skipped.)
 
 **CI.** The `test-browser` job (`.gitlab/ci/test/test-browser.yml`) runs the suite on MRs and `dev` that touch rendering code, templates, styles, or the specs/harness — and on release tags. CI has no Foundry, so `.gitlab/pipeline_utils/download-foundry.sh` fetches the latest Node build of the generation in `src/system.json` using the `FOUNDRY_USER` / `FOUNDRY_PASS` / `FOUNDRY_LICENSE_KEY` CI/CD variables; results surface as a JUnit report.
 
-**Lock constraint.** Foundry holds **exclusive LevelDB locks** on the open world _and_ on the system's compendium packs. Because the suite now runs in its own isolated data dir, it no longer collides with a dev Foundry open on your real `dataPath` — you can run both at once. The pack lock still applies to the build's deploy target, so `gulp extractPacks` (or any pack-reading task) must run with **all** Foundry instances stopped.
+**Lock constraint.** Foundry holds **exclusive LevelDB locks** on the open world *and* on the system's compendium packs. Because the suite now runs in its own isolated data dir, it no longer collides with a dev Foundry open on your real `dataPath` — you can run both at once. The pack lock still applies to the build's deploy target, so `gulp extractPacks` (or any pack-reading task) must run with **all** Foundry instances stopped.
 
-**Writing specs.** Drive the **real UI** — create actors/items through the sidebar's create dialog rather than `Actor.create()`, so the system's own creation logic runs (created that way, a `character` gets its full skill/cyberware loadout; a bare `Actor.create()` produces an empty actor). The scene canvas is WebGL (Pixi) and invisible to the DOM, so assert on the resulting **HTML sheet**, not the canvas. CPR sheets are ApplicationV1, so open windows live in `ui.windows` (not `foundry.applications.instances`) — close them when done. Resolve document subtypes from `game.documentTypes` rather than hard-coding them.
+**Coverage policy.** Specs validate the system's **intended functionality**, organised by feature (`tests/browser/actors/`, `items/`, …) — not individual bugs. Adding a feature means adding a spec that exercises what it is meant to do. Fixing a bug means making sure the affected functionality's intended behaviour is _covered_: extend the feature's existing spec, or add one if that behaviour had no coverage — a bug usually marks a coverage gap, not a reason for a one-off "reproduce issue X" test. The goal is a suite that describes how the system _should_ behave, so it trips on any regression in that area rather than only the bug that prompted it. This is the system's only regression net (there are no unit tests), so meaningful behaviour left untested is incomplete. The one exception is purely **canvas/board** behaviour, which the harness cannot exercise (the canvas is disabled — see **Writing specs** below); validate that live via the Playwright MCP instead.
+
+**Writing specs.** Drive the **real UI** — create actors/items through the sidebar's create dialog rather than `Actor.create()`, so the system's own creation logic runs (created that way, a `character` gets its full skill/cyberware loadout; a bare `Actor.create()` produces an empty actor). The WebGL canvas is **disabled** in the test session (`core.noCanvas = true`, set in `tests/browser/setup.mjs`, since initialising PIXI/WebGL under software rendering is pure overhead). As a result **canvas/board interactions cannot be exercised at all** — token movement, ruler/distance measurement, targeting, templates, lighting, and drawing tools have no testable surface. Specs are limited to sheets, dialogs, the sidebar, and chat; assert on the resulting **HTML**, never the canvas. CPR sheets are ApplicationV1, so open windows live in `ui.windows` (not `foundry.applications.instances`) — close them when done. Resolve document subtypes from `game.documentTypes` rather than hard-coding them.
 
 **Driving Foundry live.** `npm run browser:serve` brings up a ready throwaway world and stays in the foreground; combined with the `playwright` MCP server in `.mcp.json`, an AI assistant can open sheets, click, and screenshot against it. The MCP drives a standalone Chromium via `PLAYWRIGHT_MCP_EXECUTABLE_PATH` (exported by `shell.nix`), so on NixOS launch the editor/agent from inside the dev shell.
 
@@ -1155,7 +1189,9 @@ Data-shape changes are handled by versioned scripts under `src/modules/system/mi
 - [ ] No hardcoded user-facing strings — all via `CPR.*` localization keys
 - [ ] New `CPR.*` keys added to `src/lang/en.json` only — no other `src/lang/` translation files edited, no `src/babele/` files touched
 - [ ] Persisted data shape changes ship with a migration script
-- [ ] Manually verified in a running Foundry world
+- [ ] Behavioural changes validated in a live Foundry world via the Playwright MCP — run `npm run browser:serve`, then drive the **real UI** (clicks, dialogs — not the Foundry/system API) and watch the console (`browser_console_messages`) for errors and deprecation warnings (see [End-to-End Tests (Playwright)](#end-to-end-tests-playwright))
+- [ ] The intended behaviour of any added or changed functionality is covered by a Playwright spec under `tests/browser/` — extend the feature's existing spec rather than adding one-off bug-reproduction tests (see [End-to-End Tests (Playwright)](#end-to-end-tests-playwright))
+- [ ] `CHANGELOG.md` entry added in the **same commit** as the change it describes
 
 ### Pre-Review Extraction Checks
 
@@ -1220,7 +1256,7 @@ import CPR from "../system/config.js";
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
 export default class CPRExampleApp extends HandlebarsApplicationMixin(
-  ApplicationV2
+  ApplicationV2,
 ) {
   static DEFAULT_OPTIONS = {
     id: "cpr-example",
@@ -1256,7 +1292,7 @@ import CPRSystemDataModel from "../system-data-model.js";
 import CommonSchema from "./mixins/common-schema.js";
 
 export default class ExampleDataModel extends CPRSystemDataModel.mixin(
-  CommonSchema
+  CommonSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

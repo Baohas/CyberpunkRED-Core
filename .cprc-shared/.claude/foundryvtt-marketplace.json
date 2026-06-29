@@ -1,0 +1,10 @@
+{
+  "name": "foundryvtt-dev-mp",
+  "owner": { "name": "cyberpunk-system" },
+  "plugins": [
+    {
+      "name": "foundryvtt-dev",
+      "source": { "source": "github", "repo": "cyface/foundryvtt-dev-claude-plugin" }
+    }
+  ]
+}
