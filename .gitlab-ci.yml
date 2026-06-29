@@ -30,6 +30,7 @@ include:
       - "/jobs/test/lint-markdown.yml"
       - "/jobs/test/lint-yaml.yml"
       - "/jobs/test/packs.yml"
+      - "/jobs/test/prepare-foundry.yml"
       - "/jobs/test/test-browser.yml"
       - "/jobs/test/test-build.yml"
       - "/jobs/test/test-fontawesome.yml"
