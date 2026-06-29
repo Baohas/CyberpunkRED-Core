@@ -94,8 +94,8 @@ effects:
 flags:
   cyberpunk-red-core:
     _migration:
-      current: 33
-      previous: "24"
+      current: 42
+      previous: "41"
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/audiovox.svg
 name: AudioVox
@@ -113,6 +113,10 @@ system:
   core: false
   critFailEffect: jammed
   damage: 1d6
+  damageCrit:
+    bonus: 5
+    count: 2
+    threshold: 0
   description:
     value: >
       <p>Autotune synthesizer. Provides +2 to Acting and Play Instrument
