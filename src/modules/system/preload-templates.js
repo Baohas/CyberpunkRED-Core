@@ -103,7 +103,6 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/dialog/cpr-dialog-buttons.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-ledger-deletion-prompt.hbs`,
-    `systems/${game.system.id}/templates/dialog/cpr-ledger-edit-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-ledger-form.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-load-ammo-prompt.hbs`,
     `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
@@ -197,6 +196,6 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/item/settings/cpr-weapon.hbs`,
 
     // Active Effects Sheet
-    `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
+    `systems/${game.system.id}/templates/effects/cpr-active-effect-changes.hbs`,
   ]);
 }
