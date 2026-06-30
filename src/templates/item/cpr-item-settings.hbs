@@ -40,7 +40,6 @@
         {{#if item.system.quality}}
           {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-quality.hbs" this}}
         {{/if}}
-        <hr/>
         {{!-- Settings from mixins --}}
         {{#each (cprGetTemplates item.type) as |mixin| }}
           {{#if (and (cprCompare mixin "!==" "effects") (cprCompare mixin "!==" "quality"))}}
