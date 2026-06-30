@@ -155,35 +155,44 @@ export default class CPRContainerActor extends Actor {
    */
   automaticallyStackItems(newItem) {
     const itemTemplates = SystemUtils.getMixins(newItem.type);
-    if (itemTemplates.includes("stackable")) {
-      const itemMatch = this.items.find(
-        (i) => i.type === newItem.type && i.name === newItem.name,
-      );
-      if (itemMatch) {
-        const canStack = !(
-          itemTemplates.includes("upgradable") &&
-          itemMatch.system.installedUpgrades.length === 0
-        );
-        if (canStack) {
-          let oldAmount = parseInt(itemMatch.system.amount, 10);
-          let addedAmount = parseInt(newItem.system.amount, 10);
-          if (Number.isNaN(oldAmount)) {
-            oldAmount = 1;
-          }
-          if (Number.isNaN(addedAmount)) {
-            addedAmount = 1;
-          }
-          const newAmount = oldAmount + addedAmount;
-          return this.updateEmbeddedDocuments(
-            "Item",
-            [{ _id: itemMatch.id, "system.amount": newAmount }],
-            { diff: false },
-          );
-        }
-      }
-    }
-    // If not stackable, then return true to continue adding the item.
-    return [];
+    if (!itemTemplates.includes("stackable")) return [];
+    const itemMatch = this.items.find(
+      (i) => i.type === newItem.type && i.name === newItem.name,
+    );
+    if (
+      !itemMatch ||
+      !CPRContainerActor._canStackOnto(itemTemplates, itemMatch, newItem)
+    )
+      return [];
+    const toInt = (value) => {
+      const parsed = parseInt(value, 10);
+      return Number.isNaN(parsed) ? 1 : parsed;
+    };
+    const newAmount =
+      toInt(itemMatch.system.amount) + toInt(newItem.system.amount);
+    return this.updateEmbeddedDocuments(
+      "Item",
+      [{ _id: itemMatch.id, "system.amount": newAmount }],
+      { diff: false },
+    );
+  }
+
+  /**
+   * Whether an incoming item may stack onto an existing match. Upgradable items
+   * become unique once either side carries installed upgrades, so they never
+   * merge; everything else stacks.
+   *
+   * @param {string[]} itemTemplates - the mixin templates for the item type
+   * @param {Item} itemMatch - the existing item to stack onto
+   * @param {Object} newItem - the incoming item data
+   * @returns {boolean} true if the items may be merged into one stack
+   */
+  static _canStackOnto(itemTemplates, itemMatch, newItem) {
+    if (!itemTemplates.includes("upgradable")) return true;
+    return (
+      !itemMatch.system.installedUpgrades.length &&
+      !newItem.system.installedUpgrades?.length
+    );
   }
 
   /**
