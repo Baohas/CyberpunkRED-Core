@@ -25,37 +25,37 @@ async function present(locator, timeout = SHORT) {
 
 /*
  * Foundry shows onboarding "tours" (e.g. the Setup screen's "Backups Overview")
- * as a `.tour-overlay` + `.tour` that render above the setup UI and intercept
- * clicks on the controls below — enough to make worldCreate/worldLaunch silently
- * time out ("<div class="tour-overlay"></div> intercepts pointer events"). The
- * exit control varies by tour/version and the overlay doesn't reliably respond to
- * Escape, so just strip the tour DOM directly — that's the only thing that
- * guarantees the controls underneath become clickable. Idempotent; no-op when
- * none is present.
+ * as a `.tour` step plus a full-screen `.tour-overlay` that renders above the
+ * setup UI and intercepts clicks on the controls below it — enough to make
+ * worldCreate/worldLaunch silently miss. Dismiss any visible tour: click its exit
+ * ("X") control, fall back to pressing Escape (Foundry exits tours on Escape),
+ * and as a last resort remove any lingering `.tour-overlay`/`.tour` nodes so they
+ * stop intercepting pointer events. A tour can chain several steps, so repeat a
+ * few times. No-op when none is present.
  */
 async function dismissTours(page) {
+  const exit = page.locator(
+    '.tour-center-step a[data-action="exit"], .tour a[data-action="exit"], ' +
+      '.tour [data-action="exit"], [data-action="exit"]',
+  );
+  const overlay = page.locator(".tour-overlay, .tour-center-step, .tour");
+  for (let i = 0; i < 5; i += 1) {
+    if (!(await present(overlay, 1000))) break;
+    if (await present(exit, 250)) {
+      await exit.first().click().catch(() => {});
+    } else {
+      await page.keyboard.press("Escape").catch(() => {});
+    }
+  }
+
+  // Last resort: physically remove any overlay still intercepting clicks.
   await page
     .evaluate(() => {
-      for (const sel of [".tour-overlay", ".tour", ".tour-center-step"]) {
-        document.querySelectorAll(sel).forEach((el) => el.remove());
-      }
+      document
+        .querySelectorAll(".tour-overlay, .tour-center-step, .tour")
+        .forEach((el) => el.remove());
     })
     .catch(() => {});
-}
-
-/*
- * Click a Setup control even when a tour overlay is fighting us: a tour can
- * re-render between page load and the click and intercept pointer events, which
- * makes a normal `.click()` time out ("<div class="tour-overlay"> intercepts
- * pointer events"). Clear the tour first, try a real click, and fall back to
- * dispatching the event straight at the element — which ignores any overlay
- * stacked on top. Mirrors the worldLaunch handling below.
- */
-async function clickThrough(page, locator) {
-  await dismissTours(page);
-  await locator
-    .click({ timeout: SHORT })
-    .catch(() => locator.dispatchEvent("click"));
 }
 
 /*
