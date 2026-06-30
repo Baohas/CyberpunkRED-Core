@@ -192,6 +192,7 @@ Hooks.once("init", async () => {
     CPRRolls.CPRRoleRoll,
     CPRRolls.CPRInterfaceRoll,
     CPRRolls.CPRDeathSaveRoll,
+    CPRRolls.CPRLuckRoll,
     CPRRolls.CPRDamageRoll,
     CPRRolls.CPRHumanityLossRoll,
     CPRRolls.CPRTableRoll,

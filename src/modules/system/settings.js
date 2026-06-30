@@ -1,5 +1,6 @@
 import CPR from "./config.js";
 import CPRCompendiaSettings from "../apps/cpr-compendia-settings.js";
+import CPRHomebrewSettings from "../apps/cpr-homebrew-settings.js";
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import ModuleMigrationSettings from "./migrate/module-migration-settings.js";
@@ -91,6 +92,45 @@ const registerSystemSettings = () => {
     icon: "fa-solid fa-diagram-next",
     type: ModuleMigrationSettings,
     restricted: true, // Don't show to non GMs.
+  });
+
+  // Homebrew Rules — opens an app holding optional, non-RAW rule toggles.
+  game.settings.registerMenu(game.system.id, "homebrewSettingsMenu", {
+    name: "CPR.settings.homebrewMenu.name",
+    label: "CPR.settings.homebrewMenu.button",
+    hint: "CPR.settings.homebrewMenu.hint",
+    icon: "fa-solid fa-flask",
+    type: CPRHomebrewSettings,
+    restricted: true, // Don't show to non GMs.
+  });
+
+  // These settings are edited in the separate app called by homebrewSettingsMenu.
+  game.settings.register(game.system.id, "homebrewLuckRoll", {
+    name: "CPR.settings.homebrewLuckRoll.name",
+    hint: "CPR.settings.homebrewLuckRoll.hint",
+    scope: "world",
+    config: false,
+    type: Boolean,
+    default: false,
+    onChange: (value) => {
+      LOGGER.log(`Changed homebrewLuckRoll to ${value}`);
+    },
+  });
+
+  game.settings.register(game.system.id, "homebrewLuckRollVariant", {
+    name: "CPR.settings.homebrewLuckRollVariant.name",
+    hint: "CPR.settings.homebrewLuckRollVariant.hint",
+    scope: "world",
+    config: false,
+    type: String,
+    choices: {
+      max: "CPR.settings.homebrewLuckRollVariant.max",
+      current: "CPR.settings.homebrewLuckRollVariant.current",
+    },
+    default: "max",
+    onChange: (value) => {
+      LOGGER.log(`Changed homebrewLuckRollVariant to ${value}`);
+    },
   });
 
   game.settings.register(game.system.id, "moduleMigrationIds", {

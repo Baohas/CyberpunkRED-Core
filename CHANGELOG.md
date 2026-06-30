@@ -29,6 +29,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Make damage criticals configurable per weapon and per ammo (critical threshold, dice required, and bonus damage; ammo can override the weapon's rule)
 - Support `@`-roll-data references (e.g. `@stats.ref`) in roll formulas
 - Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
+- Add a "Homebrew Rules" settings menu with JonJon's optional Luck Roll: when enabled, clicking the LUCK stat rolls 1d10 under your LUCK (Roll Under Max or Roll Under Current), with a Success/Failure chat card; off by default
 
 ### Bug Fixes
 
