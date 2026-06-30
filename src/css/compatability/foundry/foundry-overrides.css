@@ -245,6 +245,7 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
   :is(.prosemirror, .editor-content) {
   font-family: var(--cpr-font-primary);
   color: var(--cpr-text-normal) !important;
+  background: var(--cpr-background-window);
 
   /* Normally we wouldn't use <strong> but it's how the WYSIWYG editor does bold, style this to be more semi-bold. */
   strong {
