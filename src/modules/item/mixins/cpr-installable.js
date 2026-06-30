@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import { cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog.js";
 
 const Installable = function Installable() {
   /**

@@ -1,7 +1,7 @@
 import LOGGER from "../utils/cpr-logger.js";
 import { CPRRoll, CPRDamageRoll, CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import { cprFormPrompt } from "../dialog/cpr-dialog-v2.js";
+import { cprFormPrompt } from "../dialog/cpr-dialog.js";
 
 const { renderTemplate } = foundry.applications.handlebars;
 

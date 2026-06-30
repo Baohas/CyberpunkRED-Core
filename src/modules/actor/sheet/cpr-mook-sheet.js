@@ -2,7 +2,7 @@ import CPRActorSheet from "./cpr-actor-sheet.js";
 import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 
 /**
  * Extend the basic CPRActorSheet. A lot of code is common between mooks and characters.

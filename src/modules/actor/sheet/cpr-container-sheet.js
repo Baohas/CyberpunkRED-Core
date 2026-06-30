@@ -3,7 +3,7 @@ import CPR from "../../system/config.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRItem from "../../item/cpr-item.js";
-import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 import { ContainerUtils } from "../../item/mixins/cpr-container.js";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;

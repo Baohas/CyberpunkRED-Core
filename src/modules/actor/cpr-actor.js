@@ -10,7 +10,7 @@ import CPRActorUtils from "../utils/ActorUtils.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
-import { cprConfirm, cprFormPrompt } from "../dialog/cpr-dialog-v2.js";
+import { cprConfirm, cprFormPrompt } from "../dialog/cpr-dialog.js";
 import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 /**

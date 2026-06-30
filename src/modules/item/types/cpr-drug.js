@@ -1,7 +1,7 @@
 import CPRItem from "../cpr-item.js";
 import Rules from "../../utils/cpr-rules.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import { cprConfirm } from "../../dialog/cpr-dialog-v2.js";
+import { cprConfirm } from "../../dialog/cpr-dialog.js";
 
 /**
  * Extend the base CPRItem object with things specific to drugs and consumables.

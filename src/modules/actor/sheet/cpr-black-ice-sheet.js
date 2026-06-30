@@ -2,7 +2,7 @@ import CPRChat from "../../chat/cpr-chat.js";
 import CPR from "../../system/config.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
-import { cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
