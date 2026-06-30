@@ -1,87 +1,14 @@
-form {
-  .notes,
-  .hint {
-    color: var(--cpr-text-foundry-hint) !important;
-  }
+/*
+ * These rules used to apply globally and, because our stylesheet outranked
+ * Foundry's, they re-themed core and other modules' windows too. Everything
+ * here is now scoped to CPR's own windows (sheets, dialogs, apps) and — for the
+ * deliberate journal exception — journal page content. Our stylesheet sits on
+ * the @system cascade layer (see src/system.json).
+ */
 
-  input {
-    &::placeholder {
-      color: var(--cpr-text-normal);
-      opacity: 0.6;
-    }
-
-    .number {
-      width: 1.875rem;
-    }
-  }
-
-  .form-group {
-    label {
-      color: var(--cpr-text-window) !important;
-    }
-  }
-
-  span.units {
-    color: var(--cpr-text-hint) !important;
-  }
-
-  .form-group.slim {
-    .form-fields {
-      label {
-        color: var(--cpr-text-hint) !important;
-      }
-    }
-  }
-
-  textarea:read-only {
-    color: var(--cpr-text-hint);
-  }
-
-  textarea {
-    color: var(--cpr-text-normal);
-  }
-}
-
-.filepicker .display-modes {
-  a {
-    background: var(--cpr-background-editor-button);
-  }
-
-  a.active {
-    background: var(--cpr-background-editor-button-selected);
-    text-shadow: var(--cpr-text-foundry-hover);
-  }
-}
-
-.filepicker .favorites .path {
-  background: var(--cpr-background-foundry-input);
-  color: var(--cpr-text-foundry-input);
-
-  a.link[data-source]::before {
-    color: var(--cpr-text-foundry-input);
-  }
-}
-
-.card-control {
-  color: var(--cpr-text-hint) !important;
-}
-
-/* User config pop out */
-.user-config {
-  font-family: var(--cpr-font-primary);
-
-  .window-content {
-    .directory-list {
-      background: var(--cpr-background-box) !important;
-      color: var(--cpr-text-normal) !important;
-    }
-  }
-}
-
-code {
-  background-color: var(--cpr-background-code);
-  padding: 0.125rem;
-}
+/****************
+ * CPR windows  *
+ ****************/
 
 .actor-sheet,
 .blackice-sheet,
@@ -91,14 +18,35 @@ code {
 .item-sheet,
 .mook-sheet {
   font-family: var(--cpr-font-primary);
+  color: var(--cpr-text-normal);
+  background: var(--cpr-background-window);
+
+  button {
+    color: var(--cpr-text-foundry-input);
+    background-color: var(--cpr-background-foundry-input);
+  }
+
+  select,
+  option,
+  optgroup {
+    color: var(--cpr-text-normal);
+    background: var(--cpr-background-window);
+  }
+
+  .entry-name,
+  .directory-list {
+    color: var(--cpr-text-dir-list);
+  }
 
   /* Undo Foundry Base Style settings for elements */
   img {
     border: none;
   }
 
-  ol li {
+  ol li,
+  ul li {
     list-style-type: none;
+    margin-bottom: 0;
   }
 
   a:hover {
@@ -115,113 +63,57 @@ code {
     box-shadow: none;
     min-width: unset;
     margin: 0;
+    padding: 0;
+    text-align: inherit;
     line-height: inherit;
     user-select: text;
     height: 100%;
     background: none;
 
-    &:hover {
-      color: var(--cpr-text-foundry-hover) !important;
-    }
+    /*
+     * Our sheets are always Foundry "theme-light", so Foundry colours these
+     * inputs with its light-theme (dark) text colour. Drive them from our own
+     * theme variable instead, so input values (name, role, HP/Humanity, stats,
+     * skill levels, …) follow the CPR theme — light in dark mode, dark in light.
+     */
+    color: var(--cpr-text-normal);
+  }
+
+  input::placeholder {
+    color: var(--cpr-text-normal);
+    opacity: 0.6;
+  }
+
+  /* Inline code in our own windows (Foundry styles its own code elsewhere). */
+  code {
+    background-color: var(--cpr-background-code);
+    padding: 0.125rem;
   }
 }
 
-option,
-optgroup {
-  background: var(--cpr-background-window);
-}
-
-#invitation-links .connection.closed {
-  color: var(--cpr-text-icon-highlight);
-}
-
-#module-management {
-  label {
-    color: var(--cpr-text-icon-normal) !important;
-  }
-}
-
-#keybindings {
-  .binding {
-    .key.uneditable {
-      background: var(--cpr-background-row-odd);
-    }
-  }
-}
-
-#actors-popout,
-#cards-popout,
-#chat-popout,
-#combat-popout,
-#compendium-popout,
-#items-popout,
-#journal-popout,
-#playlists-popout,
-#scenes-popout,
-#settings-popout,
-#tables-popout,
-#macros-popout,
-#ui-right {
-  color: var(--cpr-text-header);
-
-  button {
-    color: var(--cpr-text-foundry-input);
-    background-color: var(--cpr-background-foundry-input);
-  }
-}
-
-#chat-form {
-  textarea {
-    background: none;
-    color: var(--cpr-text-foundry-input);
-    background-color: var(--cpr-background-foundry-input);
-  }
-}
-
-#chat-controls {
-  .roll-type-select {
-    color: var(--cpr-text-foundry-input);
-    background-color: var(--cpr-background-foundry-input);
-  }
-}
-
-input[type="text"],
-input[type="number"],
-input[type="password"],
-input[type="date"],
-input[type="time"],
-input[type="search"],
-input,
-select,
-button,
-.sidebar-tab .directory-header .header-search input,
-.dialog .dialog-buttons button,
-.dialog .dialog-buttons button.default {
-  color: var(--cpr-text-foundry-input);
-  background: var(--cpr-background-foundry-input);
-}
-
-input::placeholder {
-  color: var(--cpr-text-normal);
-}
-
-.header-search {
-  input {
-    background: var(--cpr-background-foundry-input) !important;
-  }
+/* Inline code in journal page content (journal exception). */
+.journal-entry-content code,
+.journal-page-content code,
+.journal-sheet-container code {
+  background-color: var(--cpr-background-code);
+  padding: 0.125rem;
 }
 
 /****************************
  * Application V2 Overrides *
  ****************************/
 
-html[data-cpr-theme="default"] .application {
-  a {
-    color: var(--cpr-color-red);
-  }
+/*
+ * These target our own ApplicationV2 windows only (the migration dialog and the
+ * compendia settings app). CPR sheets and dialogs are ApplicationV1
+ * (.window-app) and style their own links/inputs, so they must NOT be included
+ * here — doing so turns every rollable <a> header (stats, box labels, tabs) red.
+ */
+html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
+  color: var(--cpr-color-red);
 }
 
-[data-cpr-theme="dark"] .theme-dark .application {
+[data-cpr-theme="dark"] :is(.cpr-migration-dialog, #compendia-config) {
   input[type="checkbox"]::before {
     color: var(--cpr-color-light-grey);
   }
@@ -232,46 +124,29 @@ html[data-cpr-theme="default"] .application {
 }
 
 /*
- * As of V12 Foundry has it's own dark/light mode based on the browser. In cases
- * where the user in in dark mode and the system is in light mode we want to correct
- * the styling for Foundry specific menus.
- */
-html[data-cpr-theme="default"] body.theme-dark {
-  form.region-config {
-    label {
-      color: var(--cpr-dark-text-main) !important;
-    }
-
-    .hint {
-      color: var(--cpr-text-foundry-hint) !important;
-    }
-  }
-}
-
-html[data-cpr-theme="dark"] body.theme-light {
-  form.region-config {
-    label {
-      color: var(--cpr-color-black) !important;
-    }
-
-    .hint {
-      color: var(--cpr-color-near-black) !important;
-    }
-  }
-}
-
-/*
  * Prosemirror Overrides
  *
  * .prosemirror gets a lot of styling from the Journals section below as well
  * the rules here are specific to the editor that don't have styles in the
- * Journal section itself. If the Foundry devs use prosemirror for other editor
- * fields down the line we will need port them to this section or extend the
- * Journal section below to apply to other classes as well.
+ * Journal section itself. Scoped to our own windows and journal page content so
+ * Foundry's and other modules' editors are left alone.
  */
 
-.prosemirror,
-.prosemirror.menu-dialog {
+:is(
+    .actor-sheet,
+    .blackice-sheet,
+    .container-sheet,
+    .demon-sheet,
+    .dialog-sheet,
+    .item-sheet,
+    .mook-sheet,
+    .cpr-migration-dialog,
+    .releasenotes,
+    .journal-entry-content,
+    .journal-page-content,
+    .journal-sheet-container
+  )
+  :is(.prosemirror, .prosemirror.menu-dialog) {
   form {
     color: var(--cpr-text-normal);
     background: var(--cpr-background-box);
@@ -321,22 +196,26 @@ html[data-cpr-theme="dark"] body.theme-light {
   }
 }
 
-.editor.prosemirror {
+:is(
+    .actor-sheet,
+    .blackice-sheet,
+    .container-sheet,
+    .demon-sheet,
+    .dialog-sheet,
+    .item-sheet,
+    .mook-sheet,
+    .cpr-migration-dialog,
+    .releasenotes,
+    .journal-entry-content,
+    .journal-page-content,
+    .journal-sheet-container
+  )
+  .editor.prosemirror {
   min-height: 10rem;
 }
 
-/* Override the content link element use when linking to another foundry actor, item etc. */
-.content-link {
-  background: var(--cpr-background-content-link) !important;
-  color: var(--cpr-text-normal);
-
-  i::before {
-    color: var(--cpr-text-normal);
-  }
-}
-
 /*
- * Journals
+ * Journals (journal page content is a deliberate exception we keep theming).
  */
 
 /* This is not in the general journal divs as you would expect */
@@ -350,21 +229,27 @@ html[data-cpr-theme="dark"] body.theme-light {
 }
 
 /*
- * TextEditor/Prosemirror Overides
+ * TextEditor/Prosemirror Overides — journal page content plus rich-text inside
+ * our own windows.
  */
-
-.journal-entry-content {
-  background: var(--cpr-background-box) !important;
-}
-
-.prosemirror,
-.editor-content,
 .releasenotes,
 .journal-entry-content,
 .journal-page-content,
-.journal-sheet-container {
+.journal-sheet-container,
+:is(
+    .actor-sheet,
+    .blackice-sheet,
+    .container-sheet,
+    .demon-sheet,
+    .dialog-sheet,
+    .item-sheet,
+    .mook-sheet,
+    .cpr-migration-dialog
+  )
+  :is(.prosemirror, .editor-content) {
   font-family: var(--cpr-font-primary);
   color: var(--cpr-text-normal) !important;
+  background: var(--cpr-background-window);
 
   /* Normally we wouldn't use <strong> but it's how the WYSIWYG editor does bold, style this to be more semi-bold. */
   strong {
@@ -570,16 +455,4 @@ html[data-cpr-theme="dark"] body.theme-light {
     border-radius: 0.313rem;
     margin: 0.313rem 0;
   }
-}
-
-/*
- * Tooltips, accessed via the `data-tooltip` element
- */
-#tooltip {
-  font-family: var(--cpr-font-primary);
-  padding: 0.313rem 0.626rem;
-  border: 0;
-  border-radius: 0;
-  background: var(--cpr-background-header);
-  clip-path: polygon(0 0.626rem, 0 100%, 100% 100%, 100% 0, 0.626rem 0);
 }

@@ -28,6 +28,13 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Add a `dmg` damage marker modifier that drives the damage card and apply-damage controls and flags critical damage
 - Make damage criticals configurable per weapon and per ammo (critical threshold, dice required, and bonus damage; ammo can override the weapon's rule)
 - Support `@`-roll-data references (e.g. `@stats.ref`) in roll formulas
+- Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
+
+### Bug Fixes
+
+- Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
+- Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
+- Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
 
 ## Version 0.92.4
 

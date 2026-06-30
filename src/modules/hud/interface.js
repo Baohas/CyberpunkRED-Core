@@ -1,5 +1,4 @@
-import CPRDialog from "../dialog/cpr-dialog-application.js";
-import LOGGER from "../utils/cpr-logger.js";
+import { cprFormPrompt } from "../dialog/cpr-dialog.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
@@ -21,19 +20,16 @@ export default class HudInterface {
     );
 
     // Show "Set DV" dialog.
-    const formData = await CPRDialog.showDialog(
-      {
+    const formData = await cprFormPrompt({
+      data: {
         dvTables,
         dvTable:
           tokenData.flags[game.system.id]?.cprDvTable?.name || dvTables[0].name,
       },
-      // Set the options for the dialog.
-      {
-        title: SystemUtils.Localize("CPR.dialog.dv.hudPromptTitle"),
-        template: `systems/${game.system.id}/templates/dialog/hud/cpr-dv-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+      title: SystemUtils.Localize("CPR.dialog.dv.hudPromptTitle"),
+      template: `systems/${game.system.id}/templates/dialog/hud/cpr-dv-prompt.hbs`,
+    });
+    if (!formData) {
       return;
     }
     if (formData.dvTable === null) {

@@ -26,9 +26,6 @@
     </select>
   </div>
 </li>
-{{#if (cprCompare item.system.class "!==" "defender") }}
-  <hr/>
-{{/if}}
 {{!-- Black ICE Configuration--}}
 {{#if (cprCompare item.system.class "===" "blackice") }}
   <li class="item flexrow">
@@ -86,7 +83,6 @@
           </div>
         </li>
       {{/if}}
-      <hr/>
     {{/if}}
     {{#if (cprCompare item.system.class "===" "blackice") }}
       {{!-- Program PER--}}

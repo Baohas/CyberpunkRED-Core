@@ -1,7 +1,8 @@
 import CPRActorSheet from "./cpr-actor-sheet.js";
+import CPR from "../../system/config.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 
 /**
  * Extend the basic CPRActorSheet. A lot of code is common between mooks and characters.
@@ -18,36 +19,35 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    *
    * @override
    */
-  static get defaultOptions() {
-    const resizeCPRSheets = game.settings.get(
-      game.system.id,
-      "resizeCPRSheets",
-    );
-
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      height: resizeCPRSheets ? 600 : "auto",
-      resizable: true,
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    position: {
       width: 800,
-    });
-  }
+      height: 600,
+    },
+  };
+
+  /** @inheritDoc */
+  static PARTS = {
+    // template chosen per-instance in _configureRenderParts (full vs limited view).
+    form: { template: "" },
+  };
 
   /**
-   * Mooks have a separate template when a user only has a "limited" permission level for it.
-   * This is how details are obscured from those players, we simply do not render them.
-   * Yes, they can still find this information in game.actors and the Foundry development
-   * community does not really view this as a problem.
-   *
-   * https://discord.com/channels/170995199584108546/596076404618166434/864673619098730506
+   * Mooks have a separate template when a user only has "limited" permission, so
+   * details are simply not rendered for those players.
    *
    * @override
-   * @property
-   * @returns {String} - path to a handlebars template
+   * @param {object} options
+   * @returns {object}
    */
-  get template() {
-    if (!game.user.isGM && this.actor.limited) {
-      return `systems/${game.system.id}/templates/actor/cpr-mook-sheet-limited.hbs`;
-    }
-    return `systems/${game.system.id}/templates/actor/cpr-mook-sheet.hbs`;
+  _configureRenderParts(options) {
+    const parts = super._configureRenderParts(options);
+    parts.form.template =
+      !game.user.isGM && this.actor.limited
+        ? `systems/${CPR.systemId}/templates/actor/cpr-mook-sheet-limited.hbs`
+        : `systems/${CPR.systemId}/templates/actor/cpr-mook-sheet.hbs`;
+    return parts;
   }
 
   /**
@@ -57,8 +57,8 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @override
    * @returns {Object} data - a curated structure of actorSheet data
    */
-  async getData() {
-    const foundryData = await super.getData();
+  async _prepareContext(options) {
+    const foundryData = await super._prepareContext(options);
     const cprActorData = foundryData.actor.system;
     cprActorData.equippedArmor = this.actor.itemTypes.armor.filter(
       (item) => item.system.equipped === "equipped",
@@ -75,7 +75,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     );
     cprActorData.equippedWeapons =
       cprActorData.equippedWeapons.concat(installedWeapons);
-    foundryData.data.system = cprActorData;
+    foundryData.system = cprActorData;
     return foundryData;
   }
 
@@ -86,22 +86,25 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @override
    * @param {Object} html - the DOM object
    */
-  activateListeners(html) {
-    super.activateListeners(html);
-    html.find(".mod-mook-skill").click(() => this._modMookSkills());
-    html.find(".change-mook-name").click(() => this._changeMookName());
-    html
-      .find(".mook-image-toggle")
-      .click((event) => this._expandMookImage(event));
+  _onRender(context, options) {
+    super._onRender(context, options);
 
-    // If the element is "changeable", check for a keydown action and handle the key press.
-    html.find(".changeable").hover((event) => $(event.currentTarget).focus());
-    html.find(".changeable").keydown((event) => this._handleKeyPress(event));
+    this._on(".mod-mook-skill", "click", () => this._modMookSkills());
+    this._on(".change-mook-name", "click", () => this._changeMookName());
+    this._on(".mook-image-toggle", "click", (event) =>
+      this._expandMookImage(event),
+    );
 
-    // If the element is "installable", await mouse click and process the event
-    html
-      .find(".installable")
-      .click((event) => this._handleInstallAction(event));
+    // "changeable" elements focus on hover and handle key presses.
+    this._on(".changeable", "mouseenter", (event) =>
+      event.currentTarget.focus(),
+    );
+    this._on(".changeable", "keydown", (event) => this._handleKeyPress(event));
+
+    // "installable" elements process a click.
+    this._on(".installable", "click", (event) =>
+      this._handleInstallAction(event),
+    );
   }
 
   /**
@@ -133,14 +136,12 @@ export default class CPRMookActorSheet extends CPRActorSheet {
     });
 
     // Pop up the form with embedded skill details.
-    const formData = await CPRDialog.showDialog(
-      foundry.utils.duplicate(skillObj),
-      {
-        title: "CPR.mookSheet.dialog.modSkillTitle",
-        template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    const formData = await cprFormPrompt({
+      data: foundry.utils.duplicate(skillObj),
+      title: SystemUtils.Localize("CPR.mookSheet.dialog.modSkillTitle"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-mod-mook-skill-prompt.hbs`,
+    });
+    if (!formData) {
       return;
     }
 
@@ -186,15 +187,12 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    */
   async _changeMookName() {
     // Show "Mook Name" dialog.
-    const dialogData = await CPRDialog.showDialog(
-      { name: this.actor.name },
-      // Set the options for the dialog.
-      {
-        title: SystemUtils.Localize("CPR.mookSheet.dialog.modNameTitle"),
-        template: `systems/${game.system.id}/templates/dialog/cpr-mook-name-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (dialogData === undefined) {
+    const dialogData = await cprFormPrompt({
+      data: { name: this.actor.name },
+      title: SystemUtils.Localize("CPR.mookSheet.dialog.modNameTitle"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-mook-name-prompt.hbs`,
+    });
+    if (!dialogData) {
       return;
     }
     if (!this.isToken) {
@@ -212,30 +210,28 @@ export default class CPRMookActorSheet extends CPRActorSheet {
    * @param {Object} event - event data such as a mouse click or key press
    */
   _expandMookImage(event) {
-    const mookImageArea = $(event.currentTarget).parents(".mook-image");
-    const mookImageImg = $(event.currentTarget)
-      .parents(".mook-image")
-      .children(".mook-image-block");
-    const mookImageToggle = $(event.currentTarget);
+    const mookImageToggle = event.currentTarget;
+    const mookImageArea = mookImageToggle.closest(".mook-image");
+    const mookImageImg = mookImageArea?.querySelector(
+      ":scope > .mook-image-block",
+    );
     let collapsedImage = null;
     if (
-      mookImageToggle.attr("data-text") ===
+      mookImageToggle.dataset.text ===
       SystemUtils.Localize("CPR.mookSheet.image.collapse")
     ) {
-      mookImageToggle.attr(
-        "data-text",
-        SystemUtils.Localize("CPR.mookSheet.image.expand"),
+      mookImageToggle.dataset.text = SystemUtils.Localize(
+        "CPR.mookSheet.image.expand",
       );
       collapsedImage = true;
     } else {
-      mookImageToggle.attr(
-        "data-text",
-        SystemUtils.Localize("CPR.mookSheet.image.collapse"),
+      mookImageToggle.dataset.text = SystemUtils.Localize(
+        "CPR.mookSheet.image.collapse",
       );
       collapsedImage = false;
     }
-    mookImageArea.toggleClass("mook-image-small-toggle");
-    mookImageImg.toggleClass("hide");
+    mookImageArea?.classList.toggle("mook-image-small-toggle");
+    mookImageImg?.classList.toggle("hide");
     const cprActorData = foundry.utils.duplicate(this.actor.system);
     cprActorData.flags.collapsedImage = collapsedImage;
     this.actor.update(cprActorData);
@@ -282,12 +278,10 @@ export default class CPRMookActorSheet extends CPRActorSheet {
               "CPR.dialog.removeCyberware.text",
             )} ${item.name}?`;
 
-            // Show "Default" dialog.
-            const confirmRemove = await CPRDialog.showDialog(
-              { dialogMessage },
-              // Set the options for the dialog.
-              { title: dialogTitle },
-            ).catch((err) => LOGGER.debug(err));
+            // Show confirmation dialog.
+            const confirmRemove = await cprConfirm(dialogMessage, {
+              title: dialogTitle,
+            });
             if (!confirmRemove) return;
 
             await this.actor.uninstallCyberware(itemId, foundationalId, true);
@@ -302,7 +296,9 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       }
     } else if (event.keyCode === 18) {
       LOGGER.debug("ALT key was pressed");
-      $(".skill-name").hide();
+      this.element.querySelectorAll(".skill-name").forEach((el) => {
+        el.style.display = "none";
+      });
     }
   }
 
@@ -338,12 +334,10 @@ export default class CPRMookActorSheet extends CPRActorSheet {
             "CPR.dialog.removeCyberware.text",
           )} ${item.name}?`;
 
-          // Show "Default" dialog.
-          const confirmRemove = await CPRDialog.showDialog(
-            { dialogMessage },
-            // Set the options for the dialog.
-            { title: dialogTitle },
-          ).catch((err) => LOGGER.debug(err));
+          // Show confirmation dialog.
+          const confirmRemove = await cprConfirm(dialogMessage, {
+            title: dialogTitle,
+          });
           if (!confirmRemove) return;
 
           await this.actor.uninstallCyberware(itemId, foundationalId, true);

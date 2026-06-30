@@ -2,13 +2,16 @@ import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
 import { CPRRoll } from "../../rolls/cpr-rolls.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
+import CPRSheetUtils from "../../utils/SheetUtils.js";
+import selectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 import RoleAbilitySchema from "../../datamodels/item/components/role-ability-schema.js";
 import { ContainerUtils } from "../mixins/cpr-container.js";
 
-const { ItemSheet } = foundry.appv1.sheets;
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ItemSheetV2 } = foundry.applications.sheets;
+const { Tabs } = foundry.applications.ux;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 /**
@@ -16,45 +19,55 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
  * @extends {ItemSheet}
  */
 
-export default class CPRItemSheet extends ItemSheet {
-  /* -------------------------------------------- */
-  /** @override */
-  static get defaultOptions() {
-    const resizeCPRSheets = game.settings.get(
-      game.system.id,
-      "resizeCPRSheets",
-    );
-
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      height: resizeCPRSheets ? 400 : "auto",
-      resizable: true,
-      tabs: [
-        {
-          contentSelector: ".item-bottom-content-section",
-          initial: "item-description",
-          navSelector: ".navtabs-item",
-        },
-      ],
+export default class CPRItemSheet extends HandlebarsApplicationMixin(
+  ItemSheetV2,
+) {
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    classes: ["cpr", "item"],
+    position: {
       width: 715,
-    });
-  }
+      height: 400,
+    },
+    window: {
+      resizable: true,
+      contentClasses: ["cpr-sheet-content"],
+    },
+    form: {
+      submitOnChange: true,
+      closeOnSubmit: false,
+    },
+  };
 
-  // eslint-disable-next-line class-methods-use-this
-  get template() {
-    return `systems/${game.system.id}/templates/item/cpr-item-sheet.hbs`;
-  }
+  /** @inheritDoc */
+  static PARTS = {
+    form: {
+      template: `systems/${CPR.systemId}/templates/item/cpr-item-sheet.hbs`,
+    },
+  };
 
-  get classes() {
-    return super.defaultOptions.classes.concat([
-      "sheet",
-      "item",
-      `${this.item.type}`,
-    ]);
+  /**
+   * Add the per-type class to the sheet root (item CSS keys off `.item.weapon`,
+   * `.item.role`, etc.).
+   *
+   * @override
+   * @param {object} options
+   * @returns {object}
+   */
+  _initializeApplicationOptions(options) {
+    const applied = super._initializeApplicationOptions(options);
+    const type = options.document?.type;
+    if (type) applied.classes.push(type);
+    return applied;
   }
 
   /** @override */
-  async getData() {
-    const foundryData = await super.getData();
+  async _prepareContext(options) {
+    const foundryData = await super._prepareContext(options);
+    foundryData.item = this.item;
+    foundryData.system = this.item.system;
+    foundryData.owner = this.item.isOwner;
+    foundryData.editable = this.isEditable;
     const cprData = {};
     cprData.isGM = game.user.isGM;
     const itemType = foundryData.item.type;
@@ -63,9 +76,9 @@ export default class CPRItemSheet extends ItemSheet {
       // relativeSkills and relativeAmmo will be other items relevant to this one.
       // For owned objects, the item list will come from the character owner
       // For unowned objects, the item list will come from the core list of objects
-      if (foundryData.item.isOwned && this.object.actor.type !== "container") {
-        cprData.relativeSkills = this.object.actor.itemTypes.skill;
-        cprData.relativeAmmo = this.object.actor.itemTypes.ammo;
+      if (foundryData.item.isOwned && this.item.actor.type !== "container") {
+        cprData.relativeSkills = this.item.actor.itemTypes.skill;
+        cprData.relativeAmmo = this.item.actor.itemTypes.ammo;
       } else {
         const coreSkills = await SystemUtils.GetCoreSkills();
         const worldSkills = game.items.filter((i) => i.type === "skill");
@@ -273,67 +286,68 @@ export default class CPRItemSheet extends ItemSheet {
 
   /* -------------------------------------------- */
   /** @override */
-  activateListeners(html) {
-    super.activateListeners(html);
-    if (!this.options.editable) return;
+  _onRender(context, options) {
+    super._onRender(context, options);
+    const root = this.element;
 
-    // Select all text when grabbing text input.
-    $("input[type=text]").focusin(() => $(this).select());
+    // Bind the (custom-markup) tab controller; preserve the active tab across renders.
+    new Tabs({
+      navSelector: ".navtabs-item",
+      contentSelector: ".item-bottom-content-section",
+      initial: this.#activeTab,
+      callback: (event, tabs, active) => {
+        this.#activeTab = active;
+      },
+    }).bind(root);
 
-    // generic listeners
-    html
-      .find(".item-checkbox")
-      .click((event) => this._itemCheckboxToggle(event));
+    // Size the item-type chips (e.g. in container contents) to their widest
+    // content, once layout settles. See CPRActorSheet._onRender.
+    window.requestAnimationFrame(() => {
+      CPRSheetUtils.setCssClassWidth(this.element, ".type-tag");
+    });
 
-    html
-      .find(".item-multi-option")
-      .click((event) => this._itemMultiOption(event));
+    if (!this.isEditable) return;
 
-    html
-      .find(".select-compatible-ammo")
-      .click(() => this._selectCompatibleAmmo());
+    const on = (selector, evt, handler) =>
+      root
+        .querySelectorAll(selector)
+        .forEach((el) => el.addEventListener(evt, handler));
 
-    html
-      .find(".netarch-level-action")
-      .click((event) => this._netarchLevelAction(event));
+    // Select all text when focusing a text input.
+    root
+      .querySelectorAll('input[type="text"]')
+      .forEach((input) =>
+        input.addEventListener("focusin", () => input.select()),
+      );
 
-    html
-      .find(".netarch-roll-level")
-      .click(() => this._netarchGenerateFromTables());
-
-    html
-      .find(".role-ability-action")
-      .click((event) => this._roleAbilityAction(event));
-
-    html
-      .find(".select-role-bonuses")
-      .click((event) => this._selectRoleBonuses(event));
-
-    html
-      .find(".manage-installed-programs")
-      .click(() => this._manageInstalledItems("program"));
-
-    html
-      .find(".manage-installed-upgrades")
-      .click(() => this._manageInstalledItems("itemUpgrade"));
-
-    html
-      .find(".manage-installed-items")
-      .click(() => this._manageInstalledItems());
-
-    html
-      .find(".uninstall-single-item")
-      .click((event) => this._uninstallSingleItem(event));
-
-    html
-      .find(".item-view")
-      .click((event) => this._renderReadOnlyItemCard(event));
-
-    html
-      .find(".manage-installable-types")
-      .click((event) => this._manageInstallableTypes(event));
-
-    html.find(".netarch-generate-auto").click(() => {
+    on(".item-checkbox", "click", (event) => this._itemCheckboxToggle(event));
+    on(".item-multi-option", "click", (event) => this._itemMultiOption(event));
+    on(".select-compatible-ammo", "click", () => this._selectCompatibleAmmo());
+    on(".netarch-level-action", "click", (event) =>
+      this._netarchLevelAction(event),
+    );
+    on(".netarch-roll-level", "click", () => this._netarchGenerateFromTables());
+    on(".role-ability-action", "click", (event) =>
+      this._roleAbilityAction(event),
+    );
+    on(".select-role-bonuses", "click", (event) =>
+      this._selectRoleBonuses(event),
+    );
+    on(".manage-installed-programs", "click", () =>
+      this._manageInstalledItems("program"),
+    );
+    on(".manage-installed-upgrades", "click", () =>
+      this._manageInstalledItems("itemUpgrade"),
+    );
+    on(".manage-installed-items", "click", () => this._manageInstalledItems());
+    on(".uninstall-single-item", "click", (event) =>
+      this._uninstallSingleItem(event),
+    );
+    on(".item-view", "click", (event) => this._renderReadOnlyItemCard(event));
+    on(".manage-installable-types", "click", (event) =>
+      this._manageInstallableTypes(event),
+    );
+    on(".netarch-generate-auto", "click", () => {
       if (game.user.isGM) {
         this.item._generateNetarchScene();
       } else {
@@ -343,8 +357,7 @@ export default class CPRItemSheet extends ItemSheet {
         );
       }
     });
-
-    html.find(".netarch-generate-custom").click(() => {
+    on(".netarch-generate-custom", "click", () => {
       if (game.user.isGM) {
         this.item._customize();
       } else {
@@ -354,22 +367,19 @@ export default class CPRItemSheet extends ItemSheet {
         );
       }
     });
-
-    html
-      .find(".netarch-item-link")
-      .click((event) => this._openItemFromId(event));
+    on(".netarch-item-link", "click", (event) => this._openItemFromId(event));
 
     // Active Effects listener
-    html
-      .find(".effect-control")
-      .click((event) => this.item.manageEffects(event));
+    on(".effect-control", "click", (event) => this.item.manageEffects(event));
 
     // Change things when the "usage" for active effects changes
-    html.find(".set-usage").change((event) => this._setUsage(event));
+    on(".set-usage", "change", (event) => this._setUsage(event));
 
     // Set up right click context menu when clicking on Item's image
-    this._createItemImageContextMenu(html);
+    this._createItemImageContextMenu(root);
   }
+
+  #activeTab = "item-description";
 
   /*
   INTERNAL METHODS BELOW HERE
@@ -391,9 +401,8 @@ export default class CPRItemSheet extends ItemSheet {
   async _itemMultiOption(event) {
     const cprItem = foundry.utils.duplicate(this.item);
     // the target the option wants to be put into
-    const target = $(event.currentTarget)
-      .parents(".item-multi-select")
-      .attr("data-target");
+    const target =
+      event.currentTarget.closest(".item-multi-select").dataset.target;
     const value = SystemUtils.GetEventDatum(event, "data-value");
     if (foundry.utils.hasProperty(cprItem, target)) {
       const prop = foundry.utils.getProperty(cprItem, target);
@@ -419,11 +428,12 @@ export default class CPRItemSheet extends ItemSheet {
       selectedAmmo: cprItemData.ammoVariety,
     };
     // Show "Select Compatible Ammo" prompt.
-    formData = await CPRDialog.showDialog(formData, {
+    formData = await cprFormPrompt({
+      data: formData,
       title: SystemUtils.Localize("CPR.dialog.selectCompatibleAmmo.title"),
       template: `systems/${game.system.id}/templates/dialog/cpr-select-compatible-ammo-prompt.hbs`,
-    }).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    });
+    if (!formData) {
       return;
     }
     if (formData.selectedAmmo) {
@@ -443,7 +453,7 @@ export default class CPRItemSheet extends ItemSheet {
     const coreSkills = await SystemUtils.GetCoreSkills(); // Get core skills.
     const customSkills = game.items.filter((i) => i.type === "skill"); // Get any custom skills.
     // If object is owned, get all skills on actor. If not, get all skills in system.
-    const allSkills = this.object.isOwned
+    const allSkills = this.item.isOwned
       ? this.actor.itemTypes.skill
       : coreSkills
           .concat(customSkills)
@@ -467,10 +477,8 @@ export default class CPRItemSheet extends ItemSheet {
     };
 
     // Call dialog and await results. Return if dialog is cancelled.
-    dialogData = await SelectRoleBonuses.showDialog(dialogData).catch((err) =>
-      LOGGER.debug(err),
-    );
-    if (dialogData === undefined) {
+    dialogData = await selectRoleBonuses(dialogData);
+    if (!dialogData) {
       return;
     }
 
@@ -489,17 +497,14 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _netarchGenerateFromTables() {
     // Show "Netarch Rolltable Generation" Prompt.
-    const formData = await CPRDialog.showDialog(
-      {},
-      // Set options for dialog.
-      {
-        title: SystemUtils.Localize(
-          "CPR.dialog.netArchitectureRolltableSelection.title",
-        ),
-        template: `systems/${game.system.id}/templates/dialog/cpr-netarch-rolltable-generation-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    const formData = await cprFormPrompt({
+      data: {},
+      title: SystemUtils.Localize(
+        "CPR.dialog.netArchitectureRolltableSelection.title",
+      ),
+      template: `systems/${game.system.id}/templates/dialog/cpr-netarch-rolltable-generation-prompt.hbs`,
+    });
+    if (!formData) {
       return;
     }
     const tableSetting = game.settings.get(
@@ -679,14 +684,10 @@ export default class CPRItemSheet extends ItemSheet {
           "CPR.netArchitecture.floor.deleteConfirmation",
         )}?`;
 
-        // Show "Default" dialog.
-        const confirmDelete = await CPRDialog.showDialog(
-          { dialogMessage },
-          // Set the options for the dialog.
-          {
-            title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-          },
-        ).catch((err) => LOGGER.debug(err));
+        // Show confirmation dialog.
+        const confirmDelete = await cprConfirm(dialogMessage, {
+          title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
+        });
         if (!confirmDelete) {
           return;
         }
@@ -875,13 +876,13 @@ export default class CPRItemSheet extends ItemSheet {
         returnType: "string",
       };
       // Show "NetArch Level" dialog.
-      formData = await CPRDialog.showDialog(formData, {
-        // Set the options for the dialog.
+      formData = await cprFormPrompt({
+        data: formData,
         title: SystemUtils.Localize("CPR.dialog.netArchitectureNewFloor.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-netarch-level-prompt.hbs`,
         width: "330px",
-      }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
+      });
+      if (!formData) {
         return;
       }
 
@@ -1048,14 +1049,14 @@ export default class CPRItemSheet extends ItemSheet {
         };
 
         // Show "NetArch Level" dialog.
-        formData = await CPRDialog.showDialog(formData, {
-          // Set the options for the dialog.
+        formData = await cprFormPrompt({
+          data: formData,
           title: SystemUtils.Localize(
             "CPR.dialog.netArchitectureNewFloor.title",
           ),
           template: `systems/${game.system.id}/templates/dialog/cpr-netarch-level-prompt.hbs`,
-        }).catch((err) => LOGGER.debug(err));
-        if (formData === undefined) {
+        });
+        if (!formData) {
           return;
         }
 
@@ -1135,7 +1136,7 @@ export default class CPRItemSheet extends ItemSheet {
 
     const coreSkills = await SystemUtils.GetCoreSkills();
     const customSkills = game.items.filter((i) => i.type === "skill");
-    const allSkills = this.object.isOwned
+    const allSkills = this.item.isOwned
       ? this.actor.itemTypes.skill
       : coreSkills
           .concat(customSkills)
@@ -1151,12 +1152,12 @@ export default class CPRItemSheet extends ItemSheet {
     };
     if (action === "create") {
       // Show "Role Ability" dialog.
-      formData = await CPRDialog.showDialog(formData, {
-        // Set options for dialog.
+      formData = await cprFormPrompt({
+        data: formData,
         title: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-role-ability-prompt.hbs`,
-      }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
+      });
+      if (!formData) {
         return;
       }
 
@@ -1181,14 +1182,10 @@ export default class CPRItemSheet extends ItemSheet {
           "CPR.dialog.deleteConfirmation.message",
         )} ${SystemUtils.Localize("CPR.itemSheet.role.deleteConfirmation")}?`;
 
-        // Show "Default" dialog.
-        const confirmDelete = await CPRDialog.showDialog(
-          { dialogMessage },
-          // Set the options for the dialog.
-          {
-            title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
-          },
-        ).catch((err) => LOGGER.debug(err));
+        // Show confirmation dialog.
+        const confirmDelete = await cprConfirm(dialogMessage, {
+          title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
+        });
         if (!confirmDelete) {
           return;
         }
@@ -1209,12 +1206,12 @@ export default class CPRItemSheet extends ItemSheet {
       };
 
       // Show "Role Ability" dialog.
-      formData = await CPRDialog.showDialog(formData, {
-        // Set options for dialog.
+      formData = await cprFormPrompt({
+        data: formData,
         title: SystemUtils.Localize("CPR.dialog.createEditRoleAbility.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-role-ability-prompt.hbs`,
-      }).catch((err) => LOGGER.debug(err));
-      if (formData === undefined) {
+      });
+      if (!formData) {
         return;
       }
 
@@ -1340,11 +1337,12 @@ export default class CPRItemSheet extends ItemSheet {
     };
 
     // Show "Select Install Items" prompt.
-    formData = await CPRDialog.showDialog(formData, {
+    formData = await cprFormPrompt({
+      data: formData,
       title: dialogPromptTitle,
       template: `systems/${game.system.id}/templates/dialog/cpr-select-install-items-prompt.hbs`,
-    }).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    });
+    if (!formData) {
       return {};
     }
 
@@ -1433,14 +1431,12 @@ export default class CPRItemSheet extends ItemSheet {
 
   async _manageInstallableTypes() {
     // Show "Manage Installable Types" prompt.
-    const formData = await CPRDialog.showDialog(
-      { selectedTypes: this.item.system.installedItems.allowedTypes },
-      {
-        title: SystemUtils.Localize("CPR.dialog.manageItemTypes.title"),
-        template: `systems/${game.system.id}/templates/dialog/cpr-manage-installable-types-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    const formData = await cprFormPrompt({
+      data: { selectedTypes: this.item.system.installedItems.allowedTypes },
+      title: SystemUtils.Localize("CPR.dialog.manageItemTypes.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-manage-installable-types-prompt.hbs`,
+    });
+    if (!formData) {
       return;
     }
     const allowedTypes = formData.selectedTypes.filter((t) => t);

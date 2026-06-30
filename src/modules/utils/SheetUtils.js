@@ -12,46 +12,73 @@ export default class CPRSheetUtils {
    * measuring their width, and then applying this maximum width to all
    * elements in rem units.
    *
-   * @param {Object} html - The jQuery HTML context in which to find and adjust
-   *                        '.type-tag' elements.
-   * @param {String} cssClass - The CSS class to target
+   * @param {HTMLElement} element - The sheet's root element in which to find
+   *                                and adjust the matching elements.
+   * @param {String} cssClass - The CSS selector to target
    */
-  static setCssClassWidth(html, cssClass) {
-    const typeTags = html.find(cssClass);
+  static setCssClassWidth(element, cssClass) {
+    if (!(element instanceof HTMLElement)) return;
+    const typeTags = Array.from(element.querySelectorAll(cssClass));
+    if (!typeTags.length) return;
 
-    // As some elements might be hidden on other tabs or under expandos we need
-    // to clone them and append them to the body to measure their width.
-    const clonedElements = typeTags
-      .clone()
-      .css({
-        position: "absolute",
-        visibility: "hidden",
-        display: "block",
-      })
-      .appendTo("body");
+    const maxWidth = CPRSheetUtils._measureMaxContentWidth(typeTags);
+    if (maxWidth <= 0) return;
 
-    // Measure the widths of these cloned elements with a named function
-    const maxWidth = Math.max(
-      ...clonedElements
-        .map(function measureWidth() {
-          return $(this).width();
-        })
-        .get(),
+    // Convert the maxWidth from px to rem and apply it to every element so they
+    // share a uniform width equal to the widest one's content.
+    const rootFontSize = parseFloat(
+      window.getComputedStyle(document.documentElement).fontSize,
     );
+    const maxWidthInRem = maxWidth / rootFontSize;
+    typeTags.forEach((tag) => {
+      tag.style.boxSizing = "border-box";
+      tag.style.width = `${maxWidthInRem}rem`;
+    });
+  }
 
-    // Remove the cloned elements from the body after measurement
-    clonedElements.remove();
-
-    // Convert the maxWidth from px to rem
-    if (maxWidth > 0) {
-      const rootFontSize = parseFloat(
-        window.getComputedStyle(document.documentElement).fontSize,
-      );
-      const maxWidthInRem = maxWidth / rootFontSize;
-
-      // Apply the maximum width in rem to all specified elements
-      typeTags.css("width", `${maxWidthInRem}rem`);
-    }
+  /**
+   * Measure the widest content width across the given elements. Some are hidden
+   * (collapsed expandos / inactive tabs), so measuring in place returns 0; each
+   * is cloned to the body — copying the style properties that affect width,
+   * since the source styling is scoped to the sheet and would be lost off-DOM —
+   * sized to content, measured, then removed.
+   *
+   * @param {HTMLElement[]} typeTags - the elements to measure
+   * @returns {number} the largest content width in pixels
+   */
+  static _measureMaxContentWidth(typeTags) {
+    const widthProps = [
+      "fontSize",
+      "fontFamily",
+      "fontWeight",
+      "fontStyle",
+      "letterSpacing",
+      "textTransform",
+      "paddingLeft",
+      "paddingRight",
+      "borderLeftWidth",
+      "borderRightWidth",
+      "boxSizing",
+    ];
+    const clones = typeTags.map((tag) => {
+      const computed = window.getComputedStyle(tag);
+      const clone = tag.cloneNode(true);
+      widthProps.forEach((prop) => {
+        clone.style[prop] = computed[prop];
+      });
+      clone.style.position = "absolute";
+      clone.style.visibility = "hidden";
+      clone.style.display = "inline-block";
+      clone.style.width = "auto";
+      clone.style.whiteSpace = "nowrap";
+      document.body.appendChild(clone);
+      return clone;
+    });
+    const maxWidth = Math.max(
+      ...clones.map((clone) => clone.getBoundingClientRect().width),
+    );
+    clones.forEach((clone) => clone.remove());
+    return maxWidth;
   }
 
   /**
