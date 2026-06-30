@@ -33,12 +33,14 @@
   // scoped-to-runtime analysis sees them as unused. They ARE used — by the gulp build
   // we exclude above — so treat them as always-used rather than flagging them.
   "ignoreDependencies": [
+    "@foundryvtt/foundryvtt-cli",
     "@playwright/test",
     "lint",
     "abstract-level",
     "autoprefixer",
     "chalk",
     "classic-level",
+    "date-fns",
     "docdash",
     "editorconfig-checker",
     "eslint-config-prettier",
