@@ -13,6 +13,7 @@
 - Transition ammo icons from `.png` to `.svg`
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
+- Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
 
 ## Version 0.92.4
 

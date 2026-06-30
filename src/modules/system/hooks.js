@@ -11,8 +11,6 @@ const hooksImports = [
   "actor/check-emp-and-luck.js",
   "actor/set-default-image.js",
   "actor/sheet/persist-section-views.js",
-  "actor/sheet/resize-name.js",
-  "actor/sheet/resize-type-tag.js",
   "actor/sheet/update-tracked-armor.js",
   "actor/sync-black-ice-with-program.js",
   "actor/sync-tracked-armor.js",
