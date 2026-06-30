@@ -7,7 +7,7 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRSheetUtils from "../../utils/SheetUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
-import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 import { ContainerUtils } from "../../item/mixins/cpr-container.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;

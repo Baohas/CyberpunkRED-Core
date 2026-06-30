@@ -1,6 +1,6 @@
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import { cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog.js";
 
 export class ContainerUtils {
   /**

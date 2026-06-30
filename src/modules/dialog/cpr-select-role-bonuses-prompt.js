@@ -1,5 +1,5 @@
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import { cprFormPrompt } from "./cpr-dialog-v2.js";
+import { cprFormPrompt } from "./cpr-dialog.js";
 
 /**
  * Show the "Select Role Bonuses" dialog and process its result. The form lets the

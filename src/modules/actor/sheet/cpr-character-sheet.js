@@ -2,7 +2,7 @@ import CPRActorSheet from "./cpr-actor-sheet.js";
 import CPR from "../../system/config.js";
 import Rules from "../../utils/cpr-rules.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import { cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog.js";
 
 const { Tabs } = foundry.applications.ux;
 

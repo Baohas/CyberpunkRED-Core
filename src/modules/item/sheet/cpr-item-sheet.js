@@ -5,7 +5,7 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRSheetUtils from "../../utils/SheetUtils.js";
 import selectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
-import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 import RoleAbilitySchema from "../../datamodels/item/components/role-ability-schema.js";
 import { ContainerUtils } from "../mixins/cpr-container.js";
 

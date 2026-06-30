@@ -1,4 +1,4 @@
-import { cprFormPrompt } from "../dialog/cpr-dialog-v2.js";
+import { cprFormPrompt } from "../dialog/cpr-dialog.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
