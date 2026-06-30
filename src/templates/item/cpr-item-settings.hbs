@@ -59,7 +59,6 @@
             {{/if}}
           </div>
         </li>
-        <hr/>
         {{!-- Settings from mixins --}}
         {{#each (cprGetTemplates item.type) as |mixin| }}
           {{#if (and (cprCompare mixin "!==" "effects") (cprCompare mixin "!==" "quality"))}}
