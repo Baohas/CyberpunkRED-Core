@@ -57,14 +57,7 @@
   </div>
   <div class="demon-notes">
     <div class="demon-edit-section">
-      {{editor
-          enrichedHTML.notes
-          target="system.notes"
-          button=true
-          owner=owner
-          editable=editable
-          engine="prosemirror"
-      }}
+      {{cprProseMirror actor "system.notes" enrichedHTML.notes editable=editable}}
     </div>
   </div>
 </div>
