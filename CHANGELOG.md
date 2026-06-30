@@ -15,6 +15,10 @@
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
 - Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
 
+### Bug Fixes
+
+- Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
+
 ## Version 0.92.4
 
 ### Action Needed
