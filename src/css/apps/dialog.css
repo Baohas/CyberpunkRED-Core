@@ -1,5 +1,6 @@
 .dialog-sheet {
   background-color: var(--cpr-background-box);
+  color: var(--cpr-text-normal);
   min-width: 20.625rem;
 
   .dialog-header {
@@ -116,6 +117,14 @@
       height: unset;
       max-width: fit-content;
     }
+  }
+
+  .dialog-item-input:has(select) {
+    flex-basis: auto;
+  }
+
+  > select {
+    flex: 0 1 auto;
   }
 }
 

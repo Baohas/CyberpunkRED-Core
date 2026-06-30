@@ -1,5 +1,16 @@
+.application.ledger .window-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.application.ledger .ledger {
+  flex: 1;
+  min-height: 0;
+}
+
 .ledger-grid {
   font-family: var(--cpr-font-primary);
+  color: var(--cpr-text-normal);
   display: grid;
   grid-template-columns: auto 20.7rem;
   grid-template-rows: 5rem auto;

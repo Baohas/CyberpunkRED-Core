@@ -1,7 +1,6 @@
 /* eslint-disable no-await-in-loop */
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
 
 const Installable = function Installable() {
   /**
@@ -62,16 +61,13 @@ const Installable = function Installable() {
       size: this.system.size,
     };
 
-    // Show "Select Intall Targets" dialog.
-    dialogData = await CPRDialog.showDialog(
-      dialogData,
-      // Set options for the dialog.
-      {
-        title: SystemUtils.Localize("CPR.dialog.selectInstallTarget.title"),
-        template: `systems/${game.system.id}/templates/dialog/cpr-select-install-targets-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (dialogData === undefined || dialogData.selectedTarget === null) {
+    // Show "Select Install Targets" dialog.
+    dialogData = await cprFormPrompt({
+      data: dialogData,
+      title: SystemUtils.Localize("CPR.dialog.selectInstallTarget.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-select-install-targets-prompt.hbs`,
+    });
+    if (!dialogData || dialogData.selectedTarget === null) {
       return;
     }
 
@@ -112,9 +108,9 @@ const Installable = function Installable() {
     }
 
     if (!skipDialog) {
-      // Show "Default" dialog.
-      const dialogData = await CPRDialog.showDialog(
-        {
+      // Show "Uninstall" dialog.
+      const dialogData = await cprFormPrompt({
+        data: {
           containers,
           header: SystemUtils.Format(
             "CPR.dialog.uninstallConfirmation.message",
@@ -126,12 +122,9 @@ const Installable = function Installable() {
           selectedItems: containers.map((c) => c.id), // All items checked by default.
           size: this.system.size,
         },
-        // Set the options for the dialog.
-        {
-          template: `systems/${game.system.id}/templates/dialog/cpr-uninstall-single-item-prompt.hbs`,
-          title: SystemUtils.Localize("CPR.dialog.uninstallConfirmation.title"),
-        },
-      ).catch((err) => LOGGER.debug(err));
+        template: `systems/${game.system.id}/templates/dialog/cpr-uninstall-single-item-prompt.hbs`,
+        title: SystemUtils.Localize("CPR.dialog.uninstallConfirmation.title"),
+      });
 
       if (!dialogData) {
         return Promise.resolve();

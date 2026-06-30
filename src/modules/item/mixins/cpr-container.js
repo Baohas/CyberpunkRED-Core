@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
 
 export class ContainerUtils {
   /**
@@ -10,14 +10,13 @@ export class ContainerUtils {
    */
   static async confirmContainerDelete() {
     // Show "Delete Container" dialog.
-    return CPRDialog.showDialog(
-      { deleteInstalled: game.settings.get(game.system.id, "deleteContainer") },
-      {
-        // Set options for dialog.
-        title: SystemUtils.Localize("CPR.dialog.deleteContainer.title"),
-        template: `systems/${game.system.id}/templates/dialog/cpr-delete-container-prompt.hbs`,
+    return cprFormPrompt({
+      data: {
+        deleteInstalled: game.settings.get(game.system.id, "deleteContainer"),
       },
-    ).catch((err) => LOGGER.debug(err));
+      title: SystemUtils.Localize("CPR.dialog.deleteContainer.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-delete-container-prompt.hbs`,
+    });
   }
 
   /**
