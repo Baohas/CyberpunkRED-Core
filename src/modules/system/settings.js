@@ -161,20 +161,6 @@ const registerSystemSettings = () => {
     },
   });
 
-  // Allow users to resize the CPRSheets, or not
-  game.settings.register(game.system.id, "resizeCPRSheets", {
-    name: "CPR.settings.resizeCPRSheets.name",
-    hint: "CPR.settings.resizeCPRSheets.hint",
-    scope: "client",
-    config: true,
-    type: Boolean,
-    default: true,
-    requiresReload: true,
-    onChange: (value) => {
-      LOGGER.log(`Changed resizeCPRSheets to ${value}`);
-    },
-  });
-
   // Mook Sheet Skill display method
   // Options:
   //   Level: Points
