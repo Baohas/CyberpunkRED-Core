@@ -1,4 +1,4 @@
-<form class="item-sheet">
+<div class="item-sheet">
   <div class="item-top-pane">
 
     <div class="item-image">
@@ -79,21 +79,19 @@
            data-tab="item-description">
         {{> "systems/cyberpunk-red-core/templates/item/cpr-item-description.hbs" this}}
       </div>
-      <form>
-        <div class="tab item-settings-grid"
+      <div class="tab item-settings-grid"
+           data-group="primary"
+           data-tab="item-settings">
+        {{> "systems/cyberpunk-red-core/templates/item/cpr-item-settings.hbs" this}}
+      </div>
+      {{#if (cprHasTemplate item.type "effects") }}
+        <div class="tab item-effects-grid"
              data-group="primary"
-             data-tab="item-settings">
-          {{> "systems/cyberpunk-red-core/templates/item/cpr-item-settings.hbs" this}}
+             data-tab="item-effects">
+          {{> "systems/cyberpunk-red-core/templates/item/cpr-item-effects.hbs" this}}
         </div>
-        {{#if (cprHasTemplate item.type "effects") }}
-          <div class="tab item-effects-grid"
-               data-group="primary"
-               data-tab="item-effects">
-            {{> "systems/cyberpunk-red-core/templates/item/cpr-item-effects.hbs" this}}
-          </div>
-        {{/if}}
-      </form>
+      {{/if}}
     </div>
   </div>
 
-</form>
+</div>

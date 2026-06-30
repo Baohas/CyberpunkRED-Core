@@ -1,8 +1,10 @@
 .item-sheet {
   font-family: var(--cpr-font-primary);
+  flex: 1;
+  min-height: 0;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: 4.5rem auto;
+  grid-template-rows: 4.5rem minmax(0, 1fr);
   grid-template-areas:
     "item-top-pane"
     "item-bottom-pane";
@@ -113,7 +115,7 @@
     display: grid;
     grid-area: item-bottom-pane;
     grid-template-columns: auto;
-    grid-template-rows: 1.125rem auto;
+    grid-template-rows: 1.125rem minmax(0, 1fr);
     grid-template-areas:
       "item-bottom-tabs"
       "item-bottom-content";
@@ -129,8 +131,13 @@
       grid-area: item-bottom-content;
       border-style: solid;
       border-width: 0.313rem;
-      overflow-y: hidden;
+      min-height: 0;
+      overflow-y: auto;
       border-color: var(--cpr-background-border);
+
+      :is(.items-list, .effects-list) {
+        overflow-y: visible;
+      }
     }
   }
 
