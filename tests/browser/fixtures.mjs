@@ -167,8 +167,7 @@ export async function expectSheetRendered(page, { collection, id }) {
   const elementId = await page.evaluate(
     ({ collection, id }) => {
       const doc = (collection === "actors" ? game.actors : game.items).get(id);
-      const element = doc.sheet.element?.[0] ?? doc.sheet.element;
-      return element?.id ?? null;
+      return doc.sheet.element?.id ?? null;
     },
     { collection, id },
   );
@@ -233,7 +232,7 @@ export async function reopenActorSheetViaUI(page, actorId) {
   );
   const elementId = await page.evaluate((id) => {
     const sheet = game.actors.get(id).sheet;
-    return (sheet.element?.[0] ?? sheet.element)?.id ?? null;
+    return sheet.element?.id ?? null;
   }, actorId);
 
   expect(elementId).toBeTruthy();
@@ -242,16 +241,21 @@ export async function reopenActorSheetViaUI(page, actorId) {
 }
 
 // Close a document's sheet (cleanup, so it does not cover other windows).
-// Disable submit-on-close: this is teardown, not a form submission, and an
-// ApplicationV1 sheet whose form has not finished registering throws from
-// _getSubmitData if close() tries to submit it.
+// Disable submit-on-close on AppV1 sheets: this is teardown, not a form
+// submission, and an ApplicationV1 sheet whose form has not finished registering
+// throws from _getSubmitData if close() tries to submit it. ApplicationV2 freezes
+// `options` (and has no submitOnClose), so guard the assignment.
 export async function closeDocSheet(page, { collection, id }) {
   await page.evaluate(
     ({ collection, id }) => {
       const doc = (collection === "actors" ? game.actors : game.items).get(id);
       const sheet = doc?.sheet;
       if (!sheet) return undefined;
-      sheet.options.submitOnClose = false;
+      try {
+        sheet.options.submitOnClose = false;
+      } catch {
+        /* AppV2 options are frozen and have no submitOnClose; close() is safe */
+      }
       return sheet.close();
     },
     { collection, id },
@@ -281,15 +285,17 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
   await openSidebarTab(page, "items");
   const entry = page.locator(`#items [data-entry-id="${itemId}"]`);
   await expect(entry).toBeVisible();
-  const form = page.locator(`#${sheetId} form`);
-  await expect(form).toBeVisible();
+  // ApplicationV2 document sheets render the <form> as the root element, so the
+  // sheet element itself is the drop target (no nested form to query).
+  const sheetEl = page.locator(`#${sheetId}`);
+  await expect(sheetEl).toBeVisible();
 
   const before = await page.evaluate(
     (id) => game.actors.get(id).items.size,
     actorId,
   );
 
-  await entry.dragTo(form).catch(() => {});
+  await entry.dragTo(sheetEl).catch(() => {});
 
   if (await waitForItemCount(page, actorId, before + 1, 3000)) return;
 
@@ -300,10 +306,10 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
       // if the real drag already added an item, skip the synthetic drop so it
       // can never produce a duplicate.
       if (game.actors.get(actorId).items.size > before) return;
-      const form = document.querySelector(`#${sheetId} form`);
+      const sheetEl = document.getElementById(sheetId);
       const data = new DataTransfer();
       data.setData("text/plain", JSON.stringify({ type: "Item", uuid }));
-      form.dispatchEvent(
+      sheetEl.dispatchEvent(
         new DragEvent("drop", {
           bubbles: true,
           cancelable: true,

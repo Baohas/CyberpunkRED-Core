@@ -25,19 +25,37 @@ async function present(locator, timeout = SHORT) {
 
 /*
  * Foundry shows onboarding "tours" (e.g. the Setup screen's "Backups Overview")
- * as a `.tour` overlay that renders above the setup UI and intercepts clicks on
- * the controls below it — enough to make worldCreate/worldLaunch silently miss.
- * Dismiss any visible tour by clicking its exit ("X") control. A tour can chain
- * several steps, so exit a few times. No-op when none is present.
+ * as a `.tour` step plus a full-screen `.tour-overlay` that renders above the
+ * setup UI and intercepts clicks on the controls below it — enough to make
+ * worldCreate/worldLaunch silently miss. Dismiss any visible tour: click its exit
+ * ("X") control, fall back to pressing Escape (Foundry exits tours on Escape),
+ * and as a last resort remove any lingering `.tour-overlay`/`.tour` nodes so they
+ * stop intercepting pointer events. A tour can chain several steps, so repeat a
+ * few times. No-op when none is present.
  */
 async function dismissTours(page) {
   const exit = page.locator(
-    '.tour-center-step a[data-action="exit"], .tour a[data-action="exit"]',
+    '.tour-center-step a[data-action="exit"], .tour a[data-action="exit"], ' +
+      '.tour [data-action="exit"], [data-action="exit"]',
   );
+  const overlay = page.locator(".tour-overlay, .tour-center-step, .tour");
   for (let i = 0; i < 5; i += 1) {
-    if (!(await present(exit, 1000))) break;
-    await exit.first().click().catch(() => {});
+    if (!(await present(overlay, 1000))) break;
+    if (await present(exit, 250)) {
+      await exit.first().click().catch(() => {});
+    } else {
+      await page.keyboard.press("Escape").catch(() => {});
+    }
   }
+
+  // Last resort: physically remove any overlay still intercepting clicks.
+  await page
+    .evaluate(() => {
+      document
+        .querySelectorAll(".tour-overlay, .tour-center-step, .tour")
+        .forEach((el) => el.remove());
+    })
+    .catch(() => {});
 }
 
 /*

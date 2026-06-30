@@ -50,12 +50,14 @@ test.describe("LUCK spend validation", () => {
       .first()
       .click();
     const dialog = game
-      .locator(".app")
+      .locator(".application")
       .filter({ has: game.locator('input[name="luck"]') });
     await expect(dialog).toBeVisible();
 
     const luckInput = dialog.locator('input[name="luck"]');
-    const confirm = dialog.locator('button.cpr-dialog-button[name="confirm"]');
+    const confirm = dialog.locator(
+      'button.cpr-dialog-button[data-action="confirm"]',
+    );
 
     const messagesBefore = await game.evaluate(() => game.messages.size);
 
