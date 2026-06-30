@@ -696,6 +696,43 @@ export class CPRDeathSaveRoll extends CPRRoll {
 }
 
 /**
+ * Luck Roll: a homebrew (JonJon's) roll-under check on the LUCK stat. A straight 1d10 (no `red`
+ * modifier, so no explode/implode) succeeds when it rolls strictly under the LUCK target — mirroring a
+ * Death Save. The target is the LUCK max or current value depending on the homebrew variant setting.
+ */
+export class CPRLuckRoll extends CPRRoll {
+  static create(luckTarget, luckVariant) {
+    const { evalFormula, cprState } = CPRRoll.buildState("1d10", "", {
+      rollTitle: SystemUtils.Localize("CPR.rolls.luckRoll.title"),
+      calculateCritical: false,
+      luckTarget,
+      luckVariant,
+      saveResult: null,
+      rollPrompt: `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-luck-prompt.hbs`,
+      rollCard: `systems/${game.system.id}/templates/chat/cpr-luck-rollcard.hbs`,
+    });
+    return new CPRLuckRoll(evalFormula, {}, { cprState });
+  }
+
+  _computeBase() {
+    return this._diceTotal() + this.totalMods();
+  }
+
+  /**
+   * Assess the roll-under result: success rolls strictly under the LUCK target; a natural 10 always
+   * fails. Returns the localized "Success"/"Failure" string for the chat card's `saveResult`.
+   *
+   * @returns {String}
+   */
+  computeSaveResult() {
+    const success = SystemUtils.Localize("CPR.rolls.success");
+    const failed = SystemUtils.Localize("CPR.rolls.failed");
+    if (this.initialRoll === 10) return failed;
+    return this.resultTotal < this.luckTarget ? success : failed;
+  }
+}
+
+/**
  * Damage roll: Nd6 (any die), `dmg` marker, criticals by 2+ max (handled by the modifier + consequence).
  */
 export class CPRDamageRoll extends CPRRoll {
@@ -887,6 +924,7 @@ export const rollTypes = {
   SUPPRESSIVE: "suppressive",
   DAMAGE: "damage",
   DEATHSAVE: "deathsave",
+  LUCKROLL: "luckroll",
   INTERFACEABILITY: "interfaceAbility",
   CYBERDECKPROGRAM: "cyberdeckProgram",
   FACEDOWN: "facedown",

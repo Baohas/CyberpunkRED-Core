@@ -516,6 +516,15 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
       case CPRRolls.rollTypes.FACEDOWN:
       case CPRRolls.rollTypes.STAT: {
         const rollName = SystemUtils.GetEventDatum(event, "data-roll-title");
+        // Homebrew (JonJon's) Luck Roll: when enabled, clicking the LUCK stat performs a roll-under
+        // Luck Roll instead of a standard stat roll.
+        if (
+          rollType === CPRRolls.rollTypes.STAT &&
+          rollName === "luck" &&
+          game.settings.get(game.system.id, "homebrewLuckRoll")
+        ) {
+          rollType = CPRRolls.rollTypes.LUCKROLL;
+        }
         cprRoll = this.actor.createRoll(rollType, rollName);
         break;
       }
@@ -637,6 +646,9 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
     // Post roll tasks
     if (cprRoll instanceof CPRRolls.CPRDeathSaveRoll) {
       cprRoll.saveResult = this.actor.processDeathSave(cprRoll);
+    }
+    if (cprRoll instanceof CPRRolls.CPRLuckRoll) {
+      cprRoll.saveResult = cprRoll.computeSaveResult();
     }
 
     // "Consume" LUCK if used
