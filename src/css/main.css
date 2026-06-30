@@ -13,6 +13,10 @@
  * cascade layer (see src/system.json).
  */
 
+.application .window-content.cpr-sheet-content {
+  padding: 0;
+}
+
 /* Thin scrollbars inside our own windows and journal page content. */
 :is(
     .actor-sheet,

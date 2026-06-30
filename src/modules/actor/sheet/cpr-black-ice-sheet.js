@@ -1,60 +1,73 @@
 import CPRChat from "../../chat/cpr-chat.js";
-import LOGGER from "../../utils/cpr-logger.js";
+import CPR from "../../system/config.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
 
-const { ActorSheet } = foundry.appv1.sheets;
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 /**
- * Implement the Black-ICE sheet, which extends ActorSheet directly from Foundry. This does
+ * Implement the Black-ICE sheet, which extends ActorSheetV2 directly from Foundry. This does
  * not extend CPRActor, as there is very little overlap between Black-ICE and mooks/characters.
  *
- * @extends {ActorSheet}
+ * @extends {ActorSheetV2}
  */
-export default class CPRBlackIceActorSheet extends ActorSheet {
-  /**
-   * Set up the default options for this Foundry "app".
-   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
-   *
-   * @override
-   * @static
-   */
-  static get defaultOptions() {
-    const resizeCPRSheets = game.settings.get(
-      game.system.id,
-      "resizeCPRSheets",
-    );
-
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      height: resizeCPRSheets ? 250 : "auto",
-      resizable: true,
-      template: `systems/${game.system.id}/templates/actor/cpr-black-ice-sheet.hbs`,
+export default class CPRBlackIceActorSheet extends HandlebarsApplicationMixin(
+  ActorSheetV2,
+) {
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    classes: ["blackice"],
+    position: {
       width: 575,
-    });
-  }
+      height: "auto",
+    },
+    window: {
+      resizable: true,
+      contentClasses: ["cpr-sheet-content"],
+    },
+    form: {
+      submitOnChange: true,
+      closeOnSubmit: false,
+    },
+    actions: {
+      roll: CPRBlackIceActorSheet.#onRoll,
+      configureFromProgram: CPRBlackIceActorSheet.#configureFromProgram,
+    },
+  };
+
+  /** @inheritDoc */
+  static PARTS = {
+    form: {
+      template: `systems/${CPR.systemId}/templates/actor/cpr-black-ice-sheet.hbs`,
+    },
+  };
 
   /**
-   * Get actor data into a more convenient organized structure.
-   * Remember, this data is on the BlackIceActorSheet object, not the CPRActor
-   * object it is tied to. (this.actor)
+   * Get actor data into a more convenient organized structure for the template,
+   * including the linked program's damage formula (which lives on the program,
+   * not the actor).
    *
    * @override
-   * @returns {Object} data - a curated structure of actorSheet data
+   * @param {object} options
+   * @returns {Promise<object>} the template context
    */
-  async getData() {
-    const foundryData = await super.getData();
-
-    foundryData.enrichedHTML = [];
-    foundryData.enrichedHTML.notes = await TextEditor.enrichHTML(
-      this.actor.system.notes,
-      { async: true },
-    );
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+    context.actor = this.actor;
+    context.system = this.actor.system;
+    context.owner = this.actor.isOwner;
+    context.editable = this.isEditable;
+    context.enrichedHTML = {
+      notes: await TextEditor.enrichHTML(this.actor.system.notes, {
+        async: true,
+      }),
+    };
 
     // Get data for the linked program for the Black ICE.
     // This will be helpful for displaying damage on the sheet, as it comes from the program, not the actor.
-    // It also gets relevant flags here rather than in the .hbs file, cleaning that file up.
     const externalData = {
       programUUID: this.actor.token?.getFlag(game.system.id, "programUUID"),
       netrunnerTokenId: this.actor.token?.getFlag(
@@ -99,60 +112,45 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
           ? program.system.damage.blackIce
           : program.system.damage.standard;
     }
-    foundryData.externalData = externalData;
-    foundryData.damageFormula = damageFormula;
+    context.externalData = externalData;
+    context.damageFormula = damageFormula;
 
-    return foundryData;
+    return context;
   }
 
   /**
-   * Activate listeners for the sheet. This has to call super at the end for Foundry to process
-   * events properly.
+   * Wire up the image context menu after each render. `this.element` is a native
+   * HTMLElement under ApplicationV2.
    *
    * @override
-   * @param {Object} html - the DOM object
    */
-  activateListeners(html) {
-    html.find(".rollable").click((event) => this._onRoll(event));
-    html
-      .find(".configure-from-program")
-      .click((event) => this._configureFromProgram(event));
-    this._createBlackIceImageContextMenu(html);
-    super.activateListeners(html);
+  _onRender(context, options) {
+    super._onRender(context, options);
+    createImageContextMenu(this.element, ".bice-icon", this.actor);
   }
 
   /**
-   * Dispatcher that executes a roll based on the "type" passed in the event. While very similar
-   * to _onRoll in CPRActor, Black-ICE has far fewer cases to consider, and copying some of the code
-   * here seemed better than making Black-ICE extend a 1000-line class where most of it didn't apply.
+   * Dispatcher that executes a roll based on the "type" datum on the clicked
+   * element. Bound as a declarative action, so `this` is the sheet instance.
    *
    * @private
-   * @callback
-   * @param {Object} event - object with details of the event
+   * @this {CPRBlackIceActorSheet}
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target - the clicked element carrying the roll data
    */
-  async _onRoll(event) {
-    const rollType = SystemUtils.GetEventDatum(event, "data-roll-type");
-    const rollName = SystemUtils.GetEventDatum(event, "data-roll-title");
+  static async #onRoll(event, target) {
+    const { rollType, rollTitle } = target.dataset;
     let cprRoll;
     switch (rollType) {
       case "stat": {
-        cprRoll = this.actor.createStatRoll(rollName);
+        cprRoll = this.actor.createStatRoll(rollTitle);
         break;
       }
       case "damage": {
-        const programUUID = SystemUtils.GetEventDatum(
-          event,
-          "data-program-uuid",
-        );
-        const netrunnerTokenId = SystemUtils.GetEventDatum(
-          event,
-          "data-netrunner-id",
-        );
-        const sceneId = SystemUtils.GetEventDatum(event, "data-scene-id");
         cprRoll = this.actor.createDamageRoll(
-          programUUID,
-          netrunnerTokenId,
-          sceneId,
+          target.dataset.programUuid,
+          target.dataset.netrunnerId,
+          target.dataset.sceneId,
         );
         break;
       }
@@ -167,20 +165,20 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
     await cprRoll.roll();
 
     // output to chat
-    const token = this.token === null ? null : this.token._id;
+    const token = this.token === null ? null : this.token.id;
     cprRoll.entityData = { actor: this.actor.id, token };
     CPRChat.RenderRollCard(cprRoll);
   }
 
   /**
-   * Create a Black-ICE actor from a program Item. This code is called when a user
-   * rezzes Black-ICE they have in their Cyberdeck.
+   * Create/link a Black-ICE actor from a program Item. This is called when a user
+   * rezzes Black-ICE they have in their Cyberdeck. Bound as a declarative action.
    *
-   * @async
    * @private
-   * @returns {null}
+   * @this {CPRBlackIceActorSheet}
+   * @returns {Promise<void>}
    */
-  async _configureFromProgram() {
+  static async #configureFromProgram() {
     // Only configure Black ICE from a token.
     if (!this.actor.isToken) {
       SystemUtils.DisplayMessage(
@@ -215,14 +213,14 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
       biProgramList: biPrograms,
       programUUID: linkedProgramUUID || "unlink",
     };
-    dialogData = await CPRDialog.showDialog(dialogData, {
-      // Set the options for the dialog.
+    dialogData = await cprFormPrompt({
+      data: dialogData,
       title: SystemUtils.Localize(
         "CPR.dialog.configureBlackIceActorFromProgram.title",
       ),
       template: `systems/${game.system.id}/templates/dialog/cpr-configure-bi-actor-from-program-prompt.hbs`,
-    }).catch((err) => LOGGER.debug(err));
-    if (dialogData === undefined) {
+    });
+    if (!dialogData) {
       return;
     }
 
@@ -258,17 +256,6 @@ export default class CPRBlackIceActorSheet extends ActorSheet {
         program.uuid,
       );
     }
-    this.render(true, { renderData: this.actor.system });
-  }
-
-  /**
-   * Sets up a ContextMenu that appears when the Actor's image is right clicked.
-   * Enables the user to share the image with other players.
-   *
-   * @param {Object} html - The DOM object
-   * @returns {ContextMenu} The created ContextMenu
-   */
-  _createBlackIceImageContextMenu(html) {
-    return createImageContextMenu(html, ".bice-icon", this.actor);
+    this.render();
   }
 }

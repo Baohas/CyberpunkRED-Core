@@ -1,8 +1,10 @@
 import CPRActorSheet from "./cpr-actor-sheet.js";
-import LOGGER from "../../utils/cpr-logger.js";
+import CPR from "../../system/config.js";
 import Rules from "../../utils/cpr-rules.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
+
+const { Tabs } = foundry.applications.ux;
 
 /**
  * Extend the basic CPRActorSheet with Character specific functionality.
@@ -17,35 +19,27 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @static
    * @override
    */
-  static get defaultOptions() {
-    const resizeCPRSheets = game.settings.get(
-      game.system.id,
-      "resizeCPRSheets",
-    );
-
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      height: resizeCPRSheets ? 850 : "auto",
-      resizable: true,
-      scrollY: [".right-content-section", ".top-pane-gear"],
-      tabs: [
-        {
-          navSelector: ".navtabs-right",
-          contentSelector: ".right-content-section",
-          initial: "skills",
-        },
-        {
-          navSelector: ".navtabs-bottom",
-          contentSelector: ".bottom-content-section",
-          initial: "fight",
-        },
-      ],
-      template: `systems/${game.system.id}/templates/actor/cpr-character-sheet.hbs`,
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    position: {
       width: 1050,
-    });
-  }
+      height: 850,
+    },
+  };
 
-  async getData() {
-    const actorSheetData = await super.getData();
+  /** @inheritDoc */
+  static PARTS = {
+    form: {
+      template: `systems/${CPR.systemId}/templates/actor/cpr-character-sheet.hbs`,
+    },
+  };
+
+  #rightTab = "skills";
+
+  #bottomTab = "fight";
+
+  async _prepareContext(options) {
+    const actorSheetData = await super._prepareContext(options);
     const characterSheetData = {};
 
     // Prepare options for selecting a net role.
@@ -64,90 +58,70 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    *
    * @param {*} html - the DOM object
    */
-  activateListeners(html) {
-    html.find(".navtabs-right").click(() => this._clearContentFilter());
+  _onRender(context, options) {
+    super._onRender(context, options);
+    const root = this.element;
 
-    // calculate max Hp
-    html.find(".calculate-hp").click(() => this._setMaxHp());
+    // Two independent tab strips (right pane + bottom pane), preserved per render.
+    new Tabs({
+      navSelector: ".navtabs-right",
+      contentSelector: ".right-content-section",
+      initial: this.#rightTab,
+      callback: (event, tabs, active) => {
+        this.#rightTab = active;
+      },
+    }).bind(root);
+    new Tabs({
+      navSelector: ".navtabs-bottom",
+      contentSelector: ".bottom-content-section",
+      initial: this.#bottomTab,
+      callback: (event, tabs, active) => {
+        this.#bottomTab = active;
+      },
+    }).bind(root);
 
-    // calculate max Hp
-    html.find(".calculate-humanity").click(() => this._setMaxHumanity());
+    // A select-on-click + change-to-handler pairing used by the numeric inputs.
+    const onInput = (selector, changeHandler) => {
+      this._on(selector, "click", (event) => event.target.select());
+      this._on(selector, "change", changeHandler);
+    };
 
-    // Cycle equipment status
-    html.find(".equip").click((event) => this._cycleEquipState(event));
+    this._on(".navtabs-right", "click", () => this._clearContentFilter());
+    this._on(".calculate-hp", "click", () => this._setMaxHp());
+    this._on(".calculate-humanity", "click", () => this._setMaxHumanity());
+    this._on(".equip", "click", (event) => this._cycleEquipState(event));
+    this._on(".repair", "click", (event) => this._repairArmor(event));
+    this._on(".install-remove-cyberware", "click", (event) =>
+      this._installUninstallCyberwareAction(event),
+    );
+    this._on(".set-lifepath", "click", () => this._setLifepath());
+    this._on(".toggle-section-visibility", "click", (event) =>
+      this._toggleSectionVisibility(event),
+    );
 
-    // Repair Armor
-    html.find(".repair").click((event) => this._repairArmor(event));
+    if (!this.isEditable) return;
+    // Listeners for editable fields under here.
 
-    // Install Cyberware
-    html
-      .find(".install-remove-cyberware")
-      .click((event) => this._installUninstallCyberwareAction(event));
-
-    // Set Lifepath for Character
-    html.find(".set-lifepath").click(() => this._setLifepath());
-
-    // toggle "favorite" skills and items
-    html
-      .find(".toggle-section-visibility")
-      .click((event) => this._toggleSectionVisibility(event));
-
-    if (!this.options.editable) return;
-    // Listeners for editable fields under go here. Fields might not be editable because
-    // the user viewing the sheet might not have permission to. They may not be the owner.
-
-    // update a skill level
-    html
-      .find(".skill-input")
-      .click((event) => event.target.select())
-      .change((event) => this._updateSkill(event));
-
-    // update the ammount of an item in the gear tab
-    html
-      .find(".gear-amount-input")
-      .click((event) => event.target.select())
-      .change((event) => this._updateAmount(event));
-
-    // update a role ability
-    html
-      .find(".ability-input")
-      .click((event) => event.target.select())
-      .change((event) => this._updateRoleAbility(event));
-
-    // IP related listeners
-    html
-      .find(".improvement-points-open-ledger")
-      .click(() => this.showLedger("improvementPoints"));
-
-    // Listeners for eurobucks (in gear tab)
-    html
-      .find(".eurobucks-input-button")
-      .click((event) => this._updateEurobucks(event));
-    html.find(".eurobucks-open-ledger").click(() => this.showLedger("wealth"));
-
-    // Fight tab listeners
-
-    // update the amount of loaded ammo in the Fight tab
-    html
-      .find(".weapon-input")
-      .click((event) => event.target.select())
-      .change((event) => this._updateWeaponAmmo(event));
-
-    // Switch between meat and net fight states
-    html
-      .find(".toggle-fight-state")
-      .click((event) => this._toggleFightState(event));
-
-    // Execute a program on a Cyberdeck
-    html
-      .find(".program-execution")
-      .click((event) => this._cyberdeckProgramExecution(event));
-
-    // Effects tab listeners
-    // Create Active Effect
-    html.find(".effect-control").click((event) => this.manageEffect(event));
-
-    super.activateListeners(html);
+    onInput(".skill-input", (event) => this._updateSkill(event));
+    onInput(".gear-amount-input", (event) => this._updateAmount(event));
+    onInput(".ability-input", (event) => this._updateRoleAbility(event));
+    this._on(".improvement-points-open-ledger", "click", () =>
+      this.showLedger("improvementPoints"),
+    );
+    this._on(".eurobucks-input-button", "click", (event) =>
+      this._updateEurobucks(event),
+    );
+    this._on(".eurobucks-open-ledger", "click", () =>
+      this.showLedger("wealth"),
+    );
+    onInput(".weapon-input", (event) => this._updateWeaponAmmo(event));
+    this._on(".toggle-fight-state", "click", (event) =>
+      this._toggleFightState(event),
+    );
+    this._on(".program-execution", "click", (event) =>
+      this._cyberdeckProgramExecution(event),
+    );
+    this._on(".effect-control", "click", (event) => this.manageEffect(event));
   }
 
   /**
@@ -341,14 +315,12 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   async _setLifepath() {
     // Show "Set Lifepath" dialog.
-    const dialogData = await CPRDialog.showDialog(this.actor.system.lifepath, {
-      // Set the options for the dialog.
+    const dialogData = await cprFormPrompt({
+      data: foundry.utils.duplicate(this.actor.system.lifepath),
       title: SystemUtils.Localize("CPR.dialog.setLifepath.title"),
       template: `systems/${game.system.id}/templates/dialog/cpr-set-lifepath-prompt.hbs`,
-      submitOnChange: false,
-      submitOnClose: true,
-    }).catch((err) => LOGGER.debug(err));
-    if (dialogData === undefined) {
+    });
+    if (!dialogData) {
       return;
     }
 
@@ -363,32 +335,47 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    * @param {*} event - object with details of the event
    */
   _toggleSectionVisibility(event) {
-    const collapsibleElement = $(event.currentTarget).parents(".collapsible");
+    const collapsibleElement = event.currentTarget.closest(".collapsible");
     const skillCategory = event.currentTarget.id.replace("-showFavorites", "");
-    const categoryTarget = $(collapsibleElement.find(`#${skillCategory}`));
+    const categoryTarget = collapsibleElement.querySelector(
+      `#${skillCategory}`,
+    );
 
-    if ($(collapsibleElement).find(".collapse-icon").hasClass("hide")) {
-      $(categoryTarget).click();
+    if (
+      collapsibleElement
+        .querySelector(".collapse-icon")
+        ?.classList.contains("hide")
+    ) {
+      categoryTarget?.click();
     }
-    $(collapsibleElement).find(".show-favorites").toggleClass("hide");
-    $(collapsibleElement).find(".hide-favorites").toggleClass("hide");
-    const itemOrderedList = $(collapsibleElement).children("ol");
-    const itemList = $(itemOrderedList).children("li");
-    itemList.each((lineIndex) => {
-      const lineItem = itemList[lineIndex];
-      if ($(lineItem).hasClass("item") && $(lineItem).hasClass("favorite")) {
-        $(lineItem).toggleClass("hide");
+    collapsibleElement
+      .querySelectorAll(".show-favorites, .hide-favorites")
+      .forEach((el) => el.classList.toggle("hide"));
+    const itemOrderedList = collapsibleElement.querySelector(":scope > ol");
+    const itemList = itemOrderedList
+      ? Array.from(itemOrderedList.children).filter((c) => c.tagName === "LI")
+      : [];
+    itemList.forEach((lineItem) => {
+      if (
+        lineItem.classList.contains("item") &&
+        lineItem.classList.contains("favorite")
+      ) {
+        lineItem.classList.toggle("hide");
       }
     });
-    if ($(collapsibleElement).find(".show-favorites").hasClass("hide")) {
-      if (!this.options.collapsedSections.includes(event.currentTarget.id)) {
-        this.options.collapsedSections.push(event.currentTarget.id);
+    if (
+      collapsibleElement
+        .querySelector(".show-favorites")
+        ?.classList.contains("hide")
+    ) {
+      if (!this.collapsedSections.includes(event.currentTarget.id)) {
+        this.collapsedSections.push(event.currentTarget.id);
       }
     } else {
-      this.options.collapsedSections = this.options.collapsedSections.filter(
+      this.collapsedSections = this.collapsedSections.filter(
         (sectionName) => sectionName !== event.currentTarget.id,
       );
-      $(categoryTarget).click();
+      categoryTarget?.click();
     }
   }
 

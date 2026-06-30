@@ -4,12 +4,14 @@ import CPRLedger from "../../dialog/cpr-ledger-form.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import Rules from "../../utils/cpr-rules.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRSheetUtils from "../../utils/SheetUtils.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog-v2.js";
 import { ContainerUtils } from "../../item/mixins/cpr-container.js";
 
-const { ActorSheet } = foundry.appv1.sheets;
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 /**
@@ -18,51 +20,48 @@ const TextEditor = foundry.applications.ux.TextEditor.implementation;
  * is used for common code between Mook sheets and Character sheets.
  * @extends {ActorSheet}
  */
-export default class CPRActorSheet extends ActorSheet {
+export default class CPRActorSheet extends HandlebarsApplicationMixin(
+  ActorSheetV2,
+) {
   /**
-   * We extend the constructor to initialize data structures used for tracking parts of the sheet
-   * being collapsed or opened, such as skill categories. These structures are later loaded from
-   * User Settings if they exist.
+   * Shared default options for all CPR actor sheets. Per-type templates live in
+   * each subclass's `static PARTS`.
+   *
+   * @inheritDoc
+   */
+  static DEFAULT_OPTIONS = {
+    classes: ["cpr", "actor"],
+    position: {
+      width: 800,
+      height: 500,
+    },
+    window: {
+      resizable: true,
+      contentClasses: ["cpr-sheet-content"],
+    },
+    form: {
+      submitOnChange: true,
+      closeOnSubmit: false,
+    },
+    dragDrop: [{ dragSelector: ".item", dropSelector: null }],
+  };
+
+  /**
+   * Track which collapsible sections are open/closed on this sheet instance,
+   * seeded from the user's saved settings. (AppV2 freezes `options`, so this is a
+   * plain instance field.)
    *
    * @constructor
-   * @param {*} actor - the actor object associated with this sheet
-   * @param {*} options - entity options passed up the chain
+   * @param {*} options - application options (includes the document)
    */
-  constructor(actor, options) {
-    super(actor, options);
-    this.options.collapsedSections = [];
-    const collapsedSections = SystemUtils.GetUserSetting(
-      "sheetConfig",
-      "sheetCollapsedSections",
-      this.id,
-    );
-    if (collapsedSections) {
-      this.options.collapsedSections = collapsedSections;
-    }
-  }
-
-  /**
-   * The scrollY option identifies elements where the
-   * vertical position should be preserved during a re-render.
-   *
-   * See https://foundryvtt.com/api/v12/classes/client.Application.html for the complete list of options available.
-   *
-   * @override
-   * @returns - sheet options merged with default options in ActorSheet
-   */
-  static get defaultOptions() {
-    const resizeCPRSheets = game.settings.get(
-      game.system.id,
-      "resizeCPRSheets",
-    );
-
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      classes: super.defaultOptions.classes.concat(["sheet", "actor"]),
-      height: resizeCPRSheets ? 500 : "auto",
-      resizable: true,
-      scrollY: [".right-content-section", ".top-pane-gear"],
-      width: 800,
-    });
+  constructor(options) {
+    super(options);
+    this.collapsedSections =
+      SystemUtils.GetUserSetting(
+        "sheetConfig",
+        "sheetCollapsedSections",
+        this.id,
+      ) || [];
   }
 
   /**
@@ -74,8 +73,12 @@ export default class CPRActorSheet extends ActorSheet {
    * @override
    * @returns {Object} data - a curated structure of actorSheet data
    */
-  async getData() {
-    const foundryData = await super.getData();
+  async _prepareContext(options) {
+    const foundryData = await super._prepareContext(options);
+    foundryData.actor = this.actor;
+    foundryData.system = this.actor.system;
+    foundryData.owner = this.actor.isOwner;
+    foundryData.editable = this.isEditable;
     const cprData = {};
 
     cprData.fightData = {};
@@ -316,113 +319,104 @@ export default class CPRActorSheet extends ActorSheet {
    * @override
    * @param {Object} html - the DOM object
    */
-  activateListeners(html) {
-    // allow navigation for non owned actors
-    this._tabs.forEach((t) => t.bind(html[0]));
+  /**
+   * Add the same event listener to every element matching a selector within the
+   * rendered sheet. Shared by all CPR actor sheets so each `_onRender` override
+   * doesn't redefine the helper.
+   *
+   * @protected
+   * @param {string} selector - CSS selector, scoped to this sheet's element
+   * @param {string} eventName - DOM event to listen for
+   * @param {(event: Event) => void} handler - the listener
+   */
+  _on(selector, eventName, handler) {
+    this.element
+      .querySelectorAll(selector)
+      .forEach((el) => el.addEventListener(eventName, handler));
+  }
 
-    // Make a roll
-    html.find(".rollable").click((event) => this._onRoll(event));
+  _onRender(context, options) {
+    super._onRender(context, options);
+    const root = this.element;
 
-    // Ablate Armor
-    html.find(".ablate").click((event) => this._ablateArmor(event));
-
-    // Track armor and set armor values as current
-    html
-      .find(".armor-current-untrack")
-      .click((event) => this._makeArmorCurrentTrack(event));
-
-    // Untrack armor and remove armor values from token
-    html
-      .find(".armor-current-track")
-      .click((event) => this._makeArmorCurrentUntrack(event));
-
-    // Generic item action
-    html.find(".item-action").click((event) => this._itemAction(event));
-
-    // bring up read-only versions of the item card (sheet), used with installed cyberware
-    html
-      .find(".item-view")
-      .click((event) => this._renderReadOnlyItemCard(event));
-
-    // Create item in inventory
-    html
-      .find(".item-create")
-      .click((event) => this._createInventoryItem(event));
-
-    // Reset Death Penalty
-    html.find(".reset-deathsave-value").click(() => this._resetDeathSave());
-
-    // Increase Death Penalty
-    html
-      .find(".increase-deathsave-value")
-      .click(() => this._increaseDeathSave());
-
-    // Filter contents of skills or gear
-    html.find(".filter-contents").bind("keyup", (event) => {
-      this._applyContentFilter(event);
+    // Size the item-type chips to their widest content and shrink the actor
+    // name to fit. Deferred a frame so layout is settled before measuring.
+    // (AppV1 did this from render hooks; AppV2 fires those per concrete class,
+    // so the sheets drive it from _onRender instead.)
+    window.requestAnimationFrame(() => {
+      CPRSheetUtils.setCssClassWidth(this.element, ".type-tag");
+      const nameInput = this.element.querySelector('input[name="name"]');
+      if (nameInput) CPRSheetUtils.adjustFontSizeToFit(nameInput);
     });
 
-    // Reset content filter
-    html.find(".reset-content-filter").click(() => this._clearContentFilter());
-
-    // toggle the expand/collapse buttons for skill and item categories
-    html.find(".expand-button").click((event) => this._expandButton(event));
-
-    // toggle display of nested installed items in the gear tab
-    html
-      .find(".toggle-installed-visibility")
-      .click((event) => this._toggleInstalledVisibility(event));
-
-    // Uninstall a single item from its parent.
-    html
-      .find(".uninstall-single-item")
-      .click((event) => this._uninstallSingleItem(event));
-
-    // Show edit and delete buttons
-    html.find(".row.item").hover(
-      (event) => {
-        // show edit and delete buttons
-        $(event.currentTarget).contents().contents().addClass("show");
-      },
-      (event) => {
-        // hide edit and delete buttons
-        $(event.currentTarget).contents().contents().removeClass("show");
-      },
+    this._on(".rollable", "click", (event) => this._onRoll(event));
+    this._on(".ablate", "click", (event) => this._ablateArmor(event));
+    this._on(".armor-current-untrack", "click", (event) =>
+      this._makeArmorCurrentTrack(event),
+    );
+    this._on(".armor-current-track", "click", (event) =>
+      this._makeArmorCurrentUntrack(event),
+    );
+    this._on(".item-action", "click", (event) => this._itemAction(event));
+    this._on(".item-view", "click", (event) =>
+      this._renderReadOnlyItemCard(event),
+    );
+    this._on(".item-create", "click", (event) =>
+      this._createInventoryItem(event),
+    );
+    this._on(".reset-deathsave-value", "click", () => this._resetDeathSave());
+    this._on(".increase-deathsave-value", "click", () =>
+      this._increaseDeathSave(),
+    );
+    this._on(".filter-contents", "keyup", (event) =>
+      this._applyContentFilter(event),
+    );
+    this._on(".reset-content-filter", "click", () =>
+      this._clearContentFilter(),
+    );
+    this._on(".expand-button", "click", (event) => this._expandButton(event));
+    this._on(".toggle-installed-visibility", "click", (event) =>
+      this._toggleInstalledVisibility(event),
+    );
+    this._on(".uninstall-single-item", "click", (event) =>
+      this._uninstallSingleItem(event),
     );
 
-    // Item Dragging
-    const handler = (ev) => this._onDragItemStart(ev);
-    html.find(".item").each((i, li) => {
-      li.setAttribute("draggable", true);
-      li.addEventListener("dragstart", handler, false);
+    // Show edit/delete buttons on row hover (mirrors the old contents().contents() toggle).
+    const toggleRowControls = (row, show) => {
+      Array.from(row.children).forEach((child) =>
+        Array.from(child.children).forEach((gc) =>
+          gc.classList.toggle("show", show),
+        ),
+      );
+    };
+    root.querySelectorAll(".row.item").forEach((row) => {
+      row.addEventListener("mouseenter", () => toggleRowControls(row, true));
+      row.addEventListener("mouseleave", () => toggleRowControls(row, false));
     });
 
     // Set up right click context menu when clicking on Actor's image
-    this._createActorImageContextMenu(html);
+    this._createActorImageContextMenu(root);
 
-    if (!this.options.editable) return;
-    // Listeners for editable fields under here. Fields might not be editable because
-    // the user viewing the sheet might not have permission to. They may not be the owner.
+    if (!this.isEditable) return;
+    // Listeners for editable fields under here.
 
-    $("input[type=text]").focusin(() => $(this).select());
+    root
+      .querySelectorAll('input[type="text"]')
+      .forEach((input) =>
+        input.addEventListener("focusin", () => input.select()),
+      );
 
-    // Render Item Card
-    html.find(".item-edit").click((event) => this._renderItemCard(event));
-
-    // Roll critical injuries and add to sheet
-    html.find(".roll-critical-injury").click(() => this._rollCriticalInjury());
-
-    // set/unset "checkboxes" used with fire modes
-    html
-      .find(".fire-checkbox")
-      .click((event) => this._fireCheckboxToggle(event));
-
-    // Reputation related listeners
-    html
-      .find(".reputation-open-ledger")
-      .click(() => this.showLedger("reputation"));
-
-    super.activateListeners(html);
+    this._on(".item-edit", "click", (event) => this._renderItemCard(event));
+    this._on(".roll-critical-injury", "click", () =>
+      this._rollCriticalInjury(),
+    );
+    this._on(".fire-checkbox", "click", (event) =>
+      this._fireCheckboxToggle(event),
+    );
+    this._on(".reputation-open-ledger", "click", () =>
+      this.showLedger("reputation"),
+    );
   }
 
   /**
@@ -434,24 +428,29 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {*} event - object with details of the event
    */
   _expandButton(event) {
-    const collapsibleElement = $(event.currentTarget).parents(".collapsible");
-    $(collapsibleElement).find(".collapse-icon").toggleClass("hide");
-    $(collapsibleElement).find(".expand-icon").toggleClass("hide");
-    const itemOrderedList = $(collapsibleElement).children("ol");
-    const itemList = $(itemOrderedList).children("li");
-    itemList.each((lineIndex) => {
-      const lineItem = itemList[lineIndex];
-      if ($(lineItem).hasClass("item") && !$(lineItem).hasClass("favorite")) {
-        $(lineItem).toggleClass("hide");
+    const collapsibleElement = event.currentTarget.closest(".collapsible");
+    collapsibleElement
+      .querySelectorAll(".collapse-icon, .expand-icon")
+      .forEach((icon) => icon.classList.toggle("hide"));
+    const itemOrderedList = collapsibleElement.querySelector(":scope > ol");
+    const itemList = itemOrderedList
+      ? Array.from(itemOrderedList.children).filter((c) => c.tagName === "LI")
+      : [];
+    itemList.forEach((lineItem) => {
+      if (
+        lineItem.classList.contains("item") &&
+        !lineItem.classList.contains("favorite")
+      ) {
+        lineItem.classList.toggle("hide");
       }
     });
 
-    if (this.options.collapsedSections.includes(event.currentTarget.id)) {
-      this.options.collapsedSections = this.options.collapsedSections.filter(
+    if (this.collapsedSections.includes(event.currentTarget.id)) {
+      this.collapsedSections = this.collapsedSections.filter(
         (sectionName) => sectionName !== event.currentTarget.id,
       );
     } else {
-      this.options.collapsedSections.push(event.currentTarget.id);
+      this.collapsedSections.push(event.currentTarget.id);
     }
   }
 
@@ -818,18 +817,18 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {CPRItem} item - item we are activating the DV Ruler for
    */
   async _setDvIconState(item) {
-    const dvGlyphs = this.element[0].querySelectorAll(".dv-glyph");
+    const dvGlyphs = this.element.querySelectorAll(".dv-glyph");
 
     const dvFlag = this.token.getFlag(game.system.id, "cprDvTable");
 
     const dvFlagSet = dvFlag?.name !== "";
 
     for (const glyphNode of dvGlyphs) {
-      const weaponId = $(glyphNode).attr("data-item-id");
+      const weaponId = glyphNode.dataset.itemId;
       if (weaponId === item._id && dvFlagSet) {
-        $(glyphNode).addClass("dv-active");
+        glyphNode.classList.add("dv-active");
       } else {
-        $(glyphNode).removeClass("dv-active");
+        glyphNode.classList.remove("dv-active");
       }
     }
 
@@ -993,16 +992,12 @@ export default class CPRActorSheet extends ActorSheet {
         "CPR.dialog.deleteInstalledConfirmation.message",
       )} ${installedInSlug}`;
 
-      // Show "Default" dialog.
-      const confirmDelete = await CPRDialog.showDialog(
-        { dialogMessage },
-        // Set the options for the dialog.
-        {
-          title: SystemUtils.Localize(
-            "CPR.dialog.deleteInstalledConfirmation.title",
-          ),
-        },
-      ).catch((err) => LOGGER.debug(err));
+      // Show confirmation dialog.
+      const confirmDelete = await cprConfirm(dialogMessage, {
+        title: SystemUtils.Localize(
+          "CPR.dialog.deleteInstalledConfirmation.title",
+        ),
+      });
 
       if (!confirmDelete) {
         return;
@@ -1014,12 +1009,10 @@ export default class CPRActorSheet extends ActorSheet {
         "CPR.dialog.deleteConfirmation.message",
       )} ${item.name}?`;
 
-      // Show "Default" dialog.
-      const confirmDelete = await CPRDialog.showDialog(
-        { dialogMessage },
-        // Set the options for the dialog.
-        { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") },
-      ).catch((err) => LOGGER.debug(err));
+      // Show confirmation dialog.
+      const confirmDelete = await cprConfirm(dialogMessage, {
+        title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
+      });
 
       if (!confirmDelete) {
         return;
@@ -1145,17 +1138,14 @@ export default class CPRActorSheet extends ActorSheet {
     const currentTable = 0;
 
     // Show "Roll Critical Injury" dialog.
-    const formData = await CPRDialog.showDialog(
-      { tableNames, currentTable },
-      {
-        // Set options for the dialog.
-        title: SystemUtils.Localize(
-          "CPR.dialog.rollCriticalInjury.criticalinjurytitleprompt",
-        ),
-        template: `systems/${game.system.id}/templates/dialog/cpr-roll-critical-injury-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    const formData = await cprFormPrompt({
+      data: { tableNames, currentTable },
+      title: SystemUtils.Localize(
+        "CPR.dialog.rollCriticalInjury.criticalinjurytitleprompt",
+      ),
+      template: `systems/${game.system.id}/templates/dialog/cpr-roll-critical-injury-prompt.hbs`,
+    });
+    if (!formData) {
       return undefined;
     }
     return tableNames[formData.currentTable];
@@ -1456,7 +1446,7 @@ export default class CPRActorSheet extends ActorSheet {
    * @private
    * @param {Object} event - an object capturing event details
    */
-  _onDragItemStart(event) {
+  _onDragStart(event) {
     const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
     const item = this.actor.getEmbeddedDocument("Item", itemId);
     const tokenId = this.token === null ? null : this.token.id;
@@ -1486,17 +1476,10 @@ export default class CPRActorSheet extends ActorSheet {
    * @param {Object} event - an object capturing event details
    * @returns {null}
    */
-  async _onDrop(event) {
-    const dragData = TextEditor.getDragEventData(event);
-    return dragData.type === "Item"
-      ? this._cprOnItemDrop(event)
-      : super._onDrop(event);
-  }
-
-  async _cprOnItemDrop(event) {
+  async _onDropItem(event, item) {
     const dragData = TextEditor.getDragEventData(event);
     let sourceActor;
-    const sourceItem = fromUuidSync(dragData.uuid);
+    const sourceItem = item;
     if (sourceItem.type === "cyberware" && sourceItem.system?.isInstalled) {
       SystemUtils.DisplayMessage(
         "error",
@@ -1544,7 +1527,24 @@ export default class CPRActorSheet extends ActorSheet {
     const deleteList = transferItem ? [sourceItem._id] : [];
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
 
-    const [newItem] = await super._onDrop(event);
+    let newItem;
+    if (!this.actor.isOwner || this.actor.uuid === sourceItem.parent?.uuid) {
+      // Not owned, or reordering within this actor — the core behaviour
+      // (permission check / item sort) is correct.
+      newItem = await super._onDropItem(event, item);
+    } else {
+      // Create through the actor's createEmbeddedDocuments override so CPR's
+      // item-stacking runs. AppV2's default _onDropItem creates via
+      // Item.create({parent}), which goes straight to the database backend and
+      // bypasses that override (so dropped stackables like ammo never merge).
+      const keepId = !this.actor.items.has(sourceItem.id);
+      const created = await this.actor.createEmbeddedDocuments(
+        "Item",
+        [sourceItem.toObject()],
+        { keepId },
+      );
+      newItem = created?.[0] ?? null;
+    }
 
     // If we created a new item and the sourceItem is a container type the createItem hook ensures all of the
     // installed items are also created on the target actor. We need to ensure that those items are
@@ -1573,6 +1573,7 @@ export default class CPRActorSheet extends ActorSheet {
         deleteInstalled: true,
       });
     }
+    return newItem;
   }
 
   /**
@@ -1600,15 +1601,12 @@ export default class CPRActorSheet extends ActorSheet {
     };
 
     // Show "Split Item" dialog.
-    const formData = await CPRDialog.showDialog(
-      dialogData,
-      // Set options for the dialog.
-      {
-        title: SystemUtils.Localize("CPR.dialog.splitItem.title"),
-        template: `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    const formData = await cprFormPrompt({
+      data: dialogData,
+      title: SystemUtils.Localize("CPR.dialog.splitItem.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-split-item-prompt.hbs`,
+    });
+    if (!formData) {
       return;
     }
     const oldAmount = parseInt(item.system.amount, 10);
@@ -1668,10 +1666,15 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _applyContentFilter(event) {
     const filterValue = event.currentTarget.value;
-    const num = $(".filter-contents").val();
-    this.options.cprContentFilter = filterValue;
-    await this._render();
-    $(".filter-contents").focus().val("").val(num);
+    this.cprContentFilter = filterValue;
+    await this.render();
+    const input = this.element.querySelector(".filter-contents");
+    if (input) {
+      input.focus();
+      // Re-set the value so the caret lands at the end after re-render.
+      input.value = "";
+      input.value = filterValue;
+    }
   }
 
   /**
@@ -1683,11 +1686,11 @@ export default class CPRActorSheet extends ActorSheet {
    */
   async _clearContentFilter() {
     if (
-      typeof this.options.cprContentFilter !== "undefined" &&
-      this.options.cprContentFilter !== ""
+      typeof this.cprContentFilter !== "undefined" &&
+      this.cprContentFilter !== ""
     ) {
-      this.options.cprContentFilter = "";
-      this._render();
+      this.cprContentFilter = "";
+      this.render();
     }
   }
 
