@@ -14,6 +14,10 @@
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
 
+### Изменения
+
+- Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
+
 ## Version 0.92.4
 
 ### Требует внимания
@@ -355,7 +359,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Версия 0.87.5
 
-### Исправления
+### Bug Fixes
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -1412,7 +1416,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
   - The suppressive fire option is now considered in mook sheets (same as character sheets, see issue #195).
   - Portrait added in an expandable frame.
 
-### Изменения
+### Changes
 
 - Setting the autofire maximum multiplier on an item will now be taken into account when rolling damage for autofire damage rolls. For weapons defined in the core rules (SMG, H. SMG & Assault Rifles) leaving this as 0 will utilize the core rule set for those items. You can over-ride the core rules (for homebrew) by actually setting this to a non-zero amount. If you set the multiplier in the roll dialog to a value higher than the allowable value, it will default to the maximum allowable multiplier.
 - Characters are now linked to their token by default, Mooks are not.
