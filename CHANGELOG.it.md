@@ -14,6 +14,10 @@
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
 
+### Changes
+
+- Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
+
 ## Version 0.92.4
 
 ### Action Needed
@@ -355,7 +359,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versione 0.87.5
 
-### Correzioni di bug
+### Bug Fixes
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
