@@ -1,6 +1,14 @@
-.chat-message,
-.chat-message.whisper,
-.chat-message.emote {
+/*
+ * Only theme chat messages that contain one of our own cards (roll cards,
+ * item cards). Plain messages and other modules' messages keep Foundry's
+ * styling. CPR card internals below match only our markup, so they need no
+ * extra scoping.
+ */
+.chat-message:has(:is(.rollcard, .item-card-grid-container, .cpr-block)),
+.chat-message.whisper:has(
+    :is(.rollcard, .item-card-grid-container, .cpr-block)
+  ),
+.chat-message.emote:has(:is(.rollcard, .item-card-grid-container, .cpr-block)) {
   font-family: var(--cpr-font-primary);
   background: var(--cpr-background-chat-card);
   color: var(--cpr-text-chat-normal);
@@ -222,7 +230,8 @@
   }
 }
 
-a.inline-roll {
+.chat-message:has(:is(.rollcard, .item-card-grid-container, .cpr-block))
+  a.inline-roll {
   background: var(--cpr-background-chat-inline-roll);
 
   .dice-tooltip {
@@ -241,7 +250,13 @@ a.inline-roll {
 | Chat visibility design  |
 ------------------------- */
 
-.chat-mode-indicator {
+/*
+ * CPR injects this visibility badge into every message, so only style it on our
+ * own cards — otherwise it shows as a clashing dark box on Foundry's and other
+ * modules' messages.
+ */
+.chat-message:has(:is(.rollcard, .item-card-grid-container, .cpr-block))
+  .chat-mode-indicator {
   display: inline-block;
   margin: 0 0.188rem 0 0;
   padding: 0 0.188rem;

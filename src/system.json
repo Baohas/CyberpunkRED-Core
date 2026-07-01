@@ -21,7 +21,7 @@
   "styles": [
     {
       "src": "css/main.css",
-      "layer": null
+      "layer": "system"
     }
   ],
   "packFolders": [
