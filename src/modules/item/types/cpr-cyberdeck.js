@@ -30,6 +30,7 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   async scanner() {
     if (!this.actor) return;
+    if (!CPRNetSocket.requireActiveGM()) return;
     const [meatToken] = this.actor.getActiveTokens();
     if (!meatToken) {
       SystemUtils.DisplayMessage(
@@ -117,6 +118,7 @@ export default class CPRCyberdeckItem extends CPRItem {
 
   async jackIn() {
     if (!this.actor) return;
+    if (!CPRNetSocket.requireActiveGM()) return;
     const [meatToken] = this.actor.getActiveTokens();
     if (!meatToken) {
       SystemUtils.DisplayMessage(

@@ -18,16 +18,36 @@ export default class CPRNetSocket {
   }
 
   /**
+   * True if the shared state can be mutated right now: the caller is a GM, or a GM is online to
+   * apply relayed requests. Warns the player when no GM is available.
+   *
+   * @returns {boolean}
+   */
+  static requireActiveGM() {
+    if (game.user.isGM || game.users.activeGM) return true;
+    ui.notifications.warn(
+      game.i18n.localize("CPR.netArchitecture.app.noGMOnline"),
+    );
+    return false;
+  }
+
+  /**
    * Request a shared-state mutation. Applied directly if the caller is a GM, otherwise relayed to
-   * the primary GM. Returns before the GM has applied it (fire-and-forget) for the player path.
+   * the primary GM. A player with no GM online cannot mutate shared state (nothing would apply it),
+   * so the request is refused with a warning.
    *
    * @param {String} action - one of the handlers in #apply
    * @param {Object} payload - action-specific data
+   * @returns {Promise<boolean>} whether the request was applied/relayed
    */
   static async request(action, payload) {
-    if (game.user.isGM) return CPRNetSocket.#apply({ action, payload });
+    if (game.user.isGM) {
+      await CPRNetSocket.#apply({ action, payload });
+      return true;
+    }
+    if (!CPRNetSocket.requireActiveGM()) return false;
     game.socket.emit(`system.${game.system.id}`, { action, payload });
-    return undefined;
+    return true;
   }
 
   /**

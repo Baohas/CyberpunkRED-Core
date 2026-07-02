@@ -1130,6 +1130,7 @@
   "CPR.netArchitecture.app.emptyState": "No NET Architecture installed. Drag a NET Architecture here, or select one to install it.",
   "CPR.netArchitecture.app.endTurn": "End Turn",
   "CPR.netArchitecture.app.netActions": "NET Actions",
+  "CPR.netArchitecture.app.noGMOnline": "You cannot jack in — a GM must be online.",
   "CPR.netArchitecture.app.noNetActions": "No NET actions remaining this turn.",
   "CPR.netArchitecture.app.noProgram": "No program is linked to this ICE floor.",
   "CPR.netArchitecture.app.notJackedIn": "No runner jacked in.",
