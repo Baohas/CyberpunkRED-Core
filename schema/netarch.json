@@ -30,32 +30,45 @@
         }
       ],
       "properties": {
+        "difficulty": {
+          "type": "string",
+          "enum": [
+            "basic",
+            "standard",
+            "uncommon",
+            "advanced"
+          ]
+        },
         "floors": {
           "type": "array",
           "items": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-              "blackice": {
+              "content": {
                 "type": "string",
                 "enum": [
-                  "--",
-                  "CPR.netArchitecture.floor.options.blackIce.asp",
-                  "CPR.netArchitecture.floor.options.blackIce.giant",
-                  "CPR.netArchitecture.floor.options.blackIce.hellhound",
-                  "CPR.netArchitecture.floor.options.blackIce.kraken",
-                  "CPR.netArchitecture.floor.options.blackIce.liche",
-                  "CPR.netArchitecture.floor.options.blackIce.raven",
-                  "CPR.netArchitecture.floor.options.blackIce.scorpion",
-                  "CPR.netArchitecture.floor.options.blackIce.skunk",
-                  "CPR.netArchitecture.floor.options.blackIce.wisp",
-                  "CPR.netArchitecture.floor.options.blackIce.dragon",
-                  "CPR.netArchitecture.floor.options.blackIce.killer",
-                  "CPR.netArchitecture.floor.options.blackIce.sabertooth"
+                  "password",
+                  "file",
+                  "controlNode",
+                  "program",
+                  "blackIce",
+                  "demon",
+                  "root"
                 ]
               },
+              "dv": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              },
               "branch": {
-                "type": "string",
+                "type": [
+                  "string",
+                  "null"
+                ],
                 "enum": [
                   "a",
                   "b",
@@ -67,71 +80,46 @@
                   "h"
                 ]
               },
-              "content": {
-                "type": "string",
-                "enum": [
-                  "CPR.netArchitecture.floor.options.password",
-                  "CPR.netArchitecture.floor.options.file",
-                  "CPR.netArchitecture.floor.options.controlnode",
-                  "CPR.global.programClass.blackice"
-                ]
+              "depth": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "revealed": {
+                "type": "boolean"
+              },
+              "dvRevealed": {
+                "type": "boolean"
+              },
+              "programUuid": {
+                "type": "string"
+              },
+              "iceName": {
+                "type": "string"
+              },
+              "fileContentUuid": {
+                "type": "string"
+              },
+              "controlNodeDeviceUuids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "virusPlanted": {
+                "type": "boolean"
               },
               "description": {
                 "type": "string"
-              },
-              "dv": {
-                "type": "string",
-                "enum": [
-                  "N/A",
-                  "4",
-                  "5",
-                  "6",
-                  "7",
-                  "8",
-                  "9",
-                  "10",
-                  "11",
-                  "12",
-                  "13",
-                  "14",
-                  "15",
-                  "16",
-                  "17",
-                  "18",
-                  "19",
-                  "20"
-                ]
-              },
-              "floor": {
-                "type": "string",
-                "enum": [
-                  "1",
-                  "2",
-                  "3",
-                  "4",
-                  "5",
-                  "6",
-                  "7",
-                  "8",
-                  "9",
-                  "10",
-                  "11",
-                  "12",
-                  "13",
-                  "14",
-                  "15",
-                  "16",
-                  "17",
-                  "18"
-                ]
-              },
-              "index": {
-                "type": "integer",
-                "minimum": 0
               }
             },
             "required": [
-              "index"
+              "dv",
+              "branch",
+              "depth",
+              "revealed",
+              "dvRevealed",
+              "controlNodeDeviceUuids",
+              "virusPlanted"
             ]
           }
         }

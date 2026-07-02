@@ -49,6 +49,15 @@
         {
           "$ref": "./components/valuable.json"
         }
+      ],
+      "properties": {
+        "range": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "range"
       ]
     },
     "effects": {

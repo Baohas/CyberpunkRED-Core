@@ -434,6 +434,34 @@
               "required": [
                 "value"
               ]
+            },
+            "range": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "modifier",
+                    "override"
+                  ]
+                },
+                "value": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                },
+                "isSituational": {
+                  "type": "boolean"
+                },
+                "onByDefault": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "value"
+              ]
             }
           },
           "required": [
