@@ -1167,6 +1167,7 @@
   "CPR.netArchitecture.generation.noFloorError": "The Items seems to not have any floors specified!",
   "CPR.netArchitecture.generation.noGMError": "Error: You do not have GM permissions. No Scene generation allowed!",
   "CPR.netArchitecture.generation.noSceneError": "The custom Scene does not exist!",
+  "CPR.netArchitecture.generation.noTables": "The NET Architecture rolltables compendium could not be found.",
   "CPR.netArchitecture.generation.useRolltables": "Use Rolltables to populate the NET architecture",
   "CPR.progress.default": "Progress",
   "CPR.rolls.abilityRank": "Ability Rank",

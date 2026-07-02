@@ -10,6 +10,14 @@
       </select>
     </div>
   </li>
+  {{#if this.isGM}}
+    <li class="item flexrow netarch-roll-level">
+      <a class="netarch-generate-button">
+        <i class="fas fa-dice fa-sm"></i>
+        {{localize "CPR.netArchitecture.generation.useRolltables"}}
+      </a>
+    </li>
+  {{/if}}
   {{!-- Floors are authored/generated and run in the Netrunning App; shown read-only here. --}}
   <li class="items-header flexrow">
     <span class="item-name netarch-level text-nowrap text-padding-left">{{localize "CPR.netArchitecture.floor.shortWord"}}</span>
