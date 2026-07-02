@@ -21,6 +21,7 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
   ValuableSchema,
 ) {
   static defineSchema() {
+    const { fields } = foundry.data;
     return this.mergeSchema(
       super.defineSchema({
         initialAllowedTypes: ["itemUpgrade", "program"],
@@ -28,8 +29,32 @@ export default class CyberdeckDataModel extends CPRSystemDataModel.mixin(
         initialSize: 1,
         isElectronic: true,
       }),
-      {},
+      {
+        // Jack-In range in metres (RAW default 6); raised by the "Range" itemUpgrade.
+        range: new fields.NumberField({
+          required: true,
+          nullable: false,
+          integer: true,
+          initial: 6,
+          min: 0,
+        }),
+      },
     );
+  }
+
+  /**
+   * The Jack-In range after applying any installed "Range" upgrades.
+   *
+   * @returns {Number} effective range in metres
+   */
+  get effectiveRange() {
+    const upgrade = this.parent.getTotalUpgradeValues?.("range") ?? {
+      type: "modifier",
+      value: 0,
+    };
+    return upgrade.type === "override"
+      ? upgrade.value
+      : this.range + upgrade.value;
   }
 
   get installedPrograms() {

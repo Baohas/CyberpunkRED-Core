@@ -80,6 +80,9 @@ export default class ItemUpgradeDataModel extends CPRSystemDataModel.mixin(
         cool: new fields.SchemaField(UpgradeModifierSchema.defineSchema(), {
           required: false,
         }),
+        range: new fields.SchemaField(UpgradeModifierSchema.defineSchema(), {
+          required: false,
+        }),
       }),
       type: new fields.StringField({
         initial: "weapon",

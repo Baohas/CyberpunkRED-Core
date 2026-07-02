@@ -3,6 +3,7 @@
 import CPRActiveEffect from "./modules/cpr-active-effect.js";
 import CPRActiveEffectSheet from "./modules/cpr-active-effect-sheet.js";
 import { actorConstructor, itemConstructor } from "./modules/entity-factory.js";
+import CPRAccessPointSheet from "./modules/actor/sheet/cpr-access-point-sheet.js";
 import CPRBlackIceActorSheet from "./modules/actor/sheet/cpr-black-ice-sheet.js";
 import CPRCharacterActorSheet from "./modules/actor/sheet/cpr-character-sheet.js";
 import CPRContainerActorSheet from "./modules/actor/sheet/cpr-container-sheet.js";
@@ -29,6 +30,7 @@ import initalizeAPI from "./modules/api/initialize.js";
 import registerSystemSettings from "./modules/system/settings.js";
 
 // Actor Data Models:
+import AccessPointDataModel from "./modules/datamodels/actor/access-point-datamodel.js";
 import BlackIceDataModel from "./modules/datamodels/actor/blackIce-datamodel.js";
 import CharacterDataModel from "./modules/datamodels/actor/character-datamodel.js";
 import ContainerDataModel from "./modules/datamodels/actor/container-datamodel.js";
@@ -100,6 +102,11 @@ Hooks.once("init", async () => {
     types: ["demon"],
     makeDefault: true,
   });
+  Actors.registerSheet(game.system.id, CPRAccessPointSheet, {
+    label: SystemUtils.Localize("CPR.sheets.accessPointSheet"),
+    types: ["accessPoint"],
+    makeDefault: true,
+  });
 
   // Register Item Sheet Application Classes
   Items.unregisterSheet("core", ItemSheet);
@@ -127,6 +134,7 @@ Hooks.once("init", async () => {
   game.cpr = {
     apps: {
       CPRActiveEffectSheet,
+      CPRAccessPointSheet,
       CPRBlackIceActorSheet,
       CPRCharacterActorSheet,
       CPRContainerActorSheet,
@@ -152,6 +160,7 @@ Hooks.once("init", async () => {
   CONFIG.Combatant.documentClass = CPRCombatant;
 
   // Register Actor data models.
+  CONFIG.Actor.dataModels.accessPoint = AccessPointDataModel;
   CONFIG.Actor.dataModels.blackIce = BlackIceDataModel;
   CONFIG.Actor.dataModels.character = CharacterDataModel;
   CONFIG.Actor.dataModels.container = ContainerDataModel;
