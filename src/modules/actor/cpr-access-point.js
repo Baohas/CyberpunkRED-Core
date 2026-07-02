@@ -76,22 +76,35 @@ export default class CPRAccessPointActor extends Actor {
 
     const netarchData = netarchItem.toObject();
     delete netarchData._id;
-    const created = await this.createEmbeddedDocuments("Item", [netarchData]);
-    const installed = created[0];
+    const [installed] = await this.createEmbeddedDocuments("Item", [
+      netarchData,
+    ]);
 
-    // Instantiate the linked ICE/Demon programs as embedded copies (live REZ).
+    // Instantiate the linked ICE/Demon programs as embedded copies (live REZ), then relink each
+    // floor to its embedded instance so REZ is shared, live state the Netrunning App can mutate.
+    const floors = foundry.utils.deepClone(installed.system.floors);
     const programData = [];
-    for (const floor of installed.system.floors) {
-      if (!floor.programUuid) continue;
-      const program = await fromUuid(floor.programUuid);
+    const floorForProgram = [];
+    for (let i = 0; i < floors.length; i += 1) {
+      if (!floors[i].programUuid) continue;
+      // eslint-disable-next-line no-await-in-loop
+      const program = await fromUuid(floors[i].programUuid);
       if (program?.type === "program") {
         const data = program.toObject();
         delete data._id;
         programData.push(data);
+        floorForProgram.push(i);
       }
     }
     if (programData.length) {
-      await this.createEmbeddedDocuments("Item", programData);
+      const createdPrograms = await this.createEmbeddedDocuments(
+        "Item",
+        programData,
+      );
+      createdPrograms.forEach((program, idx) => {
+        floors[floorForProgram[idx]].programUuid = program.uuid;
+      });
+      await installed.update({ "system.floors": floors });
     }
   }
 

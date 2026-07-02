@@ -20,6 +20,9 @@
             <span class="cpr-net-floor-body">
               {{localize floor.contentLabel}}{{#if floor.iceName}}
                 — {{localize floor.iceName}}{{/if}}
+              {{#if floor.rez}}<span
+                  class="cpr-net-rez{{#if floor.derezzed}} cpr-net-derezzed{{/if}}"
+                >[REZ {{floor.rez.value}}/{{floor.rez.max}}]</span>{{/if}}
             </span>
             <span class="cpr-net-floor-runners">
               {{#each floor.runnersHere as |runner|}}

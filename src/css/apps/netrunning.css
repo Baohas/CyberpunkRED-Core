@@ -185,6 +185,15 @@
   opacity: 0.55;
 }
 
+.cpr-net-rez {
+  color: var(--cpr-net-dim);
+}
+
+.cpr-net-derezzed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
 .cpr-net-empty,
 .cpr-net-todo {
   color: var(--cpr-net-dim);

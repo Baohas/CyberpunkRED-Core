@@ -39,6 +39,7 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
       slide: CPRNetrunningApp.#onSlide,
       cloak: CPRNetrunningApp.#onCloak,
       virus: CPRNetrunningApp.#onVirus,
+      zap: CPRNetrunningApp.#onZap,
     },
   };
 
@@ -48,6 +49,7 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     "backdoor",
     "eyedee",
     "control",
+    "zap",
     "slide",
     "cloak",
     "virus",
@@ -95,6 +97,10 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     const runners = this.#runners();
     context.floors = (this.apActor?.getFloors() ?? []).map((floor) => {
       const key = `${floor.depth}${floor.branch ?? ""}`;
+      const isIce = floor.content === "blackIce" || floor.content === "demon";
+      // Resolve the linked live program instance for its REZ (Black-ICE/Demon floors).
+      const program =
+        isIce && floor.programUuid ? fromUuidSync(floor.programUuid) : null;
       return {
         key,
         depth: floor.depth,
@@ -105,7 +111,9 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
         dvRevealed: floor.dvRevealed,
         revealed: floor.revealed,
         iceName: floor.iceName,
-        isIce: floor.content === "blackIce" || floor.content === "demon",
+        isIce,
+        rez: program?.system.rez ?? null,
+        derezzed: program ? program.system.rez.value <= 0 : false,
         runnersHere: runners.filter((runner) => runner.floor === key),
       };
     });
@@ -290,6 +298,44 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     const runner = this.#primaryRunner();
     if (!runner || !(await this.#spendAction(runner))) return;
     await this.#updateFloor(runner.floor, { virusPlanted: true });
+  }
+
+  /** Zap: 1d6 to the current-floor Black-ICE/Demon program's REZ (Derezzed at 0). @this {CPRNetrunningApp} */
+  static async #onZap() {
+    const runner = this.#primaryRunner();
+    if (!runner) return;
+    const floor = this.#currentFloor(runner);
+    if (
+      !floor ||
+      !(floor.content === "blackIce" || floor.content === "demon")
+    ) {
+      ui.notifications.warn(
+        game.i18n.localize("CPR.netArchitecture.app.wrongFloor"),
+      );
+      return;
+    }
+    const program = floor.programUuid
+      ? await fromUuid(floor.programUuid)
+      : null;
+    if (!program) {
+      ui.notifications.warn(
+        game.i18n.localize("CPR.netArchitecture.app.noProgram"),
+      );
+      return;
+    }
+    if (!(await this.#spendAction(runner))) return;
+    const roll = await new Roll("1d6").evaluate();
+    const newRez = Math.max(0, program.system.rez.value - roll.total);
+    await roll.toMessage({
+      flavor: game.i18n.format("CPR.netArchitecture.app.zapRoll", {
+        target: program.name,
+        rez: newRez,
+      }),
+    });
+    await CPRNetSocket.request("update", {
+      uuid: program.uuid,
+      data: { "system.rez.value": newRez },
+    });
   }
 
   /** @override */
