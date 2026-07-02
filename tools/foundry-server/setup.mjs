@@ -39,7 +39,10 @@ async function dismissTours(page) {
   );
   for (let i = 0; i < 5; i += 1) {
     if (!(await present(exit, 1000))) break;
-    await exit.first().click().catch(() => {});
+    await exit
+      .first()
+      .click()
+      .catch(() => {});
   }
   // Some builds leave a `.tour-overlay` backdrop (or re-render a tour) that keeps
   // intercepting clicks even after the exit control is clicked. Strip any residual
