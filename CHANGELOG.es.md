@@ -6,6 +6,46 @@
 
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
+- Transition ammo icons from `.png` to `.svg`
+
+## Version 0.92.4
+
+### Action Needed
+
+### Corrección de Errores
+
+- Add the Medtech's `Medical Tech Skill` & `Surgery Skill` to the list of available Role Abilities when configuring Active Effects
+- Restore `Medical Tech (Cryosystem Operation)` role ability to Medtech role item in the Core compendium.
+
+### Nuevas Características
+
+## Version 0.92.3
+
+### Action Needed
+
+- Actors with the `Medtech` role should review their rank abilities and correct any errors
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book
+  - Allocate one point to Medical Tech Skills for each point allocated to Medical Tech (Cryosystem) & Medical Tech (Pharmaceuticals)
+  - Allocate two points to Surgery Skill for each point allocated to Surgery
+
+### Corrección de Errores
+
+- Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
+- Fix location of upgrade element for equipped armor
+- Fixed error where users were incorrectly notified to check their role abilities after allocating ranks for the Medtech Role
+- Fix damage calculations to include upgrades for armors
+- Update popup weapon cyberware details and register them as `concealable`
+- Fix mook crit injuries from not appearing in chat when rolled
+- Prevent net combat from dealing critical damage
+- Crit injuries rolled on mook sheets now appear in chat properly
+- Added `Medical Tech Skill` & `Surgery Skill` to Medetech role abilities.
+  - Medtech role abilities should no longer notify users to `Check your role rank abilities, they don’t look right, Choomba”` when correctly allocating rank points.
+  - Rank allocation follows the same process as described on page 149 of the Core Rule Book. Allocate one point to `Medical Tech Skills` For each point allocated to `Medical Tech (Cryosystem)` & `Medical Tech (Pharmaceuticals)` and allocate two points to `Surgery Skill` for each point allocated to `Surgery`.
+
+### Nuevas Características
+
+- Actors created as "Mooks" will now use the mook sheet layout by default. Mooks may still be configured to use the character sheet layout as before.
+- Reformat chatcards to make the expanded damage roll calculations easier to read
 
 ## Version 0.92.2
 
@@ -49,6 +89,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 ### Nuevas Características
 
 - Add Ukrainian Language support
+- Pre-Installed smartgun-link upgrade into Malorian Arms 3516
 
 ### Corrección de Errores
 
@@ -57,19 +98,22 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Corrected armor penetration settings for Federated Arms X-9mm
 - Fix Weapon Quality/Attack Mod mismatches
 - Fix `Techtronica Russia BMG 500` price/hands
+- Fix incorrect option slot details for melee weapons, gear items, and upgrade attachments in the core compendiums
+- Fix options slots for exotic weapons
+- Fix term "Optional Slots" to "Option Slots"
 
 ## Version 0.92.1
 
 ### Corrección de Errores
 
-- \#1134 - Fix HP/Humanity interacting with the mouse scrollwheel
-- \#1137 - Fix bug preventing extended magazines from modifying weapon ammo count
-- \#1149 - Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
-- \#1152 - Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
-- \#1146 - Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
-- \#1161 - Fix shop container config not saving
-- \#1139 - Remove items from weapons that do not exist in the game and in the actor owner of the item
-- \#1162 - Fix Condition Lab and Triggler configutation styling in Dark Mode
+- Fix HP/Humanity interacting with the mouse scrollwheel
+- Fix bug preventing extended magazines from modifying weapon ammo count
+- Set correct `ammoVariety` on Westwood Pistol, Hello Cutie 1TruLuv, and Timeless WW1 Rifle to Pistol Conversion
+- Fix creating weapon item on `CPRActorSheet` crashing that Actor's sheet and migrate to fix currently broken weapons
+- Fix all container items that contain "programs" in `system.installedItems.allowedTypes` to correctly be "program"
+- Fix shop container config not saving
+- Remove items from weapons that do not exist in the game and in the actor owner of the item
+- Fix Condition Lab and Triggler configutation styling in Dark Mode
 
 ## Version 0.92
 
@@ -305,7 +349,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.5
 
-### Corrección de Errores
+### Bug Fixes
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -377,7 +421,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.1
 
-### Corrección de Errores
+### Bug Fixes
 
 Reparar migraciones rotas
 
