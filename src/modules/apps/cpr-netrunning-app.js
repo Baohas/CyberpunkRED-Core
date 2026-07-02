@@ -1,5 +1,6 @@
 import CPR from "../system/config.js";
 import CPRNetSocket from "../system/net-socket.js";
+import { CPRRoll } from "../rolls/cpr-rolls.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -423,8 +424,12 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
   static async #onCloak() {
     const runner = this.#primaryRunner();
     if (!runner || !(await this.#spendAction(runner))) return;
-    const roll = await new Roll("1d10").evaluate();
-    await this.#updateRunner(runner.id, { cloak: roll.total });
+    const roll = CPRRoll.create(
+      game.i18n.localize(CPR.interfaceAbilities.cloak),
+      "1d10",
+    );
+    await roll.roll();
+    await this.#updateRunner(runner.id, { cloak: roll.resultTotal });
   }
 
   /** Virus: plant a persistent virus — only on a root (deepest) floor. @this {CPRNetrunningApp} */
@@ -468,8 +473,12 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
       return;
     }
     if (!(await this.#spendAction(runner))) return;
-    const roll = await new Roll("1d6").evaluate();
-    const newRez = Math.max(0, program.system.rez.value - roll.total);
+    const roll = CPRRoll.create(
+      game.i18n.localize(CPR.interfaceAbilities.zap),
+      "1d6",
+    );
+    await roll.roll();
+    const newRez = Math.max(0, program.system.rez.value - roll.resultTotal);
     await roll.toMessage({
       flavor: game.i18n.format("CPR.netArchitecture.app.zapRoll", {
         target: program.name,

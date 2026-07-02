@@ -1,6 +1,7 @@
 import CPR from "../system/config.js";
 import LOGGER from "./cpr-logger.js";
 import SystemUtils from "./cpr-systemUtils.js";
+import { CPRRoll } from "../rolls/cpr-rolls.js";
 
 /**
  * Helpers for generating NET Architecture floor data from the RAW rolltables (Core p.210-211).
@@ -31,7 +32,7 @@ export default class CPRNetArchUtils {
     if (!tables) return [];
     const { lobby, difficultyTable } = tables;
 
-    const floorCount = (await new Roll("3d6").evaluate()).total;
+    const floorCount = await CPRNetArchUtils.#roll("3d6");
     let splitsLeft = await CPRNetArchUtils.#rollBranches();
 
     // Build a split-tree of "lines". A line is a vertical run of floors; when it splits it ends and
@@ -59,13 +60,13 @@ export default class CPRNetArchUtils {
         remaining >= 2 &&
         splittable.length > 0 &&
         // eslint-disable-next-line no-await-in-loop
-        (await new Roll("1d2").evaluate()).total === 1;
+        (await CPRNetArchUtils.#roll("1d2")) === 1;
 
       if (split) {
         const parent =
           // eslint-disable-next-line no-await-in-loop
           splittable[
-            (await new Roll(`1d${splittable.length}`).evaluate()).total - 1
+            (await CPRNetArchUtils.#roll(`1d${splittable.length}`)) - 1
           ];
         openLines.splice(openLines.indexOf(parent), 1); // the parent line ends at the split
         for (const letter of ["a", "b"]) {
@@ -83,9 +84,7 @@ export default class CPRNetArchUtils {
       } else {
         const line =
           // eslint-disable-next-line no-await-in-loop
-          openLines[
-            (await new Roll(`1d${openLines.length}`).evaluate()).total - 1
-          ];
+          openLines[(await CPRNetArchUtils.#roll(`1d${openLines.length}`)) - 1];
         // eslint-disable-next-line no-await-in-loop
         line.floors.push(
           await CPRNetArchUtils.#drawFloor(difficultyTable, seen),
@@ -110,11 +109,21 @@ export default class CPRNetArchUtils {
     return floors;
   }
 
+  /** Roll a plain formula through the CPR roll system and return its total. */
+  static async #roll(formula) {
+    const roll = CPRRoll.create(
+      SystemUtils.Localize("CPR.rolls.roll"),
+      formula,
+    );
+    await roll.roll();
+    return roll.resultTotal;
+  }
+
   /** Roll for branches: 1d10, +1 branch on 7+, repeat while 7+. */
   static async #rollBranches() {
     let branches = 0;
     // eslint-disable-next-line no-await-in-loop
-    while ((await new Roll("1d10").evaluate()).total >= 7) branches += 1;
+    while ((await CPRNetArchUtils.#roll("1d10")) >= 7) branches += 1;
     return branches;
   }
 

@@ -37,7 +37,11 @@ export default class CPRCyberdeckItem extends CPRItem {
     const interfaceRank = netRole
       ? Number.parseInt(netRole.system.rank, 10)
       : 0;
-    const roll = await new Roll(`1d10 + ${interfaceRank}`).evaluate();
+    const roll = CPRRolls.CPRRoll.create(
+      SystemUtils.Localize("CPR.netArchitecture.app.scanner"),
+      `1d10 + ${interfaceRank}`,
+    );
+    await roll.roll();
     await roll.toMessage({
       flavor: SystemUtils.Format("CPR.netArchitecture.app.scannerRoll", {
         interface: interfaceRank,
@@ -47,7 +51,7 @@ export default class CPRCyberdeckItem extends CPRItem {
 
     // The reveal is a GM action (players cannot un-hide GM-owned tokens).
     if (!game.user.isGM) return;
-    await CPRCyberdeckItem.#gmRevealAccessPoints(meatToken, roll.total);
+    await CPRCyberdeckItem.#gmRevealAccessPoints(meatToken, roll.resultTotal);
   }
 
   /**
