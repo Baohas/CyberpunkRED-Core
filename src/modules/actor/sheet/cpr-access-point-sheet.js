@@ -1,5 +1,5 @@
 import CPR from "../../system/config.js";
-import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPRNetrunningApp from "../../apps/cpr-netrunning-app.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ActorSheetV2 } = foundry.applications.sheets;
@@ -54,10 +54,7 @@ export default class CPRAccessPointSheet extends HandlebarsApplicationMixin(
    * @this {CPRAccessPointSheet}
    */
   static async #onOpenApp() {
-    SystemUtils.DisplayMessage(
-      "warn",
-      SystemUtils.Localize("CPR.netArchitecture.app.notYetImplemented"),
-    );
+    CPRNetrunningApp.open(this.actor);
   }
 
   /**

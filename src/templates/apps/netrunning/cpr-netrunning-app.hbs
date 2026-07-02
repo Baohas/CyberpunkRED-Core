@@ -1,0 +1,40 @@
+<div class="cpr-net-root{{#if reducedMotion}} cpr-net-reduced-motion{{/if}}">
+  <div class="cpr-net-scanlines"></div>
+
+  <section class="cpr-net-arch">
+    <header class="cpr-net-line cpr-net-arch-header">
+      <span class="cpr-net-prompt">&gt;</span>
+      {{localize "CPR.netArchitecture.app.architecture"}}:
+      {{#if hasArch}}{{archName}} [{{localize difficulty}}]{{else}}—{{/if}}
+    </header>
+
+    {{#if hasArch}}
+      <ol class="cpr-net-floors">
+        {{#each floors as |floor|}}
+          <li
+            class="cpr-net-floor{{#if floor.isIce}} cpr-net-ice{{/if}}{{#unless floor.revealed}} cpr-net-unrevealed{{/unless}}"
+          >
+            <span class="cpr-net-floor-id">{{floor.depth}}{{floor.branch}}</span>
+            <span class="cpr-net-floor-body">
+              {{localize floor.contentLabel}}{{#if floor.iceName}}
+                — {{localize floor.iceName}}{{/if}}
+            </span>
+            <span class="cpr-net-floor-dv">
+              {{#if floor.dv}}DV{{floor.dv}}{{/if}}
+            </span>
+          </li>
+        {{/each}}
+      </ol>
+    {{else}}
+      <p class="cpr-net-empty">{{localize "CPR.netArchitecture.app.emptyState"}}</p>
+    {{/if}}
+  </section>
+
+  <section class="cpr-net-runner">
+    <header class="cpr-net-line cpr-net-runner-header">
+      <span class="cpr-net-prompt">&gt;</span>
+      {{localize "CPR.netArchitecture.app.runner"}}
+    </header>
+    <p class="cpr-net-todo">{{localize "CPR.netArchitecture.app.runnerComingSoon"}}</p>
+  </section>
+</div>

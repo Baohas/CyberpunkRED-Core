@@ -122,4 +122,14 @@
   /* Icon Colors */
   --cpr-icon-actor-image-overlay-border: var(--cpr-color-red);
   --cpr-icon-actor-image-overlay: var(--cpr-color-white);
+
+  /* Netrunning App (80s CRT phosphor terminal) */
+  --cpr-net-bg: #050a06;
+  --cpr-net-phosphor: #37ff9a;
+  --cpr-net-dim: #1f7d4d;
+  --cpr-net-ice: #f55;
+  --cpr-net-glow: 0 0 0.25rem rgb(55 255 154 / 70%);
+  --cpr-net-ice-glow: 0 0 0.25rem rgb(255 85 85 / 70%);
+  --cpr-net-scanline: rgb(0 0 0 / 28%);
+  --cpr-net-font: "Courier New", "Courier", monospace;
 }
