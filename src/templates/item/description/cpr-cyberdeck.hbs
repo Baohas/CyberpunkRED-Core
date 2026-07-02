@@ -1,1 +1,8 @@
-{{!-- Cyberdeck specific stats and values would go here if we had any --}}
+{{#if item.isOwned}}
+  <div class="cyberdeck-actions flexrow">
+    <a class="cyberdeck-jack-in">
+      <i class="fa-solid fa-plug"></i>
+      {{localize "CPR.netArchitecture.app.jackIn"}}
+    </a>
+  </div>
+{{/if}}

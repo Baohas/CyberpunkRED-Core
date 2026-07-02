@@ -4,12 +4,51 @@ import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
+import CPRNetrunningApp from "../../apps/cpr-netrunning-app.js";
 
 /**
  * Extend the base CPRItem object with things specific to cyberdecks.
  * @extends {CPRItem}
  */
 export default class CPRCyberdeckItem extends CPRItem {
+  /**
+   * Jack in to a nearby NET Architecture: find the discovered (visible) Access Point tokens on
+   * the active scene within this deck's effective range of the netrunner's meat token, and open
+   * the Netrunning App for the nearest one. Requires the netrunner to have a token on the scene
+   * (netrunning is a physical-presence activity).
+   *
+   * @public
+   */
+  jackIn() {
+    if (!this.actor) return;
+    const [meatToken] = this.actor.getActiveTokens();
+    if (!meatToken) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.netArchitecture.app.noMeatToken"),
+      );
+      return;
+    }
+    const range = this.system.effectiveRange ?? 6;
+    const inRange = canvas.tokens.placeables
+      .filter((t) => t.actor?.type === "accessPoint" && !t.document.hidden)
+      .map((t) => ({
+        token: t,
+        distance: canvas.grid.measurePath([meatToken.center, t.center])
+          .distance,
+      }))
+      .filter((entry) => entry.distance <= range)
+      .sort((a, b) => a.distance - b.distance);
+    if (!inRange.length) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.netArchitecture.app.noAccessPointInRange"),
+      );
+      return;
+    }
+    CPRNetrunningApp.open(inRange[0].token.actor);
+  }
+
   /**
    * Cyberdeck Code
    *
