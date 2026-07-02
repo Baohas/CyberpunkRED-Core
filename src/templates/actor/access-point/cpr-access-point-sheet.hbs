@@ -1,4 +1,13 @@
 <form class="cpr-access-point">
+  <div class="ap-install flexrow">
+    <label>{{localize "CPR.netArchitecture.app.install"}}</label>
+    <select class="ap-netarch-select">
+      <option value="">{{localize "CPR.global.generic.none"}}</option>
+      {{#each availableNetarchs as |n|}}
+        <option value="{{n.uuid}}">{{n.name}}</option>
+      {{/each}}
+    </select>
+  </div>
   {{#if installedNetarch}}
     <header class="ap-header flexrow">
       <h2 class="ap-title">{{installedNetarch.name}}</h2>

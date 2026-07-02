@@ -32,6 +32,7 @@ const hooksImports = [
   "item/set-default-image.js",
   "token/add-dv-token-hud.js",
   "token/close-unlinked-sheet-on-delete.js",
+  "token/hide-access-point.js",
   "token/warn-on-moving-locked-container.js",
 ];
 
