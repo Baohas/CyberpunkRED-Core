@@ -34,11 +34,23 @@ async function present(locator, timeout = SHORT) {
  * none is present.
  */
 async function dismissTours(page) {
+  const exit = page.locator(
+    '.tour-center-step a[data-action="exit"], .tour a[data-action="exit"]',
+  );
+  for (let i = 0; i < 5; i += 1) {
+    if (!(await present(exit, 1000))) break;
+    await exit.first().click().catch(() => {});
+  }
+  // Some builds leave a `.tour-overlay` backdrop (or re-render a tour) that keeps
+  // intercepting clicks even after the exit control is clicked. Strip any residual
+  // tour DOM directly so the controls beneath become clickable.
   await page
     .evaluate(() => {
-      for (const sel of [".tour-overlay", ".tour", ".tour-center-step"]) {
-        document.querySelectorAll(sel).forEach((el) => el.remove());
-      }
+      document
+        .querySelectorAll(
+          ".tour, .tour-overlay, .tour-center-step, .tour-fadeout",
+        )
+        .forEach((el) => el.remove());
     })
     .catch(() => {});
 }
