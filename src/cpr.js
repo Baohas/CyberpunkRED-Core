@@ -18,6 +18,7 @@ import CPRMacro from "./modules/utils/cpr-macros.js";
 import SystemUtils from "./modules/utils/cpr-systemUtils.js";
 import MigrationRunner from "./modules/system/migrate/migration.js";
 import MigrationApp from "./modules/system/migrate/migration-app.js";
+import CPRNetSocket from "./modules/system/net-socket.js";
 
 // Function imports
 import registerHooks from "./modules/system/hooks.js";
@@ -326,6 +327,9 @@ Hooks.once("init", async () => {
  * but then we moved to integers for maintainability's sake.
  */
 Hooks.once("ready", async () => {
+  // Register the netrunning GM socket relay on every client (players emit, the GM applies).
+  CPRNetSocket.register();
+
   overrideRulerFunctions();
   // Set the waypoint label template on the ruler class directly — reading it from
   // `canvas.controls.ruler` threw when launching into a world with no active scene.

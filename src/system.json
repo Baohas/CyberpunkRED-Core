@@ -18,6 +18,7 @@
     }
   ],
   "esmodules": ["cpr.js"],
+  "socket": true,
   "styles": [
     {
       "src": "css/main.css",
