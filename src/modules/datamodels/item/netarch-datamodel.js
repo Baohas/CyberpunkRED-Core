@@ -60,7 +60,9 @@ export default class NetArchDataModel extends CPRSystemDataModel.mixin(
           // Link to an Item / JournalEntry / JournalEntryPage (file floors).
           fileContentUuid: new fields.StringField({ blank: true, initial: "" }),
           // Device actors granted to the runner on a successful Control (control-node floors).
-          controlNodeDeviceUuids: new fields.ArrayField(new fields.StringField()),
+          controlNodeDeviceUuids: new fields.ArrayField(
+            new fields.StringField(),
+          ),
           virusPlanted: new fields.BooleanField({ initial: false }),
           description: new fields.StringField({ blank: true }),
         }),
