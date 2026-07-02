@@ -187,3 +187,17 @@
   font-display: swap;
   src: url("../fonts/Rubik.ttf") format("truetype");
 }
+
+/* Departure Mono (Nerd Font) — the Netrunning App's CRT terminal typeface, which also carries the
+   Nerd Font glyphs used for netrunning icons (e.g. the Scanner's radar). */
+@font-face {
+  font-family: DepartureMono;
+  src: url("../fonts/DepartureMono/DepartureMonoNerdFontPropo-Regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Nerd Font icon classes (`nf nf-<name>`) are provided by the vendored nerd-fonts.css, which
+   renders them from this DepartureMono font. */

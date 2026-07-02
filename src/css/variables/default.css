@@ -133,5 +133,5 @@
   --cpr-net-scanline: rgb(0 0 0 / 28%);
   --cpr-net-hover: rgb(55 255 154 / 8%);
   --cpr-net-hover-strong: rgb(55 255 154 / 12%);
-  --cpr-net-font: "Courier New", "Courier", monospace;
+  --cpr-net-font: "DepartureMono";
 }

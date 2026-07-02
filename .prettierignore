@@ -19,5 +19,8 @@
 **/src/maps/*
 **/src/tiles/*
 
+# Vendored, minified third-party stylesheet (Nerd Fonts webfont CSS)
+**/src/css/elements/nerd-fonts.css
+
 # Ignore templates, prettier can't handle handlebars partials
 **/src/templates/*

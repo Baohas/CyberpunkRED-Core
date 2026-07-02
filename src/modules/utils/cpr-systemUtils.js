@@ -601,6 +601,10 @@ export default class CPRSystemUtils {
       }
     } else if (foundryObject === "Actor") {
       switch (objectType) {
+        case "accessPoint": {
+          imageLink = `systems/${game.system.id}/icons/compendium/default/default_access-point.svg`;
+          break;
+        }
         case "blackIce": {
           imageLink = `systems/${game.system.id}/icons/compendium/default/default-blackice.svg`;
           break;
