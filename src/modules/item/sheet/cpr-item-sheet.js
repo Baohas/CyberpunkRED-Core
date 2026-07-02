@@ -280,10 +280,6 @@ export default class CPRItemSheet extends ItemSheet {
     // Select all text when grabbing text input.
     $("input[type=text]").focusin(() => $(this).select());
 
-    // Cyberdeck: Scanner (find access points) + jack in to a nearby NET Architecture.
-    html.find(".cyberdeck-scanner").click(() => this.item.scanner());
-    html.find(".cyberdeck-jack-in").click(() => this.item.jackIn());
-
     // generic listeners
     html
       .find(".item-checkbox")

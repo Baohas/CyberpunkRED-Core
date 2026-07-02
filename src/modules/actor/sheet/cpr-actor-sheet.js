@@ -772,6 +772,14 @@ export default class CPRActorSheet extends ActorSheet {
           item.uninstall();
           break;
         }
+        case "cyberdeck-scanner": {
+          item.scanner();
+          break;
+        }
+        case "cyberdeck-jack-in": {
+          item.jackIn();
+          break;
+        }
         case "dv-ruler": {
           if (item.system?.dvTable !== "") {
             await item.doAction(this.actor, event.currentTarget.attributes);
