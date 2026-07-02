@@ -32,7 +32,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       return;
     }
     const netRole = this.actor.itemTypes.role.find(
-      (role) => role.system.mainRoleAbility === "interface",
+      (role) => role.system.mainRoleAbility?.toLowerCase() === "interface",
     );
     const interfaceRank = netRole
       ? Number.parseInt(netRole.system.rank, 10)
@@ -161,7 +161,7 @@ export default class CPRCyberdeckItem extends CPRItem {
    */
   async #registerRunner(apActor) {
     const netRole = this.actor.itemTypes.role.find(
-      (role) => role.system.mainRoleAbility === "interface",
+      (role) => role.system.mainRoleAbility?.toLowerCase() === "interface",
     );
     const rank = netRole ? Number.parseInt(netRole.system.rank, 10) : 0;
     const maxActions = CPRCyberdeckItem.#netActionsForRank(rank);
