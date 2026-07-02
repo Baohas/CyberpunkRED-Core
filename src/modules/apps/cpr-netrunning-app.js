@@ -32,8 +32,26 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
       moveTo: CPRNetrunningApp.#onMoveTo,
       endTurn: CPRNetrunningApp.#onEndTurn,
       jackOut: CPRNetrunningApp.#onJackOut,
+      pathfinder: CPRNetrunningApp.#onPathfinder,
+      backdoor: CPRNetrunningApp.#onBackdoor,
+      eyedee: CPRNetrunningApp.#onEyeDee,
+      control: CPRNetrunningApp.#onControl,
+      slide: CPRNetrunningApp.#onSlide,
+      cloak: CPRNetrunningApp.#onCloak,
+      virus: CPRNetrunningApp.#onVirus,
     },
   };
+
+  /** The interface abilities shown as buttons in the runner panel. */
+  static ABILITIES = [
+    "pathfinder",
+    "backdoor",
+    "eyedee",
+    "control",
+    "slide",
+    "cloak",
+    "virus",
+  ];
 
   static PARTS = {
     body: {
@@ -95,6 +113,10 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     context.myRunners = runners.filter(
       (runner) => game.user.isGM || runner.userId === game.user.id,
     );
+    context.abilities = CPRNetrunningApp.ABILITIES.map((key) => ({
+      key,
+      label: CPR.interfaceAbilities[key],
+    }));
     // Reuse the pause-menu accessibility signal: calm the CRT effects under photosensitive mode.
     context.reducedMotion = game.settings.get("core", "photosensitiveMode");
     return context;
@@ -151,6 +173,123 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
       uuid: this.apActor.uuid,
       data: { [`flags.${game.system.id}.runners.-=${runner.id}`]: null },
     });
+  }
+
+  /** The floor the runner is standing on (matched by depth+branch key). */
+  #currentFloor(runner) {
+    return (this.apActor?.getFloors() ?? []).find(
+      (floor) => `${floor.depth}${floor.branch ?? ""}` === runner.floor,
+    );
+  }
+
+  /**
+   * Spend one of the runner's NET actions. Warns and returns false when the budget is empty.
+   *
+   * @returns {Promise<boolean>}
+   */
+  async #spendAction(runner) {
+    if (runner.netActions <= 0) {
+      ui.notifications.warn(
+        game.i18n.localize("CPR.netArchitecture.app.noNetActions"),
+      );
+      return false;
+    }
+    await this.#updateRunner(runner.id, { netActions: runner.netActions - 1 });
+    return true;
+  }
+
+  /** Apply changes to a floor of the installed architecture via the GM relay. */
+  async #updateFloor(floorKey, changes) {
+    const netarch = this.apActor?.installedNetarch;
+    if (!netarch) return;
+    const floors = foundry.utils.deepClone(netarch.system.floors);
+    const floor = floors.find(
+      (entry) => `${entry.depth}${entry.branch ?? ""}` === floorKey,
+    );
+    if (!floor) return;
+    Object.assign(floor, changes);
+    await CPRNetSocket.request("update", {
+      uuid: netarch.uuid,
+      data: { "system.floors": floors },
+    });
+  }
+
+  /** Reveal the current floor's content + DV if it matches a node type (Backdoor/Eye-Dee/Control). */
+  async #openCurrentNode(contentType) {
+    const runner = this.#primaryRunner();
+    if (!runner) return;
+    const floor = this.#currentFloor(runner);
+    if (floor?.content !== contentType) {
+      ui.notifications.warn(
+        game.i18n.localize("CPR.netArchitecture.app.wrongFloor"),
+      );
+      return;
+    }
+    if (!(await this.#spendAction(runner))) return;
+    await this.#updateFloor(runner.floor, { revealed: true, dvRevealed: true });
+  }
+
+  /** Pathfinder: reveal the next unrevealed floor. @this {CPRNetrunningApp} */
+  static async #onPathfinder() {
+    const runner = this.#primaryRunner();
+    if (!runner || !(await this.#spendAction(runner))) return;
+    const next = (this.apActor?.getFloors() ?? [])
+      .filter((floor) => !floor.revealed)
+      .sort((a, b) => a.depth - b.depth)[0];
+    if (next) {
+      await this.#updateFloor(`${next.depth}${next.branch ?? ""}`, {
+        revealed: true,
+      });
+    }
+  }
+
+  /** Backdoor a Password floor. @this {CPRNetrunningApp} */
+  static async #onBackdoor() {
+    await this.#openCurrentNode("password");
+  }
+
+  /** Eye-Dee a File floor. @this {CPRNetrunningApp} */
+  static async #onEyeDee() {
+    await this.#openCurrentNode("file");
+  }
+
+  /** Seize a Control Node floor. @this {CPRNetrunningApp} */
+  static async #onControl() {
+    await this.#openCurrentNode("controlNode");
+  }
+
+  /** Slide: flee one floor shallower (toward the entry). @this {CPRNetrunningApp} */
+  static async #onSlide() {
+    const runner = this.#primaryRunner();
+    if (!runner || !(await this.#spendAction(runner))) return;
+    const current = this.#currentFloor(runner);
+    const target = (this.apActor?.getFloors() ?? [])
+      .filter(
+        (floor) =>
+          (floor.branch ?? "") === (current?.branch ?? "") &&
+          floor.depth < (current?.depth ?? 1),
+      )
+      .sort((a, b) => b.depth - a.depth)[0];
+    if (target) {
+      await this.#updateRunner(runner.id, {
+        floor: `${target.depth}${target.branch ?? ""}`,
+      });
+    }
+  }
+
+  /** Cloak: roll Interface + 1d10 and store the runner's Cloak DV. @this {CPRNetrunningApp} */
+  static async #onCloak() {
+    const runner = this.#primaryRunner();
+    if (!runner || !(await this.#spendAction(runner))) return;
+    const roll = await new Roll("1d10").evaluate();
+    await this.#updateRunner(runner.id, { cloak: roll.total });
+  }
+
+  /** Virus: plant a persistent virus on the runner's current floor. @this {CPRNetrunningApp} */
+  static async #onVirus() {
+    const runner = this.#primaryRunner();
+    if (!runner || !(await this.#spendAction(runner))) return;
+    await this.#updateFloor(runner.floor, { virusPlanted: true });
   }
 
   /** @override */

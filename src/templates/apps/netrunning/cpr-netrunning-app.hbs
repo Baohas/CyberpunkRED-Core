@@ -53,6 +53,17 @@
           {{localize "CPR.netArchitecture.app.netActions"}}:
           {{runner.netActions}}/{{runner.maxNetActions}}
         </div>
+        <div class="cpr-net-abilities">
+          {{#each ../abilities as |ability|}}
+            <button
+              type="button"
+              class="cpr-net-ability"
+              data-action="{{ability.key}}"
+            >
+              {{localize ability.label}}
+            </button>
+          {{/each}}
+        </div>
         <div class="cpr-net-runner-buttons flexrow">
           <button type="button" data-action="endTurn">
             {{localize "CPR.netArchitecture.app.endTurn"}}

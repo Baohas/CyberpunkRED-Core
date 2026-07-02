@@ -142,6 +142,27 @@
   background: var(--cpr-net-hover-strong);
 }
 
+.cpr-net-abilities {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.cpr-net-ability {
+  color: var(--cpr-net-phosphor);
+  background: transparent;
+  border: 0.0625rem solid var(--cpr-net-dim);
+  font-family: var(--cpr-net-font);
+  font-size: 0.8rem;
+  text-shadow: var(--cpr-net-glow);
+  cursor: pointer;
+}
+
+.cpr-net-ability:hover {
+  background: var(--cpr-net-hover-strong);
+}
+
 .cpr-net-floor:last-child {
   border-bottom: 0.0625rem solid var(--cpr-net-dim);
 }
