@@ -131,5 +131,7 @@
   --cpr-net-glow: 0 0 0.25rem rgb(55 255 154 / 70%);
   --cpr-net-ice-glow: 0 0 0.25rem rgb(255 85 85 / 70%);
   --cpr-net-scanline: rgb(0 0 0 / 28%);
+  --cpr-net-hover: rgb(55 255 154 / 8%);
+  --cpr-net-hover-strong: rgb(55 255 154 / 12%);
   --cpr-net-font: "Courier New", "Courier", monospace;
 }

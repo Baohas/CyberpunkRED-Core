@@ -88,12 +88,58 @@
 
 .cpr-net-floor {
   display: grid;
-  grid-template-columns: 3rem 1fr auto;
+  grid-template-columns: 3rem 1fr auto auto;
   gap: 0.5rem;
-  align-items: baseline;
+  align-items: center;
   padding: 0.15rem 0.5rem;
   border: 0.0625rem solid var(--cpr-net-dim);
   border-bottom: none;
+  cursor: pointer;
+}
+
+.cpr-net-floor:hover {
+  background: var(--cpr-net-hover);
+}
+
+.cpr-net-floor-runners {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.cpr-net-runner-icon {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0.0625rem solid var(--cpr-net-phosphor);
+  border-radius: 50%;
+}
+
+.cpr-net-runner-card {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  border: 0.0625rem solid var(--cpr-net-dim);
+}
+
+.cpr-net-runner-name {
+  font-weight: bold;
+}
+
+.cpr-net-runner-buttons {
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.cpr-net-runner-buttons button {
+  flex: 1;
+  color: var(--cpr-net-phosphor);
+  background: transparent;
+  border: 0.0625rem solid var(--cpr-net-dim);
+  font-family: var(--cpr-net-font);
+  text-shadow: var(--cpr-net-glow);
+  cursor: pointer;
+}
+
+.cpr-net-runner-buttons button:hover {
+  background: var(--cpr-net-hover-strong);
 }
 
 .cpr-net-floor:last-child {

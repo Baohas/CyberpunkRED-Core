@@ -5,6 +5,7 @@ import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
 import CPRNetrunningApp from "../../apps/cpr-netrunning-app.js";
+import CPRNetSocket from "../../system/net-socket.js";
 
 /**
  * Extend the base CPRItem object with things specific to cyberdecks.
@@ -114,7 +115,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     }
   }
 
-  jackIn() {
+  async jackIn() {
     if (!this.actor) return;
     const [meatToken] = this.actor.getActiveTokens();
     if (!meatToken) {
@@ -141,7 +142,47 @@ export default class CPRCyberdeckItem extends CPRItem {
       );
       return;
     }
-    CPRNetrunningApp.open(inRange[0].token.actor);
+    const apActor = inRange[0].token.actor;
+    await this.#registerRunner(apActor);
+    CPRNetrunningApp.open(apActor);
+  }
+
+  /**
+   * Register this deck's netrunner on an Access Point's shared runner state (via the GM relay):
+   * position at the entry floor with a fresh NET-action budget derived from Interface Rank.
+   *
+   * @param {Actor} apActor - the accessPoint actor being jacked into
+   */
+  async #registerRunner(apActor) {
+    const netRole = this.actor.itemTypes.role.find(
+      (role) => role.system.mainRoleAbility === "interface",
+    );
+    const rank = netRole ? Number.parseInt(netRole.system.rank, 10) : 0;
+    const maxActions = CPRCyberdeckItem.#netActionsForRank(rank);
+    const runners = foundry.utils.deepClone(
+      apActor.getFlag(game.system.id, "runners") ?? {},
+    );
+    runners[this.actor.id] = {
+      name: this.actor.name,
+      img: this.actor.img,
+      floor: "1",
+      netActions: maxActions,
+      maxNetActions: maxActions,
+      deckId: this.id,
+      userId: game.user.id,
+    };
+    await CPRNetSocket.request("update", {
+      uuid: apActor.uuid,
+      data: { [`flags.${game.system.id}.runners`]: runners },
+    });
+  }
+
+  /** NET Actions per turn by Interface Rank (RAW 2/3/4/5 bands) [cfg]. */
+  static #netActionsForRank(rank) {
+    if (rank <= 2) return 2;
+    if (rank <= 4) return 3;
+    if (rank <= 6) return 4;
+    return 5;
   }
 
   /**

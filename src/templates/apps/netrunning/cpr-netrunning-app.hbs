@@ -13,11 +13,22 @@
         {{#each floors as |floor|}}
           <li
             class="cpr-net-floor{{#if floor.isIce}} cpr-net-ice{{/if}}{{#unless floor.revealed}} cpr-net-unrevealed{{/unless}}"
+            data-action="moveTo"
+            data-floor="{{floor.key}}"
           >
             <span class="cpr-net-floor-id">{{floor.depth}}{{floor.branch}}</span>
             <span class="cpr-net-floor-body">
               {{localize floor.contentLabel}}{{#if floor.iceName}}
                 — {{localize floor.iceName}}{{/if}}
+            </span>
+            <span class="cpr-net-floor-runners">
+              {{#each floor.runnersHere as |runner|}}
+                <img
+                  class="cpr-net-runner-icon"
+                  src="{{runner.img}}"
+                  data-tooltip="{{runner.name}}"
+                />
+              {{/each}}
             </span>
             <span class="cpr-net-floor-dv">
               {{#if floor.dv}}DV{{floor.dv}}{{/if}}
@@ -35,6 +46,24 @@
       <span class="cpr-net-prompt">&gt;</span>
       {{localize "CPR.netArchitecture.app.runner"}}
     </header>
-    <p class="cpr-net-todo">{{localize "CPR.netArchitecture.app.runnerComingSoon"}}</p>
+    {{#each myRunners as |runner|}}
+      <div class="cpr-net-runner-card">
+        <div class="cpr-net-runner-name">{{runner.name}}</div>
+        <div class="cpr-net-runner-actions-count">
+          {{localize "CPR.netArchitecture.app.netActions"}}:
+          {{runner.netActions}}/{{runner.maxNetActions}}
+        </div>
+        <div class="cpr-net-runner-buttons flexrow">
+          <button type="button" data-action="endTurn">
+            {{localize "CPR.netArchitecture.app.endTurn"}}
+          </button>
+          <button type="button" data-action="jackOut">
+            {{localize "CPR.netArchitecture.app.jackOut"}}
+          </button>
+        </div>
+      </div>
+    {{else}}
+      <p class="cpr-net-todo">{{localize "CPR.netArchitecture.app.notJackedIn"}}</p>
+    {{/each}}
   </section>
 </div>
