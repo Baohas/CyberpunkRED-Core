@@ -40,6 +40,7 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
       cloak: CPRNetrunningApp.#onCloak,
       virus: CPRNetrunningApp.#onVirus,
       zap: CPRNetrunningApp.#onZap,
+      toggleRez: CPRNetrunningApp.#onToggleRez,
     },
   };
 
@@ -95,7 +96,10 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
       ? CPR.netArchDifficulty[arch.system.difficulty]
       : "";
     const runners = this.#runners();
-    context.floors = (this.apActor?.getFloors() ?? []).map((floor) => {
+    const floorList = this.apActor?.getFloors() ?? [];
+    // The deepest floor(s) are the "root" — the CPU/core; a Virus can only be planted on a root.
+    const maxDepth = floorList.reduce((max, f) => Math.max(max, f.depth), 0);
+    const processed = floorList.map((floor) => {
       const key = `${floor.depth}${floor.branch ?? ""}`;
       const isIce = floor.content === "blackIce" || floor.content === "demon";
       // Resolve the linked live program instance for its REZ (Black-ICE/Demon floors).
@@ -105,6 +109,8 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
         key,
         depth: floor.depth,
         branch: floor.branch,
+        // Row label, e.g. "03a" — zero-padded depth + branch id.
+        label: `${String(floor.depth).padStart(2, "0")}${floor.branch ?? ""}`,
         content: floor.content,
         contentLabel: CPR.netArchFloorContent[floor.content],
         dv: floor.dv,
@@ -112,15 +118,31 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
         revealed: floor.revealed,
         iceName: floor.iceName,
         isIce,
+        isRoot: maxDepth > 0 && floor.depth === maxDepth,
         rez: program?.system.rez ?? null,
         derezzed: program ? program.system.rez.value <= 0 : false,
         runnersHere: runners.filter((runner) => runner.floor === key),
       };
     });
-    // The runners the current viewer controls (GM controls all NPC runners).
-    context.myRunners = runners.filter(
-      (runner) => game.user.isGM || runner.userId === game.user.id,
-    );
+    // A split architecture renders as a column tree: the app template recurses over this structure,
+    // stacking a line's floors and laying its child lines out side-by-side.
+    context.tree = CPRNetrunningApp.#buildFloorTree(processed);
+    // The runners the current viewer controls (GM controls all NPC runners), each enriched with
+    // the programs installed on the deck they jacked in with (for rez/derez in the panel).
+    context.myRunners = runners
+      .filter((runner) => game.user.isGM || runner.userId === game.user.id)
+      .map((runner) => {
+        const deck = game.actors.get(runner.id)?.items.get(runner.deckId);
+        const programs = (deck?.system.installedPrograms ?? []).map(
+          (program) => ({
+            id: program.id,
+            name: program.name,
+            classLabel: CPR.programClassList[program.system.class] ?? "",
+            rezzed: !!program.system.isRezzed,
+          }),
+        );
+        return { ...runner, programs };
+      });
     context.abilities = CPRNetrunningApp.ABILITIES.map((key) => ({
       key,
       label: CPR.interfaceAbilities[key],
@@ -128,6 +150,38 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     // Reuse the pause-menu accessibility signal: calm the CRT effects under photosensitive mode.
     context.reducedMotion = game.settings.get("core", "photosensitiveMode");
     return context;
+  }
+
+  /**
+   * Assemble the flat floor list into a nested line tree for the column-tree render. Floors are
+   * grouped into lines by branch path; each line links under its parent (its path minus the last
+   * ".segment"), so a split renders as sibling child lines laid out side-by-side.
+   *
+   * @param {Array} floors - processed floor objects (each with `depth` and `branch`)
+   * @returns {Object} the root line node `{ path, floors, children }`
+   */
+  static #buildFloorTree(floors) {
+    const lines = new Map();
+    const lineFor = (branch) => {
+      const key = branch ?? "";
+      if (!lines.has(key)) {
+        lines.set(key, { path: branch ?? null, floors: [], children: [] });
+      }
+      return lines.get(key);
+    };
+    [...floors]
+      .sort((a, b) => a.depth - b.depth)
+      .forEach((floor) => lineFor(floor.branch).floors.push(floor));
+    [...lines.entries()].forEach(([key, line]) => {
+      if (key === "") return; // the main spine is the root
+      const segments = key.split(".");
+      segments.pop();
+      lineFor(segments.join(".") || null).children.push(line);
+    });
+    lines.forEach((line) =>
+      line.children.sort((a, b) => (a.path ?? "").localeCompare(b.path ?? "")),
+    );
+    return lineFor(null);
   }
 
   /** The runners currently jacked in to this architecture (from shared AP flag state). */
@@ -373,10 +427,20 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     await this.#updateRunner(runner.id, { cloak: roll.total });
   }
 
-  /** Virus: plant a persistent virus on the runner's current floor. @this {CPRNetrunningApp} */
+  /** Virus: plant a persistent virus — only on a root (deepest) floor. @this {CPRNetrunningApp} */
   static async #onVirus() {
     const runner = this.#primaryRunner();
-    if (!runner || !(await this.#spendAction(runner))) return;
+    if (!runner) return;
+    const floor = this.#currentFloor(runner);
+    const floors = this.apActor?.getFloors() ?? [];
+    const maxDepth = floors.reduce((max, f) => Math.max(max, f.depth), 0);
+    if (!floor || floor.depth !== maxDepth) {
+      ui.notifications.warn(
+        game.i18n.localize("CPR.netArchitecture.app.virusRootOnly"),
+      );
+      return;
+    }
+    if (!(await this.#spendAction(runner))) return;
     await this.#updateFloor(runner.floor, { virusPlanted: true });
   }
 
@@ -418,6 +482,21 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     });
   }
 
+  /**
+   * Rez / derez one of the runner's own deck programs (their actor, so no relay needed).
+   *
+   * @this {CPRNetrunningApp}
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target - carries data-actor and data-program
+   */
+  static async #onToggleRez(event, target) {
+    const program = game.actors
+      .get(target.dataset.actor)
+      ?.items.get(target.dataset.program);
+    if (!program) return;
+    await program.update({ "system.isRezzed": !program.system.isRezzed });
+  }
+
   /** @override */
   _onRender(context, options) {
     super._onRender(context, options);
@@ -427,7 +506,15 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     // floor/REZ changes update them).
     const rerenderIfMine = (doc) => {
       const apId = this.apActor?.id;
-      if (doc.id === apId || doc.parent?.id === apId) this.render();
+      if (doc.id === apId || doc.parent?.id === apId) {
+        this.render();
+        return;
+      }
+      // A jacked-in runner's own item changed (e.g. a deck program rez/derez).
+      const runnerIds = Object.keys(
+        this.apActor?.getFlag(game.system.id, "runners") ?? {},
+      );
+      if (doc.parent && runnerIds.includes(doc.parent.id)) this.render();
     };
     for (const event of [
       "updateActor",

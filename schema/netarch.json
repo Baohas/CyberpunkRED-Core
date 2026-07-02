@@ -68,16 +68,6 @@
                 "type": [
                   "string",
                   "null"
-                ],
-                "enum": [
-                  "a",
-                  "b",
-                  "c",
-                  "d",
-                  "e",
-                  "f",
-                  "g",
-                  "h"
                 ]
               },
               "depth": {

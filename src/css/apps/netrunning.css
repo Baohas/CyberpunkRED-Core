@@ -64,6 +64,12 @@
   overflow-y: auto;
 }
 
+/* The floors pane grows and scrolls horizontally so deeply nested trees have room; the runner
+   pane on the right keeps its fixed width (the root grid column is `1fr 20rem`). */
+.cpr-net-arch {
+  overflow: auto;
+}
+
 .cpr-net-runner {
   border-left: 0.0625rem solid var(--cpr-net-dim);
 }
@@ -80,20 +86,41 @@
   font-weight: bold;
 }
 
-.cpr-net-floors {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+/* The architecture tower is a column tree: a line stacks its floors, and a split lays its child
+   lines out as equal-width columns spanning the parent's width (recursing for nested splits). */
+.cpr-net-tree {
+  display: flex;
+  flex-direction: column;
+}
+
+/* A vertical run of floors on one branch line; a split divides it into side-by-side columns. Each
+   column keeps a readable min-width — deeply nested trees overflow and the arch pane scrolls. */
+.cpr-net-column {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  min-width: 7rem;
+}
+
+.cpr-net-branches {
+  display: flex;
+  flex-direction: row;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.cpr-net-branches > .cpr-net-column {
+  flex: 1 1 0;
 }
 
 .cpr-net-floor {
   display: grid;
-  grid-template-columns: 3rem 1fr auto auto;
+  grid-template-columns: auto 1fr auto auto;
   gap: 0.5rem;
   align-items: center;
+  margin-bottom: 0.2rem;
   padding: 0.15rem 0.5rem;
   border: 0.0625rem solid var(--cpr-net-dim);
-  border-bottom: none;
   cursor: pointer;
 }
 
@@ -128,20 +155,6 @@
   margin-top: 0.5rem;
 }
 
-.cpr-net-runner-buttons button {
-  flex: 1;
-  color: var(--cpr-net-phosphor);
-  background: transparent;
-  border: 0.0625rem solid var(--cpr-net-dim);
-  font-family: var(--cpr-net-font);
-  text-shadow: var(--cpr-net-glow);
-  cursor: pointer;
-}
-
-.cpr-net-runner-buttons button:hover {
-  background: var(--cpr-net-hover-strong);
-}
-
 .cpr-net-abilities {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -149,22 +162,32 @@
   margin-top: 0.5rem;
 }
 
-.cpr-net-ability {
+/* The app's own button — resets the system button chrome for the phosphor terminal look. */
+.cpr-net-button {
+  appearance: none;
+  padding: 0.2rem 0.4rem;
   color: var(--cpr-net-phosphor);
   background: transparent;
   border: 0.0625rem solid var(--cpr-net-dim);
+  border-radius: 0;
+  box-shadow: none;
   font-family: var(--cpr-net-font);
   font-size: 0.8rem;
+  line-height: 1.3;
   text-shadow: var(--cpr-net-glow);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   cursor: pointer;
 }
 
-.cpr-net-ability:hover {
+.cpr-net-button:hover {
   background: var(--cpr-net-hover-strong);
+  border-color: var(--cpr-net-phosphor);
+  box-shadow: none;
 }
 
-.cpr-net-floor:last-child {
-  border-bottom: 0.0625rem solid var(--cpr-net-dim);
+.cpr-net-runner-buttons .cpr-net-button {
+  flex: 1;
 }
 
 .cpr-net-floor-id {
@@ -198,4 +221,53 @@
 .cpr-net-todo {
   color: var(--cpr-net-dim);
   font-style: italic;
+}
+
+/* Floor 0: the Lobby — the entry point, not a real (interactive) node. */
+.cpr-net-lobby {
+  cursor: default;
+  color: var(--cpr-net-dim);
+  font-style: italic;
+}
+
+.cpr-net-lobby:hover {
+  background: transparent;
+}
+
+/* The root floor(s): the CPU/core the runner is descending toward. */
+.cpr-net-root-floor .cpr-net-floor-id {
+  color: var(--cpr-net-phosphor);
+  font-weight: bold;
+}
+
+.cpr-net-root-label {
+  margin-left: 0.4rem;
+  color: var(--cpr-net-phosphor);
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* The runner's deck programs — each a rez/derez toggle. */
+.cpr-net-programs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.cpr-net-programs-header {
+  color: var(--cpr-net-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cpr-net-program {
+  text-align: left;
+}
+
+.cpr-net-program.cpr-net-rezzed {
+  background: var(--cpr-net-hover-strong);
+  border-color: var(--cpr-net-phosphor);
+  font-weight: bold;
 }

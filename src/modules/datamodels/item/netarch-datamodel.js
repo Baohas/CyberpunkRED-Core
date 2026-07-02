@@ -37,11 +37,13 @@ export default class NetArchDataModel extends CPRSystemDataModel.mixin(
             initial: null,
             min: 0,
           }),
+          // A branch path: null on the main spine, else a dot-separated line id ("a", "a.b" for a
+          // branch nested under "a"). Free-form (no fixed choices) so branches can nest.
           branch: new fields.StringField({
             required: true,
             nullable: true,
+            blank: false,
             initial: null,
-            choices: ["a", "b", "c", "d", "e", "f", "g", "h"],
           }),
           depth: new fields.NumberField({
             required: true,

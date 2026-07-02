@@ -32,28 +32,81 @@ export default class CPRNetArchUtils {
     const { lobby, difficultyTable } = tables;
 
     const floorCount = (await new Roll("3d6").evaluate()).total;
-    const branchCount = await CPRNetArchUtils.#rollBranches();
-    // Lines the floors are distributed across: null = main line, then branch letters.
-    const lines = [
-      null,
-      ...["a", "b", "c", "d", "e", "f", "g", "h"].slice(0, branchCount),
-    ];
-    const depth = new Map(lines.map((l) => [l, 1]));
+    let splitsLeft = await CPRNetArchUtils.#rollBranches();
 
-    const floors = [];
+    // Build a split-tree of "lines". A line is a vertical run of floors; when it splits it ends and
+    // forks into TWO child lines (rendered side-by-side in the app). `path` is the branch id — null
+    // on the main spine, else dot-separated ("a", then "a.a"/"a.b" for a nested split). Global
+    // `depth` (the row) is assigned after the tree is built; the deepest floors are the roots.
     const seen = new Set();
-    for (let i = 0; i < floorCount; i += 1) {
-      // First two floors are the Lobby (main line); the rest use the difficulty table and are
-      // distributed round-robin across the main line and any branches.
-      const isLobby = i < 2;
-      const line = isLobby ? null : lines[(i - 2) % lines.length];
-      const table = isLobby ? lobby : difficultyTable;
-      const floor = await CPRNetArchUtils.#drawFloor(table, seen);
-      floor.branch = line;
-      floor.depth = depth.get(line);
-      depth.set(line, floor.depth + 1);
-      floors.push(floor);
+    const root = { path: null, floors: [], children: [] };
+    const openLines = [root];
+
+    // The first two floors are the Lobby, on the main spine.
+    for (let i = 0; i < 2 && i < floorCount; i += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      root.floors.push(await CPRNetArchUtils.#drawFloor(lobby, seen));
     }
+    let remaining = floorCount - root.floors.length;
+
+    while (remaining > 0) {
+      // A split forks a line (with ≥1 floor) into two children, giving each a floor up front so no
+      // leaf is empty — hence it needs two floors left in the budget.
+      const splittable = openLines.filter((l) => l.floors.length >= 1);
+      // eslint-disable-next-line no-await-in-loop
+      const split =
+        splitsLeft > 0 &&
+        remaining >= 2 &&
+        splittable.length > 0 &&
+        // eslint-disable-next-line no-await-in-loop
+        (await new Roll("1d2").evaluate()).total === 1;
+
+      if (split) {
+        const parent =
+          // eslint-disable-next-line no-await-in-loop
+          splittable[
+            (await new Roll(`1d${splittable.length}`).evaluate()).total - 1
+          ];
+        openLines.splice(openLines.indexOf(parent), 1); // the parent line ends at the split
+        for (const letter of ["a", "b"]) {
+          const child = {
+            path: parent.path ? `${parent.path}.${letter}` : letter,
+            // eslint-disable-next-line no-await-in-loop
+            floors: [await CPRNetArchUtils.#drawFloor(difficultyTable, seen)],
+            children: [],
+          };
+          parent.children.push(child);
+          openLines.push(child);
+          remaining -= 1;
+        }
+        splitsLeft -= 1;
+      } else {
+        const line =
+          // eslint-disable-next-line no-await-in-loop
+          openLines[
+            (await new Roll(`1d${openLines.length}`).evaluate()).total - 1
+          ];
+        // eslint-disable-next-line no-await-in-loop
+        line.floors.push(
+          await CPRNetArchUtils.#drawFloor(difficultyTable, seen),
+        );
+        remaining -= 1;
+      }
+    }
+
+    // Flatten to floor objects, assigning each its global depth (row): a child line begins on the
+    // row just below its parent line's last floor.
+    const floors = [];
+    const assign = (line, startDepth) => {
+      line.floors.forEach((floor, i) => {
+        floor.branch = line.path;
+        floor.depth = startDepth + i;
+        floors.push(floor);
+      });
+      const childStart = startDepth + line.floors.length;
+      line.children.forEach((child) => assign(child, childStart));
+    };
+    assign(root, 1);
     return floors;
   }
 
