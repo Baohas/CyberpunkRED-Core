@@ -1,4 +1,17 @@
 <div class="item-netarch-section">
+  {{!-- Owner (a Corp, gang, or individual) — shown in the Netrunning App header --}}
+  <li class="item flexrow">
+    <div class="item flexrow setting-name text-nowrap">
+      {{localize "CPR.netArchitecture.owner"}}
+    </div>
+    <div class="item flexrow setting-value text-nowrap item-end">
+      <input
+        type="text"
+        name="system.owner"
+        value="{{item.system.owner}}"
+      />
+    </div>
+  </li>
   {{!-- Difficulty Rating (sets node DVs) --}}
   <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">

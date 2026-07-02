@@ -18,6 +18,13 @@ export default class NetArchDataModel extends CPRSystemDataModel.mixin(
   static defineSchema() {
     const { fields } = foundry.data;
     return this.mergeSchema(super.defineSchema(), {
+      // The in-fiction owner of this architecture (a Corp, gang, or individual), shown in the
+      // Netrunning App header. Blank when unset.
+      owner: new fields.StringField({
+        required: false,
+        blank: true,
+        initial: "",
+      }),
       difficulty: new fields.StringField({
         blank: false,
         initial: "standard",
