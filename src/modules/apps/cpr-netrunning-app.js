@@ -161,8 +161,14 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
   /** Move the viewer's runner to a floor (free action). @this {CPRNetrunningApp} */
   static async #onMoveTo(event, target) {
     const runner = this.#primaryRunner();
-    if (runner)
-      await this.#updateRunner(runner.id, { floor: target.dataset.floor });
+    if (!runner) return;
+    if (
+      runner.controlledNode &&
+      runner.controlledNode !== target.dataset.floor
+    ) {
+      await this.#revokeControl(runner);
+    }
+    await this.#updateRunner(runner.id, { floor: target.dataset.floor });
   }
 
   /** End the viewer's NET turn: reset the NET-action budget. @this {CPRNetrunningApp} */
@@ -173,10 +179,11 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     }
   }
 
-  /** Jack the viewer's runner out: remove it from the shared state. @this {CPRNetrunningApp} */
+  /** Jack the viewer's runner out: revoke any control, then remove it. @this {CPRNetrunningApp} */
   static async #onJackOut() {
     const runner = this.#primaryRunner();
     if (!runner) return;
+    await this.#revokeControl(runner);
     await CPRNetSocket.request("update", {
       uuid: this.apActor.uuid,
       data: { [`flags.${game.system.id}.runners.-=${runner.id}`]: null },
@@ -256,14 +263,86 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     await this.#openCurrentNode("password");
   }
 
-  /** Eye-Dee a File floor. @this {CPRNetrunningApp} */
+  /** Eye-Dee a File floor: reveal it and open its linked Item/Journal, if any. @this {CPRNetrunningApp} */
   static async #onEyeDee() {
-    await this.#openCurrentNode("file");
+    const runner = this.#primaryRunner();
+    if (!runner) return;
+    const floor = this.#currentFloor(runner);
+    if (floor?.content !== "file") {
+      ui.notifications.warn(
+        game.i18n.localize("CPR.netArchitecture.app.wrongFloor"),
+      );
+      return;
+    }
+    if (!(await this.#spendAction(runner))) return;
+    await this.#updateFloor(runner.floor, { revealed: true, dvRevealed: true });
+    if (floor.fileContentUuid) {
+      const doc = await fromUuid(floor.fileContentUuid);
+      doc?.sheet?.render(true);
+    }
   }
 
-  /** Seize a Control Node floor. @this {CPRNetrunningApp} */
+  /**
+   * Seize a Control Node floor: reveal it and grant the runner's user OWNER of the linked device
+   * actors (so they gain control + vision), via the GM relay. The prior ownership is snapshotted
+   * on the runner so it can be restored when they leave the floor or Jack Out. @this {CPRNetrunningApp}
+   */
   static async #onControl() {
-    await this.#openCurrentNode("controlNode");
+    const runner = this.#primaryRunner();
+    if (!runner) return;
+    const floor = this.#currentFloor(runner);
+    if (floor?.content !== "controlNode") {
+      ui.notifications.warn(
+        game.i18n.localize("CPR.netArchitecture.app.wrongFloor"),
+      );
+      return;
+    }
+    if (!(await this.#spendAction(runner))) return;
+    await this.#updateFloor(runner.floor, { revealed: true, dvRevealed: true });
+
+    const OWNER = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+    // Snapshot prior ownership as an ARRAY — UUIDs contain dots, and Foundry expands dotted
+    // object keys into nested structures when persisted to flags, which would corrupt a map.
+    const controlled = [];
+    for (const uuid of floor.controlNodeDeviceUuids ?? []) {
+      // eslint-disable-next-line no-await-in-loop
+      const device = await fromUuid(uuid);
+      if (!device) continue;
+      controlled.push({
+        uuid,
+        prior:
+          device.ownership?.[runner.userId] ?? device.ownership?.default ?? 0,
+      });
+      // eslint-disable-next-line no-await-in-loop
+      await CPRNetSocket.request("ownership", {
+        uuid,
+        userId: runner.userId,
+        level: OWNER,
+      });
+    }
+    await this.#updateRunner(runner.id, {
+      controlledNode: runner.floor,
+      controlled,
+    });
+  }
+
+  /** Restore prior ownership of any devices the runner controlled, and clear the grant. */
+  async #revokeControl(runner) {
+    const controlled = runner.controlled ?? [];
+    for (const { uuid, prior } of controlled) {
+      // eslint-disable-next-line no-await-in-loop
+      await CPRNetSocket.request("ownership", {
+        uuid,
+        userId: runner.userId,
+        level: prior,
+      });
+    }
+    if (controlled.length) {
+      await this.#updateRunner(runner.id, {
+        controlled: [],
+        controlledNode: null,
+      });
+    }
   }
 
   /** Slide: flee one floor shallower (toward the entry). @this {CPRNetrunningApp} */
@@ -279,6 +358,7 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
       )
       .sort((a, b) => b.depth - a.depth)[0];
     if (target) {
+      if (runner.controlledNode) await this.#revokeControl(runner);
       await this.#updateRunner(runner.id, {
         floor: `${target.depth}${target.branch ?? ""}`,
       });
