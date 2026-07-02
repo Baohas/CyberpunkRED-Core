@@ -13,25 +13,6 @@
               {{localize "CPR.characterSheet.bottomPane.fight.title"}}
             </a>
           </div>
-          {{#if (cprCompare fightData.fightOptions "===" "both") }}
-            {{#if (cprCompare fightData.fightState "===" "Meatspace") }}
-              <div class="text-padding-left-smaller">
-                (<span class="tab-highlight">
-                  {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}
-                </span> | <a class="toggle-fight-state" data-state="Netspace">
-                  {{~localize "CPR.characterSheet.bottomPane.fight.net"~}}
-                </a>)
-              </div>
-            {{else}}
-              <div class="text-padding-left-smaller">
-                (<a class="toggle-fight-state" data-state="Meatspace">
-                  {{~localize "CPR.characterSheet.bottomPane.fight.meat"}}
-                </a> | <span class="tab-highlight">
-                  {{~localize "CPR.characterSheet.bottomPane.fight.net"~}}
-                </span>)
-              </div>
-            {{/if}}
-          {{/if}}
         </div>
       </div>
       <div class="tab-pink-underlay">
