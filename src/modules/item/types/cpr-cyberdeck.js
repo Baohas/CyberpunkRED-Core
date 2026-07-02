@@ -13,14 +13,6 @@ import CPRNetSocket from "../../system/net-socket.js";
  */
 export default class CPRCyberdeckItem extends CPRItem {
   /**
-   * Jack in to a nearby NET Architecture: find the discovered (visible) Access Point tokens on
-   * the active scene within this deck's effective range of the netrunner's meat token, and open
-   * the Netrunning App for the nearest one. Requires the netrunner to have a token on the scene
-   * (netrunning is a physical-presence activity).
-   *
-   * @public
-   */
-  /**
    * Scanner (Meat Action): roll Interface + 1d10 (no fixed DV — graded), then let the GM reveal
    * the Meatspace location of nearby Access Points. The reveal is GM-mediated (RAW leaves "how
    * much you find" to the GM); the GM sees a dialog of hidden access-point tokens annotated with
@@ -116,6 +108,14 @@ export default class CPRCyberdeckItem extends CPRItem {
     }
   }
 
+  /**
+   * Jack in to a nearby NET Architecture: find the discovered (visible) Access Point tokens on
+   * the active scene within this deck's effective range of the netrunner's meat token, and open
+   * the Netrunning App for the nearest one. Warns and aborts if no GM is online, if the netrunner
+   * has no token on the active scene, or if no access point is in range.
+   *
+   * @public
+   */
   async jackIn() {
     if (!this.actor) return;
     if (!CPRNetSocket.requireActiveGM()) return;
