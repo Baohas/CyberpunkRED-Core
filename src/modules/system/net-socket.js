@@ -1,4 +1,5 @@
 import LOGGER from "../utils/cpr-logger.js";
+import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
  * GM socket relay for the Netrunning App. The shared board (floor reveals, ICE REZ, runner
@@ -71,9 +72,81 @@ export default class CPRNetSocket {
         }
         break;
       }
+      // Run the GM-side Scanner reveal (a player cannot open the GM dialog or flag GM-owned tokens).
+      case "scannerReveal":
+        await CPRNetSocket.#scannerReveal(
+          payload.meatTokenId,
+          payload.rollTotal,
+        );
+        break;
       default:
         LOGGER.warn(`CPRNetSocket | unknown action "${action}"`);
         break;
+    }
+  }
+
+  /**
+   * GM-side Scanner reveal: present the hidden, not-yet-located access points the scan may have
+   * found, then flag each chosen token located (`flags.<system>.netrunning.revealed`) and ping it
+   * (a shared ping visible to everyone). The tokens stay hidden on the canvas.
+   *
+   * @param {String} meatTokenId - the scanning runner's token id (for distance annotation)
+   * @param {Number} rollTotal - the Scanner roll total (shown to the GM)
+   */
+  static async #scannerReveal(meatTokenId, rollTotal) {
+    const meatToken = canvas.tokens.get(meatTokenId);
+    const candidates = canvas.tokens.placeables
+      .filter(
+        (t) =>
+          t.actor?.type === "accessPoint" &&
+          t.document.hidden &&
+          !t.document.getFlag(game.system.id, "netrunning")?.revealed,
+      )
+      .map((t) => ({
+        token: t,
+        distance: meatToken
+          ? canvas.grid.measurePath([meatToken.center, t.center]).distance
+          : null,
+        arch: t.actor.installedNetarch?.name ?? "—",
+      }))
+      .sort((a, b) => (a.distance ?? 0) - (b.distance ?? 0));
+    // Nothing new to locate — the already-located ones were pinged by the caller.
+    if (!candidates.length) return;
+    const rows = candidates
+      .map((entry) => {
+        const dist =
+          entry.distance != null ? ` — ${entry.distance.toFixed(1)}m` : "";
+        return `<label class="flexrow"><input type="checkbox" name="ap" value="${entry.token.id}" checked/> ${entry.arch}${dist}</label>`;
+      })
+      .join("");
+    const content = `<p>${SystemUtils.Format("CPR.netArchitecture.app.scannerRevealHint", { total: rollTotal })}</p>${rows}`;
+    const result = await foundry.applications.api.DialogV2.wait({
+      window: {
+        title: SystemUtils.Localize("CPR.netArchitecture.app.scannerReveal"),
+      },
+      content,
+      buttons: [
+        {
+          action: "reveal",
+          label: SystemUtils.Localize("CPR.netArchitecture.app.scannerReveal"),
+          default: true,
+          callback: (event, button) =>
+            Array.from(
+              button.form.querySelectorAll('input[name="ap"]:checked'),
+            ).map((input) => input.value),
+        },
+      ],
+    }).catch(() => null);
+    if (!result?.length) return;
+    // Flag each located access point as found by the runner, then ping it (broadcast to everyone).
+    for (const tokenId of result) {
+      const entry = candidates.find((e) => e.token.id === tokenId);
+      if (!entry) continue;
+      // eslint-disable-next-line no-await-in-loop
+      await entry.token.document.setFlag(game.system.id, "netrunning", {
+        revealed: true,
+      });
+      canvas.ping(entry.token.center);
     }
   }
 }

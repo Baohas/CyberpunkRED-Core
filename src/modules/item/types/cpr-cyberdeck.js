@@ -13,10 +13,11 @@ import CPRNetSocket from "../../system/net-socket.js";
  */
 export default class CPRCyberdeckItem extends CPRItem {
   /**
-   * Scanner (Meat Action): roll Interface + 1d10 (no fixed DV — graded), then let the GM reveal
-   * the Meatspace location of nearby Access Points. The reveal is GM-mediated (RAW leaves "how
-   * much you find" to the GM); the GM sees a dialog of hidden access-point tokens annotated with
-   * distance from the runner and which architecture, and the chosen ones are un-hidden + pinged.
+   * Scanner (Meat Action): roll Interface + 1d10 (no fixed DV — graded), then locate nearby Access
+   * Points. Every access point already located by this runner (`flags.<system>.netrunning.revealed`
+   * on the token) is pinged immediately — a shared ping any client can fire, so the token can stay
+   * hidden. The not-yet-located ones are handed to the GM (directly, or via the socket relay for a
+   * player), who adjudicates which the scan found; each of those is then flagged located + pinged.
    *
    * @public
    */
@@ -49,74 +50,31 @@ export default class CPRCyberdeckItem extends CPRItem {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
     });
 
-    // The reveal is a GM action (players cannot un-hide GM-owned tokens).
-    if (!game.user.isGM) return;
-    await CPRCyberdeckItem.#gmRevealAccessPoints(meatToken, roll.resultTotal);
+    // Ping every already-located access point right away — a ping broadcasts and needs no
+    // ownership, so this works for a player and the token stays hidden.
+    for (const token of canvas.tokens.placeables) {
+      if (
+        token.actor?.type === "accessPoint" &&
+        token.document.getFlag(game.system.id, "netrunning")?.revealed
+      ) {
+        canvas.ping(token.center);
+      }
+    }
+
+    // Hand any not-yet-located access points to the GM (relayed when the caller is a player), who
+    // decides which the scan found; each is flagged located + pinged for everyone.
+    await CPRNetSocket.request("scannerReveal", {
+      meatTokenId: meatToken.id,
+      rollTotal: roll.resultTotal,
+    });
   }
 
   /**
-   * GM-side Access Point reveal dialog: pick which hidden access points the Scanner found; the
-   * chosen tokens are un-hidden and pinged.
-   *
-   * @param {Token} meatToken - the scanning runner's token (for distance annotation)
-   * @param {Number} rollTotal - the Scanner roll total (shown to the GM)
-   */
-  static async #gmRevealAccessPoints(meatToken, rollTotal) {
-    const hidden = canvas.tokens.placeables
-      .filter((t) => t.actor?.type === "accessPoint" && t.document.hidden)
-      .map((t) => ({
-        token: t,
-        distance: canvas.grid.measurePath([meatToken.center, t.center])
-          .distance,
-        arch: t.actor.installedNetarch?.name ?? "—",
-      }))
-      .sort((a, b) => a.distance - b.distance);
-    if (!hidden.length) {
-      SystemUtils.DisplayMessage(
-        "warn",
-        SystemUtils.Localize("CPR.netArchitecture.app.noAccessPointHidden"),
-      );
-      return;
-    }
-    const rows = hidden
-      .map(
-        (entry) =>
-          `<label class="flexrow"><input type="checkbox" name="ap" value="${entry.token.id}" checked/> ${entry.arch} — ${entry.distance.toFixed(1)}m</label>`,
-      )
-      .join("");
-    const content = `<p>${SystemUtils.Format("CPR.netArchitecture.app.scannerRevealHint", { total: rollTotal })}</p>${rows}`;
-    const result = await foundry.applications.api.DialogV2.wait({
-      window: {
-        title: SystemUtils.Localize("CPR.netArchitecture.app.scannerReveal"),
-      },
-      content,
-      buttons: [
-        {
-          action: "reveal",
-          label: SystemUtils.Localize("CPR.netArchitecture.app.scannerReveal"),
-          default: true,
-          callback: (event, button) =>
-            Array.from(
-              button.form.querySelectorAll('input[name="ap"]:checked'),
-            ).map((input) => input.value),
-        },
-      ],
-    }).catch(() => null);
-    if (!result?.length) return;
-    for (const tokenId of result) {
-      const entry = hidden.find((e) => e.token.id === tokenId);
-      if (!entry) continue;
-      // eslint-disable-next-line no-await-in-loop
-      await entry.token.document.update({ hidden: false });
-      canvas.ping(entry.token.center);
-    }
-  }
-
-  /**
-   * Jack in to a nearby NET Architecture: find the discovered (visible) Access Point tokens on
-   * the active scene within this deck's effective range of the netrunner's meat token, and open
-   * the Netrunning App for the nearest one. Warns and aborts if no GM is online, if the netrunner
-   * has no token on the active scene, or if no access point is in range.
+   * Jack in to a nearby NET Architecture: find the Access Point tokens on the active scene within
+   * this deck's effective range of the netrunner's meat token (hidden or not — proximity is the
+   * gate, not visibility), and open the Netrunning App for the nearest one. Warns and aborts if no
+   * GM is online, if the netrunner has no token on the active scene, or if no access point is in
+   * range.
    *
    * @public
    */
@@ -133,7 +91,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     }
     const range = this.system.effectiveRange ?? 6;
     const inRange = canvas.tokens.placeables
-      .filter((t) => t.actor?.type === "accessPoint" && !t.document.hidden)
+      .filter((t) => t.actor?.type === "accessPoint")
       .map((t) => ({
         token: t,
         distance: canvas.grid.measurePath([meatToken.center, t.center])
@@ -171,7 +129,9 @@ export default class CPRCyberdeckItem extends CPRItem {
     runners[this.actor.id] = {
       name: this.actor.name,
       img: this.actor.img,
-      floor: "1",
+      // Land on the Lobby (floor "0", the always-visible entry) and descend from there; the
+      // architecture floors reveal as the runner steps onto them or Pathfinds ahead.
+      floor: "0",
       netActions: maxActions,
       maxNetActions: maxActions,
       deckId: this.id,

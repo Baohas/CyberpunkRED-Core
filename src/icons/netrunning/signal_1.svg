@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   role="img"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="signal_1.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="1.5840849"
+     inkscape:cx="268.60934"
+     inkscape:cy="245.252"
+     inkscape:window-width="1716"
+     inkscape:window-height="1392"
+     inkscape:window-x="1440"
+     inkscape:window-y="696"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1" />
+  <title
+     id="title1">Pixelated white WiFi signal logo</title>
+  <desc
+     id="desc1">Pixel-art WiFi symbol in white on a gray background: three solid curved signal bands with 45-degree legs above a diamond dot. No shadow, no internal gridlines.</desc>
+  <path
+     fill="currentColor"
+     fill-rule="nonzero"
+     d="m 243.37431,420.13393 v -12.62569 h -12.62568 v -12.62569 -12.62569 h 12.62568 v -12.62568 h 12.62568 12.6257 v 12.62568 h 12.62568 v 12.62569 12.62569 h -12.62568 v 12.62569 h -12.6257 z"
+     id="path1"
+     style="fill:currentColor;stroke-width:1.11732"
+     sodipodi:nodetypes="ccccccccccccccccc" />
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>Pixelated white WiFi signal logo</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

@@ -90,16 +90,18 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
   /** @override */
   async _prepareContext(options) {
     const context = await super._prepareContext(options);
+    context.systemId = CPR.systemId;
     const arch = this.apActor?.installedNetarch;
     context.hasArch = !!arch;
     context.archName = arch?.name ?? "";
-    context.difficulty = arch
-      ? CPR.netArchDifficulty[arch.system.difficulty]
-      : "";
+    context.owner = arch?.system.owner ?? "";
     const runners = this.#runners();
+    // Runners standing on the Lobby (floor "0", the entry) — rendered on the app-only Lobby row.
+    context.lobbyRunners = runners.filter((runner) => runner.floor === "0");
     const floorList = this.apActor?.getFloors() ?? [];
     // The deepest floor(s) are the "root" — the CPU/core; a Virus can only be planted on a root.
     const maxDepth = floorList.reduce((max, f) => Math.max(max, f.depth), 0);
+    const isGM = game.user.isGM;
     const processed = floorList.map((floor) => {
       const key = `${floor.depth}${floor.branch ?? ""}`;
       const isIce = floor.content === "blackIce" || floor.content === "demon";
@@ -115,9 +117,11 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
         content: floor.content,
         contentLabel: CPR.netArchFloorContent[floor.content],
         dv: floor.dv,
-        dvRevealed: floor.dvRevealed,
+        // DVs are the GM's alone — players never see a floor's DV, only its content once revealed.
+        showDv: isGM && floor.dv != null,
         revealed: floor.revealed,
-        iceName: floor.iceName,
+        // The Black ICE / Demon variety name, shown once the floor is revealed (else contentLabel).
+        iceName: isIce ? floor.iceName : null,
         isIce,
         isRoot: maxDepth > 0 && floor.depth === maxDepth,
         rez: program?.system.rez ?? null,
@@ -125,9 +129,14 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
         runnersHere: runners.filter((runner) => runner.floor === key),
       };
     });
+    // Players only ever see floors they have revealed via Pathfinder — the shape and size of the
+    // architecture stay hidden until scouted. The GM sees the whole thing (unrevealed floors dimmed).
+    const visibleFloors = isGM
+      ? processed
+      : processed.filter((floor) => floor.revealed);
     // A split architecture renders as a column tree: the app template recurses over this structure,
     // stacking a line's floors and laying its child lines out side-by-side.
-    context.tree = CPRNetrunningApp.#buildFloorTree(processed);
+    context.tree = CPRNetrunningApp.#buildFloorTree(visibleFloors);
     // The runners the current viewer controls (GM controls all NPC runners), each enriched with
     // the programs installed on the deck they jacked in with (for rez/derez in the panel).
     context.myRunners = runners
@@ -140,10 +149,17 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
             name: program.name,
             classLabel: CPR.programClassList[program.system.class] ?? "",
             rezzed: !!program.system.isRezzed,
+            rez: program.system.rez,
           }),
         );
         return { ...runner, programs };
       });
+    // Player top bar: their handle, the deck they jacked in with (brand / name), and the live
+    // distance from their meat token to the nearest access-point token (the GM decides on range).
+    const viewer =
+      runners.find((runner) => runner.userId === game.user.id) ??
+      (game.user.isGM ? runners[0] : null);
+    context.topbar = viewer ? this.#buildTopbar(viewer) : null;
     context.abilities = CPRNetrunningApp.ABILITIES.map((key) => ({
       key,
       label: CPR.interfaceAbilities[key],
@@ -200,6 +216,48 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     );
   }
 
+  /** Build the player top-bar model: handle, deck brand/name, distance + signal to the access point. */
+  #buildTopbar(runner) {
+    const deck = game.actors.get(runner.id)?.items.get(runner.deckId);
+    const range = deck?.system.effectiveRange ?? 6;
+    const distance = this.#distanceToAccessPoint(runner.id);
+    return {
+      handle: runner.name,
+      deckBrand: deck?.system.brand ?? "",
+      deckName: deck?.name ?? "",
+      distanceLabel:
+        distance == null
+          ? ""
+          : `${Math.round(distance)}${canvas.scene?.grid.units ?? ""}`,
+      // Signal bars 0–4 (full at the token's feet, 1 at the edge of range, 0 out of range),
+      // recomputed each render so it tracks the netrunner's meatspace movement.
+      signal: CPRNetrunningApp.#signalStrength(distance, range),
+    };
+  }
+
+  /**
+   * Numeric distance from a runner's meat token to the nearest access-point token (null when there
+   * is no canvas or either token is off the scene). Meatspace movement only — leaving range does
+   * not auto-jack-out; the GM adjudicates that.
+   */
+  #distanceToAccessPoint(actorId) {
+    const meat = game.actors.get(actorId)?.getActiveTokens?.()[0];
+    const apTokens = this.apActor?.getActiveTokens?.() ?? [];
+    if (!meat || !apTokens.length || !canvas?.ready) return null;
+    return Math.min(
+      ...apTokens.map(
+        (token) =>
+          canvas.grid.measurePath([meat.center, token.center]).distance,
+      ),
+    );
+  }
+
+  /** Signal strength 0–4 from distance vs the deck's effective range (0 = out of range / no token). */
+  static #signalStrength(distance, range) {
+    if (distance == null || distance > range) return 0;
+    return Math.max(1, Math.ceil((1 - distance / range) * 4));
+  }
+
   /** Merge changes into a runner's shared state via the GM relay. */
   async #updateRunner(id, changes) {
     const runners = foundry.utils.deepClone(
@@ -226,6 +284,16 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     await this.#updateRunner(runner.id, { floor: target.dataset.floor });
   }
 
+  /** The runner's Netrunner Interface Rank (drives NET-action Checks); 0 if they have no such role. */
+  static #interfaceRank(runner) {
+    const role = game.actors
+      .get(runner.id)
+      ?.itemTypes.role.find(
+        (item) => item.system.mainRoleAbility?.toLowerCase() === "interface",
+      );
+    return role ? Number.parseInt(role.system.rank, 10) : 0;
+  }
+
   /** End the viewer's NET turn: reset the NET-action budget. @this {CPRNetrunningApp} */
   static async #onEndTurn() {
     const runner = this.#primaryRunner();
@@ -234,15 +302,61 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     }
   }
 
-  /** Jack the viewer's runner out: revoke any control, then remove it. @this {CPRNetrunningApp} */
+  /** Jack Out button — identical to closing the window (see `close`). @this {CPRNetrunningApp} */
   static async #onJackOut() {
-    const runner = this.#primaryRunner();
-    if (!runner) return;
+    await this.close();
+  }
+
+  /**
+   * Pull a runner off the shared board: revoke any control it holds, remove it, and — once the last
+   * runner has left — reset the whole architecture (RAW, Core p.198), so a co-runner's discovered
+   * floors aren't wiped while they're still in.
+   */
+  async #jackOutRunner(runner) {
+    // Snapshot who else is jacked in before the removal request propagates back.
+    const others = this.#runners().filter((entry) => entry.id !== runner.id);
     await this.#revokeControl(runner);
     await CPRNetSocket.request("update", {
       uuid: this.apActor.uuid,
       data: { [`flags.${game.system.id}.runners.-=${runner.id}`]: null },
     });
+    if (!others.length) await this.#resetArchitecture();
+  }
+
+  /**
+   * Reset the architecture to its pre-run state (RAW, Core p.198): every floor goes back to
+   * unrevealed and any Derezzed Black ICE / Demon is restored to full REZ — except a planted
+   * Virus, which persists (its `virusPlanted` flag is left untouched). Writes via the GM relay.
+   */
+  async #resetArchitecture() {
+    const netarch = this.apActor?.installedNetarch;
+    if (!netarch) return;
+    const floors = foundry.utils.deepClone(netarch.system.floors);
+    const rezRestores = [];
+    for (const floor of floors) {
+      floor.revealed = false;
+      floor.dvRevealed = false;
+      const isIce = floor.content === "blackIce" || floor.content === "demon";
+      const program =
+        isIce && floor.programUuid ? fromUuidSync(floor.programUuid) : null;
+      if (program && program.system.rez.value < program.system.rez.max) {
+        rezRestores.push({
+          uuid: program.uuid,
+          max: program.system.rez.max,
+        });
+      }
+    }
+    await CPRNetSocket.request("update", {
+      uuid: netarch.uuid,
+      data: { "system.floors": floors },
+    });
+    for (const { uuid, max } of rezRestores) {
+      // eslint-disable-next-line no-await-in-loop
+      await CPRNetSocket.request("update", {
+        uuid,
+        data: { "system.rez.value": max },
+      });
+    }
   }
 
   /** The floor the runner is standing on (matched by depth+branch key). */
@@ -299,18 +413,65 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     await this.#updateFloor(runner.floor, { revealed: true, dvRevealed: true });
   }
 
-  /** Pathfinder: reveal the next unrevealed floor. @this {CPRNetrunningApp} */
+  /**
+   * Pathfinder: an Interface + 1d10 Check that scouts the architecture (Core p.199). Reveals floors
+   * ahead of the runner up to a count equal to the Check, stopping on any branch at the first node
+   * whose DV is higher than the Check — Black ICE has no DV and never blocks. Reveals content only,
+   * not DVs. @this {CPRNetrunningApp}
+   */
   static async #onPathfinder() {
     const runner = this.#primaryRunner();
     if (!runner || !(await this.#spendAction(runner))) return;
-    const next = (this.apActor?.getFloors() ?? [])
-      .filter((floor) => !floor.revealed)
-      .sort((a, b) => a.depth - b.depth)[0];
-    if (next) {
-      await this.#updateFloor(`${next.depth}${next.branch ?? ""}`, {
-        revealed: true,
-      });
+    const rank = CPRNetrunningApp.#interfaceRank(runner);
+    const roll = CPRRoll.create(
+      game.i18n.localize(CPR.interfaceAbilities.pathfinder),
+      `1d10 + ${rank}`,
+    );
+    await roll.roll();
+    const check = roll.resultTotal;
+    await roll.toMessage({
+      flavor: game.i18n.format("CPR.netArchitecture.app.pathfinderRoll", {
+        interface: rank,
+        check,
+      }),
+    });
+
+    const currentDepth = this.#currentFloor(runner)?.depth ?? 0;
+    const ahead = (this.apActor?.getFloors() ?? [])
+      .filter((floor) => floor.depth >= currentDepth && !floor.revealed)
+      .sort(
+        (a, b) =>
+          a.depth - b.depth || (a.branch ?? "").localeCompare(b.branch ?? ""),
+      );
+    const floors = foundry.utils.deepClone(
+      this.apActor.installedNetarch.system.floors,
+    );
+    const blockedPaths = new Set();
+    let revealed = 0;
+    for (const floor of ahead) {
+      if (revealed >= check) break;
+      const path = floor.branch ?? "";
+      // Don't scan past a branch already blocked by a too-high-DV node (nor its sub-branches).
+      if (
+        [...blockedPaths].some((bp) => path === bp || path.startsWith(`${bp}.`))
+      ) {
+        continue;
+      }
+      const target = floors.find(
+        (entry) =>
+          entry.depth === floor.depth &&
+          (entry.branch ?? "") === (floor.branch ?? ""),
+      );
+      target.revealed = true;
+      revealed += 1;
+      if (typeof floor.dv === "number" && floor.dv > check) {
+        blockedPaths.add(path);
+      }
     }
+    await CPRNetSocket.request("update", {
+      uuid: this.apActor.installedNetarch.uuid,
+      data: { "system.floors": floors },
+    });
   }
 
   /** Backdoor a Password floor. @this {CPRNetrunningApp} */
@@ -515,14 +676,20 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
     // floor/REZ changes update them).
     const rerenderIfMine = (doc) => {
       const apId = this.apActor?.id;
+      const runnerIds = Object.keys(
+        this.apActor?.getFlag(game.system.id, "runners") ?? {},
+      );
+      // A token moved: refresh the top-bar distance if it belongs to the AP or a jacked-in runner.
+      const tokenActorId = doc.actor?.id;
+      if (tokenActorId === apId || runnerIds.includes(tokenActorId ?? "")) {
+        this.render();
+        return;
+      }
       if (doc.id === apId || doc.parent?.id === apId) {
         this.render();
         return;
       }
       // A jacked-in runner's own item changed (e.g. a deck program rez/derez).
-      const runnerIds = Object.keys(
-        this.apActor?.getFlag(game.system.id, "runners") ?? {},
-      );
       if (doc.parent && runnerIds.includes(doc.parent.id)) this.render();
     };
     for (const event of [
@@ -530,13 +697,31 @@ export default class CPRNetrunningApp extends HandlebarsApplicationMixin(
       "createItem",
       "updateItem",
       "deleteItem",
+      "updateToken",
     ]) {
       this.#hooks.push([event, Hooks.on(event, rerenderIfMine)]);
     }
   }
 
-  /** @override */
+  /**
+   * @override — closing the window counts as Jacking Out. When the viewer has a runner jacked in,
+   * confirm first; on "No" the app stays open (super.close() is not called). Only the viewer's own
+   * runner is pulled off, so a GM closing a spectating view never boots a player or is prompted.
+   */
   async close(options) {
+    const own = this.#runners().find(
+      (runner) => runner.userId === game.user.id,
+    );
+    if (own) {
+      const confirmed = await foundry.applications.api.DialogV2.confirm({
+        window: {
+          title: game.i18n.localize("CPR.netArchitecture.app.jackOut"),
+        },
+        content: `<p>${game.i18n.localize("CPR.netArchitecture.app.jackOutConfirm")}</p>`,
+      }).catch(() => false);
+      if (!confirmed) return this;
+      await this.#jackOutRunner(own);
+    }
     for (const [event, id] of this.#hooks) Hooks.off(event, id);
     this.#hooks = [];
     return super.close(options);

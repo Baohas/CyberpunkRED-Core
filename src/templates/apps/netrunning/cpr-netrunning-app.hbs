@@ -1,11 +1,25 @@
 <div class="cpr-net-root{{#if reducedMotion}} cpr-net-reduced-motion{{/if}}">
   <div class="cpr-net-scanlines"></div>
 
+  {{#if topbar}}
+    <header class="cpr-net-topbar">
+      <span class="cpr-net-topbar-handle">{{topbar.handle}}</span>
+      <span class="cpr-net-topbar-deck">{{#if topbar.deckBrand}}{{topbar.deckBrand}}
+          /
+        {{/if}}{{topbar.deckName}}</span>
+      <span class="cpr-net-topbar-distance">
+        <svg class="cpr-net-signal" viewBox="0 0 512 512" aria-hidden="true"><use
+            href="systems/{{systemId}}/icons/netrunning/signal_{{topbar.signal}}.svg#path1"
+          /></svg>
+        {{topbar.distanceLabel}}
+      </span>
+    </header>
+  {{/if}}
+
   <section class="cpr-net-arch">
     <header class="cpr-net-line cpr-net-arch-header">
       <span class="cpr-net-prompt">&gt;</span>
-      {{localize "CPR.netArchitecture.app.architecture"}}:
-      {{#if hasArch}}{{archName}} [{{localize difficulty}}]{{else}}—{{/if}}
+      {{#if hasArch}}{{#if owner}}{{owner}} // {{/if}}{{archName}}{{else}}—{{/if}}
     </header>
 
     {{#if hasArch}}
@@ -15,13 +29,13 @@
         <div class="cpr-net-column">
           {{#each floors as |floor|}}
             <div
-              class="cpr-net-floor{{#if floor.isIce}} cpr-net-ice{{/if}}{{#if floor.isRoot}} cpr-net-root-floor{{/if}}{{#unless floor.revealed}} cpr-net-unrevealed{{/unless}}"
+              class="cpr-net-floor{{#if floor.isRoot}} cpr-net-root-floor{{/if}}{{#unless floor.revealed}} cpr-net-unrevealed{{/unless}}"
               data-action="moveTo"
               data-floor="{{floor.key}}"
             >
               <span class="cpr-net-floor-id">{{floor.label}}</span>
               <span class="cpr-net-floor-body">
-                {{#if floor.isIce}}{{localize floor.iceName}}{{else}}{{localize
+                {{#if floor.iceName}}{{localize floor.iceName}}{{else}}{{localize
                     floor.contentLabel
                   }}{{/if}}
                 {{#if floor.isRoot}}<span class="cpr-net-root-label">{{localize
@@ -41,7 +55,7 @@
                 {{/each}}
               </span>
               <span class="cpr-net-floor-dv">
-                {{#if floor.dv}}DV{{floor.dv}}{{/if}}
+                {{#if floor.showDv}}DV{{floor.dv}}{{/if}}
               </span>
             </div>
           {{/each}}
@@ -55,11 +69,25 @@
         </div>
       {{/inline}}
       <div class="cpr-net-tree">
-        <div class="cpr-net-floor cpr-net-lobby">
+        <div
+          class="cpr-net-floor cpr-net-lobby"
+          data-action="moveTo"
+          data-floor="0"
+        >
           <span class="cpr-net-floor-id">00</span>
           <span class="cpr-net-floor-body">{{localize
               "CPR.netArchitecture.app.lobby"
             }}</span>
+          <span class="cpr-net-floor-runners">
+            {{#each lobbyRunners as |runner|}}
+              <img
+                class="cpr-net-runner-icon"
+                src="{{runner.img}}"
+                data-tooltip="{{runner.name}}"
+              />
+            {{/each}}
+          </span>
+          <span class="cpr-net-floor-dv"></span>
         </div>
         {{> netLine tree}}
       </div>
@@ -71,11 +99,10 @@
   <section class="cpr-net-runner">
     <header class="cpr-net-line cpr-net-runner-header">
       <span class="cpr-net-prompt">&gt;</span>
-      {{localize "CPR.netArchitecture.app.runner"}}
+      {{localize "CPR.netArchitecture.app.cyberdeck"}}
     </header>
     {{#each myRunners as |runner|}}
       <div class="cpr-net-runner-card">
-        <div class="cpr-net-runner-name">{{runner.name}}</div>
         <div class="cpr-net-runner-actions-count">
           {{localize "CPR.netArchitecture.app.netActions"}}:
           {{runner.netActions}}/{{runner.maxNetActions}}
@@ -97,21 +124,25 @@
                 "CPR.netArchitecture.app.programs"
               }}</div>
             {{#each runner.programs as |program|}}
-              <button
-                type="button"
-                class="cpr-net-button cpr-net-program{{#if program.rezzed}} cpr-net-rezzed{{/if}}"
-                data-action="toggleRez"
-                data-actor="{{runner.id}}"
-                data-program="{{program.id}}"
+              <div
+                class="cpr-net-program{{#if program.rezzed}} cpr-net-rezzed{{/if}}"
               >
-                {{program.name}}
-                —
-                {{#if program.rezzed}}{{localize
-                    "CPR.netArchitecture.app.rezzed"
+                <span class="cpr-net-program-name">{{program.name}}</span>
+                <span class="cpr-net-program-rez">{{#if
+                    program.rezzed
+                  }}{{program.rez.value}}/{{program.rez.max}}{{/if}}</span>
+                <button
+                  type="button"
+                  class="cpr-net-button cpr-net-program-tag"
+                  data-action="toggleRez"
+                  data-actor="{{runner.id}}"
+                  data-program="{{program.id}}"
+                >{{#if program.rezzed}}{{localize
+                    "CPR.netArchitecture.app.atk"
                   }}{{else}}{{localize
-                    "CPR.netArchitecture.app.derezzed"
-                  }}{{/if}}
-              </button>
+                    "CPR.netArchitecture.app.rez"
+                  }}{{/if}}</button>
+              </div>
             {{/each}}
           </div>
         {{/if}}
