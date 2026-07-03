@@ -1,12 +1,12 @@
-import CPRActor from "./cpr-actor.js";
+import CPRHuman from "./cpr-human.js";
 
 /**
  * The mook actor extends CPRActor since there is a lot of overlap behind the scenes with the
  * way items interact and how stats and skills are used.
  *
- * @extends {Actor}
+ * @extends {CPRHuman}
  */
-export default class CPRMookActor extends CPRActor {
+export default class CPRMookActor extends CPRHuman {
   /**
    * Set sensible token defaults on a newly-created mook: vision and an HP resource bar. Mooks keep a
    * neutral disposition and unlinked tokens. Applied only to a genuinely-new actor. Core-item

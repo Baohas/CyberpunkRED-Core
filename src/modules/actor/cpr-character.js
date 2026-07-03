@@ -1,12 +1,12 @@
-import CPRActor from "./cpr-actor.js";
+import CPRHuman from "./cpr-human.js";
 
 /**
  * Character actors are generally represented by players, but for especially detailed NPCs,
  * they are appropriate too. Characters are the most complex actors in the system.
  *
- * @extends {Actor}
+ * @extends {CPRHuman}
  */
-export default class CPRCharacterActor extends CPRActor {
+export default class CPRCharacterActor extends CPRHuman {
   /**
    * Set sensible token defaults on a newly-created character: linked token, friendly disposition,
    * vision, and an HP resource bar. Applied only to a genuinely-new actor (a duplicate/import keeps its
