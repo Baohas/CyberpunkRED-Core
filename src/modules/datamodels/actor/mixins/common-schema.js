@@ -30,9 +30,6 @@ export default class CommonSchema extends CPRSystemDataModel {
         currentArmorShield: new fields.SchemaField(
           ExternalResourceSchema.defineSchema(),
         ),
-        currentWeapon: new fields.SchemaField(
-          ExternalResourceSchema.defineSchema(),
-        ),
       }),
       information: new fields.SchemaField({
         alias: new fields.HTMLField({ initial: "" }),
