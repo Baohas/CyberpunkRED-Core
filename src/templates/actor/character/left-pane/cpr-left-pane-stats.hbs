@@ -1,43 +1,43 @@
 <div class="actor-stats">
-  {{#each actor.system.stats as |stat s| }}
+  {{#each displayedStats as |stat| }}
     <div class="actor-stats-stat text-normal text-center">
       <div class="actor-stats-title text-semi">
-        <a class="rollable" data-roll-type="stat" data-roll-title="{{s}}" data-tooltip="{{cprGetStatToolTip s}}">
-          {{localize (cprFindConfigValue "statList" s)}}
+        <a class="rollable" data-roll-type="stat" data-roll-title="{{stat.key}}" data-tooltip="{{cprGetStatToolTip stat.key}}">
+          {{localize (cprFindConfigValue "statList" stat.key)}}
         </a>
       </div>
-      {{#unless (cprIsDefined this.max)}}
+      {{#unless (cprIsDefined stat.max)}}
         <div class="actor-stats-value">
-          <input name="system.stats.{{s}}.value" type="text" data-dtype="Number" value="{{this.value}}"/>
+          <input name="system.stats.{{stat.key}}.value" type="text" data-dtype="Number" value="{{stat.value}}"/>
         </div>
       {{else}}
         <div class="actor-stats-of flexrow">
           <div class="actor-stats-of-min text-right">
-            <input name="system.stats.{{s}}.value"
-                  {{#if (cprCompare this.value ">" 99)}}
-                   data-tooltip="{{cprTextTransform s "upper"}}
+            <input name="system.stats.{{stat.key}}.value"
+                  {{#if (cprCompare stat.value ">" 99)}}
+                   data-tooltip="{{cprTextTransform stat.key "upper"}}
                      {{localize 'CPR.tooltip.valueOf'}}
-                     {{this.value}}
+                     {{stat.value}}
                      {{localize 'CPR.tooltip.isTooLargeForThisField'}}"
                   {{/if}}
                    type="text"
                    data-dtype="Number"
-                   value="{{this.value}}"/>
+                   value="{{stat.value}}"/>
           </div>
           <div class="actor-stats-of-sep">
             /
           </div>
           <div class="actor-stats-of-max text-left">
-            <input name="system.stats.{{s}}.max"
-                  {{#if (cprCompare this.max ">" 99)}}
-                   data-tooltip="{{cprTextTransform s "upper"}}
+            <input name="system.stats.{{stat.key}}.max"
+                  {{#if (cprCompare stat.max ">" 99)}}
+                   data-tooltip="{{cprTextTransform stat.key "upper"}}
                      {{localize 'CPR.tooltip.maxOf'}}
-                     {{this.max}}
+                     {{stat.max}}
                      {{localize 'CPR.tooltip.isTooLargeForThisField'}}"
                   {{/if}}
                    type="text"
                    data-dtype="Number"
-                   value="{{this.max}}"/>
+                   value="{{stat.max}}"/>
           </div>
         </div>
       {{/unless}}

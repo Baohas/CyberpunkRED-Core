@@ -79,6 +79,6 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
   }
 
   get seriouslyWounded() {
-    return Math.ceil(this.parent.system.derivedStats.hp.max / 2);
+    return Math.ceil(this.parent.system.stats.hp.max / 2);
   }
 }

@@ -1,4 +1,5 @@
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
+import CPR from "../../system/config.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRLedger from "../../dialog/cpr-ledger-form.js";
 import LOGGER from "../../utils/cpr-logger.js";
@@ -83,7 +84,12 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
 
     cprData.fightData = {};
     if (this.actor.type === "mook" || this.actor.type === "character") {
-      cprData.isHardened = this.actor.system.derivedStats.isHardened;
+      cprData.isHardened = this.actor.system.stats.isHardened;
+
+      // The ordered stats rendered in the stat block, each carrying its own key.
+      cprData.displayedStats = CPR.displayedStats
+        .filter((key) => this.actor.system.stats[key])
+        .map((key) => ({ key, ...this.actor.system.stats[key] }));
 
       cprData.fightData.fightOptions = this.actor.hasItemTypeEquipped(
         "cyberdeck",

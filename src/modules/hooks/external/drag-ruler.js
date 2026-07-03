@@ -19,9 +19,9 @@ const InitializeDragRulerIntegration = () => {
 
       getRanges(token) {
         const walkSpeed =
-          token.actor.system.derivedStats.walk.value + token.actor.bonuses.walk;
+          token.actor.system.stats.walk.value + token.actor.bonuses.walk;
         const runSpeed =
-          token.actor.system.derivedStats.run.value + token.actor.bonuses.run;
+          token.actor.system.stats.run.value + token.actor.bonuses.run;
         const ranges = [
           { range: walkSpeed, color: "walk" },
           { range: runSpeed, color: "run" },

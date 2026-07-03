@@ -28,7 +28,7 @@ export default class CPRCharacterActor extends CPRHuman {
           actorLink: true,
           disposition: 1,
           sight: { enabled: true },
-          bar1: { attribute: "derivedStats.hp" },
+          bar1: { attribute: "stats.hp" },
         },
       });
     }

@@ -1,12 +1,32 @@
 import CPR from "../../../system/config.js";
 import CPRSystemDataModel from "../../system-data-model.js";
 import SystemUtils from "../../../utils/cpr-systemUtils.js";
+import StatSchema from "./stat-schema.js";
 import HpSchema from "./hp-schema.js";
 
-export default class DerivedStatsSchema extends CPRSystemDataModel {
+export default class StatsSchema extends CPRSystemDataModel {
   static defineSchema() {
     const { fields } = foundry.data;
+    const includeMax = true;
     return {
+      /**
+       *  !IMPORTANT!
+       *
+       *  Do not alphabetise these, we need them in this order to order them
+       *  correctly on the character sheet.
+       */
+      int: new fields.SchemaField(StatSchema.defineSchema()),
+      ref: new fields.SchemaField(StatSchema.defineSchema()),
+      dex: new fields.SchemaField(StatSchema.defineSchema()),
+      tech: new fields.SchemaField(StatSchema.defineSchema()),
+      cool: new fields.SchemaField(StatSchema.defineSchema()),
+      will: new fields.SchemaField(StatSchema.defineSchema()),
+      luck: new fields.SchemaField(StatSchema.defineSchema({ includeMax })),
+      move: new fields.SchemaField(StatSchema.defineSchema()),
+      body: new fields.SchemaField(StatSchema.defineSchema()),
+      emp: new fields.SchemaField(
+        StatSchema.defineSchema({ includeMax, min: -10 }),
+      ),
       currentWoundState: new fields.StringField({
         choices: Object.keys(CPR.woundState),
       }),

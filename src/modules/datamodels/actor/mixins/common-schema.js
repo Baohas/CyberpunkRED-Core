@@ -2,8 +2,7 @@ import CPRSystemDataModel from "../../system-data-model.js";
 import SystemUtils from "../../../utils/cpr-systemUtils.js";
 import CPRMod from "../../../rolls/cpr-modifiers.js";
 
-import StatSchema from "../components/stat-schema.js";
-import DerivedStatsSchema from "../components/derivedStats-schema.js";
+import StatsSchema from "../components/stats-schema.js";
 import ExternalResourceSchema from "../components/external-resource-schema.js";
 import LedgerSchema from "../components/ledger-schema.js";
 import ActorWeaponsSchema from "../components/weapons-schema.js";
@@ -13,7 +12,6 @@ export default class CommonSchema extends CPRSystemDataModel {
 
   static defineSchema() {
     const { fields } = foundry.data;
-    const includeMax = true;
     return {
       /**
        *  !IMPORTANT!
@@ -21,20 +19,7 @@ export default class CommonSchema extends CPRSystemDataModel {
        *  Do not alphabetise these, we need them in this order to order them
        *  correctly on the character sheet.
        */
-      stats: new fields.SchemaField({
-        int: new fields.SchemaField(StatSchema.defineSchema()),
-        ref: new fields.SchemaField(StatSchema.defineSchema()),
-        dex: new fields.SchemaField(StatSchema.defineSchema()),
-        tech: new fields.SchemaField(StatSchema.defineSchema()),
-        cool: new fields.SchemaField(StatSchema.defineSchema()),
-        will: new fields.SchemaField(StatSchema.defineSchema()),
-        luck: new fields.SchemaField(StatSchema.defineSchema({ includeMax })),
-        move: new fields.SchemaField(StatSchema.defineSchema()),
-        body: new fields.SchemaField(StatSchema.defineSchema()),
-        emp: new fields.SchemaField(
-          StatSchema.defineSchema({ includeMax, min: -10 }),
-        ),
-      }),
+      stats: new fields.EmbeddedDataField(StatsSchema),
       externalData: new fields.SchemaField({
         currentArmorBody: new fields.SchemaField(
           ExternalResourceSchema.defineSchema(),
@@ -49,7 +34,6 @@ export default class CommonSchema extends CPRSystemDataModel {
           ExternalResourceSchema.defineSchema(),
         ),
       }),
-      derivedStats: new fields.EmbeddedDataField(DerivedStatsSchema),
       information: new fields.SchemaField({
         alias: new fields.HTMLField({ initial: "" }),
         description: new fields.HTMLField({ initial: "" }),
@@ -69,6 +53,29 @@ export default class CommonSchema extends CPRSystemDataModel {
       }),
       weapons: new fields.EmbeddedDataField(ActorWeaponsSchema),
     };
+  }
+
+  /**
+   * Fold the former `system.derivedStats.*` fields into `system.stats.*` — they now sit alongside the
+   * ten base STATs in a single `stats` object.
+   *
+   * This runs during data cleaning, which happens BEFORE Foundry v13 strips the now-unknown
+   * `derivedStats` key from the source, so existing actors keep their values. A version-gated migration
+   * cannot do this on its own: it reads `document.toObject()`, by which point `derivedStats` is already
+   * gone. Idempotent — a no-op once an actor is folded.
+   *
+   * @param {object} source - the actor's `system` source data
+   * @returns {object} the migrated source
+   */
+  static migrateData(source) {
+    if (source.derivedStats) {
+      source.stats ??= {};
+      for (const [key, value] of Object.entries(source.derivedStats)) {
+        source.stats[key] ??= value;
+      }
+      delete source.derivedStats;
+    }
+    return super.migrateData(source);
   }
 
   /**

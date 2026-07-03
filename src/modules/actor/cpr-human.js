@@ -156,7 +156,9 @@ export default class CPRHuman extends CPRActor {
    */
   _calculateDerivedStats() {
     const cprData = this.system;
-    const { derivedStats } = cprData;
+    // `stats` now holds both the base STATs and the folded-in derived stats; keep the
+    // local name `derivedStats` (an alias) to minimise churn in the calculations below.
+    const derivedStats = cprData.stats;
 
     // Walk & Run, from the Move/Run Action (pg 127)
     derivedStats.walk.value = cprData.stats.move.value * 2;
@@ -177,7 +179,6 @@ export default class CPRHuman extends CPRActor {
     derivedStats.deathSave.basePenalty = basePenalty;
     derivedStats.deathSave.value =
       derivedStats.deathSave.penalty + derivedStats.deathSave.basePenalty;
-    this.system.derivedStats = derivedStats;
 
     // Make sure current HP is never higher than max HP.
     derivedStats.hp.value = Math.min(
@@ -195,7 +196,7 @@ export default class CPRHuman extends CPRActor {
     // value would be equal to max, however their current wound state was never updated.
     this._setWoundState();
     // Updated derivedStats variable with currentWoundState
-    derivedStats.currentWoundState = this.system.derivedStats.currentWoundState;
+    derivedStats.currentWoundState = this.system.stats.currentWoundState;
   }
 
   /**
@@ -204,7 +205,7 @@ export default class CPRHuman extends CPRActor {
    * @returns {String}
    */
   getWoundState() {
-    return this.system.derivedStats.currentWoundState;
+    return this.system.stats.currentWoundState;
   }
 
   /**
@@ -213,7 +214,7 @@ export default class CPRHuman extends CPRActor {
    * @private
    */
   _setWoundState() {
-    const { derivedStats } = this.system;
+    const derivedStats = this.system.stats;
     let newState = "invalidState";
     if (derivedStats.hp.value < 1) {
       newState = "mortallyWounded";
@@ -224,7 +225,7 @@ export default class CPRHuman extends CPRActor {
     } else if (derivedStats.hp.value === derivedStats.hp.max) {
       newState = "notWounded";
     }
-    this.system.derivedStats.currentWoundState = newState;
+    this.system.stats.currentWoundState = newState;
   }
 
   /**
@@ -436,8 +437,8 @@ export default class CPRHuman extends CPRActor {
       saveResult = failed;
     }
     if (saveResult === success) {
-      const deathPenalty = this.system.derivedStats.deathSave.penalty + 1;
-      this.update({ "system.derivedStats.deathSave.penalty": deathPenalty });
+      const deathPenalty = this.system.stats.deathSave.penalty + 1;
+      this.update({ "system.stats.deathSave.penalty": deathPenalty });
     }
     return saveResult;
   }
@@ -447,8 +448,8 @@ export default class CPRHuman extends CPRActor {
    * Can be used in case a character gets hit by an attack while mortally wounded.
    */
   increaseDeathPenalty() {
-    const deathPenalty = this.system.derivedStats.deathSave.penalty + 1;
-    this.update({ "system.derivedStats.deathSave.penalty": deathPenalty });
+    const deathPenalty = this.system.stats.deathSave.penalty + 1;
+    this.update({ "system.stats.deathSave.penalty": deathPenalty });
   }
 
   /**
@@ -456,7 +457,7 @@ export default class CPRHuman extends CPRActor {
    * the penalty should be reset to 0, which is what this method does.
    */
   resetDeathPenalty() {
-    this.update({ "system.derivedStats.deathSave.penalty": 0 });
+    this.update({ "system.stats.deathSave.penalty": 0 });
   }
 
   /**
@@ -475,8 +476,8 @@ export default class CPRHuman extends CPRActor {
    * Single-value stats are exposed as plain numbers (`@stats.ref`); stats with a current/max pair —
    * LUCK, EMP, and derived stats like HP and Humanity — are exposed as `{ value, total }`, so a formula
    * can use `@stats.luck.value` (current) or `@stats.luck.total` (max). Skills come from the
-   * `system.skills` getter as `level + Active Effect mods` (`@skills.handgun`). Derived stats are also
-   * reachable under `@derivedStats.*`. Singular aliases `@stat`/`@skill` mirror the plural keys.
+   * `system.skills` getter as `level + Active Effect mods` (`@skills.handgun`). Singular aliases
+   * `@stat`/`@skill` mirror the plural keys.
    *
    * @override
    * @returns {Object}
@@ -507,8 +508,8 @@ export default class CPRHuman extends CPRActor {
       return out;
     };
 
+    // `system.stats` now holds both the base STATs and the folded-in derived stats.
     const stats = buildRefs(this.system.stats);
-    const derivedStats = buildRefs(this.system.derivedStats);
 
     // Skills come from the `system.skills` getter (slugified keys, level + Active Effect mods) so an
     // AE-modified skill resolves to its effective level — `@skills.handgun` is `level + mods`.
@@ -517,9 +518,8 @@ export default class CPRHuman extends CPRActor {
       skills[slug] = skill.level + skill.mods;
     }
 
-    data.stats = { ...stats, ...derivedStats };
+    data.stats = { ...stats };
     data.skills = skills;
-    data.derivedStats = derivedStats;
     data.stat = data.stats;
     data.skill = skills;
     return data;
@@ -814,8 +814,8 @@ export default class CPRHuman extends CPRActor {
    * @returns {CPRDeathSaveRoll}
    */
   _createDeathSaveRoll() {
-    const deathSavePenalty = this.system.derivedStats.deathSave.penalty;
-    const deathSaveBasePenalty = this.system.derivedStats.deathSave.basePenalty;
+    const deathSavePenalty = this.system.stats.deathSave.penalty;
+    const deathSaveBasePenalty = this.system.stats.deathSave.basePenalty;
     const bodyStat = this.system.stats.body.value;
     const cprRoll = CPRRolls.CPRDeathSaveRoll.create(
       deathSavePenalty,
@@ -996,7 +996,7 @@ export default class CPRHuman extends CPRActor {
 
     if (location === "brain") {
       // This is damage done in a netrun, which completely ignores armor
-      const currentHp = this.system.derivedStats.hp.value;
+      const currentHp = this.system.stats.hp.value;
       // Critical bonusDamage is not applied to brain damage (or any net combat)
       totalDamageDealt = damage;
       if (formData.brainDamageReduction) {
@@ -1004,7 +1004,7 @@ export default class CPRHuman extends CPRActor {
       }
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
       await this.update({
-        "system.derivedStats.hp.value": currentHp - takenDamage,
+        "system.stats.hp.value": currentHp - takenDamage,
       });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
@@ -1104,9 +1104,9 @@ export default class CPRHuman extends CPRActor {
     // If damage did not penetrate armor, then only the bonus damage (if any) is applied, minus any damage reduction.
     if (damage <= armorData.value && ignoreArmorEntirely === false) {
       takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
-      const currentHp = this.system.derivedStats.hp.value;
+      const currentHp = this.system.stats.hp.value;
       await this.update({
-        "system.derivedStats.hp.value": currentHp - takenDamage,
+        "system.stats.hp.value": currentHp - takenDamage,
       });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
@@ -1145,7 +1145,7 @@ export default class CPRHuman extends CPRActor {
     takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
 
     // If damage isn't lethal and exceeds currentHp, then damage done is one less than currentHp.
-    const currentHp = this.system.derivedStats.hp.value;
+    const currentHp = this.system.stats.hp.value;
     if (takenDamage >= currentHp && !damageLethal) {
       takenDamage = currentHp - 1;
       if (currentHp <= 0) {
@@ -1154,7 +1154,7 @@ export default class CPRHuman extends CPRActor {
     }
 
     await this.update({
-      "system.derivedStats.hp.value": currentHp - takenDamage,
+      "system.stats.hp.value": currentHp - takenDamage,
     });
 
     // Ablate the armor correctly if there's armor equipped
@@ -1190,14 +1190,14 @@ export default class CPRHuman extends CPRActor {
    * @param {int} shieldAblation - value of the shield ablation
    */
   async _reverseDamage(hpReduction, location, ablation, shieldAblation) {
-    const currentHp = this.system.derivedStats.hp.value;
-    const maxHp = this.system.derivedStats.hp.max;
+    const currentHp = this.system.stats.hp.value;
+    const maxHp = this.system.stats.hp.max;
     if (maxHp > currentHp + hpReduction) {
       await this.update({
-        "system.derivedStats.hp.value": currentHp + hpReduction,
+        "system.stats.hp.value": currentHp + hpReduction,
       });
     } else {
-      await this.update({ "system.derivedStats.hp.value": maxHp });
+      await this.update({ "system.stats.hp.value": maxHp });
     }
     await this._ablateArmor(location, -ablation);
     await this._ablateArmor("shield", -shieldAblation);
@@ -1339,16 +1339,16 @@ export default class CPRHuman extends CPRActor {
    */
   async setMaxHumanity() {
     const maxHumanity = this._calcMaxHumanity();
-    const { humanity } = this.system.derivedStats;
+    const { humanity } = this.system.stats;
     if (humanity.max === humanity.value && maxHumanity < humanity.max) {
       await this.update({
-        "system.derivedStats.humanity.max": maxHumanity,
-        "system.derivedStats.humanity.value": maxHumanity,
+        "system.stats.humanity.max": maxHumanity,
+        "system.stats.humanity.value": maxHumanity,
         "system.stats.emp.value": Math.floor(humanity.value / 10),
       });
     } else {
       await this.update({
-        "system.derivedStats.humanity.max": maxHumanity,
+        "system.stats.humanity.max": maxHumanity,
         "system.stats.emp.value": Math.floor(humanity.value / 10),
       });
     }
@@ -1371,7 +1371,7 @@ export default class CPRHuman extends CPRActor {
       return this.setMaxHumanity();
     }
 
-    const { humanity } = this.system.derivedStats;
+    const { humanity } = this.system.stats;
     let value = Number.isInteger(humanity.value)
       ? humanity.value
       : humanity.max;
@@ -1393,7 +1393,7 @@ export default class CPRHuman extends CPRActor {
       Rules.lawyer(false, "CPR.messages.youCyberpsycho");
     }
 
-    await this.update({ "system.derivedStats.humanity.value": value });
+    await this.update({ "system.stats.humanity.value": value });
     return this.setMaxHumanity();
   }
 

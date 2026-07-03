@@ -43,9 +43,9 @@
     </div>
     <div class="actor-details-hp-current text-right text-padding-left-smallest">
       <input class="text-center"
-             name="system.derivedStats.hp.value"
+             name="system.stats.hp.value"
              type="text"
-             value="{{actor.system.derivedStats.hp.value}}"
+             value="{{actor.system.stats.hp.value}}"
              data-dtype="Number"/>
     </div>
     <div class="actor-details-hp-of">
@@ -54,9 +54,9 @@
     <div class="actor-details-hp-max text-left text-padding-left-smaller">
       <input
          class="text-center"
-         name="system.derivedStats.hp.max"
+         name="system.stats.hp.max"
          type="text"
-         value="{{actor.system.derivedStats.hp.max}}"
+         value="{{actor.system.stats.hp.max}}"
          data-dtype="Number" />
     </div>
   </div>
@@ -70,9 +70,9 @@
     </div>
     <div class="actor-details-humanity-current text-right text-padding-left-smallest">
       <input class="width-full"
-             name="system.derivedStats.humanity.value"
+             name="system.stats.humanity.value"
              type="text"
-             value="{{actor.system.derivedStats.humanity.value}}"
+             value="{{actor.system.stats.humanity.value}}"
              data-dtype="Number"/>
     </div>
     <div class="actor-details-humanity-of">
@@ -81,9 +81,9 @@
     <div class="actor-details-humanity-max text-left text-padding-left-smaller">
       <input
          class="width-full"
-         name="system.derivedStats.humanity.max"
+         name="system.stats.humanity.max"
          type="text"
-         value="{{actor.system.derivedStats.humanity.max}}"
+         value="{{actor.system.stats.humanity.max}}"
          data-dtype="Number" />
     </div>
   </div>
@@ -105,11 +105,11 @@
     </div>
     <div class="actor-details-death-save-value"
          data-tooltip="{{localize "CPR.global.generic.deathPenalty"}}:
-           {{actor.system.derivedStats.deathSave.penalty}}
+           {{actor.system.stats.deathSave.penalty}}
            </br>
            {{localize "CPR.characterSheet.leftPane.deathSave.hoverCriticalInjuryPenalty"}}:
-           {{actor.system.derivedStats.deathSave.basePenalty}}">
-      {{actor.system.derivedStats.deathSave.value}}
+           {{actor.system.stats.deathSave.basePenalty}}">
+      {{actor.system.stats.deathSave.value}}
     </div>
     <div class="actor-details-death-save-actions">
       <a class="increase-deathsave-value">
@@ -125,7 +125,7 @@
       {{localize "CPR.characterSheet.leftPane.woundState"}}
     </div>
     <div class="actor-details-wound-state-value">
-      {{#with actor.system.derivedStats.currentWoundState as |state| }}
+      {{#with actor.system.stats.currentWoundState as |state| }}
         {{#if (cprCompare state "===" "notWounded") }}
           <img src="systems/cyberpunk-red-core/icons/hud/wounded_none.svg"
                width="20"

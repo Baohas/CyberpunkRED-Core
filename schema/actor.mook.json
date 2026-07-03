@@ -165,137 +165,7 @@
                 "value",
                 "max"
               ]
-            }
-          },
-          "required": [
-            "int",
-            "ref",
-            "dex",
-            "tech",
-            "cool",
-            "will",
-            "luck",
-            "move",
-            "body",
-            "emp"
-          ]
-        },
-        "externalData": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "currentArmorBody": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "id": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "value": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "max": {
-                  "type": "integer",
-                  "minimum": 0
-                }
-              },
-              "required": [
-                "id",
-                "value",
-                "max"
-              ]
             },
-            "currentArmorHead": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "id": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "value": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "max": {
-                  "type": "integer",
-                  "minimum": 0
-                }
-              },
-              "required": [
-                "id",
-                "value",
-                "max"
-              ]
-            },
-            "currentArmorShield": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "id": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "value": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "max": {
-                  "type": "integer",
-                  "minimum": 0
-                }
-              },
-              "required": [
-                "id",
-                "value",
-                "max"
-              ]
-            },
-            "currentWeapon": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "id": {
-                  "type": [
-                    "string",
-                    "null"
-                  ]
-                },
-                "value": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "max": {
-                  "type": "integer",
-                  "minimum": 0
-                }
-              },
-              "required": [
-                "id",
-                "value",
-                "max"
-              ]
-            }
-          },
-          "required": [
-            "currentArmorBody",
-            "currentArmorHead",
-            "currentArmorShield",
-            "currentWeapon"
-          ]
-        },
-        "derivedStats": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
             "currentWoundState": {
               "type": "string",
               "enum": [
@@ -417,12 +287,134 @@
             }
           },
           "required": [
+            "int",
+            "ref",
+            "dex",
+            "tech",
+            "cool",
+            "will",
+            "luck",
+            "move",
+            "body",
+            "emp",
             "deathSave",
             "hp",
             "humanity",
             "run",
             "seriouslyWounded",
             "walk"
+          ]
+        },
+        "externalData": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "currentArmorBody": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "id",
+                "value",
+                "max"
+              ]
+            },
+            "currentArmorHead": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "id",
+                "value",
+                "max"
+              ]
+            },
+            "currentArmorShield": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "id",
+                "value",
+                "max"
+              ]
+            },
+            "currentWeapon": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "id",
+                "value",
+                "max"
+              ]
+            }
+          },
+          "required": [
+            "currentArmorBody",
+            "currentArmorHead",
+            "currentArmorShield",
+            "currentWeapon"
           ]
         },
         "information": {
@@ -536,7 +528,6 @@
       "required": [
         "stats",
         "externalData",
-        "derivedStats",
         "information",
         "reputation",
         "roleInfo",

@@ -20,15 +20,15 @@
               </span>
               <div class="min-of-max-container text-normal block-data">
                 <input class="text-center"
-                       name="system.derivedStats.hp.value"
+                       name="system.stats.hp.value"
                        type="number"
-                       value="{{actor.system.derivedStats.hp.value}}"
+                       value="{{actor.system.stats.hp.value}}"
                        data-dtype="Number"/>
                 <div class="of text-normal text-semi">/</div>
                 <input class="text-center"
-                       name="system.derivedStats.hp.max"
+                       name="system.stats.hp.max"
                        type="number"
-                       value="{{actor.system.derivedStats.hp.max}}"
+                       value="{{actor.system.stats.hp.max}}"
                        data-dtype="Number"/>
               </div>
             </div>
@@ -37,7 +37,7 @@
                 {{localize "CPR.mookSheet.woundState"}}
               </span>
               <div class="mook-wounded-stat text-center text-normal">
-                {{localize (cprFindConfigValue "woundState" actor.system.derivedStats.currentWoundState)}}
+                {{localize (cprFindConfigValue "woundState" actor.system.stats.currentWoundState)}}
               </div>
             </div>
             <div class="mook-deathsave">
@@ -52,10 +52,10 @@
               <div class="mook-deathsave-value width-full text-center text-normal text-semi">
                 <span data-tooltip="{{localize "CPR.mookSheet.deathSave.reset"}}
                   <br/>
-                  {{localize "CPR.global.generic.deathPenalty" }}: {{actor.system.derivedStats.deathSave.penalty}}
+                  {{localize "CPR.global.generic.deathPenalty" }}: {{actor.system.stats.deathSave.penalty}}
                   <br/>
-                  {{localize "CPR.mookSheet.deathSave.hoverCriticalInjuryPenalty" }}: {{actor.system.derivedStats.deathSave.basePenalty}}">
-                  <a class="reset-deathsave-value text-semi">{{actor.system.derivedStats.deathSave.value}}</a>
+                  {{localize "CPR.mookSheet.deathSave.hoverCriticalInjuryPenalty" }}: {{actor.system.stats.deathSave.basePenalty}}">
+                  <a class="reset-deathsave-value text-semi">{{actor.system.stats.deathSave.value}}</a>
                 </span>
                 <a class="increase-deathsave-value"><i class="far fa-circle-up text-smaller"
    data-tooltip="{{localize "CPR.mookSheet.deathSave.increase"}}"></i></a>
