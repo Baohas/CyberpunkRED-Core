@@ -21,6 +21,29 @@ import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
  */
 export default class CPRActor extends Actor {
   /**
+   * Restrict the "Create Actor" dialog to the creatable actor types. `blackIce` and `demon` are being
+   * deprecated (their NET entities move to Program items in the Netrunning work): existing ones keep
+   * loading, opening, and rolling, but no new ones can be made from the sidebar. Foundry builds the
+   * dialog's type list from `Actor.TYPES` honoring a `types` restriction, so default `types` to the
+   * creatable subset unless a caller supplies its own.
+   *
+   * @async
+   * @override
+   * @param {object} data - default data for the new actor
+   * @param {object} createOptions - document creation options
+   * @param {object} [dialogOptions] - dialog options; `types` restricts the offered types
+   * @returns {Promise<Actor|null>}
+   */
+  static async createDialog(data = {}, createOptions = {}, dialogOptions = {}) {
+    const types =
+      dialogOptions.types ??
+      Actor.TYPES.filter(
+        (type) => !["base", "blackIce", "demon"].includes(type),
+      );
+    return super.createDialog(data, createOptions, { ...dialogOptions, types });
+  }
+
+  /**
    * Populate a newly-created actor with its core skills and core cyberware.
    *
    * This runs in the document-creation pipeline (`_preCreate`) rather than a `static create()`
