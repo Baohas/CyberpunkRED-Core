@@ -1,32 +1,22 @@
-.active-effects-sheet {
-  display: grid;
-  gap: 0.313rem;
-  grid-template-rows:
-    auto
-    auto
-    1fr
-    auto;
-  grid-template-areas:
-    "header"
-    "tabs"
-    "tab-content"
-    "footer";
-  height: 100%;
-
-  .sheet-header {
-    grid-area: header;
+.cpr-effect-changes {
+  .changes-list {
+    display: block;
   }
 
-  .tabs {
-    grid-area: tabs;
+  .change-header,
+  .changes-list > li {
+    flex-wrap: nowrap;
+    align-items: center;
   }
 
-  .tab {
-    grid-area: tab-content;
+  .changes-list > li:nth-child(odd),
+  .changes-list > li:nth-child(even) {
+    background-color: transparent;
   }
 
-  .sheet-footer {
-    grid-area: footer;
+  .effect-controls {
+    margin-top: 0.5rem;
+    text-align: center;
   }
 }
 
@@ -37,11 +27,4 @@
 
 .summary-effect-value {
   align-self: center;
-}
-
-.value,
-.mode,
-.situational,
-.on-by-default {
-  text-align: center;
 }

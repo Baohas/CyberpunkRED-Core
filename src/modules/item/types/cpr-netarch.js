@@ -1,7 +1,7 @@
 import CPRItem from "../cpr-item.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog.js";
 
 /**
  * Extend the base CPRItem object with things specific to NET Architectures.
@@ -445,12 +445,12 @@ export default class CPRNetArchItem extends CPRItem {
     };
 
     // Show "NetArch Scene Generation" prompt.
-    formData = await CPRDialog.showDialog(formData, {
-      // Set options for the dialog.
+    formData = await cprFormPrompt({
+      data: formData,
       title: SystemUtils.Localize("CPR.dialog.netArchitectureGeneration.title"),
       template: `systems/${game.system.id}/templates/dialog/cpr-netarch-scene-generation-prompt.hbs`,
-    }).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+    });
+    if (!formData) {
       return;
     }
 

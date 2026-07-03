@@ -1,7 +1,6 @@
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprFormPrompt } from "../../dialog/cpr-dialog.js";
 import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import CPR from "../../system/config.js";
-import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 
 /**
@@ -119,12 +118,12 @@ const Loadable = function Loadable() {
     };
 
     // Show "Load Ammo" dialog,
-    dialogData = await CPRDialog.showDialog(dialogData, {
-      // Set the options for the dialog.
+    dialogData = await cprFormPrompt({
+      data: dialogData,
       template: `systems/${game.system.id}/templates/dialog/cpr-load-ammo-prompt.hbs`,
       title: SystemUtils.Localize("CPR.dialog.selectAmmo.title"),
-    }).catch((err) => LOGGER.debug(err));
-    if (dialogData === undefined) {
+    });
+    if (!dialogData) {
       return Promise.resolve();
     }
 

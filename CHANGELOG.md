@@ -32,10 +32,15 @@ If you have any such items that should not crit, set them manually: on a weapon,
 ### Changes
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
+- Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
+- Add a "Homebrew Rules" settings menu with JonJon's optional Luck Roll: when enabled, clicking the LUCK stat rolls 1d10 under your LUCK (Roll Under Max or Roll Under Current), with a Success/Failure chat card; off by default
 
 ### Bug Fixes
 
 - Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
+- Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
+- Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
+- Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
 
 ## Version 0.92.4
 

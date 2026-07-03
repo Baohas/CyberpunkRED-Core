@@ -1,9 +1,9 @@
 import CPRActorSheet from "./cpr-actor-sheet.js";
-import LOGGER from "../../utils/cpr-logger.js";
+import CPR from "../../system/config.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRChat from "../../chat/cpr-chat.js";
 import CPRItem from "../../item/cpr-item.js";
-import CPRDialog from "../../dialog/cpr-dialog-application.js";
+import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 import { ContainerUtils } from "../../item/mixins/cpr-container.js";
 
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
@@ -21,19 +21,20 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @override
    * @returns - sheet options merged with default options in ActorSheet
    */
-  static get defaultOptions() {
-    const resizeCPRSheets = game.settings.get(
-      game.system.id,
-      "resizeCPRSheets",
-    );
-
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      height: resizeCPRSheets ? 750 : "auto",
-      resizable: true,
-      template: `systems/${game.system.id}/templates/actor/cpr-container-sheet.hbs`,
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    position: {
       width: 1000,
-    });
-  }
+      height: 750,
+    },
+  };
+
+  /** @inheritDoc */
+  static PARTS = {
+    form: {
+      template: `systems/${CPR.systemId}/templates/actor/cpr-container-sheet.hbs`,
+    },
+  };
 
   /**
    * Get actor data into a more convenient organized structure. This should be called sparingly in code.
@@ -43,8 +44,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @override
    * @returns {Object} data - a curated structure of actorSheet data
    */
-  async getData() {
-    const foundryData = await super.getData();
+  async _prepareContext(options) {
+    const foundryData = await super._prepareContext(options);
     const cprActorData = {};
 
     cprActorData.userOwnedActors = [];
@@ -77,27 +78,27 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @override
    * @param {*} html - the DOM object
    */
-  activateListeners(html) {
-    // Selection of trade partner
-    html
-      .find('select[name="trade-with-dropdown"')
-      .change((event) => this._setTradePartner(event));
+  _onRender(context, options) {
+    super._onRender(context, options);
 
-    //
-    html
-      .find(".container-type-dropdown")
-      .change((event) => this._setContainerType(event));
-    // Toggle the state of a flag for the data of the checkbox
-    html.find(".checkbox-toggle").click((event) => this._checkboxToggle(event));
-    // Eurobucks management
-    html
-      .find(".eurobucks-input-button")
-      .click((event) => this._updateEurobucks(event));
-    html.find(".eurobucks-open-ledger").click(() => this.showLedger("wealth"));
-    // Configure container to purchase items from players
-    html.find(".vendor-configure-sell-to").click(() => this._configureSellTo());
-
-    super.activateListeners(html);
+    this._on('select[name="trade-with-dropdown"]', "change", (event) =>
+      this._setTradePartner(event),
+    );
+    this._on(".container-type-dropdown", "change", (event) =>
+      this._setContainerType(event),
+    );
+    this._on(".checkbox-toggle", "click", (event) =>
+      this._checkboxToggle(event),
+    );
+    this._on(".eurobucks-input-button", "click", (event) =>
+      this._updateEurobucks(event),
+    );
+    this._on(".eurobucks-open-ledger", "click", () =>
+      this.showLedger("wealth"),
+    );
+    this._on(".vendor-configure-sell-to", "click", () =>
+      this._configureSellTo(),
+    );
   }
 
   /**
@@ -178,7 +179,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {} event - object capturing event data (what was clicked and where?)
    */
   _setTradePartner(event) {
-    this.tradePartnerId = $(event.currentTarget).val();
+    this.tradePartnerId = event.currentTarget.value;
   }
 
   /**
@@ -240,18 +241,18 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
         purchaseAmount: Math.ceil(item.system.amount / 2),
       };
 
-      // Show "Purcahse Part" dialog.
-      formData = await CPRDialog.showDialog(formData, {
-        // Set options for the dialog.
+      // Show "Purchase Part" dialog.
+      formData = await cprFormPrompt({
+        data: formData,
         title: SystemUtils.Localize("CPR.dialog.purchasePart.title"),
         template: `systems/${game.system.id}/templates/dialog/cpr-purchase-part-prompt.hbs`,
-      }).catch((err) => LOGGER.debug(err));
+      });
 
       const inventoryAmount =
         typeof item.system.amount !== "undefined"
           ? parseInt(item.system.amount, 10)
           : 1;
-      if (formData === undefined) {
+      if (!formData) {
         return;
       }
       const newAmount = parseInt(formData.purchaseAmount, 10);
@@ -413,17 +414,14 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
       },
     )}`;
 
-    // Show "Default" prompt.
-    const dialogData = await CPRDialog.showDialog(
-      { dialogMessage },
-      {
-        title: SystemUtils.Localize(
-          "CPR.dialog.container.vendor.purchaseOrderTitle",
-        ),
-      },
-    ).catch((err) => LOGGER.debug(err));
+    // Show confirmation prompt.
+    const confirmed = await cprConfirm(dialogMessage, {
+      title: SystemUtils.Localize(
+        "CPR.dialog.container.vendor.purchaseOrderTitle",
+      ),
+    });
 
-    if (dialogData !== undefined) {
+    if (confirmed) {
       const loadableTypes = SystemUtils.getDocTypesFromMixin("loadable");
       if (loadableTypes.includes(item.type) && item.system.hasAmmoLoaded) {
         await item.unload();
@@ -542,7 +540,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
    * @param {} event - object capturing event data (what was clicked and where?)
    */
   async _setContainerType(event) {
-    const containerType = $(event.currentTarget).val();
+    const containerType = event.currentTarget.value;
     const actor = this.token === null ? this.actor : this.token.actor;
     if (this.token === null) {
       SystemUtils.DisplayMessage(
@@ -630,12 +628,13 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
     });
 
     // Show "Configure Sell To" prompt.
-    const formData = await CPRDialog.showDialog(promptData, {
+    const formData = await cprFormPrompt({
+      data: promptData,
       title: SystemUtils.Localize("CPR.dialog.container.vendor.sellToTitle"),
       template: `systems/${game.system.id}/templates/dialog/cpr-container-configure-sell-to-prompt.hbs`,
-    }).catch((err) => LOGGER.debug(err));
+    });
 
-    if (formData !== undefined) {
+    if (formData) {
       const newConfig = foundry.utils.mergeObject(
         promptData.currentConfig,
         formData.currentConfig,
@@ -647,8 +646,8 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
 
   async _updateEurobucks(event) {
     // const value = parseInt(event.currentTarget.parentElement.previousElementSibling.children[0].value, 10);
-    const value = parseInt($("#eurobucks").val(), 10);
-    const action = $(event.currentTarget).attr("data-action");
+    const value = parseInt(this.element.querySelector("#eurobucks")?.value, 10);
+    const action = event.currentTarget.dataset.action;
     if (Number.isNaN(value)) {
       SystemUtils.DisplayMessage(
         "warn",

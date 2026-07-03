@@ -57,16 +57,15 @@ import MigrationError from "./modules/system/migrate/migration-error.js";
 import CPRDie from "./modules/rolls/cpr-die-extended.js";
 import * as CPRRolls from "./modules/rolls/cpr-rolls.js";
 
-const { ActorSheet, ItemSheet } = foundry.appv1.sheets;
 const { DocumentSheetConfig } = foundry.applications.apps;
 const { Actors, Items } = foundry.documents.collections;
 
 Hooks.once("init", async () => {
   LOGGER.log("THANK YOU TO EVERYONE WHO HELPED!!!!");
   LOGGER.credits();
-  // Removes "Default Actor Sheet" option from sheet style selection and prevents users from breaking blackICE, containers, and demons
-  Actors.unregisterSheet("core", ActorSheet);
   // Register Actor Sheet Application Classes
+  // (Foundry v13 registers no "core" default sheet for Actor/Item, so there is
+  // nothing to unregister — our sheets are the defaults via makeDefault.)
   Actors.registerSheet(game.system.id, CPRCharacterActorSheet, {
     label: SystemUtils.Localize("CPR.sheets.characterSheet"),
     types: ["character"],
@@ -102,7 +101,6 @@ Hooks.once("init", async () => {
   });
 
   // Register Item Sheet Application Classes
-  Items.unregisterSheet("core", ItemSheet);
   Items.registerSheet(game.system.id, CPRItemSheet, {
     types: [
       "ammo",
@@ -194,6 +192,7 @@ Hooks.once("init", async () => {
     CPRRolls.CPRRoleRoll,
     CPRRolls.CPRInterfaceRoll,
     CPRRolls.CPRDeathSaveRoll,
+    CPRRolls.CPRLuckRoll,
     CPRRolls.CPRDamageRoll,
     CPRRolls.CPRHumanityLossRoll,
     CPRRolls.CPRTableRoll,

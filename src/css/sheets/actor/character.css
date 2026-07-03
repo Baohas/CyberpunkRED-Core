@@ -321,6 +321,11 @@
         background-color: var(--cpr-background-box);
       }
 
+      .actor-stats-stat {
+        display: grid;
+        align-content: center;
+      }
+
       .actor-stats-of {
         input {
           width: 100%;
@@ -356,6 +361,8 @@
     .right-tabs-section {
       grid-area: tabs-right;
       width: 100%;
+      display: grid;
+      align-content: end;
     }
 
     .right-content-section {
@@ -385,6 +392,8 @@
       grid-area: tabs-bottom;
       width: 100%;
       height: 1.438rem;
+      display: grid;
+      align-content: end;
     }
 
     .bottom-content-section {
