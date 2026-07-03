@@ -101,23 +101,24 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * Load all mixins configured in the Item metadata.
-   * TODO: enum this
+   * Load the behavioural mixins declared by this actor's data model. The mixin list is derived from the
+   * composed data-model schema (`SystemUtils.getMixins`), so a type opts into a behaviour by mixing its
+   * schema rather than by a hardcoded list here. Schema-only mixins with no behavioural counterpart
+   * (e.g. `wealth`) are skipped.
    *
    * @public
    */
   loadMixins() {
-    const mixins = ["container"];
-    for (let m = 0; m < mixins.length; m += 1) {
-      switch (mixins[m]) {
-        case "container": {
+    const mixins = SystemUtils.getMixins(this.type, "Actor");
+    mixins.forEach((mixin) => {
+      switch (mixin) {
+        case "container":
           Container.call(this);
           break;
-        }
         default:
-          LOGGER.warn(`Tried to load an unknown mixin, ${mixins[m]}`);
+          break;
       }
-    }
+    });
   }
 
   /**
