@@ -28,19 +28,23 @@ import CPRWeaponItem from "./item/types/cpr-weapon.js";
 import { validateOverride } from "./system/overrides.js";
 
 /**
- * This code is heavily borrowed from the Burning Wheel system module. The jist
- * is to provide a Proxy object (this a native thing in JavaScript) whenever an actor
- * object is created with a sheet. We associate the Proxy object to CONFIG.Actor.documentClass
- * in the top-level cpr.js, which allows us to have custom classes underneath for each actor
- * type.
+ * Borrowed from the Burning Wheel system: a Proxy that stands in for the single allowed
+ * `CONFIG.<Document>.documentClass` and dispatches construction to the per-type subclass by
+ * `data.type`. Assigned to `CONFIG.Actor.documentClass` / `CONFIG.Item.documentClass` in cpr.js.
+ *
+ * The `construct` trap does the dispatch: Foundry constructs every document through the configured
+ * documentClass (this Proxy), so routing there covers create/import/duplication alike, and per-type
+ * create-time setup (token defaults, core-item population) lives in each subclass's `_preCreate`. The
+ * `get` trap only survives to provide a type-aware `Symbol.hasInstance` (see below) — everything else
+ * forwards to the base class.
  *
  * Beware, a lot of this code is inspected (loaded) when Foundry is initializing, so any code
  * that depends on basic things like system settings will not work. During that time they do
  * not exist yet.
  *
- * @param {} entities - a mapping of actor types to classes
- * @param {*} baseClass - the basic Actor class from Foundry we put the Proxy in front of
- * @returns - a Proxy object with interceptions routing to the desired actor class
+ * @param {object} entities - a mapping of document types to their subclasses
+ * @param {Function} baseClass - the base Foundry Actor/Item class the Proxy fronts
+ * @returns {Proxy} a Proxy that routes construction to the correct subclass by type
  */
 function factory(entities, baseClass) {
   return new Proxy(baseClass, {
@@ -54,31 +58,20 @@ function factory(entities, baseClass) {
       constructor.prototype.validate = validateOverride;
       return new constructor(data, options);
     },
+    // Foundry validates collection pushes with `instance instanceof CONFIG.<Doc>.documentClass`
+    // (this Proxy). Container/Black-ICE/Demon still extend Foundry `Actor` directly rather than the
+    // Proxy's baseClass (CPRActor), so a type-aware `instanceof` is required — without it their
+    // creation is rejected ("You may only push instances of Actor to the Actors collection"). Every
+    // other property forwards to the base class. Once all actor types extend CPRActor this trap can
+    // go and native `instanceof` suffices (the pf2e model).
     get: (target, prop) => {
-      switch (prop) {
-        case "create":
-          // Calling the class' create() static function
-          return (data, options) => {
-            const constructor = entities[data.type];
-            if (!constructor)
-              throw new Error(
-                `Unsupported Entity type for create(): ${data.type}`,
-              );
-            return constructor.create(data, options);
-          };
-        case Symbol.hasInstance:
-          // Applying the "instanceof" operator on the instance object
-          return (instance) => {
-            const constr = entities[instance.type];
-            if (!constr) {
-              return false;
-            }
-            return instance instanceof constr;
-          };
-        default:
-          // Just forward any requested properties to the base Actor class
-          return baseClass[prop];
+      if (prop === Symbol.hasInstance) {
+        return (instance) => {
+          const constructor = entities[instance.type];
+          return constructor ? instance instanceof constructor : false;
+        };
       }
+      return baseClass[prop];
     },
   });
 }

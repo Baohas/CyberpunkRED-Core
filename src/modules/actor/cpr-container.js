@@ -12,19 +12,31 @@ import { ContainerUtils } from "../item/mixins/cpr-container.js";
  */
 export default class CPRContainerActor extends Actor {
   /**
-   * create() is called when creating the actor, but it's not the same as a constructor. In the
-   * code here, we pre-configure a few token options to reduce repetitive clicking.
+   * Set up a newly-created container in the creation source: neutral-disposition token, owner-default
+   * ownership so players can interact, and the default "shop" container type (its flags — the other
+   * container types' unset flags are already absent on a fresh actor). Applied only to a genuinely-new
+   * actor (a duplicate/import keeps its own token, ownership, and container type).
+   *
+   * @async
+   * @override
+   * @param {object} data - the creation data
+   * @param {object} options - creation options
+   * @param {User} user - the user requesting the creation
+   * @returns {Promise<boolean|void>} false aborts creation
    */
-  static async create(data, options) {
-    const createData = data;
-    if (typeof data.system === "undefined") {
-      createData.prototypeToken = {
-        disposition: 0,
-      };
-      createData.ownership = { default: 3 };
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    if (!data.items?.length) {
+      this.updateSource({
+        prototypeToken: { disposition: 0 },
+        ownership: { default: 3 },
+        flags: {
+          [game.system.id]: { "container-type": "shop", "players-sell": true },
+        },
+      });
     }
-    const newContainerActor = await super.create(createData, options);
-    newContainerActor.setContainerType("shop");
+    return allowed;
   }
 
   /**

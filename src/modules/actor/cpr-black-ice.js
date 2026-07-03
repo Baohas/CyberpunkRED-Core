@@ -11,22 +11,25 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
  */
 export default class CPRBlackIceActor extends Actor {
   /**
-   * The only special thing we do when creating a new Black-ICE actor is set the "REZ" stat to
-   * be the one to show for a bar on a token. Typically this is a lot like HP.
+   * Set the REZ stat as the token's resource bar on a newly-created Black-ICE actor (REZ behaves much
+   * like HP). Applied only to a genuinely-new actor (a duplicate/import keeps its own token).
    *
-   * @static
    * @async
-   * @param {Object} data - a complex object with set up details and data for the actor
-   * @param {Object} options - unused here, but passed up to the parent class where it is needed
+   * @override
+   * @param {object} data - the creation data
+   * @param {object} options - creation options
+   * @param {User} user - the user requesting the creation
+   * @returns {Promise<boolean|void>} false aborts creation
    */
-  static async create(data, options) {
-    const createData = data;
-    if (typeof data.system === "undefined") {
-      createData.prototypeToken = {
-        bar1: { attribute: "stats.rez" },
-      };
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    if (!data.items?.length) {
+      this.updateSource({
+        prototypeToken: { bar1: { attribute: "stats.rez" } },
+      });
     }
-    super.create(createData, options);
+    return allowed;
   }
 
   /**

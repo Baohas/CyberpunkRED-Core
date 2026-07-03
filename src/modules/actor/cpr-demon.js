@@ -10,22 +10,25 @@ import SystemUtils from "../utils/cpr-systemUtils.js";
  */
 export default class CPRDemonActor extends Actor {
   /**
-   * create() is called when the actor is... being created. All we do in here
-   * is set "rez" to a resource bar.
+   * Set the REZ stat as the token's resource bar on a newly-created Demon actor. Applied only to a
+   * genuinely-new actor (a duplicate/import keeps its own token).
    *
-   * @static
    * @async
-   * @param {Object} data - a complex structure of data used in creating the actor
-   * @param {Object} options - unused here but passed up to the parent
+   * @override
+   * @param {object} data - the creation data
+   * @param {object} options - creation options
+   * @param {User} user - the user requesting the creation
+   * @returns {Promise<boolean|void>} false aborts creation
    */
-  static async create(data, options) {
-    const createData = data;
-    if (typeof data.system === "undefined") {
-      createData.prototypeToken = {
-        bar1: { attribute: "stats.rez" },
-      };
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    if (!data.items?.length) {
+      this.updateSource({
+        prototypeToken: { bar1: { attribute: "stats.rez" } },
+      });
     }
-    super.create(createData, options);
+    return allowed;
   }
 
   /**
