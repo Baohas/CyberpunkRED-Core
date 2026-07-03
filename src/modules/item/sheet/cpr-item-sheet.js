@@ -514,13 +514,13 @@ export default class CPRItemSheet extends ItemSheet {
       tableSetting,
       "All Other Floors (".concat(formData.difficulty.capitalize(), ")"),
     );
-    const numberOfFloorsRoll = new CPRRoll(
+    const numberOfFloorsRoll = CPRRoll.create(
       SystemUtils.Localize("CPR.rolls.roll"),
       "3d6",
     );
     await numberOfFloorsRoll.roll();
     const numberOfFloors = numberOfFloorsRoll.resultTotal;
-    const branchCheck = new CPRRoll(
+    const branchCheck = CPRRoll.create(
       SystemUtils.Localize("CPR.rolls.roll"),
       "1d10",
     );

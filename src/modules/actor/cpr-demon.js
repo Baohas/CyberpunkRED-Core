@@ -37,7 +37,7 @@ export default class CPRDemonActor extends Actor {
   createStatRoll(statName) {
     const niceStatName = SystemUtils.Localize(CPR.demonStatList[statName]);
     const statValue = parseInt(this.system.stats[statName], 10);
-    const cprRoll = new CPRRolls.CPRProgramStatRoll(niceStatName, statValue);
+    const cprRoll = CPRRolls.CPRProgramStatRoll.create(niceStatName, statValue);
 
     if (!cprRoll.rollCardExtraArgs.program) {
       cprRoll.rollCardExtraArgs.program = {

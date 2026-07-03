@@ -57,8 +57,11 @@ export default class CPRDialog extends FormApplication {
    */
   async getData() {
     const data = await super.getData();
+    // Spread the dialog object's own properties to the top level so templates can reference them
+    // directly. Skip keys already present on the FormApplication data — notably `options`, which holds
+    // the dialog `buttons` — so a Roll-based object's own `options`/`data` keys don't clobber them.
     Object.entries(this.object).forEach(([key, value]) => {
-      data[key] = value;
+      if (!(key in data)) data[key] = value;
     });
     return data;
   }
