@@ -8,25 +8,30 @@ import CPRActor from "./cpr-actor.js";
  */
 export default class CPRCharacterActor extends CPRActor {
   /**
-   * Pre-configure a few token options to reduce repetitive clicking, such as setting HP
-   * as a resource bar. We also set the disposition as friendly, and always link with a token.
+   * Set sensible token defaults on a newly-created character: linked token, friendly disposition,
+   * vision, and an HP resource bar. Applied only to a genuinely-new actor (a duplicate/import keeps its
+   * own token). Core-item population lives on the CPRActor base.
    *
    * @async
    * @override
-   * @static
-   * @param {Object} data - a complex structure with details and data to stuff into the actor object
-   * @param {Object} options - not used here, but required by the parent class
+   * @param {object} data - the creation data
+   * @param {object} options - creation options
+   * @param {User} user - the user requesting the creation
+   * @returns {Promise<boolean|void>} false aborts creation
    */
-  static async create(data, options) {
-    const createData = data;
-    if (typeof data.system === "undefined") {
-      createData.prototypeToken = {
-        actorLink: true,
-        disposition: 1,
-        "sight.enabled": true,
-        "bar1.Attribute": "derivedStats.hp",
-      };
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    if (!data.items?.length) {
+      this.updateSource({
+        prototypeToken: {
+          actorLink: true,
+          disposition: 1,
+          sight: { enabled: true },
+          bar1: { attribute: "derivedStats.hp" },
+        },
+      });
     }
-    return super.create(createData, options);
+    return allowed;
   }
 }

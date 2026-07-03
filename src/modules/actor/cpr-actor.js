@@ -21,51 +21,60 @@ import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
  */
 export default class CPRActor extends Actor {
   /**
-   * create() is called when creating the actor, but it's not the same as a constructor. In the
-   * code here, we pre-populate characters with skills, core cyberware, and other baked-in items.
+   * Populate a newly-created actor with its core skills and core cyberware.
+   *
+   * This runs in the document-creation pipeline (`_preCreate`) rather than a `static create()`
+   * override, so population happens on *every* creation path — the sidebar create dialog,
+   * `Actor.create`, `createDocuments`, and programmatic/API creation alike (the old override only ran
+   * for `ClassName.create()` calls). Core items are injected into the creation source with
+   * `updateSource`, and the core cyberware is marked installed in the same pass (item ids are assigned
+   * here so no post-create update is needed). A duplicate or compendium import already carries its own
+   * `items`, so it is left untouched; `options.cprSkipDefaults` opts out explicitly.
    *
    * @async
    * @override
-   * @static
-   * @param {Object} data - a complex structure with details and data to stuff into the actor object
-   * @param {Object} options - not used here, but required by the parent class
+   * @param {object} data - the creation data
+   * @param {object} options - creation options; `cprSkipDefaults` skips core-item population
+   * @param {User} user - the user requesting the creation
+   * @returns {Promise<boolean|void>} false aborts creation
    */
-  static async create(data, options) {
-    const createData = data;
-    const newActor = typeof data.system === "undefined";
-    if (!newActor) {
-      return super.create(data, options);
-    }
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
 
-    createData.items = [];
-    const tmpItems = data.items.concat(
-      await SystemUtils.GetCoreSkills(),
-      await SystemUtils.GetCoreCyberware(),
-    );
+    // Only a genuinely-new actor is populated: a duplicate/import brings its own items, and callers
+    // can opt out explicitly.
+    if (options.cprSkipDefaults || data.items?.length) return allowed;
+
+    const coreItems = [
+      ...(await SystemUtils.GetCoreSkills()),
+      ...(await SystemUtils.GetCoreCyberware()),
+    ];
     const containerTypes = SystemUtils.getDocTypesFromMixin("container");
-    tmpItems.forEach((item) => {
-      const updatedSystem = foundry.utils.duplicate(item.system);
+    const items = coreItems.map((item) => {
+      const system = foundry.utils.duplicate(item.system);
       if (containerTypes.includes(item.type)) {
-        updatedSystem.installedItems.slots = 7;
-        updatedSystem.installedItems.allowedTypes = [
-          "itemUpgrade",
-          "cyberware",
-        ];
+        system.installedItems.slots = 7;
+        system.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
       }
-      const cprItem = {
+      return {
+        _id: foundry.utils.randomID(),
         name: item.name,
         img: item.img,
         type: item.type,
-        system: updatedSystem,
+        system,
       };
-      createData.items.push(cprItem);
     });
 
-    const actor = await super.create(createData, options);
-    const installedItems = [];
-    // If this is a brand new actor (i.e. not a duplicate), install core cyberware.
-    actor.itemTypes.cyberware.forEach((cw) => installedItems.push(cw.id));
-    return actor.update({ "system.installedItems.list": installedItems });
+    // Mark the core cyberware as installed in the same source pass.
+    const installedItems = items
+      .filter((item) => item.type === "cyberware")
+      .map((item) => item._id);
+    this.updateSource({
+      items,
+      "system.installedItems.list": installedItems,
+    });
+    return allowed;
   }
 
   /**

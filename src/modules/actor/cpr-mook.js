@@ -1,5 +1,4 @@
 import CPRActor from "./cpr-actor.js";
-import LOGGER from "../utils/cpr-logger.js";
 
 /**
  * The mook actor extends CPRActor since there is a lot of overlap behind the scenes with the
@@ -9,23 +8,28 @@ import LOGGER from "../utils/cpr-logger.js";
  */
 export default class CPRMookActor extends CPRActor {
   /**
-   * On creation pre-configure a few token options to reduce repetitive clicking, such as setting HP
-   * as a resource bar. Mooks by default have a neutral disposition and no actor link with tokens.
+   * Set sensible token defaults on a newly-created mook: vision and an HP resource bar. Mooks keep a
+   * neutral disposition and unlinked tokens. Applied only to a genuinely-new actor. Core-item
+   * population lives on the CPRActor base.
    *
    * @async
    * @override
-   * @static
-   * @param {Object} data - data used in creating a basic mook
-   * @param {Object} options - not used here but passed up to the parent class
+   * @param {object} data - the creation data
+   * @param {object} options - creation options
+   * @param {User} user - the user requesting the creation
+   * @returns {Promise<boolean|void>} false aborts creation
    */
-  static async create(data, options) {
-    const createData = data;
-    if (typeof data.system === "undefined") {
-      createData.prototypeToken = {
-        "sight.enabled": true,
-        bar1: { attribute: "derivedStats.hp" },
-      };
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    if (!data.items?.length) {
+      this.updateSource({
+        prototypeToken: {
+          sight: { enabled: true },
+          bar1: { attribute: "derivedStats.hp" },
+        },
+      });
     }
-    super.create(createData, options);
+    return allowed;
   }
 }
