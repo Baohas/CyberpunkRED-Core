@@ -29,9 +29,15 @@ export default class CPRSkillItem extends CPRItem {
     const cprItemData = this.system;
     const statName = cprItemData.stat;
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
-    const statValue = actor.getStat(statName);
     const skillName = this.name;
-    const skillLevel = Number.parseInt(cprItemData.level, 10);
+    // Source the skill's base (STAT value + level) from the actor's `system.skills` getter — the single
+    // canonical place the skill base is computed, and the seam a future Combat-Number capability would
+    // override (returning its combat number) so every skill roll picks it up here. Fall back to the raw
+    // STAT/level for any actor whose data model doesn't expose the getter.
+    const skillBase = actor.system.skills?.[SystemUtils.slugify(skillName)];
+    const statValue = skillBase?.stat ?? actor.getStat(statName);
+    const skillLevel =
+      skillBase?.level ?? Number.parseInt(cprItemData.level, 10);
 
     const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
     const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
