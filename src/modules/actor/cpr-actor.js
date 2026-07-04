@@ -1386,6 +1386,8 @@ export default class CPRActor extends Actor {
     damageLethal,
     formData,
   ) {
+    // Prefer the Token name over the Actor name on the damage-application card.
+    const targetName = this.token?.name ?? this.name;
     let rawDamageDealt = 0;
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
@@ -1439,6 +1441,7 @@ export default class CPRActor extends Actor {
       });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
+        name: targetName,
         damage,
         bonusDamage,
         hpReduction: takenDamage,
@@ -1500,6 +1503,7 @@ export default class CPRActor extends Actor {
           // if ammo isn't explosive, resolve chat card with no damage to token;
           CPRChat.RenderDamageApplicationCard({
             actor: this,
+            name: targetName,
             damage,
             bonusDamage,
             hpReduction: 0,
@@ -1515,6 +1519,7 @@ export default class CPRActor extends Actor {
           // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
           CPRChat.RenderDamageApplicationCard({
             actor: this,
+            name: targetName,
             damage,
             bonusDamage,
             hpReduction: 0,
@@ -1541,6 +1546,7 @@ export default class CPRActor extends Actor {
       });
       CPRChat.RenderDamageApplicationCard({
         actor: this,
+        name: targetName,
         damage,
         bonusDamage,
         hpReduction: takenDamage,
@@ -1595,6 +1601,7 @@ export default class CPRActor extends Actor {
     const cardDisplayAblation = armors.length > 0 ? ablation : 0;
     CPRChat.RenderDamageApplicationCard({
       actor: this,
+      name: targetName,
       damage,
       bonusDamage,
       hpReduction: takenDamage,

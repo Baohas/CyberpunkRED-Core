@@ -128,6 +128,7 @@ export default class CPRBlackIceActor extends Actor {
     });
     CPRChat.RenderDamageApplicationCard({
       actor: this,
+      name: this.token?.name ?? this.name,
       hpReduction: damage,
       rezReduction: true,
     });
