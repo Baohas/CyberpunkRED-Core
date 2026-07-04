@@ -36,6 +36,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 ### Bug Fixes
 
 - Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
+- Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
 
 ### Plumbing
 
