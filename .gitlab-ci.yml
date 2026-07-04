@@ -36,6 +36,7 @@ include:
       - "/jobs/test/test-build.yml"
       - "/jobs/test/test-fontawesome.yml"
       - "/jobs/test/test-shell-scripts.yml"
+      - "/jobs/test/test-unit.yml"
       # Build / release
       - "/jobs/release/build-artifacts.yml"
       - "/jobs/release/create-release.yml"
