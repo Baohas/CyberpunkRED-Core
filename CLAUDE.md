@@ -10,6 +10,17 @@ This file provides guidance for AI assistants working on this codebase.
 
 **When implementing or verifying a game mechanic, consult the [`mechanics/`](mechanics/) catalog** (start at `index.md`) for the expected behaviour. Rules as Written is the default; where a value/ratio/threshold could vary, prefer a configurable implementation defaulting to RAW so homebrew is supported.
 
+## Implementation workflow (superpowers)
+
+For any non-trivial or multi-step implementation, drive the work through the **superpowers** plugin's workflow rather than ad-hoc editing:
+
+1. **Plan** — `superpowers:brainstorming` → `superpowers:writing-plans` to turn a spec/issue into an execution plan (investigation notes such as `.plans/<iid>.md` are the *spec input*, not the execution plan).
+2. **Execute** — `superpowers:subagent-driven-development` (a fresh subagent per task) or `superpowers:executing-plans`. **After each task, run `superpowers:requesting-code-review`** and resolve Critical/Important findings before continuing. Use `superpowers:test-driven-development` where a fast unit test fits (the Foundry-light `tests/unit` Vitest layer); for Foundry-coupled code the "test" is a Playwright spec + live-Foundry MCP check, not a unit red-green.
+3. **Verify** — `superpowers:verification-before-completion`. Its evidence gate means running **this repo's "Before Committing" checklist in [`STYLE_GUIDE.md`](STYLE_GUIDE.md)** (lint, prettier, stylelint, markdownlint, build, `fallow audit`, unit + browser tests, live-Foundry validation, migration, localization, CHANGELOG-in-same-commit). That checklist is the gate; superpowers only enforces that you actually ran it, fresh, with evidence.
+4. **Finish** — `superpowers:finishing-a-development-branch`, but the git/MR rules above take precedence over its generic menu: never merge to `dev` directly — open a **Draft MR** to `dev` (no labels, wait for the pipeline, then add `Review::Ready for Review`), and squash superpowers' per-task commits into clean logical units first.
+
+Everything else in this file and `STYLE_GUIDE.md` applies throughout and **takes precedence over generic superpowers advice**. Requires the superpowers plugin (enabled in the shared `.claude` config; each contributor installs it once via `/plugin install`).
+
 ## Mechanics catalog (PDF extraction)
 
 `mechanics/` is the project's **source of truth for game mechanics** — a catalog of *what every item and
