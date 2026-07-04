@@ -9,6 +9,37 @@ import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import { cprConfirm, cprFormPrompt } from "../dialog/cpr-dialog.js";
 import CPRActor from "./cpr-actor.js";
+import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
+import CPRMookActorSheet from "./sheet/cpr-mook-sheet.js";
+
+/**
+ * Shape a stat/derived-stat field for a roll formula: a single-value field becomes a plain number, a
+ * value+max field (LUCK, EMP, HP, Humanity, …) becomes `{ value, total }` so both `@stats.luck.value`
+ * (current) and `@stats.luck.total` (max) resolve. Non-numeric fields (e.g. currentWoundState) are
+ * skipped (undefined).
+ *
+ * @param {*} field - the stat field
+ * @returns {number|{value:number,total:number}|undefined}
+ */
+function refStat(field) {
+  if (typeof field === "number") return field;
+  if (!field || typeof field !== "object") return undefined;
+  return refStatObject(field);
+}
+
+/**
+ * Shape an object-valued stat field: a `{value, max}` pair → `{value, total}`, a `{value}` → its
+ * number, otherwise undefined.
+ *
+ * @param {object} field - the object stat field
+ * @returns {number|{value:number,total:number}|undefined}
+ */
+function refStatObject(field) {
+  if (typeof field.max === "number")
+    return { value: field.value, total: field.max };
+  if (typeof field.value === "number") return field.value;
+  return undefined;
+}
 
 /**
  * CPRHuman holds the STAT/skill/health/roll behaviour shared by player Characters and Mooks (NPCs).
@@ -37,32 +68,31 @@ export default class CPRHuman extends CPRActor {
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
-
     // Only a genuinely-new actor is populated: a duplicate/import brings its own items, and callers
     // can opt out explicitly.
-    if (options.cprSkipDefaults || data.items?.length) return allowed;
+    if (this._shouldPopulateCoreItems(data, options))
+      await this._populateCoreItems();
+    return allowed;
+  }
 
-    const coreItems = [
-      ...(await SystemUtils.GetCoreSkills()),
-      ...(await SystemUtils.GetCoreCyberware()),
-    ];
-    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
-    const items = coreItems.map((item) => {
-      const system = foundry.utils.duplicate(item.system);
-      if (containerTypes.includes(item.type)) {
-        system.installedItems.slots = 7;
-        system.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
-      }
-      return {
-        _id: foundry.utils.randomID(),
-        name: item.name,
-        img: item.img,
-        type: item.type,
-        system,
-      };
-    });
+  /**
+   * Whether a newly-created actor should be populated with core skills/cyberware.
+   *
+   * @param {object} data - the creation data
+   * @param {object} options - creation options; `cprSkipDefaults` opts out
+   * @returns {boolean}
+   */
+  _shouldPopulateCoreItems(data, options) {
+    return !options.cprSkipDefaults && !data.items?.length;
+  }
 
-    // Mark the core cyberware as installed in the same source pass.
+  /**
+   * Inject the core skills and cyberware into the creation source, marking the cyberware installed.
+   *
+   * @returns {Promise<void>}
+   */
+  async _populateCoreItems() {
+    const items = await this._buildCoreItems();
     const installedItems = items
       .filter((item) => item.type === "cyberware")
       .map((item) => item._id);
@@ -70,7 +100,42 @@ export default class CPRHuman extends CPRActor {
       items,
       "system.installedItems.list": installedItems,
     });
-    return allowed;
+  }
+
+  /**
+   * Build the core-item creation data (skills + cyberware) for a new actor.
+   *
+   * @returns {Promise<Array<object>>}
+   */
+  async _buildCoreItems() {
+    const coreItems = [
+      ...(await SystemUtils.GetCoreSkills()),
+      ...(await SystemUtils.GetCoreCyberware()),
+    ];
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
+    return coreItems.map((item) => this._toCoreItemData(item, containerTypes));
+  }
+
+  /**
+   * Convert a source core item into fresh creation data, giving container-type items install slots.
+   *
+   * @param {CPRItem} item - the source core item
+   * @param {string[]} containerTypes - item types that carry the container mixin
+   * @returns {object} the creation data for the item
+   */
+  _toCoreItemData(item, containerTypes) {
+    const system = foundry.utils.duplicate(item.system);
+    if (containerTypes.includes(item.type)) {
+      system.installedItems.slots = 7;
+      system.installedItems.allowedTypes = ["itemUpgrade", "cyberware"];
+    }
+    return {
+      _id: foundry.utils.randomID(),
+      name: item.name,
+      img: item.img,
+      type: item.type,
+      system,
+    };
   }
 
   /**
@@ -81,15 +146,21 @@ export default class CPRHuman extends CPRActor {
    */
   prepareData() {
     super.prepareData();
-    if (this.compendium === null || this.compendium === undefined) {
-      // It looks like prepareData() is called for any actors/npc's that exist in
-      // the game and the clients can't update them.  Everyone should only calculate
-      // their own derived stats, or the GM should be able to calculate the derived
-      // stat
-      if (this.isOwner || game.user.isGM) {
-        this._calculateDerivedStats();
-      }
-    }
+    // prepareData() runs for every actor the client knows about, but only the owner (or the GM)
+    // should compute derived stats, and never for a compendium-resident actor.
+    if (this._shouldCalculateDerivedStats()) this._calculateDerivedStats();
+  }
+
+  /**
+   * Whether this client should compute derived stats for this actor: it must be a world actor (not
+   * compendium-resident) and owned by this user (or this user is the GM).
+   *
+   * @returns {boolean}
+   */
+  _shouldCalculateDerivedStats() {
+    const inCompendium =
+      this.compendium !== null && this.compendium !== undefined;
+    return !inCompendium && (this.isOwner || game.user.isGM);
   }
 
   /**
@@ -214,18 +285,31 @@ export default class CPRHuman extends CPRActor {
    * @private
    */
   _setWoundState() {
-    const derivedStats = this.system.stats;
-    let newState = "invalidState";
-    if (derivedStats.hp.value < 1) {
-      newState = "mortallyWounded";
-    } else if (derivedStats.hp.value < derivedStats.seriouslyWounded) {
-      newState = "seriouslyWounded";
-    } else if (derivedStats.hp.value < derivedStats.hp.max) {
-      newState = "lightlyWounded";
-    } else if (derivedStats.hp.value === derivedStats.hp.max) {
-      newState = "notWounded";
-    }
-    this.system.stats.currentWoundState = newState;
+    this.system.stats.currentWoundState = this._computeWoundState();
+  }
+
+  /**
+   * Derive the wound-state label from current HP.
+   *
+   * @returns {String} one of mortallyWounded/seriouslyWounded/lightlyWounded/notWounded/invalidState
+   */
+  _computeWoundState() {
+    const { hp } = this.system.stats;
+    if (hp.value >= hp.max)
+      return hp.value === hp.max ? "notWounded" : "invalidState";
+    return this._computeWoundedState();
+  }
+
+  /**
+   * Derive the wounded label for an actor below max HP.
+   *
+   * @returns {String} mortallyWounded/seriouslyWounded/lightlyWounded
+   */
+  _computeWoundedState() {
+    const { hp, seriouslyWounded } = this.system.stats;
+    if (hp.value < 1) return "mortallyWounded";
+    if (hp.value < seriouslyWounded) return "seriouslyWounded";
+    return "lightlyWounded";
   }
 
   /**
@@ -260,68 +344,158 @@ export default class CPRHuman extends CPRActor {
    */
   async installCyberware(itemId) {
     const item = this.getOwnedItem(itemId);
-
-    const baseCompatibleFoundationalCyberware = this.itemTypes.cyberware.filter(
-      (cw) =>
-        cw.system.isInstalled &&
-        cw.system.isFoundational &&
-        cw.system.type === item.system.type,
+    const baseCompatible = this.itemTypes.cyberware.filter((cw) =>
+      this._isCompatibleFoundational(cw, item),
     );
+    if (this._lacksFoundationalTarget(baseCompatible, item))
+      return this._warnNoFoundational();
 
-    if (
-      baseCompatibleFoundationalCyberware.length < 1 &&
-      !item.system.isFoundational
-    ) {
-      Rules.lawyer(
-        false,
-        "CPR.messages.warnNoFoundationalCyberwareOfCorrectType",
-      );
-      return false;
-    }
-
-    // For each Foundational Cyberware of the item.system.type that is installed
-    // Gather a list of all of the currently installed cyberware
-    const compatibleTargetCyberware = [];
-    baseCompatibleFoundationalCyberware.forEach((cyberware) => {
-      compatibleTargetCyberware.push(cyberware);
-      let idList = cyberware.system.installedItems.list;
-      const containerTypes = SystemUtils.getDocTypesFromMixin("container");
-      while (idList.length > 0) {
-        const loopList = idList;
-        idList = [];
-        for (const id of loopList) {
-          const itemLookup = this.getOwnedItem(id);
-          if (containerTypes.includes(itemLookup.type)) {
-            if (
-              itemLookup.system.installedItems.allowed &&
-              itemLookup.system.installedItems.allowedTypes.includes(
-                item.type,
-              ) &&
-              itemLookup.availableInstallSlots() >= item.system.size
-            ) {
-              compatibleTargetCyberware.push(itemLookup);
-            }
-            idList = idList.concat(itemLookup.system.installedItems.list);
-          }
-        }
-      }
-    });
-    // Get all other cyberware installed in this one.
+    // All other cyberware installed in this one.
     const installedCyberware = item
       .recursiveGetAllInstalledItems()
       .filter((i) => i.type === "cyberware");
 
-    // Accumulate the roll formulae for each item for display on the sheet.
-    const rolledHumanityLoss = installedCyberware.reduce((accumulator, i) => {
-      return `${accumulator} + ${i.system.humanityLoss.roll}`;
-    }, item.system.humanityLoss.roll);
+    const formData = await this._promptCyberwareInstall(
+      item,
+      baseCompatible,
+      installedCyberware,
+    );
+    if (!formData) return false;
+    if (this._missingFoundationalSelection(item, formData))
+      return this._warnNoFoundational();
 
-    // Accumulate the static formulae for each item for display on the sheet.
-    const staticHumanityLoss = installedCyberware.reduce((accumulator, i) => {
-      return accumulator + i.system.humanityLoss.static;
-    }, item.system.humanityLoss.static);
+    return this._performCyberwareInstall(item, installedCyberware, formData);
+  }
 
-    const humanityLossSelectOptions = {
+  /** Whether `cw` is an installed foundational piece of the same type as `item`. */
+  _isCompatibleFoundational(cw, item) {
+    return (
+      cw.system.isInstalled &&
+      cw.system.isFoundational &&
+      cw.system.type === item.system.type
+    );
+  }
+
+  /** Non-foundational cyberware with no compatible foundational target cannot be installed. */
+  _lacksFoundationalTarget(baseCompatible, item) {
+    return baseCompatible.length < 1 && !item.system.isFoundational;
+  }
+
+  /** After the dialog, a non-foundational piece must have had a foundational target chosen. */
+  _missingFoundationalSelection(item, formData) {
+    return !item.system.isFoundational && !formData.foundationalId;
+  }
+
+  /** Warn that there is no foundational cyberware of the correct type and fail the install. */
+  _warnNoFoundational() {
+    Rules.lawyer(
+      false,
+      "CPR.messages.warnNoFoundationalCyberwareOfCorrectType",
+    );
+    return false;
+  }
+
+  /**
+   * Show the "Install Cyberware" dialog and return its form data.
+   *
+   * @param {CPRItem} item - the cyberware being installed
+   * @param {CPRItem[]} baseCompatible - the compatible installed foundational cyberware
+   * @param {CPRItem[]} installedCyberware - cyberware already installed inside `item`
+   * @returns {Promise<object|false>} the form data, or false if cancelled
+   */
+  async _promptCyberwareInstall(item, baseCompatible, installedCyberware) {
+    const compatibleTargetCyberware = this._collectCompatibleTargets(
+      baseCompatible,
+      item,
+    );
+    const humanityLossSelectOptions = this._buildHumanityLossOptions(
+      item,
+      installedCyberware,
+    );
+    return cprFormPrompt({
+      data: {
+        item,
+        foundationalCyberware: compatibleTargetCyberware,
+        // Empty when the cyberware being installed is itself foundational, hence the optional chaining.
+        foundationalId: compatibleTargetCyberware[0]?._id,
+        humanityLossType: "rolled",
+        humanityLossSelectOptions,
+      },
+      title: SystemUtils.Localize("CPR.dialog.installCyberware.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
+    });
+  }
+
+  /**
+   * Gather every valid install target: each compatible foundational cyberware plus, recursively, any
+   * container cyberware installed within it that can accept `item`.
+   *
+   * @param {CPRItem[]} baseCompatible - the compatible installed foundational cyberware
+   * @param {CPRItem} item - the cyberware being installed
+   * @returns {CPRItem[]} the install targets
+   */
+  _collectCompatibleTargets(baseCompatible, item) {
+    const targets = [];
+    const containerTypes = SystemUtils.getDocTypesFromMixin("container");
+    for (const cyberware of baseCompatible) {
+      targets.push(cyberware);
+      this._collectNestedTargets(cyberware, item, containerTypes, targets);
+    }
+    return targets;
+  }
+
+  /** Walk a foundational piece's install tree, collecting container cyberware that can accept `item`. */
+  _collectNestedTargets(cyberware, item, containerTypes, targets) {
+    let idList = cyberware.system.installedItems.list;
+    while (idList.length > 0) {
+      idList = this._collectTargetsFromLayer(
+        idList,
+        item,
+        containerTypes,
+        targets,
+      );
+    }
+  }
+
+  /** Process one layer of installed ids, pushing valid targets and returning the next layer's ids. */
+  _collectTargetsFromLayer(idList, item, containerTypes, targets) {
+    let next = [];
+    for (const id of idList) {
+      const itemLookup = this.getOwnedItem(id);
+      // eslint-disable-next-line no-continue
+      if (!containerTypes.includes(itemLookup.type)) continue;
+      if (this._canInstallInto(itemLookup, item)) targets.push(itemLookup);
+      next = next.concat(itemLookup.system.installedItems.list);
+    }
+    return next;
+  }
+
+  /** Whether `container` cyberware allows `item`'s type and has a free slot for it. */
+  _canInstallInto(container, item) {
+    return (
+      container.system.installedItems.allowed &&
+      container.system.installedItems.allowedTypes.includes(item.type) &&
+      container.availableInstallSlots() >= item.system.size
+    );
+  }
+
+  /**
+   * Build the Humanity-Loss select options (rolled/static formulae + none) for the install dialog.
+   *
+   * @param {CPRItem} item - the cyberware being installed
+   * @param {CPRItem[]} installedCyberware - cyberware already installed inside `item`
+   * @returns {object} the select options
+   */
+  _buildHumanityLossOptions(item, installedCyberware) {
+    const rolledHumanityLoss = installedCyberware.reduce(
+      (accumulator, i) => `${accumulator} + ${i.system.humanityLoss.roll}`,
+      item.system.humanityLoss.roll,
+    );
+    const staticHumanityLoss = installedCyberware.reduce(
+      (accumulator, i) => accumulator + i.system.humanityLoss.static,
+      item.system.humanityLoss.static,
+    );
+    return {
       roll: SystemUtils.Format("CPR.dialog.installCyberware.roll", {
         loss: rolledHumanityLoss,
       }),
@@ -330,36 +504,21 @@ export default class CPRHuman extends CPRActor {
       }),
       none: SystemUtils.Localize("CPR.dialog.installCyberware.none"),
     };
+  }
 
-    // Show "Install Cyberware" dialog.
-    const formData = await cprFormPrompt({
-      data: {
-        item,
-        foundationalCyberware: compatibleTargetCyberware,
-        // If the cyberware being installed is foundational, the array will be empty, thus the optional chaining.
-        foundationalId: compatibleTargetCyberware[0]?._id,
-        humanityLossType: "rolled",
-        humanityLossSelectOptions,
-      },
-      title: SystemUtils.Localize("CPR.dialog.installCyberware.title"),
-      template: `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
-    });
-    if (!formData) {
-      return false;
-    }
-
-    if (!item.system.isFoundational && !formData.foundationalId) {
-      Rules.lawyer(
-        false,
-        "CPR.messages.warnNoFoundationalCyberwareOfCorrectType",
-      );
-      return false;
-    }
-
+  /**
+   * Install `item` into the chosen target (self if foundational, else the selected foundational) and
+   * apply the resulting Humanity Loss on success.
+   *
+   * @param {CPRItem} item - the cyberware being installed
+   * @param {CPRItem[]} installedCyberware - cyberware already installed inside `item`
+   * @param {object} formData - the install-dialog form data
+   * @returns {Promise<boolean>} whether the install succeeded
+   */
+  async _performCyberwareInstall(item, installedCyberware, formData) {
     const target = item.system.isFoundational
       ? this
       : this.getOwnedItem(formData.foundationalId);
-
     const installationSuccess = await target.installItems([item]);
     if (installationSuccess)
       await this.loseHumanityValue(
@@ -485,20 +644,6 @@ export default class CPRHuman extends CPRActor {
   getRollData() {
     const data = { ...super.getRollData() };
 
-    // Shape a stat/derived-stat field for a formula: a single-value field becomes a plain number, a
-    // value+max field (LUCK, EMP, HP, Humanity, …) becomes `{ value, total }` so both
-    // `@stats.luck.value` (current) and `@stats.luck.total` (max) resolve. Non-numeric fields (e.g.
-    // currentWoundState) are skipped.
-    const refStat = (field) => {
-      if (typeof field === "number") return field;
-      if (field && typeof field === "object") {
-        if (typeof field.max === "number") {
-          return { value: field.value, total: field.max };
-        }
-        if (typeof field.value === "number") return field.value;
-      }
-      return undefined;
-    };
     const buildRefs = (source) => {
       const out = {};
       for (const [name, field] of Object.entries(source ?? {})) {
@@ -532,36 +677,54 @@ export default class CPRHuman extends CPRActor {
    * @returns {Number}
    */
   getUpgradeMods(baseName) {
-    let modValue = 0;
-    // See if we have any items which upgrade our stat, and if so, upgrade the stat base
+    // Items that both equip and upgrade can modify our stat base while equipped and upgraded.
     const equippableItemTypes = SystemUtils.getDocTypesFromMixin("equippable");
     const upgradableItemTypes = SystemUtils.getDocTypesFromMixin("upgradable");
     const itemTypes = equippableItemTypes.filter((value) =>
       upgradableItemTypes.includes(value),
     );
-    let modType = "modifier";
 
-    itemTypes.forEach((itemType) => {
+    let acc = { modValue: 0, modType: "modifier" };
+    for (const itemType of itemTypes) {
       const itemList = this.itemTypes[itemType].filter(
         (i) => i.system.equipped === "equipped" && i.system.isUpgraded,
       );
-      itemList.forEach((i) => {
-        const upgradeData = i.getTotalUpgradeValues(baseName);
-        if (modType === "override") {
-          if (upgradeData.type === "override" && upgradeData.value > modValue) {
-            modValue = upgradeData.value;
-          }
-        } else {
-          modValue =
-            upgradeData.type === "override"
-              ? upgradeData.value
-              : modValue + upgradeData.value;
-          modType = upgradeData.type;
-        }
-      });
-    });
+      for (const i of itemList) {
+        acc = this._applyUpgradeMod(acc, i.getTotalUpgradeValues(baseName));
+      }
+    }
+    return acc.modValue;
+  }
 
-    return modValue;
+  /**
+   * Fold one item's upgrade contribution into the running `{ modValue, modType }` accumulator.
+   * Override upgrades take the highest override value; modifier upgrades add up.
+   *
+   * @param {{modValue:number, modType:string}} acc - the running accumulator
+   * @param {{type:string, value:number}} upgradeData - this item's upgrade values for the stat
+   * @returns {{modValue:number, modType:string}} the updated accumulator
+   */
+  _applyUpgradeMod(acc, upgradeData) {
+    if (acc.modType === "override")
+      return this._applyOverrideMod(acc, upgradeData);
+    const modValue =
+      upgradeData.type === "override"
+        ? upgradeData.value
+        : acc.modValue + upgradeData.value;
+    return { modValue, modType: upgradeData.type };
+  }
+
+  /**
+   * Once in override mode, only a larger override value replaces the current one.
+   *
+   * @param {{modValue:number, modType:string}} acc - the running accumulator
+   * @param {{type:string, value:number}} upgradeData - this item's upgrade values for the stat
+   * @returns {{modValue:number, modType:string}} the updated accumulator
+   */
+  _applyOverrideMod(acc, upgradeData) {
+    if (upgradeData.type === "override" && upgradeData.value > acc.modValue)
+      return { modValue: upgradeData.value, modType: acc.modType };
+    return acc;
   }
 
   /**
@@ -595,33 +758,31 @@ export default class CPRHuman extends CPRActor {
    */
   _getArmorValue(valueType, location) {
     const armors = this.getEquippedArmors(location);
-    let sps;
-    let penalties;
+    const sps = this._armorLocationSPs(armors, location);
+    // Armor penalties may be stored negative or positive (DataModel limitation); use the magnitude.
+    const penalties = armors.map((a) => Math.abs(a.system.penalty));
 
-    if (location === "body") {
-      sps = armors.map((a) => a.system.bodyLocation.sp);
-    } else if (location === "head") {
-      sps = armors.map((a) => a.system.headLocation.sp);
-    } // we assume getEquippedArmors will throw an error with a bad loc
-
-    // We allow the armour.penalty value to be either negative or positive
-    // in the item data because of DataModel limitations so we convert any
-    // negative integers to positive ones here when calculating the values.
-    penalties = armors.map((a) =>
-      a.system.penalty < 0 ? Math.abs(a.system.penalty) : a.system.penalty,
-    );
-    penalties = penalties.map(Math.abs);
-
+    // Force a 0 so nothing-equipped yields 0.
     penalties.push(0);
-    sps.push(0); // force a 0 if nothing is equipped
+    sps.push(0);
 
-    if (valueType === "sp") {
-      return Math.max(...sps); // Math.max treats null values in array as 0
-    }
-    if (valueType === "penalty") {
-      return Math.max(...penalties); // Math.max treats null values in array as 0
-    }
+    if (valueType === "sp") return Math.max(...sps);
+    if (valueType === "penalty") return Math.max(...penalties);
     return 0;
+  }
+
+  /**
+   * The SP values of the equipped armors for a head/body location. (getEquippedArmors throws on a bad
+   * location before this is reached.)
+   *
+   * @param {CPRItem[]} armors - the equipped armors for the location
+   * @param {String} location - "body" or "head"
+   * @returns {number[]}
+   */
+  _armorLocationSPs(armors, location) {
+    if (location === "body") return armors.map((a) => a.system.bodyLocation.sp);
+    if (location === "head") return armors.map((a) => a.system.headLocation.sp);
+    return [];
   }
 
   /**
@@ -664,25 +825,11 @@ export default class CPRHuman extends CPRActor {
     const armorPath = "system.externalData.currentArmor";
     const update = { value: 0, max: 0 };
 
-    const calculateUpdate = (locationKey) => {
-      // Return defaults if targetArmor is undefined.
-      if (!targetArmor) {
-        return { value: 0, max: 0 };
-      }
-
-      // If it's a shield just grab the values directly
-      if (location === "shield") {
-        const { value = 0, max = 0 } = targetArmor.system.shieldHitPoints || {};
-        return { value, max };
-      }
-      // Else calculate the value for armor
-      const sp = targetArmor.system[locationKey]?.sp ?? 0;
-      const ablation = targetArmor.system[locationKey]?.ablation ?? 0;
-      return { value: sp - ablation, max: sp };
-    };
-
     // Get the values of the armor
-    Object.assign(update, calculateUpdate(`${location}Location`));
+    Object.assign(
+      update,
+      this._calculateArmorUpdate(targetArmor, location, `${location}Location`),
+    );
 
     // Update the id of the tracked armor if it doesn't match
     if (currentArmor.id !== id) {
@@ -699,6 +846,35 @@ export default class CPRHuman extends CPRActor {
   }
 
   /**
+   * The `{ value, max }` to write for a tracked-armor location: defaults when there is no target
+   * armor, the shield's hit points for a shield, else the location's `sp - ablation` / `sp`.
+   *
+   * @param {CPRItem|undefined} targetArmor - the armor being tracked (or undefined)
+   * @param {String} location - "shield", "head", or "body"
+   * @param {String} locationKey - the system key for the location (e.g. "bodyLocation")
+   * @returns {{value:number, max:number}}
+   */
+  _calculateArmorUpdate(targetArmor, location, locationKey) {
+    if (!targetArmor) return { value: 0, max: 0 };
+    if (location === "shield") return this._shieldArmorUpdate(targetArmor);
+    return this._locationArmorUpdate(targetArmor, locationKey);
+  }
+
+  /** The `{ value, max }` from a shield's hit points. */
+  _shieldArmorUpdate(targetArmor) {
+    const { value = 0, max = 0 } = targetArmor.system.shieldHitPoints || {};
+    return { value, max };
+  }
+
+  /** The `{ value: sp - ablation, max: sp }` for a head/body armor location. */
+  _locationArmorUpdate(targetArmor, locationKey) {
+    const loc = targetArmor.system[locationKey] || {};
+    const sp = loc.sp ?? 0;
+    const ablation = loc.ablation ?? 0;
+    return { value: sp - ablation, max: sp };
+  }
+
+  /**
    * Create the appropriate roll object given a type. The type comes from link attributes in handlebars templates.
    *
    * @param {String} type - the type of roll to create
@@ -706,22 +882,13 @@ export default class CPRHuman extends CPRActor {
    * @returns {CPRRoll}
    */
   createRoll(type, name) {
-    switch (type) {
-      case CPRRolls.rollTypes.STAT: {
-        return this._createStatRoll(name);
-      }
-      case CPRRolls.rollTypes.DEATHSAVE: {
-        return this._createDeathSaveRoll();
-      }
-      case CPRRolls.rollTypes.LUCKROLL: {
-        return this._createLuckRoll();
-      }
-      case CPRRolls.rollTypes.FACEDOWN: {
-        return this._createFacedownRoll();
-      }
-      default:
-    }
-    return undefined;
+    const builders = {
+      [CPRRolls.rollTypes.STAT]: () => this._createStatRoll(name),
+      [CPRRolls.rollTypes.DEATHSAVE]: () => this._createDeathSaveRoll(),
+      [CPRRolls.rollTypes.LUCKROLL]: () => this._createLuckRoll(),
+      [CPRRolls.rollTypes.FACEDOWN]: () => this._createFacedownRoll(),
+    };
+    return builders[type]?.();
   }
 
   /**
@@ -736,21 +903,8 @@ export default class CPRHuman extends CPRActor {
     const statValue = this.getStat(statName);
     const cprRoll = CPRRolls.CPRStatRoll.create(niceStatName, statValue);
 
-    const effects = Array.from(this.allApplicableEffects());
-    const allMods = CPRMod.getAllModifiers(effects);
-    const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
-    );
-
-    // Mods that affect all actions.
-    const allActionsMods = CPRMod.getRelevantMods(filteredMods, [
-      "allActions",
-      "allActionsSpeech",
-      "allActionsHands",
-    ]);
-
     // Add relevant mods.
-    cprRoll.addMod(allActionsMods);
+    cprRoll.addMod(CPRMod.getAllActionMods(this));
     cprRoll.addMod([
       {
         value: this.getArmorPenaltyMods(statName),
@@ -787,22 +941,7 @@ export default class CPRHuman extends CPRActor {
       repValue,
     );
 
-    // Figure out all applicable modifiers.
-    const effects = Array.from(this.allApplicableEffects()); // Active effects on the actor.
-    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
-    // Filter for mods that should always be on (not situational) or are situational but on by default.
-    const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
-    );
-
-    // Mods that affect all actions.
-    const allActionsMods = CPRMod.getRelevantMods(filteredMods, [
-      "allActions",
-      "allActionsSpeech",
-      "allActionsHands",
-    ]);
-
-    cprRoll.addMod(allActionsMods);
+    cprRoll.addMod(CPRMod.getAllActionMods(this));
 
     return cprRoll;
   }
@@ -823,15 +962,8 @@ export default class CPRHuman extends CPRActor {
       bodyStat,
     );
 
-    const effects = Array.from(this.allApplicableEffects()); // Active effects on the actor.
-    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
-    // Filter for mods that should always be on (not situational) or are situational but on by default.
-    const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
-    );
-
     const deathSavePenaltyMods = CPRMod.getRelevantMods(
-      filteredMods,
+      CPRMod.getActiveMods(this),
       "deathSavePenalty",
     );
     cprRoll.addMod(deathSavePenaltyMods);
@@ -955,215 +1087,283 @@ export default class CPRHuman extends CPRActor {
     damageLethal,
     formData,
   ) {
-    let rawDamageDealt = 0;
-    let totalDamageDealt = 0;
-    let totalDamageReduction = 0;
-    let takenDamage = 0;
-    let ignoreArmorEntirely = false;
-    let armorSPRef = 0;
     const armors = location === "brain" ? [] : this.getEquippedArmors(location);
-    const armorData = {
-      value: 0,
-      equipped: armors.length > 0,
-    };
+    const armorData = { value: 0, equipped: armors.length > 0 };
+    const totalDamageReduction = this._calculateDamageReduction(formData);
 
-    // If user chooses, calculate damage reduction from role abilities and active effects.
-    if (formData.damageReductionRole) {
-      // Apply damage reduction from role abilities.
-      let universalBonusDamageReduction = 0;
-      this.itemTypes.role.forEach((r) => {
-        if (r.system.universalBonuses.includes("damageReduction")) {
-          universalBonusDamageReduction += Math.floor(
-            r.system.rank / r.system.bonusRatio,
-          );
-        }
-        const subroleUniversalBonuses = r.system.abilities.filter((a) =>
-          a.universalBonuses.includes("damageReduction"),
-        );
-        if (subroleUniversalBonuses.length > 0) {
-          subroleUniversalBonuses.forEach((b) => {
-            universalBonusDamageReduction += Math.floor(b.rank / b.bonusRatio);
-          });
-        }
-      });
-      totalDamageReduction += universalBonusDamageReduction;
-    }
-
-    if (formData.damageReductionAE) {
-      // Apply damage reduction from active effects
-      totalDamageReduction += this.bonuses.universalDamageReduction;
-    }
-
-    if (location === "brain") {
-      // This is damage done in a netrun, which completely ignores armor
-      const currentHp = this.system.stats.hp.value;
-      // Critical bonusDamage is not applied to brain damage (or any net combat)
-      totalDamageDealt = damage;
-      if (formData.brainDamageReduction) {
-        totalDamageReduction += this.bonuses.brainDamageReduction;
-      }
-      takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
-      await this.update({
-        "system.stats.hp.value": currentHp - takenDamage,
-      });
-      CPRChat.RenderDamageApplicationCard({
-        actor: this,
+    if (location === "brain")
+      return this._applyBrainDamage({
         damage,
         bonusDamage,
-        hpReduction: takenDamage,
-        totalDamageDealt,
         location,
         totalDamageReduction,
+        formData,
         armorData,
-        brainDamage: true,
       });
-      return;
-    }
 
-    // const armors = this.getEquippedArmors(location);
-    const shields = this.getEquippedArmors("shield");
-    // Determine the highest value of all the equipped armors in the specific location
-    await armors.forEach(async (a) => {
-      if (location !== "head" && location !== "body") {
-        return;
-      }
+    const ignoreArmorEntirely = this._determineArmorSP(
+      armors,
+      location,
+      ignoreBelowSP,
+      ignoreArmorPercent,
+      armorData,
+    );
 
-      const newValue = await CPRActorUtils.calculateArmorSP(a, location, true);
-
-      if (newValue > armorData.value) {
-        armorData.value = newValue;
-      }
+    const shieldAblation = await this._applyShieldDamage({
+      damage,
+      bonusDamage,
+      location,
+      ammoVariety,
+      armorData,
+      formData,
     });
+    // A null result means the shield fully absorbed the hit and the card was already rendered.
+    if (shieldAblation === null) return undefined;
 
-    // Check if weapon can ignore armor under set SP for weapon
-    if (armorData.value < ignoreBelowSP) {
-      ignoreArmorEntirely = true;
-    }
+    return this._applyArmorDamage({
+      damage,
+      bonusDamage,
+      location,
+      ablation,
+      ignoreArmorPercent,
+      ignoreArmorEntirely,
+      ignoreBelowSP,
+      damageLethal,
+      totalDamageReduction,
+      armorData,
+      armors,
+      shieldAblation,
+    });
+  }
 
-    // If weapon cannot ignore armor, then we check if weapon can ignore half of it
-    if (ignoreArmorPercent !== 0 && ignoreArmorEntirely === false) {
+  /**
+   * Total damage reduction from role abilities and active effects, per the dialog choices.
+   *
+   * @param {object} formData - the damage-application dialog data
+   * @returns {number}
+   */
+  _calculateDamageReduction(formData) {
+    let reduction = 0;
+    if (formData.damageReductionRole) reduction += this._roleDamageReduction();
+    if (formData.damageReductionAE)
+      reduction += this.bonuses.universalDamageReduction;
+    return reduction;
+  }
+
+  /** Sum the universal damage-reduction bonuses across all of the actor's roles. */
+  _roleDamageReduction() {
+    let total = 0;
+    for (const role of this.itemTypes.role)
+      total += this._roleUniversalReduction(role);
+    return total;
+  }
+
+  /** The universal damage-reduction contribution of a single role (main ability + subroles). */
+  _roleUniversalReduction(role) {
+    let total = 0;
+    if (role.system.universalBonuses.includes("damageReduction"))
+      total += Math.floor(role.system.rank / role.system.bonusRatio);
+    const subroleBonuses = role.system.abilities.filter((a) =>
+      a.universalBonuses.includes("damageReduction"),
+    );
+    for (const b of subroleBonuses) total += Math.floor(b.rank / b.bonusRatio);
+    return total;
+  }
+
+  /**
+   * Apply brain (netrun) damage, which ignores armor entirely, then render the damage card.
+   *
+   * @param {object} ctx - { damage, bonusDamage, location, totalDamageReduction, formData, armorData }
+   * @returns {Promise<void>}
+   */
+  async _applyBrainDamage(ctx) {
+    const { damage, bonusDamage, location, formData, armorData } = ctx;
+    let reduction = ctx.totalDamageReduction;
+    if (formData.brainDamageReduction)
+      reduction += this.bonuses.brainDamageReduction;
+    const takenDamage = Math.max(damage - reduction, 0);
+    const currentHp = this.system.stats.hp.value;
+    await this.update({ "system.stats.hp.value": currentHp - takenDamage });
+    this._renderDamageCard({
+      damage,
+      bonusDamage,
+      hpReduction: takenDamage,
+      totalDamageDealt: damage,
+      location,
+      totalDamageReduction: reduction,
+      armorData,
+      brainDamage: true,
+    });
+  }
+
+  /**
+   * Determine the effective armor SP for the location into `armorData.value` (highest equipped SP,
+   * reduced by any ignore-armor-percent), and return whether armor is ignored entirely.
+   *
+   * @param {CPRItem[]} armors - the equipped armors for the location
+   * @param {String} location - the hit location
+   * @param {number} ignoreBelowSP - armor at or below this SP is ignored entirely
+   * @param {number} ignoreArmorPercent - percent of armor to ignore
+   * @param {{value:number}} armorData - mutated with the effective SP
+   * @returns {boolean} whether armor is ignored entirely
+   */
+  _determineArmorSP(
+    armors,
+    location,
+    ignoreBelowSP,
+    ignoreArmorPercent,
+    armorData,
+  ) {
+    armors.forEach(async (a) => {
+      if (location !== "head" && location !== "body") return;
+      const newValue = await CPRActorUtils.calculateArmorSP(a, location, true);
+      if (newValue > armorData.value) armorData.value = newValue;
+    });
+    const ignoreArmorEntirely = armorData.value < ignoreBelowSP;
+    if (ignoreArmorPercent !== 0 && ignoreArmorEntirely === false)
       armorData.value = Math.round(
         armorData.value - armorData.value * (ignoreArmorPercent / 100),
       );
-    }
+    return ignoreArmorEntirely;
+  }
 
-    // Deal damage to shield, if used, first.
-    let shieldAblation = 0;
-    if (shields.length > 0) {
-      // get equipped shield with highest HP;
-      const shield = shields
-        .sort((a, b) =>
-          a.system.shieldHitPoints.value > b.system.shieldHitPoints.value
-            ? 1
-            : -1,
-        )
-        .reverse()[0];
-      // if useShield is checked in dialog, and shield has HP, ablate shield and potentially resolve chat card;
-      if (formData.useShield && shield.system.shieldHitPoints.value > 0) {
-        shieldAblation = Math.min(
-          damage + bonusDamage,
-          shield.system.shieldHitPoints.value,
-        );
-        await this._ablateArmor("shield", shieldAblation);
-        if (ammoVariety !== "grenade" && ammoVariety !== "rocket") {
-          // if ammo isn't explosive, resolve chat card with no damage to token;
-          CPRChat.RenderDamageApplicationCard({
-            actor: this,
-            damage,
-            bonusDamage,
-            hpReduction: 0,
-            totalDamageDealt,
-            location,
-            armorData,
-            ablation: 0,
-            shieldAblation,
-          });
-          return;
-        }
-        if (shield.system.shieldHitPoints.value > 0) {
-          // if ammo is explosive and shield is still standing, resolve chat card with no damage to token;
-          CPRChat.RenderDamageApplicationCard({
-            actor: this,
-            damage,
-            bonusDamage,
-            hpReduction: 0,
-            totalDamageDealt,
-            location,
-            armorData,
-            ablation: 0,
-            shieldAblation,
-          });
-          return;
-        }
-      }
-    }
-
-    // Deal the bonusDamage, if any.
-    totalDamageDealt += bonusDamage;
-
-    // If damage did not penetrate armor, then only the bonus damage (if any) is applied, minus any damage reduction.
-    if (damage <= armorData.value && ignoreArmorEntirely === false) {
-      takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
-      const currentHp = this.system.stats.hp.value;
-      await this.update({
-        "system.stats.hp.value": currentHp - takenDamage,
-      });
-      CPRChat.RenderDamageApplicationCard({
-        actor: this,
-        damage,
-        bonusDamage,
-        hpReduction: takenDamage,
-        rawDamageDealt,
-        totalDamageDealt,
-        location,
-        totalDamageReduction,
-        armorData,
-        ablation: 0,
-        shieldAblation,
-      });
-      return;
-    }
-
-    // Set armor SP reference to calculate damage, otherwise leave it at 0 if armor is being ignored entirely
-    if (ignoreArmorEntirely) {
-      armorSPRef = 0;
-    } else {
-      armorSPRef = armorData.value;
-    }
-
-    // If damage did penetrate armor, deal the regular damage.
-    if (location === "head") {
-      // Damage taken against the head is doubled.
-      rawDamageDealt = 2 * (damage - armorSPRef);
-      totalDamageDealt += rawDamageDealt;
-    } else {
-      rawDamageDealt = damage - armorSPRef;
-      totalDamageDealt += rawDamageDealt;
-    }
-
-    // Tally up takenDamage. If takenDamage is negative from damageReduction, make 0. This way negative takenDamage doesn't heal.
-    takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
-
-    // If damage isn't lethal and exceeds currentHp, then damage done is one less than currentHp.
-    const currentHp = this.system.stats.hp.value;
-    if (takenDamage >= currentHp && !damageLethal) {
-      takenDamage = currentHp - 1;
-      if (currentHp <= 0) {
-        takenDamage = 0;
-      }
-    }
-
-    await this.update({
-      "system.stats.hp.value": currentHp - takenDamage,
+  /**
+   * Ablate the highest-HP equipped shield if the dialog opted to use it. Returns the shield ablation
+   * to carry into HP damage, or `null` if the shield fully absorbed the hit (card already rendered).
+   *
+   * @param {object} ctx - { damage, bonusDamage, location, ammoVariety, armorData, formData }
+   * @returns {Promise<number|null>}
+   */
+  async _applyShieldDamage(ctx) {
+    const { damage, bonusDamage, location, ammoVariety, armorData, formData } =
+      ctx;
+    const shield = this._activeShield(formData);
+    if (!shield) return 0;
+    const shieldAblation = Math.min(
+      damage + bonusDamage,
+      shield.system.shieldHitPoints.value,
+    );
+    await this._ablateArmor("shield", shieldAblation);
+    if (!this._shieldAbsorbs(ammoVariety, shield)) return shieldAblation;
+    this._renderDamageCard({
+      damage,
+      bonusDamage,
+      hpReduction: 0,
+      totalDamageDealt: 0,
+      location,
+      armorData,
+      ablation: 0,
+      shieldAblation,
     });
+    return null;
+  }
 
-    // Ablate the armor correctly if there's armor equipped
-    if (armors.length > 0) {
-      await this._ablateArmor(location, ablation);
-    }
-    const cardDisplayAblation = armors.length > 0 ? ablation : 0;
-    CPRChat.RenderDamageApplicationCard({
-      actor: this,
+  /** The highest-HP equipped shield to use, or null if none is usable / opted-in. */
+  _activeShield(formData) {
+    const shields = this.getEquippedArmors("shield");
+    if (shields.length === 0) return null;
+    const shield = shields
+      .sort((a, b) =>
+        a.system.shieldHitPoints.value > b.system.shieldHitPoints.value
+          ? 1
+          : -1,
+      )
+      .reverse()[0];
+    if (!formData.useShield || shield.system.shieldHitPoints.value <= 0)
+      return null;
+    return shield;
+  }
+
+  /** Whether the shield fully absorbs the hit: always for non-explosive ammo, else if it survives. */
+  _shieldAbsorbs(ammoVariety, shield) {
+    if (ammoVariety !== "grenade" && ammoVariety !== "rocket") return true;
+    return shield.system.shieldHitPoints.value > 0;
+  }
+
+  /**
+   * Route armor-location damage to the non-penetrating or penetrating path.
+   *
+   * @param {object} ctx - the shared damage context
+   * @returns {Promise<void>}
+   */
+  async _applyArmorDamage(ctx) {
+    const { damage, armorData, ignoreArmorEntirely } = ctx;
+    if (damage <= armorData.value && ignoreArmorEntirely === false)
+      return this._applyNonPenetratingDamage(ctx);
+    return this._applyPenetratingDamage(ctx);
+  }
+
+  /**
+   * Damage that did not beat armor: only the bonus damage applies (minus reduction).
+   *
+   * @param {object} ctx - the shared damage context
+   * @returns {Promise<void>}
+   */
+  async _applyNonPenetratingDamage(ctx) {
+    const {
+      damage,
+      bonusDamage,
+      location,
+      totalDamageReduction,
+      armorData,
+      shieldAblation,
+    } = ctx;
+    const totalDamageDealt = bonusDamage;
+    const takenDamage = Math.max(totalDamageDealt - totalDamageReduction, 0);
+    const currentHp = this.system.stats.hp.value;
+    await this.update({ "system.stats.hp.value": currentHp - takenDamage });
+    this._renderDamageCard({
+      damage,
+      bonusDamage,
+      hpReduction: takenDamage,
+      rawDamageDealt: 0,
+      totalDamageDealt,
+      location,
+      totalDamageReduction,
+      armorData,
+      ablation: 0,
+      shieldAblation,
+    });
+  }
+
+  /**
+   * Damage that beat armor: bonus + raw (doubled at the head), clamped to non-lethal where required,
+   * applied to HP, ablating armor.
+   *
+   * @param {object} ctx - the shared damage context
+   * @returns {Promise<void>}
+   */
+  async _applyPenetratingDamage(ctx) {
+    const {
+      damage,
+      bonusDamage,
+      location,
+      ablation,
+      ignoreArmorPercent,
+      ignoreArmorEntirely,
+      ignoreBelowSP,
+      damageLethal,
+      totalDamageReduction,
+      armorData,
+      armors,
+      shieldAblation,
+    } = ctx;
+    const rawDamageDealt = this._penetratingRawDamage(
+      damage,
+      location,
+      ignoreArmorEntirely,
+      armorData,
+    );
+    const totalDamageDealt = bonusDamage + rawDamageDealt;
+    const currentHp = this.system.stats.hp.value;
+    const takenDamage = this._clampTakenDamage(
+      Math.max(totalDamageDealt - totalDamageReduction, 0),
+      currentHp,
+      damageLethal,
+    );
+    await this.update({ "system.stats.hp.value": currentHp - takenDamage });
+    if (armors.length > 0) await this._ablateArmor(location, ablation);
+    this._renderDamageCard({
       damage,
       bonusDamage,
       hpReduction: takenDamage,
@@ -1175,10 +1375,29 @@ export default class CPRHuman extends CPRActor {
       ignoreArmorPercent,
       ignoreArmorEntirely,
       ignoreBelowSP,
-      ablation: cardDisplayAblation,
+      ablation: armors.length > 0 ? ablation : 0,
       shieldAblation,
       damageLethal,
     });
+  }
+
+  /** Raw HP damage after armor: `damage - armorSP`, doubled for head hits; armorSP is 0 if ignored. */
+  _penetratingRawDamage(damage, location, ignoreArmorEntirely, armorData) {
+    const armorSPRef = ignoreArmorEntirely ? 0 : armorData.value;
+    return location === "head"
+      ? 2 * (damage - armorSPRef)
+      : damage - armorSPRef;
+  }
+
+  /** Clamp non-lethal damage so it cannot drop a living actor below 1 HP (never heals). */
+  _clampTakenDamage(takenDamage, currentHp, damageLethal) {
+    if (takenDamage < currentHp || damageLethal) return takenDamage;
+    return currentHp <= 0 ? 0 : currentHp - 1;
+  }
+
+  /** Render the damage-application chat card for this actor. */
+  _renderDamageCard(fields) {
+    CPRChat.RenderDamageApplicationCard({ actor: this, ...fields });
   }
 
   /**
@@ -1367,17 +1586,36 @@ export default class CPRHuman extends CPRActor {
    * @returns {@Promise}
    */
   async loseHumanityValue(itemArray, humanityLossType) {
-    if (humanityLossType === "none") {
-      return this.setMaxHumanity();
-    }
+    if (humanityLossType === "none") return this.setMaxHumanity();
 
     const { humanity } = this.system.stats;
-    let value = Number.isInteger(humanity.value)
+    const start = Number.isInteger(humanity.value)
       ? humanity.value
       : humanity.max;
+    const value = await this._rollHumanityLoss(
+      itemArray,
+      humanityLossType,
+      start,
+    );
+
+    if (value <= 0) Rules.lawyer(false, "CPR.messages.youCyberpsycho");
+    await this.update({ "system.stats.humanity.value": value });
+    return this.setMaxHumanity();
+  }
+
+  /**
+   * Roll the Humanity Loss for each item, rendering a roll card per item, and return the remaining
+   * Humanity value.
+   *
+   * @param {CPRItem[]} itemArray - the items causing Humanity Loss
+   * @param {String} humanityLossType - "rolled" or "static"
+   * @param {number} start - the starting Humanity value
+   * @returns {Promise<number>} the Humanity value after all losses
+   */
+  async _rollHumanityLoss(itemArray, humanityLossType, start) {
+    let value = start;
     for (const item of itemArray) {
-      // Cast formula to a string for the case of a static loss, which is a Number.
-      // If it is already a string, nothing will change.
+      // Cast the formula to a string in case of a static loss (a Number); strings are unchanged.
       const formula = `${item.system.humanityLoss[humanityLossType]}`;
       const humRoll = CPRRolls.CPRHumanityLossRoll.create(item.name, formula);
       await humRoll.roll();
@@ -1388,13 +1626,7 @@ export default class CPRHuman extends CPRActor {
       };
       CPRChat.RenderRollCard(humRoll);
     }
-
-    if (value <= 0) {
-      Rules.lawyer(false, "CPR.messages.youCyberpsycho");
-    }
-
-    await this.update({ "system.stats.humanity.value": value });
-    return this.setMaxHumanity();
+    return value;
   }
 
   /**
@@ -1420,40 +1652,149 @@ export default class CPRHuman extends CPRActor {
    * @returns {Promise}
    */
   async handleMookDraggedItem(item) {
-    if (item.type === "criticalInjury") {
-      return item;
-    }
+    if (item.type === "criticalInjury") return item;
 
-    // auto-install this cyberware
     const allInstalled = item.recursiveGetAllInstalledItems();
-
     if (item.type === "cyberware") {
-      const installResult = await this.installCyberware(item._id);
-      if (!installResult) {
-        const deleteInstalled = allInstalled.map((i) => i._id);
-        // Delete item and all installed.
-        return this.deleteEmbeddedDocuments(
-          "Item",
-          [...deleteInstalled, item._id],
-          {
-            deleteInstalled: true,
-          },
-        );
-      }
+      // On a failed auto-install the item (and its installed tree) is removed; return that result.
+      const removed = await this._autoInstallMookCyberware(item, allInstalled);
+      if (removed) return removed;
     }
+    return this._autoEquipMookItems(item, allInstalled);
+  }
 
-    // Auto-equip this item if equippable
+  /**
+   * Auto-install dragged cyberware on a mook; on failure delete the item and its installed tree.
+   *
+   * @param {CPRItem} item - the dragged cyberware
+   * @param {CPRItem[]} allInstalled - items installed within `item`
+   * @returns {Promise<null|Array>} null if installed, else the delete result
+   */
+  async _autoInstallMookCyberware(item, allInstalled) {
+    const installResult = await this.installCyberware(item._id);
+    if (installResult) return null;
+    const deleteInstalled = allInstalled.map((i) => i._id);
+    return this.deleteEmbeddedDocuments(
+      "Item",
+      [...deleteInstalled, item._id],
+      { deleteInstalled: true },
+    );
+  }
+
+  /**
+   * Auto-equip a dragged item and its installed items where they are equippable.
+   *
+   * @param {CPRItem} item - the dragged item
+   * @param {CPRItem[]} allInstalled - items installed within `item`
+   * @returns {Promise<Array>}
+   */
+  _autoEquipMookItems(item, allInstalled) {
     const updateData = [];
-    if (SystemUtils.hasMixin(item.type, "equippable")) {
+    if (SystemUtils.hasMixin(item.type, "equippable"))
       updateData.push({ _id: item._id, "system.equipped": "equipped" });
-    }
     allInstalled.forEach((i) => {
-      // auto-equip installed items if equippable
-      if (SystemUtils.hasMixin(i.type, "equippable")) {
+      if (SystemUtils.hasMixin(i.type, "equippable"))
         updateData.push({ _id: i._id, "system.equipped": "equipped" });
-      }
     });
-
     return this.updateEmbeddedDocuments("Item", updateData);
+  }
+
+  /**
+   * `itemHolder` hook: whether item creation should attempt stacking. Characters and mooks only stack
+   * while their own sheet is open (a container always stacks — the mixin default).
+   *
+   * @returns {Boolean}
+   */
+  _shouldStackOnCreate() {
+    return Object.values(this.apps).some(
+      (app) =>
+        app instanceof CPRCharacterActorSheet ||
+        app instanceof CPRMookActorSheet,
+    );
+  }
+
+  /**
+   * `itemHolder` hook: when items are dropped on a mook sheet, run the mook auto-equip / auto-install
+   * handling for each created item.
+   *
+   * @param {Array<CPRItem>} createdItems - the items just created on this actor
+   * @returns {Promise<void>}
+   */
+  async _postCreateEmbeddedItems(createdItems) {
+    const isMookSheet = Object.values(this.apps).some(
+      (app) => app instanceof CPRMookActorSheet,
+    );
+    if (!isMookSheet) return;
+    for (const item of createdItems) {
+      await this.handleMookDraggedItem(item);
+    }
+  }
+
+  /**
+   * Return whether the actor has a specific Item Type equipped.
+   *
+   * @public
+   * @param {string} itemType - type of item we are looking for
+   * @returns {Boolean}
+   */
+  hasItemTypeEquipped(itemType) {
+    let equipped = false;
+    if (this.itemTypes[itemType]) {
+      this.itemTypes[itemType].forEach((i) => {
+        if (i.system.equipped) {
+          if (i.system.equipped === "equipped") {
+            equipped = true;
+          }
+        }
+      });
+    }
+    return equipped;
+  }
+
+  /**
+   * Create an active effect on this actor. This method belongs here so migration scripts can
+   * dynamically generate effects based on custom mods already on the actor from earlier versions.
+   *
+   * @param {Boolean} render - Render the effect's sheet or not. Default true.
+   * @returns {CPRActiveEffect} the new document
+   */
+  async createEffect(render = true) {
+    const effectDoc = await this.createEmbeddedDocuments("ActiveEffect", [
+      {
+        name: SystemUtils.Localize("CPR.itemSheet.effects.newEffect"),
+        icon: "icons/svg/aura.svg",
+        origin: this.uuid, // Do we still want this here?
+        disabled: false,
+      },
+    ]);
+
+    return effectDoc[0].sheet.render(render);
+  }
+
+  copyEffect(effect) {
+    const newEffect = foundry.utils.duplicate(effect);
+    return this.createEmbeddedDocuments("ActiveEffect", [newEffect]);
+  }
+
+  /**
+   * Delete the desired effect from this actor. Pops up a confirmation box if permitted.
+   *
+   * @param {CPRActiveEffect} effect - the effect to delete
+   * @returns null
+   */
+  static async deleteEffect(effect) {
+    const setting = game.settings.get(game.system.id, "deleteItemConfirmation");
+    if (setting) {
+      const dialogMessage = `${SystemUtils.Localize(
+        "CPR.dialog.deleteConfirmation.message",
+      )} ${effect.name}?`;
+
+      // Show confirmation dialog.
+      const confirmDelete = await cprConfirm(dialogMessage, {
+        title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
+      });
+      if (!confirmDelete) return;
+    }
+    effect.delete();
   }
 }

@@ -22,16 +22,14 @@ export default class CPRCharacterActor extends CPRHuman {
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
-    if (!data.items?.length) {
-      this.updateSource({
-        prototypeToken: {
-          actorLink: true,
-          disposition: 1,
-          sight: { enabled: true },
-          bar1: { attribute: "stats.hp" },
-        },
-      });
-    }
+    this._applyCreationSource(data, {
+      prototypeToken: {
+        actorLink: true,
+        disposition: 1,
+        sight: { enabled: true },
+        bar1: { attribute: "stats.hp" },
+      },
+    });
     return allowed;
   }
 }

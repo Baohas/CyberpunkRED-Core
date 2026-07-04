@@ -70,6 +70,35 @@ export default class CPRMod {
   }
 
   /**
+   * The actor's currently-active modifiers: all mods from applicable effects, filtered to those that
+   * are always-on (not situational) or situational but on by default.
+   *
+   * @param {CPRActor} actor - the actor whose active mods to gather
+   * @returns {Array<CPRMod>}
+   */
+  static getActiveMods(actor) {
+    const effects = Array.from(actor.allApplicableEffects());
+    const allMods = CPRMod.getAllModifiers(effects);
+    return allMods.filter(
+      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
+    );
+  }
+
+  /**
+   * The actor's active modifiers that apply to all actions.
+   *
+   * @param {CPRActor} actor - the actor whose all-action mods to gather
+   * @returns {Array<CPRMod>}
+   */
+  static getAllActionMods(actor) {
+    return CPRMod.getRelevantMods(CPRMod.getActiveMods(actor), [
+      "allActions",
+      "allActionsSpeech",
+      "allActionsHands",
+    ]);
+  }
+
+  /**
    * Get all mods that are situational for the roll dialog.
    *
    * @param {CPRRoll} rollData - CPRRoll object

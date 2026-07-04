@@ -22,14 +22,12 @@ export default class CPRMookActor extends CPRHuman {
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
-    if (!data.items?.length) {
-      this.updateSource({
-        prototypeToken: {
-          sight: { enabled: true },
-          bar1: { attribute: "stats.hp" },
-        },
-      });
-    }
+    this._applyCreationSource(data, {
+      prototypeToken: {
+        sight: { enabled: true },
+        bar1: { attribute: "stats.hp" },
+      },
+    });
     return allowed;
   }
 }

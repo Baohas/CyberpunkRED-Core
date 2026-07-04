@@ -1,9 +1,5 @@
-/* eslint-disable no-await-in-loop */
 import CPRActor from "./cpr-actor.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import LOGGER from "../utils/cpr-logger.js";
-import Rules from "../utils/cpr-rules.js";
-import { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 /**
  * Container actors function like loot boxes, player or party stashes, stores, and vending machines.
@@ -29,87 +25,14 @@ export default class CPRContainerActor extends CPRActor {
   async _preCreate(data, options, user) {
     const allowed = await super._preCreate(data, options, user);
     if (allowed === false) return false;
-    if (!data.items?.length) {
-      this.updateSource({
-        prototypeToken: { disposition: 0 },
-        ownership: { default: 3 },
-        flags: {
-          [game.system.id]: { "container-type": "shop", "players-sell": true },
-        },
-      });
-    }
+    this._applyCreationSource(data, {
+      prototypeToken: { disposition: 0 },
+      ownership: { default: 3 },
+      flags: {
+        [game.system.id]: { "container-type": "shop", "players-sell": true },
+      },
+    });
     return allowed;
-  }
-
-  /**
-   * Containers override the base `createEmbeddedDocuments` because their stacking behaviour differs:
-   * items always stack on a container (there is no character/mook-sheet gate, and no mook-dragged-item
-   * handling). We still block core items and recursively install container/installed items.
-   *
-   * @override
-   * @param {String} embeddedName - document name, usually a category like Item
-   * @param {Array<CPRItem>} items - Array of documents to create
-   * @param {Object} context - an object tracking the context in which the method is being called
-   * @returns {null}
-   */
-  async createEmbeddedDocuments(
-    embeddedName,
-    items,
-    context = { createInstalled: true },
-  ) {
-    if (!embeddedName === "Item")
-      return super.createEmbeddedDocuments(embeddedName, items, context);
-
-    // Don't add core items.
-    const coreItemIds = items.filter((i) => i.system?.core).map((i) => i._id);
-    if (coreItemIds.length > 0) {
-      Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-      items = items.filter((i) => !coreItemIds.includes(i._id));
-    }
-
-    // Attempt to stack item before creating it
-    const stackedItemReferences = [];
-    if (!context.CPRsplitStack) {
-      LOGGER.debug("Attempting to stack items on an actor sheet");
-      const dontCreate = [];
-      for (const doc of items) {
-        // eslint-disable-next-line no-continue
-        if (!doc.system) continue;
-        const [returnValue] = await this.automaticallyStackItems(doc);
-        if (returnValue) {
-          dontCreate.push(doc._id);
-          // Keep track of the item that we stacked upon, so we can update the parent's
-          // references later, if the item that was stacked is meant to be installed.
-          stackedItemReferences.push({ id: returnValue._id, system: {} });
-        }
-      }
-      // Don't create items that we should stack.
-      items = items.filter((i) => !dontCreate.includes(i._id));
-    }
-
-    // Create the items
-    const createdItems = await super.createEmbeddedDocuments(
-      embeddedName,
-      items,
-      context,
-    );
-
-    if (context.createInstalled) {
-      // Handle creating and installing any items into the parent item.
-      for (const item of createdItems) {
-        // eslint-disable-next-line no-continue
-        if (!item.system.hasInstalled) continue;
-        // The item will only have this flag if it is imported/coming from another actor.
-        const imported = !!ContainerUtils.getInstallTreeFlag(item);
-        // The following function recusrively creates and installs all items in the install tree.
-        await item.createInstalledItemsOnActor(imported);
-      }
-    }
-
-    // Here, we return the created item array, but concatenated with references to any stacked items
-    // This way, when dragging/dropping installed items from sheet to sheet, the calling function can still
-    // update the parent with the correct references (see `createInstalledItemsOnActor()` in the mixin cpr-container.js)
-    return createdItems.concat(stackedItemReferences);
   }
 
   /**
@@ -228,57 +151,26 @@ export default class CPRContainerActor extends CPRActor {
    * @returns {Number} (or null if not found)
    */
   recordTransaction(value, reason, seller = null) {
-    // update "value"; it may be negative
-    // If Containers ever get Active Effects, this code will be a problem. See Issue #583.
-    const cprData = foundry.utils.duplicate(this.system);
-    let newValue = foundry.utils.getProperty(cprData, "wealth.value") || 0;
-    let transactionSentence;
-    let transactionType = "set";
-
+    // Determine the transaction direction, then delegate to the inherited `ledgerable` API
+    // (set/deltaLedgerProperty on the container's `wealth` ledger). A seller matching this container
+    // means money flows in (add); a different seller means money flows out (subtract); otherwise the
+    // direction is read from the reason string (its third word).
+    let transactionType;
     if (seller) {
-      if (seller._id === this._id) {
-        transactionType = "add";
-      } else {
-        transactionType = "subtract";
-      }
+      transactionType = seller._id === this._id ? "add" : "subtract";
     } else {
       // eslint-disable-next-line prefer-destructuring
       transactionType = reason.split(" ")[2];
     }
 
     switch (transactionType) {
-      case "set": {
-        newValue = value;
-        transactionSentence = "CPR.ledger.setSentence";
-        break;
-      }
-      case "add": {
-        newValue += value;
-        transactionSentence = "CPR.ledger.increaseSentence";
-        break;
-      }
-      case "subtract": {
-        newValue -= value;
-        transactionSentence = "CPR.ledger.decreaseSentence";
-        break;
-      }
+      case "add":
+        return this.deltaLedgerProperty("wealth", value, reason);
+      case "subtract":
+        return this.deltaLedgerProperty("wealth", -value, reason);
+      case "set":
       default:
+        return this.setLedgerProperty("wealth", value, reason);
     }
-
-    foundry.utils.setProperty(cprData, "wealth.value", newValue);
-    // update the ledger with the change
-    const ledger = foundry.utils.getProperty(cprData, "wealth.transactions");
-    ledger.push([
-      SystemUtils.Format(transactionSentence, {
-        property: "wealth",
-        amount: value,
-        total: newValue,
-      }),
-      reason,
-    ]);
-    foundry.utils.setProperty(cprData, "wealth.transactions", ledger);
-    // update the actor and return the modified property
-    this.update({ system: cprData });
-    return foundry.utils.getProperty(this.system, "wealth");
   }
 }

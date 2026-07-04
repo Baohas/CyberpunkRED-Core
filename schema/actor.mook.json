@@ -21,6 +21,14 @@
     },
     "system": {
       "type": "object",
+      "allOf": [
+        {
+          "$ref": "./components/itemHolder.json"
+        },
+        {
+          "$ref": "./components/ledgerable.json"
+        }
+      ],
       "properties": {
         "stats": {
           "type": "object",
@@ -507,8 +515,7 @@
         "roleInfo",
         "weapons",
         "installedItems"
-      ],
-      "additionalProperties": false
+      ]
     },
     "prototypeToken": {
       "type": "object",

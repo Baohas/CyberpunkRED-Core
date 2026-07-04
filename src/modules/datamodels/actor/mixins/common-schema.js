@@ -7,6 +7,19 @@ import ExternalResourceSchema from "../components/external-resource-schema.js";
 import LedgerSchema from "../components/ledger-schema.js";
 import ActorWeaponsSchema from "../components/weapons-schema.js";
 
+/**
+ * Copy each `system.derivedStats.*` field into `system.stats.*` without overwriting a value already
+ * present there. Mutates `source` in place.
+ *
+ * @param {object} source - the actor's `system` source data (with a `derivedStats` object)
+ */
+function foldDerivedStats(source) {
+  source.stats ??= {};
+  for (const [key, value] of Object.entries(source.derivedStats)) {
+    source.stats[key] ??= value;
+  }
+}
+
 export default class CommonSchema extends CPRSystemDataModel {
   static mixinName = "common";
 
@@ -66,10 +79,7 @@ export default class CommonSchema extends CPRSystemDataModel {
    */
   static migrateData(source) {
     if (source.derivedStats) {
-      source.stats ??= {};
-      for (const [key, value] of Object.entries(source.derivedStats)) {
-        source.stats[key] ??= value;
-      }
+      foldDerivedStats(source);
       delete source.derivedStats;
     }
     return super.migrateData(source);

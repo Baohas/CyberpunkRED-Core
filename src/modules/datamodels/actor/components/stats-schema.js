@@ -4,6 +4,154 @@ import SystemUtils from "../../../utils/cpr-systemUtils.js";
 import StatSchema from "./stat-schema.js";
 import HpSchema from "./hp-schema.js";
 
+/**
+ * Resolve a display skill name from its slug: the localized name, or — for a custom/untranslated
+ * skill — the matching owned skill item's name.
+ *
+ * @param {Actor} actorData - the actor being checked
+ * @param {string} skillSlug - the slugified skill name
+ * @returns {string}
+ */
+function getHardenedSkillName(actorData, skillSlug) {
+  const translatedSkill = SystemUtils.Localize(
+    `CPR.global.itemType.skill.${skillSlug}`,
+  );
+  // A mismatch means a custom skill with no translation; fall back to the owned item's name.
+  if (SystemUtils.slugify(translatedSkill) !== skillSlug) {
+    const skillItem = actorData.items.find(
+      (item) => SystemUtils.slugify(item.name) === skillSlug,
+    );
+    return skillItem.name;
+  }
+  return translatedSkill;
+}
+
+/** Hardened reason: REF ≥ 8 and Evasion ≥ 6. */
+function hardenedRefEvasion(actorData) {
+  const { evasion } = actorData.system.skills;
+  if (
+    actorData.system.stats.ref.value >= 8 &&
+    evasion &&
+    evasion.level + evasion.mods >= 6
+  )
+    return [
+      SystemUtils.Format(
+        "CPR.characterSheet.leftPane.hardened.reasons.refAndEvasion",
+        {
+          ref: SystemUtils.Localize("CPR.global.stats.ref"),
+          evasion: SystemUtils.Localize("CPR.global.itemType.skill.evasion"),
+        },
+      ),
+    ];
+  return [];
+}
+
+/** Hardened reasons: any attack skill with STAT + level + mods ≥ 15. */
+function hardenedAttackSkills(actorData) {
+  const reasons = [];
+  for (const skill of SystemUtils.GetAttackableSkills(actorData)) {
+    const s = actorData.system.skills[skill];
+    if (s.level + s.stat + s.mods >= 15)
+      reasons.push(
+        SystemUtils.Format(
+          "CPR.characterSheet.leftPane.hardened.reasons.canAttack",
+          { skillName: getHardenedSkillName(actorData, skill) },
+        ),
+      );
+  }
+  return reasons;
+}
+
+/** Hardened reason: WILL + BODY ≥ 16. */
+function hardenedWillBody(actorData) {
+  if (
+    actorData.system.stats.will.value + actorData.system.stats.body.value >=
+    16
+  )
+    return [
+      SystemUtils.Format(
+        "CPR.characterSheet.leftPane.hardened.reasons.willBody",
+        {
+          will: SystemUtils.Localize("CPR.global.stats.will"),
+          body: SystemUtils.Localize("CPR.global.stats.body"),
+        },
+      ),
+    ];
+  return [];
+}
+
+/** Hardened reasons: any owned weapon worth ≥ 5000eb. */
+function hardenedWeaponValue(actorData) {
+  const reasons = [];
+  for (const weapon of actorData.system.weapons.available) {
+    if (weapon.system.price.market >= 5000)
+      reasons.push(
+        SystemUtils.Format(
+          "CPR.characterSheet.leftPane.hardened.reasons.weaponValue",
+          { weaponName: weapon.name },
+        ),
+      );
+  }
+  return reasons;
+}
+
+/** Hardened reason: DEX ≥ 8 and MOVE ≥ 8. */
+function hardenedDexMove(actorData) {
+  if (
+    actorData.system.stats.dex.value >= 8 &&
+    actorData.system.stats.move.value >= 8
+  )
+    return [
+      SystemUtils.Format(
+        "CPR.characterSheet.leftPane.hardened.reasons.dexPlusMove",
+        {
+          dex: SystemUtils.Localize("CPR.global.stats.dex"),
+          move: SystemUtils.Localize("CPR.global.stats.move"),
+        },
+      ),
+    ];
+  return [];
+}
+
+/** Hardened reasons: Autofire (if present) or any Martial Arts skill ≥ 6. */
+function hardenedAutofireMartialArts(actorData) {
+  const attackSkills = SystemUtils.GetAttackableSkills(actorData);
+  const martialArtSkills = SystemUtils.GetMartialArtSkills(actorData);
+  // Elflines characters lack the autofire skill, so only include it when present.
+  const skillsToCheck = attackSkills.has("autofire")
+    ? [...martialArtSkills, "autofire"]
+    : martialArtSkills;
+  const reasons = [];
+  for (const skill of skillsToCheck) {
+    const s = actorData.system.skills[skill];
+    if (s.level + s.mods >= 6)
+      reasons.push(
+        SystemUtils.Format(
+          "CPR.characterSheet.leftPane.hardened.reasons.autofireMartialArts",
+          { skillName: getHardenedSkillName(actorData, skill) },
+        ),
+      );
+  }
+  return reasons;
+}
+
+/** Hardened reason: a Solo role of rank ≥ 4. */
+function hardenedSolo(actorData) {
+  const reasons = [];
+  for (const role of actorData.itemTypes.role) {
+    if (SystemUtils.slugify(role.name) === "solo" && role.system.rank >= 4)
+      reasons.push(
+        SystemUtils.Format(
+          "CPR.characterSheet.leftPane.hardened.reasons.solo",
+          {
+            roleName: SystemUtils.Localize("CPR.global.role.solo.name"),
+          },
+        ),
+      );
+  }
+  return reasons;
+}
+
 export default class StatsSchema extends CPRSystemDataModel {
   static defineSchema() {
     const { fields } = foundry.data;
@@ -121,168 +269,15 @@ export default class StatsSchema extends CPRSystemDataModel {
    */
   get isHardened() {
     const actorData = this.parent.parent;
-
-    /**
-     * Helper function to retrieve the skill name from a slugified version.
-     *
-     * @param {string} skillSlug - The slugified version of the skill name to
-     *                             retrieve.
-     * @returns {string} - The skill name corresponding to the slugified version.
-     */
-    const getSkillName = (skillSlug) => {
-      // Get the translated skill name
-      const translatedSkill = SystemUtils.Localize(
-        `CPR.global.itemType.skill.${skillSlug}`,
-      );
-
-      // Convert the translated skill name back to the slugified version
-      // if they don't match it means it's either a custom skill wihtout
-      // a translation, or it doesn't have a translation in lang/*.json
-      if (SystemUtils.slugify(translatedSkill) !== skillSlug) {
-        const skillItem = actorData.items.find(
-          (item) => SystemUtils.slugify(item.name) === skillSlug,
-        );
-        return skillItem.name;
-      }
-      return translatedSkill;
-    };
-
-    // Set the default return
-    const output = {
-      value: false,
-      reasons: [],
-    };
-
-    /**
-     *  We need to lookup skill used for attacks these can either be the
-     *  default ones, martial arts skills, or skills defined in weapons
-     *  as `weaponSkill`
-     */
-    const attackSkills = SystemUtils.GetAttackableSkills(actorData);
-
-    // REF >= 8 and Evasion >= 6
-    if (
-      actorData.system.stats.ref.value >= 8 &&
-      actorData.system.skills.evasion && // Make sure the character actually has evasion.
-      actorData.system.skills.evasion.level +
-        actorData.system.skills.evasion.mods >=
-        6
-    ) {
-      const ref = SystemUtils.Localize("CPR.global.stats.ref");
-      const evasion = SystemUtils.Localize("CPR.global.itemType.skill.evasion");
-      const reason = SystemUtils.Format(
-        "CPR.characterSheet.leftPane.hardened.reasons.refAndEvasion",
-        {
-          ref,
-          evasion,
-        },
-      );
-      output.value = true;
-      output.reasons.push(reason);
-    }
-
-    // Can Attack with STAT + Skill + Mod > 15
-    for (const skill of attackSkills) {
-      if (
-        actorData.system.skills[skill].level +
-          actorData.system.skills[skill].stat +
-          actorData.system.skills[skill].mods >=
-        15
-      ) {
-        const skillName = getSkillName(skill);
-        const reason = SystemUtils.Format(
-          "CPR.characterSheet.leftPane.hardened.reasons.canAttack",
-          { skillName },
-        );
-        output.value = true;
-        output.reasons.push(reason);
-      }
-    }
-
-    // WILL + BODY 16
-    if (
-      actorData.system.stats.will.value + actorData.system.stats.body.value >=
-      16
-    ) {
-      const will = SystemUtils.Localize("CPR.global.stats.will");
-      const body = SystemUtils.Localize("CPR.global.stats.body");
-      const reason = SystemUtils.Format(
-        "CPR.characterSheet.leftPane.hardened.reasons.willBody",
-        { will, body },
-      );
-      output.value = true;
-      output.reasons.push(reason);
-    }
-
-    // Weapon of >= 5000
-    for (const weapon of actorData.system.weapons.available) {
-      if (weapon.system.price.market >= 5000) {
-        const weaponName = weapon.name;
-        const reason = SystemUtils.Format(
-          "CPR.characterSheet.leftPane.hardened.reasons.weaponValue",
-          { weaponName },
-        );
-        output.value = true;
-        output.reasons.push(reason);
-      }
-    }
-
-    // DEX >= 8 & MOVE >= 8
-    if (
-      actorData.system.stats.dex.value >= 8 &&
-      actorData.system.stats.move.value >= 8
-    ) {
-      const dex = SystemUtils.Localize("CPR.global.stats.dex");
-      const move = SystemUtils.Localize("CPR.global.stats.move");
-      const reason = SystemUtils.Format(
-        "CPR.characterSheet.leftPane.hardened.reasons.dexPlusMove",
-        { dex, move },
-      );
-      output.value = true;
-      output.reasons.push(reason);
-    }
-
-    // Autofire or any Martial Arts >= 6
-    // We check for the `autofire` skill existing here as Elflines characters
-    // do not have this skill.
-
-    // We find any relevant martialArts skills
-    const martialArtSkills = SystemUtils.GetMartialArtSkills(actorData);
-
-    // Check if the actor has the `autofire` skill, if so add it to the check.
-    const skillsToCheck = attackSkills.has("autofire")
-      ? [...martialArtSkills, ...["autofire"]]
-      : martialArtSkills;
-
-    for (const skill of skillsToCheck) {
-      if (
-        actorData.system.skills[skill].level +
-          actorData.system.skills[skill].mods >=
-        6
-      ) {
-        const skillName = getSkillName(skill);
-        const reason = SystemUtils.Format(
-          "CPR.characterSheet.leftPane.hardened.reasons.autofireMartialArts",
-          { skillName },
-        );
-        output.value = true;
-        output.reasons.push(reason);
-      }
-    }
-
-    // Solo rank >= 4
-    for (const role of actorData.itemTypes.role) {
-      if (SystemUtils.slugify(role.name) === "solo" && role.system.rank >= 4) {
-        const roleName = SystemUtils.Localize("CPR.global.role.solo.name");
-        const reason = SystemUtils.Format(
-          "CPR.characterSheet.leftPane.hardened.reasons.solo",
-          { roleName },
-        );
-        output.value = true;
-        output.reasons.push(reason);
-      }
-    }
-
-    return output;
+    const reasons = [
+      ...hardenedRefEvasion(actorData),
+      ...hardenedAttackSkills(actorData),
+      ...hardenedWillBody(actorData),
+      ...hardenedWeaponValue(actorData),
+      ...hardenedDexMove(actorData),
+      ...hardenedAutofireMartialArts(actorData),
+      ...hardenedSolo(actorData),
+    ];
+    return { value: reasons.length > 0, reasons };
   }
 }

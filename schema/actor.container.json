@@ -24,6 +24,12 @@
       "allOf": [
         {
           "$ref": "./components/wealth.json"
+        },
+        {
+          "$ref": "./components/itemHolder.json"
+        },
+        {
+          "$ref": "./components/ledgerable.json"
         }
       ],
       "properties": {

@@ -1,9 +1,13 @@
 import CPRSystemDataModel from "../system-data-model.js";
 import HpSchema from "./components/hp-schema.js";
 import WealthSchema from "./mixins/wealth-schema.js";
+import ItemHolderSchema from "./mixins/itemholder-schema.js";
+import LedgerableSchema from "./mixins/ledgerable-schema.js";
 
 export default class ContainerDataModel extends CPRSystemDataModel.mixin(
   WealthSchema,
+  ItemHolderSchema,
+  LedgerableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;

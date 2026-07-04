@@ -1,37 +1,15 @@
 import * as CPRRolls from "../rolls/cpr-rolls.js";
 import CPR from "../system/config.js";
-import CPRChat from "../chat/cpr-chat.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
+import CPRNetActor from "./cpr-net-actor.js";
 
 /**
- * Black-ICE actors directly extend Actor from Foundry. They have very little in common with
- * Characters or Mooks.
+ * Black-ICE actors extend the shared NET-entity base (which extends Foundry's Actor directly). They
+ * have very little in common with Characters or Mooks.
  *
- * @extends {Actor}
+ * @extends {CPRNetActor}
  */
-export default class CPRBlackIceActor extends Actor {
-  /**
-   * Set the REZ stat as the token's resource bar on a newly-created Black-ICE actor (REZ behaves much
-   * like HP). Applied only to a genuinely-new actor (a duplicate/import keeps its own token).
-   *
-   * @async
-   * @override
-   * @param {object} data - the creation data
-   * @param {object} options - creation options
-   * @param {User} user - the user requesting the creation
-   * @returns {Promise<boolean|void>} false aborts creation
-   */
-  async _preCreate(data, options, user) {
-    const allowed = await super._preCreate(data, options, user);
-    if (allowed === false) return false;
-    if (!data.items?.length) {
-      this.updateSource({
-        prototypeToken: { bar1: { attribute: "stats.rez" } },
-      });
-    }
-    return allowed;
-  }
-
+export default class CPRBlackIceActor extends CPRNetActor {
   /**
    * Black-ICE really only uses 2 types of rolls: stat and damage. A trimmed down version
    * of the roll code in cpr-actor.js is implemented here.
@@ -117,50 +95,5 @@ export default class CPRBlackIceActor extends Actor {
     );
     cprRoll.rollCardExtraArgs.program = programData;
     return cprRoll;
-  }
-
-  /**
-   * Apply damage to the rez of the Black ICE.
-   * @param {int} damage - direct damage dealt
-   */
-  async _applyDamage(damage) {
-    // As a Black ICE does not have any armor, and do not suffer crit damage, the damage will be simply subtracted from the REZ.
-    const currentRez = this.system.stats.rez.value;
-    await this.update({
-      "system.stats.rez.value": currentRez - damage,
-    });
-    CPRChat.RenderDamageApplicationCard({
-      actor: this,
-      hpReduction: damage,
-      rezReduction: true,
-    });
-  }
-
-  /**
-   * Reverse rez damage to the actor, in case someone made a mistake applying it.
-   *
-   * @param {int} rezReduction - value of the damage taken
-   */
-  async _reverseDamage(rezReduction) {
-    const currentRez = this.system.stats.rez.value;
-    const updatedRez = Math.min(
-      currentRez + rezReduction,
-      this.system.stats.rez.max,
-    );
-    await this.update({ "system.stats.rez.value": updatedRez });
-  }
-
-  /**
-   * Given a stat name, return the value of it off the actor
-   *
-   * @param {String} statName - name (from CPR.statList) of the stat to retrieve
-   * @returns {Number}
-   */
-  getStat(statName) {
-    const statValue =
-      statName === "rez"
-        ? this.system.stats[statName].value
-        : this.system.stats[statName];
-    return parseInt(statValue, 10);
   }
 }
