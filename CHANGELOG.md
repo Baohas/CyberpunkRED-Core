@@ -33,6 +33,10 @@ If you have any such items that should not crit, set them manually: on a weapon,
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
 
+### Bug Fixes
+
+- Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
+
 ### Plumbing
 
 - Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.

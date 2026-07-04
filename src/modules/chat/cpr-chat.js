@@ -95,8 +95,12 @@ export default class CPRChat {
         } else {
           [actor] = game.actors.filter((a) => a.id === actorId);
         }
-        const alias = actor.name;
-        chatOptions.speaker = { actor, alias };
+        // Resolve a full speaker via getSpeaker so the message carries the
+        // scene/token IDs, not just the actor. A synthetic token-actor
+        // (`actor.isToken`) routes getSpeaker to its TokenDocument, filling in
+        // scene/token/alias (the token's name); otherwise it falls back to the
+        // actor and its active token. Fixes #677.
+        chatOptions.speaker = ChatMessage.getSpeaker({ actor });
       }
       return ChatMessage.create(chatOptions);
     });
@@ -147,17 +151,18 @@ export default class CPRChat {
     return renderTemplate(itemTemplate, trimmedItem).then((html) => {
       const chatOptions = this.ChatDataSetup(html);
       if (item.entityData !== undefined && item.entityData !== null) {
-        const actor = game.actors.filter(
-          (a) => a.id === item.entityData.actor,
-        )[0];
-        let alias = actor.name;
-        if (item.entityData.token !== null) {
-          const token = game.actors.tokens[item.entityData.token];
-          if (token !== undefined) {
-            alias = token.name;
-          }
+        let actor;
+        const actorId = item.entityData.actor;
+        const tokenId = item.entityData.token;
+        if (tokenId) {
+          actor = Object.keys(game.actors.tokens).includes(tokenId)
+            ? game.actors.tokens[tokenId]
+            : game.actors.find((a) => a.id === actorId);
+        } else {
+          [actor] = game.actors.filter((a) => a.id === actorId);
         }
-        chatOptions.speaker = { actor, alias };
+        // See RenderRollCard: getSpeaker fills scene/token/alias. Fixes #677.
+        chatOptions.speaker = ChatMessage.getSpeaker({ actor });
       }
       return ChatMessage.create(chatOptions, false);
     });
