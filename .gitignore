@@ -24,6 +24,7 @@ results.json
 .foundry
 foundryconfig.json
 .claude/settings.local.json
+.cprc-shared/.claude/settings.local.json
 
 # Build
 dist/
