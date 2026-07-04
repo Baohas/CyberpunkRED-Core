@@ -18,6 +18,11 @@
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
 
+### Plumbing
+
+- Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
+- Added a Vitest unit-test layer (`npm run test:unit`) for the Foundry-light code (pure helpers, config invariants), with a minimal Foundry-global shim and a CI job.
+
 ## Version 0.92.4
 
 ### Action requise
