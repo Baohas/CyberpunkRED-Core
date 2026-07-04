@@ -13,6 +13,7 @@
 - Transition ammo icons from `.png` to `.svg`
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
+- Automatically allow `Ammo` to be installed when a weapon is marked as a `Ranged Weapon` (and unload it when unmarked)
 
 ### Changes
 

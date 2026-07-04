@@ -32,6 +32,7 @@ const hooksImports = [
   "hotbar/generate-item-macro.js",
   "item/role/update-sub-roles.js",
   "item/set-default-image.js",
+  "item/sync-ammo-allowed-type.js",
   "setup/create-black-ice-actor.js",
   "token/add-dv-token-hud.js",
   "token/close-unlinked-sheet-on-delete.js",
