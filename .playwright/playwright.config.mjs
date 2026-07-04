@@ -28,15 +28,15 @@ export default defineConfig({
   // (releasing LevelDB locks) and deletes the world.
   globalSetup: "../tests/browser/setup.mjs",
   globalTeardown: "../tests/browser/teardown.mjs",
-  // In CI (GitLab): a readable list in the job log, a JUnit report for GitLab's
-  // pipeline/MR Tests tab (wire it up with `artifacts:reports:junit`), and a JSON
-  // report the MR-comment script parses for the failed-test table. Locally: list.
+  // In CI (GitLab): a readable list in the job log, plus a blob report so the
+  // parallel shards can be merged downstream. The suite is sharded across
+  // several `test-browser` jobs (`--shard=i/N`); each shard emits its own blob,
+  // and a later `test-browser-report` job runs `playwright merge-reports` to
+  // regenerate a single JUnit (for GitLab's Tests tab / `artifacts:reports:junit`)
+  // and JSON (for the MR-comment failed-test table) across all shards. Locally:
+  // list.
   reporter: process.env.CI
-    ? [
-        ["list"],
-        ["junit", { outputFile: "test-results/junit.xml" }],
-        ["json", { outputFile: "test-results/results.json" }],
-      ]
+    ? [["list"], ["blob", { outputDir: "blob-report" }]]
     : "list",
   use: {
     baseURL: url,

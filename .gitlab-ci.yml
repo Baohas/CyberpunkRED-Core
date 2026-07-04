@@ -32,6 +32,7 @@ include:
       - "/jobs/test/packs.yml"
       - "/jobs/test/prepare-foundry.yml"
       - "/jobs/test/test-browser.yml"
+      - "/jobs/test/test-browser-report.yml"
       - "/jobs/test/test-build.yml"
       - "/jobs/test/test-fontawesome.yml"
       - "/jobs/test/test-shell-scripts.yml"

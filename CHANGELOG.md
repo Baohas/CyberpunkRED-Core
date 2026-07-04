@@ -18,6 +18,10 @@
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
 
+### Plumbing
+
+- Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
+
 ## Version 0.92.4
 
 ### Action Needed
