@@ -9,6 +9,7 @@
   },
   "enabledPlugins": {
     "foundryvtt-dev@foundryvtt-dev-mp": true,
-    "andrej-karpathy-skills@karpathy-skills": true
+    "andrej-karpathy-skills@karpathy-skills": true,
+    "superpowers@claude-plugins-official": true
   }
 }
