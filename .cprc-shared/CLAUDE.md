@@ -110,6 +110,53 @@ When asked to "update the codebase for vXX", follow this procedure so the scope 
 5. **Validate in a live Foundry via the UI** (see the section above), confirming the targeted deprecation warnings are gone.
 6. Then run the standard `STYLE_GUIDE.md` checks (lint/format/stylelint/`fallow audit`/build) and the CI pipeline before opening the MR.
 
+## Milestone-scoped issue triage
+  
+  To pull a work-list of issues for a milestone, use the **GitLab API via glab**, not `glab issue board view` — that command is an interactive TTY-only TUI and fails when
+  driven non-interactively (`bubbletea: could not create cancelable reader`).
+  
+  - The milestone **web URL uses the iid** (e.g. `/-/milestones/22`), which is **not** the API milestone id. Resolve it by listing milestones and matching `iid`:
+    ```bash
+    glab api "projects/<PROJECT>/milestones?per_page=100" | jq -r '.[] | select(.iid==22) | .title'
+    ```
+  - Default triage filter: **milestone = <title>, state = opened, excluding any `Workflow::*` label and `Type::Compendium`**:
+    ```bash 
+    glab api "projects/<PROJECT>/issues?milestone=<title>&state=opened&per_page=100" \
+      | jq -r '[ .[]
+          | select( ([.labels[] | select(startswith("Workflow::"))] | length) == 0 )
+          | select( (.labels | index("Type::Compendium")) == null ) ]
+        | sort_by(.iid) | reverse | .[]
+        | "#\(.iid)\t[\(.labels|join(", "))]\t\(.title)"'
+    ```
+  
+  ## Durable investigation plans (`.plans/`)
+  
+  When asked to investigate/plan a set of issues, persist each plan so it survives **context compaction and session restarts** (conversation text does not; the session 
+  scratchpad does not — its path is session-specific).
+  
+  - **One file per issue:** `.plans/<iid>.md`, from `.plans/_TEMPLATE.md` (sections: Problem, Root cause, Affected code with real `file:line`, Approach, 
+  Migration/localization/data, Tests, Risks & open questions, Relationships & batching).
+  - **`.plans/INDEX.md` is the retrieval spine** — one row per issue with status / confidence / effort / link. Statuses: `pending → investigating → planned → in-progress 
+  → done` (+ MR link). To resume after compaction or a new session, read `INDEX.md` first, then the specific plan.
+  - **Ignore `.plans/` locally without touching the tracked `.gitignore`:** add it to `.git/info/exclude` (keeps it out of `git status`/diffs and the repo).
+  - **Bridge across sessions with one memory entry** (type `project`) recording that plans live in `.plans/` with the index at `.plans/INDEX.md`, so a fresh session's 
+  loaded `MEMORY.md` points straight to them. Store the *pointer* in memory, not the plans themselves.
+  - Update the INDEX status column as work progresses; the index is always the source of truth.
+  - **Reconcile before investigating.** At the start of a session, before picking up new work, check the **MR referenced by each non-`done` plan** (and the issue's state). If that MR has been merged or the issue is closed, mark the row `done` (or remove the plan file) — don't re-investigate work that has already landed.
+  
+  ## Multi-issue investigation & MR rules
+  
+  1. **Linked Items.** Record every real cross-issue relationship as a **GitLab issue link** (`POST /projects/:id/issues/:iid/links`, `link_type` 
+  `relates_to`/`blocks`/`is_blocked_by`), not just prose. When a link is **not** "Blocking", also read and factor in that related issue's needs while planning.
+  2. **Blocked-by + open MR.** If an issue is "Blocked by" another that has an open MR: investigate against **that MR's branch** (fetch/diff it), have your MR **target 
+  `dev`** (not the branch you based off), and mark the dependency with the **built-in tool** — the `mergeRequestSetBlockingMergeRequests` GraphQL mutation — **never a 
+  comment**.
+  3. **Skip pack-only work.** If an issue turns out to be purely compendium/pack (`src/packs` YAML) data with no code change, drop it (mark `skipped` with a reason).
+  4. **Batch by code locality.** After a first planning pass, group issues that live in the **same code area** into a single MR — it's easier to review than several 
+  near-identical ones.
+
+## Shared Imports
+
 <!--
   Shared-context imports. The lines below pull the full style guide and the
   entire mechanics catalog into context. Paths are relative to THIS file, so
