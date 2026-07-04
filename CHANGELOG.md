@@ -21,6 +21,7 @@
 ### Plumbing
 
 - Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
+- Added a Vitest unit-test layer (`npm run test:unit`) for the Foundry-light code (pure helpers, config invariants), with a minimal Foundry-global shim and a CI job.
 
 ## Version 0.92.4
 

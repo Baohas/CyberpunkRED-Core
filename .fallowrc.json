@@ -21,6 +21,7 @@
     "gulpfile.mjs",
     "gulp/**",
     "stylelint.config.mjs",
+    "vitest.config.js",
     ".playwright/**",
     "tools/**",
     "tests/**"
@@ -63,6 +64,8 @@
     "through2",
     "v8r",
     "vinyl-fs",
+    "vitest",
+    "@vitest/coverage-v8",
     "yargs"
   ],
 
