@@ -289,7 +289,13 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
     actorId,
   );
 
-  await entry.dragTo(form).catch(() => {});
+  // Bounded so a real HTML5 drag that never settles (Foundry's DnD simulation
+  // is flaky) fails fast into the synthetic-drop fallback below, instead of
+  // waiting out the whole test timeout.
+  await entry.dragTo(form, { timeout: 5000 }).catch(() => {});
+  // A dragTo that times out mid-drag leaves the mouse button held down, which
+  // then swallows every later click; release it before continuing.
+  await page.mouse.up().catch(() => {});
 
   if (await waitForItemCount(page, actorId, before + 1, 3000)) return;
 
