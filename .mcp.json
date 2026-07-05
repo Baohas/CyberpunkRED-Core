@@ -1,1 +1,14 @@
-.cprc-shared/.claude/mcp.json
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--executable-path",
+        "${PLAYWRIGHT_MCP_EXECUTABLE_PATH}",
+        "--config",
+        ".playwright/playwright-mcp.config.json"
+      ]
+    }
+  }
+}
