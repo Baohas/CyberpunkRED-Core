@@ -23,6 +23,10 @@
 - Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
 - Added a Vitest unit-test layer (`npm run test:unit`) for the Foundry-light code (pure helpers, config invariants), with a minimal Foundry-global shim and a CI job.
 
+### Исправления
+
+- Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
+
 ## Version 0.92.4
 
 ### Требует внимания
@@ -240,7 +244,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
   - Бренд больше не добавляется в название программно
 - Ensure all SVGs have `width`/`height` set corectly to prevent known Firefox/PIXI bug
 
-### Исправления
+### Bug Fixes
 
 - \#933 - Исправлено множество ошибок/отсуствующих значений в библиотеках благодаря @Alexander Fokin
 - \#950 - Проверки СЛ выделены жирным в некоторых предметах библиотеки
@@ -282,7 +286,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Bug Fixes
+### Исправления
 
 - \#856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -331,7 +335,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
 - Support for editing Active Effects on owned items
 
-### Исправления
+### Bug Fixes
 
 - A couple of minor CSS fixes
 - Facedown rolls correctly include reputation value.
@@ -364,7 +368,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Версия 0.87.5
 
-### Bug Fixes
+### Исправления
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -401,7 +405,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Версия 0.87.3
 
-### Исправления
+### Bug Fixes
 
 - \#808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - \#812 - Some roles were missing the bonuses data point as an empty array.
@@ -424,7 +428,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Версия 0.87.2
 
-### Bug Fixes
+### Исправления
 
 - Fix Programs having `undefined` before their name in character sheets
 - Fix call to `cprBrandName` in Container sheet
@@ -1358,7 +1362,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Default images added for compendia. Images from <https://game-icons.net>. They can be accessed from the file browser in "systems/cyberpunk-red-core/icons/compendium/default".
 - The French translation has been updated to account for all strings in this release. (Thank you VinceKun!)
 
-### Исправления
+### Bug Fixes
 
 - Borgware items (Shoulder Mount / Implanted Frames / MultiOptic Mount / Shoulder Array) are now classified as foundational cyberware and do not require a missing foundational item.
 - Code added so New Worlds will not immediately go through migration
