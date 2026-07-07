@@ -15,7 +15,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprCompare", (v1, operator, v2) => {
     switch (operator) {
       case "==":
-        return v1 == v2; // eslint-disable-line eqeqeq
+        return v1 == v2;
       case "===":
         return v1 === v2;
       case "!==":
@@ -98,7 +98,7 @@ export default function registerHandlebarsHelpers() {
    * Return the size of an object.
    */
   Handlebars.registerHelper("cprSizeOf", (object) => {
-    let size = 0;
+    let size;
     switch (typeof object) {
       case "object": {
         if (Array.isArray(object)) {
@@ -1075,7 +1075,7 @@ export default function registerHandlebarsHelpers() {
     if (!sourceDoc) return "???"; // a recently deleted item will sometimes do this
     if (cat === "skill") {
       const skillMap = CPR.activeEffectKeys.skill;
-      let skillList = [];
+      let skillList;
       if (sourceDoc.isOwned) {
         skillList = sourceDoc.parent.items.filter((i) => i.type === "skill");
       } else {
@@ -1230,7 +1230,7 @@ export default function registerHandlebarsHelpers() {
   Handlebars.registerHelper("cprGetWeaponAutofireMax", (weapon) => {
     const weaponAutofireMax = weapon.system.fireModes.autoFire;
     const [ammoItem] = weapon.getInstalledItems("ammo");
-    let trueMax = 0;
+    let trueMax;
     if (ammoItem && ammoItem.system.overrides.autofire.mode === "set") {
       trueMax = ammoItem.system.overrides.autofire.value;
     } else if (

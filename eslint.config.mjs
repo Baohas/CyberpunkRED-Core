@@ -75,25 +75,22 @@ export default [
       "import/extensions": [".js"],
     },
     linterOptions: {
-      // eslint 8's .eslintrc setup did not report unused disable directives by
-      // default. The codebase has many inline disables for former airbnb rules;
-      // keep the prior behavior rather than flag them all as unused.
-      reportUnusedDisableDirectives: "off",
+      // Flag inline eslint-disable directives that no longer suppress anything
+      // so stale suppressions get cleaned up rather than lingering.
+      reportUnusedDisableDirectives: "error",
     },
     rules: {
       "no-warning-comments": ["warn", { terms: ["TODO"] }],
-      // New in eslint 10's recommended set; relaxed to a warning to match how
-      // this project treats other quality rules (no-unused-vars, etc.).
-      "no-useless-assignment": "warn",
-      "import/no-cycle": ["warn"],
+      "no-useless-assignment": "error",
+      "import/no-cycle": ["error"],
       "import/no-unresolved": ["error", { ignore: [".*devMode\\.js$"] }],
       "no-underscore-dangle": "off",
-      "no-param-reassign": ["warn"],
-      "class-methods-use-this": ["warn"],
-      "no-unused-vars": ["warn"],
+      "no-param-reassign": ["error"],
+      "class-methods-use-this": ["error"],
+      "no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
       "no-nested-ternary": "off",
       "no-restricted-syntax": [
-        "warn",
+        "error",
         {
           selector: "ForInStatement",
           message:
@@ -110,8 +107,17 @@ export default [
             "`with` is disallowed in strict mode because it makes code impossible to predict and optimize.",
         },
       ],
-      "import/extensions": ["warn", "always"],
+      "import/extensions": ["error", "always"],
     },
   },
   prettierRecommended,
+  {
+    // Migration scripts override updateItem/updateActor to transform a passed
+    // document and legitimately never reference `this`. Disable the rule for
+    // the whole directory rather than annotating every script.
+    files: ["src/modules/system/migrate/scripts/**/*.js"],
+    rules: {
+      "class-methods-use-this": "off",
+    },
+  },
 ];

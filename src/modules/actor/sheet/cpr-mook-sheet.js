@@ -217,7 +217,7 @@ export default class CPRMookActorSheet extends CPRActorSheet {
       .parents(".mook-image")
       .children(".mook-image-block");
     const mookImageToggle = $(event.currentTarget);
-    let collapsedImage = null;
+    let collapsedImage;
     if (
       mookImageToggle.attr("data-text") ===
       SystemUtils.Localize("CPR.mookSheet.image.collapse")

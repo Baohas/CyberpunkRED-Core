@@ -24,12 +24,12 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @public
    * @param {Array} programs      - Array of CPRItem programs
    */
+  // eslint-disable-next-line class-methods-use-this
   async uninstallPrograms(programs) {
     const tokenList = [];
     let sceneId;
     for (const program of programs) {
       if (program.system.isRezzed) {
-        // eslint-disable-next-line no-await-in-loop
         await program.update({ "system.isRezzed": false });
       }
       if (program.system.class === "blackice" && program.system.isRezzed) {
@@ -414,7 +414,6 @@ export default class CPRCyberdeckItem extends CPRItem {
         cprFlags.biTokenId = biToken.id;
         cprFlags.sceneId = scene.id;
         // Passed by reference
-        // eslint-disable-next-line no-param-reassign
         program.flags[game.system.id] = cprFlags;
       }
     } catch (error) {
@@ -430,6 +429,7 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @public
    * @param {CPRItem} program      - CPRItem of the program de-rez
    */
+  // eslint-disable-next-line class-methods-use-this
   async derezProgram(program) {
     program.unsetRezzed();
     if (program.system.class === "blackice") {
@@ -483,6 +483,7 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @public
    * @param {CPRItem} program      - CPRItem of the program to reset
    */
+  // eslint-disable-next-line class-methods-use-this
   async resetRezProgram(program) {
     await program.update({ "system.rez.value": program.system.rez.max });
   }
@@ -494,6 +495,7 @@ export default class CPRCyberdeckItem extends CPRItem {
    * @param {CPRItem} program     - The program to reduce the REZ of
    * @param {Number} reduceAmount - Amount to reduce REZ by. Defaults to 1.
    */
+  // eslint-disable-next-line class-methods-use-this
   async reduceRezProgram(program, reduceAmount = 1) {
     const newRez = Math.max(program.system.rez.value - reduceAmount, 0);
     if (

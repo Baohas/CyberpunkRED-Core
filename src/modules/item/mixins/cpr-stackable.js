@@ -8,7 +8,7 @@ const Stackable = function Stackable() {
    * @param {String} value - "+X", "-X", or "X" to change the amount
    */
   this.setItemAmount = function setItemAmount(value) {
-    let newValue = 0;
+    let newValue;
     if (value.charAt(0) === "+" || value.charAt(0) === "-") {
       // handle a delta provided rather than a straight value
       newValue = this.system.amount + parseInt(value, 10);

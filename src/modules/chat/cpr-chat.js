@@ -535,7 +535,6 @@ export default class CPRChat {
         : game.actors.find((a) => a.id === actorId);
 
       dialogData.allowedActors.push(actor);
-      // eslint-disable-next-line prefer-const
       if (!event.ctrlKey) {
         // Show "Damage Application" prompt.
         dialogData = await CPRDialog.showDialog(
@@ -589,7 +588,6 @@ export default class CPRChat {
           dialogData.forbiddenActors = forbiddenActors;
 
           // Show "Damage Application" prompt.
-          // eslint-disable-next-line no-await-in-loop
           dialogData = await CPRDialog.showDialog(
             dialogData,
             dialogOptions,

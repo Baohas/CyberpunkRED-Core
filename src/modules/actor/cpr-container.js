@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop */
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import LOGGER from "../utils/cpr-logger.js";
 import Rules from "../utils/cpr-rules.js";
@@ -47,11 +46,15 @@ export default class CPRContainerActor extends Actor {
     if (!embeddedName === "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
+    let itemsToCreate = items;
+
     // Don't add core items.
-    const coreItemIds = items.filter((i) => i.system?.core).map((i) => i._id);
+    const coreItemIds = itemsToCreate
+      .filter((i) => i.system?.core)
+      .map((i) => i._id);
     if (coreItemIds.length > 0) {
       Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-      items = items.filter((i) => !coreItemIds.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => !coreItemIds.includes(i._id));
     }
 
     // Attempt to stack item before creating it
@@ -59,8 +62,7 @@ export default class CPRContainerActor extends Actor {
     if (!context.CPRsplitStack) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
       const dontCreate = [];
-      for (const doc of items) {
-        // eslint-disable-next-line no-continue
+      for (const doc of itemsToCreate) {
         if (!doc.system) continue;
         const [returnValue] = await this.automaticallyStackItems(doc);
         if (returnValue) {
@@ -71,20 +73,19 @@ export default class CPRContainerActor extends Actor {
         }
       }
       // Don't create items that we should stack.
-      items = items.filter((i) => !dontCreate.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => !dontCreate.includes(i._id));
     }
 
     // Create the items
     const createdItems = await super.createEmbeddedDocuments(
       embeddedName,
-      items,
+      itemsToCreate,
       context,
     );
 
     if (context.createInstalled) {
       // Handle creating and installing any items into the parent item.
       for (const item of createdItems) {
-        // eslint-disable-next-line no-continue
         if (!item.system.hasInstalled) continue;
         // The item will only have this flag if it is imported/coming from another actor.
         const imported = !!ContainerUtils.getInstallTreeFlag(item);
@@ -310,7 +311,7 @@ export default class CPRContainerActor extends Actor {
     const cprData = foundry.utils.duplicate(this.system);
     let newValue = foundry.utils.getProperty(cprData, "wealth.value") || 0;
     let transactionSentence;
-    let transactionType = "set";
+    let transactionType;
 
     if (seller) {
       if (seller._id === this._id) {
@@ -319,7 +320,6 @@ export default class CPRContainerActor extends Actor {
         transactionType = "subtract";
       }
     } else {
-      // eslint-disable-next-line prefer-destructuring
       transactionType = reason.split(" ")[2];
     }
 

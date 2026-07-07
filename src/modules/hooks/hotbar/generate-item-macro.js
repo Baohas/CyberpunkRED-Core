@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-
 /**
  * Hooks have a set of args that are passed to them from Foundry. Even if we do not use them here,
  * we document them all for clarity's sake and to make future development/debugging easier.
@@ -29,7 +27,7 @@ const hotbarHooks = () => {
       img: document.img,
       command: `Hotbar.toggleDocumentSheet("${document.uuid}")`,
     };
-    let macro = null;
+    let macro;
     let command = `Hotbar.toggleDocumentSheet("${document.uuid}")`;
     switch (data.type) {
       case "Item":

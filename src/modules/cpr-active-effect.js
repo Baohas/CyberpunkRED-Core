@@ -1,5 +1,4 @@
 import CPRActor from "./actor/cpr-actor.js";
-import LOGGER from "./utils/cpr-logger.js";
 
 /**
  * Extend the base ActiveEffect class to implement system-specific logic.

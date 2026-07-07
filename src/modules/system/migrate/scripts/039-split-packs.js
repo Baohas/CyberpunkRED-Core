@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import BaseMigrationScript from "../base-migration-script.js";
 import CPRSystemUtils from "../../../utils/cpr-systemUtils.js";
 

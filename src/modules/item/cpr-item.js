@@ -60,7 +60,6 @@ export default class CPRItem extends Item {
       item.installItems(installedItemList);
     }
 
-    // eslint-disable-next-line consistent-return
     return item;
   }
 

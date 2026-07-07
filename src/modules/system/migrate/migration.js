@@ -1,5 +1,3 @@
-/* eslint-disable no-await-in-loop, no-continue */
-
 import * as Migrations from "./scripts/index.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import MigrationApp from "./migration-app.js";
@@ -93,6 +91,7 @@ export default class MigrationRunner {
     return app || null;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   get app() {
     return MigrationRunner.app;
   }
@@ -380,21 +379,21 @@ export default class MigrationRunner {
    * @return {Array<CPRActor|CPRItem>} An array of filtered Actors or Items (but not both).
    */
   filterDocuments(docList) {
-    if (!Array.isArray(docList)) docList = Array.from(docList);
-    if (!docList.length) return docList;
+    const docs = Array.isArray(docList) ? docList : Array.from(docList);
+    if (!docs.length) return docs;
 
-    const docName = docList[0].documentName;
+    const docName = docs[0].documentName;
     // Filter tokens, convert them to actors, and then run this function again,
     // which will skip this block, because now an Array of Actors is being passed.
     if (docName === "Token") {
-      const filteredTokens = MigrationRunner.filterTokens(docList);
+      const filteredTokens = MigrationRunner.filterTokens(docs);
       const tokenActors = filteredTokens.map((token) => token.actor);
       return this.filterDocuments(tokenActors);
     }
 
     // Filter for docs that are not already migrated, in the case of an incomplete migration.
     const { remigrateAlreadyMigrated } = DEV_MODE.migrations;
-    const nonMigratedDocs = docList.filter((doc) => {
+    const nonMigratedDocs = docs.filter((doc) => {
       return !this.alreadyMigrated(doc, remigrateAlreadyMigrated);
     });
 

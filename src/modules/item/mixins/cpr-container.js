@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop */
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
@@ -125,7 +124,7 @@ const Container = function Container() {
       : this.system.installedItems.allowedTypes;
 
     // If there is an actor, get owned items. Else, get world items.
-    let installableItems = [];
+    let installableItems;
     if (actor) {
       installableItems = actor.items.filter((i) =>
         allowedTypes.includes(i.type),
@@ -271,7 +270,6 @@ const Container = function Container() {
 
     for (const item of itemList) {
       // No need to install it, it it's already installed.
-      // eslint-disable-next-line no-continue
       if (installedItems.list.includes(item.id)) continue;
       // Add installed item to the target's list.
       installedItems.list.push(item.id);
@@ -348,7 +346,6 @@ const Container = function Container() {
 
     for (const item of newItems) {
       // Skip this iteration of the loop if the new item doesn't have installed items itself.
-      // eslint-disable-next-line no-continue
       if (!item.system.hasInstalled) continue;
 
       // Get the list of installed items to duplicate and reinstall.

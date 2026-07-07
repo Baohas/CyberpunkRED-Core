@@ -43,6 +43,7 @@ export default class MigrationError extends Error {
    * @param {string} trace - The error's stack trace.
    * @returns {string} - The sanitized stack trace.
    */
+  // eslint-disable-next-line class-methods-use-this
   sanitizeStackTrace(trace) {
     return trace.replace(
       /\b(https?|wss?):\/\/([^/:]+)(:\d+)?/g,

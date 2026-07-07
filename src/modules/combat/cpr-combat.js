@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop */
 import CombatUtils from "../utils/cpr-combatUtils.js";
 import CPRChat from "../chat/cpr-chat.js";
 import DiceHandler from "../extern/cpr-dice-handler.js";
@@ -51,11 +50,7 @@ export default class CPRCombat extends Combat {
    * @param {object} [options.messageOptions={}]    Additional options with which to customize created Chat Messages
    * @return {Promise<Combat>}        A promise which resolves to the updated Combat entity once updates are complete.
    */
-  // eslint-disable-next-line no-unused-vars
-  async rollInitiative(
-    ids,
-    { formula = null, updateTurn = true, messageOptions = {} } = {},
-  ) {
+  async rollInitiative(ids, { updateTurn = true } = {}) {
     // Structure input data
     const combatantIds = typeof ids === "string" ? [ids] : ids;
     const currentId = this.combatant ? this.combatant.id : null;
@@ -74,7 +69,6 @@ export default class CPRCombat extends Combat {
           "CPR.messages.invalidCombatantType",
         )}: ${actor.name} (${actor.type})`;
         SystemUtils.DisplayMessage("warn", warningMessage);
-        // eslint-disable-next-line no-continue
         continue; // Skip one iteration so that the rest doesn't happen.
       } else {
         cprRoll = await combatant.getInitiativeRoll(

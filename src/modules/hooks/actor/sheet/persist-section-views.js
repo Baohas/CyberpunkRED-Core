@@ -16,7 +16,6 @@ const PersistSectionViews = () => {
       actorSheet.options.collapsedSections,
       actorSheet.id,
     );
-    // eslint-disable-next-line no-param-reassign
     actorSheet.options.setConfig = true;
   });
 };

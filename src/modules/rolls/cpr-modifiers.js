@@ -1,5 +1,3 @@
-/* eslint-disable max-classes-per-file */
-
 import CPR from "../system/config.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
@@ -56,7 +54,7 @@ export default class CPRMod {
    * @return {Array<CPRMod>} - Array of mods filtered for a specific key.
    */
   static getRelevantMods(modifiers, key) {
-    let relevantMods = [];
+    let relevantMods;
     if (Array.isArray(key)) {
       relevantMods = modifiers.filter((m) => {
         const strippedKey = m.key.replace("bonuses.", "");

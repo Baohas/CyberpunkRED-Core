@@ -109,7 +109,6 @@ export default class CPRCompendiaSettings extends HandlebarsApplicationMixin(
    * @param {HTMLFormElement} form
    * @param {FormDataExtended} formData
    */
-  // eslint-disable-next-line class-methods-use-this
   static async #onSubmit(event, form, formData) {
     event.preventDefault();
 

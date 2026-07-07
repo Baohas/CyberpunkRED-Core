@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import CPRMod from "../rolls/cpr-modifiers.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "./cpr-dialog-application.js";
@@ -224,7 +223,6 @@ export class CPRRollDialog extends CPRDialog {
       fd.additionalMods = fd.additionalMods.split(",");
 
       // Sanitize data input by checking if anything inputted is not a number. Warn user if so.
-      // eslint-disable-next-line no-restricted-globals
       if (fd.additionalMods.some((m) => isNaN(m))) {
         SystemUtils.DisplayMessage(
           "warn",
@@ -232,7 +230,6 @@ export class CPRRollDialog extends CPRDialog {
         );
       }
       fd.additionalMods.forEach((m, i) => {
-        // eslint-disable-next-line no-restricted-globals
         if (isNaN(m)) {
           fd.additionalMods.splice(i, 1);
         }

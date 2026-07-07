@@ -1,4 +1,3 @@
-/* eslint-disable no-await-in-loop */
 import CPR from "../system/config.js";
 import CPRChat from "../chat/cpr-chat.js";
 import CPRCharacterActorSheet from "./sheet/cpr-character-sheet.js";
@@ -202,11 +201,15 @@ export default class CPRActor extends Actor {
     if (isMigration || !embeddedName === "Item")
       return super.createEmbeddedDocuments(embeddedName, items, context);
 
+    let itemsToCreate = items;
+
     // Don't add core items.
-    const coreItemIds = items.filter((i) => i.system?.core).map((i) => i._id);
+    const coreItemIds = itemsToCreate
+      .filter((i) => i.system?.core)
+      .map((i) => i._id);
     if (coreItemIds.length > 0) {
       Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-      items = items.filter((i) => !coreItemIds.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => !coreItemIds.includes(i._id));
     }
 
     // Stack items.
@@ -219,8 +222,7 @@ export default class CPRActor extends Actor {
     if (canStack && !context.CPRsplitStack) {
       LOGGER.debug("Attempting to stack items on an actor sheet");
       const dontCreate = [];
-      for (const doc of items) {
-        // eslint-disable-next-line no-continue
+      for (const doc of itemsToCreate) {
         if (!doc.system) continue;
         const [returnValue] = await this.automaticallyStackItems(doc);
         if (returnValue) {
@@ -231,20 +233,19 @@ export default class CPRActor extends Actor {
         }
       }
       // Don't create items that we should stack.
-      items = items.filter((i) => !dontCreate.includes(i._id));
+      itemsToCreate = itemsToCreate.filter((i) => !dontCreate.includes(i._id));
     }
 
     // Create the items
     const createdItems = await super.createEmbeddedDocuments(
       embeddedName,
-      items,
+      itemsToCreate,
       context,
     );
 
     if (context.createInstalled) {
       // Handle creating and installing any items into the parent item.
       for (const item of createdItems) {
-        // eslint-disable-next-line no-continue
         if (!item.system.hasInstalled) continue;
         // The item will only have this flag if it is imported/coming from another actor.
         const imported = !!ContainerUtils.getInstallTreeFlag(item);
@@ -1310,9 +1311,9 @@ export default class CPRActor extends Actor {
     let rawDamageDealt = 0;
     let totalDamageDealt = 0;
     let totalDamageReduction = 0;
-    let takenDamage = 0;
+    let takenDamage;
     let ignoreArmorEntirely = false;
-    let armorSPRef = 0;
+    let armorSPRef;
     const armors = location === "brain" ? [] : this.getEquippedArmors(location);
     const armorData = {
       value: 0,

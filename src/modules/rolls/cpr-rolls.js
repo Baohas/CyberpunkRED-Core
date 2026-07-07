@@ -1,4 +1,3 @@
-/* eslint-disable max-classes-per-file */
 import LOGGER from "../utils/cpr-logger.js";
 import DiceHandler from "../extern/cpr-dice-handler.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
@@ -167,7 +166,6 @@ export class CPRRoll {
     // calculate the initial roll
     this._roll = await new Roll(this.formula).evaluate();
 
-    // eslint-disable-next-line no-use-before-define
     if (!(this instanceof CPRInitiative)) {
       await DiceHandler.handle3dDice(this._roll);
     }
@@ -185,7 +183,6 @@ export class CPRRoll {
     // check and consider criticals (min or max # on die)
     if (this.wasCritical() && this.calculateCritical) {
       this._critRoll = await new Roll(this.formula).evaluate();
-      // eslint-disable-next-line no-use-before-define
       if (!(this instanceof CPRInitiative)) {
         await DiceHandler.handle3dDice(this._critRoll);
       }
@@ -275,7 +272,6 @@ export class CPRRoll {
       // Depending on the type of the roll, we will choose one or the other.
       let DialogClass;
       switch (this.constructor) {
-        // eslint-disable-next-line no-use-before-define
         case CPRRoleRoll:
           DialogClass = CPRRollDialogs.CPRRoleRollDialog;
           break;
@@ -829,7 +825,6 @@ export class CPRDamageRoll extends CPRRoll {
    */
   configureAutofire(
     autofireMultiplier,
-    // eslint-disable-next-line default-param-last
     autofireMultiplierMax = 0,
     ammoOverride,
   ) {

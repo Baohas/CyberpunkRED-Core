@@ -10,14 +10,14 @@ const HideBlindRolls = () => {
    * @param {string} msg (unused)      - our simulation of the ChatData object
    */
   Hooks.on("renderChatMessageHTML", async (_, html) => {
-    html = $(html); // TODO: Remove JQuery.
+    const $html = $(html); // TODO: Remove JQuery.
     // Do not display "Blind" chat cards to non-gm
     // Foundry doesn't support blind chat messages so this is how we get around
     // that.
-    if (html.hasClass("blind") && !game.user.isGM) {
+    if ($html.hasClass("blind") && !game.user.isGM) {
       // Remove header so Foundry does not attempt to update its timestamp
-      html.find(".message-header").remove();
-      html.html("").css("display", "none");
+      $html.find(".message-header").remove();
+      $html.html("").css("display", "none");
     }
   });
 };

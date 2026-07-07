@@ -1,6 +1,3 @@
-import CPR from "../../system/config.js";
-import LOGGER from "../../utils/cpr-logger.js";
-
 /**
  * If an item can ACCEPT upgrades (i.e. it has slots), then it should include this
  * mixin. This does not accommodate items that are upgrades.

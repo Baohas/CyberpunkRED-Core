@@ -243,7 +243,6 @@ export default class CPRItemSheet extends ItemSheet {
     const dataPointModTypes =
       CPR.upgradableDataPoints.upgradeConfig.configurableTypes;
     const upgradableSheetData = [];
-    /* eslint-disable no-continue */
     for (const [key, value] of Object.entries(upgradableConfigData)) {
       // Omit this datapoint if its type is not "modifier" or "override".
       const omitDataPoint = !Object.keys(dataPointModTypes).includes(
@@ -261,7 +260,7 @@ export default class CPRItemSheet extends ItemSheet {
         // A freshly-created upgrade has no data for its type's modifiers yet
         // (the schema fields are optional), so modData can be undefined here.
         disableOnByDefault: !modData?.isSituational,
-      }; /* eslint-enable no-continue */
+      };
 
       if (upgradeType === "clothing") delete dataPoint.selectOptions.override;
 
@@ -531,7 +530,6 @@ export default class CPRItemSheet extends ItemSheet {
       if (branchCounter > 7) {
         break;
       }
-      // eslint-disable-next-line no-await-in-loop
       await branchCheck.roll();
     }
     let floors = await this._netarchDrawFromTableCustom(lobby, 2);
@@ -644,7 +642,6 @@ export default class CPRItemSheet extends ItemSheet {
     const drawnNumbers = [];
     const drawnResults = [];
     while (drawnResults.length < number) {
-      // eslint-disable-next-line no-await-in-loop
       const res = await table.draw({ displayChat: false });
       if (!drawnNumbers.includes(res.roll.total)) {
         if (!res.results[0].text.match(drawDuplicatesRegex)) {
@@ -1160,7 +1157,6 @@ export default class CPRItemSheet extends ItemSheet {
         return;
       }
 
-      // eslint-disable-next-line no-nested-ternary
       const skillObject =
         formData.skill !== "--" && formData.skill !== "varying"
           ? allSkills.find((a) => a.name === formData.skill)
@@ -1218,7 +1214,6 @@ export default class CPRItemSheet extends ItemSheet {
         return;
       }
 
-      // eslint-disable-next-line no-nested-ternary
       const skillObject =
         formData.skill !== "--" && formData.skill !== "varying"
           ? allSkills.find((a) => a.name === formData.skill)
@@ -1414,7 +1409,6 @@ export default class CPRItemSheet extends ItemSheet {
         ContainerUtils.getInstallTreeFlag(this.item),
       );
       const itemData = flattenedTree.find((i) => i._id === itemId);
-      // eslint-disable-next-line new-cap
       item = new CONFIG.Item.documentClass(itemData); // Create ephemeral item.
     }
     item.sheet.render(true, { editable: false });
