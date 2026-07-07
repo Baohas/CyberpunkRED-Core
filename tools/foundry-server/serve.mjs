@@ -1,6 +1,6 @@
 import { chromium } from "@playwright/test";
 import { startServer, stopServer } from "./server.mjs";
-import { driveSetup } from "./setup.mjs";
+import { driveSetup, joinAsGM } from "./setup.mjs";
 import {
   newWorldId,
   readWorldId,
@@ -21,6 +21,10 @@ const browser = await chromium.launch();
 try {
   const page = await browser.newPage();
   await driveSetup(page, { config, worldId });
+  // Join once as GM so the world is brought to "ready" and unpaused before we
+  // hand off — pause is server-side session state, so it stays unpaused for the
+  // live driver (e.g. the Playwright MCP) that connects next.
+  await joinAsGM(page, config);
 } finally {
   await browser.close();
 }
