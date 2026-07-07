@@ -23,6 +23,10 @@
 - Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
 - Added a Vitest unit-test layer (`npm run test:unit`) for the Foundry-light code (pure helpers, config invariants), with a minimal Foundry-global shim and a CI job.
 
+### Bug Fixes
+
+- Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
+
 ## Version 0.92.4
 
 ### Action Needed
