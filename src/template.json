@@ -1,6 +1,13 @@
 {
   "Actor": {
-    "types": ["accessPoint", "blackIce", "character", "container", "demon", "mook"],
+    "types": [
+      "accessPoint",
+      "blackIce",
+      "character",
+      "container",
+      "demon",
+      "mook"
+    ],
     "character": {},
     "mook": {},
     "htmlFields": [

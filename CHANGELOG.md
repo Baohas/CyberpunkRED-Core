@@ -28,6 +28,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Add a `dmg` damage marker modifier that drives the damage card and apply-damage controls and flags critical damage
 - Make damage criticals configurable per weapon and per ammo (critical threshold, dice required, and bonus damage; ammo can override the weapon's rule)
 - Support `@`-roll-data references (e.g. `@stats.ref`) in roll formulas
+- Add a Netrunning App: jack into NET Architectures installed on Access Points, run the Scanner and interface abilities (Pathfinder, Backdoor, Eye-Dee, Control, Slide, Cloak, Virus), rez/derez programs, and jack out. Black ICE and Demons are now Programs
 
 ### Changes
 
