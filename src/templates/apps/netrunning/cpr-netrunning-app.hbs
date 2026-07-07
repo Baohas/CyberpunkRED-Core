@@ -1,0 +1,162 @@
+<div class="cpr-net-root{{#if reducedMotion}} cpr-net-reduced-motion{{/if}}">
+  <div class="cpr-net-scanlines"></div>
+
+  {{#if topbar}}
+    <header class="cpr-net-topbar">
+      <span class="cpr-net-topbar-handle">{{topbar.handle}}</span>
+      <span class="cpr-net-topbar-deck">{{#if topbar.deckBrand}}{{topbar.deckBrand}}
+          /
+        {{/if}}{{topbar.deckName}}</span>
+      <span class="cpr-net-topbar-distance">
+        <svg class="cpr-net-signal" viewBox="0 0 512 512" aria-hidden="true"><use
+            href="systems/{{systemId}}/icons/netrunning/signal_{{topbar.signal}}.svg#path1"
+          /></svg>
+        {{topbar.distanceLabel}}
+      </span>
+    </header>
+  {{/if}}
+
+  <section class="cpr-net-arch">
+    <header class="cpr-net-line cpr-net-arch-header">
+      <span class="cpr-net-prompt">&gt;</span>
+      {{#if hasArch}}{{#if owner}}{{owner}} // {{/if}}{{archName}}{{else}}—{{/if}}
+    </header>
+
+    {{#if hasArch}}
+      {{! A split architecture renders as a column tree: `netLine` stacks a line's floors, then
+          lays its child lines side-by-side, each recursing so nested splits keep subdividing. }}
+      {{#*inline "netLine"}}
+        <div class="cpr-net-column">
+          {{#each floors as |floor|}}
+            <div
+              class="cpr-net-floor{{#if floor.isRoot}} cpr-net-root-floor{{/if}}{{#unless floor.revealed}} cpr-net-unrevealed{{/unless}}"
+              data-action="moveTo"
+              data-floor="{{floor.key}}"
+            >
+              <span class="cpr-net-floor-id">{{floor.label}}</span>
+              <span class="cpr-net-floor-body">
+                {{#if floor.iceName}}{{localize floor.iceName}}{{else}}{{localize
+                    floor.contentLabel
+                  }}{{/if}}
+                {{#if floor.isRoot}}<span class="cpr-net-root-label">{{localize
+                      "CPR.netArchitecture.app.root"
+                    }}</span>{{/if}}
+                {{#if floor.rez}}<span
+                    class="cpr-net-rez{{#if floor.derezzed}} cpr-net-derezzed{{/if}}"
+                  >[REZ {{floor.rez.value}}/{{floor.rez.max}}]</span>{{/if}}
+              </span>
+              <span class="cpr-net-floor-runners">
+                {{#each floor.runnersHere as |runner|}}
+                  <img
+                    class="cpr-net-runner-icon"
+                    src="{{runner.img}}"
+                    data-tooltip="{{runner.name}}"
+                  />
+                {{/each}}
+              </span>
+              <span class="cpr-net-floor-dv">
+                {{#if floor.showDv}}DV{{floor.dv}}{{/if}}
+              </span>
+            </div>
+          {{/each}}
+          {{#if children.length}}
+            <div class="cpr-net-branches">
+              {{#each children as |child|}}
+                {{> netLine child}}
+              {{/each}}
+            </div>
+          {{/if}}
+        </div>
+      {{/inline}}
+      <div class="cpr-net-tree">
+        <div
+          class="cpr-net-floor cpr-net-lobby"
+          data-action="moveTo"
+          data-floor="0"
+        >
+          <span class="cpr-net-floor-id">00</span>
+          <span class="cpr-net-floor-body">{{localize
+              "CPR.netArchitecture.app.lobby"
+            }}</span>
+          <span class="cpr-net-floor-runners">
+            {{#each lobbyRunners as |runner|}}
+              <img
+                class="cpr-net-runner-icon"
+                src="{{runner.img}}"
+                data-tooltip="{{runner.name}}"
+              />
+            {{/each}}
+          </span>
+          <span class="cpr-net-floor-dv"></span>
+        </div>
+        {{> netLine tree}}
+      </div>
+    {{else}}
+      <p class="cpr-net-empty">{{localize "CPR.netArchitecture.app.emptyState"}}</p>
+    {{/if}}
+  </section>
+
+  <section class="cpr-net-runner">
+    <header class="cpr-net-line cpr-net-runner-header">
+      <span class="cpr-net-prompt">&gt;</span>
+      {{localize "CPR.netArchitecture.app.cyberdeck"}}
+    </header>
+    {{#each myRunners as |runner|}}
+      <div class="cpr-net-runner-card">
+        <div class="cpr-net-runner-actions-count">
+          {{localize "CPR.netArchitecture.app.netActions"}}:
+          {{runner.netActions}}/{{runner.maxNetActions}}
+        </div>
+        <div class="cpr-net-abilities">
+          {{#each ../abilities as |ability|}}
+            <button
+              type="button"
+              class="cpr-net-button cpr-net-ability"
+              data-action="{{ability.key}}"
+            >
+              {{localize ability.label}}
+            </button>
+          {{/each}}
+        </div>
+        {{#if runner.programs.length}}
+          <div class="cpr-net-programs">
+            <div class="cpr-net-programs-header">{{localize
+                "CPR.netArchitecture.app.programs"
+              }}</div>
+            {{#each runner.programs as |program|}}
+              <div
+                class="cpr-net-program{{#if program.rezzed}} cpr-net-rezzed{{/if}}"
+              >
+                <span class="cpr-net-program-name">{{program.name}}</span>
+                <span class="cpr-net-program-rez">{{#if
+                    program.rezzed
+                  }}{{program.rez.value}}/{{program.rez.max}}{{/if}}</span>
+                <button
+                  type="button"
+                  class="cpr-net-button cpr-net-program-tag"
+                  data-action="toggleRez"
+                  data-actor="{{runner.id}}"
+                  data-program="{{program.id}}"
+                >{{#if program.rezzed}}{{localize
+                    "CPR.netArchitecture.app.atk"
+                  }}{{else}}{{localize
+                    "CPR.netArchitecture.app.rez"
+                  }}{{/if}}</button>
+              </div>
+            {{/each}}
+          </div>
+        {{/if}}
+        <div class="cpr-net-runner-buttons flexrow">
+          <button type="button" class="cpr-net-button" data-action="endTurn">
+            {{localize "CPR.netArchitecture.app.endTurn"}}
+          </button>
+          <button type="button" class="cpr-net-button" data-action="jackOut">
+            {{localize "CPR.netArchitecture.app.jackOut"}}
+          </button>
+        </div>
+      </div>
+    {{else}}
+      <p class="cpr-net-todo">{{localize "CPR.netArchitecture.app.notJackedIn"}}</p>
+    {{/each}}
+  </section>
+</div>

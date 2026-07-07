@@ -693,6 +693,62 @@ export default class CPRActor extends Actor {
   }
 
   /**
+   * Expose actor data for `@`-references in roll formulas (chat `/r`, weapon damage, macros).
+   *
+   * Single-value stats are exposed as plain numbers (`@stats.ref`); stats with a current/max pair —
+   * LUCK, EMP, and derived stats like HP and Humanity — are exposed as `{ value, total }`, so a formula
+   * can use `@stats.luck.value` (current) or `@stats.luck.total` (max). Skills come from the
+   * `system.skills` getter as `level + Active Effect mods` (`@skills.handgun`). Derived stats are also
+   * reachable under `@derivedStats.*`. Singular aliases `@stat`/`@skill` mirror the plural keys.
+   *
+   * @override
+   * @returns {Object}
+   */
+  getRollData() {
+    const data = { ...super.getRollData() };
+
+    // Shape a stat/derived-stat field for a formula: a single-value field becomes a plain number, a
+    // value+max field (LUCK, EMP, HP, Humanity, …) becomes `{ value, total }` so both
+    // `@stats.luck.value` (current) and `@stats.luck.total` (max) resolve. Non-numeric fields (e.g.
+    // currentWoundState) are skipped.
+    const refStat = (field) => {
+      if (typeof field === "number") return field;
+      if (field && typeof field === "object") {
+        if (typeof field.max === "number") {
+          return { value: field.value, total: field.max };
+        }
+        if (typeof field.value === "number") return field.value;
+      }
+      return undefined;
+    };
+    const buildRefs = (source) => {
+      const out = {};
+      for (const [name, field] of Object.entries(source ?? {})) {
+        const ref = refStat(field);
+        if (ref !== undefined) out[name] = ref;
+      }
+      return out;
+    };
+
+    const stats = buildRefs(this.system.stats);
+    const derivedStats = buildRefs(this.system.derivedStats);
+
+    // Skills come from the `system.skills` getter (slugified keys, level + Active Effect mods) so an
+    // AE-modified skill resolves to its effective level — `@skills.handgun` is `level + mods`.
+    const skills = {};
+    for (const [slug, skill] of Object.entries(this.system.skills ?? {})) {
+      skills[slug] = skill.level + skill.mods;
+    }
+
+    data.stats = { ...stats, ...derivedStats };
+    data.skills = skills;
+    data.derivedStats = derivedStats;
+    data.stat = data.stats;
+    data.skill = skills;
+    return data;
+  }
+
+  /**
    * Get all mods provided by equippable and upgradable items for a specific thing
    *
    * @param {String} baseName - name of the thing (e.g. stat) getting mods
@@ -1040,7 +1096,7 @@ export default class CPRActor extends Actor {
   _createStatRoll(statName) {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
-    const cprRoll = new CPRRolls.CPRStatRoll(niceStatName, statValue);
+    const cprRoll = CPRRolls.CPRStatRoll.create(niceStatName, statValue);
 
     const effects = Array.from(this.allApplicableEffects());
     const allMods = CPRMod.getAllModifiers(effects);
@@ -1087,7 +1143,7 @@ export default class CPRActor extends Actor {
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
     const statValue = this.getStat(statName);
     const repValue = this.system.reputation.value;
-    const cprRoll = new CPRRolls.CPRFacedownRoll(
+    const cprRoll = CPRRolls.CPRFacedownRoll.create(
       niceStatName,
       statValue,
       repValue,
@@ -1123,7 +1179,7 @@ export default class CPRActor extends Actor {
     const deathSavePenalty = this.system.derivedStats.deathSave.penalty;
     const deathSaveBasePenalty = this.system.derivedStats.deathSave.basePenalty;
     const bodyStat = this.system.stats.body.value;
-    const cprRoll = new CPRRolls.CPRDeathSaveRoll(
+    const cprRoll = CPRRolls.CPRDeathSaveRoll.create(
       deathSavePenalty,
       deathSaveBasePenalty,
       bodyStat,
@@ -1780,7 +1836,7 @@ export default class CPRActor extends Actor {
       // Cast formula to a string for the case of a static loss, which is a Number.
       // If it is already a string, nothing will change.
       const formula = `${item.system.humanityLoss[humanityLossType]}`;
-      const humRoll = new CPRRolls.CPRHumanityLossRoll(item.name, formula);
+      const humRoll = CPRRolls.CPRHumanityLossRoll.create(item.name, formula);
       await humRoll.roll();
       value -= humRoll.resultTotal;
       humRoll.entityData = {

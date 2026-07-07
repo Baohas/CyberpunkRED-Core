@@ -61,7 +61,7 @@ export default class CPRSkillItem extends CPRItem {
       (m) => !m.isSituational || (m.isSituational && m.onByDefault),
     );
 
-    const cprRoll = new CPRRolls.CPRSkillRoll(
+    const cprRoll = CPRRolls.CPRSkillRoll.create(
       niceStatName,
       statValue,
       skillName,

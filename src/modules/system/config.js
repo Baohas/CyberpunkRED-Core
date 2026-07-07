@@ -403,6 +403,19 @@ CPR.netArchDifficulty = {
   advanced: "CPR.dialog.netArchitectureRolltableSelection.advanced",
 };
 
+// The node type sitting on a NET Architecture floor. blackIce/demon floors link a
+// Program item (programUuid); file floors link a document (fileContentUuid); control
+// nodes link device actors (controlNodeDeviceUuids).
+CPR.netArchFloorContent = {
+  password: "CPR.netArchitecture.floor.options.password",
+  file: "CPR.netArchitecture.floor.options.file",
+  controlNode: "CPR.netArchitecture.floor.options.controlnode",
+  program: "CPR.netArchitecture.floor.content.program",
+  blackIce: "CPR.global.programClass.blackice",
+  demon: "CPR.global.programClass.demon",
+  root: "CPR.netArchitecture.floor.content.root",
+};
+
 CPR.defaultCriticalInjuryTable = `${CPR.systemId}.internal_critical-injury-tables`;
 CPR.defaultNetArchTable = `${CPR.systemId}.internal_net-rolltables`;
 CPR.defaultDvTable = `${CPR.systemId}.internal_dv-tables`;
@@ -472,6 +485,7 @@ CPR.programClassList = {
   booster: "CPR.global.programClass.booster",
   defender: "CPR.global.programClass.defender",
   blackice: "CPR.global.programClass.blackice",
+  demon: "CPR.global.programClass.demon",
 };
 
 CPR.interfaceAbilities = {

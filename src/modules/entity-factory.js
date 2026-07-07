@@ -1,5 +1,6 @@
 // Actors
 import CPRActor from "./actor/cpr-actor.js";
+import CPRAccessPointActor from "./actor/cpr-access-point.js";
 import CPRBlackIceActor from "./actor/cpr-black-ice.js";
 import CPRCharacterActor from "./actor/cpr-character.js";
 import CPRContainerActor from "./actor/cpr-container.js";
@@ -84,6 +85,7 @@ function factory(entities, baseClass) {
 }
 
 const actorTypes = {};
+actorTypes.accessPoint = CPRAccessPointActor;
 actorTypes.blackIce = CPRBlackIceActor;
 actorTypes.character = CPRCharacterActor;
 actorTypes.container = CPRContainerActor;

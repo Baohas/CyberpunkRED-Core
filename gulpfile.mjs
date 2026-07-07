@@ -27,7 +27,7 @@ const config = new Config({
   manifestFile: "src/system.json",
   // Code, data, templates, and fonts are copied as-is; CSS is compiled and
   // images are processed by their own tasks; packs are compiled.
-  staticExts: [".js", ".json", ".hbs", ".ttf"],
+  staticExts: [".js", ".json", ".hbs", ".ttf", ".otf"],
   imageExts: [".svg", ".png", ".webp", ".jpg", ".jpeg", ".webm"],
   excludeDirs: ["packs"],
   css: { enabled: true },

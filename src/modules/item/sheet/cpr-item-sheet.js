@@ -1,12 +1,12 @@
 import LOGGER from "../../utils/cpr-logger.js";
 import CPR from "../../system/config.js";
-import { CPRRoll } from "../../rolls/cpr-rolls.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import SelectRoleBonuses from "../../dialog/cpr-select-role-bonuses-prompt.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import CPRDialog from "../../dialog/cpr-dialog-application.js";
 import RoleAbilitySchema from "../../datamodels/item/components/role-ability-schema.js";
 import { ContainerUtils } from "../mixins/cpr-container.js";
+import CPRNetArchUtils from "../../utils/cpr-netarch-utils.js";
 
 const { ItemSheet } = foundry.appv1.sheets;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
@@ -487,177 +487,15 @@ export default class CPRItemSheet extends ItemSheet {
     }
   }
 
+  /**
+   * Populate this NET Architecture's floors by rolling the RAW generation tables.
+   */
   async _netarchGenerateFromTables() {
-    // Show "Netarch Rolltable Generation" Prompt.
-    const formData = await CPRDialog.showDialog(
-      {},
-      // Set options for dialog.
-      {
-        title: SystemUtils.Localize(
-          "CPR.dialog.netArchitectureRolltableSelection.title",
-        ),
-        template: `systems/${game.system.id}/templates/dialog/cpr-netarch-rolltable-generation-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
-      return;
+    const difficulty = this.item.system.difficulty ?? "standard";
+    const floors = await CPRNetArchUtils.generateFromTables(difficulty);
+    if (floors.length) {
+      await this.item.update({ "system.floors": floors });
     }
-    const tableSetting = game.settings.get(
-      game.system.id,
-      "netArchRollTableCompendium",
-    );
-    const lobby = await SystemUtils.GetCompendiumDoc(
-      tableSetting,
-      "First Two Floors (The Lobby)",
-    );
-    const other = await SystemUtils.GetCompendiumDoc(
-      tableSetting,
-      "All Other Floors (".concat(formData.difficulty.capitalize(), ")"),
-    );
-    const numberOfFloorsRoll = new CPRRoll(
-      SystemUtils.Localize("CPR.rolls.roll"),
-      "3d6",
-    );
-    await numberOfFloorsRoll.roll();
-    const numberOfFloors = numberOfFloorsRoll.resultTotal;
-    const branchCheck = new CPRRoll(
-      SystemUtils.Localize("CPR.rolls.roll"),
-      "1d10",
-    );
-    await branchCheck.roll();
-    let branchCounter = 0;
-    while (branchCheck.initialRoll >= 7) {
-      branchCounter += 1;
-      if (branchCounter > 7) {
-        break;
-      }
-      // eslint-disable-next-line no-await-in-loop
-      await branchCheck.roll();
-    }
-    let floors = await this._netarchDrawFromTableCustom(lobby, 2);
-    if (numberOfFloors > 2) {
-      floors = floors.concat(
-        await this._netarchDrawFromTableCustom(other, numberOfFloors - 2),
-      );
-    }
-    const prop = [];
-    let index = 0;
-    let floorIndex = 1;
-    let minfloorIndexbranch = 3;
-    let branch = "a";
-    floors.forEach((floor) => {
-      let content = "CPR.global.programClass.blackice";
-      if (floor.results[0].text.match("^Password")) {
-        content = "CPR.netArchitecture.floor.options.password";
-      }
-      if (floor.results[0].text.match("^File")) {
-        content = "CPR.netArchitecture.floor.options.file";
-      }
-      if (floor.results[0].text.match("^Control Node")) {
-        content = "CPR.netArchitecture.floor.options.controlnode";
-      }
-      let dv = "N/A";
-      const dvRegex = /DV([0-9]+)/g;
-      const match = dvRegex.exec(floor.results[0].text);
-      if (match !== null && match.length > 1) {
-        [, dv] = match;
-      }
-      let blackice = "--";
-      if (content.match("blackice")) {
-        switch (floor.results[0].text) {
-          case "Asp":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.asp";
-            break;
-          case "Giant":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.giant";
-            break;
-          case "Hellhound":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.hellhound";
-            break;
-          case "Kraken":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.kraken";
-            break;
-          case "Liche":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.liche";
-            break;
-          case "Raven":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.raven";
-            break;
-          case "Scorpion":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.scorpion";
-            break;
-          case "Skunk":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.skunk";
-            break;
-          case "Wisp":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.wisp";
-            break;
-          case "Dragon":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.dragon";
-            break;
-          case "Killer":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.killer";
-            break;
-          case "Sabertooth":
-            blackice = "CPR.netArchitecture.floor.options.blackIce.sabertooth";
-            break;
-          default:
-            break;
-        }
-      }
-      if (
-        branchCounter > 0 &&
-        floorIndex > minfloorIndexbranch &&
-        floorIndex > numberOfFloors / (branchCounter + 1) &&
-        index !== numberOfFloors - 1
-      ) {
-        floorIndex = minfloorIndexbranch;
-        minfloorIndexbranch += 1;
-        branch = String.fromCharCode(branch.charCodeAt() + 1);
-        branchCounter -= 1;
-      }
-      prop.push({
-        index,
-        floor: floorIndex.toString(),
-        branch,
-        dv,
-        content,
-        blackice,
-        description: "Roll ".concat(
-          floor.roll.total.toString(),
-          ": ",
-          floor.results[0].text,
-        ),
-      });
-      index += 1;
-      floorIndex += 1;
-    });
-    const cprItemData = foundry.utils.duplicate(this.item.system);
-    foundry.utils.setProperty(cprItemData, "floors", prop);
-    this.item.update({ system: cprItemData });
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  async _netarchDrawFromTableCustom(table, number) {
-    let abortCounter = 0;
-    const drawDuplicatesRegex = "^File|^Control Node";
-    const drawnNumbers = [];
-    const drawnResults = [];
-    while (drawnResults.length < number) {
-      // eslint-disable-next-line no-await-in-loop
-      const res = await table.draw({ displayChat: false });
-      if (!drawnNumbers.includes(res.roll.total)) {
-        if (!res.results[0].text.match(drawDuplicatesRegex)) {
-          drawnNumbers.push(res.roll.total);
-        }
-        drawnResults.push(res);
-      }
-      abortCounter += 1;
-      if (abortCounter > 1000) {
-        break;
-      }
-    }
-    return drawnResults;
   }
 
   async _netarchLevelAction(event) {

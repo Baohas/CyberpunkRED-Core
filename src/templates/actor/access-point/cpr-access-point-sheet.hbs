@@ -1,0 +1,42 @@
+<form class="cpr-access-point">
+  <div class="ap-install flexrow">
+    <label>{{localize "CPR.netArchitecture.app.install"}}</label>
+    <select class="ap-netarch-select">
+      <option value="">{{localize "CPR.global.generic.none"}}</option>
+      {{#each availableNetarchs as |n|}}
+        <option value="{{n.uuid}}">{{n.name}}</option>
+      {{/each}}
+    </select>
+  </div>
+  {{#if installedNetarch}}
+    <header class="ap-header flexrow">
+      <h2 class="ap-title">{{installedNetarch.name}}</h2>
+      <span class="text-semi ap-difficulty">{{localize (cprFindConfigValue "netArchDifficulty" installedNetarch.system.difficulty)}}</span>
+    </header>
+    <ol class="ap-floors items-list">
+      {{#each floors as |floor|}}
+        <li class="ap-floor flexrow">
+          <span class="ap-floor-level">{{floor.depth}}{{floor.branch}}</span>
+          <span class="ap-floor-content">{{localize (cprFindConfigValue "netArchFloorContent" floor.content)}}{{#if floor.iceName}} — {{localize floor.iceName}}{{/if}}</span>
+          <span class="ap-floor-dv">{{#if floor.dv}}DV {{floor.dv}}{{/if}}</span>
+        </li>
+      {{/each}}
+    </ol>
+    <div class="ap-actions flexrow">
+      <button type="button" data-action="openApp">
+        <i class="fa-solid fa-desktop"></i> {{localize "CPR.netArchitecture.app.open"}}
+      </button>
+      <button type="button" data-action="uninstall">
+        <i class="fa-solid fa-trash-can"></i> {{localize "CPR.netArchitecture.app.remove"}}
+      </button>
+    </div>
+  {{else}}
+    <div class="ap-empty">
+      <p>{{localize "CPR.netArchitecture.app.emptyState"}}</p>
+    </div>
+  {{/if}}
+  <section class="ap-notes">
+    <label>{{localize "CPR.global.generic.notes"}}</label>
+    {{{enrichedNotes}}}
+  </section>
+</form>

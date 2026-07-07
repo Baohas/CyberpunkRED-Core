@@ -3,6 +3,7 @@
 import CPRActiveEffect from "./modules/cpr-active-effect.js";
 import CPRActiveEffectSheet from "./modules/cpr-active-effect-sheet.js";
 import { actorConstructor, itemConstructor } from "./modules/entity-factory.js";
+import CPRAccessPointSheet from "./modules/actor/sheet/cpr-access-point-sheet.js";
 import CPRBlackIceActorSheet from "./modules/actor/sheet/cpr-black-ice-sheet.js";
 import CPRCharacterActorSheet from "./modules/actor/sheet/cpr-character-sheet.js";
 import CPRContainerActorSheet from "./modules/actor/sheet/cpr-container-sheet.js";
@@ -17,6 +18,7 @@ import CPRMacro from "./modules/utils/cpr-macros.js";
 import SystemUtils from "./modules/utils/cpr-systemUtils.js";
 import MigrationRunner from "./modules/system/migrate/migration.js";
 import MigrationApp from "./modules/system/migrate/migration-app.js";
+import CPRNetSocket from "./modules/system/net-socket.js";
 
 // Function imports
 import registerHooks from "./modules/system/hooks.js";
@@ -29,6 +31,7 @@ import initalizeAPI from "./modules/api/initialize.js";
 import registerSystemSettings from "./modules/system/settings.js";
 
 // Actor Data Models:
+import AccessPointDataModel from "./modules/datamodels/actor/access-point-datamodel.js";
 import BlackIceDataModel from "./modules/datamodels/actor/blackIce-datamodel.js";
 import CharacterDataModel from "./modules/datamodels/actor/character-datamodel.js";
 import ContainerDataModel from "./modules/datamodels/actor/container-datamodel.js";
@@ -52,6 +55,10 @@ import SkillDataModel from "./modules/datamodels/item/skill-datamodel.js";
 import VehicleDataModel from "./modules/datamodels/item/vehicle-datamodel.js";
 import WeaponDataModel from "./modules/datamodels/item/weapon-datamodel.js";
 import MigrationError from "./modules/system/migrate/migration-error.js";
+
+// Dice
+import CPRDie from "./modules/rolls/cpr-die-extended.js";
+import * as CPRRolls from "./modules/rolls/cpr-rolls.js";
 
 const { ActorSheet, ItemSheet } = foundry.appv1.sheets;
 const { DocumentSheetConfig } = foundry.applications.apps;
@@ -96,6 +103,11 @@ Hooks.once("init", async () => {
     types: ["demon"],
     makeDefault: true,
   });
+  Actors.registerSheet(game.system.id, CPRAccessPointSheet, {
+    label: SystemUtils.Localize("CPR.sheets.accessPointSheet"),
+    types: ["accessPoint"],
+    makeDefault: true,
+  });
 
   // Register Item Sheet Application Classes
   Items.unregisterSheet("core", ItemSheet);
@@ -123,6 +135,7 @@ Hooks.once("init", async () => {
   game.cpr = {
     apps: {
       CPRActiveEffectSheet,
+      CPRAccessPointSheet,
       CPRBlackIceActorSheet,
       CPRCharacterActorSheet,
       CPRContainerActorSheet,
@@ -148,6 +161,7 @@ Hooks.once("init", async () => {
   CONFIG.Combatant.documentClass = CPRCombatant;
 
   // Register Actor data models.
+  CONFIG.Actor.dataModels.accessPoint = AccessPointDataModel;
   CONFIG.Actor.dataModels.blackIce = BlackIceDataModel;
   CONFIG.Actor.dataModels.character = CharacterDataModel;
   CONFIG.Actor.dataModels.container = ContainerDataModel;
@@ -170,6 +184,30 @@ Hooks.once("init", async () => {
   CONFIG.Item.dataModels.skill = SkillDataModel;
   CONFIG.Item.dataModels.vehicle = VehicleDataModel;
   CONFIG.Item.dataModels.weapon = WeaponDataModel;
+
+  // Register extended Die class that supports the 'red'/'dmg' modifiers (1d10red, 2d6dmg notation)
+  CONFIG.Dice.terms.d = CPRDie;
+
+  // Register the CPR Roll subclasses so rolls attached to chat messages serialize and reconstruct as
+  // the correct class on every client (Roll.fromData looks the class up by name in CONFIG.Dice.rolls).
+  CONFIG.Dice.rolls.push(
+    CPRRolls.CPRRoll,
+    CPRRolls.CPRInitiative,
+    CPRRolls.CPRStatRoll,
+    CPRRolls.CPRProgramStatRoll,
+    CPRRolls.CPRSkillRoll,
+    CPRRolls.CPRFacedownRoll,
+    CPRRolls.CPRAttackRoll,
+    CPRRolls.CPRAimedAttackRoll,
+    CPRRolls.CPRAutofireRoll,
+    CPRRolls.CPRSuppressiveFireRoll,
+    CPRRolls.CPRRoleRoll,
+    CPRRolls.CPRInterfaceRoll,
+    CPRRolls.CPRDeathSaveRoll,
+    CPRRolls.CPRDamageRoll,
+    CPRRolls.CPRHumanityLossRoll,
+    CPRRolls.CPRTableRoll,
+  );
 
   // Turn legacy tranferral for active effects off. Necessary for v11.
   CONFIG.ActiveEffect.legacyTransferral = false;
@@ -289,6 +327,9 @@ Hooks.once("init", async () => {
  * but then we moved to integers for maintainability's sake.
  */
 Hooks.once("ready", async () => {
+  // Register the netrunning GM socket relay on every client (players emit, the GM applies).
+  CPRNetSocket.register();
+
   overrideRulerFunctions();
   // Set the waypoint label template on the ruler class directly — reading it from
   // `canvas.controls.ruler` threw when launching into a world with no active scene.

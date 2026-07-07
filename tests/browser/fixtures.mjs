@@ -15,6 +15,7 @@ import { test as base, expect } from "@playwright/test";
 // Authoritative creatable types, mirroring the DataModel registration in
 // src/cpr.js (CONFIG.Actor.dataModels / CONFIG.Item.dataModels).
 export const ACTOR_TYPES = [
+  "accessPoint",
   "blackIce",
   "character",
   "container",

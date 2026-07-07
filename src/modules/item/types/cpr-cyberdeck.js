@@ -4,12 +4,153 @@ import * as CPRRolls from "../../rolls/cpr-rolls.js";
 import LOGGER from "../../utils/cpr-logger.js";
 import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
+import CPRNetrunningApp from "../../apps/cpr-netrunning-app.js";
+import CPRNetSocket from "../../system/net-socket.js";
 
 /**
  * Extend the base CPRItem object with things specific to cyberdecks.
  * @extends {CPRItem}
  */
 export default class CPRCyberdeckItem extends CPRItem {
+  /**
+   * Scanner (Meat Action): roll Interface + 1d10 (no fixed DV — graded), then locate nearby Access
+   * Points. Every access point already located by this runner (`flags.<system>.netrunning.revealed`
+   * on the token) is pinged immediately — a shared ping any client can fire, so the token can stay
+   * hidden. The not-yet-located ones are handed to the GM (directly, or via the socket relay for a
+   * player), who adjudicates which the scan found; each of those is then flagged located + pinged.
+   *
+   * @public
+   */
+  async scanner() {
+    if (!this.actor) return;
+    if (!CPRNetSocket.requireActiveGM()) return;
+    const [meatToken] = this.actor.getActiveTokens();
+    if (!meatToken) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.netArchitecture.app.noMeatToken"),
+      );
+      return;
+    }
+    const netRole = this.actor.itemTypes.role.find(
+      (role) => role.system.mainRoleAbility?.toLowerCase() === "interface",
+    );
+    const interfaceRank = netRole
+      ? Number.parseInt(netRole.system.rank, 10)
+      : 0;
+    const roll = CPRRolls.CPRRoll.create(
+      SystemUtils.Localize("CPR.netArchitecture.app.scanner"),
+      `1d10 + ${interfaceRank}`,
+    );
+    await roll.roll();
+    await roll.toMessage({
+      flavor: SystemUtils.Format("CPR.netArchitecture.app.scannerRoll", {
+        interface: interfaceRank,
+      }),
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+    });
+
+    // Ping every already-located access point right away — a ping broadcasts and needs no
+    // ownership, so this works for a player and the token stays hidden.
+    for (const token of canvas.tokens.placeables) {
+      if (
+        token.actor?.type === "accessPoint" &&
+        token.document.getFlag(game.system.id, "netrunning")?.revealed
+      ) {
+        canvas.ping(token.center);
+      }
+    }
+
+    // Hand any not-yet-located access points to the GM (relayed when the caller is a player), who
+    // decides which the scan found; each is flagged located + pinged for everyone.
+    await CPRNetSocket.request("scannerReveal", {
+      meatTokenId: meatToken.id,
+      rollTotal: roll.resultTotal,
+    });
+  }
+
+  /**
+   * Jack in to a nearby NET Architecture: find the Access Point tokens on the active scene within
+   * this deck's effective range of the netrunner's meat token (hidden or not — proximity is the
+   * gate, not visibility), and open the Netrunning App for the nearest one. Warns and aborts if no
+   * GM is online, if the netrunner has no token on the active scene, or if no access point is in
+   * range.
+   *
+   * @public
+   */
+  async jackIn() {
+    if (!this.actor) return;
+    if (!CPRNetSocket.requireActiveGM()) return;
+    const [meatToken] = this.actor.getActiveTokens();
+    if (!meatToken) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.netArchitecture.app.noMeatToken"),
+      );
+      return;
+    }
+    const range = this.system.effectiveRange ?? 6;
+    const inRange = canvas.tokens.placeables
+      .filter((t) => t.actor?.type === "accessPoint")
+      .map((t) => ({
+        token: t,
+        distance: canvas.grid.measurePath([meatToken.center, t.center])
+          .distance,
+      }))
+      .filter((entry) => entry.distance <= range)
+      .sort((a, b) => a.distance - b.distance);
+    if (!inRange.length) {
+      SystemUtils.DisplayMessage(
+        "warn",
+        SystemUtils.Localize("CPR.netArchitecture.app.noAccessPointInRange"),
+      );
+      return;
+    }
+    const apActor = inRange[0].token.actor;
+    await this.#registerRunner(apActor);
+    CPRNetrunningApp.open(apActor);
+  }
+
+  /**
+   * Register this deck's netrunner on an Access Point's shared runner state (via the GM relay):
+   * position at the entry floor with a fresh NET-action budget derived from Interface Rank.
+   *
+   * @param {Actor} apActor - the accessPoint actor being jacked into
+   */
+  async #registerRunner(apActor) {
+    const netRole = this.actor.itemTypes.role.find(
+      (role) => role.system.mainRoleAbility?.toLowerCase() === "interface",
+    );
+    const rank = netRole ? Number.parseInt(netRole.system.rank, 10) : 0;
+    const maxActions = CPRCyberdeckItem.#netActionsForRank(rank);
+    const runners = foundry.utils.deepClone(
+      apActor.getFlag(game.system.id, "runners") ?? {},
+    );
+    runners[this.actor.id] = {
+      name: this.actor.name,
+      img: this.actor.img,
+      // Land on the Lobby (floor "0", the always-visible entry) and descend from there; the
+      // architecture floors reveal as the runner steps onto them or Pathfinds ahead.
+      floor: "0",
+      netActions: maxActions,
+      maxNetActions: maxActions,
+      deckId: this.id,
+      userId: game.user.id,
+    };
+    await CPRNetSocket.request("update", {
+      uuid: apActor.uuid,
+      data: { [`flags.${game.system.id}.runners`]: runners },
+    });
+  }
+
+  /** NET Actions per turn by Interface Rank (RAW 2/3/4/5 bands) [cfg]. */
+  static #netActionsForRank(rank) {
+    if (rank <= 2) return 2;
+    if (rank <= 4) return 3;
+    if (rank <= 6) return 4;
+    return 5;
+  }
+
   /**
    * Cyberdeck Code
    *
@@ -82,7 +223,7 @@ export default class CPRCyberdeckItem extends CPRItem {
       LOGGER.error(
         `_createCyberdeckRoll | CPRCyberdeckItem | Unable to locate program ${programId}.`,
       );
-      return new CPRRolls.CPRRoll("Unknown Program", "1d10");
+      return CPRRolls.CPRRoll.create("Unknown Program", "1d10");
     }
 
     const roleName = extraData.netRoleItem.system.mainRoleAbility;
@@ -99,7 +240,7 @@ export default class CPRCyberdeckItem extends CPRItem {
     // Damage rolls from programs are treated as normal Damage Rolls.
     switch (executionType) {
       case "atk": {
-        cprRoll = new CPRRolls.CPRInterfaceRoll(
+        cprRoll = CPRRolls.CPRInterfaceRoll.create(
           "attack",
           roleName,
           roleValue,
@@ -113,7 +254,7 @@ export default class CPRCyberdeckItem extends CPRItem {
         break;
       }
       case "def": {
-        cprRoll = new CPRRolls.CPRInterfaceRoll(
+        cprRoll = CPRRolls.CPRInterfaceRoll.create(
           "defense",
           roleName,
           roleValue,
@@ -124,7 +265,11 @@ export default class CPRCyberdeckItem extends CPRItem {
         break;
       }
       case "damage": {
-        cprRoll = new CPRRolls.CPRDamageRoll(pgmName, damageFormula, "program");
+        cprRoll = CPRRolls.CPRDamageRoll.create(
+          pgmName,
+          damageFormula,
+          "program",
+        );
         cprRoll.rollCardExtraArgs.program = program;
         cprRoll.setNetCombat(pgmName);
         break;
@@ -215,11 +360,11 @@ export default class CPRCyberdeckItem extends CPRItem {
       const zap = SystemUtils.Localize(
         "CPR.global.role.netrunner.interfaceAbility.zap",
       );
-      cprRoll = new CPRRolls.CPRDamageRoll(zap, "1d6", "program");
+      cprRoll = CPRRolls.CPRDamageRoll.create(zap, "1d6", "program");
       cprRoll.setNetCombat(zap);
     } else {
       if (interfaceAbility === "zap") rollType = "attack";
-      cprRoll = new CPRRolls.CPRInterfaceRoll(rollType, roleName, roleValue);
+      cprRoll = CPRRolls.CPRInterfaceRoll.create(rollType, roleName, roleValue);
       cprRoll.ability = interfaceAbility;
       cprRoll.rollCardExtraArgs.cyberdeck = this;
     }

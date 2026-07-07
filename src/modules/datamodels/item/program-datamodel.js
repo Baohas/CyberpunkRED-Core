@@ -64,6 +64,22 @@ export default class ProgramDataModel extends CPRSystemDataModel.mixin(
         initial: 0,
         min: 0,
       }),
+      // Demon-class programs (class: "demon") use these instead of atk/def/per/spd:
+      // a pre-summed combat number and a per-turn action count. Ignored by other classes.
+      combatNumber: new fields.NumberField({
+        required: true,
+        nullable: false,
+        integer: true,
+        initial: 0,
+        min: 0,
+      }),
+      actions: new fields.NumberField({
+        required: true,
+        nullable: false,
+        integer: true,
+        initial: 0,
+        min: 0,
+      }),
       rez: new fields.SchemaField(HpSchema.defineSchema({ initial: 10 })),
     });
   }

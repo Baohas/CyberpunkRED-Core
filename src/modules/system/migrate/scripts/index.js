@@ -17,3 +17,5 @@ export { default as UpdateMedtechRole } from "./038-update-medtech-role.js";
 export { default as SplitPacks } from "./039-split-packs.js";
 export { default as AmmoIconConversion } from "./040-ammo-icons.js";
 export { default as RemoveUnusedInstallFlag } from "./041-remove-unused-install-flag.js";
+export { default as AddDamageCritConfig } from "./042-add-damage-crit-config.js";
+export { default as NetrunningUnifyMigration } from "./043-netrunning-unify.js";

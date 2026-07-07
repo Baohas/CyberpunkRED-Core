@@ -1,6 +1,8 @@
 /** @type {import("stylelint").Config} */
 export default {
   extends: ["stylelint-config-standard"],
+  // Vendored, minified third-party stylesheet (Nerd Fonts webfont CSS) — not ours to lint.
+  ignoreFiles: ["src/css/elements/nerd-fonts.css"],
   rules: {
     "at-rule-no-unknown": [
       true,

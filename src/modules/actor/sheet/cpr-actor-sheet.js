@@ -772,6 +772,14 @@ export default class CPRActorSheet extends ActorSheet {
           item.uninstall();
           break;
         }
+        case "cyberdeck-scanner": {
+          item.scanner();
+          break;
+        }
+        case "cyberdeck-jack-in": {
+          item.jackIn();
+          break;
+        }
         case "dv-ruler": {
           if (item.system?.dvTable !== "") {
             await item.doAction(this.actor, event.currentTarget.attributes);
@@ -1282,7 +1290,7 @@ export default class CPRActorSheet extends ActorSheet {
       const result = await this.actor.createEmbeddedDocuments("Item", [
         cprItemData,
       ]);
-      const cprRoll = new CPRRolls.CPRTableRoll(
+      const cprRoll = CPRRolls.CPRTableRoll.create(
         injury.name,
         res.roll,
         `systems/${game.system.id}/templates/chat/cpr-critical-injury-rollcard.hbs`,

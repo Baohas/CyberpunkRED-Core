@@ -43,7 +43,8 @@
             "antiprogramattacker",
             "booster",
             "defender",
-            "blackice"
+            "blackice",
+            "demon"
           ]
         },
         "blackIceType": {
@@ -92,6 +93,14 @@
           "type": "integer",
           "minimum": 0
         },
+        "combatNumber": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "actions": {
+          "type": "integer",
+          "minimum": 0
+        },
         "rez": {
           "type": "object",
           "additionalProperties": false,
@@ -129,6 +138,8 @@
         "spd",
         "atk",
         "def",
+        "combatNumber",
+        "actions",
         "rez"
       ]
     },

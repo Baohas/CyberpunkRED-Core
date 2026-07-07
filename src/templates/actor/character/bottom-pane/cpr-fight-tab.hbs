@@ -23,9 +23,4 @@
       {{> "systems/cyberpunk-red-core/templates/actor/mixin/fight/cpr-weapons-list.hbs" }}
     </div>
   {{/if}}
-  {{#if (cprCompare fightData.fightState "===" "Netspace") }}
-    {{> "systems/cyberpunk-red-core/templates/actor/mixin/netrunning/cpr-netActions.hbs" }}
-    {{> "systems/cyberpunk-red-core/templates/actor/mixin/netrunning/cpr-installedPrograms.hbs" }}
-    {{> "systems/cyberpunk-red-core/templates/actor/mixin/netrunning/cpr-rezzedPrograms.hbs" }}
-  {{/if}}
 </div>
