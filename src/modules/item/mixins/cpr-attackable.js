@@ -226,28 +226,30 @@ const Attackable = function Attackable() {
     cprRoll.addMod(roleMods);
     cprRoll.addMod(allActionsMods);
 
-    // Mod from item upgrades that affect attackmod.
+    // Upgrade attackmods exist only on `upgradable` items; aggregate them there.
+    let relevantUpgradeMods = [];
     if (SystemUtils.hasMixin(this.type, "upgradable")) {
-      const relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter(
+      relevantUpgradeMods = this.getAllUpgradeMods("attackmod").filter(
         (m) => (m.isSituational && m.onByDefault) || !m.isSituational,
       );
       cprRoll.addMod(relevantUpgradeMods);
+    }
 
-      // Mod from weapon attackmod. We will only add it if there are no upgrade mods that override this value.
-      if (
-        relevantUpgradeMods.length === 0 ||
-        relevantUpgradeMods.some((m) => !(m.type === "override"))
-      ) {
-        // CPRMod-like object.
-        cprRoll.addMod([
-          {
-            value: cprWeaponData.attackmod,
-            source: this.name,
-            category: "combat",
-            key: "bonuses.universalAttack",
-          },
-        ]);
-      }
+    // The weapon's own attackmod applies to ANY attackable item — including a
+    // secondary-weapon itemUpgrade, which has no `upgradable` mixin (issue #1181).
+    // Skip it only when an upgrade override replaces the value.
+    if (
+      relevantUpgradeMods.length === 0 ||
+      relevantUpgradeMods.some((m) => m.type !== "override")
+    ) {
+      cprRoll.addMod([
+        {
+          value: cprWeaponData.attackmod,
+          source: this.name,
+          category: "combat",
+          key: "bonuses.universalAttack",
+        },
+      ]);
     }
 
     if (fumbleRecovery >= 1) {
