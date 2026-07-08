@@ -114,6 +114,73 @@ export default class CPRDie extends Die {
   }
 
   /**
+   * Keep/drop must treat each `red` explode/implode as a **single** result — the original die plus the
+   * bonus/penalty it spawned — ranked by their combined value and kept or dropped together. Foundry's
+   * core keep/drop instead ranks every result independently by its rolled face, which (a) can strand a
+   * bonus die away from its parent and (b) lets an implode penalty (positive face, negative count) win
+   * `kh` and produce a negative "kept" total. `keep`/`drop` delegate to this; it folds each group into
+   * its parent's face for the core pass, then restores and propagates the verdict to the added dice.
+   *
+   * @param {Function} runCore - Runs the core keep/drop over the temporarily folded results.
+   * @returns {void|false}
+   */
+  _cprGroupedKeepDrop(runCore) {
+    // Map each parent (by its index in `results`) to the bonus/penalty dice `red` spawned from it.
+    const groups = new Map();
+    for (const r of this.results) {
+      if (r.cprBonus && Number.isInteger(r.cprParentIndex)) {
+        const list = groups.get(r.cprParentIndex) ?? [];
+        list.push(r);
+        groups.set(r.cprParentIndex, list);
+      }
+    }
+    // No `red`-added dice in the pool (e.g. `khred`, where keep runs before red) — nothing to group.
+    if (groups.size === 0) return runCore();
+
+    // Fold each group's added dice into its parent's face so the core pass ranks by the combined value,
+    // and deactivate the added dice so they are neither ranked nor selected on their own.
+    const folded = [];
+    for (const [parentIndex, added] of groups) {
+      const parent = this.results[parentIndex];
+      if (!parent) continue;
+      const delta = added.reduce((t, r) => t + (r.count ?? r.result), 0);
+      folded.push({ parent, added, origResult: parent.result });
+      parent.result += delta;
+      added.forEach((r) => {
+        r.active = false;
+      });
+    }
+
+    try {
+      return runCore();
+    } finally {
+      // Restore each parent's rolled face and propagate its keep/drop verdict to its added dice, so the
+      // whole group stays or goes as a unit.
+      for (const { parent, added, origResult } of folded) {
+        parent.result = origResult;
+        added.forEach((r) => {
+          r.active = parent.active;
+          r.discarded = !parent.active;
+        });
+      }
+    }
+  }
+
+  /**
+   * @override - group `red`'s added dice with their parent for keep/drop. See {@link _cprGroupedKeepDrop}.
+   * @param {string} modifier - The matched modifier query (e.g. `kh`, `kl2`).
+   * @returns {void|false}
+   */
+  keep(modifier) {
+    return this._cprGroupedKeepDrop(() => super.keep(modifier));
+  }
+
+  /** @override - see {@link keep}. */
+  drop(modifier) {
+    return this._cprGroupedKeepDrop(() => super.drop(modifier));
+  }
+
+  /**
    * The `red` check-die critical: explode on max (`>= threshold`), implode on a natural 1. One extra
    * die per qualifying original result, no cascading.
    *
@@ -132,6 +199,9 @@ export default class CPRDie extends Die {
     const targets = this.results.filter((r) => r.active && !r.cprProcessed);
     for (const result of targets) {
       result.cprProcessed = true;
+      // Index of the parent die, recorded on each added die so a later keep/drop can group the two as
+      // one result (see {@link keep}). Stable: `roll()` only appends, so existing indices never shift.
+      const parentIndex = this.results.indexOf(result);
       if (result.result >= threshold) {
         // Critical success — explode: add one die, summed into the total normally.
         result.exploded = true;
@@ -140,6 +210,7 @@ export default class CPRDie extends Die {
         bonus.cprProcessed = true;
         bonus.cprBonus = true;
         bonus.cprSuccess = true;
+        bonus.cprParentIndex = parentIndex;
       } else if (result.result === 1) {
         // Critical failure — implode: add one die counted negatively (subtracted from the total).
         // eslint-disable-next-line no-await-in-loop
@@ -148,6 +219,7 @@ export default class CPRDie extends Die {
         penalty.cprBonus = true;
         penalty.cprFailure = true;
         penalty.count = -1 * penalty.result;
+        penalty.cprParentIndex = parentIndex;
       }
     }
     return undefined;
