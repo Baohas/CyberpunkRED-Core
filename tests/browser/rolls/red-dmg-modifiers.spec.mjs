@@ -119,11 +119,29 @@ test.describe("red × keep/drop (follow position)", () => {
     expect((await forceRoll(game, "2d10khred", 10, [10, 3, 8])).total).toBe(18);
   });
 
-  test("red before kh: red expands the pool, then kh selects (2d10redkh)", async ({
+  test("red before kh: the explode is one grouped result, kept whole (2d10redkh)", async ({
     game,
   }) => {
-    // red first: 10 explodes (+8), 3 nothing → pool {10, 3, 8}; kh keeps the single highest = 10.
-    expect((await forceRoll(game, "2d10redkh", 10, [10, 3, 8])).total).toBe(10);
+    // red first: 10 explodes (+8), 3 nothing. kh ranks the 10 as its combined value (10 + 8 = 18) and
+    // keeps the whole group — the bonus travels with its parent — so the total is 18, not a stranded 10.
+    expect((await forceRoll(game, "2d10redkh", 10, [10, 3, 8])).total).toBe(18);
+  });
+
+  test("red before kh: an implode penalty never wins keepHighest (2d10redkh)", async ({
+    game,
+  }) => {
+    // red first: 1 implodes (−3 penalty), 8 nothing. The 1's group ranks as its combined value (1 − 3 =
+    // −2), so kh keeps the 8 and drops the imploded group whole — the penalty can't be "kept" as highest
+    // and drag the total negative (the pre-grouping bug returned −3).
+    expect((await forceRoll(game, "2d10redkh", 10, [1, 8, 3])).total).toBe(8);
+  });
+
+  test("red before kl: keepLowest keeps the imploded group by its combined value (2d10redkl)", async ({
+    game,
+  }) => {
+    // red first: 1 implodes (−3), 8 nothing. kl ranks the 1's group as 1 − 3 = −2 (the lowest) and keeps
+    // it whole → 1 + (−3) = −2; the 8 is dropped.
+    expect((await forceRoll(game, "2d10redkl", 10, [1, 8, 3])).total).toBe(-2);
   });
 
   test("kl before red: red acts on the kept lowest, implode included (2d10klred)", async ({
