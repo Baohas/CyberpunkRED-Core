@@ -18,6 +18,7 @@ const hooksImports = [
   "actor/sync-tracked-armor.js",
   "actor/update-role-from-item.js",
   "actor/update-role-on-item-delete.js",
+  "chat/add-damage-application.js",
   "chat/add-glyphs.js",
   "chat/hide-blind-rolls.js",
   "external/babele.js",
