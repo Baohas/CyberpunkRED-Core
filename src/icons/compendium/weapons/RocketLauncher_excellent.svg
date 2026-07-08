@@ -1,5 +1,5 @@
 <?xml version="1.0" standalone="yes"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 240 240">
 <path style="fill:#1b1f21; stroke:none;" d="M0 0L0 240L240 240L240 0L0 0z"/>
 <path style="fill:#e64539; stroke:none;" d="M100 8L100 12L88 12L88 20L128 20L128 12L108 12L108 8L100 8M76 12L76 20L84 20L84 12L76 12M132 12L132 20L144 20L144 12L132 12z"/>
 <path style="fill:#3a3f5e; stroke:none;" d="M76 20L76 28L84 28L84 20L76 20M88 20L88 24L128 24L128 20L88 20M132 20L132 28L144 28L144 20L132 20z"/>
