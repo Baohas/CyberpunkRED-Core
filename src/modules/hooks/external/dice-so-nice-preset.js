@@ -51,7 +51,10 @@ const InitializeDSNPreset = () => {
         category: SystemUtils.Localize("CPR.module.dsn.groupName"),
         background: game.user.color.toString(16), // Omitting the background turns the numbers black.
         edge: "#000000",
-        material: "glass",
+        outline: "#000000",
+        foreground: "#000000",
+        material: "metal",
+        font: "Bruno Ace",
       },
       "preferred",
     );
@@ -63,7 +66,10 @@ const InitializeDSNPreset = () => {
         category: SystemUtils.Localize("CPR.module.dsn.groupName"),
         background: "#E64539",
         edge: "#000000",
-        material: "glass",
+        outline: "#000000",
+        foreground: "#000000",
+        material: "metal",
+        font: "Bruno Ace",
       },
       "default",
     );
@@ -75,7 +81,10 @@ const InitializeDSNPreset = () => {
         category: SystemUtils.Localize("CPR.module.dsn.groupName"),
         background: "#FFF300",
         edge: "#000000",
-        material: "glass",
+        outline: "#000000",
+        foreground: "#000000",
+        material: "metal",
+        font: "Bruno Ace",
       },
       "default",
     );
