@@ -40,17 +40,17 @@
      sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
   <path
      id="rect7046"
-     style="fill:#595652;fill-opacity:1"
+     style="display:inline;fill:#fbf236;fill-opacity:1"
      d="M 10,6 V 7 H 9 V 8 H 8 V 9 H 7 v 1 H 6 v 40 h 1 v 1 h 1 v 1 h 1 v 1 h 1 v 1 h 40 v -1 h 1 v -1 h 1 v -1 h 1 v -1 h 1 V 10 H 53 V 9 H 52 V 8 H 51 V 7 H 50 V 6 Z m 0,2 h 40 v 1 h 1 v 1 h 1 v 40 h -1 v 1 h -1 v 1 H 10 V 51 H 9 V 50 H 8 V 10 H 9 V 9 h 1 z"
      sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccccccccccccccccccccc" />
   <path
      id="rect7254"
-     style="fill:#242322;fill-opacity:1"
+     style="fill:#ac3232;fill-opacity:1"
      d="M 10,8 V 9 H 9 v 1 H 8 v 40 h 1 v 1 h 1 v 1 h 40 v -1 h 1 v -1 h 1 V 10 H 51 V 9 H 50 V 8 Z"
      sodipodi:nodetypes="ccccccccccccccccccccc" />
   <path
      id="rect8148"
-     style="fill:#595652;fill-opacity:1"
+     style="fill:#d95763;fill-opacity:1"
      d="M 25 16 L 25 17 L 33 17 L 33 16 L 25 16 z M 33 17 L 33 43 L 34 43 L 34 17 L 33 17 z M 33 43 L 27 43 L 27 44 L 33 44 L 33 43 z M 27 43 L 27 24 L 27 23 L 25 23 L 25 24 L 26 24 L 26 43 L 27 43 z M 25 23 L 25 17 L 24 17 L 24 23 L 25 23 z " />
   <path
      id="rect8256"
