@@ -18,10 +18,15 @@
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
 
+### Bug Fixes
+
+- Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
+
 ### Plumbing
 
 - Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
 - Added a Vitest unit-test layer (`npm run test:unit`) for the Foundry-light code (pure helpers, config invariants), with a minimal Foundry-global shim and a CI job.
+- Cleaned up all ESLint warnings and tightened the lint configuration so they are now treated as errors, including reporting unused `eslint-disable` directives.
 
 ### Bug Fixes
 

@@ -18,10 +18,15 @@
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
 
+### Corrección de Errores
+
+- Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
+
 ### Plumbing
 
 - Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
 - Added a Vitest unit-test layer (`npm run test:unit`) for the Foundry-light code (pure helpers, config invariants), with a minimal Foundry-global shim and a CI job.
+- Cleaned up all ESLint warnings and tightened the lint configuration so they are now treated as errors, including reporting unused `eslint-disable` directives.
 
 ### Corrección de Errores
 
@@ -151,7 +156,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 
 ## Version 0.89.1
 
-### Corrección de Errores
+### Bug Fixes
 
 - \#1128 - Fixed visual bug related to weapon firemodes not showing state correctly.
 - Fix uprade weapons (e.g., underbarrel weapons) not rolling.
@@ -244,7 +249,7 @@ If you have imported the `Get EMP'd Macro` you will need to delete the copy in y
   - Remove the programatic band name handler
 - Ensure all SVGs have `width`/`height` set corectly to prevent known Firefox/PIXI bug
 
-### Bug Fixes
+### Corrección de Errores
 
 - \#933 - Fix multiple compendium errors/missing values, thanks @Alexander Fokin
 - \#950 - Bolded DV checks in various items of the compendia
@@ -316,7 +321,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 **WARNING**: IF YOU HAVE UPDATED FROM `0.88.0`/FOUNDRY V11, THIS WAS WRONG (but not your fault). YOU NEED TO ROLL BACK TO THE BACKUP YOU MADE / FOUNDRY V10, THEN UPDATE TO THIS VERSION. AGAIN, **ROLL BACK TO FOUNDRY V10 AND YOUR BACKUP THAT YOU MADE IN CPR `0.87.6`**, THEN UPDATE DIRECTLY TO `V0.88.1`. Come to the discord if you are confused.
 
-### Corrección de Errores
+### Bug Fixes
 
 - Actually fix a (Foundry) bug where unlinked tokens were losing all of their items.
 
@@ -362,7 +367,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.6
 
-### Bug Fixes
+### Corrección de Errores
 
 - Fix a bug where world items with items installed wouldn't render (introduced in last hotfix).
 
@@ -386,7 +391,7 @@ This means any instances where you have dragged an item from a compendium into a
     - Default: false
   - If enabled we will migrate Module provided compendia
 
-### Corrección de Errores
+### Bug Fixes
 
 - Fix some typos/wording in BC+ items
 - Add CSS overrides for Dice Tray module buttons
@@ -405,7 +410,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versión 0.87.3
 
-### Bug Fixes
+### Corrección de Errores
 
 - \#808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - \#812 - Some roles were missing the bonuses data point as an empty array.
@@ -1258,7 +1263,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - The container sheet inventory will now stretch with the window length vertically
 - Many, many little tweaks and improvements to the French translation (thank you @h.gelis and @thevincekun)
 
-### Corrección de Errores
+### Bug Fixes
 
 - Fixed #263: New containers now show infinite stock option, as they are initialized as a shop.
 - Fix #265, #266, #267: Gear tab now remembers scroll position.
