@@ -40,15 +40,21 @@ function _processSvgs(files, srcDir, buildDir) {
               let width = fallbackWidth;
               let height = fallbackHeight;
               if (node.name === "svg") {
+                const nodeWidth = node.attributes.width;
+                const nodeHeight = node.attributes.height;
                 if (node.attributes.viewBox) {
                   const parts = node.attributes.viewBox.split(" ");
                   width = parts[2];
                   height = parts[3];
                 }
-                if (node.attributes.width === undefined) {
+                if (nodeWidth) {
+                  width = nodeWidth;
+                } else {
                   node.attributes.width = width.toString();
                 }
-                if (node.attributes.height === undefined) {
+                if (nodeHeight) {
+                  height = nodeHeight;
+                } else {
                   node.attributes.height = height.toString();
                 }
                 if (node.attributes.viewBox === undefined) {
