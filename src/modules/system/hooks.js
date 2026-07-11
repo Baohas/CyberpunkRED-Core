@@ -31,6 +31,7 @@ const hooksImports = [
   "foundry/ui/theme.js",
   "hotbar/generate-item-macro.js",
   "item/role/update-sub-roles.js",
+  "item/sanitize-item-damage.js",
   "item/set-default-image.js",
   "setup/create-black-ice-actor.js",
   "token/add-dv-token-hud.js",
