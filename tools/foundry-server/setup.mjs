@@ -116,8 +116,18 @@ async function createAndLaunchWorld(page, worldId, config) {
   if (await present(createButton)) {
     await clickThrough(page, createButton);
 
-    // World creation dialog.
-    await page.locator('input[name="title"]').first().fill(worldId);
+    // World creation dialog. Opening it can spawn a fresh tour (e.g. "Backups Overview") that
+    // overlays and re-renders the dialog, detaching the title input mid-fill — a 30s `fill` timeout
+    // that flaked CI. Clear tours and retry so a tour that appears after the dialog can't wedge us.
+    const titleInput = page.locator('input[name="title"]').first();
+    for (let attempt = 0; attempt < 6; attempt += 1) {
+      await dismissTours(page);
+      const filled = await titleInput
+        .fill(worldId, { timeout: 5000 })
+        .then(() => true)
+        .catch(() => false);
+      if (filled) break;
+    }
     const idInput = page.locator('input[name="id"]').first();
     if (await present(idInput, 1000)) {
       await idInput.fill(worldId);
