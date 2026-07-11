@@ -1,7 +1,7 @@
 const { Die, DiceTerm } = foundry.dice.terms;
 
 /**
- * Extended Die that adds two Cyberpunk RED modifiers to Foundry's dice pipeline:
+ * Extended Die that adds four Cyberpunk RED modifiers to Foundry's dice pipeline:
  *
  * - `red` — the check-die critical. A natural **max** face explodes (adds one die, **once**, no
  *   cascading); a natural **1** implodes (adds one die counted **negatively**, once). An optional
@@ -17,8 +17,19 @@ const { Die, DiceTerm } = foundry.dice.terms;
  *   "no crit" sentinel: still a damage roll, but it never crits. Notation: `2d6dmg`, `2d6dmg5`,
  *   `4d6dmg3>=5`, `4d10dmg2>=9`, `2d6dmg0`.
  *
- * Both are registered as first-class entries in {@link MODIFIERS} so Foundry's normal modifier pipeline
- * dispatches them in formula order — no `_evaluateModifiers` override.
+ * - `ab` — a **non-mutating** companion to `dmg` that sets how many points of armor SP the roll ablates
+ *   when applied: `abN` → N, a lone `ab` → 1, `ab0` → none. It is meaningless without `dmg` (a bare
+ *   roll has nothing to apply); used on a non-damage term it warns and no-ops. RAW default (when `ab`
+ *   is absent from a `dmg` roll) is 1, applied by the apply-damage hook. Notation: `2d6dmgab2`.
+ *
+ * - `cd` — a **non-mutating** companion to `dmg` that sets the critical bonus damage added on a crit:
+ *   `cdN` → N, a lone `cd` → 5, `cd0` → none. Same `dmg`-required rule as `ab`. RAW default (when `cd`
+ *   is absent) is 5, applied by the apply-damage hook. Notation: `2d6dmgcd10`, `2d6dmg5ab3cd7`.
+ *
+ * All four are registered as first-class entries in {@link MODIFIERS} so Foundry's modifier pipeline
+ * dispatches them in formula order. Foundry tokenises a die's modifier blob with a greedy letter run,
+ * so letter-adjacent modifiers fuse into one token (`dmgab2`) and core's compound splitter drops their
+ * numeric params; {@link CPRDie#_evaluateModifiers} re-splits such tokens first, preserving the params.
  *
  * @extends {Die}
  */
@@ -32,19 +43,72 @@ export default class CPRDie extends Die {
     ...Die.MODIFIERS,
     red: "red",
     dmg: "dmg",
+    ab: "ab",
+    cd: "cd",
   };
 
   /**
-   * Note whether this term carries `red`. Foundry can fuse adjacent letter-modifiers into one token
-   * (`1d10xred` → `["xred"]`, split only at evaluation), so we detect `red` on the joined modifier
-   * string rather than per token. Used to make `explode`/`explodeOnce` no-ops — `red` supersedes them.
+   * Note whether this term carries `red`/`dmg`. Foundry can fuse adjacent letter-modifiers into one
+   * token (`1d10xred` → `["xred"]`, split only at evaluation), so we detect them on the joined modifier
+   * string rather than per token. `_cprHasRed` makes `explode`/`explodeOnce` no-ops (`red` supersedes
+   * them); `_cprHasDmg` gates the `ab`/`cd` companions, which are meaningless without `dmg`.
    *
    * @param {object} termData - Die term data (see {@link DiceTerm}).
    */
   constructor(termData = {}) {
     super(termData);
-    this._cprHasRed =
-      Array.isArray(this.modifiers) && /red/i.test(this.modifiers.join(""));
+    const joined = Array.isArray(this.modifiers) ? this.modifiers.join("") : "";
+    this._cprHasRed = /red/i.test(joined);
+    this._cprHasDmg = /dmg/i.test(joined);
+  }
+
+  /**
+   * Re-split fused modifier tokens before core evaluates them, preserving each sub-modifier's params.
+   * Foundry tokenises a die's modifier blob with a greedy letter run
+   * (`Die.MODIFIER_REGEXP = /([A-z]+)([^A-z…]+)?/`), so letter-adjacent modifiers fuse into one token —
+   * `2d6dmgab2` → `["dmgab2"]` — and core's compound splitter then re-dispatches each keyword **bare**,
+   * silently dropping its trailing number (here `ab`'s `2`). Expand such tokens ourselves, keeping the
+   * params (`["dmgab2"]` → `["dmg", "ab2"]`), then defer to core. A token whose leading letters already
+   * name a registered modifier (`dmg5`, `kh2`, `red`) is not fused and passes through untouched.
+   *
+   * @returns {Promise<void>}
+   * @override
+   */
+  async _evaluateModifiers() {
+    if (Array.isArray(this.modifiers)) {
+      this.modifiers = this.modifiers.flatMap((m) => CPRDie._cprSplitFused(m));
+    }
+    return super._evaluateModifiers();
+  }
+
+  /**
+   * Split one (possibly fused) modifier token into param-preserving sub-tokens. Mirrors core's
+   * greedy-longest keyword match but re-attaches the non-letter run (digits / comparison ops) that
+   * follows each keyword. A token that is already a single registered modifier — or whose leading
+   * letters match none — is returned unchanged for core to handle. See {@link _evaluateModifiers}.
+   *
+   * @param {string} token - One modifier token (e.g. `dmgab2`, `dmg5`, `xred`).
+   * @returns {string[]} One or more tokens with their params intact.
+   */
+  static _cprSplitFused(token) {
+    const command = token.match(/[A-Za-z]+/)?.[0]?.toLowerCase();
+    // Already a whole registered modifier (letters then params, e.g. `dmg5`) — leave it to core.
+    if (!command || command in CPRDie.MODIFIERS) return [token];
+    const keywords = Object.keys(CPRDie.MODIFIERS).sort(
+      (a, b) => b.length - a.length,
+    );
+    const out = [];
+    let rest = token;
+    while (rest) {
+      const kw = keywords.find((k) => rest.toLowerCase().startsWith(k));
+      if (!kw) break; // Unknown leading letters — hand the remainder back to core untouched.
+      rest = rest.slice(kw.length);
+      const params = rest.match(/^[^A-Za-z\s(){}[\]+\-*/]+/)?.[0] ?? "";
+      rest = rest.slice(params.length);
+      out.push(kw + params);
+    }
+    if (out.length === 0) return [token];
+    return rest ? [...out, rest] : out;
   }
 
   /**
@@ -266,6 +330,60 @@ export default class CPRDie extends Die {
       for (const r of qualifying) r.cprDamageCrit = true;
     }
     return undefined;
+  }
+
+  /**
+   * The `ab` armor-ablation marker: record how many points of armor SP this damage roll ablates when
+   * applied. Pure inspection — never touches the pool or total; the value is read by the apply-damage
+   * hook (see add-damage-application.js). `abN` sets N, a lone `ab` means 1, `ab0` means no ablation.
+   * A companion to `dmg`: on a term without `dmg` it warns and no-ops (a bare roll has nothing to apply).
+   *
+   * @param {string} modifier - The matched modifier query (e.g. `ab`, `ab2`, `ab0`).
+   * @returns {false|void} False if the modifier was unmatched.
+   */
+  ab(modifier) {
+    const match = modifier.match(/ab([0-9]+)?/i);
+    if (!match) return false;
+    if (!this._cprHasDmg) {
+      this._warnMarkerNeedsDamage(modifier);
+      return undefined;
+    }
+    const [n] = match.slice(1);
+    this.options.cprAblation = Number.isNumeric(n) ? parseInt(n, 10) : 1;
+    return undefined;
+  }
+
+  /**
+   * The `cd` critical-bonus marker: record the bonus damage added when this roll crits. Pure inspection;
+   * read by the apply-damage hook and only applied on a crit. `cdN` sets N, a lone `cd` means 5, `cd0`
+   * means no bonus. A companion to `dmg`: on a term without `dmg` it warns and no-ops.
+   *
+   * @param {string} modifier - The matched modifier query (e.g. `cd`, `cd10`, `cd0`).
+   * @returns {false|void} False if the modifier was unmatched.
+   */
+  cd(modifier) {
+    const match = modifier.match(/cd([0-9]+)?/i);
+    if (!match) return false;
+    if (!this._cprHasDmg) {
+      this._warnMarkerNeedsDamage(modifier);
+      return undefined;
+    }
+    const [n] = match.slice(1);
+    this.options.cprCritBonus = Number.isNumeric(n) ? parseInt(n, 10) : 5;
+    return undefined;
+  }
+
+  /**
+   * Warn that an `ab`/`cd` marker was ignored because the term carries no `dmg` — they only qualify a
+   * damage roll. Fires on the rolling client only; modifiers are not re-evaluated on reconstruction.
+   *
+   * @param {string} modifier - The ignored modifier (e.g. `ab2`, `cd10`).
+   */
+  // eslint-disable-next-line class-methods-use-this
+  _warnMarkerNeedsDamage(modifier) {
+    globalThis.ui?.notifications?.warn(
+      game.i18n.format("CPR.rolls.modifiers.markerNeedsDamage", { modifier }),
+    );
   }
 
   /**

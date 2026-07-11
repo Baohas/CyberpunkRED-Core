@@ -3,8 +3,9 @@ import { test, expect } from "../fixtures.mjs";
 /*
  * The `dmg` die modifier drives the apply-damage affordance on a bare native roll (e.g. `/r 2d6dmg`) via
  * the add-damage-application hook. These specs post such rolls to chat and assert the injected button and
- * its data — the RAW crit +5 on a crit, 0 otherwise — plus the two guards: a plain roll gets nothing, and
- * a message that already carries an apply-damage button (a weapon/program card) is not double-injected.
+ * its data — the RAW crit +5 on a crit (0 otherwise) and the RAW ablation of 1, plus the `ab`/`cd`
+ * overrides — and the two guards: a plain roll gets nothing, and a message that already carries an
+ * apply-damage button (a weapon/program card) is not double-injected.
  *
  * Dice faces are forced through CONFIG.Dice.randomUniform (see red-dmg-modifiers.spec.mjs) so crits are
  * deterministic. The roll/message is built in-page; the button and its attributes are then read from the
@@ -43,6 +44,29 @@ test.describe("native dmg roll — apply-damage injection", () => {
     await expect(button).toHaveAttribute("data-total-damage", "12");
     await expect(button).toHaveAttribute("data-bonus-damage", "5");
     await expect(button).toHaveAttribute("data-damage-location", "body");
+    // RAW default ablation of 1 (overridable with `abN`).
+    await expect(button).toHaveAttribute("data-ablation", "1");
+  });
+
+  test("`ab`/`cd` override the RAW ablation and crit bonus (2d6dmgab2cd10)", async ({
+    game,
+  }) => {
+    const id = await postRoll(game, "2d6dmgab2cd10", 6, [6, 6]);
+    const button = game.locator(
+      `[data-message-id="${id}"] [data-action="applyDamage"]`,
+    );
+    await expect(button).toHaveCount(1);
+    await expect(button).toHaveAttribute("data-ablation", "2");
+    await expect(button).toHaveAttribute("data-bonus-damage", "10");
+  });
+
+  test("`ab0` applies no ablation", async ({ game }) => {
+    const id = await postRoll(game, "2d6dmgab0", 6, [6, 6]);
+    const button = game.locator(
+      `[data-message-id="${id}"] [data-action="applyDamage"]`,
+    );
+    await expect(button).toHaveCount(1);
+    await expect(button).toHaveAttribute("data-ablation", "0");
   });
 
   test("2d6dmg without a crit posts the button with no bonus", async ({

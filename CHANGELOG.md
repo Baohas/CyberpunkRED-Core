@@ -25,7 +25,9 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
 - Migrate the dice/roll system onto native Foundry rolls (serializable, multiplayer-safe, with automatic Dice So Nice support)
 - Add a `red` die modifier: a single explode-on-max / implode-on-1 for check dice, usable in any roll formula, macro or script (e.g. `1d10red`)
-- Add a `dmg` damage marker modifier that drives the damage card and apply-damage controls and flags critical damage
+- Add a `dmg` damage marker modifier that drives the damage card and apply-damage controls and flags critical damage. A bare `dmg` roll defaults to RAW, with two companion modifiers to override it (e.g. `/r 2d6dmgab2cd10`):
+  - `ab` — `abN` sets how many points of armor SP the roll ablates (default 1; `ab0` = none)
+  - `cd` — `cdN` sets the critical bonus damage added on a crit (default 5; `cd0` = none)
 - Make damage criticals configurable per weapon and per ammo (critical threshold, dice required, and bonus damage; ammo can override the weapon's rule)
 - Support `@`-roll-data references (e.g. `@stats.ref`) in roll formulas
 

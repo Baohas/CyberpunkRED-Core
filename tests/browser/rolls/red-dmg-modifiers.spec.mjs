@@ -7,6 +7,8 @@ import { test, expect } from "../fixtures.mjs";
  *     cascading; supersedes `x`/`xo`; composes with other modifiers by pipeline position.
  *   - `dmg` — non-mutating damage marker: flags a damage roll + a crit (2+ qualifying dice by default)
  *     without changing the total; `count 0` (`dmg0`) is the "no crit" sentinel.
+ *   - `ab` / `cd` — non-mutating `dmg` companions: set armor ablation (`abN`) and crit bonus (`cdN`);
+ *     require `dmg`; exercise CPRDie's fused-token re-split (`dmgab2` must not lose its `2`).
  *
  * No luck involved: every die face is forced. Foundry routes all randomness through
  * CONFIG.Dice.randomUniform, and a face is mapRandomFace(u) = ceil((1 - u) * faces); so to force face
@@ -40,6 +42,8 @@ async function forceRoll(page, formula, dieFaces, faces) {
           })),
           cprDamage: !!die.options.cprDamage,
           cprDamageIsCrit: !!die.options.cprDamageIsCrit,
+          cprAblation: die.options.cprAblation ?? null,
+          cprCritBonus: die.options.cprCritBonus ?? null,
         };
       } finally {
         CONFIG.Dice.randomUniform = original;
@@ -321,6 +325,69 @@ test.describe("dmg modifier — damage marker + crit detection", () => {
     const roll = await forceRoll(game, "2d6", 6, [6, 6]);
     expect(roll.cprDamage).toBe(false);
     expect(roll.cprDamageIsCrit).toBe(false);
+  });
+});
+
+// `ab` (ablation) and `cd` (critical bonus) are non-mutating companions to `dmg`. They set die options
+// read by the apply-damage hook and never change the total. The tricky part is parsing: Foundry fuses
+// letter-adjacent modifiers into one token (`dmgab2`) and core's compound splitter drops their numeric
+// params, so CPRDie#_evaluateModifiers re-splits fused tokens first — both `dmgab2` and `dmg5ab3` must
+// land the param. They also require `dmg`: on a plain roll they warn and no-op.
+test.describe("ab / cd — damage-config markers (require dmg)", () => {
+  test("fused `dmgab2` keeps the param the core splitter would drop", async ({
+    game,
+  }) => {
+    const roll = await forceRoll(game, "2d6dmgab2", 6, [6, 6]);
+    expect(roll.cprDamage).toBe(true);
+    expect(roll.cprAblation).toBe(2);
+  });
+
+  test("un-fused `dmg5ab3` (dmg carries a number) also sets ablation", async ({
+    game,
+  }) => {
+    const roll = await forceRoll(game, "2d6dmg5ab3", 6, [6, 6]);
+    expect(roll.cprAblation).toBe(3);
+  });
+
+  test("a lone `ab` means 1; `ab0` means none", async ({ game }) => {
+    expect((await forceRoll(game, "2d6dmgab", 6, [6, 6])).cprAblation).toBe(1);
+    expect((await forceRoll(game, "2d6dmgab0", 6, [6, 6])).cprAblation).toBe(0);
+  });
+
+  test("fused `dmgcd10` sets the critical bonus; `cd0` means none", async ({
+    game,
+  }) => {
+    expect((await forceRoll(game, "2d6dmgcd10", 6, [6, 6])).cprCritBonus).toBe(
+      10,
+    );
+    expect((await forceRoll(game, "2d6dmgcd0", 6, [6, 6])).cprCritBonus).toBe(
+      0,
+    );
+  });
+
+  test("`ab` and `cd` compose on one roll (2d6dmgab2cd10)", async ({
+    game,
+  }) => {
+    const roll = await forceRoll(game, "2d6dmgab2cd10", 6, [6, 6]);
+    expect(roll.cprAblation).toBe(2);
+    expect(roll.cprCritBonus).toBe(10);
+  });
+
+  test("all three params survive together (2d6dmg5ab3cd7)", async ({
+    game,
+  }) => {
+    const roll = await forceRoll(game, "2d6dmg5ab3cd7", 6, [5, 5]);
+    expect(roll.cprDamageIsCrit).toBe(true); // dmg5 → two 5s crit
+    expect(roll.cprAblation).toBe(3);
+    expect(roll.cprCritBonus).toBe(7);
+  });
+
+  test("without `dmg` they are inert (no option set)", async ({ game }) => {
+    const ab = await forceRoll(game, "2d6ab2", 6, [6, 6]);
+    expect(ab.cprDamage).toBe(false);
+    expect(ab.cprAblation).toBe(null);
+    const cd = await forceRoll(game, "2d6cd5", 6, [6, 6]);
+    expect(cd.cprCritBonus).toBe(null);
   });
 });
 
