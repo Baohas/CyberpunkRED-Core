@@ -246,7 +246,8 @@ export default class CPRDie extends Die {
 
   /**
    * The `red` check-die critical: explode on max (`>= threshold`), implode on a natural 1. One extra
-   * die per qualifying original result, no cascading.
+   * die per qualifying original result, no cascading. A d1 is a no-op — its single face is both the max
+   * and a natural 1, so neither rule applies.
    *
    * @param {string} modifier - The matched modifier query (e.g. `red`, `red5`).
    * @returns {Promise<false|void>} False if the modifier was unmatched.
@@ -258,6 +259,11 @@ export default class CPRDie extends Die {
     const threshold = Number.isNumeric(rawThreshold)
       ? parseInt(rawThreshold, 10)
       : this.faces;
+
+    // A d1 is degenerate: its only face (1) is simultaneously the max (explode) and a natural 1
+    // (implode), so the two rules contradict. Ignore `red` entirely on a d1 — no bonus/penalty die —
+    // rather than arbitrarily pick one.
+    if (this.faces <= 1) return undefined;
 
     // Snapshot the active, unprocessed results so the dice we add below are not themselves processed.
     const targets = this.results.filter((r) => r.active && !r.cprProcessed);

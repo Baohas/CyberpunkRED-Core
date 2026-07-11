@@ -111,6 +111,14 @@ test.describe("red modifier — check-die criticals", () => {
     expect(roll.total).toBe(9);
     expect(roll.results[1]).toMatchObject({ result: 4, cprSuccess: true });
   });
+
+  test("a d1 is a no-op — its face is both max and 1, so neither rule fires", async ({
+    game,
+  }) => {
+    const roll = await forceRoll(game, "1d1red", 1, [1]);
+    expect(roll.total).toBe(1);
+    expect(roll.results).toHaveLength(1); // no bonus/penalty die added
+  });
 });
 
 // The full interaction matrix: `red` must compose with every core Die modifier family, in both orders,
