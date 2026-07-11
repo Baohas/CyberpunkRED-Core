@@ -58,12 +58,22 @@ export default class CPRChat {
    * @param {} cprRoll - from cpr-roll.js, a custom roll object that includes the results
    * @returns - a created chat message
    */
-  static RenderRollCard(incomingRoll) {
+  static async RenderRollCard(incomingRoll) {
     const cprRoll = incomingRoll;
 
     cprRoll.criticalCard = cprRoll.wasCritical();
     if (cprRoll instanceof CPRInitiative && !cprRoll.calculateCritical) {
       cprRoll.criticalCard = false;
+    }
+
+    // Render Foundry's native dice (formula, total, tooltip) once, and inject it into the bespoke card
+    // via `{{{diceHTML}}}`. Every roll card keeps its CPR chrome (title, mod breakdown, apply-damage,
+    // crit flavor) but shows real dice — replacing the old per-die SVG image blocks. CPRTableRoll wraps
+    // an already-evaluated RollTable roll (it is not evaluated itself), so render its inner roll instead.
+    if (cprRoll._evaluated) {
+      cprRoll.diceHTML = await cprRoll.render();
+    } else if (cprRoll._tableRoll) {
+      cprRoll.diceHTML = await cprRoll._tableRoll.render();
     }
 
     return renderTemplate(cprRoll.rollCard, cprRoll).then((html) => {

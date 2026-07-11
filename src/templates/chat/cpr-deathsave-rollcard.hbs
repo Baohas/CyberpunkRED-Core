@@ -20,19 +20,7 @@
       </div>
       <div class="d10-rollcard-data">
         <div class="d10-dice-div">
-          {{!-- die image for initialRoll --}}
-          {{#if (cprCompare saveResult "===" (localize "CPR.rolls.success")) }}
-            {{#if (cprCompare initialRoll "===" 1) }}
-              <img class="d10"
-                   src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}_preem.svg"/>
-            {{else}}
-              <img class="d10"
-                   src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}.svg"/>
-            {{/if}}
-          {{else}}
-            <img class="d10"
-                 src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}.svg"/>
-          {{/if}}
+          {{{diceHTML}}}
         </div>
         <div class="d10-number-div">
           <a>

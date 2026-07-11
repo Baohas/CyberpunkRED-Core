@@ -57,6 +57,7 @@ export class CPRRoll extends Roll {
     return super.formula;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   set formula(_value) {
     // Display-only dialog field; the real formula is fixed at construction.
   }
@@ -73,47 +74,71 @@ export class CPRRoll extends Roll {
   }
 
   /**
-   * Split a user/legacy formula ("2d6+3", "5") into the dice term and a list of flat numeric mods.
+   * Append a CPR die modifier (`red`, `dmg`, …) to the **first** die term of an arbitrary formula,
+   * inserting it after that term's existing modifier run so `red`/`dmg` compose with keep/drop and the
+   * like (`3d6kh2` + `dmg` → `3d6kh2dmg`). A formula with no die term (a static value) is returned
+   * unchanged. Only the first die term is touched — extra terms in a multi-term formula add to the total
+   * but carry no CPR crit logic (see the class notes and CPRDamageRoll).
    *
-   * @param {String} formula
-   * @returns {{dice: String, die: String, mods: Array<{value:Number, source:String}>}}
+   * @param {String} formula - the (already @-resolved) formula
+   * @param {String} modifier - the modifier to append ("red", "dmg", "dmg2>=5", …); "" is a no-op
+   * @returns {String} the formula with the modifier attached to its first die term
    */
-  static splitFormula(formula) {
-    const lower = String(formula).toLowerCase();
-    // A bare number is a static value (e.g. flat damage).
-    if (!Number.isNaN(+lower)) {
-      return { dice: lower, die: CPRRoll.dieOf(lower), mods: [] };
-    }
-    const diceRgx = /[0-9]*d[0-9]+/;
-    const [dice] = lower.match(diceRgx) ?? ["1d10"];
-    const mods = [];
-    const remainder = lower.replace(diceRgx, "").replace(/\s+/g, "");
-    const modMatches = remainder.match(/[+-][0-9]+/g) ?? [];
-    modMatches.forEach((m) => {
-      mods.push({
-        value: Number(m),
-        source: SystemUtils.Localize("CPR.rolls.modifiers.sources.rollFormula"),
-      });
-    });
-    return { dice, die: CPRRoll.dieOf(dice), mods };
+  static appendDieModifier(formula, modifier) {
+    const str = String(formula);
+    if (!modifier) return str;
+    // A die term (`3d6`, `d10`) plus its modifier run — the run stops at whitespace, an operator or a
+    // bracket, so it captures only that die's own modifiers. Matches the sanitiser's DIE_TERM regex.
+    const DIE_TERM = /(\d*[dD]\d+)([^\s(){}[\]+\-*/]*)/;
+    const match = DIE_TERM.exec(str);
+    if (!match) return str;
+    const insertAt = match.index + match[0].length;
+    return str.slice(0, insertAt) + modifier + str.slice(insertAt);
   }
 
   /**
-   * Build the CPR state object (the source of truth that gets snapshotted) from a legacy formula plus
-   * overrides. Subclass `create()` factories call this, then construct themselves with the resulting
-   * dice formula and cprState.
+   * `red` (check-die crit) and `dmg` (damage marker) are mutually exclusive within a single formula:
+   * `dmg` never explodes/implodes, and a term cannot be both a check die and a damage die. Refuse to
+   * build such a roll — warn the user and throw so no roll is made. Called at every formula-assembly
+   * point (see {@link buildState} and CPRDamageRoll.create); reconstruction from serialised data bypasses
+   * those, so a valid round-tripped roll is never rejected. Raw `/r` chat rolls are native Foundry rolls,
+   * not CPRRolls, so they never reach the CPR crit reads and are intentionally not guarded here.
    *
-   * @param {String} formula - the legacy formula (dice + optional flat mods)
-   * @param {String} modifier - die modifier to append ("red", "dmg", or "")
+   * @param {String} formula - an assembled eval formula
+   * @throws {Error} when the formula carries both `red` and `dmg`
+   */
+  static assertRedDmgExclusive(formula) {
+    if (/red/i.test(formula) && /dmg/i.test(formula)) {
+      globalThis.ui?.notifications?.warn(
+        SystemUtils.Localize("CPR.rolls.modifiers.redDmgExclusive"),
+      );
+      throw new Error(
+        `CPRRoll: red and dmg are mutually exclusive in one formula ("${formula}").`,
+      );
+    }
+  }
+
+  /**
+   * Build the CPR state object (the source of truth that gets snapshotted) from a formula plus overrides.
+   * Subclass `create()` factories call this, then construct themselves with the resulting eval formula
+   * and cprState.
+   *
+   * Native-first: the **whole** formula (dice, keep/drop and other modifiers, flat terms, resolved
+   * `@`-refs) is handed to Foundry and `this.total` is authoritative. `mods` starts empty and holds only
+   * *external* mods (situational/aimed/role/upgrade), added later via {@link addMod} — typed flats stay
+   * in the native formula and are never copied into `mods`, so they are counted exactly once.
+   *
+   * @param {String} formula - the roll formula (dice + optional modifiers/flats/@-refs)
+   * @param {String} modifier - CPR die modifier to append to the first die term ("red", "dmg", or "")
    * @param {Object} state - extra CPR state (rollTitle, rollCard, statName, statValue, …)
    * @returns {{evalFormula: String, cprState: Object}}
    */
   static buildState(formula, modifier, state = {}) {
-    const { dice, die, mods } = CPRRoll.splitFormula(formula);
-    const evalFormula = modifier ? `${dice}${modifier}` : dice;
+    const evalFormula = CPRRoll.appendDieModifier(formula, modifier);
+    CPRRoll.assertRedDmgExclusive(evalFormula);
     const cprState = {
-      die,
-      mods,
+      die: CPRRoll.dieOf(evalFormula),
+      mods: [],
       ...state,
     };
     return { evalFormula, cprState };
@@ -264,19 +289,20 @@ export class CPRRoll extends Roll {
   }
 
   /**
-   * @returns {Boolean} whether the check die explode-d (a natural max under the `red` modifier).
+   * @returns {Boolean} whether any die term explode-d (a natural max under the `red` modifier). Aggregated
+   *   across all terms so a multi-term formula (`2d6red + 3d10red`) crits if any term does. The always-
+   *   single-term check rolls (`1d10red`) are unaffected.
    */
   wasCritSuccess() {
-    const term = this.dice[0];
-    return !!term && term.results.some((r) => r.cprSuccess);
+    return this.dice.some((term) => term.results.some((r) => r.cprSuccess));
   }
 
   /**
-   * @returns {Boolean} whether the check die implode-d (a natural 1 under the `red` modifier).
+   * @returns {Boolean} whether any die term implode-d (a natural 1 under the `red` modifier). Aggregated
+   *   across all terms; see {@link wasCritSuccess}.
    */
   wasCritFail() {
-    const term = this.dice[0];
-    return !!term && term.results.some((r) => r.cprFailure);
+    return this.dice.some((term) => term.results.some((r) => r.cprFailure));
   }
 
   /**
@@ -705,8 +731,8 @@ export class CPRDamageRoll extends CPRRoll {
     critConfig = {},
     rollData = {},
   ) {
-    // Resolve any `@`-references (e.g. `@stats.body`) to numbers before splitting, otherwise
-    // splitFormula would discard them. Unknown references resolve to 0.
+    // Resolve any `@`-references (e.g. `@stats.body`) to numbers up front so the whole formula is a
+    // plain dice+flat expression Foundry can evaluate natively. Unknown references resolve to 0.
     const resolvedFormula = Roll.replaceFormulaData(String(formula), rollData, {
       missing: "0",
       warn: false,
@@ -721,11 +747,15 @@ export class CPRDamageRoll extends CPRRoll {
         "CPR.chat.damageApplication.noTokenTargeted",
       );
     }
-    const { dice, die, mods } = CPRRoll.splitFormula(resolvedFormula);
+    // `dmg` (and its crit config) is applied to the FIRST die term only — extra terms add to the total
+    // but carry no crit logic, keeping the `dice[0]` crit read valid. `faces` comes from that first term.
+    const die = CPRRoll.dieOf(resolvedFormula);
     const faces = parseInt(die.replace(/d/i, ""), 10) || 6;
     const cprState = {
       die,
-      mods,
+      // Native-first: typed flats stay in the formula and are read from `this.total`; `mods` holds only
+      // external damage mods (universalDamage, upgrades) added later via addMod. See CPRRoll.buildState.
+      mods: [],
       rollTitle,
       weaponType,
       calculateCritical: false,
@@ -738,17 +768,32 @@ export class CPRDamageRoll extends CPRRoll {
       rollPrompt: `systems/${game.system.id}/templates/dialog/rolls/cpr-verify-roll-damage-prompt.hbs`,
       rollCard: `systems/${game.system.id}/templates/chat/cpr-damage-rollcard.hbs`,
     };
-    const evalFormula = `${dice}${CPRDamageRoll.dmgModifier(critConfig, faces)}`;
+    const evalFormula = CPRRoll.appendDieModifier(
+      resolvedFormula,
+      CPRDamageRoll.dmgModifier(critConfig, faces),
+    );
+    CPRRoll.assertRedDmgExclusive(evalFormula);
     return new CPRDamageRoll(evalFormula, {}, { cprState });
   }
 
+  /**
+   * Non-autofire damage is the whole native formula total (so multi-die and typed-flat damage totals
+   * correctly), plus external mods. Autofire is the special CPR case: the formula was replaced with a
+   * bare `2d6` (see {@link setAutofire}), so its base × multiplier is used and any typed flat is dropped
+   * (accepted consequence); external role/upgrade mods still apply.
+   *
+   * @private
+   * @returns {Number}
+   */
   _computeBase() {
     this.autofireMultiplier = Math.min(
       this.autofireMultiplier,
       this.autofireMultiplierMax,
     );
-    const damageMultiplier = this.isAutofire ? this.autofireMultiplier : 1;
-    return this.initialRoll * damageMultiplier + this.totalMods();
+    const base = this.isAutofire
+      ? this.initialRoll * this.autofireMultiplier
+      : this._diceTotal();
+    return base + this.totalMods();
   }
 
   // eslint-disable-next-line class-methods-use-this

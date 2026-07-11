@@ -30,6 +30,9 @@ If you have any such items that should not crit, set them manually: on a weapon,
   - `cd` — `cdN` sets the critical bonus damage added on a crit (default 5; `cd0` = none)
 - Make damage criticals configurable per weapon and per ammo (critical threshold, dice required, and bonus damage; ammo can override the weapon's rule)
 - Support `@`-roll-data references (e.g. `@stats.ref`) in roll formulas
+- Support arbitrary multi-term roll formulas with keep/drop and other dice-pool modifiers (e.g. `3d6kh2`, `2d6 + 1d4 + @stats.body`), each term carrying its own modifiers — the whole formula is evaluated natively instead of being reduced to a single dice term plus flat mods
+- Render Foundry's native dice on every roll card, keeping the CPR title, modifier breakdown, critical flavour and apply-damage controls (a dedicated dice re-skin will follow)
+- Sanitise the `dmg`/`ab`/`cd`/`red` markers out of an item's **Damage** field on save — for every attackable item's `system.damage` **and** an ammo override's damage value. They are built from the item's own critical/ablation settings (and `red` conflicts with the auto-appended `dmg`); every other modifier is kept, e.g. `3d6kh2dmg5ab0cd10red` is saved as `3d6kh2`
 
 ### Changes
 

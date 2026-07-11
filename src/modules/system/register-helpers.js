@@ -285,51 +285,6 @@ export default function registerHandlebarsHelpers() {
   });
 
   /**
-   * Calculate the size (in pixels) of images for dice given the number of sides they have
-   * and how many need to be displayed in a chat card.
-   */
-  Handlebars.registerHelper("cprDiceSizeImageClass", (formula) => {
-    let diceSize = "";
-    let className = "d10";
-    const formulaParts = formula.split("d");
-    if (formulaParts.length === 2) {
-      const diceCount = parseInt(formulaParts[0], 10);
-      const diceSides = parseInt(formulaParts[1], 10);
-      className = `d${diceSides}`;
-
-      if (diceSides === 6) {
-        diceSize = 60;
-        if (diceCount > 2) {
-          diceSize = 40;
-        }
-        if (diceCount > 4) {
-          diceSize = 30;
-        }
-        if (diceCount > 10) {
-          diceSize = 20;
-        }
-      }
-
-      if (diceSides === 10) {
-        diceSize = 60;
-        if (diceCount > 2) {
-          diceSize = 40;
-        }
-        if (diceCount > 4) {
-          diceSize = 30;
-        }
-        if (diceCount > 10) {
-          diceSize = 20;
-        }
-      }
-      if (diceSize) {
-        className = `${className} ${className}-${diceSize}`;
-      }
-    }
-    return className;
-  });
-
-  /**
    * Sort an array of objects by the values in a specific property
    */
   Handlebars.registerHelper("cprSort", (arr, property) => {

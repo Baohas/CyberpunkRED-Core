@@ -13,11 +13,7 @@
     <div class="cpr-block">
       <div class="d6-rollcard-data">
         <div class="d6-dice-div">
-          {{!-- die image for initialRoll --}}
-          {{#each faces as |dieFace| }}
-            <img class="{{cprDiceSizeImageClass ../formula}}"
-                 src="systems/cyberpunk-red-core/icons/dice/black/d6_{{dieFace}}.svg"/>
-          {{/each}}
+          {{{diceHTML}}}
         </div>
         <div class="d6-number-div">
           <span class="clickable{{#if criticalCard }} text-semi{{/if }}"

@@ -275,7 +275,6 @@ export default class CPRDie extends Die {
       if (result.result >= threshold) {
         // Critical success — explode: add one die, summed into the total normally.
         result.exploded = true;
-        // eslint-disable-next-line no-await-in-loop
         const bonus = await this.roll();
         bonus.cprProcessed = true;
         bonus.cprBonus = true;
@@ -283,7 +282,6 @@ export default class CPRDie extends Die {
         bonus.cprParentIndex = parentIndex;
       } else if (result.result === 1) {
         // Critical failure — implode: add one die counted negatively (subtracted from the total).
-        // eslint-disable-next-line no-await-in-loop
         const penalty = await this.roll();
         penalty.cprProcessed = true;
         penalty.cprBonus = true;
