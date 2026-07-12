@@ -114,17 +114,30 @@
   min-width: 0;
 }
 
-/* Match the price-category selects to the price/search input background. The
-   `.window-content select` qualifier outweighs main.css's generic
-   `.application .window-content select` rule that would otherwise win. */
+/* Give every filter control the same input background and the system's default
+   text colour: the top-bar search and price inputs, the quality/price-category
+   selects, and the cart's buying-for select. Without the colour, form controls
+   inherit Foundry's cream AppV2 tint instead of the window text. The
+   `.window-content input`/`select` qualifier outweighs main.css's generic
+   `.application .window-content …` rules that would otherwise win. */
+.cpr-document-browser .window-content input.cpr-browser-name-input,
+.cpr-document-browser .window-content input.cpr-browser-price-min,
+.cpr-document-browser .window-content input.cpr-browser-price-max,
 .cpr-document-browser .window-content select.cpr-browser-price-category-op,
 .cpr-document-browser .window-content select.cpr-browser-price-category-value,
-.cpr-document-browser .window-content select.cpr-browser-quality {
+.cpr-document-browser .window-content select.cpr-browser-quality,
+.cpr-document-browser .window-content select.cpr-browser-cart-actor-select {
   background: var(--cpr-background-foundry-input);
+  color: var(--cpr-text-normal);
 }
 
-/* Fade the placeholder/hint text in the sidebar inputs a little. */
-.cpr-document-browser .cpr-browser-sidebar input::placeholder {
+/* Placeholder text uses the hint colour in the sidebar inputs and the top-bar
+   search/price inputs alike; without the top-bar rule they inherit Foundry's
+   cream placeholder tint while their neighbouring selects show themed text. */
+.cpr-document-browser .cpr-browser-sidebar input::placeholder,
+.cpr-document-browser .window-content input.cpr-browser-name-input::placeholder,
+.cpr-document-browser .window-content input.cpr-browser-price-min::placeholder,
+.cpr-document-browser .window-content input.cpr-browser-price-max::placeholder {
   color: var(--cpr-text-hint);
 }
 
@@ -836,18 +849,24 @@
   border-top: 0.063rem solid var(--cpr-background-border);
 }
 
+/* Buying-for field: label beside the select, styled exactly like the top-bar
+   `Quality` filter (.cpr-browser-global-filters .cpr-browser-field), overriding
+   .cpr-browser-field's stacked column layout. */
 .cpr-browser-cart-actor {
   flex: 0 0 auto;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4rem;
   margin-bottom: 0.4rem;
 }
 
 .cpr-browser-cart-actor > label {
-  font-size: var(--cpr-font-smaller);
-  color: var(--cpr-text-hint);
+  white-space: nowrap;
 }
 
 .cpr-browser-cart-actor select {
-  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 .cpr-browser-cart-total {
