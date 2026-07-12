@@ -26,7 +26,8 @@
     "browser:serve": "node tools/foundry-server/serve.mjs",
     "generate-schemas": "node tools/foundry-server/generate-schemas.mjs",
     "browser:install": "npx playwright install chromium",
-    "watch": "npx gulp watch"
+    "watch": "npx gulp watch",
+    "prepare": "husky"
   },
   "engines": {
     "node": ">=15.0",
@@ -58,6 +59,7 @@
     "gulp-cli": "^3.1.0",
     "gulp-postcss": "^10.0.0",
     "gulp-svgmin": "^4.1.0",
+    "husky": "^9.1.7",
     "js-yaml": "^4.2.0",
     "jsdoc": "^4.0.5",
     "jsonlint-mod": "^1.7.6",
