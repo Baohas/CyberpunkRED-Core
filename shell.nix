@@ -11,6 +11,15 @@ pkgs.mkShell {
     # below) — driven via --executable-path, so its exact revision need not match
     # the pinned playwright-driver above.
     pkgs.chromium
+    # Shell script linting/formatting — every bash script must pass both
+    # (see .claude/skills/bash/SKILL.md).
+    pkgs.shellcheck
+    pkgs.shfmt
+    # Fast recursive search — the rules/PDF researcher greps the extracted corpus.
+    pkgs.ripgrep
+    # Python 3 — runs the `.claude/skills/*/scripts/*.py` helpers (e.g. the
+    # implement/exploration plan-state and map-state scripts).
+    pkgs.python3
   ];
 
   # Prebuilt npm binaries (e.g. @fallow-cli) are generic glibc executables

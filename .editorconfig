@@ -14,3 +14,5 @@ indent_style = tab
 
 [*.sh]
 max_line_length = 80
+# shfmt: indent the branches of a `case` statement.
+switch_case_indent = true
