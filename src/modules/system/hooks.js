@@ -27,6 +27,7 @@ const hooksImports = [
   "external/drag-ruler.js",
   "external/popout.js",
   "foundry/delete-folder.js",
+  "foundry/ui/directory-browser-buttons.js",
   "foundry/ui/item-folder-upgraded-display.js",
   "foundry/ui/pause-animation.js",
   "foundry/ui/theme.js",

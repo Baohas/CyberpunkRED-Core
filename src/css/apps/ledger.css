@@ -99,7 +99,7 @@
   display: grid;
   grid-template-columns: 3rem 4fr 6fr;
   grid-template-areas: "ledger-number ledger-transaction ledger-reason ledger-delete";
-  height: 1.3rem;
+  min-height: 1.3rem;
   white-space: nowrap;
 
   .fa-trash-can {
@@ -128,8 +128,13 @@
     grid-area: ledger-reason;
     align-content: center;
     width: auto;
-    padding: 0 0.2rem;
-    overflow: clip;
+    padding: 0.1rem 0.2rem;
+    overflow: visible;
+    white-space: normal;
+
+    p {
+      margin: 0;
+    }
   }
 
   .ledger-delete {

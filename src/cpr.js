@@ -12,6 +12,7 @@ import CPRCombat from "./modules/combat/cpr-combat.js";
 import CPRCombatant from "./modules/combat/cpr-combatant.js";
 
 import CPRItemSheet from "./modules/item/sheet/cpr-item-sheet.js";
+import CPRDocumentBrowser from "./modules/apps/browser/cpr-document-browser.js";
 import LOGGER from "./modules/utils/cpr-logger.js";
 import CPRMacro from "./modules/utils/cpr-macros.js";
 import SystemUtils from "./modules/utils/cpr-systemUtils.js";
@@ -133,6 +134,7 @@ Hooks.once("init", async () => {
       CPRDemonActorSheet,
       CPRMookActorSheet,
       CPRItemSheet,
+      CPRDocumentBrowser,
     },
     macro: CPRMacro,
     api: initalizeAPI(),

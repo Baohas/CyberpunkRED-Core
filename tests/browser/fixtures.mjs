@@ -1,4 +1,8 @@
 import { test as base, expect } from "@playwright/test";
+import {
+  PLAYER_STORAGE_STATE,
+  PLAYER_CHARACTER_NAME,
+} from "../../tools/foundry-server/config.mjs";
 
 /*
  * Shared test infrastructure for the UI-driven browser specs.
@@ -94,14 +98,17 @@ export async function gotoGame(page) {
 // test so each one starts from an empty, isolated world (and the world stays
 // small, so the fresh page loads quickly).
 export async function resetWorld(page) {
-  await page.evaluate(async () => {
-    if (game.actors.size) {
-      await Actor.deleteDocuments(game.actors.map((a) => a.id));
-    }
+  // Keep the shop specs' player character (created once in globalSetup) — the
+  // player owns it and the shop tests need game.user.character to persist.
+  await page.evaluate(async (keepActorName) => {
+    const actorIds = game.actors
+      .filter((a) => a.name !== keepActorName)
+      .map((a) => a.id);
+    if (actorIds.length) await Actor.deleteDocuments(actorIds);
     if (game.items.size) {
       await Item.deleteDocuments(game.items.map((i) => i.id));
     }
-  });
+  }, PLAYER_CHARACTER_NAME);
 }
 
 // Ensure a sidebar directory tab is expanded and active, returning its
@@ -325,14 +332,30 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
   }
 }
 
-// Custom `test` exposing a `game` fixture: a fresh, authenticated page loaded
-// into a ready, empty world. Built on Playwright's per-test `page` fixture, so
-// each test gets an isolated browser context.
+// Custom `test` exposing:
+//  - `game`: a fresh, GM-authenticated page in a ready, empty world (built on
+//    Playwright's per-test `page` fixture, so each test gets an isolated context).
+//  - `player`: a page authenticated as the non-GM test player (with an assigned
+//    character) from globalSetup, in its own context with the player's saved
+//    storage state. It does NOT reset the world — that would delete the player's
+//    character — so player specs use relative (before/after) assertions.
 export const test = base.extend({
   game: async ({ page }, use) => {
     await gotoGame(page);
     await resetWorld(page);
     await use(page);
+  },
+
+  player: async ({ browser, baseURL }, use) => {
+    const context = await browser.newContext({
+      storageState: PLAYER_STORAGE_STATE,
+      baseURL,
+      viewport: { width: 1920, height: 1080 },
+    });
+    const page = await context.newPage();
+    await gotoGame(page);
+    await use(page);
+    await context.close();
   },
 });
 

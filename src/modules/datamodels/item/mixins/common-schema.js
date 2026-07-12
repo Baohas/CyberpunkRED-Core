@@ -10,6 +10,8 @@ export default class CommonSchema extends CPRSystemDataModel {
         value: new fields.HTMLField({ blank: true }),
       }),
       favorite: new fields.BooleanField({ initial: false }),
+      // When true, the item is hidden from the document browser entirely.
+      ignoredByBrowser: new fields.BooleanField({ initial: false }),
       source: new fields.SchemaField({
         book: new fields.StringField({ blank: true }),
         page: new fields.NumberField({

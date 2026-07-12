@@ -7,6 +7,9 @@ const CPR = {};
 // Sometimes we need to access this before the game.system can be referenced
 CPR.systemId = "cyberpunk-red-core";
 
+// The official DLC module id, referenced when excluding its packs etc.
+CPR.dlcModuleId = "cyberpunk-red-dlc";
+
 // Sorted as shown on char sheet (with resources pushed to bottom)
 CPR.statList = {
   int: "CPR.global.stats.int",
@@ -883,5 +886,252 @@ CPR.migrationDocTypes = {
   packs: "CPR.migration.docType.packs",
   packDocuments: "CPR.migration.docType.packDocuments",
 };
+
+/**
+ * Per-item-type filter definitions consumed by the document browser
+ * (CPRDocumentBrowser). Each type renders as a collapsible box whose body is the
+ * list of filters below it (the first `set` filter doubles as the type's
+ * sub-type, and also feeds the result-row breadcrumb). Each filter declares:
+ *
+ * - `id`     unique key within its type, used for filter state + DOM ids
+ * - `type`   the filter kind:
+ *            - "set"     multi-select tri-state against an enum (`choices`)
+ *            - "range"   numeric min/max against `field` (or any of `fields`)
+ *            - "damage"  numeric min/max against the die-count parsed from a
+ *                        dice string `field` (e.g. "3d6xkh2" -> 3, flat -> 0)
+ *            - "boolean" tri-state Any/Yes/No against a boolean `field`
+ *            - "toggle"  on/off against a boolean `field` that, when on, also
+ *                        reveals and applies its nested `filters`
+ * - `field`  the dot path on a normalized index entry to test
+ * - `fields` (range only) several dot paths; the entry matches if any is in range
+ * - `choices` (set only) the name of the enum on this CPR object whose keys
+ *            are the selectable values; its values are the localization keys
+ * - `filters` (toggle only) nested filter definitions exposed while the toggle is on
+ * - `label`  localization key for the filter's heading
+ *
+ * Field paths intentionally vary by type (e.g. `system.weaponType` vs
+ * `system.type`) because the underlying data models store them differently.
+ * Universal name and price filters are applied by the browser itself and are
+ * not declared here. Every per-type filter only constrains entries of its own
+ * type, so a weapon-only filter never hides armor, etc.
+ */
+CPR.browserWeaponStatFilters = [
+  {
+    id: "rof",
+    type: "range",
+    field: "system.rof",
+    label: "CPR.browser.filter.rof",
+  },
+  {
+    id: "autofire",
+    type: "range",
+    field: "system.fireModes.autoFire",
+    label: "CPR.browser.filter.autofire",
+  },
+  {
+    id: "damage",
+    type: "damage",
+    field: "system.damage",
+    label: "CPR.browser.filter.damage",
+  },
+  {
+    id: "concealable",
+    type: "boolean",
+    field: "system.concealable.concealable",
+    label: "CPR.browser.filter.concealable",
+  },
+];
+
+CPR.browserFilters = {
+  weapon: [
+    {
+      id: "weaponType",
+      type: "set",
+      field: "system.weaponType",
+      choices: "weaponTypes",
+      label: "CPR.browser.filter.type",
+    },
+    ...CPR.browserWeaponStatFilters,
+    {
+      id: "hands",
+      type: "range",
+      field: "system.handsReq",
+      label: "CPR.browser.filter.hands",
+    },
+  ],
+  ammo: [
+    {
+      id: "ammoType",
+      type: "set",
+      field: "system.type",
+      choices: "ammoTypes",
+      label: "CPR.browser.filter.type",
+    },
+    {
+      id: "ammoVariety",
+      type: "set",
+      field: "system.variety",
+      choices: "ammoVarieties",
+      label: "CPR.browser.filter.ammoVariety",
+    },
+  ],
+  cyberware: [
+    {
+      id: "cyberwareType",
+      type: "set",
+      field: "system.type",
+      choices: "cyberwareTypes",
+      label: "CPR.browser.filter.type",
+    },
+    {
+      id: "isFoundational",
+      type: "boolean",
+      field: "system.isFoundational",
+      label: "CPR.browser.filter.isFoundational",
+    },
+    {
+      id: "providesHardening",
+      type: "boolean",
+      field: "system.providesHardening",
+      label: "CPR.browser.filter.providesHardening",
+    },
+    {
+      id: "isWeapon",
+      type: "toggle",
+      field: "system.isWeapon",
+      label: "CPR.browser.filter.cyberweapon",
+      // Cyberweapons mix in the attack schema; expose the weapon stats (minus
+      // Hands, which cyberware data models don't define) while the toggle is on.
+      filters: CPR.browserWeaponStatFilters,
+    },
+  ],
+  clothing: [
+    {
+      id: "clothingType",
+      type: "set",
+      field: "system.type",
+      choices: "clothingTypes",
+      label: "CPR.browser.filter.type",
+    },
+    {
+      id: "clothingStyle",
+      type: "set",
+      field: "system.style",
+      choices: "clothingVarieties",
+      label: "CPR.browser.filter.clothingStyle",
+    },
+  ],
+  armor: [
+    {
+      id: "armorLocation",
+      type: "set",
+      field: "armorLocation",
+      choices: "armorLocations",
+      label: "CPR.browser.filter.armorLocation",
+    },
+    {
+      id: "armorSp",
+      type: "range",
+      // Computed at filter time from the SP/HP of only the locations the armor
+      // actually uses (see the browser's armor-defence deriver). Unused
+      // locations store stale defaults, so they must not be considered; the
+      // range matches if any used value falls in range (SP and HP alike).
+      derive: "armorSp",
+      label: "CPR.browser.filter.armorSp",
+    },
+  ],
+  cyberdeck: [
+    {
+      id: "slots",
+      type: "range",
+      field: "system.installedItems.slots",
+      label: "CPR.browser.filter.slots",
+    },
+  ],
+  drug: [
+    {
+      id: "drugType",
+      type: "set",
+      // Derived on the index entry (see CPR.drugTypes) from price, not a field.
+      field: "drugType",
+      choices: "drugTypes",
+      label: "CPR.browser.filter.type",
+    },
+  ],
+  program: [
+    {
+      id: "programClass",
+      type: "set",
+      field: "system.class",
+      choices: "programClassList",
+      label: "CPR.browser.filter.programClass",
+    },
+  ],
+};
+
+/**
+ * Item types the document browser never lists or offers as a filter — they are
+ * character mechanics rather than discoverable/purchasable content. Internal
+ * compendia (the `internal_*` packs) are excluded separately by the index.
+ */
+CPR.browserExcludedItemTypes = ["skill", "criticalInjury", "role"];
+
+/**
+ * Compendium pack ids fully excluded from the document browser at the system
+ * level. These never appear in the browser and are not offered in the GM's
+ * "browser compendia" settings menu. Includes the system-internal packs (which
+ * hold character mechanics and rolltables, not browsable content).
+ */
+CPR.browserIgnoredPacks = [
+  // Skills and critical injuries are also excluded from the browser by item
+  // type (browserExcludedItemTypes); their packs are hidden here too so they
+  // never appear in the browser or its compendia settings.
+  `${CPR.systemId}.core_critical-injuries-body`,
+  `${CPR.systemId}.core_critical-injuries-head`,
+  `${CPR.systemId}.core_skills-languages`,
+  `${CPR.systemId}.core_skills-local-expert`,
+  `${CPR.systemId}.core_skills-martial-arts`,
+  `${CPR.systemId}.core_skills-play-instrument`,
+  `${CPR.systemId}.core_skills-science`,
+  `${CPR.systemId}.internal_critical-injury-tables`,
+  `${CPR.systemId}.internal_cyberware-core`,
+  `${CPR.systemId}.internal_dv-tables`,
+  `${CPR.systemId}.internal_net-rolltables`,
+  `${CPR.systemId}.internal_skills`,
+];
+
+/**
+ * Synthetic armor "location" values used as the armor sub-type in the document
+ * browser's Type tree. Derived from the armor's location/shield booleans at
+ * index time (see CPRBrowserIndex).
+ */
+CPR.armorLocations = {
+  body: "CPR.global.location.body",
+  head: "CPR.global.location.head",
+  both: "CPR.browser.armorLocation.both",
+  shield: "CPR.browser.armorLocation.shield",
+};
+
+/**
+ * Derived drug categories for the document browser. The drug data model has no
+ * street/pharmaceutical field, so the browser infers it from price: free drugs
+ * (market 0) are treated as pharmaceuticals, everything else as street drugs.
+ */
+CPR.drugTypes = {
+  street: "CPR.global.drugType.street",
+  pharmaceutical: "CPR.global.drugType.pharmaceutical",
+};
+
+/**
+ * Set filters the document browser offers for every item type (in addition to
+ * the universal name, price-range and price-category controls and the per-type
+ * CPR.browserFilters above). The free-text source book is handled dynamically
+ * by the browser because its choices come from the indexed content rather than
+ * a fixed enum.
+ */
+// Per-type-agnostic item filters added to every item type's predicate set.
+// Currently empty: quality is a top-bar dropdown and brand/source-book are added
+// dynamically by the browser.
+CPR.browserCommonItemFilters = [];
 
 export default CPR;

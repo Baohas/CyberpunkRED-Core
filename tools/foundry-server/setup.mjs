@@ -203,17 +203,17 @@ export async function driveSetup(page, { config, worldId }) {
 }
 
 /*
- * From the world login screen, sign in as the default Gamemaster (blank password
- * on a freshly created world) and wait for the game to be ready.
+ * From the world login screen, sign in as the named user (blank password — the
+ * default GM and our test player both have none) and wait for game ready.
  */
-export async function joinAsGM(page, config) {
+export async function joinAsUser(page, config, label) {
   if (!/\/(join|auth)/.test(new URL(page.url()).pathname)) {
     await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
   }
 
   const userSelect = page.locator('select[name="userid"]').first();
   if (await present(userSelect)) {
-    await userSelect.selectOption({ label: "Gamemaster" }).catch(async () => {
+    await userSelect.selectOption({ label }).catch(async () => {
       // Fall back to the first non-placeholder option if the label differs.
       await userSelect.selectOption({ index: 1 });
     });
@@ -242,4 +242,37 @@ export async function joinAsGM(page, config) {
     )
     .catch(() => {});
   await page.waitForTimeout(750);
+}
+
+/*
+ * Sign in as the default Gamemaster (blank password on a freshly created world).
+ */
+export async function joinAsGM(page, config) {
+  return joinAsUser(page, config, "Gamemaster");
+}
+
+/*
+ * Create (idempotently) a non-GM player User and a Character actor owned by and
+ * assigned to that user, so the shop specs run with `game.user.character` set.
+ * Runs in the GM page via the document API; returns the created ids.
+ */
+export async function createPlayerWithCharacter(
+  page,
+  { userName, characterName },
+) {
+  return page.evaluate(
+    async ({ userName, characterName }) => {
+      const owner = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
+      const user =
+        game.users.getName(userName) ??
+        (await User.create({ name: userName, role: CONST.USER_ROLES.PLAYER }));
+      const actor =
+        game.actors.getName(characterName) ??
+        (await Actor.create({ name: characterName, type: "character" }));
+      await actor.update({ [`ownership.${user.id}`]: owner });
+      await user.update({ character: actor.id });
+      return { userId: user.id, actorId: actor.id };
+    },
+    { userName, characterName },
+  );
 }
