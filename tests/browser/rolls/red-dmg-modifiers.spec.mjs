@@ -437,3 +437,36 @@ test.describe("dmg × other modifiers (pipeline position, total unchanged)", () 
     expect(roll.total).toBe(10);
   });
 });
+
+// The programmatic paths refuse a red+dmg formula at assembly, but a raw `/r` chat roll builds a native
+// Foundry roll that skips them. The `chatMessage` hook (hooks/chat/enforce-red-dmg-exclusive.js) closes
+// that gap: it vetoes such a message before it is rolled. `Hooks.call` returns false when any handler
+// vetoes, so it is the deterministic probe for "this message would be blocked".
+test.describe("red/dmg chat guard (manual /r rolls)", () => {
+  async function chatVetoed(game, message) {
+    return game.evaluate(
+      (msg) => Hooks.call("chatMessage", ui.chat, msg, {}) === false,
+      message,
+    );
+  }
+
+  test("blocks a /r roll that pairs red with dmg", async ({ game }) => {
+    expect(await chatVetoed(game, "/r 1d6red4dmg")).toBe(true);
+    expect(await chatVetoed(game, "/r 1d10red + 4d6dmg")).toBe(true);
+    expect(await chatVetoed(game, "[[1d6red4dmg]]")).toBe(true);
+  });
+
+  test("allows a /r roll carrying only one marker, and plain prose", async ({
+    game,
+  }) => {
+    expect(await chatVetoed(game, "/r 1d10red")).toBe(false);
+    expect(await chatVetoed(game, "/r 2d6dmg")).toBe(false);
+    expect(await chatVetoed(game, "red and dmg are exclusive")).toBe(false);
+  });
+
+  test("does not conflate two separate valid inline rolls in one message", async ({
+    game,
+  }) => {
+    expect(await chatVetoed(game, "[[1d10red]] and [[2d6dmg]]")).toBe(false);
+  });
+});

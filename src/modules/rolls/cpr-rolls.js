@@ -1,6 +1,7 @@
 import LOGGER from "../utils/cpr-logger.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import * as CPRRollDialogs from "../dialog/cpr-roll-dialog.js";
+import { formulaHasRedAndDmg } from "./red-dmg-guard.js";
 
 const { Roll } = foundry.dice;
 
@@ -108,7 +109,7 @@ export class CPRRoll extends Roll {
    * @throws {Error} when the formula carries both `red` and `dmg`
    */
   static assertRedDmgExclusive(formula) {
-    if (/red/i.test(formula) && /dmg/i.test(formula)) {
+    if (formulaHasRedAndDmg(formula)) {
       globalThis.ui?.notifications?.warn(
         SystemUtils.Localize("CPR.rolls.modifiers.redDmgExclusive"),
       );
