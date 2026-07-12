@@ -1,7 +1,6 @@
 .item-sheet {
   font-family: var(--cpr-font-primary);
-  flex: 1;
-  min-height: 0;
+  height: 100%;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 4.5rem minmax(0, 1fr);
