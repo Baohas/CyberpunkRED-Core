@@ -4,6 +4,16 @@
 
 ## Version 0.93
 
+### Action Needed
+
+- The `/red` chat command has been removed. Use the `red` die modifier instead — e.g. `/r 1d10red`
+
+#### Weapons & Ammo That Cannot Crit
+
+We have made damage criticals configurable per weapon and ammo, and migrated the weapons and ammo that RAW cannot cause a Critical Injury — such as the Air Pistol, Stun Gun, Stun Baton, and Rubber ammunition — to never crit. This migration matches on item name (including translations), so renamed or homebrew items are not caught.
+
+If you have any such items that should not crit, set them manually: on a weapon, set **Critical Damage → Dice Required** to **0**; on ammo, enable **Modify Critical?** and set its **Dice Required** to **0**.
+
 ### New Features
 
 - Add Foundry v13 Support
@@ -13,6 +23,16 @@
 - Transition ammo icons from `.png` to `.svg`
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
+- Migrate the dice/roll system onto native Foundry rolls (serializable, multiplayer-safe, with automatic Dice So Nice support)
+- Add a `red` die modifier: a single explode-on-max / implode-on-1 for check dice, usable in any roll formula, macro or script (e.g. `1d10red`)
+- Add a `dmg` damage marker modifier that drives the damage card and apply-damage controls and flags critical damage. A bare `dmg` roll defaults to RAW, with two companion modifiers to override it (e.g. `/r 2d6dmgab2cd10`):
+  - `ab` — `abN` sets how many points of armor SP the roll ablates (default 1; `ab0` = none)
+  - `cd` — `cdN` sets the critical bonus damage added on a crit (default 5; `cd0` = none)
+- Make damage criticals configurable per weapon and per ammo (critical threshold, dice required, and bonus damage; ammo can override the weapon's rule)
+- Support `@`-roll-data references (e.g. `@stats.ref`) in roll formulas
+- Support arbitrary multi-term roll formulas with keep/drop and other dice-pool modifiers (e.g. `3d6kh2`, `2d6 + 1d4 + @stats.body`), each term carrying its own modifiers — the whole formula is evaluated natively instead of being reduced to a single dice term plus flat mods
+- Render Foundry's native dice on every roll card, keeping the CPR title, modifier breakdown, critical flavour and apply-damage controls (a dedicated dice re-skin will follow)
+- Sanitise the `dmg`/`ab`/`cd`/`red` markers out of an item's **Damage** field on save — for every attackable item's `system.damage` **and** an ammo override's damage value. They are built from the item's own critical/ablation settings (and `red` conflicts with the auto-appended `dmg`); every other modifier is kept, e.g. `3d6kh2dmg5ab0cd10red` is saved as `3d6kh2`
 
 ### Changes
 
@@ -21,6 +41,7 @@
 ### Correzioni di bug
 
 - Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
+- Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
 
 ### Plumbing
 
@@ -115,7 +136,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 - Add Ukrainian Language support
 - Pre-Installed smartgun-link upgrade into Malorian Arms 3516
 
-### Correzioni di bug
+### Bug Fixes
 
 - Fix term "Optional Slots" to "Option Slots"
 - Fix small layout bug with Item Sheet: Source/Page display
@@ -128,7 +149,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 
 ## Version 0.92.1
 
-### Correzioni di bug
+### Bug Fixes
 
 - Fix HP/Humanity interacting with the mouse scrollwheel
 - Fix bug preventing extended magazines from modifying weapon ammo count
@@ -156,7 +177,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 
 ## Version 0.89.1
 
-### Bug Fixes
+### Correzioni di bug
 
 - \#1128 - Fixed visual bug related to weapon firemodes not showing state correctly.
 - Fix uprade weapons (e.g., underbarrel weapons) not rolling.
@@ -410,7 +431,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Versione 0.87.3
 
-### Correzioni di bug
+### Bug Fixes
 
 - \#808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - \#812 - Some roles were missing the bonuses data point as an empty array.
