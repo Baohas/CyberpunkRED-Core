@@ -116,6 +116,94 @@ test.describe("Document browser", () => {
     );
   });
 
+  test("clearing a promoted sub-filter releases the auto-'only' type box", async ({
+    game,
+  }) => {
+    const token = uniqueName("promote");
+    const weaponId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: `${token} blade`,
+    });
+    // A known weaponType so its sub-filter option exists in the Weapon box.
+    await game.evaluate(
+      (id) => game.items.get(id).update({ "system.weaponType": "heavyMelee" }),
+      weaponId,
+    );
+    await closeDocSheet(game, { collection: "items", id: weaponId });
+
+    const browser = await openItemBrowser(game);
+    await browser.locator(".cpr-browser-name-input").fill(token);
+    await expect(browser.locator(".cpr-browser-entry")).toHaveCount(1);
+
+    // Expand the Weapon box so its sub-filters are interactable.
+    const weaponBox = browser.locator(
+      '.cpr-browser-typebox[data-type="weapon"]',
+    );
+    await weaponBox.locator(".cpr-browser-collapse-toggle").first().click();
+
+    const subFilter = weaponBox.locator(
+      '.cpr-browser-tristate[data-set="1"][data-filter="weaponType"][data-value="heavyMelee"]',
+    );
+    const typeTristate = weaponBox.locator(
+      '.cpr-browser-tristate[data-tree="type"]',
+    );
+
+    // Cycle the sub-filter include -> exclude -> only: this auto-promotes the
+    // box to "only".
+    await subFilter.click();
+    await subFilter.click();
+    await expect(subFilter).toHaveAttribute("data-state", "only");
+    await expect(typeTristate).toHaveAttribute("data-state", "only");
+
+    // Cycle it once more (only -> include). With no "only" sub-filter left, a box
+    // we auto-promoted must fall back to "include", not stay stuck on "only".
+    await subFilter.click();
+    await expect(subFilter).toHaveAttribute("data-state", "include");
+    await expect(typeTristate).toHaveAttribute("data-state", "include");
+  });
+
+  test("a manually 'only' type box survives toggling one of its sub-filters", async ({
+    game,
+  }) => {
+    const token = uniqueName("manual");
+    const weaponId = await createDocumentViaUI(game, {
+      documentTab: "items",
+      type: "weapon",
+      name: `${token} blade`,
+    });
+    await game.evaluate(
+      (id) => game.items.get(id).update({ "system.weaponType": "heavyMelee" }),
+      weaponId,
+    );
+    await closeDocSheet(game, { collection: "items", id: weaponId });
+
+    const browser = await openItemBrowser(game);
+    await browser.locator(".cpr-browser-name-input").fill(token);
+    await expect(browser.locator(".cpr-browser-entry")).toHaveCount(1);
+
+    const weaponBox = browser.locator(
+      '.cpr-browser-typebox[data-type="weapon"]',
+    );
+    const typeTristate = weaponBox.locator(
+      '.cpr-browser-tristate[data-tree="type"]',
+    );
+
+    // Set the box to "only" by hand (include -> exclude -> only); this expands it.
+    await typeTristate.click();
+    await typeTristate.click();
+    await expect(typeTristate).toHaveAttribute("data-state", "only");
+
+    // Toggling a sub-filter must not undo a box the user set to "only" directly —
+    // only an auto-promotion is reversible.
+    const subFilter = weaponBox.locator(
+      '.cpr-browser-tristate[data-set="1"][data-filter="weaponType"][data-value="heavyMelee"]',
+    );
+    await subFilter.click();
+    await expect(subFilter).toHaveAttribute("data-state", "exclude");
+    await expect(typeTristate).toHaveAttribute("data-state", "only");
+  });
+
   test("the price filter excludes items above the max", async ({ game }) => {
     const token = uniqueName("price");
     const cheapId = await createDocumentViaUI(game, {

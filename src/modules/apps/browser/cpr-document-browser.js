@@ -67,6 +67,10 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    *   - `toggles`   {type: {filterId: tristate}}       — tri-state toggles
    *   - `tristate`  {filterId: {value: tristate}}      — the global filters
    *
+   * `autoPromoted` holds the types whose box was forced to "only" by a child
+   * sub-filter (not by the user clicking the box itself), so clearing the last
+   * "only" child can undo exactly that promotion and nothing else.
+   *
    * @private
    * @returns {object}
    */
@@ -82,6 +86,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       ranges: {},
       booleans: {},
       toggles: {},
+      autoPromoted: new Set(),
     };
   }
 
@@ -1122,6 +1127,9 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     } = toggle.dataset;
     if (tree === "type") {
       this.filterState.types[type] = state;
+      // A manual click on the box owns its state outright, so it is no longer an
+      // auto-promotion a child could later undo.
+      this.filterState.autoPromoted.delete(type);
       // Tri-state ⇄ collapse coupling: exclude collapses the box, only expands
       // it; include leaves the manual expand/collapse untouched.
       const box = toggle.closest(".cpr-browser-collapsible");
@@ -1146,10 +1154,36 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     }
 
     // Choosing "only" on any in-box sub-filter implies you want only that type,
-    // so promote the parent type box to "only" as well.
+    // so promote the parent type box to "only" as well. Undoing that child (or
+    // any sibling) leaves the box stuck on "only" unless we mirror the promotion
+    // in reverse: once no sub-filter is "only" any more, demote a box we (not
+    // the user) promoted back to "include".
     if (state === "only" && (set || bool || isToggle)) {
       this.#promoteTypeToOnly(toggle, type);
+    } else if (
+      (set || bool || isToggle) &&
+      this.filterState.autoPromoted.has(type) &&
+      !this.#typeHasOnlyChild(type)
+    ) {
+      this.#demoteTypeFromOnly(toggle, type);
     }
+  }
+
+  /**
+   * Whether any of a type's in-box sub-filters (sets, booleans, toggles) is
+   * currently in the "only" state.
+   *
+   * @private
+   * @param {string} type
+   * @returns {boolean}
+   */
+  #typeHasOnlyChild(type) {
+    const sets = Object.values(this.filterState.sets[type] ?? {});
+    if (sets.some((filter) => Object.values(filter).includes("only")))
+      return true;
+    if (Object.values(this.filterState.booleans[type] ?? {}).includes("only"))
+      return true;
+    return Object.values(this.filterState.toggles[type] ?? {}).includes("only");
   }
 
   /**
@@ -1163,6 +1197,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    */
   #promoteTypeToOnly(child, type) {
     this.filterState.types[type] = "only";
+    this.filterState.autoPromoted.add(type);
     const box = child.closest(".cpr-browser-collapsible");
     const parent = box?.querySelector(
       '.cpr-browser-tristate[data-tree="type"]',
@@ -1176,6 +1211,32 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       );
     }
     this.#setBoxExpanded(box, type, true);
+  }
+
+  /**
+   * Undo an auto-promotion: return a type box we forced to "only" back to
+   * "include", mirroring #promoteTypeToOnly's DOM update. The box's manual
+   * expand/collapse is left untouched (as it is for a plain "include" click).
+   *
+   * @private
+   * @param {HTMLElement} child - the sub-filter toggle that left "only"
+   * @param {string} type
+   */
+  #demoteTypeFromOnly(child, type) {
+    this.filterState.types[type] = "include";
+    this.filterState.autoPromoted.delete(type);
+    const box = child.closest(".cpr-browser-collapsible");
+    const parent = box?.querySelector(
+      '.cpr-browser-tristate[data-tree="type"]',
+    );
+    if (parent) {
+      parent.dataset.state = "include";
+      parent.className = "cpr-browser-tristate cpr-browser-tristate-include";
+      parent.setAttribute(
+        "data-tooltip",
+        CPRDocumentBrowser.#tristateTooltip("include"),
+      );
+    }
   }
 
   /**
