@@ -206,8 +206,9 @@ export default class CPRChat {
           } else {
             [actor] = game.actors.filter((a) => a.id === actorId);
           }
-          const alias = actor.name;
-          chatOptions.speaker = { actor, alias };
+          // Let Foundry resolve the alias so it prefers the Token name (via the
+          // synthetic token actor / active token) over the Actor name.
+          chatOptions.speaker = ChatMessage.getSpeaker({ actor });
         }
         return ChatMessage.create(chatOptions);
       },
