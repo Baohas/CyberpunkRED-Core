@@ -216,7 +216,7 @@
     },
     "Light Tattoo": {
       "name": "Tatuaż świetlny",
-      "description": "<p>\n  Glowing tattoos. +2 to Wardrobe & Style if you have at least three installed.\n</p>\n",
+      "description": "<p>\n  Glowing tattoos. +2 to Wardrobe &amp; Style if you have at least three\n  installed.\n</p>\n",
       "dvTable": ""
     },
     "Low Light/IR/UV": {
@@ -411,7 +411,7 @@
     },
     "Skill Chip": {
       "name": "Czip umiejętności",
-      "description": "<p>Chipware.</p>\n<p>Sets a Skill to 3 unless the skill is already >3*.</p>\n<p><em>* Not supported, Skill must be modified manually.</em></p>\n",
+      "description": "<p>Chipware.</p>\n<p>Sets a Skill to 3 unless the skill is already &gt;3*.</p>\n<p><em>* Not supported, Skill must be modified manually.</em></p>\n",
       "dvTable": ""
     },
     "Skin Weave": {
