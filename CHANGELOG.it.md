@@ -62,6 +62,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 ### Correzioni di bug
 
 - Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
+- The "Damage Dealt To" damage-application card now shows the target's Token name instead of the Actor name
 
 ## Version 0.92.4
 
