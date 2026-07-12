@@ -46,6 +46,9 @@ export async function cprConfirm(message, { title } = {}) {
  * @param {number|string} [config.width] - optional fixed window width
  * @param {(formData: object, data: object) => any} [config.process] - optional hook to transform the
  *   submitted form values before returning; when provided, its return value is what the promise resolves to
+ * @param {boolean} [config.modal=false] - show as a modal dialog. Use for blocking
+ *   selections the user must resolve before continuing; a modal DialogV2 is rendered
+ *   in the top layer, centred and constrained to the viewport.
  * @param {string} [config.confirmLabel] - localization key for the confirm button
  * @param {string} [config.cancelLabel] - localization key for the cancel button
  * @returns {Promise<object|null>} the mutated data object on confirm, or null if cancelled/dismissed
@@ -56,6 +59,7 @@ export async function cprFormPrompt({
   title,
   width,
   process,
+  modal = false,
   confirmLabel = "CPR.dialog.common.confirm",
   cancelLabel = "CPR.dialog.common.cancel",
 }) {
@@ -68,11 +72,15 @@ export async function cprFormPrompt({
     // Only set position when a width is requested; passing `position: undefined`
     // makes DialogV2's option merge throw.
     ...(width ? { position: { width: parseInt(width, 10) } } : {}),
+    modal,
     classes: ["cpr-dialog"],
     content,
     buttons: [
       {
         action: "confirm",
+        // Match the custom dialogs' footer markup so CPR's button styling and the
+        // `button.cpr-dialog-button` selectors apply uniformly across all dialogs.
+        class: "cpr-dialog-button",
         icon: "fas fa-check",
         label: confirmLabel,
         default: true,
@@ -90,6 +98,7 @@ export async function cprFormPrompt({
       },
       {
         action: "cancel",
+        class: "cpr-dialog-button",
         icon: "fas fa-xmark",
         label: cancelLabel,
       },

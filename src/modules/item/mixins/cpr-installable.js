@@ -65,6 +65,9 @@ const Installable = function Installable() {
       data: dialogData,
       title: SystemUtils.Localize("CPR.dialog.selectInstallTarget.title"),
       template: `systems/${game.system.id}/templates/dialog/cpr-select-install-targets-prompt.hbs`,
+      // A blocking target choice: make it modal so it is centred and constrained
+      // to the viewport (and not lost behind the sheet that launched it).
+      modal: true,
     });
     if (!dialogData || dialogData.selectedTarget === null) {
       return;
