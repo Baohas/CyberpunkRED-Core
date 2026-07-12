@@ -21,6 +21,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
+- Add a document browser for items and actors: search and filter the world and enabled compendia in one window, then click to open or drag to copy onto a sheet
+  - Players get a shopping cart: add items, choose which owned actor to buy for, and check out — spending the character's wealth and logging the purchase to chat
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
 - Migrate the dice/roll system onto native Foundry rolls (serializable, multiplayer-safe, with automatic Dice So Nice support)
