@@ -25,19 +25,37 @@ async function present(locator, timeout = SHORT) {
 
 /*
  * Foundry shows onboarding "tours" (e.g. the Setup screen's "Backups Overview")
- * as a `.tour` overlay that renders above the setup UI and intercepts clicks on
- * the controls below it — enough to make worldCreate/worldLaunch silently miss.
- * Dismiss any visible tour by clicking its exit ("X") control. A tour can chain
- * several steps, so exit a few times. No-op when none is present.
+ * as a `.tour-overlay` + `.tour` that render above the setup UI and intercept
+ * clicks on the controls below — enough to make worldCreate/worldLaunch silently
+ * time out ("<div class="tour-overlay"></div> intercepts pointer events"). The
+ * exit control varies by tour/version and the overlay doesn't reliably respond to
+ * Escape, so just strip the tour DOM directly — that's the only thing that
+ * guarantees the controls underneath become clickable. Idempotent; no-op when
+ * none is present.
  */
 async function dismissTours(page) {
-  const exit = page.locator(
-    '.tour-center-step a[data-action="exit"], .tour a[data-action="exit"]',
-  );
-  for (let i = 0; i < 5; i += 1) {
-    if (!(await present(exit, 1000))) break;
-    await exit.first().click().catch(() => {});
-  }
+  await page
+    .evaluate(() => {
+      for (const sel of [".tour-overlay", ".tour", ".tour-center-step"]) {
+        document.querySelectorAll(sel).forEach((el) => el.remove());
+      }
+    })
+    .catch(() => {});
+}
+
+/*
+ * Click a Setup control even when a tour overlay is fighting us: a tour can
+ * re-render between page load and the click and intercept pointer events, which
+ * makes a normal `.click()` time out ("<div class="tour-overlay"> intercepts
+ * pointer events"). Clear the tour first, try a real click, and fall back to
+ * dispatching the event straight at the element — which ignores any overlay
+ * stacked on top. Mirrors the worldLaunch handling below.
+ */
+async function clickThrough(page, locator) {
+  await dismissTours(page);
+  await locator
+    .click({ timeout: SHORT })
+    .catch(() => locator.dispatchEvent("click"));
 }
 
 /*
@@ -79,11 +97,11 @@ async function acceptEula(page) {
   if (!(await present(agree))) return;
 
   await agree.check().catch(() => {});
-  await page.locator('button#sign').first().click();
+  await page.locator("button#sign").first().click();
   await page.waitForLoadState("networkidle").catch(() => {});
 }
 
-async function createAndLaunchWorld(page, worldId) {
+async function createAndLaunchWorld(page, worldId, config) {
   // Already in a world / at the join screen — nothing to set up.
   if (/\/(game|join)/.test(new URL(page.url()).pathname)) return;
 
@@ -96,40 +114,77 @@ async function createAndLaunchWorld(page, worldId) {
     )
     .first();
   if (await present(createButton)) {
-    await createButton.click();
+    await clickThrough(page, createButton);
 
-    // World creation dialog.
-    await page.locator('input[name="title"]').first().fill(worldId);
+    // World creation dialog. Opening it can spawn a fresh tour (e.g. "Backups Overview") that
+    // overlays and re-renders the dialog, detaching the title input mid-fill — a 30s `fill` timeout
+    // that flaked CI. Clear tours and retry so a tour that appears after the dialog can't wedge us.
+    const titleInput = page.locator('input[name="title"]').first();
+    for (let attempt = 0; attempt < 6; attempt += 1) {
+      await dismissTours(page);
+      const filled = await titleInput
+        .fill(worldId, { timeout: 5000 })
+        .then(() => true)
+        .catch(() => false);
+      if (filled) break;
+    }
     const idInput = page.locator('input[name="id"]').first();
     if (await present(idInput, 1000)) {
       await idInput.fill(worldId);
     }
-    await page.locator('select[name="system"]').first().selectOption(SYSTEM_NAME);
     await page
-      .locator('button[type="submit"], button:has-text("Create World")')
-      .last()
-      .click();
+      .locator('select[name="system"]')
+      .first()
+      .selectOption(SYSTEM_NAME);
+    await clickThrough(
+      page,
+      page
+        .locator('button[type="submit"], button:has-text("Create World")')
+        .last(),
+    );
     await page.waitForLoadState("networkidle").catch(() => {});
   }
 
-  // A fresh world can trigger another tour (e.g. "Backups Overview") that sits
-  // over the launch control — clear it before launching.
-  await dismissTours(page);
+  // Launch the world and confirm it actually went active. In v13 the launch
+  // click is easy to lose — the control is hover-revealed on the world tile and a
+  // tour overlay can sit over it — which silently leaves us on /setup so that
+  // /join reports "no active game session". Retry from /setup until the world is
+  // up (the join screen renders the user picker only once a world is launched).
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    // A fresh world can trigger another tour (e.g. "Backups Overview") that sits
+    // over the launch control — clear it before launching.
+    // eslint-disable-next-line no-await-in-loop
+    await dismissTours(page);
 
-  // Launch the world we just created (or that already existed). The launch
-  // control is revealed on hover over the world tile in v13, so hover the tile
-  // first; if it still isn't actionable, dispatch the click directly (the anchor
-  // is in the DOM regardless of the hover-reveal styling).
-  const tile = page.locator(`[data-package-id="${worldId}"]`).first();
-  if (await present(tile)) {
-    await tile.hover().catch(() => {});
-    const launch = tile.locator('[data-action="worldLaunch"]').first();
-    if (await present(launch, 1500)) {
-      await launch.click().catch(() => {});
-    } else {
-      await launch.dispatchEvent("click").catch(() => {});
+    // The launch control is revealed on hover over the world tile, so hover the
+    // tile first; if it still isn't actionable, dispatch the click directly (the
+    // anchor is in the DOM regardless of the hover-reveal styling).
+    const tile = page.locator(`[data-package-id="${worldId}"]`).first();
+    // eslint-disable-next-line no-await-in-loop
+    if (await present(tile)) {
+      // eslint-disable-next-line no-await-in-loop
+      await tile.hover().catch(() => {});
+      const launch = tile.locator('[data-action="worldLaunch"]').first();
+      // eslint-disable-next-line no-await-in-loop
+      if (await present(launch, 1500)) await launch.click().catch(() => {});
+      // eslint-disable-next-line no-await-in-loop
+      else await launch.dispatchEvent("click").catch(() => {});
+      // eslint-disable-next-line no-await-in-loop
+      await page.waitForLoadState("networkidle").catch(() => {});
     }
-    await page.waitForLoadState("networkidle").catch(() => {});
+
+    // Verify the world is live: the user picker on /join only renders when a
+    // world is active. If it's there, we're done.
+    // eslint-disable-next-line no-await-in-loop
+    await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+    // eslint-disable-next-line no-await-in-loop
+    if (await present(page.locator('select[name="userid"]').first(), 2000)) {
+      return;
+    }
+
+    // Still showing "no active game session" — go back to /setup and retry.
+    // eslint-disable-next-line no-await-in-loop
+    await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
   }
 }
 
@@ -144,7 +199,7 @@ export async function driveSetup(page, { config, worldId }) {
   await acceptLicense(page, config.licenseKey);
   await acceptEula(page);
   await declineDataSharing(page);
-  await createAndLaunchWorld(page, worldId);
+  await createAndLaunchWorld(page, worldId, config);
 }
 
 /*

@@ -32,23 +32,7 @@
     <div class="cpr-block">
       <div class="d10-rollcard-data">
         <div class="d10-dice-div">
-          {{!-- die image for initialRoll --}}
-          {{#if criticalCard }}
-            {{#if wasCritSuccess }}
-              <img class="d10"
-                   src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}_preem.svg"/>
-              <i class="fas fa-plus"></i>
-            {{else}}
-              <img class="d10"
-                   src="systems/cyberpunk-red-core/icons/dice/red/d10_{{initialRoll}}_fail.svg"/>
-              <i class="fas fa-minus"></i>
-            {{/if}}
-            <img class="d10"
-                 src="systems/cyberpunk-red-core/icons/dice/red/d10_{{cprMath "abs" criticalRoll}}.svg"/>
-          {{else}}
-            <img class="d10"
-                 src="systems/cyberpunk-red-core/icons/dice/black/d10_{{initialRoll}}.svg"/>
-          {{/if}}
+          {{{diceHTML}}}
         </div>
         <div class="d10-number-div">
           <a><span class="clickable{{#if criticalCard }} text-semi{{/if }}"

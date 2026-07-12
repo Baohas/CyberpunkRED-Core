@@ -1,5 +1,5 @@
 import LOGGER from "../utils/cpr-logger.js";
-import { CPRRoll, CPRDamageRoll, CPRInitiative } from "../rolls/cpr-rolls.js";
+import { CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import CPRDialog from "../dialog/cpr-dialog-application.js";
 
@@ -58,7 +58,7 @@ export default class CPRChat {
    * @param {} cprRoll - from cpr-roll.js, a custom roll object that includes the results
    * @returns - a created chat message
    */
-  static RenderRollCard(incomingRoll) {
+  static async RenderRollCard(incomingRoll) {
     const cprRoll = incomingRoll;
 
     cprRoll.criticalCard = cprRoll.wasCritical();
@@ -66,8 +66,33 @@ export default class CPRChat {
       cprRoll.criticalCard = false;
     }
 
+    // Render Foundry's native dice (formula, total, tooltip) once, and inject it into the bespoke card
+    // via `{{{diceHTML}}}`. Every roll card keeps its CPR chrome (title, mod breakdown, apply-damage,
+    // crit flavor) but shows real dice — replacing the old per-die SVG image blocks. CPRTableRoll wraps
+    // an already-evaluated RollTable roll (it is not evaluated itself), so render its inner roll instead.
+    if (cprRoll._evaluated) {
+      cprRoll.diceHTML = await cprRoll.render();
+    } else if (cprRoll._tableRoll) {
+      cprRoll.diceHTML = await cprRoll._tableRoll.render();
+    }
+
     return renderTemplate(cprRoll.rollCard, cprRoll).then((html) => {
       const chatOptions = this.ChatDataSetup(html);
+
+      // Attach the native roll so it serializes/reconstructs across clients and Dice So Nice animates
+      // it automatically. The bespoke card stays in `content`; Foundry only renders the roll itself
+      // when content is empty. Table-wrapper rolls aren't evaluated here, so they keep HTML-only.
+      if (cprRoll._evaluated) chatOptions.rolls = [cprRoll];
+
+      // Flag initiative cards with the core initiative flag so dice modules can recognise them — e.g.
+      // Dice So Nice's "Disabled for Initiative Rolls" setting keys off `flags.core.initiativeRoll`.
+      if (cprRoll instanceof CPRInitiative) {
+        foundry.utils.setProperty(
+          chatOptions,
+          "flags.core.initiativeRoll",
+          true,
+        );
+      }
 
       if (cprRoll.entityData !== undefined && cprRoll.entityData !== null) {
         let actor;
@@ -80,8 +105,12 @@ export default class CPRChat {
         } else {
           [actor] = game.actors.filter((a) => a.id === actorId);
         }
-        const alias = actor.name;
-        chatOptions.speaker = { actor, alias };
+        // Resolve a full speaker via getSpeaker so the message carries the
+        // scene/token IDs, not just the actor. A synthetic token-actor
+        // (`actor.isToken`) routes getSpeaker to its TokenDocument, filling in
+        // scene/token/alias (the token's name); otherwise it falls back to the
+        // actor and its active token. Fixes #677.
+        chatOptions.speaker = ChatMessage.getSpeaker({ actor });
       }
       return ChatMessage.create(chatOptions);
     });
@@ -132,17 +161,18 @@ export default class CPRChat {
     return renderTemplate(itemTemplate, trimmedItem).then((html) => {
       const chatOptions = this.ChatDataSetup(html);
       if (item.entityData !== undefined && item.entityData !== null) {
-        const actor = game.actors.filter(
-          (a) => a.id === item.entityData.actor,
-        )[0];
-        let alias = actor.name;
-        if (item.entityData.token !== null) {
-          const token = game.actors.tokens[item.entityData.token];
-          if (token !== undefined) {
-            alias = token.name;
-          }
+        let actor;
+        const actorId = item.entityData.actor;
+        const tokenId = item.entityData.token;
+        if (tokenId) {
+          actor = Object.keys(game.actors.tokens).includes(tokenId)
+            ? game.actors.tokens[tokenId]
+            : game.actors.find((a) => a.id === actorId);
+        } else {
+          [actor] = game.actors.filter((a) => a.id === actorId);
         }
-        chatOptions.speaker = { actor, alias };
+        // See RenderRollCard: getSpeaker fills scene/token/alias. Fixes #677.
+        chatOptions.speaker = ChatMessage.getSpeaker({ actor });
       }
       return ChatMessage.create(chatOptions, false);
     });
@@ -182,60 +212,6 @@ export default class CPRChat {
         return ChatMessage.create(chatOptions);
       },
     );
-  }
-
-  /**
-   * Process a /red command typed into chat. This rolls dice based on arguments
-   * passed in, among other things.
-   *
-   * @async
-   * @static
-   * @param {*} data - a string of whatever the user typed in with /red
-   */
-  static async HandleCPRCommand(data) {
-    // First, let's see if we can figure out what was passed to /red
-    // Right now, we will assume it is a roll
-    const modifiersRegex = /[+-][0-9][0-9]*/;
-    const diceRegex = /[0-9][0-9]*d[0-9][0-9]*/;
-    const ablationRegex = /a[0-9][0-9]*/;
-    let formula = "1d10";
-    let rollDescription = "";
-    if (data.includes("#")) {
-      rollDescription = data.slice(data.indexOf("#") + 1);
-    }
-    if (data.match(diceRegex)) {
-      [formula] = data.match(diceRegex);
-    }
-    if (data.match(modifiersRegex)) {
-      const formulaModifiers = data.match(modifiersRegex);
-      formula = `${formula}${formulaModifiers}`;
-    }
-    if (formula) {
-      let cprRoll;
-      if (formula.includes("d6")) {
-        let ablation = 1;
-        if (data.match(ablationRegex)) {
-          [ablation] = data.match(ablationRegex);
-          ablation = ablation.slice(1);
-        }
-        cprRoll = new CPRDamageRoll(
-          SystemUtils.Localize("CPR.rolls.roll"),
-          formula,
-        );
-        cprRoll.rollCardExtraArgs.ablationValue = ablation;
-      } else {
-        cprRoll = new CPRRoll(SystemUtils.Localize("CPR.rolls.roll"), formula);
-      }
-      if (rollDescription !== "") {
-        cprRoll.rollCardExtraArgs.rollDescription = rollDescription;
-      }
-      if (cprRoll.die !== "d6" && cprRoll.die !== "d10") {
-        cprRoll.calculateCritical = false;
-        cprRoll.die = "generic";
-      }
-      await cprRoll.roll();
-      this.RenderRollCard(cprRoll);
-    }
   }
 
   /**

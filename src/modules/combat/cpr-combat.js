@@ -1,6 +1,5 @@
 import CombatUtils from "../utils/cpr-combatUtils.js";
 import CPRChat from "../chat/cpr-chat.js";
-import DiceHandler from "../extern/cpr-dice-handler.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 
 /**
@@ -82,18 +81,8 @@ export default class CPRCombat extends Combat {
         };
       }
 
-      const rollCriticals = game.settings.get(
-        game.system.id,
-        "criticalInitiative",
-      );
-
-      const roll = DiceHandler.handle3dDice(cprRoll._roll);
-      let critRoll;
-      if (rollCriticals && cprRoll.wasCritical()) {
-        critRoll = DiceHandler.handle3dDice(cprRoll._critRoll);
-      }
-      await Promise.all([roll, critRoll]);
-
+      // The roll is attached to its chat message in RenderRollCard, so Dice So Nice animates it
+      // natively — no manual 3D-dice handling needed here.
       CPRChat.RenderRollCard(cprRoll);
 
       await this.updateEmbeddedDocuments("Combatant", [update]);
