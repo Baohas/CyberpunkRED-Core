@@ -103,6 +103,21 @@ test.describe("Document browser — player shop", () => {
     await expect(line.locator(".cpr-browser-cart-qty-value")).toHaveText("1");
   });
 
+  test("the cart shows a buying-for selector defaulting to the player's character", async ({
+    player,
+  }) => {
+    const browser = await openItemBrowser(player);
+    await browser.locator(".cpr-browser-buy").first().click();
+    await expect(browser.locator(".cpr-browser-cart-item")).toHaveCount(1);
+
+    // The cart names the actor the purchase will land on, so a player who owns
+    // several actors can catch (or redirect) a buy onto the wrong character.
+    const select = browser.locator(".cpr-browser-cart-actor-select");
+    await expect(select).toBeVisible();
+    const characterId = await player.evaluate(() => game.user.character.id);
+    await expect(select).toHaveValue(characterId);
+  });
+
   test("blocks checkout and keeps the cart when the character can't afford it", async ({
     player,
   }) => {

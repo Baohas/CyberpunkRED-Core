@@ -724,7 +724,7 @@
 .cpr-document-browser.cpr-browser-has-cart .window-content {
   grid-template-columns: 16rem 1fr 15rem;
   grid-template-areas:
-    "globals globals ."
+    "globals globals cart"
     "sidebar results cart";
 }
 
@@ -834,6 +834,20 @@
   gap: 0.4rem;
   padding-top: 0.4rem;
   border-top: 0.063rem solid var(--cpr-background-border);
+}
+
+.cpr-browser-cart-actor {
+  flex: 0 0 auto;
+  margin-bottom: 0.4rem;
+}
+
+.cpr-browser-cart-actor > label {
+  font-size: var(--cpr-font-smaller);
+  color: var(--cpr-text-hint);
+}
+
+.cpr-browser-cart-actor select {
+  width: 100%;
 }
 
 .cpr-browser-cart-total {

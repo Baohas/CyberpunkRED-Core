@@ -45,6 +45,11 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     // {uuid, name, img, brand, price, priceCategory, quantity}.
     this.cart = [];
 
+    // The actor the cart buys for. Defaults to the user's assigned character but
+    // is switchable in the cart, so a player who owns several actors (or has no
+    // Main set) can direct the purchase at the right one.
+    this.cartActorId = game.user.character?.id ?? null;
+
     // Filter groups start collapsed; this holds the ids the user has expanded.
     this.expandedGroups = new Set();
 
@@ -55,6 +60,37 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
 
     // Result-list group headers the user has collapsed (by item type).
     this._collapsedGroups = new Set();
+  }
+
+  /**
+   * The actor the cart buys for: the one picked in the cart if it still
+   * resolves, otherwise the user's assigned character (which may be null).
+   *
+   * @returns {Actor|null}
+   */
+  get cartActor() {
+    return (
+      (this.cartActorId && game.actors.get(this.cartActorId)) ||
+      game.user.character ||
+      null
+    );
+  }
+
+  /**
+   * The character actors the current user owns, as a `{id: name}` map for
+   * `selectOptions`. Used to let the cart target any owned actor.
+   *
+   * @private
+   * @returns {Object<string, string>}
+   */
+  static #ownedCharacterActors() {
+    const actors = {};
+    for (const actor of game.actors) {
+      if (actor.isOwner && actor.type === "character") {
+        actors[actor.id] = actor.name;
+      }
+    }
+    return actors;
   }
 
   /**
@@ -185,6 +221,8 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       0,
     );
     context.cartTotalLabel = CPRDocumentBrowser.#money(cartTotal);
+    context.cartActors = CPRDocumentBrowser.#ownedCharacterActors();
+    context.cartActorId = this.cartActor?.id ?? "";
 
     // Filters and results both derive from the index, so only recompute them
     // when a part that shows them is actually rendering. In particular, cart-only
@@ -942,6 +980,22 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     if (parts.includes("globals")) this.#activateGlobalsListeners();
     if (parts.includes("sidebar")) this.#activateSidebarListeners();
     if (parts.includes("results")) this.#activateResultsListeners();
+    if (parts.includes("cart")) this.#activateCartListeners();
+  }
+
+  /**
+   * Wire the cart controls that aren't plain `data-action` buttons: the
+   * buying-for actor selector.
+   *
+   * @private
+   */
+  #activateCartListeners() {
+    this.element
+      .querySelector(".cpr-browser-cart-actor-select")
+      ?.addEventListener("change", (event) => {
+        this.cartActorId = event.target.value || null;
+        this.render({ parts: ["cart"] });
+      });
   }
 
   /**
@@ -1636,7 +1690,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    * @this {CPRDocumentBrowser}
    */
   static async purchaseCart() {
-    const character = game.user.character;
+    const character = this.cartActor;
     if (!character) {
       SystemUtils.DisplayMessage(
         "warn",

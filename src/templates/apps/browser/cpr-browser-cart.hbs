@@ -1,4 +1,12 @@
 <div class="cpr-browser-cart">
+  {{#if cartActors}}
+  <div class="cpr-browser-field cpr-browser-cart-actor">
+    <label for="cpr-browser-cart-actor">{{localize "CPR.browser.cart.buyingFor"}}</label>
+    <select id="cpr-browser-cart-actor" class="cpr-browser-cart-actor-select">
+      {{selectOptions cartActors selected=cartActorId}}
+    </select>
+  </div>
+  {{/if}}
   <h3 class="cpr-browser-cart-header text-hero">{{localize "CPR.browser.cart.title"}}</h3>
   <ol class="cpr-browser-cart-list">
     {{#each cart}}

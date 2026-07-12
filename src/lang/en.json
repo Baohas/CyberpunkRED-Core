@@ -43,6 +43,7 @@
   "CPR.browser.armorLocation.both": "Body & Head",
   "CPR.browser.armorLocation.shield": "Shield",
   "CPR.browser.cart.add": "Add to cart",
+  "CPR.browser.cart.buyingFor": "Buying for",
   "CPR.browser.cart.decrease": "Remove one",
   "CPR.browser.cart.empty": "Your cart is empty.",
   "CPR.browser.cart.increase": "Add one",
