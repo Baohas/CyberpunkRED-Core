@@ -88,6 +88,7 @@ export default class CPRMod {
     // Global mods.
     if (
       !prototypeChain.includes("CPRDeathSaveRoll") &&
+      !prototypeChain.includes("CPRLuckRoll") &&
       !prototypeChain.includes("CPRDamageRoll") &&
       !prototypeChain.includes("CPRInitiativeRoll")
     ) {

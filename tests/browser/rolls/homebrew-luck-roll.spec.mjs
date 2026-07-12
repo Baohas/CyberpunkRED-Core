@@ -141,6 +141,10 @@ test.describe("Homebrew Luck Roll", () => {
     await game.locator(`#${sheetId} ${LUCK_ROLLABLE}`).click();
     await expect(dialog).toBeVisible();
     await expect(targetText()).toContainText("8");
+    // Core Situational Modifiers must not be offered: LUCK is a roll-under check
+    // (like the Death Save), so a negative modifier would perversely help. The
+    // dialog must not show the Core Situational Modifiers control.
+    await expect(dialog).not.toContainText("Core Situational Modifiers");
     await dialog.locator('button[data-action="cancel"]').click();
     await expect(dialog).toHaveCount(0);
 

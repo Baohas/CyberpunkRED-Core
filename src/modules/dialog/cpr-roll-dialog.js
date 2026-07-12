@@ -104,7 +104,10 @@ export class CPRRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
       data.programDamageSelectOptions = this.getProgramDamageSelectOptions();
     }
 
-    if (!this.prototypeChain.includes("CPRDeathSaveRoll")) {
+    if (
+      !this.prototypeChain.includes("CPRDeathSaveRoll") &&
+      !this.prototypeChain.includes("CPRLuckRoll")
+    ) {
       data.defaultSituationalMods = this.defaultSituationalMods;
     }
     data.showDefaultMods = this.showDefaultMods;
