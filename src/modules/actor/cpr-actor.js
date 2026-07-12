@@ -9,7 +9,7 @@ import CPRActorUtils from "../utils/ActorUtils.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
 import TextUtils from "../utils/TextUtils.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
-import CPRDialog from "../dialog/cpr-dialog-application.js";
+import { cprConfirm, cprFormPrompt } from "../dialog/cpr-dialog.js";
 import Container, { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 /**
@@ -520,8 +520,8 @@ export default class CPRActor extends Actor {
     };
 
     // Show "Install Cyberware" dialog.
-    const formData = await CPRDialog.showDialog(
-      {
+    const formData = await cprFormPrompt({
+      data: {
         item,
         foundationalCyberware: compatibleTargetCyberware,
         // If the cyberware being installed is foundational, the array will be empty, thus the optional chaining.
@@ -529,13 +529,10 @@ export default class CPRActor extends Actor {
         humanityLossType: "rolled",
         humanityLossSelectOptions,
       },
-      // Set the options for the dialog.
-      {
-        title: SystemUtils.Localize("CPR.dialog.installCyberware.title"),
-        template: `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
-      },
-    ).catch((err) => LOGGER.debug(err));
-    if (formData === undefined) {
+      title: SystemUtils.Localize("CPR.dialog.installCyberware.title"),
+      template: `systems/${game.system.id}/templates/dialog/cpr-install-cyberware-prompt.hbs`,
+    });
+    if (!formData) {
       return false;
     }
 
@@ -581,12 +578,8 @@ export default class CPRActor extends Actor {
         { item: item.name },
       );
 
-      // Show "Default" dialog.
-      confirmRemove = await CPRDialog.showDialog(
-        { dialogMessage },
-        // Set the options for the dialog.
-        { title: dialogTitle },
-      ).catch((err) => LOGGER.debug(err));
+      // Show confirmation dialog.
+      confirmRemove = await cprConfirm(dialogMessage, { title: dialogTitle });
     } else {
       confirmRemove = true;
     }
@@ -1308,35 +1301,44 @@ export default class CPRActor extends Actor {
    */
   automaticallyStackItems(newItem) {
     const itemTemplates = SystemUtils.getMixins(newItem.type);
-    if (itemTemplates.includes("stackable")) {
-      const itemMatch = this.items.find(
-        (i) => i.type === newItem.type && i.name === newItem.name,
-      );
-      if (itemMatch) {
-        const canStack = !(
-          itemTemplates.includes("upgradable") &&
-          itemMatch.system.installedUpgrades.length === 0
-        );
-        if (canStack) {
-          let oldAmount = parseInt(itemMatch.system.amount, 10);
-          let addedAmount = parseInt(newItem.system.amount, 10);
-          if (Number.isNaN(oldAmount)) {
-            oldAmount = 1;
-          }
-          if (Number.isNaN(addedAmount)) {
-            addedAmount = 1;
-          }
-          const newAmount = oldAmount + addedAmount;
-          return this.updateEmbeddedDocuments(
-            "Item",
-            [{ _id: itemMatch.id, "system.amount": newAmount }],
-            { diff: false },
-          );
-        }
-      }
-    }
-    // If not stackable, then return true to continue adding the item.
-    return [];
+    if (!itemTemplates.includes("stackable")) return [];
+    const itemMatch = this.items.find(
+      (i) => i.type === newItem.type && i.name === newItem.name,
+    );
+    if (
+      !itemMatch ||
+      !CPRActor._canStackOnto(itemTemplates, itemMatch, newItem)
+    )
+      return [];
+    const toInt = (value) => {
+      const parsed = parseInt(value, 10);
+      return Number.isNaN(parsed) ? 1 : parsed;
+    };
+    const newAmount =
+      toInt(itemMatch.system.amount) + toInt(newItem.system.amount);
+    return this.updateEmbeddedDocuments(
+      "Item",
+      [{ _id: itemMatch.id, "system.amount": newAmount }],
+      { diff: false },
+    );
+  }
+
+  /**
+   * Whether an incoming item may stack onto an existing match. Upgradable items
+   * become unique once either side carries installed upgrades, so they never
+   * merge; everything else stacks.
+   *
+   * @param {string[]} itemTemplates - the mixin templates for the item type
+   * @param {Item} itemMatch - the existing item to stack onto
+   * @param {Object} newItem - the incoming item data
+   * @returns {boolean} true if the items may be merged into one stack
+   */
+  static _canStackOnto(itemTemplates, itemMatch, newItem) {
+    if (!itemTemplates.includes("upgradable")) return true;
+    return (
+      !itemMatch.system.installedUpgrades.length &&
+      !newItem.system.installedUpgrades?.length
+    );
   }
 
   /**
@@ -1728,12 +1730,10 @@ export default class CPRActor extends Actor {
         "CPR.dialog.deleteConfirmation.message",
       )} ${effect.name}?`;
 
-      // Show "Default" dialog.
-      const confirmDelete = await CPRDialog.showDialog(
-        { dialogMessage },
-        // Set the options for the dialog.
-        { title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title") },
-      ).catch((err) => LOGGER.debug(err));
+      // Show confirmation dialog.
+      const confirmDelete = await cprConfirm(dialogMessage, {
+        title: SystemUtils.Localize("CPR.dialog.deleteConfirmation.title"),
+      });
       if (!confirmDelete) return;
     }
     effect.delete();

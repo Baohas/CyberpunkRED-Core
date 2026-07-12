@@ -9,24 +9,16 @@ export default class CPRAmmoItem extends CPRItem {
    * Modify the ammount of ammo an Item object is tracking.
    * @param {*} actionAttributes - data passed in from the event
    */
-  _ammoAction(actionAttributes) {
+  async _ammoAction(actionAttributes) {
     const actionData = actionAttributes["data-action"].nodeValue;
     const ammoAmount = actionAttributes["data-amount"].nodeValue;
     switch (actionData) {
       case "ammo-decrement":
-        this._ammoDecrement(ammoAmount);
-        break;
+        return this._ammoDecrement(ammoAmount);
       case "ammo-increment":
-        this._ammoIncrement(ammoAmount);
-        break;
+        return this._ammoIncrement(ammoAmount);
       default:
-    }
-
-    // If the actor, is updating his owned item, this logic should live within the actor.
-    if (this.actor) {
-      this.actor.updateEmbeddedDocuments("Item", [
-        { _id: this.id, system: this.system },
-      ]);
+        return null;
     }
   }
 
@@ -39,13 +31,11 @@ export default class CPRAmmoItem extends CPRItem {
   async _ammoDecrement(changeAmount) {
     const currentValue = this.system.amount;
     const newValue = Math.max(0, Number(currentValue) - Number(changeAmount));
-    this.system.amount = newValue;
-    if (this.actor) {
-      return this.actor.updateEmbeddedDocuments("Item", [
-        { _id: this.id, system: this.system },
-      ]);
-    }
-    return null;
+    // Persist a targeted key rather than mutating `this.system` in place and
+    // re-sending the whole object: the latter diffs empty against the already
+    // mutated source and never reaches the DB, so the change is silently lost on
+    // the next re-prepare. Mirrors `unload()`'s `currentAmmo.update(...)`.
+    return this.update({ "system.amount": newValue });
   }
 
   /**
@@ -57,12 +47,8 @@ export default class CPRAmmoItem extends CPRItem {
   async _ammoIncrement(changeAmount) {
     const currentValue = this.system.amount;
     const newValue = Number(currentValue) + Number(changeAmount);
-    this.system.amount = newValue;
-    if (this.actor) {
-      return this.actor.updateEmbeddedDocuments("Item", [
-        { _id: this.id, system: this.system },
-      ]);
-    }
-    return null;
+    // See `_ammoDecrement`: persist a targeted key so the update is diffable and
+    // actually written, instead of mutating `this.system` in place.
+    return this.update({ "system.amount": newValue });
   }
 }

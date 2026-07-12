@@ -46,10 +46,12 @@ test.describe("chat speaker on rolls", () => {
       .first()
       .click();
     const dialog = game
-      .locator(".app")
+      .locator(".application")
       .filter({ has: game.locator('input[name="luck"]') });
     await expect(dialog).toBeVisible();
-    const confirm = dialog.locator('button.cpr-dialog-button[name="confirm"]');
+    const confirm = dialog.locator(
+      'button.cpr-dialog-button[data-action="confirm"]',
+    );
     await expect(async () => {
       await confirm.click();
       await expect(dialog).toHaveCount(0, { timeout: 2000 });

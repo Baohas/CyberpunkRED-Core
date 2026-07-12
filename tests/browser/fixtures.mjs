@@ -83,13 +83,25 @@ export async function gotoGame(page) {
   await page.waitForFunction(() => globalThis.game?.ready === true, null, {
     timeout: 60000,
   });
-  await page.evaluate(() => {
+  await page.evaluate(async () => {
+    // Clear any in-world onboarding tours: exit them programmatically, then strip
+    // any lingering overlay DOM as a backstop so it can't intercept clicks.
     for (const tour of game.tours?.contents ?? []) {
       try {
         tour.exit();
       } catch {
         /* no active tour */
       }
+    }
+    document
+      .querySelectorAll(".tour-overlay, .tour-center-step, .tour")
+      .forEach((el) => el.remove());
+
+    // Ensure the world is unpaused once ready — a freshly launched or reloaded
+    // world can come up paused, which makes many driven interactions silently
+    // miss. `broadcast: true` records it server-side so it persists. Idempotent.
+    if (game.paused) {
+      await game.togglePause(false, { broadcast: true });
     }
   });
 }
@@ -174,8 +186,7 @@ export async function expectSheetRendered(page, { collection, id }) {
   const elementId = await page.evaluate(
     ({ collection, id }) => {
       const doc = (collection === "actors" ? game.actors : game.items).get(id);
-      const element = doc.sheet.element?.[0] ?? doc.sheet.element;
-      return element?.id ?? null;
+      return doc.sheet.element?.id ?? null;
     },
     { collection, id },
   );
@@ -240,7 +251,7 @@ export async function reopenActorSheetViaUI(page, actorId) {
   );
   const elementId = await page.evaluate((id) => {
     const sheet = game.actors.get(id).sheet;
-    return (sheet.element?.[0] ?? sheet.element)?.id ?? null;
+    return sheet.element?.id ?? null;
   }, actorId);
 
   expect(elementId).toBeTruthy();
@@ -249,16 +260,21 @@ export async function reopenActorSheetViaUI(page, actorId) {
 }
 
 // Close a document's sheet (cleanup, so it does not cover other windows).
-// Disable submit-on-close: this is teardown, not a form submission, and an
-// ApplicationV1 sheet whose form has not finished registering throws from
-// _getSubmitData if close() tries to submit it.
+// Disable submit-on-close on AppV1 sheets: this is teardown, not a form
+// submission, and an ApplicationV1 sheet whose form has not finished registering
+// throws from _getSubmitData if close() tries to submit it. ApplicationV2 freezes
+// `options` (and has no submitOnClose), so guard the assignment.
 export async function closeDocSheet(page, { collection, id }) {
   await page.evaluate(
     ({ collection, id }) => {
       const doc = (collection === "actors" ? game.actors : game.items).get(id);
       const sheet = doc?.sheet;
       if (!sheet) return undefined;
-      sheet.options.submitOnClose = false;
+      try {
+        sheet.options.submitOnClose = false;
+      } catch {
+        /* AppV2 options are frozen and have no submitOnClose; close() is safe */
+      }
       return sheet.close();
     },
     { collection, id },
@@ -288,8 +304,10 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
   await openSidebarTab(page, "items");
   const entry = page.locator(`#items [data-entry-id="${itemId}"]`);
   await expect(entry).toBeVisible();
-  const form = page.locator(`#${sheetId} form`);
-  await expect(form).toBeVisible();
+  // ApplicationV2 document sheets render the <form> as the root element, so the
+  // sheet element itself is the drop target (no nested form to query).
+  const sheetEl = page.locator(`#${sheetId}`);
+  await expect(sheetEl).toBeVisible();
 
   const before = await page.evaluate(
     (id) => game.actors.get(id).items.size,
@@ -299,7 +317,7 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
   // Bounded so a real HTML5 drag that never settles (Foundry's DnD simulation
   // is flaky) fails fast into the synthetic-drop fallback below, instead of
   // waiting out the whole test timeout.
-  await entry.dragTo(form, { timeout: 5000 }).catch(() => {});
+  await entry.dragTo(sheetEl, { timeout: 5000 }).catch(() => {});
   // A dragTo that times out mid-drag leaves the mouse button held down, which
   // then swallows every later click; release it before continuing.
   await page.mouse.up().catch(() => {});
@@ -313,10 +331,10 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
       // if the real drag already added an item, skip the synthetic drop so it
       // can never produce a duplicate.
       if (game.actors.get(actorId).items.size > before) return;
-      const form = document.querySelector(`#${sheetId} form`);
+      const sheetEl = document.getElementById(sheetId);
       const data = new DataTransfer();
       data.setData("text/plain", JSON.stringify({ type: "Item", uuid }));
-      form.dispatchEvent(
+      sheetEl.dispatchEvent(
         new DragEvent("drop", {
           bubbles: true,
           cancelable: true,

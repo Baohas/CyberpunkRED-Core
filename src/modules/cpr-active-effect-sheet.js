@@ -6,65 +6,71 @@ import SystemUtils from "./utils/cpr-systemUtils.js";
 const { ActiveEffectConfig } = foundry.applications.sheets;
 
 /**
- * Extend the base ActiveEffect class to implement system-specific logic.
- * @extends {ActiveEffect}
+ * Extend Foundry's ApplicationV2 ActiveEffectConfig to give CPR a friendlier
+ * "Changes" tab: user-readable, category-aware modifier keys plus situational /
+ * on-by-default toggles. We keep Foundry's core Details/Duration/footer parts and
+ * override only the `changes` part with our own template and data.
+ *
+ * @extends {ActiveEffectConfig}
  */
 export default class CPRActiveEffectSheet extends ActiveEffectConfig {
-  /**
-   * We provide our own ActiveEffects sheet to improve the UX a bit. Specifically this
-   * allows us to implement user-readable keys for the mods, and different "usage" types.
-   * Most of that logic lives in cpr-active-effect.js.
-   */
-  static get defaultOptions() {
-    const resizeCPRSheets = game.settings.get(
-      game.system.id,
-      "resizeCPRSheets",
-    );
-
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      height: resizeCPRSheets ? 300 : "auto",
-      resizable: true,
-      // Submit on close to prevent an edge case where a user adds and active effect, but doesn't change anything.
-      // If they closed the dialog (without submitting) then there was just a blank AE on their sheet. This setting prevents that.
-      submitOnClose: true,
-      template: `systems/${game.system.id}/templates/effects/cpr-active-effect-sheet.hbs`,
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    classes: ["cpr"],
+    position: {
       width: 675,
-    });
-  }
+      height: "auto",
+    },
+    window: {
+      resizable: true,
+    },
+    actions: {
+      addMod: CPRActiveEffectSheet.#onAddMod,
+      deleteMod: CPRActiveEffectSheet.#onDeleteMod,
+    },
+  };
+
+  /** @inheritDoc */
+  static PARTS = {
+    ...ActiveEffectConfig.PARTS,
+    changes: {
+      template: `systems/${CPR.systemId}/templates/effects/cpr-active-effect-changes.hbs`,
+      scrollable: ["ol[data-changes]"],
+    },
+  };
 
   /**
-   * Prepares data for the CPRActiveEffectSheet.
+   * Build the per-change CPRMod list (with category-aware key inputs) for the
+   * `changes` part. Other parts use the core context unchanged.
    *
    * @override
-   * @return {Promise<Object>} The prepared data.
+   * @param {string} partId
+   * @param {object} context
+   * @returns {Promise<object>}
    */
-  async getData() {
-    const data = await super.getData();
-    const cprData = {};
-    // Convert Changes into CPRMods, which have a more convenient data structure.
-    const modList = CPRMod.getAllModifiers([this.object], true);
+  async _preparePartContext(partId, context) {
+    const partContext = await super._preparePartContext(partId, context);
+    if (partId !== "changes") return partContext;
 
-    // Prepare input elements for each Change.
+    // Convert Changes into CPRMods, which have a more convenient data structure.
+    const modList = CPRMod.getAllModifiers([this.document], true);
+
+    // Prepare the key input element for each Change (a select or a text input).
     modList.forEach((change, i) => {
       const name = `changes.${i}.key`;
       const selectClasses = ["key-key", "force-submit"];
       const value = change.key;
       switch (change.category) {
-        // Prepare the select drop-down for skill keys.
         case "skill": {
-          const skillOptionConfigs = CPRActiveEffectSheet.getSkillOptionConfigs(
-            this.object,
-          );
           const select = foundry.applications.fields.createSelectInput({
             name,
-            options: skillOptionConfigs,
+            options: CPRActiveEffectSheet.getSkillOptionConfigs(this.document),
             value,
           });
           select.classList.add(...selectClasses);
           change.keyInput = new Handlebars.SafeString(select.outerHTML);
           break;
         }
-        // Prepare the text input for custom keys.
         case "custom": {
           const textInput = foundry.applications.fields.createTextInput({
             name,
@@ -74,10 +80,9 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
           change.keyInput = new Handlebars.SafeString(textInput.outerHTML);
           break;
         }
-        // Prepare the select drop-down for all other keys.
         default: {
           const otherOptionConfigs = CPRActiveEffectSheet.getOtherOptionConfigs(
-            this.object,
+            this.document,
           );
           const select = foundry.applications.fields.createSelectInput({
             name,
@@ -91,75 +96,70 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       }
     });
 
-    cprData.modList = modList;
-    return foundry.utils.mergeObject(data, cprData);
+    partContext.modList = modList;
+    return partContext;
   }
 
   /**
-   * Some elements of the active effects sheet need special handling when they are changed
-   * because of the flag limitation imposed by Foundry.
+   * Wire CPR-specific change handlers that aren't expressible as declarative
+   * actions (form-field changes). `this.element` is a native HTMLElement.
    *
-   * @param {Object} html - the DOM object
+   * @override
    */
-  activateListeners(html) {
-    super.activateListeners(html);
-    if (!this.options.editable) return;
+  _onRender(context, options) {
+    super._onRender(context, options);
+    if (!this.isEditable) return;
 
-    // QoL - Select all text when grabbing text input.
-    $("input[type=text]").focusin(() => $(this).select());
-    html.find(".force-submit").change(() => this._forceSubmit());
-    html
-      .find(".effect-key-category")
-      .change((event) => this._changeModKeyCategory(event));
-    html
-      .find(".effect-change-control")
-      .click((event) => this._effectChangeControl(event));
-    html
-      .find(".toggle-situational")
-      .click((event) => this._toggleSituational(event));
-    html
-      .find(".toggle-on-by-default")
-      .click((event) => this._toggleOnByDefault(event));
-  }
-
-  /**
-   * A function we call when we want to force form submission (to make sure that a change is properly registered).
-   *
-   * Sometimes, if you input a change on the sheet, and then make another change somewhere else on the sheet,
-   * the original change gets ovverriden, since it was not submitted. This function addresses that by
-   * making sure information passed to the sheet gets stored/submitted before another change occurs.
-   *
-   * This function also helps achieve a secondary, more specific goal: prevent duplicate change keys on the same AE. How?
-   * In the handlebars template, change keys that already exist on this AE are disabled.
-   * Submitting rerenders the sheet, disabling the correct values in the drop-down so that they cannot be selected again.
-   *
-   * @async
-   * @callback
-   * @private
-   */
-  async _forceSubmit() {
-    this.submit({
-      preventClose: true,
+    // QoL — select all text when focusing a text input.
+    this.element.querySelectorAll('input[type="text"]').forEach((input) => {
+      input.addEventListener("focusin", () => input.select());
     });
+
+    // Persist key/value/mode edits (and re-render to disable already-used keys).
+    this.element.querySelectorAll(".force-submit").forEach((el) => {
+      el.addEventListener("change", () => this.submit());
+    });
+
+    this.element
+      .querySelectorAll(".effect-key-category")
+      .forEach((el) =>
+        el.addEventListener("change", (event) =>
+          this.#changeModKeyCategory(event),
+        ),
+      );
+
+    this.element
+      .querySelectorAll(".toggle-situational")
+      .forEach((el) =>
+        el.addEventListener("change", (event) =>
+          this.#toggleSituational(event),
+        ),
+      );
+
+    this.element
+      .querySelectorAll(".toggle-on-by-default")
+      .forEach((el) =>
+        el.addEventListener("change", (event) =>
+          this.#toggleOnByDefault(event),
+        ),
+      );
   }
 
   /**
-   * Change the key category flag on an active effect.
-   * Also submit the form to prevent duplicate change keys on the same AE. (see _forceSubmit's jsdocs)
+   * Change the key category flag on a change, then persist. Stats cannot be
+   * situational, so clear those flags when switching to the Stat category.
    *
-   * @async
-   * @callback
    * @private
+   * @param {Event} event
+   * @returns {Promise<void>}
    */
-  async _changeModKeyCategory(event) {
-    const effect = this.object;
+  async #changeModKeyCategory(event) {
+    const effect = this.document;
     const modnum = event.currentTarget.dataset.index;
     const keyCategory = event.target.value;
 
     await effect.setModKeyCategory(modnum, keyCategory);
 
-    // Stats cannot currently be situational. This bit of code sets situational flags to false when the
-    // Stat category is selected in the active effects dialog.
     if (effect.getFlag(game.system.id, `changes.cats.${modnum}`) === "stat") {
       await effect.setFlag(
         game.system.id,
@@ -172,92 +172,63 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
         false,
       );
     }
-    return this._forceSubmit();
+    await this.submit();
   }
 
   /**
-   * Dispatcher that does thing to the "changes" array of an Active Effect. That is
-   * where the mods are managed.
+   * Toggle whether a change is situational.
    *
-   * @callback
    * @private
-   * @param {Object} event - mouse click event
-   * @returns (varies by action)
+   * @param {Event} event
+   * @returns {Promise<void>}
    */
-  _effectChangeControl(event) {
-    event.preventDefault();
-    switch (event.currentTarget.dataset.action) {
-      case "add":
-        return this._addEffectChange();
-      case "delete":
-        return this._deleteEffectChange(event);
-      default:
-    }
-    return null;
-  }
-
-  /**
-   * Toggles the change as situational or not.
-   *
-   * @callback
-   * @private
-   * @param {Object} event - mouse click event
-   */
-  async _toggleSituational(event) {
-    const effect = this.object;
-    const modnum = SystemUtils.GetEventDatum(event, "data-index");
-    const isSituational = event.target.checked;
-
-    await effect.setFlag(
-      `${game.system.id}`,
+  async #toggleSituational(event) {
+    const modnum = event.target.dataset.index;
+    await this.document.setFlag(
+      game.system.id,
       `changes.situational.${modnum}.isSituational`,
-      isSituational,
+      event.target.checked,
     );
-
-    this._forceSubmit();
+    await this.submit();
   }
 
   /**
-   * If the change is situational, toggle whether it should be on by default.
+   * Toggle whether a situational change is on by default.
    *
-   * @callback
    * @private
-   * @param {Object} event - mouse click event
+   * @param {Event} event
+   * @returns {Promise<void>}
    */
-  async _toggleOnByDefault(event) {
-    const effect = this.object;
-    const modnum = SystemUtils.GetEventDatum(event, "data-index");
-    const onByDefault = event.target.checked;
-
-    await effect.setFlag(
-      `${game.system.id}`,
+  async #toggleOnByDefault(event) {
+    const modnum = event.target.dataset.index;
+    await this.document.setFlag(
+      game.system.id,
       `changes.situational.${modnum}.onByDefault`,
-      onByDefault,
+      event.target.checked,
     );
-
-    this._forceSubmit();
+    await this.submit();
   }
 
   /**
-   * Handle adding a new change (read: mod) to the changes array. A new
-   * changes is always added to the end of the array, never in the middle.
+   * Add a new change (mod) to the end of the changes array, seeding its default
+   * category and situational flags. Bound as a declarative action.
    *
-   * @async
    * @private
+   * @this {CPRActiveEffectSheet}
+   * @returns {Promise<void>}
    */
-  async _addEffectChange() {
+  static async #onAddMod() {
     const idx = this.document.changes.length;
     LOGGER.debug(`adding change defaults for changes.${idx}`);
-    return this.submit({
-      preventClose: true,
+    const changes = this.document.toObject().changes;
+    changes.push({
+      key: "",
+      mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+      value: "0",
+    });
+    await this.submit({
       updateData: {
-        [`changes.${idx}`]: {
-          key: "",
-          mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-          value: "0",
-        },
-        // we set the default "key category" here.
-        // we also give it a "situational" flag.
+        changes,
         [`flags.${game.system.id}.changes.cats.${idx}`]: "skill",
         [`flags.${game.system.id}.changes.situational.${idx}`]: {
           isSituational: false,
@@ -268,75 +239,64 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
   }
 
   /**
-   * Delete a change (read: mod) provided by an active effect. If the deleted change is in the
-   * middle of the list, we need to collapse all of the flags beyond it down one "element".
-   * (regenerating from scratch is actually hard because you cannot reverse look up what the
-   * values should be due to AEs and custom skills)
+   * Delete a change (mod). When deleting from the middle of the list, collapse
+   * the corresponding category/situational flags down one index so they stay
+   * aligned with the changes array.
    *
-   * We play a few games with casting between Number and String to avoid writing migration code.
-   *
-   * @param {*} event - Mouse click event (someone clicked a trashcan)
-   * @returns - whether re-rendering the sheet was successful
+   * @private
+   * @this {CPRActiveEffectSheet}
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target - the clicked control carrying `data-index`
+   * @returns {Promise<void>}
    */
-  async _deleteEffectChange(event) {
-    const modnum = parseInt(event.currentTarget.dataset.index, 10);
-    // First, delete the change itself in the AE
-    const { changes } = this.object;
+  static async #onDeleteMod(event, target) {
+    const modnum = parseInt(target.dataset.index, 10);
+    // First, delete the change itself in the AE.
+    const changes = this.document.toObject().changes;
     changes.splice(modnum, 1);
-    // Second, remove the corresponding flag for the deleted change
+
+    // Then, reindex the corresponding flags for the deleted change.
     const changeFlags = foundry.utils.getProperty(
-      this.object,
+      this.document,
       `flags.${game.system.id}.changes`,
     );
     const newFlags = { cats: {}, situational: {} };
     const flagArrayCats = Object.entries(changeFlags.cats);
     const flagArraySituational = Object.entries(changeFlags.situational);
 
-    // First, sort and reorder the flags for the effect's category.
-    flagArrayCats.sort(); // explicitly sort to guarantee we iterate in numerical order
+    flagArrayCats.sort();
     flagArrayCats.forEach((chg) => {
       const index = Number(chg[0]);
       const category = chg[1];
       if (index < modnum) {
         newFlags.cats[String(index)] = category;
-        // we deliberately skip idx === modnum, that's the deleted change
       } else if (index > modnum) {
         newFlags.cats[String(index - 1)] = category;
       }
     });
 
-    // Then, sort and reorder the flags for the effect's situational settings.
-    flagArraySituational.sort(); // explicitly sort to guarantee we iterate in numerical order
+    flagArraySituational.sort();
     flagArraySituational.forEach((chg) => {
       const index = Number(chg[0]);
       const situationalSettings = chg[1];
       if (index < modnum) {
         newFlags.situational[String(index)] = situationalSettings;
-        // we deliberately skip idx === modnum, that's the deleted change
       } else if (index > modnum) {
         newFlags.situational[String(index - 1)] = situationalSettings;
       }
     });
 
-    // Finally, update the underlying AE
-    const prop = `flags.${game.system.id}.changes`;
-    const update = await this.object.update({
+    await this.document.update({
       changes,
-      [prop]: newFlags,
+      [`flags.${game.system.id}.changes`]: newFlags,
     });
-    this.render();
-    return update;
   }
 
   /**
-   * Generate a mapping of skill names and bonus object references for the AE sheet. If the AE
-   * comes from an Item, we look up all non-core skill items in the world, and use that list.
-   * If it comes from an actor, we loop over the skills it owns and generate a mapping with that.
+   * Generate a mapping of skill names and bonus object references for the AE sheet.
    *
-   * This is then used to create the Select element for the AE sheet (for Skill keys).
-   *
-   * @param {Object} effect - Sheet object that contains the AE in question
-   * @return {Object} - sorted object of skill keys to names
+   * @param {ActiveEffect} effect - the effect whose parent provides the skill list
+   * @returns {Array<object>} sorted option configs of skill keys to names
    */
   static getSkillOptionConfigs(effect) {
     const skillMap = CPR.activeEffectKeys.skill;
@@ -360,21 +320,18 @@ export default class CPRActiveEffectSheet extends ActiveEffectConfig {
       };
     });
 
-    const sortedConfigs = skillOptionConfigs.sort((a, b) => {
+    return skillOptionConfigs.sort((a, b) => {
       return SystemUtils.Localize(a.label).localeCompare(
         game.i18n.localize(b.label),
       );
     });
-
-    return sortedConfigs;
   }
 
   /**
-   * Generates configuration options, from which a Select element is created.
-   * for all keys except those in the "skill" category.
+   * Generate configuration options for all key categories except "skill".
    *
-   * @param {Object} effect - The effect data used to generate the configuration options.
-   * @return {Object} The configuration options for other effect categories.
+   * @param {ActiveEffect} effect - the effect used to disable already-used keys
+   * @returns {object} the configuration options keyed by category
    */
   static getOtherOptionConfigs(effect) {
     const configs = {};

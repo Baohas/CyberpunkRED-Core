@@ -1,74 +1,90 @@
 import CPRChat from "../../chat/cpr-chat.js";
-import SystemUtils from "../../utils/cpr-systemUtils.js";
+import CPR from "../../system/config.js";
 import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 
-const { ActorSheet } = foundry.appv1.sheets;
+const { HandlebarsApplicationMixin } = foundry.applications.api;
+const { ActorSheetV2 } = foundry.applications.sheets;
 const TextEditor = foundry.applications.ux.TextEditor.implementation;
 
 /**
- * Implement the Demon sheet, which extends ActorSheet directly from Foundry. This does
+ * Implement the Demon sheet, which extends ActorSheetV2 directly from Foundry. This does
  * not extend CPRActor, as there is very little overlap between Demons and mooks/characters.
  *
- * @extends {ActorSheet}
+ * @extends {ActorSheetV2}
  */
-export default class CPRDemonActorSheet extends ActorSheet {
-  /** @override */
-  static get defaultOptions() {
-    const resizeCPRSheets = game.settings.get(
-      game.system.id,
-      "resizeCPRSheets",
-    );
-
-    return foundry.utils.mergeObject(super.defaultOptions, {
-      height: resizeCPRSheets ? 275 : "auto",
-      resizable: true,
-      template: `systems/${game.system.id}/templates/actor/cpr-demon-sheet.hbs`,
+export default class CPRDemonActorSheet extends HandlebarsApplicationMixin(
+  ActorSheetV2,
+) {
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    classes: ["demon"],
+    position: {
       width: 600,
-    });
-  }
+      height: "auto",
+    },
+    window: {
+      resizable: true,
+      contentClasses: ["cpr-sheet-content"],
+    },
+    form: {
+      submitOnChange: true,
+      closeOnSubmit: false,
+    },
+    actions: {
+      roll: CPRDemonActorSheet.#onRoll,
+    },
+  };
+
+  /** @inheritDoc */
+  static PARTS = {
+    form: {
+      template: `systems/${CPR.systemId}/templates/actor/cpr-demon-sheet.hbs`,
+    },
+  };
 
   /**
-   * Get actor data into a more convenient organized structure.
-   * Remember, this data is on the DemonActorSheet object, not the CPRActor
-   * object it is tied to. (this.actor)
+   * Get actor data into a more convenient organized structure for the template.
    *
    * @override
-   * @returns {Object} data - a curated structure of actorSheet data
+   * @param {object} options
+   * @returns {Promise<object>} the template context
    */
-  async getData() {
-    const sheetData = await super.getData();
-    sheetData.enrichedHTML = [];
-    sheetData.enrichedHTML.notes = await TextEditor.enrichHTML(
-      this.actor.system.notes,
-      { async: true },
-    );
-    return sheetData;
+  async _prepareContext(options) {
+    const context = await super._prepareContext(options);
+    context.actor = this.actor;
+    context.system = this.actor.system;
+    context.owner = this.actor.isOwner;
+    context.editable = this.isEditable;
+    context.enrichedHTML = {
+      notes: await TextEditor.enrichHTML(this.actor.system.notes, {
+        async: true,
+      }),
+    };
+    return context;
   }
 
   /**
-   * Activate listeners for the sheet. This has to call super at the end for Foundry to process
-   * events properly.
+   * Wire up the image context menu after each render. `this.element` is a native
+   * HTMLElement under ApplicationV2.
    *
    * @override
-   * @param {Object} html - the DOM object
    */
-  activateListeners(html) {
-    html.find(".rollable").click((event) => this._onRoll(event));
-    this._createDemonImageContextMenu(html);
-    super.activateListeners(html);
+  _onRender(context, options) {
+    super._onRender(context, options);
+    createImageContextMenu(this.element, ".demon-icon", this.actor);
   }
 
   /**
-   * Dispatcher that executes a roll based on the "type" passed in the event. While very similar
-   * to _onRoll in CPRActor, Demon sheets have far fewer cases to consider, and copying some of the code
-   * here seemed better than making them extend a 1000-line class where most of it didn't apply.
+   * Execute a stat roll for the Demon. Bound as a declarative action, so `this`
+   * is the sheet instance and `target` is the clicked `.rollable` element.
    *
    * @private
-   * @callback
-   * @param {Object} event - object with details of the event
+   * @this {CPRDemonActorSheet}
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target - the clicked element carrying `data-roll-title`
    */
-  async _onRoll(event) {
-    const rollName = SystemUtils.GetEventDatum(event, "data-roll-title");
+  static async #onRoll(event, target) {
+    const rollName = target.dataset.rollTitle;
     const cprRoll = this.actor.createStatRoll(rollName);
 
     const keepRolling = await cprRoll.handleRollDialog(event, this.actor);
@@ -78,19 +94,8 @@ export default class CPRDemonActorSheet extends ActorSheet {
     await cprRoll.roll();
 
     // output to chat
-    const token = this.token === null ? null : this.token._id;
+    const token = this.token === null ? null : this.token.id;
     cprRoll.entityData = { actor: this.actor.id, token };
     CPRChat.RenderRollCard(cprRoll);
-  }
-
-  /**
-   * Sets up a ContextMenu that appears when the Actor's image is right clicked.
-   * Enables the user to share the image with other players.
-   *
-   * @param {Object} html - The DOM object
-   * @returns {object} The created ContextMenu
-   */
-  _createDemonImageContextMenu(html) {
-    return createImageContextMenu(html, ".demon-icon", this.actor);
   }
 }

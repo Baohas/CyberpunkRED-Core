@@ -1219,4 +1219,36 @@ export default function registerHandlebarsHelpers() {
       }
     }
   });
+
+  /**
+   * Render a rich-text field as a toggled ApplicationV2 `<prose-mirror>` editor.
+   * The pencil button activates editing, the enriched HTML is shown while the
+   * editor is inactive, and the raw stored value is edited and persisted by the
+   * sheet's form handler. This replaces the legacy `{{editor}}` helper, whose
+   * activation button is no longer wired up under ApplicationV2.
+   *
+   * @param {ClientDocument} doc - the document owning the field
+   * @param {string} name - the data path to the editable field (e.g.
+   *                        "system.description.value")
+   * @param {string} enriched - the enriched HTML shown while not editing
+   * @param {{hash: {editable?: boolean}}} options - Handlebars options; pass
+   *                        `editable=false` to render the editor read-only
+   * @returns {Handlebars.SafeString} the `<prose-mirror>` element markup
+   */
+  Handlebars.registerHelper(
+    "cprProseMirror",
+    (doc, name, enriched, options) => {
+      const editable = options.hash.editable ?? true;
+      const value = foundry.utils.getProperty(doc, name) ?? "";
+      const element =
+        foundry.applications.elements.HTMLProseMirrorElement.create({
+          name,
+          value,
+          enriched: enriched ?? "",
+          toggled: true,
+          disabled: !editable,
+        });
+      return new Handlebars.SafeString(element.outerHTML);
+    },
+  );
 }

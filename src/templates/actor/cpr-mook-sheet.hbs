@@ -1,4 +1,3 @@
-<form>
   <div class="mook-sheet">
     <div class="mook-name text-hero side-banner">
       <div class="text-largest">
@@ -93,15 +92,8 @@
           <span>{{localize "CPR.global.generic.notes"}}</span>
         </div>
         <div class="mook-notes-content">
-          {{editor enrichedHTML.systemInformationNotes
-              target="system.information.notes"
-              button=true
-              owner=owner
-              editable=editable
-              engine="prosemirror"
-          }}
+          {{cprProseMirror actor "system.information.notes" enrichedHTML.systemInformationNotes editable=editable}}
         </div>
       </div>
     </div>
   </div>
-</form>

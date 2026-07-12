@@ -22,7 +22,6 @@
 </li>
 {{/unless}}
 {{#if item.system.isShield }}
-  <hr/>
   <li class="item flexrow">
     <div class="item flexrow setting-name text-nowrap">
       {{localize "CPR.itemSheet.common.maximum"}} {{localize "CPR.global.generic.hitpoints"}} {{cprShowUpgrade item "shieldHp"}}
@@ -54,7 +53,6 @@
     </div>
   </li>
   {{#if item.system.isHeadLocation }}
-    <hr/>
     <li class="item flexrow">
       <div class="item flexrow setting-name text-nowrap">
         {{localize "CPR.itemSheet.armor.headArmorSp"}} {{cprShowUpgrade item "headSp"}}
@@ -72,7 +70,6 @@
         <input class="armor-head-ablation" data-item-id="{{item.id}}"  name="system.headLocation.ablation" type="number" value="{{item.system.headLocation.ablation}}"/>
       </div>
     </li>
-    <hr/>
   {{/if}}
   {{!-- Body Armor Settings--}}
   <li class="item flexrow">
@@ -88,7 +85,6 @@
     </div>
   </li>
   {{#if item.system.isBodyLocation }}
-    <hr/>
     <li class="item flexrow">
       <div class="item flexrow setting-name text-nowrap">
         {{localize "CPR.itemSheet.armor.bodyArmorSp"}}  {{cprShowUpgrade item "bodySp"}}

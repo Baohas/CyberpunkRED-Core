@@ -1,66 +1,115 @@
+import CPR from "../system/config.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import CPRDialog from "./cpr-dialog-application.js";
 
-export class CPRRollDialog extends CPRDialog {
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
+
+/**
+ * The roll-verification dialog. An ApplicationV2 window that shows a roll's stat /
+ * skill / modifiers, lets the user toggle situational modifiers, spend LUCK, etc.,
+ * then resolves a promise with the (mutated) roll data — or with `undefined` if
+ * cancelled — mirroring the old `showDialog` contract used by `handleRollDialog`.
+ */
+export class CPRRollDialog extends HandlebarsApplicationMixin(ApplicationV2) {
+  /** @inheritDoc */
+  static DEFAULT_OPTIONS = {
+    tag: "form",
+    classes: ["cpr", "dialog"],
+    position: { width: 450, height: "auto" },
+    window: {
+      resizable: true,
+      contentClasses: ["cpr-sheet-content"],
+      title: "CPR.global.generic.title",
+    },
+    form: {
+      handler: CPRRollDialog.#onChangeForm,
+      submitOnChange: true,
+      closeOnSubmit: false,
+    },
+    actions: {
+      confirm: CPRRollDialog.#onConfirm,
+      cancel: CPRRollDialog.#onCancel,
+      toggleSituationalMod: CPRRollDialog.#onToggleSituationalMod,
+      toggleShowMods: CPRRollDialog.#onToggleShowMods,
+    },
+  };
+
+  /** @inheritDoc */
+  static PARTS = {
+    // `body` template is set per-instance in _configureRenderParts (it varies by
+    // roll type via rollData.rollPrompt); this placeholder is never rendered.
+    body: { template: "" },
+    footer: {
+      template: `systems/${CPR.systemId}/templates/dialog/rolls/cpr-roll-dialog-footer.hbs`,
+    },
+  };
+
+  #resolve = null;
+
+  #settled = false;
+
   /**
-   *
-   * @param {CPRRoll} rollData - cprRoll data
-   * @param {CPRActor} actor - actor that the roll came from
-   * @param {CPRItem} item - item that the roll may have come from
-   * @param {Object} options - options to change the nature of the dialog
-   * @constructor
+   * @param {CPRRoll} rollData - the roll object
+   * @param {CPRActor} actor - the actor making the roll
+   * @param {CPRItem} item - the item the roll came from (if any)
+   * @param {object} [options]
    */
-  constructor(rollData, actor, item, options) {
-    super(rollData, options);
-
-    // Set data and options specific to this subclass.
-    this.options.title = rollData.rollTitle;
+  constructor(rollData, actor, item, options = {}) {
+    super(options);
     this.rollData = rollData;
-
-    // Get prototype chain (an array of class name strings) for the rollData.
-    this.prototypeChain = SystemUtils.getPrototypeChain(rollData);
-
-    // Set template.
-    this.options.template = rollData.rollPrompt;
-
-    // Set actor and items.
     this.actor = actor;
     this.item = item;
-
-    // Situational modifiers from pg. 130
+    this.prototypeChain = SystemUtils.getPrototypeChain(rollData);
     this.defaultSituationalMods = CPRMod.getDefaultSituationalMods();
-
     this.showSituationalMods = true;
-
-    // Hide default mods, user can then toggle them on.
     this.showDefaultMods = false;
   }
 
+  get title() {
+    return this.rollData.rollTitle;
+  }
+
+  /** Render the per-roll-type prompt template as the body part. */
+  _configureRenderParts(options) {
+    const parts = super._configureRenderParts(options);
+    parts.body.template = this.rollData.rollPrompt;
+    return parts;
+  }
+
   /**
-   * Prepares data for roll dialog sheet.
+   * Open the dialog and resolve with the (mutated) roll data, or `undefined` if
+   * the user cancels/closes.
    *
-   * @override
+   * @param {CPRRoll} rollData
+   * @param {CPRActor} actor
+   * @param {CPRItem} item
+   * @returns {Promise<CPRRoll|undefined>}
    */
-  async getData() {
-    const data = await super.getData();
-    data.rollData = this.rollData; // CPRRoll object
+  static async showDialog(rollData, actor, item) {
+    return new Promise((resolve) => {
+      const dialog = new this(rollData, actor, item);
+      dialog.#resolve = resolve;
+      dialog.render(true);
+    });
+  }
+
+  /** @override */
+  async _prepareContext() {
+    const data = {};
+    data.rollData = this.rollData;
     data.actor = this.actor;
     data.prototypeChain = this.prototypeChain;
 
-    // Select element options for program damage rolls.
     if (this.rollData.rollCardExtraArgs.program) {
       data.programDamageSelectOptions = this.getProgramDamageSelectOptions();
     }
 
-    // Default situational mods form core book. These modifiers would not apply to Death Save rolls.
     if (!this.prototypeChain.includes("CPRDeathSaveRoll")) {
       data.defaultSituationalMods = this.defaultSituationalMods;
     }
     data.showDefaultMods = this.showDefaultMods;
     data.showSituationalMods = this.showSituationalMods;
 
-    // Get filtered situational mods. These currently come from effects, role abilities, or item upgrades.
     data.filteredMods = CPRMod.getSituationalRollMods(
       this.rollData,
       Array.from(this.actor.allApplicableEffects()),
@@ -83,7 +132,7 @@ export class CPRRollDialog extends CPRDialog {
   /**
    * Prepares the program damage select options.
    *
-   * @return {Array<Object>} An array of objects containing the value and label for each program damage option.
+   * @return {Array<Object>} value/label objects for each program damage option
    */
   getProgramDamageSelectOptions() {
     const { program } = this.rollData.rollCardExtraArgs;
@@ -93,7 +142,7 @@ export class CPRRollDialog extends CPRDialog {
     const blackIceDamage = program.system
       ? program.system.damage.blackIce
       : program.damage.blackIce;
-    const programDamageSelectOptions = [
+    return [
       {
         value: standardDamage,
         label: `${SystemUtils.Format("CPR.itemSheet.program.damageTo", {
@@ -109,52 +158,69 @@ export class CPRRollDialog extends CPRDialog {
         })}: (${blackIceDamage})`,
       },
     ];
-    return programDamageSelectOptions;
   }
 
   /**
+   * Wire interactions that aren't simple click actions: the aimed-shot checkbox.
    *
-   * @param {*} html
    * @override
    */
-  activateListeners(html) {
-    super.activateListeners(html);
-    if (!this.options.editable) return;
-
-    html
-      .find(".toggle-situational-mod")
-      .click((event) => this._toggleSituationalMod(event));
-    html.find(".aimed-checkbox").click(() => this._aimedToggle());
-    html
-      .find(".toggle-show-mods")
-      .click((event) => this._toggleModsVisibility(event));
+  _onRender(context, options) {
+    super._onRender(context, options);
+    this.element
+      .querySelectorAll(".aimed-checkbox")
+      .forEach((el) =>
+        el.addEventListener("change", () => this._aimedToggle()),
+      );
   }
 
   /**
-   * When the aimed shot checkbox is toggled, it shows the drop down for aim location, but `cprRoll.location` is not
-   * actually updated until the next time the form is submitted. Unfortunately, when the OK button is pressed, the
-   * Promise is returned before the form is resubmitted. So, if a user toggles aimed shot but doesn't change any
-   * other data before pressing OK, the location is still set to "body". This function sets `cprRoll.location` to
-   * head when the toggle is checked and back to body when the toggle is unchecked, fixing the above issue (until
-   * someone can figure out how to resolve the Promise after the form is submitted.)
+   * Merge changed form fields into the roll data. Replaces the V1 _updateObject;
+   * parses the user-entered additional modifiers into an array of numbers.
    *
+   * @this {CPRRollDialog}
+   * @param {Event} event
+   * @param {HTMLFormElement} form
+   * @param {FormDataExtended} formData
+   */
+  static #onChangeForm(event, form, formData) {
+    const fd = foundry.utils.expandObject(formData.object);
+    if (typeof fd.additionalMods === "string") {
+      // Replace all spaces/commas and then split into an array at each comma.
+      let mods = fd.additionalMods.replace(/ +/g, ",").replace(/,+/g, ",");
+      mods = mods.split(",");
+      if (mods.some((m) => m !== "" && isNaN(m))) {
+        SystemUtils.DisplayMessage(
+          "warn",
+          "CPR.rolls.modifiers.additionalModWarning",
+        );
+      }
+      fd.additionalMods = mods.filter((m) => m !== "" && !isNaN(m)).map(Number);
+    }
+    foundry.utils.mergeObject(this.rollData, fd);
+    this.render();
+  }
+
+  /**
+   * When the aimed-shot checkbox is toggled, update the roll location immediately
+   * (the form may not have re-submitted before the user presses OK).
+   *
+   * @private
    */
   _aimedToggle() {
-    if (this.rollData.isAimed) {
-      this.rollData.location = "body";
-    } else {
-      this.rollData.location = "head";
-    }
+    this.rollData.location = this.rollData.isAimed ? "body" : "head";
   }
 
   /**
-   * Add/remove mods from active effects. Also adds and removes the default situtational mods.
+   * Add/remove a situational modifier, then re-render to recompute totals.
    *
-   * @param {*} event
+   * @private
+   * @this {CPRRollDialog}
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target - the clicked element carrying `data-mod-id`
    */
-  _toggleSituationalMod(event) {
-    // Every situational mod should have an ID so that it can be added and deleted.
-    const id = SystemUtils.GetEventDatum(event, "data-mod-id");
+  static #onToggleSituationalMod(event, target) {
+    const id = target.dataset.modId;
     const mod =
       this.filteredMods.find((m) => m.id === id) ||
       this.defaultSituationalMods.find((m) => m.id === id);
@@ -164,17 +230,19 @@ export class CPRRollDialog extends CPRDialog {
     } else {
       this.rollData.addMod([mod]);
     }
-
     this.render();
   }
 
   /**
-   * Toggle showing/hiding the situational modifiers or the default modifiers from the core rule book (pg 130).
+   * Toggle visibility of the situational or default modifier lists.
    *
+   * @private
+   * @this {CPRRollDialog}
+   * @param {PointerEvent} event
+   * @param {HTMLElement} target - the clicked element carrying `data-target`
    */
-  _toggleModsVisibility(event) {
-    const target = SystemUtils.GetEventDatum(event, "data-target");
-    if (target === "situational-mods") {
+  static #onToggleShowMods(event, target) {
+    if (target.dataset.target === "situational-mods") {
       this.showSituationalMods = !this.showSituationalMods;
     } else {
       this.showDefaultMods = !this.showDefaultMods;
@@ -183,73 +251,59 @@ export class CPRRollDialog extends CPRDialog {
   }
 
   /**
-   * Block confirming the roll when the requested LUCK exceeds the actor's
-   * available pool. We warn and return without resolving/closing, so the dialog
-   * stays open and the user can lower the amount and try again. The live form
-   * value is read directly (rather than the merged roll data) because the form
-   * may not have re-submitted by the time the confirm button fires.
+   * Confirm the roll. Blocks when the requested LUCK exceeds the actor's pool
+   * (warns and keeps the dialog open), otherwise resolves with the roll data.
    *
-   * @override
-   * @param {Event} event
-   * @param {Object} options - options forwarded to the parent confirm/close
-   * @returns {Promise<void>}
+   * @private
+   * @this {CPRRollDialog}
    */
-  async confirmDialog(event, options) {
+  static async #onConfirm() {
     const availableLuck = this.actor?.system?.stats?.luck?.value ?? 0;
-    const requestedLuck = Number(this.form?.luck?.value ?? this.rollData.luck);
+    const luckInput = this.element.querySelector('[name="luck"]');
+    const requestedLuck = Number(luckInput?.value ?? this.rollData.luck);
     if (Number.isFinite(requestedLuck) && requestedLuck > availableLuck) {
       SystemUtils.DisplayMessage(
         "warn",
         SystemUtils.Localize("CPR.rolls.luckExceedsAvailable"),
       );
-      return undefined;
+      return;
     }
-    return super.confirmDialog(event, options);
+    this.#settled = true;
+    this.#resolve?.(this.rollData);
+    this.close();
   }
 
   /**
-   * We ovverride this function to process Additional Mods added by the user in the dialog.
+   * Cancel the roll.
    *
-   * @param {*} event
-   * @param {Object} formData - Updated dialog data to be merged with the original object.
-   * @override
+   * @private
+   * @this {CPRRollDialog}
    */
-  async _updateObject(event, formData) {
-    const fd = foundry.utils.duplicate(formData);
-    if (formData.additionalMods) {
-      // Replace all spaces/commas and then split into an array at each comma.
-      fd.additionalMods = fd.additionalMods.replace(/ +/g, ",");
-      fd.additionalMods = fd.additionalMods.replace(/,+/g, ",");
-      fd.additionalMods = fd.additionalMods.split(",");
+  static #onCancel() {
+    this.#settled = true;
+    this.#resolve?.(undefined);
+    this.close();
+  }
 
-      // Sanitize data input by checking if anything inputted is not a number. Warn user if so.
-      if (fd.additionalMods.some((m) => isNaN(m))) {
-        SystemUtils.DisplayMessage(
-          "warn",
-          "CPR.rolls.modifiers.additionalModWarning",
-        );
-      }
-      fd.additionalMods.forEach((m, i) => {
-        if (isNaN(m)) {
-          fd.additionalMods.splice(i, 1);
-        }
-      });
-
-      // Convert each additional mod into a number
-      fd.additionalMods = fd.additionalMods.map(Number);
-    } else {
-      fd.additionalMods = [];
+  /** Resolve with undefined if the window is closed without confirming. */
+  _onClose(options) {
+    super._onClose(options);
+    if (!this.#settled) {
+      this.#resolve?.(undefined);
     }
-    super._updateObject(event, fd);
   }
 }
 
+/**
+ * Variant of the roll dialog for Role abilities, which can use a "varying" skill
+ * the user picks from a drop-down (changing the skill and its modifiers live).
+ *
+ * @extends {CPRRollDialog}
+ */
 export class CPRRoleRollDialog extends CPRRollDialog {
-  /**
-   * Prepares any data unique to the Role Roll Dialog sheet.
-   */
-  async getData() {
-    const data = await super.getData();
+  /** @override */
+  async _prepareContext() {
+    const data = await super._prepareContext();
 
     const skillIsVarying =
       this.item.system.skill === "varying" ||
@@ -257,11 +311,8 @@ export class CPRRoleRollDialog extends CPRRollDialog {
         ?.skill === "varying";
 
     if (skillIsVarying) {
-      data.isVarying = true; // Used as a condition to display drop-down menu in dialog.
+      data.isVarying = true;
       if (this.rollData.skillName === "varying") {
-        // If the skill is varying, assign data from the first skill in the dropdown menu,
-        // so all form data are consistent with the what the dropdown menu displays by default.
-        // Note, this will only happen when the dialog is first opened, which is by design.
         const firstSkill = this.rollData.skillList.sort((a, b) =>
           a.name > b.name ? 1 : -1,
         )[0];
@@ -271,56 +322,47 @@ export class CPRRoleRollDialog extends CPRRollDialog {
         data.rollData.statValue = this.actor.getStat(this.rollData.statName);
       }
     }
-
     return data;
   }
 
-  /**
-   *
-   * @param {*} html
-   * @override
-   */
-  activateListeners(html) {
-    super.activateListeners(html);
-    html
-      .find(".skill-list-select")
-      .change((event) => this._updateSkillValue(event));
+  /** @override */
+  _onRender(context, options) {
+    super._onRender(context, options);
+    this.element
+      .querySelectorAll(".skill-list-select")
+      .forEach((el) =>
+        el.addEventListener("change", (event) => this._updateSkillValue(event)),
+      );
   }
 
   /**
-   * Updates the skill value when the varied skill is changed. Also adds/removes the modifier for each skill
-   * as it is changed.
+   * Update the skill value (and its modifiers) when the varied skill changes.
    *
-   * @param {*} event
+   * @private
+   * @param {Event} event
    */
   _updateSkillValue(event) {
     const skill = this.rollData.skillList.find(
       (s) => s.name === event.currentTarget.value,
     );
 
-    // Set skill level.
     this.rollData.skillValue = skill.system.level;
-
-    // Set stat level.
     this.rollData.statName = skill.system.stat;
     this.rollData.statValue = this.actor.getStat(this.rollData.statName);
 
     const effects = Array.from(this.actor.allApplicableEffects());
     const allMods = CPRMod.getAllModifiers(effects);
-    // Mods for the skill we are changing to.
     const newSkillMods = CPRMod.getRelevantMods(allMods, [
       SystemUtils.slugify(event.currentTarget.value),
       `${SystemUtils.slugify(event.currentTarget.value)}Hearing`,
       `${SystemUtils.slugify(event.currentTarget.value)}Sight`,
     ]);
-    // Mods for the skill we are changing away from.
     const previousSkillMods = CPRMod.getRelevantMods(allMods, [
       SystemUtils.slugify(this.rollData.skillName),
       `${SystemUtils.slugify(this.rollData.skillName)}Hearing`,
       `${SystemUtils.slugify(this.rollData.skillName)}Sight`,
     ]);
 
-    // Apply mods appropriately for the newly selected skill.
     if (newSkillMods) {
       newSkillMods.forEach((m) => {
         if (!m.isSituational) {
@@ -334,28 +376,19 @@ export class CPRRoleRollDialog extends CPRRollDialog {
       });
     }
 
-    // Remove mods appropriately for the deselected skill.
     if (previousSkillMods) {
       previousSkillMods.forEach((previousMod) => {
-        if (
-          this.rollData.mods.some(
-            (currentMod) => previousMod.id === currentMod.id,
-          )
-        ) {
+        if (this.rollData.mods.some((cur) => previousMod.id === cur.id)) {
           this.rollData.removeMod(previousMod.id);
         }
-
-        if (
-          this.filteredMods.some(
-            (currentMod) => previousMod.id === currentMod.id,
-          )
-        ) {
+        if (this.filteredMods.some((cur) => previousMod.id === cur.id)) {
           const modIndex = this.filteredMods.findIndex(
-            (currentMod) => previousMod.id === currentMod.id,
+            (cur) => previousMod.id === cur.id,
           );
           this.filteredMods.splice(modIndex, 1);
         }
       });
     }
+    this.render();
   }
 }

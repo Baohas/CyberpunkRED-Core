@@ -1,7 +1,7 @@
 import LOGGER from "../utils/cpr-logger.js";
 import { CPRInitiative } from "../rolls/cpr-rolls.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import CPRDialog from "../dialog/cpr-dialog-application.js";
+import { cprFormPrompt } from "../dialog/cpr-dialog.js";
 
 const { renderTemplate } = foundry.applications.handlebars;
 
@@ -513,10 +513,11 @@ export default class CPRChat {
       dialogData.allowedActors.push(actor);
       if (!event.ctrlKey) {
         // Show "Damage Application" prompt.
-        dialogData = await CPRDialog.showDialog(
-          dialogData,
-          dialogOptions,
-        ).catch((err) => LOGGER.debug(err));
+        dialogData = await cprFormPrompt({
+          data: dialogData,
+          title: dialogOptions.title,
+          template: dialogOptions.template,
+        });
       }
       if (!dialogData) {
         return;
@@ -564,10 +565,11 @@ export default class CPRChat {
           dialogData.forbiddenActors = forbiddenActors;
 
           // Show "Damage Application" prompt.
-          dialogData = await CPRDialog.showDialog(
-            dialogData,
-            dialogOptions,
-          ).catch((err) => LOGGER.debug(err));
+          dialogData = await cprFormPrompt({
+            data: dialogData,
+            title: dialogOptions.title,
+            template: dialogOptions.template,
+          });
         }
         if (dialogData) {
           allowedActors[count]._applyDamage(

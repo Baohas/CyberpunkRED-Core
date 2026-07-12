@@ -43,8 +43,10 @@
     border: none;
   }
 
-  ol li {
+  ol li,
+  ul li {
     list-style-type: none;
+    margin-bottom: 0;
   }
 
   a:hover {
@@ -61,6 +63,8 @@
     box-shadow: none;
     min-width: unset;
     margin: 0;
+    padding: 0;
+    text-align: inherit;
     line-height: inherit;
     user-select: text;
     height: 100%;

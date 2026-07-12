@@ -1,4 +1,3 @@
-<form>
   <div class="mook-sheet-limited">
     <div class="mook-image-limited">
       <img class="mook-image-block-img"
@@ -12,9 +11,8 @@
       <div class="mook-notes-limited pad-thin">
         <span class="text-padding-left-smallest">{{localize "CPR.global.generic.notes"}}</span>
         <div class="mook-edit-section-limited text-padding-left-smallest">
-          {{editor system.information.notes target="system.information.notes"}}
+          {{cprProseMirror actor "system.information.notes" enrichedHTML.systemInformationNotes editable=editable}}
         </div>
       </div>
     </div>
   </div>
-</form>
