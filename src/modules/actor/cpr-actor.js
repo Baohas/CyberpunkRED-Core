@@ -1072,6 +1072,9 @@ export default class CPRActor extends Actor {
       case CPRRolls.rollTypes.DEATHSAVE: {
         return this._createDeathSaveRoll();
       }
+      case CPRRolls.rollTypes.LUCKROLL: {
+        return this._createLuckRoll();
+      }
       case CPRRolls.rollTypes.FACEDOWN: {
         return this._createFacedownRoll();
       }
@@ -1192,6 +1195,23 @@ export default class CPRActor extends Actor {
     );
     cprRoll.addMod(deathSavePenaltyMods);
     return cprRoll;
+  }
+
+  /**
+   * Create a homebrew Luck Roll (JonJon's rule) and return the object representing it. The target the
+   * d10 must roll under is the LUCK max or current value, per the `homebrewLuckRollVariant` setting.
+   *
+   * @private
+   * @returns {CPRLuckRoll}
+   */
+  _createLuckRoll() {
+    const variant = game.settings.get(
+      game.system.id,
+      "homebrewLuckRollVariant",
+    );
+    const luck = this.system.stats.luck;
+    const luckTarget = variant === "current" ? luck.value : luck.max;
+    return CPRRolls.CPRLuckRoll.create(luckTarget, variant);
   }
 
   /**

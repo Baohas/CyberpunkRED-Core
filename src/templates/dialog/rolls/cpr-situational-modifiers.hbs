@@ -32,6 +32,7 @@
   {{/if}}
 {{/if}}
 {{#unless (cprListContains prototypeChain "CPRDeathSaveRoll")}}
+{{#unless (cprListContains prototypeChain "CPRLuckRoll")}}
 <hr/>
 <div class="text-center">
   <a class="toggle-show-mods" data-action="toggleShowMods" data-target="default-mods">
@@ -62,5 +63,6 @@
       {{/each}}
     </ol>
   {{/if}}
+{{/unless}}
 {{/unless}}
 <hr/>

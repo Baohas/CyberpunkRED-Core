@@ -1,11 +1,12 @@
 import { test, expect } from "../fixtures.mjs";
 
 /*
- * The system registers two GM settings submenus (game.settings.registerMenu):
- * "Configure System Compendia" (CPRCompendiaSettings) and "Choose Modules"
- * (ModuleMigrationSettings). Both are ApplicationV2 windows. Drive the real
- * Settings UI to open each and assert it renders as a V2 application (a `form`
- * with the `.application` class, not a legacy `.window-app`).
+ * The system registers three GM settings submenus (game.settings.registerMenu):
+ * "Configure System Compendia" (CPRCompendiaSettings), "Choose Modules"
+ * (ModuleMigrationSettings) and "Homebrew Rules" (CPRHomebrewSettings). All are
+ * ApplicationV2 windows. Drive the real Settings UI to open each and assert it
+ * renders as a V2 application (a `form` with the `.application` class, not a
+ * legacy `.window-app`).
  */
 
 const MENUS = [
@@ -16,6 +17,10 @@ const MENUS = [
   {
     key: "cyberpunk-red-core.moduleMigrationMenu",
     appId: "module-migration-config",
+  },
+  {
+    key: "cyberpunk-red-core.homebrewSettingsMenu",
+    appId: "homebrew-config",
   },
 ];
 
