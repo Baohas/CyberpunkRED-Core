@@ -737,6 +737,18 @@ export class CPRDamageRoll extends CPRRoll {
       missing: "0",
       warn: false,
     });
+    // A grouped pool (`{3d6,12}kh`) has no single "damage die" for the item's crit/ablation/bonus
+    // markers to attach to, so it is not supported in a Damage field. Refuse it with a clear message
+    // (warn + throw, mirroring assertRedDmgExclusive) rather than injecting the marker onto an arbitrary
+    // die and rolling something the user didn't ask for. Full support is tracked as a future enhancement.
+    if (/[{}]/.test(resolvedFormula)) {
+      globalThis.ui?.notifications?.warn(
+        SystemUtils.Localize("CPR.rolls.modifiers.poolDamageUnsupported"),
+      );
+      throw new Error(
+        `CPRDamageRoll: grouped pool formulas are not supported as damage ("${resolvedFormula}").`,
+      );
+    }
     const targetedTokens = SystemUtils.getUserTargetedOrSelected("targeted");
     if (
       targetedTokens.length === 0 &&

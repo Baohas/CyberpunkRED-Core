@@ -1192,6 +1192,7 @@
   "CPR.rolls.modifiers.damageMarkersStripped": "Removed {removed} from the Damage formula (these are built from the item's settings). Saved as {cleaned}.",
   "CPR.rolls.modifiers.modsTotal": "Total Mods",
   "CPR.rolls.modifiers.markerNeedsDamage": "The {modifier} modifier was ignored: ab and cd only qualify a damage roll, so the term also needs dmg (e.g. 2d6dmgab2).",
+  "CPR.rolls.modifiers.poolDamageUnsupported": "Grouped pool formulas (e.g. {3d6,12}kh) are not supported in a Damage field, because there is no single die for the item's critical settings to apply to. Use a plain die expression like 3d6+2. The roll was cancelled.",
   "CPR.rolls.modifiers.redDmgExclusive": "That roll combines red and dmg, which cannot be used together (red is a check-die critical, dmg marks a damage roll). The roll was cancelled.",
   "CPR.rolls.modifiers.redSupersedesExplode": "The {modifier} modifier was ignored: red already handles criticals (a single explode on a max roll / implode on a 1).",
   "CPR.rolls.modifiers.situationalHide": "Hide Situational Modifiers",

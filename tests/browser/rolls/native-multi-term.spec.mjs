@@ -120,6 +120,38 @@ test.describe("native-first engine — arbitrary formulas", () => {
   });
 });
 
+test.describe("native-first engine — grouped pool damage is refused", () => {
+  test("CPRDamageRoll.create throws on a `{…}kh` pool damage formula", async ({
+    game,
+  }) => {
+    // A grouped pool has no single damage die for the item's crit/ablation/bonus markers to attach to,
+    // so a Damage field must refuse it (warn + throw) rather than injecting the marker onto an arbitrary
+    // die. Full support is tracked as a future enhancement (the "Advanced Rolls" item mode).
+    const threw = await game.evaluate(async () => {
+      const R = await import(
+        `/systems/${game.system.id}/modules/rolls/cpr-rolls.js`
+      );
+      try {
+        R.CPRDamageRoll.create("W", "{3d6,12}kh", "melee");
+        return false;
+      } catch {
+        return true;
+      }
+    });
+    expect(threw).toBe(true);
+  });
+
+  test("a plain (non-pool) damage formula is still accepted", async ({
+    game,
+  }) => {
+    // Guard the reject is scoped to pools only: an ordinary formula rolls as before.
+    const r = await rollType(game, "CPRDamageRoll", ["W", "2d6+3", "melee"], 6, [
+      6, 6,
+    ]);
+    expect(r.resultTotal).toBe(15);
+  });
+});
+
 test.describe("native-first engine — red/dmg hard-reject", () => {
   test("CPRDamageRoll.create throws when the damage formula carries red", async ({
     game,
