@@ -21,6 +21,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
+- Add a document browser for items and actors: search and filter the world and enabled compendia in one window, then click to open or drag to copy onto a sheet
+  - Players get a shopping cart: add items, choose which owned actor to buy for, and check out — spending the character's wealth and logging the purchase to chat
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
 - Migrate the dice/roll system onto native Foundry rolls (serializable, multiplayer-safe, with automatic Dice So Nice support)
@@ -33,6 +35,13 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Support arbitrary multi-term roll formulas with keep/drop and other dice-pool modifiers (e.g. `3d6kh2`, `2d6 + 1d4 + @stats.body`), each term carrying its own modifiers — the whole formula is evaluated natively instead of being reduced to a single dice term plus flat mods
 - Render Foundry's native dice on every roll card, keeping the CPR title, modifier breakdown, critical flavour and apply-damage controls (a dedicated dice re-skin will follow)
 - Sanitise the `dmg`/`ab`/`cd`/`red` markers out of an item's **Damage** field on save — for every attackable item's `system.damage` **and** an ammo override's damage value. They are built from the item's own critical/ablation settings (and `red` conflicts with the auto-appended `dmg`); every other modifier is kept, e.g. `3d6kh2dmg5ab0cd10red` is saved as `3d6kh2`
+- Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
+
+### Исправления
+
+- Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
+- Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
+- Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
 
 ### Изменения
 
@@ -73,7 +82,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
   - Allocate one point to Medical Tech Skills for each point allocated to Medical Tech (Cryosystem) & Medical Tech (Pharmaceuticals)
   - Allocate two points to Surgery Skill for each point allocated to Surgery
 
-### Исправления
+### Bug Fixes
 
 - Fix bonus damage from `Spot Weakness` not being included in damage calculations for autofire attacks
 - Fix location of upgrade element for equipped armor
@@ -149,7 +158,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 
 ## Version 0.92.1
 
-### Bug Fixes
+### Исправления
 
 - Fix HP/Humanity interacting with the mouse scrollwheel
 - Fix bug preventing extended magazines from modifying weapon ammo count
@@ -162,14 +171,14 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 
 ## Version 0.92
 
-### Исправления
+### Bug Fixes
 
 - Remove `templateVersion` from `system.json` which was causing a warning message in the Foundry Admin page.
 - Fixed issue where deleting a Compendia item that has installed items within it, would prompt the user to delete those internal installed items. Since Compendia items only store ephemeral installed-item data (and no real in-world) items exist, this would error or incorrectly delete corresponding in-world items.
 
 ## Version 0.89.2
 
-### Исправления
+### Bug Fixes
 
 - \#1130 - Fixed loading ammo into weapon upgrades.
 - \#1131 - Fixed issue where migration app would not scroll when many compendia caused overflow.
@@ -312,7 +321,7 @@ Unfortunately we cannot revert this automatically so you will need to fix these 
 
 \*\*If you are currently migrating from a version prior to `0.88`, the above does not apply (as the migration script has been fixed).
 
-### Исправления
+### Bug Fixes
 
 - \#856 - Fix token targeting chat cards spoiling actor names, use token names instead.
 - Fix weapons moved to stash not applying correct amount of ammo stack
@@ -361,7 +370,7 @@ This means any instances where you have dragged an item from a compendium into a
 - Add CSS theming to all TextEditor instances (Notes, Descriptions, etc.)
 - Support for editing Active Effects on owned items
 
-### Bug Fixes
+### Исправления
 
 - A couple of minor CSS fixes
 - Facedown rolls correctly include reputation value.
@@ -394,7 +403,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Версия 0.87.5
 
-### Исправления
+### Bug Fixes
 
 - Fix rendering of Actor documents from compendia.
   - Future work: Fix certain updates to compendia documents failing.
@@ -431,7 +440,7 @@ This means any instances where you have dragged an item from a compendium into a
 
 ## Версия 0.87.3
 
-### Bug Fixes
+### Исправления
 
 - \#808 - Installed items in a mook were mapped to the wrong mook \_id, this has been fixed.
 - \#812 - Some roles were missing the bonuses data point as an empty array.
@@ -1203,7 +1212,7 @@ If you are using modified Critical Injuries please check out [this](https://gitl
 - Feature Request #296: Exotic Weapons from the Core Rulebook are now present in the Weapons Compendium. The Battleglove has been placed into Cyberware Compendium, and Battery Pack has been placed into the Ammo Compendium.
 - Feature Request #319: Item Upgrades are now accessible on a Mook sheet. This includes support for Underbarrel weapons which will display as a usable weapon.
 
-### Исправления
+### Bug Fixes
 
 - Fixed #292: Attempting to delete installed cyberware is prevented now, as it can leave the actor in a broken state.
 - Fixed #294: Cybersnake and Vampyres cyberware items from the compendium now display their weapon stats in the fight tab.

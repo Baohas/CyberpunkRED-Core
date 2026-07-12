@@ -21,6 +21,8 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Remove all non-core compendia.
   - These compendia have been moved to the `cyberpunk-red-dlc` module
 - Transition ammo icons from `.png` to `.svg`
+- Add a document browser for items and actors: search and filter the world and enabled compendia in one window, then click to open or drag to copy onto a sheet
+  - Players get a shopping cart: add items, choose which owned actor to buy for, and check out — spending the character's wealth and logging the purchase to chat
 - Fix orientation of non-english characters in Mook nameplates
 - Disable input fields for Skill, Stat and Role values within the roll dialogue
 - Migrate the dice/roll system onto native Foundry rolls (serializable, multiplayer-safe, with automatic Dice So Nice support)
@@ -33,6 +35,13 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Support arbitrary multi-term roll formulas with keep/drop and other dice-pool modifiers (e.g. `3d6kh2`, `2d6 + 1d4 + @stats.body`), each term carrying its own modifiers — the whole formula is evaluated natively instead of being reduced to a single dice term plus flat mods
 - Render Foundry's native dice on every roll card, keeping the CPR title, modifier breakdown, critical flavour and apply-damage controls (a dedicated dice re-skin will follow)
 - Sanitise the `dmg`/`ab`/`cd`/`red` markers out of an item's **Damage** field on save — for every attackable item's `system.damage` **and** an ammo override's damage value. They are built from the item's own critical/ablation settings (and `red` conflicts with the auto-appended `dmg`); every other modifier is kept, e.g. `3d6kh2dmg5ab0cd10red` is saved as `3d6kh2`
+- Migrate all application windows (sheets, dialogs, and settings menus) to Foundry's ApplicationV2 framework and remove jQuery, in preparation for the removal of the deprecated ApplicationV1 framework in Foundry v16
+
+### Bug Fixes
+
+- Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
+- Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
+- Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
 
 ### Changes
 
