@@ -83,13 +83,25 @@ export async function gotoGame(page) {
   await page.waitForFunction(() => globalThis.game?.ready === true, null, {
     timeout: 60000,
   });
-  await page.evaluate(() => {
+  await page.evaluate(async () => {
+    // Clear any in-world onboarding tours: exit them programmatically, then strip
+    // any lingering overlay DOM as a backstop so it can't intercept clicks.
     for (const tour of game.tours?.contents ?? []) {
       try {
         tour.exit();
       } catch {
         /* no active tour */
       }
+    }
+    document
+      .querySelectorAll(".tour-overlay, .tour-center-step, .tour")
+      .forEach((el) => el.remove());
+
+    // Ensure the world is unpaused once ready — a freshly launched or reloaded
+    // world can come up paused, which makes many driven interactions silently
+    // miss. `broadcast: true` records it server-side so it persists. Idempotent.
+    if (game.paused) {
+      await game.togglePause(false, { broadcast: true });
     }
   });
 }

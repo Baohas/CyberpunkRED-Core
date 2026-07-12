@@ -121,13 +121,15 @@ async function installUpgrade(
   await row.locator('a.item-action[data-action-type="install-item"]').click();
 
   const dialog = page
-    .locator(".app")
+    .locator(".application")
     .filter({ has: page.locator('input[name="selectedTarget"]') });
   await expect(dialog).toBeVisible();
   await dialog
     .locator(`input[name="selectedTarget"][value="${targetId}"]`)
     .check();
-  await dialog.locator('button.cpr-dialog-button[name="confirm"]').click();
+  await dialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
 
   await page.waitForFunction(
     ({ actorId, upgradeId }) =>
@@ -152,7 +154,10 @@ async function readTotalModsTooltip(dialog) {
 // unrelated modifier that happens to share the value.
 function expectModEntry(tooltip, source, value) {
   const entry = tooltip.split("<br/>").find((e) => e.includes(source));
-  expect(entry, `no mod entry for "${source}" in tooltip: ${tooltip}`).toBeTruthy();
+  expect(
+    entry,
+    `no mod entry for "${source}" in tooltip: ${tooltip}`,
+  ).toBeTruthy();
   expect(entry, `mod entry for "${source}": ${entry}`).toContain(value);
 }
 
@@ -282,14 +287,16 @@ test.describe("Secondary-weapon upgrade attack modifier (#1181)", () => {
     // 7. The verify-roll dialog's Total Mods breakdown must list the upgrade's
     //    +1. This is the exact modifier the #1181 fix restores.
     const dialog = game
-      .locator(".app")
+      .locator(".application")
       .filter({ has: game.locator(".total-mods") });
     await expect(dialog).toBeVisible();
     const tooltip = await readTotalModsTooltip(dialog);
     expectModEntry(tooltip, upgradeName, "+1");
 
     // Cancel the roll and tidy up.
-    await dialog.locator('button.cpr-dialog-button[name="cancel"]').click();
+    await dialog
+      .locator('button.cpr-dialog-button[data-action="cancel"]')
+      .click();
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 
@@ -369,13 +376,15 @@ test.describe("Secondary-weapon upgrade attack modifier (#1181)", () => {
     await attack.click();
 
     const dialog = game
-      .locator(".app")
+      .locator(".application")
       .filter({ has: game.locator(".total-mods") });
     await expect(dialog).toBeVisible();
     const tooltip = await readTotalModsTooltip(dialog);
     expectModEntry(tooltip, weaponName, "+3");
 
-    await dialog.locator('button.cpr-dialog-button[name="cancel"]').click();
+    await dialog
+      .locator('button.cpr-dialog-button[data-action="cancel"]')
+      .click();
     await closeDocSheet(game, { collection: "actors", id: actorId });
   });
 });

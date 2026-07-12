@@ -59,6 +59,21 @@ async function dismissTours(page) {
 }
 
 /*
+ * Click a Setup control even when a tour overlay is fighting us: a tour can
+ * re-render between page load and the click and intercept pointer events, which
+ * makes a normal `.click()` time out ("<div class="tour-overlay"> intercepts
+ * pointer events"). Clear the tour first, try a real click, and fall back to
+ * dispatching the event straight at the element — which ignores any overlay
+ * stacked on top. Mirrors the worldLaunch handling below.
+ */
+async function clickThrough(page, locator) {
+  await dismissTours(page);
+  await locator
+    .click({ timeout: SHORT })
+    .catch(() => locator.dispatchEvent("click"));
+}
+
+/*
  * On a fresh data dir, Foundry's Setup screen opens a "Share Usage Data" consent
  * prompt that sits above the world/tour controls until answered. Decline it so
  * the setup UI is interactable. No-op on a data dir that already answered.
@@ -227,6 +242,25 @@ export async function joinAsUser(page, config, label) {
   await page.waitForFunction(() => globalThis.game?.ready === true, null, {
     timeout: 60000,
   });
+
+  // A freshly launched world auto-starts in-world tours (the sidebar/canvas
+  // "Welcome" tours) whose `.tour-overlay` renders above the game UI and
+  // intercepts pointer events, making later driven interactions silently miss.
+  // Tours appear on BOTH the setup screen and inside the world, so clear them
+  // here too: programmatically exit every active tour, then strip any lingering
+  // overlay DOM as a backstop — mirroring the setup-screen handling above.
+  await page
+    .evaluate(() => {
+      for (const tour of globalThis.game?.tours?.contents ?? []) {
+        try {
+          tour.exit?.();
+        } catch {
+          /* a tour that refuses to exit is handled by the DOM cleanup below */
+        }
+      }
+    })
+    .catch(() => {});
+  await dismissTours(page);
 
   // A freshly launched world starts paused, which blocks many in-game
   // interactions (and silently makes driven actions miss). Unpause as GM with
