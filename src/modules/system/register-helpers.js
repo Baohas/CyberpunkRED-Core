@@ -813,14 +813,6 @@ export default function registerHandlebarsHelpers() {
   );
 
   /**
-   * For readability's sake return (a translated) "Yes" or "No" based on whether something is true or false
-   */
-  Handlebars.registerHelper("cprYesNo", (bool) => {
-    if (bool) return SystemUtils.Localize("CPR.global.generic.yes");
-    return SystemUtils.Localize("CPR.global.generic.no");
-  });
-
-  /**
    * For readability's sake, translate the "mode" of an active effect mod into an intuitive mathematical operator.
    * For unknown modes, just return a question mark, which shouldn't happen. Modes are constants provided by Foundry:
    *    0 (CUSTOM) - calls the "applyActiveEffect" hook with the value to figure out what to do with it (not used)
@@ -1074,13 +1066,6 @@ export default function registerHandlebarsHelpers() {
     }
 
     return trueMax;
-  });
-
-  /**
-   * Return true/false depending on whether debugElements setting in the game is enabled
-   */
-  Handlebars.registerHelper("cprIsDebug", () => {
-    return game.settings.get(game.system.id, "debugElements");
   });
 
   /* Emit a debug message to the dev log
