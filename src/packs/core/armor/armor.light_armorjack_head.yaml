@@ -29,11 +29,11 @@ system:
     ablation: 0
     sp: 11
   installedItems:
-    allowed: true
+    allowed: false
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isBodyLocation: false
   isElectronic: false
