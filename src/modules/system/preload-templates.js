@@ -127,6 +127,7 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/progress-bar.hbs`,
 
     // Item: Sheet
+    `systems/${game.system.id}/templates/item/parts/cpr-item-header-body.hbs`,
     `systems/${game.system.id}/templates/item/cpr-item-description.hbs`,
     `systems/${game.system.id}/templates/item/cpr-item-effects.hbs`,
     `systems/${game.system.id}/templates/item/cpr-item-name.hbs`,

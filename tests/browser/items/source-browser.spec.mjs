@@ -49,7 +49,7 @@ function createGear(page, name, sources) {
 // The result row whose name matches exactly one of our unique item names.
 function rowByName(page, browser, name) {
   return browser.locator(".cpr-browser-entry").filter({
-    has: page.locator(".cpr-browser-entry-name", { hasText: name }),
+    has: page.locator(".item-header-name", { hasText: name }),
   });
 }
 
@@ -117,17 +117,18 @@ test.describe("Document browser — sources", () => {
 
     // bravo's citation shows both sources, comma-joined, each as "BOOK pg. PAGE".
     const bravoSource = rowByName(game, browser, nameB).locator(
-      ".cpr-browser-entry-source",
+      ".item-header-sources",
     );
     await expect(bravoSource).toHaveCount(1);
     await expect(bravoSource).toContainText("BBBBook pg. 5");
     await expect(bravoSource).toContainText("AAABook pg. 99");
     await expect(bravoSource).toContainText(",");
 
-    // The item with an empty sources array shows no citation line at all.
+    // The item with an empty sources array shows a blank citation (the shared
+    // header always renders the sources slot; it is simply empty).
     await expect(
-      rowByName(game, browser, nameEmpty).locator(".cpr-browser-entry-source"),
-    ).toHaveCount(0);
+      rowByName(game, browser, nameEmpty).locator(".item-header-sources"),
+    ).toHaveText("");
   });
 
   test("book filter 'only' matches items where the book is a SECONDARY source", async ({

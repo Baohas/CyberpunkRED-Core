@@ -15,180 +15,18 @@
     "item-bottom-pane";
   gap: 0.313rem;
 
+  /* The sheet header pane: a framed dark panel wrapping the shared
+     `.item-header-body` (whose layout lives at top level so the browser rows can
+     reuse it). Only the panel chrome — border, background, padding — is
+     sheet-specific. */
   .item-top-pane {
     grid-area: item-top-pane;
-    display: flex;
-    flex-direction: column;
-    gap: 0.125rem;
-    padding: 0.313rem;
 
     /* One unified dark panel, framed to match the lower content section
        (same 0.313rem border in --cpr-background-border). */
+    padding: 0.313rem;
     background-color: var(--cpr-background-box);
     border: 0.313rem solid var(--cpr-background-border);
-
-    /* Top section: square icon + [breadcrumb/price, name]. The icon spans only
-       these first two rows; the divider and chip row below are full width. */
-    .item-header-top {
-      display: flex;
-      gap: 0.313rem;
-      min-width: 0;
-      align-items: stretch;
-    }
-
-    /* Fixed square icon, top-aligned. A long name simply wraps/overflows past
-       it (the header grows); the icon does not resize. No border, no cut corner. */
-    .item-image {
-      position: relative;
-      flex: 0 0 auto;
-      align-self: flex-start;
-      width: 3.875rem;
-      height: 3.875rem;
-      overflow: hidden;
-      background-color: var(--cpr-background-header);
-
-      i.fa-square-caret-up {
-        position: absolute;
-        top: 0.2rem;
-        right: 0.2rem;
-        color: var(--cpr-color-white);
-      }
-
-      i.fa-circle-info {
-        position: absolute;
-        top: 0.2rem;
-        left: 0.2rem;
-        color: var(--cpr-color-white);
-      }
-
-      /* Absolutely filled so the image's own size never drives the box: the box
-         takes its height from the sibling text column, aspect-ratio makes it
-         square. Drop the global image-block cut-corner clip. */
-      .item-image-block-img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        clip-path: none;
-        object-fit: contain;
-      }
-    }
-
-    /* Breadcrumb/price then name, sitting directly on the unified panel. */
-    .item-header-top-details {
-      flex: 1 1 auto;
-      min-width: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 0.125rem;
-      padding: 0.125rem 0.25rem;
-    }
-
-    /* Rows 1 and 3 share their line between a left and a right region. */
-    .item-header-row {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 0.5rem;
-      min-width: 0;
-    }
-
-    .item-header-row-bottom {
-      align-items: flex-end;
-    }
-
-    /* Breadcrumb and price both shrink and ellipsis against one another. The
-       first segment is brightest (primary text); each later segment dims via an
-       inline per-segment opacity set in the sheet's _prepareContext. */
-    .item-header-breadcrumb {
-      flex: 1 1 auto;
-      min-width: 0;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      color: var(--cpr-text-normal);
-
-      /* The first (Type) segment is a wiki link, but reads as plain breadcrumb
-         text — inherit colour, no underline. */
-      a.item-header-type-link {
-        color: inherit;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      /* Separators stay a fixed dim colour regardless of segment opacity. */
-      .item-header-breadcrumb-sep {
-        color: var(--cpr-text-hint);
-      }
-    }
-
-    /* Rule between the name and the chips/sources row — a bit thicker, in the
-       panel's border colour. */
-    .item-header-divider {
-      border-top: 0.1563rem solid var(--cpr-background-border);
-      margin: 0.125rem 0;
-    }
-
-    /* Header chips run ~20% larger than the browser's shared chip size. */
-    .item-header-chips .cpr-browser-chip {
-      font-size: 0.84rem;
-    }
-
-    .item-header-sources {
-      flex: 0 1 auto;
-      min-width: 0;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      text-align: right;
-      text-transform: uppercase;
-      color: var(--cpr-text-hint);
-    }
-
-    /* Name truncates, but the debug id stays put beside it. Bold + uppercase to
-       match the Figma (text-hero is small-caps, not all-caps). */
-    .item-header-name {
-      display: flex;
-      align-items: baseline;
-      gap: 0.25rem;
-      min-width: 0;
-      text-transform: uppercase;
-
-      /* A long name wraps onto extra lines (the header grows) rather than
-         truncating — the full item name stays readable. */
-      .item-header-name-text {
-        min-width: 0;
-        overflow-wrap: anywhere;
-      }
-
-      .item-header-debug {
-        flex: 0 0 auto;
-        color: var(--cpr-text-hint);
-      }
-    }
-
-    /* Chips take the available width and WRAP; the header grows to fit. */
-    .item-header-chips {
-      flex: 1 1 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 0.25rem;
-      min-width: 0;
-    }
-
-    /* Price sits top-right (opposite the breadcrumb) and never shrinks. */
-    .item-header-price {
-      flex: 0 0 auto;
-      display: flex;
-      align-items: baseline;
-      gap: 0.3rem;
-      white-space: nowrap;
-      text-align: right;
-      text-transform: uppercase;
-      color: var(--cpr-text-hint);
-    }
   }
 
   .tab-label {
@@ -261,6 +99,182 @@
     /* Comfortable internal padding so prose isn't flush against the edges. */
     padding: 0.5rem 0.625rem;
     background-color: var(--cpr-background-box);
+  }
+}
+
+/* Shared item "header body" — the icon + breadcrumb/sources + name, a divider,
+   then a chips + price row. Its layout is deliberately top-level (not nested
+   under `.item-sheet`) so BOTH the item sheet header (`.item-top-pane`) and the
+   document browser result rows (`.cpr-browser-entry-open`) draw an identical
+   header from the same rules. Context-specific chrome (the sheet's panel border,
+   the browser's zebra rows / smaller icon) stays with each host. */
+.item-header-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+
+  /* Top section: square icon + [breadcrumb/sources, name]. The icon spans only
+     these first two rows; the divider and chip row below are full width. */
+  .item-header-top {
+    display: flex;
+    gap: 0.313rem;
+    min-width: 0;
+    align-items: stretch;
+  }
+
+  /* Fixed square icon, top-aligned. A long name simply wraps/overflows past
+     it (the header grows); the icon does not resize. No border, no cut corner. */
+  .item-image {
+    position: relative;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    width: 3.875rem;
+    height: 3.875rem;
+    overflow: hidden;
+    background-color: var(--cpr-background-header);
+
+    i.fa-square-caret-up {
+      position: absolute;
+      top: 0.2rem;
+      right: 0.2rem;
+      color: var(--cpr-color-white);
+    }
+
+    i.fa-circle-info {
+      position: absolute;
+      top: 0.2rem;
+      left: 0.2rem;
+      color: var(--cpr-color-white);
+    }
+
+    /* Absolutely filled so the image's own size never drives the box: the box
+       takes its height from the sibling text column, aspect-ratio makes it
+       square. Drop the global image-block cut-corner clip. */
+    .item-image-block-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      clip-path: none;
+      object-fit: contain;
+    }
+  }
+
+  /* Breadcrumb/sources then name, sitting directly on the unified panel. */
+  .item-header-top-details {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.125rem;
+    padding: 0.125rem 0.25rem;
+  }
+
+  /* Rows 1 and 3 share their line between a left and a right region. */
+  .item-header-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+    min-width: 0;
+  }
+
+  .item-header-row-bottom {
+    align-items: flex-end;
+  }
+
+  /* Breadcrumb and sources both shrink and ellipsis against one another. The
+     first segment is brightest (primary text); each later segment dims via an
+     inline per-segment opacity set by the host's view-model. */
+  .item-header-breadcrumb {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--cpr-text-normal);
+
+    /* The first (Type) segment is a wiki link, but reads as plain breadcrumb
+       text — inherit colour, no underline. */
+    a.item-header-type-link {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Separators stay a fixed dim colour regardless of segment opacity. */
+    .item-header-breadcrumb-sep {
+      color: var(--cpr-text-hint);
+    }
+  }
+
+  /* Rule between the name and the chips/sources row — a bit thicker, in the
+     panel's border colour. */
+  .item-header-divider {
+    border-top: 0.1563rem solid var(--cpr-background-border);
+    margin: 0.125rem 0;
+  }
+
+  /* Header chips run ~20% larger than the browser's shared chip size. */
+  .item-header-chips .cpr-browser-chip {
+    font-size: 0.84rem;
+  }
+
+  .item-header-sources {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: right;
+    text-transform: uppercase;
+    color: var(--cpr-text-hint);
+  }
+
+  /* Name truncates, but the debug id stays put beside it. Bold + uppercase to
+     match the Figma (text-hero is small-caps, not all-caps). */
+  .item-header-name {
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    min-width: 0;
+    text-transform: uppercase;
+
+    /* A long name wraps onto extra lines (the header grows) rather than
+       truncating — the full item name stays readable. */
+    .item-header-name-text {
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .item-header-debug {
+      flex: 0 0 auto;
+      color: var(--cpr-text-hint);
+    }
+  }
+
+  /* Chips take the available width and WRAP; the header grows to fit. */
+  .item-header-chips {
+    flex: 1 1 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  /* Price sits bottom-right (beside the chips) and never shrinks. */
+  .item-header-price {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: baseline;
+    gap: 0.3rem;
+    white-space: nowrap;
+    text-align: right;
+    text-transform: uppercase;
+    color: var(--cpr-text-hint);
   }
 }
 

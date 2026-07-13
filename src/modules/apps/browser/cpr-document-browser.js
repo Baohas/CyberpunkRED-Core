@@ -258,6 +258,10 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    */
   static #toRow(entry) {
     const market = foundry.utils.getProperty(entry, "system.price.market");
+    const isItem = entry.docClass === "Item";
+    const hasInstalled =
+      foundry.utils.getProperty(entry, "system.installedItems.list")?.length >
+      0;
     return {
       uuid: entry.uuid,
       name: entry.name,
@@ -269,15 +273,30 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       description: CPRDocumentBrowser.#plainText(
         foundry.utils.getProperty(entry, "system.description.value"),
       ),
-      breadcrumb:
-        entry.docClass === "Item"
-          ? buildItemBreadcrumb(entry, { includeType: false }).join(" / ")
-          : "",
-      chips: entry.docClass === "Item" ? browserStatChips(entry) : [],
-      sourceLine: CPRDocumentBrowser.#sourceLine(entry),
-      hasInstalled:
-        foundry.utils.getProperty(entry, "system.installedItems.list")?.length >
-        0,
+      // The row feeds the shared `cpr-item-header-body` partial (also used by
+      // the item sheet header), so it carries the same view-model. Breadcrumb
+      // segments include the Type and the per-segment opacity gradient, exactly
+      // like the sheet header.
+      breadcrumb: isItem
+        ? buildItemBreadcrumb(entry, { includeType: true }).map(
+            (label, index) => ({
+              label,
+              opacity: Math.max(0, 1 - 0.15 * index),
+            }),
+          )
+        : [],
+      // Browser rows open on click, so the leading Type segment must be a plain
+      // span, not a wiki link (no nested interactive), and the image is not
+      // editable here.
+      wikiType: null,
+      editImg: false,
+      // The browser tracks only whether an item has things installed in it,
+      // shown with the "upgraded" caret marker (as the old row markup did).
+      statusUpgraded: hasInstalled,
+      statusInstalled: false,
+      chips: isItem ? browserStatChips(entry) : [],
+      source: CPRDocumentBrowser.#sourceLine(entry),
+      hasInstalled,
       // Drag-out copies an item onto a sheet for free, so it is GM-only — in shop
       // mode (players) rows aren't draggable and they must buy via the cart.
       draggable: !CPRDocumentBrowser.#isShop(),
@@ -288,9 +307,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
         ? (CPR.itemPriceCategory[entry.priceCategory] ?? "")
         : "",
       canBuy:
-        CPRDocumentBrowser.#isShop() &&
-        entry.docClass === "Item" &&
-        typeof market === "number",
+        CPRDocumentBrowser.#isShop() && isItem && typeof market === "number",
     };
   }
 

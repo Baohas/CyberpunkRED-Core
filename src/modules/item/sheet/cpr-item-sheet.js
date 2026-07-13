@@ -140,22 +140,62 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
     // Read-only header: a Type/subtype breadcrumb and a row of stat chips. All
     // editing lives on the Settings tab; the header only displays. Chip stat
     // values reflect installed upgrades for actor-owned upgraded items, exactly
-    // as the (now-removed) description sidebar did (see `_getChipSystem`).
-    // Each segment dims 15% more than the one before (segment 0 = full
-    // strength). The shared builder still returns a plain string[] for the
-    // browser; only the sheet header wants the per-segment opacity, so the map
-    // lives here rather than in `buildItemBreadcrumb`.
-    foundryData.breadcrumb = buildItemBreadcrumb({
-      type: this.item.type,
-      system: this.item.system,
-    }).map((label, index) => ({
-      label,
-      opacity: Math.max(0, 1 - 0.15 * index),
-    }));
-    foundryData.chips = buildItemChips({
-      type: this.item.type,
-      system: this._getChipSystem(),
-    });
+    // as the (now-removed) description sidebar did (see `_getChipSystem`). The
+    // header is drawn by the shared `cpr-item-header-body` partial (also used by
+    // the document browser rows), so everything it needs is precomputed here
+    // into a plain, document-free view-model.
+    //
+    // Each breadcrumb segment dims 15% more than the one before (segment 0 =
+    // full strength). The shared builder returns a plain string[]; only the
+    // header wants the per-segment opacity, so the map lives here.
+    const { item } = this;
+    const market = item.system.price?.market;
+    // Price is shown for any valuable-mixin type (matching the old
+    // `cprHasTemplate item.type "valuable"` gate), even at 0eb. The label and
+    // category reuse the exact helpers the browser rows use, so both consumers
+    // feed the partial identically ("5,000eb (Expensive)").
+    const hasPrice = SystemUtils.hasMixin(item.type, "valuable");
+    foundryData.headerBody = {
+      img: item.img,
+      editImg: true,
+      statusUpgraded: item.system.isUpgraded,
+      statusInstalled: item.system.isInstalled,
+      // Mirror the old `localize (cprGetLocalizedlNameKey item)`: the helper
+      // returns a localization key (or the raw name when none), which Localize
+      // then resolves.
+      name: SystemUtils.Localize(
+        Handlebars.helpers.cprGetLocalizedlNameKey(item),
+      ),
+      debugId: game.settings.get(game.system.id, "debugElements")
+        ? item.id
+        : null,
+      breadcrumb: buildItemBreadcrumb({
+        type: item.type,
+        system: item.system,
+      }).map((label, index) => ({
+        label,
+        opacity: Math.max(0, 1 - 0.15 * index),
+      })),
+      // The sheet's leading Type segment links to the wiki; the browser omits
+      // this (its rows open on click) by leaving wikiType null.
+      wikiType: item.type,
+      hasPrice,
+      priceLabel: hasPrice
+        ? SystemUtils.Format("CPR.browser.price.amount", {
+            amount: Handlebars.helpers.cprNumberFormat(market, { hash: {} }),
+          })
+        : "",
+      priceCategoryLabel: hasPrice
+        ? (CPR.itemPriceCategory[
+            Handlebars.helpers.cprGetPriceCategory(market)
+          ] ?? "")
+        : "",
+      chips: buildItemChips({
+        type: item.type,
+        system: this._getChipSystem(),
+      }),
+      source: foundryData.sourceCitation,
+    };
 
     return { ...foundryData, ...cprData };
   }
