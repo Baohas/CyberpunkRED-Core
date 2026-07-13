@@ -91,7 +91,6 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - itemUpgrade
       - cyberware
     list: []
     slots: 3
