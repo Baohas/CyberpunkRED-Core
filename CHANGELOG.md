@@ -144,6 +144,7 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 
 - Add Ukrainian Language support
 - Pre-Installed smartgun-link upgrade into Malorian Arms 3516
+- Arms and Legs now come with attatched Hands and Feet
 
 ### Bug Fixes
 

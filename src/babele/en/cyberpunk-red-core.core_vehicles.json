@@ -46,13 +46,13 @@
       "name": "Speedboat",
       "description": "<p>A fast CHOOH<sup>2</sup>-powered speedboat.</p>\n"
     },
-    "Super Groundcar": {
-      "name": "Super Groundcar",
-      "description": "<p>\n  An expensive, exotic CHOOH<sup>2</sup>-powered sportscar. It is capable of\n  very high speeds.\n</p>\n"
-    },
     "Superbike": {
       "name": "Superbike",
       "description": "<p>A beefed-up version of a roadbike, capable of very high speeds.</p>\n"
+    },
+    "Super Groundcar": {
+      "name": "Super Groundcar",
+      "description": "<p>\n  An expensive, exotic CHOOH<sup>2</sup>-powered sportscar. It is capable of\n  very high speeds.\n</p>\n"
     },
     "Yacht": {
       "name": "Yacht",

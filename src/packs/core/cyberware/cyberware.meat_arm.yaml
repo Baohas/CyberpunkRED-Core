@@ -6,6 +6,91 @@ flags:
     _migration:
       current: 42
       previous: "41"
+    cprInstallTree:
+      - _id: eSfHdkOrNJTsXNvL
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.CgBrO0lr5fXzvcVY
+          coreVersion: "13.351"
+          createdTime: 1783913205816
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: SGxKriyWND2XMCyL
+          modifiedTime: 1783913205816
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: RwY8syewmlyQkg3g
+        img: systems/cyberpunk-red-core/icons/compendium/cyberware/meathand.svg
+        name: Meat Hand
+        ownership:
+          SGxKriyWND2XMCyL: 3
+          default: 0
+        sort: 153125
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          core: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: <p>Looks like a normal hand for the most part.</p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          humanityLoss:
+            roll: "0"
+            static: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: notApplicable
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isFoundational: false
+          isRanged: false
+          isWeapon: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source:
+            book: Core
+            page: 364
+          type: cyberArm
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Archery
+          weaponType: assaultRifle
+        type: cyberware
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/meatarm.svg
 name: Meat Arm
@@ -43,12 +128,14 @@ system:
     static: 0
   ignoreArmorPercent: 50
   ignoreBelowSP: 0
+  ignoredByBrowser: false
   installLocation: notApplicable
   installedItems:
     allowed: true
     allowedTypes:
       - cyberware
-    list: []
+    list:
+      - eSfHdkOrNJTsXNvL
     slots: 3
     usedSlots: 0
   isElectronic: false
