@@ -7,36 +7,50 @@
         {{!-- Item Name --}}
         {{> "systems/cyberpunk-red-core/templates/item/cpr-item-name.hbs" this}}
         {{!-- Settings common to all items --}}
-        <li class="item flexrow">
-          <div class="item flexrow setting-name text-nowrap">
-            {{localize "CPR.itemSheet.common.source.book"}}
-          </div>
-          <div class="item flexrow setting-value text-nowrap item-end">
-            {{#if this.editable }}
-              <input name="system.source.book"
-                     type="text"
-                     value="{{item.system.source.book}}"
-                     placeholder="MwtU"/>
-            {{else}}
-              {{item.system.source.book}}
-            {{/if}}
-          </div>
-        </li>
-        <li class="item flexrow">
-          <div class="item flexrow setting-name text-nowrap">
-            {{localize "CPR.itemSheet.common.source.page"}}
-          </div>
-          <div class="item flexrow setting-value text-nowrap item-end">
-            {{#if this.editable }}
-              <input name="system.source.page"
-                     type="number"
-                     value="{{item.system.source.page}}"
-                     placeholder="123"/>
-            {{else}}
-              {{item.system.source.page}}
-            {{/if}}
-          </div>
-        </li>
+        {{#each item.system.sources as |src index|}}
+          <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+              {{localize "CPR.itemSheet.common.source.book"}}
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+              {{#if ../this.editable }}
+                <input name="system.sources.{{index}}.book"
+                       type="text"
+                       value="{{src.book}}"
+                       placeholder="MwtU"/>
+              {{else}}
+                {{src.book}}
+              {{/if}}
+            </div>
+          </li>
+          <li class="item flexrow">
+            <div class="item flexrow setting-name text-nowrap">
+              {{localize "CPR.itemSheet.common.source.page"}}
+            </div>
+            <div class="item flexrow setting-value text-nowrap item-end">
+              {{#if ../this.editable }}
+                <input name="system.sources.{{index}}.page"
+                       type="number"
+                       value="{{src.page}}"
+                       placeholder="123"/>
+                <a class="source-action"
+                   data-action-type="delete"
+                   data-index="{{index}}"><i class="fas fa-trash-can"
+   data-tooltip="{{localize "CPR.itemSheet.common.source.delete"}}"></i></a>
+              {{else}}
+                {{src.page}}
+              {{/if}}
+            </div>
+          </li>
+        {{/each}}
+        {{#if this.editable }}
+          <li class="item flexrow">
+            <div class="item flexrow setting-value text-nowrap">
+              <a class="source-action"
+                 data-action-type="create"><i class="fas fa-circle-plus text-padding-right"></i>{{localize "CPR.itemSheet.common.source.add"}}</a>
+            </div>
+          </li>
+        {{/if}}
         {{#if item.system.quality}}
           {{> "systems/cyberpunk-red-core/templates/item/settings/mixin/cpr-quality.hbs" this}}
         {{/if}}

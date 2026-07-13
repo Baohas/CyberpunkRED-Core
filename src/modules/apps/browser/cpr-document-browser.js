@@ -328,20 +328,24 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
 
   /**
    * The source citation shown at the bottom-right of an entry card, e.g.
-   * "BC pg.123" (uppercased by CSS). The book is the short source-book code
-   * stored on the item (`system.source.book`). Empty when no source book is set.
+   * "BC pg.123" (uppercased by CSS). An item may cite several source books
+   * (`system.sources`), so every entry with a book is rendered and joined with
+   * a comma. Empty when no source book is set.
    *
    * @private
    * @param {object} entry
    * @returns {string}
    */
   static #sourceLine(entry) {
-    const book = foundry.utils.getProperty(entry, "system.source.book");
-    if (!book) return "";
-    const page = foundry.utils.getProperty(entry, "system.source.page");
-    return page > 0
-      ? SystemUtils.Format("CPR.browser.entry.source", { book, page })
-      : book;
+    const sources = foundry.utils.getProperty(entry, "system.sources") ?? [];
+    return sources
+      .filter(({ book } = {}) => !!book)
+      .map(({ book, page }) =>
+        page > 0
+          ? SystemUtils.Format("CPR.browser.entry.source", { book, page })
+          : book,
+      )
+      .join(", ");
   }
 
   /**
@@ -552,8 +556,10 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       {
         id: "book",
         type: "tristate",
-        field: "system.source.book",
+        field: "system.sources",
         dynamic: true,
+        multi: true,
+        valueKey: "book",
         label: "CPR.browser.filter.book",
       },
     ];
@@ -571,7 +577,12 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   #getFilterContext(entries) {
     return this.#activeFilterDefs().map((definition) => {
       const choices = definition.dynamic
-        ? CPRDocumentBrowser.#dynamicChoices(definition.field, entries)
+        ? CPRDocumentBrowser.#dynamicChoices(
+            definition.field,
+            entries,
+            definition.multi,
+            definition.valueKey,
+          )
         : Object.entries(CPR[definition.choices] ?? {});
       const states = this.filterState.tristate[definition.id] ?? {};
       return {
@@ -593,16 +604,30 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    * field takes across the supplied entries (used for free-text fields like the
    * source book and brand). The raw value is its own label.
    *
+   * When `multi` is set, `field` is an array path (e.g. `system.sources`) and
+   * each element's `valueKey` property supplies the value, so an entry citing
+   * several source books contributes all of them.
+   *
    * @private
    * @param {string} field
    * @param {Array<object>} entries
+   * @param {boolean} [multi] - whether `field` is an array of value-bearing objects
+   * @param {string} [valueKey] - the property to read off each array element when `multi`
    * @returns {Array<[string, string]>}
    */
-  static #dynamicChoices(field, entries) {
+  static #dynamicChoices(field, entries, multi = false, valueKey = null) {
     const values = new Set();
     for (const entry of entries) {
-      const value = foundry.utils.getProperty(entry, field);
-      if (value) values.add(value);
+      if (multi) {
+        const list = foundry.utils.getProperty(entry, field) ?? [];
+        for (const item of list) {
+          const value = item?.[valueKey];
+          if (value) values.add(value);
+        }
+      } else {
+        const value = foundry.utils.getProperty(entry, field);
+        if (value) values.add(value);
+      }
     }
     return Array.from(values)
       .map((value) => [value, value])
@@ -713,10 +738,16 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     }
 
     for (const definition of this.#activeFilterDefs()) {
-      const predicate = CPRDocumentBrowser.#tristatePredicate(
-        this.filterState.tristate[definition.id],
-        (entry) => foundry.utils.getProperty(entry, definition.field),
-      );
+      const state = this.filterState.tristate[definition.id];
+      const predicate = definition.multi
+        ? CPRDocumentBrowser.#tristateSetPredicate(state, (entry) =>
+            (foundry.utils.getProperty(entry, definition.field) ?? [])
+              .map((e) => e?.[definition.valueKey])
+              .filter(Boolean),
+          )
+        : CPRDocumentBrowser.#tristatePredicate(state, (entry) =>
+            foundry.utils.getProperty(entry, definition.field),
+          );
       if (predicate) predicates.push(predicate);
     }
 
@@ -944,6 +975,30 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     if (only.length) return (entry) => only.includes(accessor(entry));
     const excluded = Object.keys(states).filter((v) => states[v] === "exclude");
     if (excluded.length) return (entry) => !excluded.includes(accessor(entry));
+    return null;
+  }
+
+  /**
+   * Compile a tri-state state map into a single predicate over a set-valued
+   * accessor (e.g. an item's several source books), or null if it adds no
+   * constraint. Any "only" states act as a whitelist — an entry passes if any
+   * of its values is among them (multiple "only" values OR together);
+   * otherwise "exclude" states act as a blacklist — an entry passes only if
+   * none of its values is excluded.
+   *
+   * @private
+   * @param {object|undefined} states - {value: "include"|"exclude"|"only"}
+   * @param {function(object): Array<*>} accessor - reads the values to test from an entry
+   * @returns {function(object): boolean|null}
+   */
+  static #tristateSetPredicate(states, accessor) {
+    if (!states) return null;
+    const only = Object.keys(states).filter((v) => states[v] === "only");
+    if (only.length)
+      return (entry) => accessor(entry).some((b) => only.includes(b));
+    const excluded = Object.keys(states).filter((v) => states[v] === "exclude");
+    if (excluded.length)
+      return (entry) => !accessor(entry).some((b) => excluded.includes(b));
     return null;
   }
 
@@ -1486,13 +1541,17 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Rebuild the index from scratch and re-render the results.
+   * Rebuild the index from scratch and re-render the sidebar filters and the
+   * results. The sidebar must re-render too: the dynamic filter option lists
+   * (Source Books, Brand) are derived from the indexed entries, so a
+   * results-only render would leave a newly-added book or brand missing from
+   * its filter until the browser was fully closed and reopened.
    *
    * @this {CPRDocumentBrowser}
    */
   static async refreshIndex() {
     await CPRBrowserIndex.rebuild();
-    this.render({ parts: ["results"] });
+    this.render({ parts: ["sidebar", "results"] });
   }
 
   /**

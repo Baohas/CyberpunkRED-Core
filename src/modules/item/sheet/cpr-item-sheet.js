@@ -68,6 +68,16 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
     foundryData.system = this.item.system;
     foundryData.owner = this.item.isOwner;
     foundryData.editable = this.isEditable;
+    // Precompute the read-only source citation: only book-having entries
+    // contribute, joined by ", ", so blank entries (e.g. a freshly added row)
+    // never leave a dangling separator. Mirrors the document browser's line.
+    const pageShort = SystemUtils.Localize("CPR.global.generic.pageShort");
+    foundryData.sourceCitation = (this.item.system.sources ?? [])
+      .filter((src) => src.book)
+      .map((src) =>
+        src.page > 0 ? `${src.book} ${pageShort} ${src.page}` : src.book,
+      )
+      .join(", ");
     const cprData = {};
     cprData.isGM = game.user.isGM;
     const itemType = foundryData.item.type;
@@ -321,6 +331,7 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
 
     on(".item-checkbox", "click", (event) => this._itemCheckboxToggle(event));
     on(".item-multi-option", "click", (event) => this._itemMultiOption(event));
+    on(".source-action", "click", (event) => this._sourceAction(event));
     on(".select-compatible-ammo", "click", () => this._selectCompatibleAmmo());
     on(".netarch-level-action", "click", (event) =>
       this._netarchLevelAction(event),
@@ -383,6 +394,19 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
   /*
   INTERNAL METHODS BELOW HERE
   */
+
+  _sourceAction(event) {
+    event.preventDefault();
+    const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
+    const sources = foundry.utils.duplicate(this.item.system.sources ?? []);
+    if (actionType === "create") {
+      sources.push({ book: "", page: 0 });
+    } else if (actionType === "delete") {
+      const index = Number(SystemUtils.GetEventDatum(event, "data-index"));
+      sources.splice(index, 1);
+    }
+    return this.item.update({ "system.sources": sources });
+  }
 
   _itemCheckboxToggle(event) {
     const cprItem = foundry.utils.duplicate(this.item);
