@@ -129,6 +129,16 @@
       "description": "<p>Doubles natural healing while resting.</p>\n",
       "dvTable": ""
     },
+    "Exposed Covering (Cyber Arm)": {
+      "name": "Exposed Covering (Cyber Arm)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
+    "Exposed Covering (Cyber Leg)": {
+      "name": "Exposed Covering (Cyber Leg)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
     "Gills": {
       "name": "Gills",
       "description": "<p>Allows for breathing underwater.</p>\n",

@@ -7,15 +7,15 @@ flags:
       current: 42
       previous: "41"
     cprInstallTree:
-      - _id: YIcoLjHHK7O8zdnZ
+      - _id: YUPM1koHIa4MaEJg
         _stats:
           compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.BUKAOysOkAkwaRqo
           coreVersion: "13.351"
-          createdTime: 1783911386990
+          createdTime: 1783914575361
           duplicateSource: null
           exportSource: null
           lastModifiedBy: SGxKriyWND2XMCyL
-          modifiedTime: 1783911386990
+          modifiedTime: 1783914575361
           systemId: cyberpunk-red-core
           systemVersion: DUMMY_VALUE
         effects: []
@@ -92,6 +92,93 @@ flags:
           weaponSkill: Archery
           weaponType: assaultRifle
         type: cyberware
+      - _id: y29gnJc3qHsFCrHs
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.SbWFgD5rlVtQoadd
+          coreVersion: "13.351"
+          createdTime: 1783915553249
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: SGxKriyWND2XMCyL
+          modifiedTime: 1783915553249
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/cyberware/exposed_covering.svg
+        name: Exposed Covering (Cyber Arm)
+        ownership:
+          SGxKriyWND2XMCyL: 3
+          default: 0
+        sort: 0
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          core: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: >-
+              <p>Your cybernetics are exposed, maybe you should purchase a
+              covering for your arm?</p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          humanityLoss:
+            roll: "0"
+            static: 0
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: true
+          installLocation: notApplicable
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - itemUpgrade
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isFoundational: false
+          isRanged: false
+          isWeapon: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          price:
+            market: 0
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source:
+            book: Core
+            page: 367
+          type: cyberArm
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Archery
+          weaponType: assaultRifle
+        type: cyberware
 folder: null
 img: systems/cyberpunk-red-core/icons/compendium/cyberware/cyberarm.svg
 name: Cyberarm
@@ -133,7 +220,8 @@ system:
     allowedTypes:
       - cyberware
     list:
-      - YIcoLjHHK7O8zdnZ
+      - YUPM1koHIa4MaEJg
+      - y29gnJc3qHsFCrHs
     slots: 4
     usedSlots: 0
   isElectronic: true
