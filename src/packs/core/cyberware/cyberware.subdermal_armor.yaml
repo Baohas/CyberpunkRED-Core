@@ -53,7 +53,7 @@ system:
   installedItems:
     allowed: false
     allowedTypes:
-      - itemUpgrade
+      - cyberware
     list: []
     slots: 0
     usedSlots: 0

@@ -44,7 +44,7 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - itemUpgrade
+      - cyberware
       - cyberdeck
     list: []
     slots: 1

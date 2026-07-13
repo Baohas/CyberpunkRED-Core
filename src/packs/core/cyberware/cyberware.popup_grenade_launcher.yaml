@@ -51,7 +51,7 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - itemUpgrade
+      - cyberware
       - ammo
     list: []
     slots: 2
