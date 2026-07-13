@@ -8,15 +8,15 @@ flags:
       current: 42
       previous: "41"
     cprInstallTree:
-      - _id: ZS3W9Gi12vXdWzoY
+      - _id: lfmDBb1QqtUGQaJA
         _stats:
           compendiumSource: Compendium.cyberpunk-red-core.core_upgrades.Item.BC8S1sdK0QGdyHNC
           coreVersion: "13.351"
-          createdTime: 1783911313862
+          createdTime: 1783963722922
           duplicateSource: null
           exportSource: null
-          lastModifiedBy: SGxKriyWND2XMCyL
-          modifiedTime: 1783911313862
+          lastModifiedBy: 62fniNbymaXTm4QO
+          modifiedTime: 1783963722922
           systemId: cyberpunk-red-core
           systemVersion: DUMMY_VALUE
         effects: []
@@ -29,7 +29,7 @@ flags:
         img: systems/cyberpunk-red-core/icons/compendium/upgrades/smartgun_link.svg
         name: Smartgun Link
         ownership:
-          SGxKriyWND2XMCyL: 3
+          62fniNbymaXTm4QO: 3
           default: 0
         sort: 0
         system:
@@ -47,7 +47,9 @@ flags:
             count: 2
             threshold: 0
           description:
-            value: <p>Turns weapon into a "Smartgun".</p>
+            value: >-
+              <p>An integrated <strong>Smartgun Link</strong> that cannot be
+              uninstalled from the <strong>Malorian Arms 3516</strong>.</p>
           dvTable: ""
           favorite: false
           fireModes:
@@ -56,7 +58,7 @@ flags:
           handsReq: 0
           ignoreArmorPercent: 50
           ignoreBelowSP: 0
-          ignoredByBrowser: false
+          ignoredByBrowser: true
           installLocation: mall
           installedItems:
             allowed: false
@@ -135,7 +137,7 @@ flags:
               type: modifier
               value: null
           price:
-            market: 500
+            market: 0
           providesHardening: false
           revealed: true
           rof: 1
@@ -194,7 +196,7 @@ system:
       - itemUpgrade
       - ammo
     list:
-      - ZS3W9Gi12vXdWzoY
+      - lfmDBb1QqtUGQaJA
     slots: 2
     usedSlots: 2
   isRanged: true
