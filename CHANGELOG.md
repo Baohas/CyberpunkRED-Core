@@ -51,6 +51,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 ### Changes
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
+- Redesign the item sheet header into a chip-based three-row layout (breadcrumb and sources, name, stat chips and price) and make the description tab full-width
 - Items can now cite multiple sourcebooks: the single `source` field is now a `sources` list; existing worlds migrate automatically
 
 ### Plumbing

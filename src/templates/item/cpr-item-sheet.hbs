@@ -1,46 +1,67 @@
 <div class="item-sheet">
   <div class="item-top-pane">
 
-    <div class="item-image">
-      <img src="{{item.img}}" class="item-image-block-img" data-edit="img" />
+    <div class="item-header-top">
+      <div class="item-image item-image-block">
+        <img src="{{item.img}}" class="item-image-block-img" data-edit="img" />
         {{#if item.system.isUpgraded }}
           <i class="fa-solid fa-square-caret-up fa-xs" data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>
         {{/if}}
         {{#if item.system.isInstalled }}
           <i class="fa-solid fa-circle-info fa-xs" data-tooltip="{{localize "CPR.global.generic.installed"}}"></i>
         {{/if}}
+      </div>
+
+      <div class="item-header-top-details">
+        <div class="item-header-row item-header-row-top">
+          <div class="item-header-breadcrumb">
+            {{#each breadcrumb}}
+              {{#unless @first}}<span class="item-header-breadcrumb-sep">/</span>{{/unless}}
+              {{#if @first}}
+                <a class="item-header-breadcrumb-segment item-header-type-link"
+                   href="{{cprWikiLink ../item.type}}"
+                   data-tooltip="{{localize "CPR.global.generic.helparticle"}}"
+                   style="opacity:{{this.opacity}}">{{this.label}}</a>
+              {{else}}
+                <span class="item-header-breadcrumb-segment"
+                      style="opacity:{{this.opacity}}">{{this.label}}</span>
+              {{/if}}
+            {{/each}}
+          </div>
+          {{#if (cprHasTemplate item.type "valuable") }}
+            <div class="item-header-price">
+              <span class="item-header-price-value">{{cprNumberFormat item.system.price.market}}eb</span>
+              <span class="item-header-price-category">
+                ({{localize
+                    (cprFindConfigValue "itemPriceCategory"
+                      (cprGetPriceCategory item.system.price.market)
+                )}})
+              </span>
+            </div>
+          {{/if}}
+        </div>
+
+        <div class="item-header-name text-large text-hero">
+          <span class="item-header-name-text">
+            {{localize (cprGetLocalizedlNameKey item)}}
+          </span>
+          {{#if (cprIsDebug) }}
+            <span class="item-header-debug text-small">({{item.id}})</span>
+          {{/if}}
+        </div>
+      </div>
     </div>
 
-    <div class="item-details">
-      <div class="item-details-name text-large text-hero">
-        {{localize (cprGetLocalizedlNameKey item)}}
-      </div>
+    <div class="item-header-divider"></div>
 
-      <div class="item-details-info">
-        {{#if (cprCompare item.system.brand "!==" "")}}
-          <span class="text-pill">
-            {{item.system.brand}}
-          </span>
-        {{/if}}
+    <div class="item-header-row item-header-row-bottom">
+      <div class="item-header-chips">
+        {{#each chips}}
+          <span class="cpr-browser-chip">{{this}}</span>
+        {{/each}}
       </div>
-
-      <div class="item-details-help">
-        {{localize (cprFindConfigValue "objectTypes" item.type)}}
-        <a class="help-article text-padding-left-smallest"
-           href="{{cprWikiLink item.type}}"
-           data-tooltip="{{localize "CPR.global.generic.helparticle"}}">
-          <i class="fas fa-circle-question"></i>
-        </a>
-      </div>
-
-      <div class="item-details-source">
+      <div class="item-header-sources">
         {{sourceCitation}}
-      </div>
-
-      <div class="item-details-other">
-        {{#if (cprIsDebug) }}
-          ({{item.id}})
-        {{/if}}
       </div>
     </div>
   </div>

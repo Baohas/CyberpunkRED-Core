@@ -2,8 +2,14 @@
   font-family: var(--cpr-font-primary);
   height: 100%;
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 4.5rem minmax(0, 1fr);
+
+  /* Constrain the single column to the window width (not the content's
+     max-content) so long names/breadcrumbs shrink or wrap instead of
+     overflowing the sheet. */
+  grid-template-columns: minmax(0, 1fr);
+
+  /* Header row is `auto` so it can GROW as chips wrap onto extra lines. */
+  grid-template-rows: auto minmax(0, 1fr);
   grid-template-areas:
     "item-top-pane"
     "item-bottom-pane";
@@ -11,98 +17,177 @@
 
   .item-top-pane {
     grid-area: item-top-pane;
-    display: grid;
-    grid-auto-columns: 1fr;
-    grid-auto-rows: 1fr;
-    grid-template-columns: 3.875rem 1fr;
-    grid-template-rows: 3.875rem;
-    gap: 0.313rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
     padding: 0.313rem;
-    grid-template-areas: "item-image item-details";
-    width: auto;
-    height: auto;
-    background-color: var(--cpr-background-border);
 
-    /* If the item has an upgrade icon, show it on the top right corner */
+    /* One unified dark panel, framed to match the lower content section
+       (same 0.313rem border in --cpr-background-border). */
+    background-color: var(--cpr-background-box);
+    border: 0.313rem solid var(--cpr-background-border);
+
+    /* Top section: square icon + [breadcrumb/price, name]. The icon spans only
+       these first two rows; the divider and chip row below are full width. */
+    .item-header-top {
+      display: flex;
+      gap: 0.313rem;
+      min-width: 0;
+      align-items: stretch;
+    }
+
+    /* Fixed square icon, top-aligned. A long name simply wraps/overflows past
+       it (the header grows); the icon does not resize. No border, no cut corner. */
     .item-image {
       position: relative;
-      grid-area: item-image;
+      flex: 0 0 auto;
+      align-self: flex-start;
+      width: 3.875rem;
+      height: 3.875rem;
       overflow: hidden;
+      background-color: var(--cpr-background-header);
 
       i.fa-square-caret-up {
         position: absolute;
-        top: 0.5rem;
+        top: 0.2rem;
         right: 0.2rem;
         color: var(--cpr-color-white);
       }
 
       i.fa-circle-info {
         position: absolute;
-        top: 0.5rem;
-        left: 0.17rem;
+        top: 0.2rem;
+        left: 0.2rem;
         color: var(--cpr-color-white);
       }
 
-      img {
+      /* Absolutely filled so the image's own size never drives the box: the box
+         takes its height from the sibling text column, aspect-ratio makes it
+         square. Drop the global image-block cut-corner clip. */
+      .item-image-block-img {
+        position: absolute;
+        inset: 0;
         width: 100%;
+        height: 100%;
+        clip-path: none;
+        object-fit: contain;
       }
     }
 
-    .item-details {
-      grid-area: item-details;
-      display: grid;
-      grid-auto-columns: auto 6.5rem;
-      grid-auto-rows: auto 1fr 1fr;
-      grid-template-areas:
-        "item-details-name item-details-help"
-        "item-details-name item-details-source"
-        "item-details-info item-details-other";
-      width: auto;
-      height: auto;
-      background-color: var(--cpr-background-box);
+    /* Breadcrumb/price then name, sitting directly on the unified panel. */
+    .item-header-top-details {
+      flex: 1 1 auto;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.125rem;
+      padding: 0.125rem 0.25rem;
+    }
 
-      .item-details-name {
-        grid-area: item-details-name;
-        display: grid;
-        justify-content: left;
-        align-content: start;
-        padding: 0 0.118rem;
-        overflow: hidden;
-        white-space: nowrap;
+    /* Rows 1 and 3 share their line between a left and a right region. */
+    .item-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      min-width: 0;
+    }
+
+    .item-header-row-bottom {
+      align-items: flex-end;
+    }
+
+    /* Breadcrumb and price both shrink and ellipsis against one another. The
+       first segment is brightest (primary text); each later segment dims via an
+       inline per-segment opacity set in the sheet's _prepareContext. */
+    .item-header-breadcrumb {
+      flex: 1 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      color: var(--cpr-text-normal);
+
+      /* The first (Type) segment is a wiki link, but reads as plain breadcrumb
+         text — inherit colour, no underline. */
+      a.item-header-type-link {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
       }
 
-      .item-details-info {
-        grid-area: item-details-info;
-        display: grid;
-        justify-content: left;
-        align-content: center;
-        padding: 0 0.125rem;
-        margin-bottom: 0.125rem;
+      /* Separators stay a fixed dim colour regardless of segment opacity. */
+      .item-header-breadcrumb-sep {
+        color: var(--cpr-text-hint);
+      }
+    }
+
+    /* Rule between the name and the chips/sources row — a bit thicker, in the
+       panel's border colour. */
+    .item-header-divider {
+      border-top: 0.1563rem solid var(--cpr-background-border);
+      margin: 0.125rem 0;
+    }
+
+    /* Header chips run ~20% larger than the browser's shared chip size. */
+    .item-header-chips .cpr-browser-chip {
+      font-size: 0.84rem;
+    }
+
+    .item-header-sources {
+      flex: 0 1 auto;
+      min-width: 0;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      text-align: right;
+      text-transform: uppercase;
+      color: var(--cpr-text-hint);
+    }
+
+    /* Name truncates, but the debug id stays put beside it. Bold + uppercase to
+       match the Figma (text-hero is small-caps, not all-caps). */
+    .item-header-name {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      min-width: 0;
+      text-transform: uppercase;
+
+      /* A long name wraps onto extra lines (the header grows) rather than
+         truncating — the full item name stays readable. */
+      .item-header-name-text {
+        min-width: 0;
+        overflow-wrap: anywhere;
       }
 
-      .item-details-help {
-        grid-area: item-details-help;
-        display: flex;
-        justify-content: right;
-        align-content: center;
-        padding: 0 0.118rem;
+      .item-header-debug {
+        flex: 0 0 auto;
+        color: var(--cpr-text-hint);
       }
+    }
 
-      .item-details-source {
-        grid-area: item-details-source;
-        display: grid;
-        justify-content: right;
-        align-content: center;
-        padding: 0 0.118rem;
-      }
+    /* Chips take the available width and WRAP; the header grows to fit. */
+    .item-header-chips {
+      flex: 1 1 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.25rem;
+      min-width: 0;
+    }
 
-      .item-details-other {
-        grid-area: item-details-other;
-        display: grid;
-        justify-content: right;
-        align-content: center;
-        padding: 0 0.118rem;
-      }
+    /* Price sits top-right (opposite the breadcrumb) and never shrinks. */
+    .item-header-price {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: baseline;
+      gap: 0.3rem;
+      white-space: nowrap;
+      text-align: right;
+      text-transform: uppercase;
+      color: var(--cpr-text-hint);
     }
   }
 
@@ -157,40 +242,24 @@
 }
 
 .item-description-tab {
+  /* The stat sidebar now lives in the header, so the description is full-width. */
   display: grid;
-  grid-template-columns: 8.438rem auto;
+  grid-template-columns: minmax(0, 1fr);
   grid-template-rows: auto;
-  grid-template-areas: "item-summary-pane item-description-pane";
   gap: 0.313rem;
   background-color: var(--cpr-background-border);
   flex: 1 0 auto;
   height: 100%;
   width: inherit;
 
-  .item-summary-section {
-    grid-area: item-summary-pane;
-    height: unset;
-    min-width: 8.438rem;
-    padding: 0.125rem;
-    background-color: var(--cpr-background-box);
-
-    .summary-name,
-    .item-summary-line {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .summary-value {
-      align-self: center;
-    }
-  }
-
   .item-description-section {
-    grid-area: item-description-pane;
     display: flex;
     flex: 1 0 auto;
     flex-wrap: wrap;
     height: unset;
+
+    /* Comfortable internal padding so prose isn't flush against the edges. */
+    padding: 0.5rem 0.625rem;
     background-color: var(--cpr-background-box);
   }
 }
@@ -216,6 +285,16 @@
     clip-path: polygon(0.938rem 0, 100% 0, 100% 100%, 0 100%, 0 0.938rem);
     object-fit: contain;
   }
+}
+
+/* Source list add/delete actions stay icon-width, not stretched by .flexrow. */
+.item-sheet .source-action {
+  flex: 0 0 auto;
+}
+
+/* Small gap between the page input and the delete (trash) icon. */
+.item-sheet .source-action[data-action-type="delete"] {
+  margin-left: 0.3125rem;
 }
 
 .item-netarch-section {

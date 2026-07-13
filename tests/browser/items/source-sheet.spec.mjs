@@ -190,10 +190,13 @@ test.describe("Item sheet source list", () => {
     const sheet = await openItemSettings(game, sheetId);
     await expect(sheet.locator(BOOK_INPUTS)).toHaveCount(2);
 
-    // Delete the FIRST row.
+    // Delete the FIRST row — a confirmation dialog now guards the delete.
     await sheet
       .locator('a.source-action[data-action-type="delete"][data-index="0"]')
       .click();
+    const confirmDialog = game.locator(".application.dialog");
+    await expect(confirmDialog).toBeVisible();
+    await confirmDialog.locator('button[data-action="yes"]').click();
     await game.waitForFunction(
       (itemId) => game.items.get(itemId).system.sources.length === 1,
       id,
@@ -214,7 +217,7 @@ test.describe("Item sheet source list", () => {
     game,
   }) => {
     // A filled source FOLLOWED by a blank-book source: the blank must not leak a
-    // stray/trailing comma into the read-only `.item-details-source` citation.
+    // stray/trailing comma into the read-only `.item-header-sources` citation.
     const { id, sheetId } = await createItemWithSources(
       game,
       [
@@ -224,7 +227,7 @@ test.describe("Item sheet source list", () => {
       "gear-src-cite",
     );
 
-    const citation = game.locator(`#${sheetId} .item-details-source`);
+    const citation = game.locator(`#${sheetId} .item-header-sources`);
     await expect(citation).toBeVisible();
 
     const text = (await citation.textContent()).trim();

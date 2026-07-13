@@ -5,6 +5,7 @@ import TextUtils from "../utils/TextUtils.js";
 import CPRActiveEffect from "../cpr-active-effect.js";
 import CPRMod from "../rolls/cpr-modifiers.js";
 import renderInstalledTree from "../utils/cpr-installed-tree.js";
+import { applyUpgradeValue } from "../item/mixins/cpr-upgradable.js";
 
 export default function registerHandlebarsHelpers() {
   LOGGER.log("Calling Register Handlebars Helpers");
@@ -787,28 +788,13 @@ export default function registerHandlebarsHelpers() {
    */
   Handlebars.registerHelper("cprApplyUpgrade", (obj, baseValue, dataPoint) => {
     const hasUpgradableMixin = SystemUtils.hasMixin(obj.type, "upgradable");
-    let upgradeResult = Number(baseValue);
-    if (Number.isNaN(upgradeResult)) {
-      upgradeResult = baseValue;
-    }
-    if (hasUpgradableMixin && obj.system.isUpgraded) {
-      const upgradeData = obj.getTotalUpgradeValues(dataPoint);
-      if (upgradeData.value !== "" && upgradeData.value !== 0) {
-        if (upgradeData.type === "override") {
-          upgradeResult = upgradeData.value;
-        } else if (
-          typeof upgradeResult !== "number" ||
-          typeof upgradeData.value !== "number"
-        ) {
-          if (upgradeData.value !== 0 && upgradeData.value !== "") {
-            upgradeResult = `${upgradeResult} + ${upgradeData.value}`;
-          }
-        } else {
-          upgradeResult += upgradeData.value;
-        }
-      }
-    }
-    return upgradeResult;
+    // A zero-valued modifier is a no-op, so items that cannot be upgraded (or are
+    // not upgraded) fall through `applyUpgradeValue` to the (coerced) base value.
+    const upgrade =
+      hasUpgradableMixin && obj.system.isUpgraded
+        ? obj.getTotalUpgradeValues(dataPoint)
+        : { type: "modifier", value: 0 };
+    return applyUpgradeValue(baseValue, upgrade);
   });
 
   /**

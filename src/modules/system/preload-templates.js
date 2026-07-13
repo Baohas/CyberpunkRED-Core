@@ -133,37 +133,6 @@ export default function preloadHandlebarsTemplates() {
     `systems/${game.system.id}/templates/item/cpr-item-settings.hbs`,
     `systems/${game.system.id}/templates/item/cpr-item-sheet.hbs`,
 
-    // Item: Description - Mixins
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-attackable.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-container.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-effects.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-electronic.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-equippable.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-installable.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-loadable.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-physical.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-quality.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-stackable.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-upgradable.hbs`,
-    `systems/${game.system.id}/templates/item/description/mixin/cpr-valuable.hbs`,
-
-    // Item: Description - Types
-    `systems/${game.system.id}/templates/item/description/cpr-ammo.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-armor.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-clothing.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-criticalInjury.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-cyberdeck.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-cyberware.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-drug.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-gear.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-itemUpgrade.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-netarch.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-program.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-role.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-skill.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-vehicle.hbs`,
-    `systems/${game.system.id}/templates/item/description/cpr-weapon.hbs`,
-
     // Item: Settings - Mixins
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-attackable.hbs`,
     `systems/${game.system.id}/templates/item/settings/mixin/cpr-container.hbs`,

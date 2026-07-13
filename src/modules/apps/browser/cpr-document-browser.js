@@ -5,6 +5,7 @@ import CPRBrowserIndex from "./cpr-browser-index.js";
 import CPRBrowserCompendiaSettings from "../settings/cpr-browser-compendia-settings.js";
 import renderInstalledTree from "../../utils/cpr-installed-tree.js";
 import browserStatChips from "./cpr-browser-chips.js";
+import { buildItemBreadcrumb } from "../../item/item-chips.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -268,8 +269,11 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       description: CPRDocumentBrowser.#plainText(
         foundry.utils.getProperty(entry, "system.description.value"),
       ),
-      breadcrumb: CPRDocumentBrowser.#breadcrumb(entry),
-      chips: browserStatChips(entry),
+      breadcrumb:
+        entry.docClass === "Item"
+          ? buildItemBreadcrumb(entry, { includeType: false }).join(" / ")
+          : "",
+      chips: entry.docClass === "Item" ? browserStatChips(entry) : [],
       sourceLine: CPRDocumentBrowser.#sourceLine(entry),
       hasInstalled:
         foundry.utils.getProperty(entry, "system.installedItems.list")?.length >
@@ -288,42 +292,6 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
         entry.docClass === "Item" &&
         typeof market === "number",
     };
-  }
-
-  /**
-   * The card breadcrumb shown below an entry's name: its sub-type and brand,
-   * joined with a separator (either may be absent). The item type itself is
-   * deliberately omitted — the grouped section header already names it.
-   *
-   * @private
-   * @param {object} entry
-   * @returns {string}
-   */
-  static #breadcrumb(entry) {
-    const parts = [
-      CPRDocumentBrowser.#subtypeLabel(entry),
-      foundry.utils.getProperty(entry, "system.brand") || "",
-    ];
-    return parts.filter(Boolean).join(" / ");
-  }
-
-  /**
-   * Localized label for an entry's sub-type (the value behind its first set
-   * filter, e.g. a weapon's weaponType or an armor's location), or "" when the
-   * type has no sub-type enum or the entry has no value for it.
-   *
-   * @private
-   * @param {object} entry
-   * @returns {string}
-   */
-  static #subtypeLabel(entry) {
-    if (entry.docClass !== "Item") return "";
-    const definition = CPRDocumentBrowser.#subtypeDef(entry.type);
-    if (!definition) return "";
-    const value = foundry.utils.getProperty(entry, definition.field);
-    if (!value) return "";
-    const label = CPR[definition.choices]?.[value];
-    return label ? SystemUtils.Localize(label) : value;
   }
 
   /**
@@ -501,18 +469,6 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       default:
         return base;
     }
-  }
-
-  /**
-   * The set-filter definition that supplies a type's sub-type children, or
-   * undefined if the type has no sub-type enum.
-   *
-   * @private
-   * @param {string} type
-   * @returns {object|undefined}
-   */
-  static #subtypeDef(type) {
-    return (CPR.browserFilters[type] ?? []).find((d) => d.type === "set");
   }
 
   /**
