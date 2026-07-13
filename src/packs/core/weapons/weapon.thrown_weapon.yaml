@@ -46,10 +46,9 @@ system:
   installedItems:
     allowed: true
     allowedTypes:
-      - itemUpgrade
       - ammo
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   isRanged: true
   magazine:
