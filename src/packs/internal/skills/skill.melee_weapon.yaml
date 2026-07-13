@@ -22,8 +22,8 @@ system:
   favorite: false
   level: 0
   skillType: generic
-  source:
-    book: Core
-    page: 137
+  sources:
+    - book: Core
+      page: 137
   stat: dex
 type: skill

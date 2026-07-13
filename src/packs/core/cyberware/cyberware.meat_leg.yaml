@@ -65,9 +65,9 @@ system:
   revealed: true
   rof: 1
   size: 0
-  source:
-    book: Core
-    page: 364
+  sources:
+    - book: Core
+      page: 364
   type: cyberLeg
   unarmedAutomaticCalculation: true
   usage: toggled

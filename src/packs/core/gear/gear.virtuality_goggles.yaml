@@ -35,8 +35,8 @@ system:
     market: 100
   providesHardening: false
   revealed: true
-  source:
-    book: Core
-    page: 355
+  sources:
+    - book: Core
+      page: 355
   usage: toggled
 type: gear

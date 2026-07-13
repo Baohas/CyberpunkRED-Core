@@ -22,8 +22,8 @@ system:
   favorite: false
   level: 0
   skillType: generic
-  source:
-    book: Core
-    page: 83
+  sources:
+    - book: Core
+      page: 83
   stat: tech
 type: skill

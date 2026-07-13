@@ -124,9 +124,9 @@ system:
   revealed: true
   rof: 1
   size: 0
-  source:
-    book: Core
-    page: 163
+  sources:
+    - book: Core
+      page: 163
   type: vehicle
   unarmedAutomaticCalculation: true
   usage: toggled

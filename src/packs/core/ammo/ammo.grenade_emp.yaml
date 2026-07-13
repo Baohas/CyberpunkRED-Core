@@ -45,9 +45,9 @@ system:
   price:
     market: 500
   size: 0
-  source:
-    book: Core
-    page: 345
+  sources:
+    - book: Core
+      page: 345
   type: emp
   variety: grenade
 type: ammo

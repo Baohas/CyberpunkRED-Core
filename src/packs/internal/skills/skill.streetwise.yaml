@@ -22,8 +22,8 @@ system:
   favorite: false
   level: 0
   skillType: generic
-  source:
-    book: Core
-    page: 139
+  sources:
+    - book: Core
+      page: 139
   stat: cool
 type: skill

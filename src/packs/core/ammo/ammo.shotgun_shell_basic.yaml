@@ -41,9 +41,9 @@ system:
   price:
     market: 10
   size: 0
-  source:
-    book: Core
-    page: 345
+  sources:
+    - book: Core
+      page: 345
   type: basic
   variety: shotgunShell
 type: ammo

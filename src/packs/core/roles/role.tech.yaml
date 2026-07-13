@@ -74,9 +74,9 @@ system:
   onByDefault: false
   rank: 4
   skill: "--"
-  source:
-    book: Core
-    page: 147
+  sources:
+    - book: Core
+      page: 147
   stat: "--"
   universalBonuses: []
 type: role

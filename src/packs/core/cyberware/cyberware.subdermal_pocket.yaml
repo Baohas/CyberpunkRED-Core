@@ -62,9 +62,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source:
-    book: Core
-    page: 364
+  sources:
+    - book: Core
+      page: 364
   type: cyberwareExternal
   unarmedAutomaticCalculation: true
   usage: toggled

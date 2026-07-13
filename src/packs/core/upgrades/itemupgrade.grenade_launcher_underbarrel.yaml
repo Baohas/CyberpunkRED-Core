@@ -131,9 +131,9 @@ system:
   revealed: true
   rof: 1
   size: 2
-  source:
-    book: Core
-    page: 343
+  sources:
+    - book: Core
+      page: 343
   type: weapon
   unarmedAutomaticCalculation: true
   usage: toggled

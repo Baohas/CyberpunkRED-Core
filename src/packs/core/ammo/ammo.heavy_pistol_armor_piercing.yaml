@@ -41,9 +41,9 @@ system:
   price:
     market: 100
   size: 0
-  source:
-    book: Core
-    page: 345
+  sources:
+    - book: Core
+      page: 345
   type: armorPiercing
   variety: heavyPistol
 type: ammo

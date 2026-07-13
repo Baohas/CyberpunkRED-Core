@@ -116,9 +116,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source:
-    book: Core
-    page: 344
+  sources:
+    - book: Core
+      page: 344
   type: weapon
   unarmedAutomaticCalculation: true
   usage: toggled

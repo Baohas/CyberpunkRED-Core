@@ -116,9 +116,9 @@ system:
   revealed: true
   rof: 1
   size: 2
-  source:
-    book: Core
-    page: 368
+  sources:
+    - book: Core
+      page: 368
   type: cyberdeck
   unarmedAutomaticCalculation: true
   usage: toggled

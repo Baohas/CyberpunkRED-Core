@@ -47,8 +47,8 @@ system:
   shieldHitPoints:
     max: 10
     value: 10
-  source:
-    book: Core
-    page: 351
+  sources:
+    - book: Core
+      page: 351
   usage: equipped
 type: armor

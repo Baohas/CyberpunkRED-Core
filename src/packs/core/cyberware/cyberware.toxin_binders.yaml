@@ -107,9 +107,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source:
-    book: Core
-    page: 363
+  sources:
+    - book: Core
+      page: 363
   type: cyberwareInternal
   unarmedAutomaticCalculation: true
   usage: installed

@@ -63,9 +63,9 @@ system:
   revealed: true
   rof: 1
   size: 0
-  source:
-    book: Core
-    page: 367
+  sources:
+    - book: Core
+      page: 367
   type: borgware
   unarmedAutomaticCalculation: true
   usage: toggled

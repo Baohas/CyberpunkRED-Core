@@ -80,8 +80,8 @@ system:
     market: 20
   providesHardening: false
   revealed: true
-  source:
-    book: Core
-    page: 353
+  sources:
+    - book: Core
+      page: 353
   usage: toggled
 type: gear

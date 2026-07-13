@@ -44,9 +44,9 @@ system:
   price:
     market: 50
   size: 0
-  source:
-    book: Core
-    page: 349
+  sources:
+    - book: Core
+      page: 349
   type: basic
   variety: battery
 type: ammo

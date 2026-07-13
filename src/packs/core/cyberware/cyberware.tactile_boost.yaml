@@ -62,9 +62,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source:
-    book: Core
-    page: 360
+  sources:
+    - book: Core
+      page: 360
   type: neuralWare
   unarmedAutomaticCalculation: true
   usage: toggled

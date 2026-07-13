@@ -45,9 +45,9 @@ system:
   price:
     market: 100
   size: 0
-  source:
-    book: Core
-    page: 346
+  sources:
+    - book: Core
+      page: 346
   type: poison
   variety: grenade
 type: ammo
