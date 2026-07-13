@@ -337,15 +337,8 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    * @returns {string}
    */
   static #sourceLine(entry) {
-    const sources = foundry.utils.getProperty(entry, "system.sources") ?? [];
-    return sources
-      .filter(({ book } = {}) => !!book)
-      .map(({ book, page }) =>
-        page > 0
-          ? SystemUtils.Format("CPR.browser.entry.source", { book, page })
-          : book,
-      )
-      .join(", ");
+    const sources = foundry.utils.getProperty(entry, "system.sources");
+    return SystemUtils.FormatSources(sources);
   }
 
   /**
@@ -739,15 +732,13 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
 
     for (const definition of this.#activeFilterDefs()) {
       const state = this.filterState.tristate[definition.id];
-      const predicate = definition.multi
-        ? CPRDocumentBrowser.#tristateSetPredicate(state, (entry) =>
+      const accessor = definition.multi
+        ? (entry) =>
             (foundry.utils.getProperty(entry, definition.field) ?? [])
               .map((e) => e?.[definition.valueKey])
-              .filter(Boolean),
-          )
-        : CPRDocumentBrowser.#tristatePredicate(state, (entry) =>
-            foundry.utils.getProperty(entry, definition.field),
-          );
+              .filter(Boolean)
+        : (entry) => foundry.utils.getProperty(entry, definition.field);
+      const predicate = CPRDocumentBrowser.#tristatePredicate(state, accessor);
       if (predicate) predicates.push(predicate);
     }
 
@@ -961,44 +952,28 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
 
   /**
    * Compile a tri-state state map into a single predicate, or null if it adds no
-   * constraint. Any "only" states act as a whitelist; otherwise "exclude" states
-   * act as a blacklist.
+   * constraint. The accessor's result is normalized to an array (a scalar is
+   * wrapped), so this covers both a single-valued accessor (e.g. an entry's
+   * type) and a set-valued one (e.g. an item's several source books). Any
+   * "only" states act as a whitelist — an entry passes if any of its values is
+   * among them (multiple "only" values OR together); otherwise "exclude"
+   * states act as a blacklist — an entry passes only if none of its values is
+   * excluded.
    *
    * @private
    * @param {object|undefined} states - {value: "include"|"exclude"|"only"}
-   * @param {function(object): *} accessor - reads the value to test from an entry
+   * @param {function(object): (*|Array<*>)} accessor - reads the value(s) to test from an entry
    * @returns {function(object): boolean|null}
    */
   static #tristatePredicate(states, accessor) {
     if (!states) return null;
-    const only = Object.keys(states).filter((v) => states[v] === "only");
-    if (only.length) return (entry) => only.includes(accessor(entry));
-    const excluded = Object.keys(states).filter((v) => states[v] === "exclude");
-    if (excluded.length) return (entry) => !excluded.includes(accessor(entry));
-    return null;
-  }
-
-  /**
-   * Compile a tri-state state map into a single predicate over a set-valued
-   * accessor (e.g. an item's several source books), or null if it adds no
-   * constraint. Any "only" states act as a whitelist — an entry passes if any
-   * of its values is among them (multiple "only" values OR together);
-   * otherwise "exclude" states act as a blacklist — an entry passes only if
-   * none of its values is excluded.
-   *
-   * @private
-   * @param {object|undefined} states - {value: "include"|"exclude"|"only"}
-   * @param {function(object): Array<*>} accessor - reads the values to test from an entry
-   * @returns {function(object): boolean|null}
-   */
-  static #tristateSetPredicate(states, accessor) {
-    if (!states) return null;
+    const vals = (entry) => [accessor(entry)].flat();
     const only = Object.keys(states).filter((v) => states[v] === "only");
     if (only.length)
-      return (entry) => accessor(entry).some((b) => only.includes(b));
+      return (entry) => vals(entry).some((v) => only.includes(v));
     const excluded = Object.keys(states).filter((v) => states[v] === "exclude");
     if (excluded.length)
-      return (entry) => !accessor(entry).some((b) => excluded.includes(b));
+      return (entry) => !vals(entry).some((v) => excluded.includes(v));
     return null;
   }
 

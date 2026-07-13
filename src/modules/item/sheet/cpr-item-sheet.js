@@ -71,13 +71,9 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
     // Precompute the read-only source citation: only book-having entries
     // contribute, joined by ", ", so blank entries (e.g. a freshly added row)
     // never leave a dangling separator. Mirrors the document browser's line.
-    const pageShort = SystemUtils.Localize("CPR.global.generic.pageShort");
-    foundryData.sourceCitation = (this.item.system.sources ?? [])
-      .filter((src) => src.book)
-      .map((src) =>
-        src.page > 0 ? `${src.book} ${pageShort} ${src.page}` : src.book,
-      )
-      .join(", ");
+    foundryData.sourceCitation = SystemUtils.FormatSources(
+      this.item.system.sources,
+    );
     const cprData = {};
     cprData.isGM = game.user.isGM;
     const itemType = foundryData.item.type;
