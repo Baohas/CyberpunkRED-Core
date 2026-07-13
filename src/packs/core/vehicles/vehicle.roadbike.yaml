@@ -28,7 +28,7 @@ system:
     allowedTypes:
       - itemUpgrade
     list: []
-    slots: 3
+    slots: 0
     usedSlots: 0
   price:
     market: 20000
