@@ -5,6 +5,7 @@ import CPRBrowserIndex from "./cpr-browser-index.js";
 import CPRBrowserCompendiaSettings from "../settings/cpr-browser-compendia-settings.js";
 import renderInstalledTree from "../../utils/cpr-installed-tree.js";
 import browserStatChips from "./cpr-browser-chips.js";
+import { buildItemBreadcrumb } from "../../item/item-chips.js";
 
 const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 
@@ -257,6 +258,10 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    */
   static #toRow(entry) {
     const market = foundry.utils.getProperty(entry, "system.price.market");
+    const isItem = entry.docClass === "Item";
+    const hasInstalled =
+      foundry.utils.getProperty(entry, "system.installedItems.list")?.length >
+      0;
     return {
       uuid: entry.uuid,
       name: entry.name,
@@ -268,12 +273,30 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       description: CPRDocumentBrowser.#plainText(
         foundry.utils.getProperty(entry, "system.description.value"),
       ),
-      breadcrumb: CPRDocumentBrowser.#breadcrumb(entry),
-      chips: browserStatChips(entry),
-      sourceLine: CPRDocumentBrowser.#sourceLine(entry),
-      hasInstalled:
-        foundry.utils.getProperty(entry, "system.installedItems.list")?.length >
-        0,
+      // The row feeds the shared `cpr-item-header-body` partial (also used by
+      // the item sheet header), so it carries the same view-model. Breadcrumb
+      // segments include the Type and the per-segment opacity gradient, exactly
+      // like the sheet header.
+      breadcrumb: isItem
+        ? buildItemBreadcrumb(entry, { includeType: true }).map(
+            (label, index) => ({
+              label,
+              opacity: Math.max(0, 1 - 0.15 * index),
+            }),
+          )
+        : [],
+      // Browser rows open on click, so the leading Type segment must be a plain
+      // span, not a wiki link (no nested interactive), and the image is not
+      // editable here.
+      wikiType: null,
+      editImg: false,
+      // The browser tracks only whether an item has things installed in it,
+      // shown with the "upgraded" caret marker (as the old row markup did).
+      statusUpgraded: hasInstalled,
+      statusInstalled: false,
+      chips: isItem ? browserStatChips(entry) : [],
+      source: CPRDocumentBrowser.#sourceLine(entry),
+      hasInstalled,
       // Drag-out copies an item onto a sheet for free, so it is GM-only — in shop
       // mode (players) rows aren't draggable and they must buy via the cart.
       draggable: !CPRDocumentBrowser.#isShop(),
@@ -284,64 +307,23 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
         ? (CPR.itemPriceCategory[entry.priceCategory] ?? "")
         : "",
       canBuy:
-        CPRDocumentBrowser.#isShop() &&
-        entry.docClass === "Item" &&
-        typeof market === "number",
+        CPRDocumentBrowser.#isShop() && isItem && typeof market === "number",
     };
   }
 
   /**
-   * The card breadcrumb shown below an entry's name: its sub-type and brand,
-   * joined with a separator (either may be absent). The item type itself is
-   * deliberately omitted — the grouped section header already names it.
-   *
-   * @private
-   * @param {object} entry
-   * @returns {string}
-   */
-  static #breadcrumb(entry) {
-    const parts = [
-      CPRDocumentBrowser.#subtypeLabel(entry),
-      foundry.utils.getProperty(entry, "system.brand") || "",
-    ];
-    return parts.filter(Boolean).join(" / ");
-  }
-
-  /**
-   * Localized label for an entry's sub-type (the value behind its first set
-   * filter, e.g. a weapon's weaponType or an armor's location), or "" when the
-   * type has no sub-type enum or the entry has no value for it.
-   *
-   * @private
-   * @param {object} entry
-   * @returns {string}
-   */
-  static #subtypeLabel(entry) {
-    if (entry.docClass !== "Item") return "";
-    const definition = CPRDocumentBrowser.#subtypeDef(entry.type);
-    if (!definition) return "";
-    const value = foundry.utils.getProperty(entry, definition.field);
-    if (!value) return "";
-    const label = CPR[definition.choices]?.[value];
-    return label ? SystemUtils.Localize(label) : value;
-  }
-
-  /**
    * The source citation shown at the bottom-right of an entry card, e.g.
-   * "BC pg.123" (uppercased by CSS). The book is the short source-book code
-   * stored on the item (`system.source.book`). Empty when no source book is set.
+   * "BC pg.123" (uppercased by CSS). An item may cite several source books
+   * (`system.sources`), so every entry with a book is rendered and joined with
+   * a comma. Empty when no source book is set.
    *
    * @private
    * @param {object} entry
    * @returns {string}
    */
   static #sourceLine(entry) {
-    const book = foundry.utils.getProperty(entry, "system.source.book");
-    if (!book) return "";
-    const page = foundry.utils.getProperty(entry, "system.source.page");
-    return page > 0
-      ? SystemUtils.Format("CPR.browser.entry.source", { book, page })
-      : book;
+    const sources = foundry.utils.getProperty(entry, "system.sources");
+    return SystemUtils.FormatSources(sources);
   }
 
   /**
@@ -507,18 +489,6 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   }
 
   /**
-   * The set-filter definition that supplies a type's sub-type children, or
-   * undefined if the type has no sub-type enum.
-   *
-   * @private
-   * @param {string} type
-   * @returns {object|undefined}
-   */
-  static #subtypeDef(type) {
-    return (CPR.browserFilters[type] ?? []).find((d) => d.type === "set");
-  }
-
-  /**
    * Whether the active mode browses items, and so should offer the common item
    * filters (quality, price, source book).
    *
@@ -552,8 +522,10 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       {
         id: "book",
         type: "tristate",
-        field: "system.source.book",
+        field: "system.sources",
         dynamic: true,
+        multi: true,
+        valueKey: "book",
         label: "CPR.browser.filter.book",
       },
     ];
@@ -571,7 +543,12 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   #getFilterContext(entries) {
     return this.#activeFilterDefs().map((definition) => {
       const choices = definition.dynamic
-        ? CPRDocumentBrowser.#dynamicChoices(definition.field, entries)
+        ? CPRDocumentBrowser.#dynamicChoices(
+            definition.field,
+            entries,
+            definition.multi,
+            definition.valueKey,
+          )
         : Object.entries(CPR[definition.choices] ?? {});
       const states = this.filterState.tristate[definition.id] ?? {};
       return {
@@ -593,16 +570,30 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    * field takes across the supplied entries (used for free-text fields like the
    * source book and brand). The raw value is its own label.
    *
+   * When `multi` is set, `field` is an array path (e.g. `system.sources`) and
+   * each element's `valueKey` property supplies the value, so an entry citing
+   * several source books contributes all of them.
+   *
    * @private
    * @param {string} field
    * @param {Array<object>} entries
+   * @param {boolean} [multi] - whether `field` is an array of value-bearing objects
+   * @param {string} [valueKey] - the property to read off each array element when `multi`
    * @returns {Array<[string, string]>}
    */
-  static #dynamicChoices(field, entries) {
+  static #dynamicChoices(field, entries, multi = false, valueKey = null) {
     const values = new Set();
     for (const entry of entries) {
-      const value = foundry.utils.getProperty(entry, field);
-      if (value) values.add(value);
+      if (multi) {
+        const list = foundry.utils.getProperty(entry, field) ?? [];
+        for (const item of list) {
+          const value = item?.[valueKey];
+          if (value) values.add(value);
+        }
+      } else {
+        const value = foundry.utils.getProperty(entry, field);
+        if (value) values.add(value);
+      }
     }
     return Array.from(values)
       .map((value) => [value, value])
@@ -713,10 +704,14 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     }
 
     for (const definition of this.#activeFilterDefs()) {
-      const predicate = CPRDocumentBrowser.#tristatePredicate(
-        this.filterState.tristate[definition.id],
-        (entry) => foundry.utils.getProperty(entry, definition.field),
-      );
+      const state = this.filterState.tristate[definition.id];
+      const accessor = definition.multi
+        ? (entry) =>
+            (foundry.utils.getProperty(entry, definition.field) ?? [])
+              .map((e) => e?.[definition.valueKey])
+              .filter(Boolean)
+        : (entry) => foundry.utils.getProperty(entry, definition.field);
+      const predicate = CPRDocumentBrowser.#tristatePredicate(state, accessor);
       if (predicate) predicates.push(predicate);
     }
 
@@ -930,20 +925,28 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
 
   /**
    * Compile a tri-state state map into a single predicate, or null if it adds no
-   * constraint. Any "only" states act as a whitelist; otherwise "exclude" states
-   * act as a blacklist.
+   * constraint. The accessor's result is normalized to an array (a scalar is
+   * wrapped), so this covers both a single-valued accessor (e.g. an entry's
+   * type) and a set-valued one (e.g. an item's several source books). Any
+   * "only" states act as a whitelist — an entry passes if any of its values is
+   * among them (multiple "only" values OR together); otherwise "exclude"
+   * states act as a blacklist — an entry passes only if none of its values is
+   * excluded.
    *
    * @private
    * @param {object|undefined} states - {value: "include"|"exclude"|"only"}
-   * @param {function(object): *} accessor - reads the value to test from an entry
+   * @param {function(object): (*|Array<*>)} accessor - reads the value(s) to test from an entry
    * @returns {function(object): boolean|null}
    */
   static #tristatePredicate(states, accessor) {
     if (!states) return null;
+    const vals = (entry) => [accessor(entry)].flat();
     const only = Object.keys(states).filter((v) => states[v] === "only");
-    if (only.length) return (entry) => only.includes(accessor(entry));
+    if (only.length)
+      return (entry) => vals(entry).some((v) => only.includes(v));
     const excluded = Object.keys(states).filter((v) => states[v] === "exclude");
-    if (excluded.length) return (entry) => !excluded.includes(accessor(entry));
+    if (excluded.length)
+      return (entry) => !vals(entry).some((v) => excluded.includes(v));
     return null;
   }
 
@@ -1486,13 +1489,17 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Rebuild the index from scratch and re-render the results.
+   * Rebuild the index from scratch and re-render the sidebar filters and the
+   * results. The sidebar must re-render too: the dynamic filter option lists
+   * (Source Books, Brand) are derived from the indexed entries, so a
+   * results-only render would leave a newly-added book or brand missing from
+   * its filter until the browser was fully closed and reopened.
    *
    * @this {CPRDocumentBrowser}
    */
   static async refreshIndex() {
     await CPRBrowserIndex.rebuild();
-    this.render({ parts: ["results"] });
+    this.render({ parts: ["sidebar", "results"] });
   }
 
   /**

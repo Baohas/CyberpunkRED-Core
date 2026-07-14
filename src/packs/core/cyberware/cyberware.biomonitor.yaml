@@ -63,9 +63,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source:
-    book: Core
-    page: 358
+  sources:
+    - book: Core
+      page: 358
   type: fashionware
   unarmedAutomaticCalculation: true
   usage: toggled

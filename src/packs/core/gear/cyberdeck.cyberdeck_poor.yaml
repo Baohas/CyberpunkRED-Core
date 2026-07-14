@@ -37,7 +37,7 @@ system:
   providesHardening: false
   quality: poor
   size: 1
-  source:
-    book: Core
-    page: 353
+  sources:
+    - book: Core
+      page: 353
 type: cyberdeck

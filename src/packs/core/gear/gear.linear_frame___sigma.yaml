@@ -85,8 +85,8 @@ system:
     market: 1000
   providesHardening: false
   revealed: true
-  source:
-    book: Core
-    page: 351
+  sources:
+    - book: Core
+      page: 351
   usage: equipped
 type: gear

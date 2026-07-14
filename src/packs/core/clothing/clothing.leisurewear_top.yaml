@@ -38,9 +38,9 @@ system:
     market: 20
   providesHardening: false
   revealed: true
-  source:
-    book: Core
-    page: 356
+  sources:
+    - book: Core
+      page: 356
   style: leisurewear
   type: top
   usage: equipped

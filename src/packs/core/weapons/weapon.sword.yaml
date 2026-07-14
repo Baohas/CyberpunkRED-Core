@@ -56,9 +56,9 @@ system:
   quality: standard
   revealed: true
   rof: 2
-  source:
-    book: Core
-    page: 340
+  sources:
+    - book: Core
+      page: 340
   unarmedAutomaticCalculation: true
   usage: equipped
   usesType: magazine

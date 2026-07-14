@@ -118,9 +118,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source:
-    book: Core
-    page: 361
+  sources:
+    - book: Core
+      page: 361
   type: cyberEye
   unarmedAutomaticCalculation: true
   usage: toggled

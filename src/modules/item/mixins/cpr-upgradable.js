@@ -1,4 +1,33 @@
 /**
+ * Apply an upgrade result to a base stat value, preserving the system's
+ * modifier/override semantics: a numeric override replaces the base, a numeric
+ * modifier is summed onto a numeric base, and a numeric modifier applied to a
+ * non-numeric base (e.g. dice damage) becomes a "base + mod" string. An empty
+ * or zero upgrade value leaves the (coerced) base unchanged.
+ *
+ * This is the single source of truth shared by the `cprApplyUpgrade` Handlebars
+ * helper and the item sheet's chip-adjustment logic.
+ *
+ * @param {number|string} baseValue - the un-upgraded stat value
+ * @param {{type: string, value: number|string}} upgrade - the result of
+ *   `getTotalUpgradeValues(dataPoint)` (`{type: "modifier"|"override", value}`)
+ * @returns {number|string} the upgrade-adjusted value
+ */
+export const applyUpgradeValue = function applyUpgradeValue(
+  baseValue,
+  upgrade,
+) {
+  let result = Number(baseValue);
+  if (Number.isNaN(result)) result = baseValue;
+  if (upgrade.value === "" || upgrade.value === 0) return result;
+  if (upgrade.type === "override") return upgrade.value;
+  if (typeof result !== "number" || typeof upgrade.value !== "number") {
+    return `${result} + ${upgrade.value}`;
+  }
+  return result + upgrade.value;
+};
+
+/**
  * If an item can ACCEPT upgrades (i.e. it has slots), then it should include this
  * mixin. This does not accommodate items that are upgrades.
  */

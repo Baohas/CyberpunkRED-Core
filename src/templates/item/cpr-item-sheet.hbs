@@ -1,54 +1,6 @@
 <div class="item-sheet">
   <div class="item-top-pane">
-
-    <div class="item-image">
-      <img src="{{item.img}}" class="item-image-block-img" data-edit="img" />
-        {{#if item.system.isUpgraded }}
-          <i class="fa-solid fa-square-caret-up fa-xs" data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>
-        {{/if}}
-        {{#if item.system.isInstalled }}
-          <i class="fa-solid fa-circle-info fa-xs" data-tooltip="{{localize "CPR.global.generic.installed"}}"></i>
-        {{/if}}
-    </div>
-
-    <div class="item-details">
-      <div class="item-details-name text-large text-hero">
-        {{localize (cprGetLocalizedlNameKey item)}}
-      </div>
-
-      <div class="item-details-info">
-        {{#if (cprCompare item.system.brand "!==" "")}}
-          <span class="text-pill">
-            {{item.system.brand}}
-          </span>
-        {{/if}}
-      </div>
-
-      <div class="item-details-help">
-        {{localize (cprFindConfigValue "objectTypes" item.type)}}
-        <a class="help-article text-padding-left-smallest"
-           href="{{cprWikiLink item.type}}"
-           data-tooltip="{{localize "CPR.global.generic.helparticle"}}">
-          <i class="fas fa-circle-question"></i>
-        </a>
-      </div>
-
-      <div class="item-details-source">
-        {{#if item.system.source.book}}
-          {{item.system.source.book}}
-          {{#unless (or (eq item.system.source.page "") (eq item.system.source.page null) (eq item.system.source.page undefined) (eq item.system.source.page 0))}}
-            {{localize "CPR.global.generic.pageShort"}}
-            {{item.system.source.page}}
-          {{/unless}}
-        {{/if}}
-      </div>
-
-      <div class="item-details-other">
-        {{#if (cprIsDebug) }}
-          ({{item.id}})
-        {{/if}}
-      </div>
-    </div>
+    {{> "systems/cyberpunk-red-core/templates/item/parts/cpr-item-header-body.hbs" headerBody}}
   </div>
 
   <div class="item-bottom-pane">

@@ -374,6 +374,27 @@ export default class CPRSystemUtils {
   }
 
   /**
+   * Format an item's `system.sources` array into a single, human readable
+   * source citation string, e.g. "BC pg. 123, DLC pg. 45". Only entries with
+   * a non-empty `book` contribute; entries with a page use the
+   * "CPR.browser.entry.source" localization, otherwise just the book name is
+   * used. Entries are joined with ", ". An undefined/empty array yields "".
+   *
+   * @param {Array<{book: string, page: number}>} [sources] - the item's source citations
+   * @returns {string} - the formatted citation string
+   */
+  static FormatSources(sources) {
+    return (sources ?? [])
+      .filter(({ book } = {}) => !!book)
+      .map(({ book, page }) =>
+        page > 0
+          ? CPRSystemUtils.Format("CPR.browser.entry.source", { book, page })
+          : book,
+      )
+      .join(", ");
+  }
+
+  /**
    * We use temporary objects with keys derived from skill names elsewhere in the code base.
    * We need to be able to programmatically produce those keys from the name, and that is
    * what this method does. It takes a string and converts it to camelcase.

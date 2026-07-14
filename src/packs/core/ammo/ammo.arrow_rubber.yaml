@@ -44,9 +44,9 @@ system:
   price:
     market: 10
   size: 0
-  source:
-    book: Core
-    page: 346
+  sources:
+    - book: Core
+      page: 346
   type: rubber
   variety: arrow
 type: ammo

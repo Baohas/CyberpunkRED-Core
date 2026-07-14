@@ -120,9 +120,9 @@ system:
   revealed: true
   rof: 1
   size: 1
-  source:
-    book: Core
-    page: 362
+  sources:
+    - book: Core
+      page: 362
   type: cyberAudioSuite
   unarmedAutomaticCalculation: true
   usage: installed

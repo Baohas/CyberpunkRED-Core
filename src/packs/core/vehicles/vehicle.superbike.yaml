@@ -32,9 +32,9 @@ system:
     market: 100000
   sdp: 35
   seats: 2
-  source:
-    book: Core
-    page: 190
+  sources:
+    - book: Core
+      page: 190
   speedCombat: 60
   speedNarrative: 300 MPH / 483 KPH
 type: vehicle

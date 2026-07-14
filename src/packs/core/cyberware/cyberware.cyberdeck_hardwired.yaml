@@ -63,9 +63,9 @@ system:
   revealed: true
   rof: 1
   size: 3
-  source:
-    book: Core
-    page: 364
+  sources:
+    - book: Core
+      page: 364
   type: cyberArm
   unarmedAutomaticCalculation: true
   usage: toggled

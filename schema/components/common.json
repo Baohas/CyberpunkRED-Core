@@ -9,34 +9,29 @@
           "type": "string"
         }
       },
-      "required": [
-        "value"
-      ]
+      "required": ["value"]
     },
     "favorite": {
       "type": "boolean",
       "const": false
     },
-    "source": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "book": {
-          "type": "string"
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "book": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 0
+          }
         },
-        "page": {
-          "type": "integer",
-          "minimum": 0
-        }
-      },
-      "required": [
-        "page"
-      ]
+        "required": ["page"]
+      }
     }
   },
-  "required": [
-    "description",
-    "favorite",
-    "source"
-  ]
+  "required": ["description", "favorite", "sources"]
 }

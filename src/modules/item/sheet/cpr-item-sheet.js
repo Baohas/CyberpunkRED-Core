@@ -8,6 +8,8 @@ import createImageContextMenu from "../../utils/cpr-imageContextMenu.js";
 import { cprConfirm, cprFormPrompt } from "../../dialog/cpr-dialog.js";
 import RoleAbilitySchema from "../../datamodels/item/components/role-ability-schema.js";
 import { ContainerUtils } from "../mixins/cpr-container.js";
+import { applyUpgradeValue } from "../mixins/cpr-upgradable.js";
+import { buildItemChips, buildItemBreadcrumb } from "../item-chips.js";
 
 const { HandlebarsApplicationMixin } = foundry.applications.api;
 const { ItemSheetV2 } = foundry.applications.sheets;
@@ -68,6 +70,12 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
     foundryData.system = this.item.system;
     foundryData.owner = this.item.isOwner;
     foundryData.editable = this.isEditable;
+    // Precompute the read-only source citation: only book-having entries
+    // contribute, joined by ", ", so blank entries (e.g. a freshly added row)
+    // never leave a dangling separator. Mirrors the document browser's line.
+    foundryData.sourceCitation = SystemUtils.FormatSources(
+      this.item.system.sources,
+    );
     const cprData = {};
     cprData.isGM = game.user.isGM;
     const itemType = foundryData.item.type;
@@ -128,7 +136,142 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
       foundryData.item.system.description.value,
       { async: true },
     );
+
+    // Read-only header: a Type/subtype breadcrumb and a row of stat chips. All
+    // editing lives on the Settings tab; the header only displays. Chip stat
+    // values reflect installed upgrades for actor-owned upgraded items, exactly
+    // as the (now-removed) description sidebar did (see `_getChipSystem`). The
+    // header is drawn by the shared `cpr-item-header-body` partial (also used by
+    // the document browser rows), so everything it needs is precomputed here
+    // into a plain, document-free view-model.
+    //
+    // Each breadcrumb segment dims 15% more than the one before (segment 0 =
+    // full strength). The shared builder returns a plain string[]; only the
+    // header wants the per-segment opacity, so the map lives here.
+    const { item } = this;
+    const market = item.system.price?.market;
+    // Price is shown for any valuable-mixin type (matching the old
+    // `cprHasTemplate item.type "valuable"` gate), even at 0eb. The label and
+    // category reuse the exact helpers the browser rows use, so both consumers
+    // feed the partial identically ("5,000eb (Expensive)").
+    const hasPrice = SystemUtils.hasMixin(item.type, "valuable");
+    foundryData.headerBody = {
+      img: item.img,
+      editImg: true,
+      statusUpgraded: item.system.isUpgraded,
+      statusInstalled: item.system.isInstalled,
+      // Mirror the old `localize (cprGetLocalizedlNameKey item)`: the helper
+      // returns a localization key (or the raw name when none), which Localize
+      // then resolves.
+      name: SystemUtils.Localize(
+        Handlebars.helpers.cprGetLocalizedlNameKey(item),
+      ),
+      debugId: game.settings.get(game.system.id, "debugElements")
+        ? item.id
+        : null,
+      breadcrumb: buildItemBreadcrumb({
+        type: item.type,
+        system: item.system,
+      }).map((label, index) => ({
+        label,
+        opacity: Math.max(0, 1 - 0.15 * index),
+      })),
+      // The sheet's leading Type segment links to the wiki; the browser omits
+      // this (its rows open on click) by leaving wikiType null.
+      wikiType: item.type,
+      hasPrice,
+      priceLabel: hasPrice
+        ? SystemUtils.Format("CPR.browser.price.amount", {
+            amount: Handlebars.helpers.cprNumberFormat(market, { hash: {} }),
+          })
+        : "",
+      priceCategoryLabel: hasPrice
+        ? (CPR.itemPriceCategory[
+            Handlebars.helpers.cprGetPriceCategory(market)
+          ] ?? "")
+        : "",
+      chips: buildItemChips({
+        type: item.type,
+        system: this._getChipSystem(),
+      }),
+      source: foundryData.sourceCitation,
+    };
+
     return { ...foundryData, ...cprData };
+  }
+
+  /**
+   * `dataPoint` -> the dot-path of the `system` stat it modifies. These mirror
+   * the exact `cprApplyUpgrade item <value> <dataPoint>` calls that lived in the
+   * old per-type/per-mixin description partials, so upgrade-adjusted chip values
+   * match what the description sidebar used to show.
+   */
+  static #UPGRADE_ADJUSTED_FIELDS = {
+    headSp: "headLocation.sp",
+    bodySp: "bodyLocation.sp",
+    shieldHp: "shieldHitPoints.max",
+    seats: "seats",
+    sdp: "sdp",
+    speedCombat: "speedCombat",
+    rof: "rof",
+    damage: "damage",
+    attackmod: "attackmod",
+    magazine: "magazine.max",
+    slots: "installedItems.slots",
+  };
+
+  /**
+   * Build the `system` object handed to `buildItemChips`. For actor-owned,
+   * upgraded items the upgradable stat fields are adjusted to reflect installed
+   * upgrades (matching the old description sidebar). World/compendium items and
+   * un-upgraded items show base values, so the live `system` is returned as-is.
+   *
+   * @returns {object} the item's `system`, or an upgrade-adjusted shallow clone
+   */
+  _getChipSystem() {
+    const baseSystem = this.item.system;
+    const isActorUpgraded =
+      this.item.isOwned &&
+      this.item.actor?.type !== "container" &&
+      baseSystem.isUpgraded;
+    if (!isActorUpgraded) return baseSystem;
+
+    // Shallow clone so we never mutate the live document; nested containers on
+    // an adjusted path are cloned lazily below.
+    const chipSystem = { ...baseSystem };
+    for (const [dataPoint, path] of Object.entries(
+      CPRItemSheet.#UPGRADE_ADJUSTED_FIELDS,
+    )) {
+      if (!foundry.utils.hasProperty(baseSystem, path)) continue;
+      const baseValue = foundry.utils.getProperty(baseSystem, path);
+      const adjustedValue = this._applyUpgrade(baseValue, dataPoint);
+      if (adjustedValue === baseValue) continue;
+
+      const parts = path.split(".");
+      let cursor = chipSystem;
+      for (let i = 0; i < parts.length - 1; i += 1) {
+        cursor[parts[i]] = { ...cursor[parts[i]] };
+        cursor = cursor[parts[i]];
+      }
+      cursor[parts[parts.length - 1]] = adjustedValue;
+    }
+    return chipSystem;
+  }
+
+  /**
+   * Apply this item's installed upgrades to a base stat value, sharing the exact
+   * modifier/override semantics used by the `cprApplyUpgrade` Handlebars helper
+   * (see `applyUpgradeValue`).
+   *
+   * @param {number|string} baseValue - the un-upgraded stat value
+   * @param {string} dataPoint - the upgrade data point key
+   * @returns {number|string} the upgrade-adjusted value
+   */
+  _applyUpgrade(baseValue, dataPoint) {
+    return applyUpgradeValue(
+      baseValue,
+      this.item.getTotalUpgradeValues(dataPoint),
+    );
   }
 
   /**
@@ -321,6 +464,7 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
 
     on(".item-checkbox", "click", (event) => this._itemCheckboxToggle(event));
     on(".item-multi-option", "click", (event) => this._itemMultiOption(event));
+    on(".source-action", "click", (event) => this._sourceAction(event));
     on(".select-compatible-ammo", "click", () => this._selectCompatibleAmmo());
     on(".netarch-level-action", "click", (event) =>
       this._netarchLevelAction(event),
@@ -383,6 +527,31 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
   /*
   INTERNAL METHODS BELOW HERE
   */
+
+  async _sourceAction(event) {
+    event.preventDefault();
+    const actionType = SystemUtils.GetEventDatum(event, "data-action-type");
+    const sources = foundry.utils.duplicate(this.item.system.sources ?? []);
+    if (actionType === "create") {
+      sources.push({ book: "", page: 0 });
+    } else if (actionType === "delete") {
+      const index = Number(SystemUtils.GetEventDatum(event, "data-index"));
+      const label = SystemUtils.FormatSources([sources[index] ?? {}]);
+      const message = label
+        ? SystemUtils.Format("CPR.itemSheet.common.source.deleteConfirm", {
+            source: label,
+          })
+        : SystemUtils.Localize(
+            "CPR.itemSheet.common.source.deleteConfirmBlank",
+          );
+      const confirmed = await cprConfirm(message, {
+        title: SystemUtils.Localize("CPR.itemSheet.common.source.delete"),
+      });
+      if (!confirmed) return undefined;
+      sources.splice(index, 1);
+    }
+    return this.item.update({ "system.sources": sources });
+  }
 
   _itemCheckboxToggle(event) {
     const cprItem = foundry.utils.duplicate(this.item);

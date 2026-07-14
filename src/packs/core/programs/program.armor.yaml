@@ -40,9 +40,9 @@ system:
     transactions: []
     value: 7
   size: 1
-  source:
-    book: Core
-    page: 369
+  sources:
+    - book: Core
+      page: 369
   spd: 0
   usage: toggled
 type: program

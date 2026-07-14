@@ -44,9 +44,9 @@ system:
   price:
     market: 50
   size: 0
-  source:
-    book: Core
-    page: 347
+  sources:
+    - book: Core
+      page: 347
   type: smoke
   variety: grenade
 type: ammo

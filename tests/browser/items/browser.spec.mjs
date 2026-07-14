@@ -71,9 +71,7 @@ test.describe("Document browser", () => {
 
     const entries = browser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
-    await expect(entries.first().locator(".cpr-browser-entry-name")).toHaveText(
-      name,
-    );
+    await expect(entries.first().locator(".item-header-name")).toHaveText(name);
 
     // Clicking the row's open zone resolves and renders the item's sheet.
     await entries.first().locator(".cpr-browser-entry-open").click();
@@ -111,7 +109,7 @@ test.describe("Document browser", () => {
 
     const entries = browser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
-    await expect(entries.first().locator(".cpr-browser-entry-name")).toHaveText(
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
       `${token} blade`,
     );
   });
@@ -238,7 +236,7 @@ test.describe("Document browser", () => {
 
     const entries = browser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
-    await expect(entries.first().locator(".cpr-browser-entry-name")).toHaveText(
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
       `${token} cheap`,
     );
   });
@@ -277,7 +275,7 @@ test.describe("Document browser", () => {
 
     const entries = browser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
-    await expect(entries.first().locator(".cpr-browser-entry-name")).toHaveText(
+    await expect(entries.first().locator(".item-header-name")).toHaveText(
       `${token} blade`,
     );
   });

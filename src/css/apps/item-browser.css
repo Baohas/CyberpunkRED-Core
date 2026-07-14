@@ -418,15 +418,21 @@
   padding: 0.3rem 0.5rem;
 }
 
-/* The whole card (thumbnail + body) opens the item; the action-column controls
-   keep their own actions. */
+/* The whole card opens the item; the action-column controls keep their own
+   actions. It wraps the shared `.item-header-body` (which owns the internal
+   icon + text layout), so it just needs to fill its grid cell. */
 .cpr-browser-entry-open {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  align-items: center;
-  gap: 0.6rem;
+  display: block;
   min-width: 0;
   cursor: pointer;
+}
+
+/* The shared header icon is 3.875rem on the sheet; browser rows are denser, so
+   shrink it (still square, no border, no clip — those come from the shared
+   `.item-header-body .item-image` rules). */
+.cpr-browser-entry .item-image {
+  width: 3rem;
+  height: 3rem;
 }
 
 .cpr-browser-cart-info {
@@ -448,88 +454,6 @@
   background: var(--cpr-background-row-even);
 }
 
-.cpr-browser-entry-thumb {
-  position: relative;
-  flex: 0 0 auto;
-  width: 3rem;
-  height: 3rem;
-}
-
-.cpr-browser-entry-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  cursor: pointer;
-}
-
-/* Upgraded marker — white and top-right, matching the gear tab. */
-.cpr-browser-entry-upgraded {
-  position: absolute;
-  top: 0.1rem;
-  right: 0.1rem;
-  color: var(--cpr-color-white);
-}
-
-/* Card body: a breadcrumb+price row, the hero name, then a chips+source row. */
-.cpr-browser-entry-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.05rem;
-  min-width: 0;
-}
-
-.cpr-browser-entry-top,
-.cpr-browser-entry-mid {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.5rem;
-  min-width: 0;
-}
-
-/* Sub-type / brand breadcrumb, dimmed small caps as in the mockup. Shares its
-   row with the source citation (which right-aligns directly under the price). */
-.cpr-browser-entry-breadcrumb {
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: var(--cpr-font-smaller);
-  text-transform: uppercase;
-  letter-spacing: 0.03rem;
-  color: var(--cpr-text-hint);
-}
-
-/* Hero item name. The hero font + uppercase mirror the mockup; scoped under the
-   browser so it outweighs the generic `.application .window-content` text. It
-   shares the top row with the price, so it flexes and ellipsises. */
-.cpr-document-browser .cpr-browser-entry-name {
-  flex: 1;
-  min-width: 0;
-  max-width: 100%;
-  cursor: pointer;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-family: var(--cpr-font-hero);
-  font-weight: 800;
-  font-size: var(--cpr-font-normal);
-  line-height: 1.1;
-  text-transform: uppercase;
-  color: var(--cpr-text-normal);
-}
-
-/* Stat chips row (its own line beneath the breadcrumb/source row). */
-.cpr-browser-entry-chips {
-  flex: 0 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.25rem;
-  min-width: 0;
-}
-
 .cpr-browser-chip {
   padding: 0.05rem 0.3rem;
   border-radius: 0.15rem;
@@ -539,35 +463,9 @@
   background: var(--cpr-background-header);
 }
 
-/* Source book + page citation, dimmed and uppercased, bottom-right. */
-.cpr-browser-entry-source {
-  flex: 0 0 auto;
-  font-size: var(--cpr-font-smaller);
-  text-transform: uppercase;
-  letter-spacing: 0.03rem;
-  white-space: nowrap;
-  color: var(--cpr-text-hint);
-}
-
 .cpr-browser-expand {
   cursor: pointer;
   text-align: center;
-}
-
-/* Price + category on one line, top-right, uppercased as in the mockup. */
-.cpr-browser-entry-price {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: baseline;
-  gap: 0.3rem;
-  font-size: var(--cpr-font-small);
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: var(--cpr-text-hint);
-}
-
-.cpr-browser-entry-category {
-  font-size: var(--cpr-font-smaller);
 }
 
 /* Action column (expand + buy), stacked at the card's right edge. */

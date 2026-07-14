@@ -41,8 +41,8 @@ system:
   price:
     market: 20
   revealed: true
-  source:
-    book: Core
-    page: 357
+  sources:
+    - book: Core
+      page: 357
   usage: toggled
 type: drug

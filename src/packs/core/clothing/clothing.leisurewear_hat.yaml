@@ -38,9 +38,9 @@ system:
     market: 50
   providesHardening: false
   revealed: true
-  source:
-    book: Core
-    page: 356
+  sources:
+    - book: Core
+      page: 356
   style: leisurewear
   type: hats
   usage: equipped
