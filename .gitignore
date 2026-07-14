@@ -45,3 +45,6 @@ src/packs/other/changelog
 **/foo*
 **/bar*
 src/packs.*
+
+# LLMs
+.claude/worktrees
