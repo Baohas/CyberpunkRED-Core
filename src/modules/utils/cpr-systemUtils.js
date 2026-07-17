@@ -374,24 +374,53 @@ export default class CPRSystemUtils {
   }
 
   /**
-   * Format an item's `system.sources` array into a single, human readable
-   * source citation string, e.g. "BC pg. 123, DLC pg. 45". Only entries with
-   * a non-empty `book` contribute; entries with a page use the
+   * Format each book-having entry of an item's `system.sources` array into its
+   * own human readable citation string, e.g. ["BC pg. 123", "DLC pg. 45"]. Only
+   * entries with a non-empty `book` contribute; an entry with a page uses the
    * "CPR.browser.entry.source" localization, otherwise just the book name is
-   * used. Entries are joined with ", ". An undefined/empty array yields "".
+   * used. An undefined/empty array yields an empty array.
    *
    * @param {Array<{book: string, page: number}>} [sources] - the item's source citations
-   * @returns {string} - the formatted citation string
+   * @returns {string[]} - one formatted citation per book-having source
    */
-  static FormatSources(sources) {
+  static FormatSourceList(sources) {
     return (sources ?? [])
       .filter(({ book } = {}) => !!book)
       .map(({ book, page }) =>
         page > 0
           ? CPRSystemUtils.Format("CPR.browser.entry.source", { book, page })
           : book,
-      )
-      .join(", ");
+      );
+  }
+
+  /**
+   * Format an item's `system.sources` array into a single, human readable
+   * source citation string, e.g. "BC pg. 123, DLC pg. 45". Contributing entries
+   * (see {@link CPRSystemUtils.FormatSourceList}) are joined with ", ". An
+   * undefined/empty array yields "".
+   *
+   * @param {Array<{book: string, page: number}>} [sources] - the item's source citations
+   * @returns {string} - the formatted citation string
+   */
+  static FormatSources(sources) {
+    return CPRSystemUtils.FormatSourceList(sources).join(", ");
+  }
+
+  /**
+   * Split an item's `system.sources` into the display shape the shared item
+   * header uses: the first book-having citation is shown inline, and any
+   * remaining citations are hidden behind a hover tooltip, one per line. Both
+   * the item sheet header and the document browser rows render sources this way.
+   * With zero or one source, `sourceTooltip` is "" (nothing to reveal).
+   *
+   * @param {Array<{book: string, page: number}>} [sources] - the item's source citations
+   * @returns {{source: string, sourceTooltip: string}} - `source` is the first
+   *   citation (or ""); `sourceTooltip` is the remaining citations joined by
+   *   "<br>" for a Foundry `data-tooltip-html` tooltip (or "" when fewer than two)
+   */
+  static FormatSourceDisplay(sources) {
+    const [source = "", ...rest] = CPRSystemUtils.FormatSourceList(sources);
+    return { source, sourceTooltip: rest.join("<br>") };
   }
 
   /**
