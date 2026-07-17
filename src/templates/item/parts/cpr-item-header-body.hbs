@@ -9,7 +9,7 @@
     name, debugId,
     breadcrumb: [{label, opacity}], wikiType,
     hasPrice, priceLabel, priceCategoryLabel,
-    chips: [string], source
+    chips: [string], source, sourceTooltip
 --}}
 <div class="item-header-body">
 
@@ -48,7 +48,7 @@
             {{/if}}
           {{/each}}
         </div>
-        <div class="item-header-sources">{{source}}</div>
+        <div class="item-header-sources"{{#if sourceTooltip}} data-tooltip-html="{{sourceTooltip}}"{{/if}}>{{source}}</div>
       </div>
 
       <div class="item-header-name text-large text-hero">

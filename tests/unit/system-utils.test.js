@@ -44,3 +44,85 @@ describe("CPRSystemUtils.Localize / Format", () => {
     );
   });
 });
+
+describe("CPRSystemUtils source formatting", () => {
+  // page: 0 entries format to the bare book name, so the shim yields distinct,
+  // assertable strings without resolving the "…entry.source" template.
+  const core = { book: "Core", page: 0 };
+  const chrome = { book: "Black Chrome", page: 0 };
+  const iface = { book: "Interface RED", page: 0 };
+
+  describe("FormatSourceList", () => {
+    it("returns one formatted citation per book-having entry", () => {
+      expect(SystemUtils.FormatSourceList([core, chrome])).toEqual([
+        "Core",
+        "Black Chrome",
+      ]);
+    });
+
+    it("drops entries without a book and yields [] for empty/undefined", () => {
+      expect(
+        SystemUtils.FormatSourceList([{ book: "", page: 5 }, chrome]),
+      ).toEqual(["Black Chrome"]);
+      expect(SystemUtils.FormatSourceList([])).toEqual([]);
+      expect(SystemUtils.FormatSourceList()).toEqual([]);
+    });
+
+    it("uses the page citation for entries with a page", () => {
+      expect(SystemUtils.FormatSourceList([{ book: "Core", page: 5 }])).toEqual(
+        [
+          SystemUtils.Format("CPR.browser.entry.source", {
+            book: "Core",
+            page: 5,
+          }),
+        ],
+      );
+    });
+  });
+
+  describe("FormatSources", () => {
+    it("comma-joins every book-having citation", () => {
+      expect(SystemUtils.FormatSources([core, chrome, iface])).toBe(
+        "Core, Black Chrome, Interface RED",
+      );
+    });
+
+    it("yields '' for empty/undefined", () => {
+      expect(SystemUtils.FormatSources([])).toBe("");
+      expect(SystemUtils.FormatSources()).toBe("");
+    });
+  });
+
+  describe("FormatSourceDisplay", () => {
+    it("shows the first source and hides the rest, one per <br> line", () => {
+      expect(SystemUtils.FormatSourceDisplay([core, chrome, iface])).toEqual({
+        source: "Core",
+        sourceTooltip: "Black Chrome<br>Interface RED",
+      });
+    });
+
+    it("gives a single source no tooltip", () => {
+      expect(SystemUtils.FormatSourceDisplay([core])).toEqual({
+        source: "Core",
+        sourceTooltip: "",
+      });
+    });
+
+    it("gives an empty/undefined list a blank display", () => {
+      expect(SystemUtils.FormatSourceDisplay([])).toEqual({
+        source: "",
+        sourceTooltip: "",
+      });
+      expect(SystemUtils.FormatSourceDisplay()).toEqual({
+        source: "",
+        sourceTooltip: "",
+      });
+    });
+
+    it("ignores blank entries when choosing the first source", () => {
+      expect(
+        SystemUtils.FormatSourceDisplay([{ book: "", page: 0 }, core, chrome]),
+      ).toEqual({ source: "Core", sourceTooltip: "Black Chrome" });
+    });
+  });
+});

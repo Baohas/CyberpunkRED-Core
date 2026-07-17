@@ -70,10 +70,11 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
     foundryData.system = this.item.system;
     foundryData.owner = this.item.isOwner;
     foundryData.editable = this.isEditable;
-    // Precompute the read-only source citation: only book-having entries
-    // contribute, joined by ", ", so blank entries (e.g. a freshly added row)
-    // never leave a dangling separator. Mirrors the document browser's line.
-    foundryData.sourceCitation = SystemUtils.FormatSources(
+    // Precompute the read-only source display: the first book-having source is
+    // shown inline in the header, the rest go into a hover tooltip. Blank
+    // entries (e.g. a freshly added row) never contribute. Mirrors the document
+    // browser's header rows.
+    foundryData.sourceDisplay = SystemUtils.FormatSourceDisplay(
       this.item.system.sources,
     );
     const cprData = {};
@@ -194,7 +195,8 @@ export default class CPRItemSheet extends HandlebarsApplicationMixin(
         type: item.type,
         system: this._getChipSystem(),
       }),
-      source: foundryData.sourceCitation,
+      source: foundryData.sourceDisplay.source,
+      sourceTooltip: foundryData.sourceDisplay.sourceTooltip,
     };
 
     return { ...foundryData, ...cprData };

@@ -4,8 +4,9 @@ import { test, expect, openSidebarTab, uniqueName } from "../fixtures.mjs";
  * UI-driven tests for the document browser's source handling — the citation line
  * shown on each result row and the "Source Book" tristate filter's any-match
  * semantics. Items now carry `system.sources` (an array of {book,page}); a row's
- * citation comma-joins ALL of them, and the book filter treats an item as
- * belonging to a book if ANY of its sources cites it (not just the first).
+ * citation shows only the FIRST source inline with any remaining sources in a
+ * hover tooltip, while the book filter treats an item as belonging to a book if
+ * ANY of its sources cites it (not just the first).
  *
  * Each test runs against a fresh, reset world (the `game` fixture, GM-authed) and
  * drives the browser the way a user would. Items are created programmatically
@@ -98,7 +99,7 @@ test.describe("Document browser — sources", () => {
     });
   });
 
-  test("a row's citation joins ALL its sources, and empty sources render blank", async ({
+  test("a row's citation shows the first source inline and the rest in a tooltip, and empty sources render blank", async ({
     game,
   }) => {
     const token = uniqueName("cite");
@@ -115,20 +116,26 @@ test.describe("Document browser — sources", () => {
     await browser.locator(".cpr-browser-name-input").fill(token);
     await expect(browser.locator(".cpr-browser-entry")).toHaveCount(2);
 
-    // bravo's citation shows both sources, comma-joined, each as "BOOK pg. PAGE".
+    // bravo's row shows only its FIRST source inline, as "BOOK pg. PAGE".
     const bravoSource = rowByName(game, browser, nameB).locator(
       ".item-header-sources",
     );
     await expect(bravoSource).toHaveCount(1);
-    await expect(bravoSource).toContainText("BBBBook pg. 5");
-    await expect(bravoSource).toContainText("AAABook pg. 99");
-    await expect(bravoSource).toContainText(",");
+    await expect(bravoSource).toHaveText("BBBBook pg. 5");
+    await expect(bravoSource).not.toContainText("AAABook");
+    // The remaining source is carried in the hover tooltip.
+    await expect(bravoSource).toHaveAttribute(
+      "data-tooltip-html",
+      "AAABook pg. 99",
+    );
 
-    // The item with an empty sources array shows a blank citation (the shared
-    // header always renders the sources slot; it is simply empty).
-    await expect(
-      rowByName(game, browser, nameEmpty).locator(".item-header-sources"),
-    ).toHaveText("");
+    // The item with an empty sources array shows a blank citation and no tooltip
+    // (the shared header always renders the sources slot; it is simply empty).
+    const emptySource = rowByName(game, browser, nameEmpty).locator(
+      ".item-header-sources",
+    );
+    await expect(emptySource).toHaveText("");
+    await expect(emptySource).not.toHaveAttribute("data-tooltip-html");
   });
 
   test("book filter 'only' matches items where the book is a SECONDARY source", async ({

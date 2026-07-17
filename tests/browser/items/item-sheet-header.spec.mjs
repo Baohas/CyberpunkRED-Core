@@ -438,7 +438,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
 
   // ---- Sources ------------------------------------------------------------
 
-  test("multiple sources render comma-joined on the sources line", async ({
+  test("multiple sources show only the first, the rest in a hover tooltip", async ({
     game,
   }) => {
     const { id, sheetId } = await createItemSheet(game, {
@@ -448,20 +448,29 @@ test.describe("Item sheet header (read-only chip layout)", () => {
         sources: [
           { book: "BookAlpha", page: 11 },
           { book: "BookBravo", page: 22 },
+          { book: "BookCharlie", page: 33 },
         ],
       },
     });
 
+    // Only the first source is shown inline; the others are not visible text.
     const sources = await regionText(game, sheetId, ".item-header-sources");
-    expect(sources).toContain("BookAlpha pg. 11");
-    expect(sources).toContain("BookBravo pg. 22");
-    // Both citations appear on the one line, comma-joined.
-    expect(sources).toContain(",");
+    expect(sources).toBe("BookAlpha pg. 11");
+    expect(sources).not.toContain("BookBravo");
+    expect(sources).not.toContain("BookCharlie");
+
+    // The remaining sources live in the hover tooltip, one per <br> line.
+    const tooltip = await region(
+      game,
+      sheetId,
+      ".item-header-sources",
+    ).getAttribute("data-tooltip-html");
+    expect(tooltip).toBe("BookBravo pg. 22<br>BookCharlie pg. 33");
 
     await closeDocSheet(game, { collection: "items", id });
   });
 
-  test("a single source shows without a trailing comma", async ({ game }) => {
+  test("a single source shows inline with no tooltip", async ({ game }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "gear",
       prefix: "gear-onesrc",
@@ -470,7 +479,14 @@ test.describe("Item sheet header (read-only chip layout)", () => {
 
     const sources = await regionText(game, sheetId, ".item-header-sources");
     expect(sources).toBe("SoloBook pg. 7");
-    expect(sources).not.toMatch(/,\s*$/);
+
+    // Nothing hidden -> no hover tooltip is attached.
+    const tooltip = await region(
+      game,
+      sheetId,
+      ".item-header-sources",
+    ).getAttribute("data-tooltip-html");
+    expect(tooltip).toBeNull();
 
     await closeDocSheet(game, { collection: "items", id });
   });
@@ -542,8 +558,11 @@ test.describe("Item sheet header (read-only chip layout)", () => {
     const sources = region(game, sheetId, ".item-header-sources");
     await expect(sources).toBeVisible();
     const sourcesText = (await sources.textContent()).trim();
+    // Only the first source shows inline; the rest are carried in the tooltip.
     expect(sourcesText).toContain("First Long Source Book");
-    expect(sourcesText).toContain("Third Long Source Book");
+    expect(sourcesText).not.toContain("Third Long Source Book");
+    const sourcesTooltip = await sources.getAttribute("data-tooltip-html");
+    expect(sourcesTooltip).toContain("Third Long Source Book");
 
     // Many headline stats -> several chips, still rendered.
     expect(

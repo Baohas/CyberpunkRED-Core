@@ -295,7 +295,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       statusUpgraded: hasInstalled,
       statusInstalled: false,
       chips: isItem ? browserStatChips(entry) : [],
-      source: CPRDocumentBrowser.#sourceLine(entry),
+      ...CPRDocumentBrowser.#sourceDisplay(entry),
       hasInstalled,
       // Drag-out copies an item onto a sheet for free, so it is GM-only — in shop
       // mode (players) rows aren't draggable and they must buy via the cart.
@@ -312,18 +312,19 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
   }
 
   /**
-   * The source citation shown at the bottom-right of an entry card, e.g.
-   * "BC pg.123" (uppercased by CSS). An item may cite several source books
-   * (`system.sources`), so every entry with a book is rendered and joined with
-   * a comma. Empty when no source book is set.
+   * The source citation shown in an entry card's header. An item may cite
+   * several source books (`system.sources`); the first book-having source is
+   * shown inline (uppercased by CSS) and any remaining sources go into a hover
+   * tooltip, one per line. Returns `{source, sourceTooltip}`, both "" when no
+   * source book is set.
    *
    * @private
    * @param {object} entry
-   * @returns {string}
+   * @returns {{source: string, sourceTooltip: string}}
    */
-  static #sourceLine(entry) {
+  static #sourceDisplay(entry) {
     const sources = foundry.utils.getProperty(entry, "system.sources");
-    return SystemUtils.FormatSources(sources);
+    return SystemUtils.FormatSourceDisplay(sources);
   }
 
   /**
