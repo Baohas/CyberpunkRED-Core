@@ -54,6 +54,7 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Redesign the item sheet header into a chip-based three-row layout (breadcrumb and sources, name, stat chips and price) and make the description tab full-width
 - The item browser result rows now share the redesigned item sheet header layout (breadcrumb, name, chips, price and source)
 - Items can now cite multiple sourcebooks: the single `source` field is now a `sources` list; existing worlds migrate automatically
+- Item sheet headers and browser rows now show only an item's first source inline, revealing the rest in a hover tooltip
 
 ### Plumbing
 
