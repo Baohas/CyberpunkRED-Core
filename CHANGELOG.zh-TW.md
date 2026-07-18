@@ -43,25 +43,24 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - Fix auto-stacking of stackable upgradable items (such as clothing and gear) when dropped onto a character, mook, or container sheet
 - Restore the rich-text editors on item and actor sheets (descriptions, notes) that stopped opening after the ApplicationV2 migration; the edit button now sits at the top right of the field
 - Tidy the item sheet settings and description panes: remove the divider lines, show the allowed install types as a comma-separated list, and right-align the allowed-types and installed-items values
+- Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
+- Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
+- Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
+- The "Damage Dealt To" damage-application card now shows the target's Token name instead of the Actor name
 
 ### Changes
 
 - Remove foundry and third-party global css overrides to . Scopes system CSS to CPR windows and `@system` layer.
-
-### Bug Fixes
-
-- Secondary weapon upgrades (e.g. an installed Bayonet) now apply their Attack Modifier to attack rolls.
-- Populate chat message speaker data on rolls so macros and modules can identify the acting token and scene, not just the actor
+- Redesign the item sheet header into a chip-based three-row layout (breadcrumb and sources, name, stat chips and price) and make the description tab full-width
+- The item browser result rows now share the redesigned item sheet header layout (breadcrumb, name, chips, price and source)
+- Items can now cite multiple sourcebooks: the single `source` field is now a `sources` list; existing worlds migrate automatically
+- Item sheet headers and browser rows now show only an item's first source inline, revealing the rest in a hover tooltip
 
 ### Plumbing
 
 - Browser end-to-end tests now run sharded across parallel CI jobs, with each shard's report and sheet screenshots merged into a single result and MR comment.
 - Added a Vitest unit-test layer (`npm run test:unit`) for the Foundry-light code (pure helpers, config invariants), with a minimal Foundry-global shim and a CI job.
 - Cleaned up all ESLint warnings and tightened the lint configuration so they are now treated as errors, including reporting unused `eslint-disable` directives.
-
-### Bug Fixes
-
-- Fix a startup error when launching a world with no active scene, which prevented the Defense Value ruler and other ready-time setup from initialising
 
 ## Version 0.92.4
 
