@@ -125,7 +125,7 @@ system:
   rank: 4
   skill: "--"
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 146
   stat: "--"
   universalBonuses: []

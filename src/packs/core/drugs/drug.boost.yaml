@@ -126,7 +126,7 @@ system:
     market: 50
   revealed: true
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 357
   usage: snorted
 type: drug

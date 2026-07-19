@@ -23,7 +23,7 @@ system:
   level: 2
   skillType: generic
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 139
   stat: emp
 type: skill

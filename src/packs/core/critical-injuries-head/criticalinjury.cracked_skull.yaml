@@ -29,7 +29,7 @@ system:
     type: paramedic
   revealed: true
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 188
   treatment:
     dvParamedic: 15

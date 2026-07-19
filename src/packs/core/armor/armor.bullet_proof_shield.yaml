@@ -48,7 +48,7 @@ system:
     max: 10
     value: 10
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 351
   usage: equipped
 type: armor

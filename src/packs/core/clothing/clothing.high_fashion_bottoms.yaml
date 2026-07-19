@@ -40,7 +40,7 @@ system:
   providesHardening: false
   revealed: true
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 356
   style: highFashion
   type: bottoms

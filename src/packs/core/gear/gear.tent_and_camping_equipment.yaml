@@ -37,7 +37,7 @@ system:
   providesHardening: false
   revealed: true
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 355
   usage: toggled
 type: gear

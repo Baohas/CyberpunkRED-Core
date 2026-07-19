@@ -127,7 +127,7 @@ system:
   rof: 1
   size: 0
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 163
   type: vehicle
   unarmedAutomaticCalculation: true

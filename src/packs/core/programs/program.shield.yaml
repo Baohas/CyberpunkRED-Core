@@ -41,7 +41,7 @@ system:
     value: 7
   size: 1
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 369
   spd: 0
   usage: toggled

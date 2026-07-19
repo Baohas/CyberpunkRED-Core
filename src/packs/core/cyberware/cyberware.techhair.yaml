@@ -108,7 +108,7 @@ system:
   rof: 1
   size: 1
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 359
   type: fashionware
   unarmedAutomaticCalculation: true

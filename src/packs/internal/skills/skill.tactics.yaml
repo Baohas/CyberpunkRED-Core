@@ -23,7 +23,7 @@ system:
   level: 0
   skillType: generic
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 136
   stat: int
 type: skill

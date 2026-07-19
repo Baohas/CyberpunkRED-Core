@@ -132,7 +132,7 @@ system:
   rof: 1
   size: 2
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 343
   type: weapon
   unarmedAutomaticCalculation: true

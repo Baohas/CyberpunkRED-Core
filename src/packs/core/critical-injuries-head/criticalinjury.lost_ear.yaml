@@ -73,7 +73,7 @@ system:
     type: notApplicable
   revealed: true
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 188
   treatment:
     dvParamedic: 0

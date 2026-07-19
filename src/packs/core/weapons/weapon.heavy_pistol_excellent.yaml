@@ -58,7 +58,7 @@ system:
   revealed: true
   rof: 2
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 341
   unarmedAutomaticCalculation: true
   usage: equipped

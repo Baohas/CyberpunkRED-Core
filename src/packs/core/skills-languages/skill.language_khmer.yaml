@@ -23,7 +23,7 @@ system:
   level: 4
   skillType: language
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 45
   stat: int
 type: skill

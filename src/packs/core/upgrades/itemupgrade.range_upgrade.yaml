@@ -119,7 +119,7 @@ system:
   rof: 1
   size: 1
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 368
   type: cyberdeck
   unarmedAutomaticCalculation: true

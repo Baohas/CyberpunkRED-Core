@@ -49,7 +49,7 @@ system:
     max: 0
     value: 0
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 350
   usage: equipped
 type: armor
