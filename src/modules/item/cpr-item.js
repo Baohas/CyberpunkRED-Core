@@ -60,6 +60,26 @@ export default class CPRItem extends Item {
       item.installItems(installedItemList);
     }
 
+    // Duplicate installed upgrades for world upgradable items
+    const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
+    if (
+      !item.parent &&
+      upgradableTypes.includes(item.type) &&
+      item.system.installedItems?.list?.length > 0
+    ) {
+      // item has upgrades
+      const sourceUpgrades = item.system.installedItems.list
+        .map((id) => game.items.get(id))
+        .filter(Boolean);
+      if (sourceUpgrades.length > 0) {
+        const upgradeData = sourceUpgrades.map((u) =>
+          foundry.utils.duplicate(u),
+        );
+        const newUpgrades = await Item.createDocuments(upgradeData);
+        const newUpgradeIds = newUpgrades.map((u) => u.id);
+        await item.update({ "system.installedItems": { list: newUpgradeIds } });
+      }
+    }
     return item;
   }
 
