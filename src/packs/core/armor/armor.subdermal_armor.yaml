@@ -48,7 +48,7 @@ system:
     max: 0
     value: 0
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 364
   usage: toggled
 type: armor

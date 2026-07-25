@@ -63,7 +63,7 @@ system:
   rof: 1
   size: 0
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 366
   type: cyberLeg
   unarmedAutomaticCalculation: true

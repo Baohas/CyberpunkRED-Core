@@ -73,7 +73,7 @@ system:
   rof: 1
   size: 3
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 365
   type: cyberArm
   unarmedAutomaticCalculation: true

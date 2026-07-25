@@ -36,7 +36,7 @@ system:
   sdp: 60
   seats: 2
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 190
   speedCombat: 10
   speedNarrative: 15 MPH / 24 KPH

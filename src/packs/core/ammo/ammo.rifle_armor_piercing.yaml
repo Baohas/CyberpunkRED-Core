@@ -42,7 +42,7 @@ system:
     market: 100
   size: 0
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 345
   type: armorPiercing
   variety: rifle

@@ -46,7 +46,7 @@ system:
     market: 100
   size: 0
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 346
   type: poison
   variety: grenade

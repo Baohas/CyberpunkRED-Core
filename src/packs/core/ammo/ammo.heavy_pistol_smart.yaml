@@ -46,7 +46,7 @@ system:
     market: 500
   size: 0
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 346
   type: smart
   variety: heavyPistol

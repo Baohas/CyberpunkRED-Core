@@ -31,7 +31,7 @@ system:
     market: 0
   revealed: true
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 150
   usage: toggled
 type: drug

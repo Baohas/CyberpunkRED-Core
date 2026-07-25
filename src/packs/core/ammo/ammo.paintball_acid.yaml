@@ -50,7 +50,7 @@ system:
     market: 10
   size: 0
   sources:
-    - book: Core
+    - book: Cyberpunk RED
       page: 347
   type: acid
   variety: paintball
