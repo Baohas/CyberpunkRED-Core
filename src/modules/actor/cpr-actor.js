@@ -273,9 +273,11 @@ export default class CPRActor extends Actor {
       if (sourceUpgrades.length === 0) continue;
       // Finally, duplicate and install the upgrades
       const upgradeData = sourceUpgrades.map((u) => foundry.utils.duplicate(u));
-      const newUpgrades = await Item.createDocuments(upgradeData, {
-        parent: this,
-      });
+      const newUpgrades = await item.actor.createEmbeddedDocuments(
+        "Item",
+        upgradeData,
+        { keepId: false },
+      );
       const newUpgradeIds = newUpgrades.map((u) => u.id);
 
       await item.update({ "system.installedItems": { list: newUpgradeIds } });
