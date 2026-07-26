@@ -95,6 +95,31 @@ async function declineDataSharing(page) {
   }
 }
 
+async function authenticateSetup(page, adminPassword) {
+  const passwordInput = page
+    .locator(
+      'input[name="adminPassword"], input[name="password"], input[type="password"]',
+    )
+    .first();
+  if (!(await present(passwordInput, 1000))) return;
+
+  if (!adminPassword) {
+    throw new Error(
+      "Foundry setup requires the administrator password. Set " +
+        "'foundry.adminPassword' in foundryconfig.json or FOUNDRY_ADMIN_PASSWORD.",
+    );
+  }
+
+  await passwordInput.fill(adminPassword);
+  await page
+    .locator(
+      'button[type="submit"], button:has-text("Log In"), button:has-text("Sign In")',
+    )
+    .first()
+    .click();
+  await page.waitForLoadState("networkidle").catch(() => {});
+}
+
 async function acceptLicense(page, licenseKey) {
   const keyInput = page.locator('input[name="licenseKey"]').first();
   if (!(await present(keyInput))) return;
@@ -204,6 +229,16 @@ async function createAndLaunchWorld(page, worldId, config) {
  * our ephemeral world is created and launched. On a fresh data dir the order is
  * license -> EULA -> decline data-sharing -> setup.
  */
+export async function reachInteractableSetup(page, config) {
+  await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
+
+  await acceptLicense(page, config.licenseKey);
+  await acceptEula(page);
+  await authenticateSetup(page, config.adminPassword);
+  await declineDataSharing(page);
+  await dismissTours(page);
+}
+
 export async function driveSetup(page, { config, worldId }) {
   await page.goto(config.url, { waitUntil: "domcontentloaded" });
 
@@ -213,28 +248,94 @@ export async function driveSetup(page, { config, worldId }) {
   await createAndLaunchWorld(page, worldId, config);
 }
 
-/*
- * From the world login screen, sign in as the named user (blank password — the
- * default GM and our test player both have none) and wait for game ready.
- */
-export async function joinAsUser(page, config, label) {
-  if (!/\/(join|auth)/.test(new URL(page.url()).pathname)) {
-    await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+export async function launchedWorldHasJoinScreen(page, config) {
+  await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+  return present(page.locator('select[name="userid"]').first(), 2000);
+}
+
+export async function launchExistingWorld(page, { config, worldId }) {
+  await reachInteractableSetup(page, config);
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    await dismissTours(page);
+    const tile = page.locator(`[data-package-id="${worldId}"]`).first();
+    if (!(await present(tile))) {
+      throw new Error(`World '${worldId}' is not visible on the setup screen.`);
+    }
+    await tile.hover().catch(() => {});
+    const launch = tile.locator('[data-action="worldLaunch"]').first();
+    if (await present(launch, 1500)) await clickThrough(page, launch);
+    else await launch.dispatchEvent("click").catch(() => {});
+    await page.waitForLoadState("networkidle").catch(() => {});
+    if (await launchedWorldHasJoinScreen(page, config)) return;
+    await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
+  }
+  throw new Error(`World '${worldId}' did not launch from setup.`);
+}
+
+async function openWorldConfig(page, { config, worldId }) {
+  await reachInteractableSetup(page, config);
+  const tile = page.locator(`[data-package-id="${worldId}"]`).first();
+  if (!(await present(tile))) {
+    throw new Error(`World '${worldId}' is not visible on the setup screen.`);
   }
 
-  const userSelect = page.locator('select[name="userid"]').first();
-  if (await present(userSelect)) {
-    await userSelect.selectOption({ label }).catch(async () => {
-      // Fall back to the first non-placeholder option if the label differs.
-      await userSelect.selectOption({ index: 1 });
-    });
+  await tile
+    .click({ button: "right" })
+    .catch(() => tile.dispatchEvent("contextmenu"));
+  const editWorld = page.locator("#context-menu .context-item", {
+    hasText: "Edit World",
+  });
+  if (!(await present(editWorld, 3000))) {
+    throw new Error(
+      `Could not find the Edit World menu item for '${worldId}'.`,
+    );
   }
-  await page.locator('input[name="password"]').first().fill("");
-  await page
-    .locator('button[name="join"], button[type="submit"]')
-    .first()
-    .click();
+  await clickThrough(page, editWorld);
 
+  const form = page
+    .locator('form#world-config, form:has(input[name="resetKeys"])')
+    .last();
+  if (!(await present(form, 5000))) {
+    throw new Error(`Could not open the world config form for '${worldId}'.`);
+  }
+  return form;
+}
+
+export async function resetWorldUserPasswords(page, { config, worldId }) {
+  const form = await openWorldConfig(page, { config, worldId });
+  const resetKeys = form.locator('input[name="resetKeys"]');
+  if (!(await present(resetKeys, 1000))) {
+    throw new Error(
+      `Could not find the Reset User Passwords checkbox for '${worldId}'.`,
+    );
+  }
+  await resetKeys.check();
+
+  const submit = form
+    .locator('button[type="submit"], button:has-text("Update World")')
+    .last();
+  if (!(await present(submit, 1000))) {
+    throw new Error(`No Update World control found for '${worldId}'.`);
+  }
+  await clickThrough(page, submit);
+  await page.waitForLoadState("networkidle").catch(() => {});
+  await expectWorldConfigClosed(page, worldId);
+}
+
+async function expectWorldConfigClosed(page, worldId) {
+  const form = page.locator(
+    'form#world-config, form:has(input[name="resetKeys"])',
+  );
+  const closed = await form
+    .waitFor({ state: "detached", timeout: 5000 })
+    .then(() => true)
+    .catch(() => false);
+  if (!closed && (await form.count())) {
+    throw new Error(`World config form for '${worldId}' did not close.`);
+  }
+}
+
+async function finishJoinedWorld(page, { requireGamemaster = false } = {}) {
   await page.waitForFunction(() => globalThis.game?.ready === true, null, {
     timeout: 60000,
   });
@@ -242,9 +343,6 @@ export async function joinAsUser(page, config, label) {
   // A freshly launched world auto-starts in-world tours (the sidebar/canvas
   // "Welcome" tours) whose `.tour-overlay` renders above the game UI and
   // intercepts pointer events, making later driven interactions silently miss.
-  // Tours appear on BOTH the setup screen and inside the world, so clear them
-  // here too: programmatically exit every active tour, then strip any lingering
-  // overlay DOM as a backstop — mirroring the setup-screen handling above.
   await page
     .evaluate(() => {
       for (const tour of globalThis.game?.tours?.contents ?? []) {
@@ -258,12 +356,13 @@ export async function joinAsUser(page, config, label) {
     .catch(() => {});
   await dismissTours(page);
 
-  // A freshly launched world starts paused, which blocks many in-game
-  // interactions (and silently makes driven actions miss). Unpause as GM with
-  // `broadcast: true` so the server records the change — pause is shared,
-  // server-side session state, so it then persists for any later client that
-  // joins the same running world. Settle briefly afterwards to let the socket
-  // emit flush before a caller (e.g. serve.mjs) closes the page.
+  if (requireGamemaster) {
+    const isGamemaster = await page.evaluate(
+      () => game.user.role === CONST.USER_ROLES.GAMEMASTER,
+    );
+    if (!isGamemaster) throw new Error("Joined user is not a full Gamemaster.");
+  }
+
   await page
     .evaluate(
       () =>
@@ -272,6 +371,97 @@ export async function joinAsUser(page, config, label) {
     )
     .catch(() => {});
   await page.waitForTimeout(750);
+}
+
+/*
+ * From the world login screen, sign in as the named user and wait for game ready.
+ */
+export async function joinAsUser(page, config, label, { password = "" } = {}) {
+  if (!/\/(join|auth)/.test(new URL(page.url()).pathname)) {
+    await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+  }
+
+  const userSelect = page.locator('select[name="userid"]').first();
+  if (await present(userSelect)) {
+    await userSelect.selectOption({ label }).catch(async () => {
+      await userSelect.selectOption({ index: 1 });
+    });
+  }
+  await page.locator('input[name="password"]').first().fill(password);
+  await page
+    .locator('button[name="join"], button[type="submit"]')
+    .first()
+    .click();
+
+  await finishJoinedWorld(page);
+}
+
+async function waitForJoinableUsers(page) {
+  const userSelect = page.locator('select[name="userid"]').first();
+  await userSelect.waitFor({ state: "visible", timeout: 60000 });
+  await page.waitForFunction(
+    () => {
+      const select = document.querySelector('select[name="userid"]');
+      if (!(select instanceof HTMLSelectElement)) return false;
+      return Array.from(select.options).some((option) => option.value);
+    },
+    null,
+    { timeout: 60000 },
+  );
+  return userSelect;
+}
+
+async function loginWithUserValue(page, config, value, password) {
+  await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+  const userSelect = await waitForJoinableUsers(page);
+  await userSelect.selectOption(value);
+  await page.locator('input[name="password"]').first().fill(password);
+  await page
+    .locator('button[name="join"], button[type="submit"]')
+    .first()
+    .click();
+  await finishJoinedWorld(page, { requireGamemaster: true });
+}
+
+export async function joinAsFullGM(page, config, { password }) {
+  await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+  await waitForJoinableUsers(page);
+  const candidates = await page
+    .locator('select[name="userid"] option')
+    .evaluateAll((options) =>
+      options
+        .map((option) => ({
+          label: option.label || option.textContent?.trim() || "",
+          value: option.value,
+        }))
+        .filter((option) => option.value),
+    );
+  const ordered = [
+    ...candidates.filter((user) => user.label === "Gamemaster"),
+    ...candidates.filter((user) => user.label !== "Gamemaster"),
+  ];
+  if (ordered.length === 0) {
+    throw new Error(
+      "No joinable users were available on the world join screen.",
+    );
+  }
+
+  const failures = [];
+  for (const candidate of ordered) {
+    try {
+      await loginWithUserValue(page, config, candidate.value, password);
+      return candidate;
+    } catch (error) {
+      failures.push(`${candidate.label}: ${error.message}`);
+      await page
+        .goto(`${config.url}/logout`, { waitUntil: "domcontentloaded" })
+        .catch(() => {});
+    }
+  }
+
+  throw new Error(
+    `No full Gamemaster user could log in. Tried:\n${failures.join("\n")}`,
+  );
 }
 
 /*

@@ -11,6 +11,7 @@ export const STORAGE_STATE = path.join(RUN_STATE_DIR, "gm.json");
 export const PLAYER_STORAGE_STATE = path.join(RUN_STATE_DIR, "player.json");
 export const PLAYER_NAME = "E2E Player";
 export const PLAYER_CHARACTER_NAME = "E2E Shopper";
+export const HARNESS_PASSWORD = "playwright";
 
 const EPHEMERAL_PREFIX = "cprc-playwright-";
 
@@ -66,6 +67,12 @@ export function resolveHarnessConfig({
   const licenseKey =
     process.env.FOUNDRY_LICENSE_KEY || local.foundry?.licenseKey || "";
   const port = Number(process.env.PLAYWRIGHT_FOUNDRY_PORT || 30001);
+  const harnessPassword =
+    process.env.PLAYWRIGHT_FOUNDRY_PASSWORD ||
+    local.foundry?.playwrightPassword ||
+    HARNESS_PASSWORD;
+  const adminPassword =
+    process.env.FOUNDRY_ADMIN_PASSWORD || local.foundry?.adminPassword || "";
 
   if (!rawAppPath) {
     throw new Error(
@@ -103,6 +110,8 @@ export function resolveHarnessConfig({
     sessionState: SESSION_STATE,
     storageState: STORAGE_STATE,
     playerStorageState: PLAYER_STORAGE_STATE,
+    harnessPassword,
+    adminPassword,
     url: `http://localhost:${port}`,
   };
 }
@@ -144,12 +153,14 @@ export function writeSession(session) {
     SESSION_STATE,
     {
       worldId: session.worldId,
+      worldFolder: session.worldFolder,
       dataPath: session.config.dataPath,
       pid: session.pid,
       port: session.config.port,
       mode: session.mode,
       dataPathMode: session.config.dataPathMode,
       ephemeral: session.ephemeral,
+      archivePath: session.archivePath,
     },
     { spaces: 2 },
   );

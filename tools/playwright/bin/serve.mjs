@@ -1,10 +1,22 @@
+import { parseServeArgs, serveUsage } from "./serve-args.mjs";
 import { buildAndLaunchLiveWorld } from "../flows/foundry-flows.mjs";
 
-const session = await buildAndLaunchLiveWorld();
+let args;
+try {
+  args = parseServeArgs(process.argv.slice(2));
+} catch (error) {
+  console.error(`${error.message}\n\n${serveUsage()}`);
+  process.exit(1);
+}
 
-console.log(
-  `\nFoundry is up at ${session.config.url} (world: ${session.worldId}).`,
-);
+const session = await buildAndLaunchLiveWorld({
+  worldId: args.world,
+  archivePath: args.archive,
+});
+
+console.log(`\nFoundry is up at ${session.config.url}`);
+console.log(`Game URL: ${session.config.url}/game`);
+console.log(`World: ${session.worldId} (${session.mode})`);
 console.log(
   "Drive it live (e.g. via the Playwright MCP). Press Ctrl-C to stop.\n",
 );
