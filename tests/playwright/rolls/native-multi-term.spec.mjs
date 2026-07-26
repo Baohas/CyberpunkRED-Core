@@ -145,9 +145,13 @@ test.describe("native-first engine — grouped pool damage is refused", () => {
     game,
   }) => {
     // Guard the reject is scoped to pools only: an ordinary formula rolls as before.
-    const r = await rollType(game, "CPRDamageRoll", ["W", "2d6+3", "melee"], 6, [
-      6, 6,
-    ]);
+    const r = await rollType(
+      game,
+      "CPRDamageRoll",
+      ["W", "2d6+3", "melee"],
+      6,
+      [6, 6],
+    );
     expect(r.resultTotal).toBe(15);
   });
 });

@@ -29,7 +29,7 @@ own fields.
 npm run generate-schemas
 ```
 
-`tools/foundry-server/generate-schemas.mjs` builds the system into an isolated
+`tools/playwright/bin/generate-schemas.mjs` builds the system into an isolated
 Foundry data dir, boots Foundry, and walks the live DataModels **in-browser**
 (the models — and Foundry's core embedded-document schemas — only fully exist at
 runtime). It then layers on the curated constraints and writes the whole
@@ -43,11 +43,11 @@ content uses a known set of brands, while the model leaves `brand` free for
 users to type anything. These pack-validation-only constraints are applied
 **after** the DataModel walk, in two places:
 
-1. **`tools/foundry-server/schema-overrides.json`** — static deep-merges keyed
+1. **`tools/playwright/config/schema-overrides.json`** — static deep-merges keyed
    by output filename. Use this for fixed constraints, e.g. the `brand` enum on
    `components/physical.json`.
 2. **`applyCuratedConstraints()` in `generate-schemas.mjs`** — for constraints
-   that are *computed* from project data/config (so they stay in sync with a
+   that are _computed_ from project data/config (so they stay in sync with a
    single source of truth), or that apply across every document schema:
    - `dvTable` enum — derived from the RollTable names in
      `src/packs/internal/dv-tables` (plus `""` for melee).

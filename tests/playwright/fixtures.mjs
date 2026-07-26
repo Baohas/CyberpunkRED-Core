@@ -2,7 +2,7 @@ import { test as base, expect } from "@playwright/test";
 import {
   PLAYER_STORAGE_STATE,
   PLAYER_CHARACTER_NAME,
-} from "../../tools/foundry-server/config.mjs";
+} from "../../tools/playwright/config/harness-config.mjs";
 
 /*
  * Shared test infrastructure for the UI-driven browser specs.

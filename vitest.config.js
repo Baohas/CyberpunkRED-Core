@@ -9,7 +9,7 @@
  *     tests/unit/setup.js (stub only what a unit needs).
  *
  * Document/sheet/data-model behaviour that genuinely needs Foundry stays in the
- * Playwright suite (tests/browser/) and live-Foundry MCP checks — not here.
+ * Playwright suite (tests/playwright/) and live-Foundry MCP checks — not here.
  *
  * Plain object export (no `defineConfig` import) so the file has no package
  * subpath import for eslint's import/extensions rule to flag.

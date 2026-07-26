@@ -33,7 +33,8 @@ async function setLuckRollSetting(page, { enabled, variant }) {
   await page.evaluate(
     async ({ id, enabled, variant }) => {
       await game.settings.set(id, "homebrewLuckRoll", enabled);
-      if (variant) await game.settings.set(id, "homebrewLuckRollVariant", variant);
+      if (variant)
+        await game.settings.set(id, "homebrewLuckRollVariant", variant);
     },
     { id: SYSTEM_ID, enabled, variant },
   );

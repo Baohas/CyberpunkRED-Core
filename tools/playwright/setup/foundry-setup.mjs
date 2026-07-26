@@ -1,4 +1,5 @@
-import { SYSTEM_NAME } from "./config.mjs";
+/* global User */
+import { SYSTEM_NAME } from "../config/harness-config.mjs";
 
 /*
  * Drives Foundry's startup gates and gets us into a launched, ready world.
@@ -6,7 +7,7 @@ import { SYSTEM_NAME } from "./config.mjs";
  * IMPORTANT: the exact selectors for the license / EULA / setup screens are
  * Foundry-version-specific (v13 moved everything to ApplicationV2). They are
  * written defensively here but SHOULD be confirmed against a live instance on
- * first run — `npm run browser:serve` + the Playwright MCP is the intended way to
+ * first run — `npm run playwright:serve` + the Playwright MCP is the intended way to
  * inspect the real DOM and adjust these. Each step is a no-op if its screen is
  * not present, so a warm dataPath (already licensed, EULA accepted) skips ahead.
  */
@@ -42,7 +43,10 @@ async function dismissTours(page) {
   for (let i = 0; i < 5; i += 1) {
     if (!(await present(overlay, 1000))) break;
     if (await present(exit, 250)) {
-      await exit.first().click().catch(() => {});
+      await exit
+        .first()
+        .click()
+        .catch(() => {});
     } else {
       await page.keyboard.press("Escape").catch(() => {});
     }
@@ -168,37 +172,28 @@ async function createAndLaunchWorld(page, worldId, config) {
   for (let attempt = 0; attempt < 6; attempt += 1) {
     // A fresh world can trigger another tour (e.g. "Backups Overview") that sits
     // over the launch control — clear it before launching.
-    // eslint-disable-next-line no-await-in-loop
     await dismissTours(page);
 
     // The launch control is revealed on hover over the world tile, so hover the
     // tile first; if it still isn't actionable, dispatch the click directly (the
     // anchor is in the DOM regardless of the hover-reveal styling).
     const tile = page.locator(`[data-package-id="${worldId}"]`).first();
-    // eslint-disable-next-line no-await-in-loop
     if (await present(tile)) {
-      // eslint-disable-next-line no-await-in-loop
       await tile.hover().catch(() => {});
       const launch = tile.locator('[data-action="worldLaunch"]').first();
-      // eslint-disable-next-line no-await-in-loop
       if (await present(launch, 1500)) await launch.click().catch(() => {});
-      // eslint-disable-next-line no-await-in-loop
       else await launch.dispatchEvent("click").catch(() => {});
-      // eslint-disable-next-line no-await-in-loop
       await page.waitForLoadState("networkidle").catch(() => {});
     }
 
     // Verify the world is live: the user picker on /join only renders when a
     // world is active. If it's there, we're done.
-    // eslint-disable-next-line no-await-in-loop
     await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
-    // eslint-disable-next-line no-await-in-loop
     if (await present(page.locator('select[name="userid"]').first(), 2000)) {
       return;
     }
 
     // Still showing "no active game session" — go back to /setup and retry.
-    // eslint-disable-next-line no-await-in-loop
     await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
   }
 }

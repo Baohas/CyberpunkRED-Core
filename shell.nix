@@ -37,7 +37,7 @@ pkgs.mkShell {
   # IMPORTANT: the @playwright/test version in package.json must match this
   # channel's playwright-driver version, or the browser revisions won't line up.
   # Check with:  nix eval --raw nixpkgs#playwright-driver.version
-  # (this channel currently provides 1.60.0; package.json is pinned to match).
+  # (this channel currently provides 1.61.1; package.json is pinned to match).
   PLAYWRIGHT_BROWSERS_PATH = "${pkgs.playwright-driver.browsers}";
   PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS = "true";
 

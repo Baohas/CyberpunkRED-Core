@@ -5,7 +5,7 @@
       "args": [
         "@playwright/mcp@latest",
         "--config",
-        ".playwright/playwright-mcp.config.json"
+        "tools/playwright/config/playwright-mcp.config.json"
       ],
       "env": {
         "PLAYWRIGHT_MCP_EXECUTABLE_PATH": "${PLAYWRIGHT_MCP_EXECUTABLE_PATH}",

@@ -12,46 +12,52 @@ import {
  * UI-driven tests for the document browser (CPRDocumentBrowser) as the GM — the
  * browse-and-filter half of the feature. Each test runs against a fresh, reset
  * world (the `game` fixture, which authenticates as the GM) and drives the
- * browser the way a user would: launching it from the Item directory, typing in
+ * document browser the way a user would: launching it from the Item directory, typing in
  * the search, toggling a type box, and collapsing a result group. Assertions
  * read game/DOM state but never perform the action under test.
  *
- * The player-facing shop/cart half lives in browser-shop.spec.mjs (it needs a
+ * The player-facing shop/cart half lives in document-browser-shop.spec.mjs (it needs a
  * non-GM user with an assigned Character, which this GM-only harness lacks).
  *
  * World items are created with unique names so a name search isolates them from
- * the (many) compendium entries the browser also indexes, keeping the result
+ * the (many) compendium entries the document browser also indexes, keeping the result
  * counts deterministic.
  */
 
-// Launch the browser in Item mode from the Item directory's footer button and
-// wait for its results to start rendering. Returns the browser window locator.
+// Launch the document browser in Item mode from the Item directory's footer
+// button and wait for its results to start rendering.
 async function openItemBrowser(page) {
   await openSidebarTab(page, "items");
   const launch = page.locator('#items .cpr-browser-launch[data-mode="item"]');
   await expect(launch).toBeVisible();
   await launch.click();
 
-  const browser = page.locator("#cpr-document-browser");
-  await expect(browser).toBeVisible();
-  await expect(browser.locator(".cpr-browser-results-list")).toBeVisible();
+  const documentBrowser = page.locator("#cpr-document-browser");
+  await expect(documentBrowser).toBeVisible();
+  await expect(
+    documentBrowser.locator(".cpr-browser-results-list"),
+  ).toBeVisible();
   // The first batch (or the empty-state) has rendered, so listeners are wired.
   await expect(
-    browser.locator(".cpr-browser-entry, .cpr-browser-empty").first(),
+    documentBrowser.locator(".cpr-browser-entry, .cpr-browser-empty").first(),
   ).toBeVisible();
-  return browser;
+  return documentBrowser;
 }
 
 test.describe("Document browser", () => {
   test("launches from the Item directory and renders its filter UI", async ({
     game,
   }) => {
-    const browser = await openItemBrowser(game);
-    await expect(browser.locator(".cpr-browser-name-input")).toBeVisible();
-    // The top-bar global filters and a per-type filter box are present.
-    await expect(browser.locator(".cpr-browser-global-filters")).toBeVisible();
+    const documentBrowser = await openItemBrowser(game);
     await expect(
-      browser.locator('.cpr-browser-typebox[data-type="weapon"]'),
+      documentBrowser.locator(".cpr-browser-name-input"),
+    ).toBeVisible();
+    // The top-bar global filters and a per-type filter box are present.
+    await expect(
+      documentBrowser.locator(".cpr-browser-global-filters"),
+    ).toBeVisible();
+    await expect(
+      documentBrowser.locator('.cpr-browser-typebox[data-type="weapon"]'),
     ).toBeVisible();
   });
 
@@ -66,10 +72,10 @@ test.describe("Document browser", () => {
     });
     await closeDocSheet(game, { collection: "items", id: itemId });
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(name);
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(name);
 
-    const entries = browser.locator(".cpr-browser-entry");
+    const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(name);
 
@@ -95,19 +101,19 @@ test.describe("Document browser", () => {
     });
     await closeDocSheet(game, { collection: "items", id: gearId });
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(token);
-    await expect(browser.locator(".cpr-browser-entry")).toHaveCount(2);
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
     // Cycle the Weapon box's tri-state include -> exclude -> only.
-    const weaponTristate = browser.locator(
+    const weaponTristate = documentBrowser.locator(
       '.cpr-browser-typebox[data-type="weapon"] .cpr-browser-tristate[data-tree="type"]',
     );
     await weaponTristate.click();
     await weaponTristate.click();
     await expect(weaponTristate).toHaveAttribute("data-state", "only");
 
-    const entries = browser.locator(".cpr-browser-entry");
+    const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
       `${token} blade`,
@@ -130,12 +136,12 @@ test.describe("Document browser", () => {
     );
     await closeDocSheet(game, { collection: "items", id: weaponId });
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(token);
-    await expect(browser.locator(".cpr-browser-entry")).toHaveCount(1);
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(1);
 
     // Expand the Weapon box so its sub-filters are interactable.
-    const weaponBox = browser.locator(
+    const weaponBox = documentBrowser.locator(
       '.cpr-browser-typebox[data-type="weapon"]',
     );
     await weaponBox.locator(".cpr-browser-collapse-toggle").first().click();
@@ -176,11 +182,11 @@ test.describe("Document browser", () => {
     );
     await closeDocSheet(game, { collection: "items", id: weaponId });
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(token);
-    await expect(browser.locator(".cpr-browser-entry")).toHaveCount(1);
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(1);
 
-    const weaponBox = browser.locator(
+    const weaponBox = documentBrowser.locator(
       '.cpr-browser-typebox[data-type="weapon"]',
     );
     const typeTristate = weaponBox.locator(
@@ -226,15 +232,15 @@ test.describe("Document browser", () => {
       { cheapId, dearId },
     );
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(token);
-    await expect(browser.locator(".cpr-browser-entry")).toHaveCount(2);
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
-    const maxInput = browser.locator(".cpr-browser-price-max");
+    const maxInput = documentBrowser.locator(".cpr-browser-price-max");
     await maxInput.fill("100");
     await maxInput.blur();
 
-    const entries = browser.locator(".cpr-browser-entry");
+    const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
       `${token} cheap`,
@@ -258,11 +264,11 @@ test.describe("Document browser", () => {
     });
     await closeDocSheet(game, { collection: "items", id: gearId });
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(token);
-    await expect(browser.locator(".cpr-browser-entry")).toHaveCount(2);
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
-    const weaponTristate = browser.locator(
+    const weaponTristate = documentBrowser.locator(
       '.cpr-browser-typebox[data-type="weapon"] .cpr-browser-tristate[data-tree="type"]',
     );
     // The toggle is reachable by keyboard...
@@ -273,7 +279,7 @@ test.describe("Document browser", () => {
     await weaponTristate.press("Enter");
     await expect(weaponTristate).toHaveAttribute("data-state", "only");
 
-    const entries = browser.locator(".cpr-browser-entry");
+    const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
       `${token} blade`,
@@ -289,9 +295,11 @@ test.describe("Document browser", () => {
     });
     await closeDocSheet(game, { collection: "items", id: itemId });
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(name);
-    const open = browser.locator(".cpr-browser-entry .cpr-browser-entry-open");
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(name);
+    const open = documentBrowser.locator(
+      ".cpr-browser-entry .cpr-browser-entry-open",
+    );
     await expect(open).toHaveCount(1);
 
     // The row-open control is focusable and activates on Enter (no mouse).
@@ -312,9 +320,9 @@ test.describe("Document browser", () => {
     });
     await closeDocSheet(game, { collection: "items", id: itemId });
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(name);
-    const row = browser.locator(".cpr-browser-entry[data-uuid]");
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(name);
+    const row = documentBrowser.locator(".cpr-browser-entry[data-uuid]");
     await expect(row).toHaveCount(1);
 
     // GM rows are draggable and starting a drag writes the Foundry drop payload.
@@ -345,14 +353,14 @@ test.describe("Document browser", () => {
     });
     await closeDocSheet(game, { collection: "items", id: itemId });
 
-    const browser = await openItemBrowser(game);
-    await browser.locator(".cpr-browser-name-input").fill(name);
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(name);
 
-    const entry = browser.locator(".cpr-browser-entry");
+    const entry = documentBrowser.locator(".cpr-browser-entry");
     await expect(entry).toHaveCount(1);
     await expect(entry.first()).toBeVisible();
 
-    const header = browser.locator(
+    const header = documentBrowser.locator(
       '.cpr-browser-group-header[data-group="weapon"]',
     );
     await header.click();

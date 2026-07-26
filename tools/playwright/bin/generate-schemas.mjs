@@ -9,9 +9,14 @@ import {
   existsSync,
 } from "node:fs";
 import { resolve, join, dirname } from "node:path";
-import { startServer, stopServer } from "./server.mjs";
-import { driveSetup, joinAsGM } from "./setup.mjs";
-import { newWorldId, removeWorld } from "./config.mjs";
+import { startFoundry, stopFoundry } from "../server/foundry-server.mjs";
+import { driveSetup, joinAsGM } from "../setup/foundry-setup.mjs";
+import {
+  clearRunState,
+  newWorldId,
+  removeWorld,
+  resolveHarnessConfig,
+} from "../config/harness-config.mjs";
 
 /*
  * Generates the pack-validation JSON schemas (schema/*.json) by walking the
@@ -27,7 +32,12 @@ import { newWorldId, removeWorld } from "./config.mjs";
  */
 
 const OUT_DIR = resolve("schema");
-const OVERRIDES_PATH = resolve("tools/foundry-server/schema-overrides.json");
+const OVERRIDES_PATH = resolve("tools/playwright/config/schema-overrides.json");
+const SCHEMA_CONFIG = resolveHarnessConfig({
+  mode: "schema",
+  dataPathMode: "isolated",
+  honorEnvDataPath: false,
+});
 
 await main();
 
@@ -49,8 +59,11 @@ async function main() {
  * Builds the system into an isolated data dir so the booted Foundry loads it.
  */
 function buildSystem() {
-  process.env.FOUNDRY_DATA_PATH = resolve(".playwright", "foundry-data");
-  const build = spawnSync("npx gulp build", { shell: true, encoding: "utf8" });
+  const build = spawnSync("npx gulp build", {
+    shell: true,
+    encoding: "utf8",
+    env: { ...process.env, FOUNDRY_DATA_PATH: SCHEMA_CONFIG.dataPath },
+  });
   if (build.status !== 0) {
     process.stderr.write(build.stdout + build.stderr);
     process.exit(build.status ?? 1);
@@ -64,18 +77,29 @@ function buildSystem() {
  * @returns {Promise<Object>} the walker result (schemas + item/actor types)
  */
 async function walkModels() {
-  const { child, config } = await startServer();
   const worldId = newWorldId();
-  const browser = await chromium.launch();
+  let child;
+  let config = SCHEMA_CONFIG;
+  let browser;
   try {
+    ({ child, config } = await startFoundry({
+      config: SCHEMA_CONFIG,
+      mode: "schema",
+      silent: true,
+    }));
+    browser = await chromium.launch();
     const page = await browser.newPage();
     await driveSetup(page, { config, worldId });
     await joinAsGM(page, config);
     return await page.evaluate(walkerSource);
   } finally {
-    await browser.close();
-    await stopServer(child);
-    await removeWorld(config.dataPath, worldId);
+    await browser?.close().catch(() => {});
+    await stopFoundry(child);
+    try {
+      await removeWorld(config.dataPath, worldId);
+    } finally {
+      clearRunState();
+    }
   }
 }
 
@@ -109,7 +133,6 @@ function writeSchemas(result) {
     mkdirSync(dirname(out), { recursive: true });
     writeFileSync(out, `${JSON.stringify(schema, null, 2)}\n`);
   }
-  /* eslint-disable-next-line no-console */
   console.log(
     `\nWrote ${Object.keys(result.schemas).length} schema(s) to ${OUT_DIR}\n` +
       `Item types: ${result.itemTypes.join(", ")}\n` +

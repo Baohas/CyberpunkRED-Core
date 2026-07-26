@@ -18,9 +18,9 @@ Node is pinned via `shell.nix` (Nix dev shell, auto-loaded by direnv). Common ta
 - `npm run prettier` / `npm run prettier:fix` — format check / fix. `npm run stylelint[:fix]` — CSS.
 - `npm run test:unit` — Vitest (fast, headless, no Foundry). `npm run test:unit:watch`, `test:coverage`.
   - Run one file: `npx vitest run tests/unit/config.test.js`.
-- `npm run test:browser` — Playwright end-to-end against a real Foundry (see below). Run a subset:
-  `npm run test:browser -- rolls/luck.spec.mjs` or `-- -g "LUCK"`.
-- `npm run browser:serve` — bring Foundry up with a fresh ephemeral world and leave it running, to drive
+- `npm run test:playwright` — Playwright end-to-end against a real Foundry (see below). Run a subset:
+  `npm run test:playwright -- rolls/luck.spec.mjs` or `-- -g "LUCK"`.
+- `npm run playwright:serve` — bring Foundry up with a fresh ephemeral world and leave it running, to drive
   live via the Playwright MCP (URL is printed). Ctrl-C tears the world down.
 - `make ci` / `make lint` / `make validate-packs` — run GitLab CI jobs locally via `gitlab-ci-local`
   (jobs are `include`d from the sibling `cicd` repo, not defined inline).
@@ -87,12 +87,12 @@ Two tiers, deliberately separated (see `vitest.config.js` header):
 - **Unit (`tests/unit/`, Vitest)** — only Foundry-free logic or units touching a thin, stubbed slice of the
   Foundry surface (stubs in `tests/unit/setup.js`). Fast, CLI. Config invariants, pure string/number helpers,
   formula sanitization.
-- **Browser (`tests/browser/`, Playwright)** — anything that genuinely needs a running Foundry: document/
-  sheet/data-model behaviour, real rolls, migrations, drag-drop. `npm run test:browser` builds the system,
+- **Browser (`tests/playwright/`, Playwright)** — anything that genuinely needs a running Foundry: document/
+  sheet/data-model behaviour, real rolls, migrations, drag-drop. `npm run test:playwright` builds the system,
   boots Foundry against an **isolated** project-local data dir (`.playwright/foundry-data`, never your real
-  `dataPath`), creates an ephemeral world, runs specs, and tears down. Harness lives in `tools/foundry-server/`.
+  `dataPath`), creates an ephemeral world, runs specs, and tears down. Harness lives in `tools/playwright/`.
 
-For manual live checks, `npm run browser:serve` + the Playwright MCP.
+For manual live checks, `npm run playwright:serve` + the Playwright MCP.
 
 ## Environment notes
 
