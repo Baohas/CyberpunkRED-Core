@@ -81,9 +81,7 @@ flags:
           revealed: true
           rof: 1
           size: 0
-          source:
-            book: Core
-            page: 364
+          source: null
           sources:
             - book: Cyberpunk RED
               page: 364
