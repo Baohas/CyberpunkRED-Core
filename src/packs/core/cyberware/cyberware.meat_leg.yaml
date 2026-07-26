@@ -7,15 +7,15 @@ flags:
       current: 42
       previous: "41"
     cprInstallTree:
-      - _id: fDNXOxy2NKcILY3C
+      - _id: bxa6F7fNvkFKy20y
         _stats:
           compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.QsssoeIdaueepWxp
           coreVersion: "13.351"
-          createdTime: 1783913218662
+          createdTime: 1785101138109
           duplicateSource: null
           exportSource: null
-          lastModifiedBy: SGxKriyWND2XMCyL
-          modifiedTime: 1783913218662
+          lastModifiedBy: aeZ1eHbUQsohUjKc
+          modifiedTime: 1785101138109
           systemId: cyberpunk-red-core
           systemVersion: DUMMY_VALUE
         effects: []
@@ -24,13 +24,13 @@ flags:
             _migration:
               current: 42
               previous: "41"
-        folder: RwY8syewmlyQkg3g
+        folder: null
         img: systems/cyberpunk-red-core/icons/compendium/cyberware/meatfoot.svg
         name: Meat Foot
         ownership:
-          SGxKriyWND2XMCyL: 3
+          aeZ1eHbUQsohUjKc: 3
           default: 0
-        sort: 156250
+        sort: 300000
         system:
           ammoVariety: []
           attackmod: 0
@@ -84,6 +84,9 @@ flags:
           source:
             book: Core
             page: 366
+          sources:
+            - book: Cyberpunk RED
+              page: 364
           type: cyberLeg
           unarmedAutomaticCalculation: true
           usage: toggled
@@ -135,7 +138,7 @@ system:
     allowedTypes:
       - cyberware
     list:
-      - fDNXOxy2NKcILY3C
+      - bxa6F7fNvkFKy20y
     slots: 3
     usedSlots: 0
   isElectronic: false
@@ -152,6 +155,7 @@ system:
   revealed: true
   rof: 1
   size: 0
+  source: null
   sources:
     - book: Cyberpunk RED
       page: 364

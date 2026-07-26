@@ -7,100 +7,15 @@ flags:
       current: 42
       previous: "41"
     cprInstallTree:
-      - _id: yN42lzFbxOg1C8NR
-        _stats:
-          compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.W7S33SRvtrZUpceP
-          coreVersion: "13.351"
-          createdTime: 1783914580624
-          duplicateSource: null
-          exportSource: null
-          lastModifiedBy: SGxKriyWND2XMCyL
-          modifiedTime: 1783914580624
-          systemId: cyberpunk-red-core
-          systemVersion: DUMMY_VALUE
-        effects: []
-        flags:
-          cyberpunk-red-core:
-            _migration:
-              current: 42
-              previous: "41"
-        folder: RwY8syewmlyQkg3g
-        img: >-
-          systems/cyberpunk-red-core/icons/compendium/cyberware/standard_foot.svg
-        name: Standard Foot
-        ownership:
-          SGxKriyWND2XMCyL: 3
-          default: 0
-        sort: 175000
-        system:
-          ammoVariety: []
-          attackmod: 0
-          brand: ""
-          canIgnoreArmor: true
-          concealable:
-            concealable: false
-            isConcealed: false
-          core: false
-          critFailEffect: jammed
-          damage: 1d6
-          damageCrit:
-            bonus: 5
-            count: 2
-            threshold: 0
-          description:
-            value: <p>Looks like a normal foot for the most part.</p>
-          dvTable: ""
-          favorite: false
-          fireModes:
-            autoFire: 0
-            suppressiveFire: false
-          humanityLoss:
-            roll: 1d3
-            static: 2
-          ignoreArmorPercent: 50
-          ignoreBelowSP: 0
-          ignoredByBrowser: false
-          installLocation: clinic
-          installedItems:
-            allowed: false
-            allowedTypes:
-              - itemUpgrade
-            list: []
-            slots: 3
-            usedSlots: 0
-          isElectronic: false
-          isFoundational: false
-          isRanged: false
-          isWeapon: false
-          magazine:
-            ammoData: null
-            max: 0
-            value: 0
-          price:
-            market: 100
-          providesHardening: false
-          revealed: true
-          rof: 1
-          size: 0
-          source:
-            book: Core
-            page: 366
-          type: cyberLeg
-          unarmedAutomaticCalculation: true
-          usage: toggled
-          usesType: magazine
-          weaponSkill: Archery
-          weaponType: assaultRifle
-        type: cyberware
-      - _id: d1nNQtzsCOvoxrp4
+      - _id: xwxBw789VBRqy0KF
         _stats:
           compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.Sr9OA45oTqAPn9X0
           coreVersion: "13.351"
-          createdTime: 1783915566290
+          createdTime: 1785101121834
           duplicateSource: null
           exportSource: null
-          lastModifiedBy: SGxKriyWND2XMCyL
-          modifiedTime: 1783915566290
+          lastModifiedBy: aeZ1eHbUQsohUjKc
+          modifiedTime: 1785101121834
           systemId: cyberpunk-red-core
           systemVersion: DUMMY_VALUE
         effects: []
@@ -114,9 +29,9 @@ flags:
           systems/cyberpunk-red-core/icons/compendium/cyberware/exposed_covering.svg
         name: Exposed Covering (Cyber Leg)
         ownership:
-          SGxKriyWND2XMCyL: 3
+          aeZ1eHbUQsohUjKc: 3
           default: 0
-        sort: 0
+        sort: 200000
         system:
           ammoVariety: []
           attackmod: 0
@@ -133,9 +48,11 @@ flags:
             count: 2
             threshold: 0
           description:
-            value: >-
-              <p>Your cybernetics are exposed, maybe you should purchase a
-              covering for your arm?</p>
+            value: |-
+              <p>
+                                Your cybernetics are exposed, maybe you should purchase a covering for your
+                                arm?
+                              </p>
           dvTable: ""
           favorite: false
           fireModes:
@@ -172,6 +89,95 @@ flags:
           source:
             book: Core
             page: 367
+          sources:
+            - book: Cyberpunk RED
+              page: 364
+          type: cyberLeg
+          unarmedAutomaticCalculation: true
+          usage: toggled
+          usesType: magazine
+          weaponSkill: Archery
+          weaponType: assaultRifle
+        type: cyberware
+      - _id: fEnzvlOSXnEeznJW
+        _stats:
+          compendiumSource: Compendium.cyberpunk-red-core.core_cyberware.Item.W7S33SRvtrZUpceP
+          coreVersion: "13.351"
+          createdTime: 1785101121834
+          duplicateSource: null
+          exportSource: null
+          lastModifiedBy: aeZ1eHbUQsohUjKc
+          modifiedTime: 1785101121834
+          systemId: cyberpunk-red-core
+          systemVersion: DUMMY_VALUE
+        effects: []
+        flags:
+          cyberpunk-red-core:
+            _migration:
+              current: 42
+              previous: "41"
+        folder: null
+        img: >-
+          systems/cyberpunk-red-core/icons/compendium/cyberware/standard_foot.svg
+        name: Standard Foot
+        ownership:
+          aeZ1eHbUQsohUjKc: 3
+          default: 0
+        sort: 150000
+        system:
+          ammoVariety: []
+          attackmod: 0
+          brand: ""
+          canIgnoreArmor: true
+          concealable:
+            concealable: false
+            isConcealed: false
+          core: false
+          critFailEffect: jammed
+          damage: 1d6
+          damageCrit:
+            bonus: 5
+            count: 2
+            threshold: 0
+          description:
+            value: <p>Looks like a normal foot for the most part.</p>
+          dvTable: ""
+          favorite: false
+          fireModes:
+            autoFire: 0
+            suppressiveFire: false
+          humanityLoss:
+            roll: 1d3
+            static: 2
+          ignoreArmorPercent: 50
+          ignoreBelowSP: 0
+          ignoredByBrowser: false
+          installLocation: clinic
+          installedItems:
+            allowed: false
+            allowedTypes:
+              - cyberware
+            list: []
+            slots: 0
+            usedSlots: 0
+          isElectronic: false
+          isFoundational: false
+          isRanged: false
+          isWeapon: false
+          magazine:
+            ammoData: null
+            max: 0
+            value: 0
+          price:
+            market: 100
+          providesHardening: false
+          revealed: true
+          rof: 1
+          size: 0
+          source: null
+          sources:
+            - book: Cyberpunk RED
+              page: 366
           type: cyberLeg
           unarmedAutomaticCalculation: true
           usage: toggled
@@ -220,8 +226,8 @@ system:
     allowedTypes:
       - cyberware
     list:
-      - yN42lzFbxOg1C8NR
-      - d1nNQtzsCOvoxrp4
+      - xwxBw789VBRqy0KF
+      - fEnzvlOSXnEeznJW
     slots: 3
     usedSlots: 0
   isElectronic: true
@@ -238,6 +244,7 @@ system:
   revealed: true
   rof: 1
   size: 0
+  source: null
   sources:
     - book: Cyberpunk RED
       page: 366
