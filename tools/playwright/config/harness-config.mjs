@@ -5,7 +5,10 @@ import crypto from "crypto";
 
 export const SYSTEM_NAME = process.env.SYSTEM_NAME || "cyberpunk-red-core";
 export const DEFAULT_VERSION_PREFIX = "v";
-export const RUN_STATE_DIR = path.resolve(".playwright", "run-state");
+const DEFAULT_RUN_STATE_DIR = path.resolve(".playwright", "run-state");
+export const RUN_STATE_DIR = path.resolve(
+  process.env.PLAYWRIGHT_RUN_STATE_DIR || DEFAULT_RUN_STATE_DIR,
+);
 export const SESSION_STATE = path.join(RUN_STATE_DIR, "session.json");
 export const STORAGE_STATE = path.join(RUN_STATE_DIR, "gm.json");
 export const PLAYER_STORAGE_STATE = path.join(RUN_STATE_DIR, "player.json");

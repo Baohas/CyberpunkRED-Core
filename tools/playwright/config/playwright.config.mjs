@@ -16,7 +16,7 @@ export default defineConfig({
   globalSetup: "../../../tests/playwright/setup.mjs",
   globalTeardown: "../../../tests/playwright/teardown.mjs",
   reporter: process.env.CI
-    ? [["list"], ["blob", { outputDir: ".playwright/blob-report" }]]
+    ? [["list"], ["blob", { outputDir: "../../../.playwright/blob-report" }]]
     : "list",
   use: {
     baseURL: url,

@@ -1,6 +1,5 @@
 /* global User */
 import { SYSTEM_NAME } from "../config/harness-config.mjs";
-import { createActorViaUI } from "../ui/actors.mjs";
 
 /*
  * Drives Foundry's startup gates and gets us into a launched, ready world.
@@ -472,25 +471,27 @@ export async function joinAsGM(page, config) {
 }
 
 /*
- * Create (idempotently) a non-GM player User, then create the assigned Character
- * through the Actor directory UI. Ownership and assignment remain API wiring.
+ * Create (idempotently) a non-GM player User, then create and assign their
+ * Character. Setup is not exercising the actor-creation dialog itself, so use
+ * the document API here to avoid Foundry boot-time dialog races before the real
+ * specs start driving the UI helpers.
  */
 export async function createPlayerWithCharacter(
   page,
   { userName, characterName },
 ) {
-  const userId = await page.evaluate(async (userName) => {
-    const user =
-      game.users.getName(userName) ??
-      (await User.create({ name: userName, role: CONST.USER_ROLES.PLAYER }));
-    return user.id;
-  }, userName);
-  const actorId =
-    (await page.evaluate(
-      (characterName) => game.actors.getName(characterName)?.id,
-      characterName,
-    )) ??
-    (await createActorViaUI(page, { type: "character", name: characterName }));
+  const { userId, actorId } = await page.evaluate(
+    async ({ userName, characterName }) => {
+      const user =
+        game.users.getName(userName) ??
+        (await User.create({ name: userName, role: CONST.USER_ROLES.PLAYER }));
+      const actor =
+        game.actors.getName(characterName) ??
+        (await Actor.create({ name: characterName, type: "character" }));
+      return { userId: user.id, actorId: actor.id };
+    },
+    { userName, characterName },
+  );
   await page.evaluate(
     async ({ userId, actorId }) => {
       const owner = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;

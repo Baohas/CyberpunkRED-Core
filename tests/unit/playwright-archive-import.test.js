@@ -3,14 +3,16 @@ import fs from "fs-extra";
 import { afterEach, describe, expect, it } from "vitest";
 import { mkdtemp, rm } from "node:fs/promises";
 import path from "node:path";
-import { tmpdir } from "node:os";
+
+const TEST_TMP_ROOT = path.resolve(".playwright", "tmp");
 
 import { importWorldArchive } from "../../tools/playwright/session/archive-import.mjs";
 
 let tempDirs = [];
 
 async function tempDir() {
-  const dir = await mkdtemp(path.join(tmpdir(), "cpr-archive-test-"));
+  fs.ensureDirSync(TEST_TMP_ROOT);
+  const dir = await mkdtemp(path.join(TEST_TMP_ROOT, "cpr-archive-test-"));
   tempDirs.push(dir);
   return dir;
 }

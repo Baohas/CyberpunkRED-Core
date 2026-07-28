@@ -112,7 +112,10 @@ export default [
   },
   {
     files: ["tests/playwright/**/*.mjs", "tools/playwright/**/*.mjs"],
-    ignores: ["tests/playwright/migrate/**/*.mjs"],
+    ignores: [
+      "tests/playwright/migrate/**/*.mjs",
+      "tools/playwright/setup/foundry-setup.mjs",
+    ],
     rules: {
       "no-restricted-syntax": [
         "error",

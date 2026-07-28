@@ -26,8 +26,13 @@ export async function createDocumentViaUI(page, { documentTab, type, name }) {
   await expect(dialog).toBeVisible();
   await dialog.locator('select[name="type"]').selectOption(type);
   await dialog.locator('input[name="name"]').fill(name);
-  await clickThroughOverlays(page, dialog.locator('button[data-action="ok"]'));
-  await expect(dialog).toHaveCount(0);
+
+  const confirm = dialog.locator('button[data-action="ok"]').first();
+  // Foundry can re-render the create dialog under load; retry until the submit sticks.
+  await expect(async () => {
+    await clickThroughOverlays(page, confirm);
+    await expect(dialog).toHaveCount(0, { timeout: 2000 });
+  }).toPass({ timeout: 20000 });
 
   await page.waitForFunction(
     ({ documentTab, name }) => {
