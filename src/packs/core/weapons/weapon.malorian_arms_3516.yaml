@@ -2,7 +2,6 @@ _id: YFAt5vDcufYFtFCr
 _key: "!items!YFAt5vDcufYFtFCr"
 effects: []
 flags:
-  cprInstallTree: {}
   cyberpunk-red-core:
     _migration:
       current: 42
