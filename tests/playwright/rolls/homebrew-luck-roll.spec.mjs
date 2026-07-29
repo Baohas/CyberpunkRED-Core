@@ -33,11 +33,55 @@ async function setLuckRollSetting(page, { enabled, variant }) {
   await page.evaluate(
     async ({ id, enabled, variant }) => {
       await game.settings.set(id, "homebrewLuckRoll", enabled);
-      if (variant)
+      if (variant) {
         await game.settings.set(id, "homebrewLuckRollVariant", variant);
+      }
     },
     { id: SYSTEM_ID, enabled, variant },
   );
+}
+
+async function restoreLuckRollDefaults(page) {
+  return page.evaluate(
+    async ({ id }) => {
+      const results = await Promise.allSettled([
+        game.settings.set(id, "homebrewLuckRoll", false),
+        game.settings.set(id, "homebrewLuckRollVariant", "max"),
+      ]);
+
+      return results
+        .map((result, index) => {
+          if (result.status === "fulfilled") {
+            return null;
+          }
+
+          const setting =
+            index === 0 ? "homebrewLuckRoll" : "homebrewLuckRollVariant";
+          return `${setting}: ${result.reason?.message ?? String(result.reason)}`;
+        })
+        .filter(Boolean);
+    },
+    { id: SYSTEM_ID },
+  );
+}
+
+function formatCleanupError(error) {
+  return error?.message ?? String(error);
+}
+
+async function attemptRestoreLuckRollDefaults(page, label) {
+  try {
+    const failures = await restoreLuckRollDefaults(page);
+    return {
+      label,
+      failures,
+    };
+  } catch (error) {
+    return {
+      label,
+      failures: [formatCleanupError(error)],
+    };
+  }
 }
 
 // Ctrl-click the LUCK stat (skipping the verify dialog), wait for the new chat
@@ -72,9 +116,56 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("Homebrew Luck Roll", () => {
-  test.afterEach(async ({ page: game }) => {
+  test.afterEach(async ({ page: game }, testInfo) => {
     // Restore defaults so the world setting never leaks between tests.
-    await setLuckRollSetting(game, { enabled: false, variant: "max" });
+    const cleanupDiagnostics = [];
+    const initialAttempt = await attemptRestoreLuckRollDefaults(
+      game,
+      "initial restore",
+    );
+    if (initialAttempt.failures.length === 0) {
+      return;
+    }
+
+    cleanupDiagnostics.push(
+      `${initialAttempt.label}: ${initialAttempt.failures.join("; ")}`,
+    );
+
+    try {
+      await gotoReadyWorld(game);
+      cleanupDiagnostics.push(
+        "recovery: reloaded the world before retrying cleanup",
+      );
+    } catch (error) {
+      cleanupDiagnostics.push(`recovery failed: ${formatCleanupError(error)}`);
+    }
+
+    const retryAttempt = await attemptRestoreLuckRollDefaults(
+      game,
+      "retry restore",
+    );
+    cleanupDiagnostics.push(
+      retryAttempt.failures.length === 0
+        ? `${retryAttempt.label}: restored defaults after recovery`
+        : `${retryAttempt.label}: ${retryAttempt.failures.join("; ")}`,
+    );
+
+    await testInfo.attach("luck-roll-cleanup", {
+      body: `${cleanupDiagnostics.join("\n")}\nTest status at cleanup: ${testInfo.status}`,
+      contentType: "text/plain",
+    });
+
+    if (retryAttempt.failures.length === 0) {
+      return;
+    }
+
+    const message = `Failed to restore Luck Roll defaults after retry: ${retryAttempt.failures.join("; ")}`;
+    if (testInfo.errors.length > 0) {
+      console.warn(`${message}\n${cleanupDiagnostics.join("\n")}`);
+      return;
+    }
+
+    throw new Error(`${message}\n${cleanupDiagnostics.join("\n")}`);
   });
 
   test("clicking LUCK rolls a roll-under Luck Roll when enabled", async ({
