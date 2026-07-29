@@ -32,8 +32,9 @@ export default class CPRItem extends Item {
    */
   static async create(data, options) {
     const item = await super.create(data, options);
-    // Early return if has no installed, or its in a compendium.
-    if (!item.system.hasInstalled || item.pack) return;
+    // Early return if has no installed items.
+    if (!item.system.hasInstalled) return;
+
     // If this item is being imported into the world,
     // and it has embedded installed item data in its flags.
     if (!item.parent && ContainerUtils.getInstallTreeFlag(item)) {
@@ -63,21 +64,32 @@ export default class CPRItem extends Item {
     // Duplicate installed upgrades for world upgradable items
     const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
     if (
-      !item.parent &&
       upgradableTypes.includes(item.type) &&
       item.system.installedItems?.list?.length > 0
     ) {
-      // item has upgrades
-      const sourceUpgrades = item.system.installedItems.list
-        .map((id) => game.items.get(id))
-        .filter(Boolean);
+      // item has upgrades — use cprInstallTree flag if available
+      // otherwise fall back to resolving by ID from world items
+      const installTree = ContainerUtils.getInstallTreeFlag(item);
+      let sourceUpgrades =
+        installTree && installTree.length > 0
+          ? installTree
+          : item.system.installedItems.list
+              .map((id) => game.items.get(id))
+              .filter(Boolean);
       if (sourceUpgrades.length > 0) {
         const upgradeData = sourceUpgrades.map((u) =>
           foundry.utils.duplicate(u),
         );
         const newUpgrades = await Item.createDocuments(upgradeData);
         const newUpgradeIds = newUpgrades.map((u) => u.id);
-        await item.update({ "system.installedItems": { list: newUpgradeIds } });
+        if (item.parent) {
+          // this thing owned
+          await item.actor.updateEmbeddedDocuments("Item", [
+            { _id: item._id, "system.installedItems.list": newUpgradeIds },
+          ]);
+        } else {
+          await item.update({ "system.installedItems.list": newUpgradeIds });
+        }
       }
     }
     return item;

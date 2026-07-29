@@ -263,10 +263,17 @@ export default class CPRActor extends Actor {
       // skip item if it has no upgrades
       if (installedUpgradeIds.length === 0) continue;
       const sourceUpgrades = [];
-      for (const upgradeId of installedUpgradeIds) {
-        const sourceUpgrade =
-          game.items.get(upgradeId) ?? item.actor?.getOwnedItem(upgradeId);
-        if (sourceUpgrade) sourceUpgrades.push(sourceUpgrade);
+      const installTree = ContainerUtils.getInstallTreeFlag(item);
+      if (installTree && installTree.length > 0) {
+        for (const upgrade of installTree) {
+          sourceUpgrades.push(foundry.utils.duplicate(upgrade));
+        }
+      } else {
+        for (const upgradeId of installedUpgradeIds) {
+          const sourceUpgrade =
+            game.items.get(upgradeId) ?? item.actor?.getOwnedItem(upgradeId);
+          if (sourceUpgrade) sourceUpgrades.push(sourceUpgrade);
+        }
       }
 
       // game environment doesn't have the upgrade items, so we cannot duplicate them (!?)
