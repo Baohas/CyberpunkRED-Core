@@ -19,14 +19,14 @@
       "description": "<p>Allows you to install an extra pair of cyberarms.</p>\n",
       "dvTable": ""
     },
-    "Audio Recorder": {
-      "name": "Audio Recorder",
-      "description": "<p>Records sound. Can link into a chip or agent.</p>\n",
-      "dvTable": ""
-    },
     "AudioVox": {
       "name": "AudioVox",
       "description": "<p>Autotune synthesizer. Provides +2 to Acting and Play Instrument checks.</p>\n",
+      "dvTable": ""
+    },
+    "Audio Recorder": {
+      "name": "Audio Recorder",
+      "description": "<p>Records sound. Can link into a chip or agent.</p>\n",
       "dvTable": ""
     },
     "Big Knucks": {
@@ -129,6 +129,16 @@
       "description": "<p>Doubles natural healing while resting.</p>\n",
       "dvTable": ""
     },
+    "Exposed Covering (Cyber Arm)": {
+      "name": "Exposed Covering (Cyber Arm)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
+    "Exposed Covering (Cyber Leg)": {
+      "name": "Exposed Covering (Cyber Leg)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
     "Gills": {
       "name": "Gills",
       "description": "<p>Allows for breathing underwater.</p>\n",
@@ -227,6 +237,16 @@
     "Meat Arm": {
       "name": "Meat Arm",
       "description": "<p>\n  A regular arm. This can support attachments like a Standard Hand or some\n  weapons and tools as the only installed piece.\n</p>\n",
+      "dvTable": ""
+    },
+    "Meat Foot": {
+      "name": "Meat Foot",
+      "description": "<p>Looks like a normal foot for the most part.</p>\n",
+      "dvTable": ""
+    },
+    "Meat Hand": {
+      "name": "Meat Hand",
+      "description": "<p>Looks like a normal hand for the most part.</p>\n",
       "dvTable": ""
     },
     "Meat Leg": {
@@ -414,14 +434,14 @@
       "description": "<p>Chipware.</p>\n<p>Sets a Skill to 3 unless the skill is already &gt;3*.</p>\n<p><em>* Not supported, Skill must be modified manually.</em></p>\n",
       "dvTable": ""
     },
-    "Skin Weave": {
-      "name": "Skin Weave",
-      "description": "<p>\n  External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor\n  does not stack.\n</p>\n<p>\n  <em\n    >* Cyberware Armor does not function as armor in the system, please add the\n    \"Skin Weave\" item to the character/mook to track</em\n  >\n</p>\n",
-      "dvTable": ""
-    },
     "Skinwatch": {
       "name": "Skinwatch",
       "description": "<p>An LED watch in your skin.</p>\n",
+      "dvTable": ""
+    },
+    "Skin Weave": {
+      "name": "Skin Weave",
+      "description": "<p>\n  External Body Cyberware*. Head and Body Armor SP7 and recovers 1SP/day. Armor\n  does not stack.\n</p>\n<p>\n  <em\n    >* Cyberware Armor does not function as armor in the system, please add the\n    \"Skin Weave\" item to the character/mook to track</em\n  >\n</p>\n",
       "dvTable": ""
     },
     "Slice 'N Dice": {
