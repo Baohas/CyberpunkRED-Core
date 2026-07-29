@@ -110,6 +110,21 @@ export default [
       "import/extensions": ["error", "always"],
     },
   },
+  {
+    files: ["tests/playwright/**/*.mjs", "tools/playwright/**/*.mjs"],
+    ignores: ["tests/playwright/migrate/**/*.mjs"],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector:
+            "CallExpression[callee.object.name='Actor'][callee.property.name='create'], CallExpression[callee.object.name='Item'][callee.property.name='create'], CallExpression[callee.object.name='Actor'][callee.property.name='deleteDocuments'], CallExpression[callee.object.name='Item'][callee.property.name='deleteDocuments'], CallExpression[callee.property.name='createEmbeddedDocuments'], CallExpression[callee.property.name='deleteEmbeddedDocuments']",
+          message:
+            "Playwright lifecycle setup must use explicit UI helpers from tools/playwright/ui; migration specs are the local exception.",
+        },
+      ],
+    },
+  },
   prettierRecommended,
   {
     // Migration scripts override updateItem/updateActor to transform a passed

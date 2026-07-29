@@ -91,6 +91,9 @@ Two tiers, deliberately separated (see `vitest.config.js` header):
   sheet/data-model behaviour, real rolls, migrations, drag-drop. `npm run test:playwright` builds the system,
   boots Foundry against an **isolated** project-local data dir (`.playwright/foundry-data`, never your real
   `dataPath`), creates an ephemeral world, runs specs, and tears down. Harness lives in `tools/playwright/`.
+  Normal specs must create/delete Actors and Items through explicit UI helpers in `tools/playwright/ui/`, not
+  direct `Actor.create`, `Item.create`, embedded-document lifecycle, or bulk delete APIs. Direct API use remains
+  allowed for users, permissions, settings, modules, deterministic roll setup, and read-only assertions.
 
 For manual live checks, `npm run playwright:serve` + the Playwright MCP.
 

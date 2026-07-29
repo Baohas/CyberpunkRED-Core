@@ -1,4 +1,5 @@
-import { test, expect } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 
 /*
  * Unit test for migration 044 (SourceToSources): it converts each item's legacy
@@ -16,8 +17,12 @@ import { test, expect } from "../fixtures.mjs";
  * same way Foundry would, via mergeObject(..., { performDeletions: true }).
  */
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test("044 migration converts system.source into system.sources", async ({
-  game,
+  page: game,
 }) => {
   const out = await game.evaluate(async () => {
     const M = await import(
@@ -108,7 +113,7 @@ test("044 migration converts system.source into system.sources", async ({
  * through the cleaning seam, then migrates the realized document data.
  */
 test("044 migration preserves a persisted legacy source through schema cleaning", async ({
-  game,
+  page: game,
 }) => {
   const out = await game.evaluate(async () => {
     // A real item carrying only the legacy single `source` (as a pre-migration

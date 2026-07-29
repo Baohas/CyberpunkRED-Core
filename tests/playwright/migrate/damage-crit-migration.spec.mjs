@@ -1,4 +1,5 @@
-import { test, expect } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 
 /*
  * Unit test for migration 042 (AddDamageCritConfig): it backfills the configurable damage-crit fields
@@ -6,8 +7,12 @@ import { test, expect } from "../fixtures.mjs";
  * (it never clobbers values that are already present).
  */
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test("042 migration backfills damage-crit fields, idempotently", async ({
-  game,
+  page: game,
 }) => {
   const out = await game.evaluate(async () => {
     const M = await import(
@@ -47,7 +52,7 @@ test("042 migration backfills damage-crit fields, idempotently", async ({
 });
 
 test("042 migration forces no-crit weapons/ammo to never crit, by name and translation", async ({
-  game,
+  page: game,
 }) => {
   const out = await game.evaluate(async () => {
     const M = await import(
