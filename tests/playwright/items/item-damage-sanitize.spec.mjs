@@ -1,4 +1,7 @@
-import { test, expect } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import { createItemViaUI } from "../../../tools/playwright/ui/items.mjs";
+import { uniqueName } from "../../../tools/playwright/ui/names.mjs";
 
 /*
  * The `dmg`/`ab`/`cd` markers are built from an item's own crit / ablation settings, and `red` conflicts
@@ -8,43 +11,45 @@ import { test, expect } from "../fixtures.mjs";
  * update through the real `preUpdateItem` path and read the stored value back.
  */
 
-// Create a world item of `type`, update `field` to `input`, return the stored value, then delete.
+// Create through the directory UI, then update/read the field under test.
 async function updateField(page, type, field, input) {
+  const id = await createItemViaUI(page, {
+    type,
+    name: uniqueName(`sanitest-${type}`),
+  });
   return page.evaluate(
-    async ({ type, field, input }) => {
-      const item = await Item.create({ name: `sanitest-${type}`, type });
-      try {
-        await item.update({ [field]: input });
-        return foundry.utils.getProperty(item, field);
-      } finally {
-        await item.delete();
-      }
+    async ({ id, field, input }) => {
+      const item = game.items.get(id);
+      await item.update({ [field]: input });
+      return foundry.utils.getProperty(item, field);
     },
-    { type, field, input },
+    { id, field, input },
   );
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test("strips dmg/ab/cd/red from the Damage field of every attackable item type, keeping other modifiers", async ({
-  game,
+  page: game,
 }) => {
-  const results = await game.evaluate(async () => {
-    const types = Object.keys(CONFIG.Item.dataModels).filter((t) =>
+  const types = await game.evaluate(() =>
+    Object.keys(CONFIG.Item.dataModels).filter((t) =>
       (CONFIG.Item.dataModels[t].mixins ?? []).includes("attackable"),
+    ),
+  );
+  const stored = [];
+  for (const type of types) {
+    const damage = await updateField(
+      game,
+      type,
+      "system.damage",
+      "3d6kh2dmg5ab0cd10red",
     );
-    // Distinct items → run the create/update/delete per type in parallel (no await-in-loop).
-    const stored = await Promise.all(
-      types.map(async (type) => {
-        const item = await Item.create({ name: `sanitest-${type}`, type });
-        try {
-          await item.update({ "system.damage": "3d6kh2dmg5ab0cd10red" });
-          return { type, damage: item.system.damage };
-        } finally {
-          await item.delete();
-        }
-      }),
-    );
-    return { types, stored };
-  });
+    stored.push({ type, damage });
+  }
+  const results = { types, stored };
 
   // Guard against the predicate silently matching nothing (which would make the test vacuously pass).
   expect(results.types.length).toBeGreaterThan(0);
@@ -53,7 +58,9 @@ test("strips dmg/ab/cd/red from the Damage field of every attackable item type, 
   }
 });
 
-test("strips the markers from an ammo damage override", async ({ game }) => {
+test("strips the markers from an ammo damage override", async ({
+  page: game,
+}) => {
   expect(
     await updateField(
       game,
@@ -65,18 +72,19 @@ test("strips the markers from an ammo damage override", async ({ game }) => {
 });
 
 test("still fires updateItem when the cleaned value equals the stored one (so the sheet re-renders)", async ({
-  game,
+  page: game,
 }) => {
   // Appending a marker to an already-clean formula cleans back to the stored value, so the update
   // would be a no-op that Foundry skips — leaving the raw text in the sheet field until it is
   // reopened. The hook forces the write (`options.diff = false`) so updateItem fires and the sheet
   // re-renders with the sanitised value. Guard that the write is still forced.
-  const result = await game.evaluate(async () => {
-    const item = await Item.create({
-      name: "sanitest-noop",
-      type: "weapon",
-      system: { damage: "3d6kh2" },
-    });
+  const id = await createItemViaUI(game, {
+    type: "weapon",
+    name: uniqueName("sanitest-noop"),
+  });
+  const result = await game.evaluate(async (id) => {
+    const item = game.items.get(id);
+    await item.update({ "system.damage": "3d6kh2" });
     let fired = false;
     const hookId = Hooks.on("updateItem", (doc) => {
       if (doc.id === item.id) fired = true;
@@ -86,14 +94,15 @@ test("still fires updateItem when the cleaned value equals the stored one (so th
       return { fired, stored: item.system.damage };
     } finally {
       Hooks.off("updateItem", hookId);
-      await item.delete();
     }
-  });
+  }, id);
   expect(result.stored).toBe("3d6kh2");
   expect(result.fired).toBe(true);
 });
 
-test("leaves a marker-free damage formula untouched", async ({ game }) => {
+test("leaves a marker-free damage formula untouched", async ({
+  page: game,
+}) => {
   expect(await updateField(game, "weapon", "system.damage", "3d6kh2")).toBe(
     "3d6kh2",
   );

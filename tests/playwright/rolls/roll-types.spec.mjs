@@ -1,4 +1,5 @@
-import { test, expect } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 
 /*
  * Smoke coverage for every CPRRoll subclass after the migration onto foundry.dice.Roll: each is built
@@ -37,8 +38,12 @@ async function rollType(page, factory, args, dieFaces, faces) {
   );
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("roll types — factory + evaluate smoke", () => {
-  test("stat roll computes STAT + die (+ red crit)", async ({ game }) => {
+  test("stat roll computes STAT + die (+ red crit)", async ({ page: game }) => {
     // d10 rolls 10 (crit) → +bonus 7; total = 17 + INT 8 = 25.
     const r = await rollType(game, "CPRStatRoll", ["INT", 8], 10, [10, 7]);
     expect(r).toMatchObject({ cls: "CPRStatRoll", isRoll: true, finite: true });
@@ -46,7 +51,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(25);
   });
 
-  test("skill roll adds STAT + Skill", async ({ game }) => {
+  test("skill roll adds STAT + Skill", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRSkillRoll",
@@ -58,7 +63,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(12); // 3 + 5 + 4
   });
 
-  test("attack roll evaluates", async ({ game }) => {
+  test("attack roll evaluates", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRAttackRoll",
@@ -70,7 +75,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(13); // 4 + 5 + 4
   });
 
-  test("aimed attack includes the -8 penalty", async ({ game }) => {
+  test("aimed attack includes the -8 penalty", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRAimedAttackRoll",
@@ -82,7 +87,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(5); // 4 + 5 + 4 - 8
   });
 
-  test("role roll adds Role + Skill + STAT", async ({ game }) => {
+  test("role roll adds Role + Skill + STAT", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRRoleRoll",
@@ -94,7 +99,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(15); // 2 + 4 + 4 + 5
   });
 
-  test("interface roll adds Role + STAT", async ({ game }) => {
+  test("interface roll adds Role + STAT", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRInterfaceRoll",
@@ -106,13 +111,15 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(12); // 2 + 4 + 6
   });
 
-  test("facedown roll adds COOL + Rep", async ({ game }) => {
+  test("facedown roll adds COOL + Rep", async ({ page: game }) => {
     const r = await rollType(game, "CPRFacedownRoll", ["COOL", 5, 3], 10, [2]);
     expect(r).toMatchObject({ cls: "CPRFacedownRoll", finite: true });
     expect(r.resultTotal).toBe(10); // 2 + 5 + 3
   });
 
-  test("death save: no crit, no luck, penalties applied", async ({ game }) => {
+  test("death save: no crit, no luck, penalties applied", async ({
+    page: game,
+  }) => {
     // A natural 10 must NOT explode for death saves (no red).
     const r = await rollType(game, "CPRDeathSaveRoll", [2, 1, 6], 10, [10]);
     expect(r).toMatchObject({ cls: "CPRDeathSaveRoll", finite: true });
@@ -120,7 +127,9 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(13); // 10 + base 1 + penalty 2
   });
 
-  test("damage roll: Nd6, dmg marker, crit on 2+ sixes", async ({ game }) => {
+  test("damage roll: Nd6, dmg marker, crit on 2+ sixes", async ({
+    page: game,
+  }) => {
     const r = await rollType(
       game,
       "CPRDamageRoll",
@@ -133,7 +142,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(12);
   });
 
-  test("humanity loss: Nd6, no crit", async ({ game }) => {
+  test("humanity loss: Nd6, no crit", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRHumanityLossRoll",
@@ -145,7 +154,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(7);
   });
 
-  test("initiative roll adds the stat", async ({ game }) => {
+  test("initiative roll adds the stat", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRInitiative",
@@ -157,13 +166,13 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(9); // 4 + 5
   });
 
-  test("program stat roll (net combat) evaluates", async ({ game }) => {
+  test("program stat roll (net combat) evaluates", async ({ page: game }) => {
     const r = await rollType(game, "CPRProgramStatRoll", ["INT", 6], 10, [3]);
     expect(r).toMatchObject({ cls: "CPRProgramStatRoll", finite: true });
     expect(r.resultTotal).toBe(9); // 3 + 6
   });
 
-  test("autofire roll evaluates", async ({ game }) => {
+  test("autofire roll evaluates", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRAutofireRoll",
@@ -175,7 +184,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(13); // 4 + 5 + 4
   });
 
-  test("suppressive fire roll evaluates", async ({ game }) => {
+  test("suppressive fire roll evaluates", async ({ page: game }) => {
     const r = await rollType(
       game,
       "CPRSuppressiveFireRoll",
@@ -188,7 +197,7 @@ test.describe("roll types — factory + evaluate smoke", () => {
   });
 
   test("base roll (NET-arch generation): plain dice, no crit", async ({
-    game,
+    page: game,
   }) => {
     const r = await rollType(game, "CPRRoll", ["Floors", "3d6"], 6, [2, 3, 4]);
     expect(r).toMatchObject({ cls: "CPRRoll", finite: true });
@@ -196,7 +205,9 @@ test.describe("roll types — factory + evaluate smoke", () => {
     expect(r.resultTotal).toBe(9);
   });
 
-  test("table roll wraps a pre-rolled RollTable result", async ({ game }) => {
+  test("table roll wraps a pre-rolled RollTable result", async ({
+    page: game,
+  }) => {
     const out = await game.evaluate(async () => {
       const R = await import(
         `/systems/${game.system.id}/modules/rolls/cpr-rolls.js`

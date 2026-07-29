@@ -1,20 +1,20 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   openSidebarTab,
   createDocumentViaUI,
   closeDocSheet,
   expectSheetRendered,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * UI-driven tests for the document browser (CPRDocumentBrowser) as the GM — the
- * browse-and-filter half of the feature. Each test runs against a fresh, reset
- * world (the `game` fixture, which authenticates as the GM) and drives the
- * document browser the way a user would: launching it from the Item directory, typing in
- * the search, toggling a type box, and collapsing a result group. Assertions
- * read game/DOM state but never perform the action under test.
+ * browse-and-filter half of the feature. Each test explicitly navigates to the
+ * ready world as the GM, then drives the document browser the way a user would:
+ * launching it from the Item directory, typing in the search, toggling a type
+ * box, and collapsing a result group. Assertions read game/DOM state but never
+ * perform the action under test.
  *
  * The player-facing shop/cart half lives in document-browser-shop.spec.mjs (it needs a
  * non-GM user with an assigned Character, which this GM-only harness lacks).
@@ -44,9 +44,13 @@ async function openItemBrowser(page) {
   return documentBrowser;
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("Document browser", () => {
   test("launches from the Item directory and renders its filter UI", async ({
-    game,
+    page: game,
   }) => {
     const documentBrowser = await openItemBrowser(game);
     await expect(
@@ -62,7 +66,7 @@ test.describe("Document browser", () => {
   });
 
   test("name search narrows to a matching item and opens it on click", async ({
-    game,
+    page: game,
   }) => {
     const name = uniqueName("gear");
     const itemId = await createDocumentViaUI(game, {
@@ -85,7 +89,7 @@ test.describe("Document browser", () => {
   });
 
   test("a type box set to 'only' scopes results to that type", async ({
-    game,
+    page: game,
   }) => {
     const token = uniqueName("scope");
     const weaponId = await createDocumentViaUI(game, {
@@ -121,7 +125,7 @@ test.describe("Document browser", () => {
   });
 
   test("clearing a promoted sub-filter releases the auto-'only' type box", async ({
-    game,
+    page: game,
   }) => {
     const token = uniqueName("promote");
     const weaponId = await createDocumentViaUI(game, {
@@ -168,7 +172,7 @@ test.describe("Document browser", () => {
   });
 
   test("a manually 'only' type box survives toggling one of its sub-filters", async ({
-    game,
+    page: game,
   }) => {
     const token = uniqueName("manual");
     const weaponId = await createDocumentViaUI(game, {
@@ -208,7 +212,9 @@ test.describe("Document browser", () => {
     await expect(typeTristate).toHaveAttribute("data-state", "only");
   });
 
-  test("the price filter excludes items above the max", async ({ game }) => {
+  test("the price filter excludes items above the max", async ({
+    page: game,
+  }) => {
     const token = uniqueName("price");
     const cheapId = await createDocumentViaUI(game, {
       documentTab: "items",
@@ -248,7 +254,7 @@ test.describe("Document browser", () => {
   });
 
   test("a type box tri-state is keyboard operable (focus + Enter cycles it)", async ({
-    game,
+    page: game,
   }) => {
     const token = uniqueName("keys");
     const weaponId = await createDocumentViaUI(game, {
@@ -286,7 +292,9 @@ test.describe("Document browser", () => {
     );
   });
 
-  test("a result row opens its sheet via the keyboard", async ({ game }) => {
+  test("a result row opens its sheet via the keyboard", async ({
+    page: game,
+  }) => {
     const name = uniqueName("kbopen");
     const itemId = await createDocumentViaUI(game, {
       documentTab: "items",
@@ -310,7 +318,7 @@ test.describe("Document browser", () => {
   });
 
   test("rows are draggable for the GM and carry an item drag payload", async ({
-    game,
+    page: game,
   }) => {
     const name = uniqueName("gmdrag");
     const itemId = await createDocumentViaUI(game, {
@@ -344,7 +352,7 @@ test.describe("Document browser", () => {
     expect(JSON.parse(payload)).toMatchObject({ type: "Item" });
   });
 
-  test("collapsing a result group hides its rows", async ({ game }) => {
+  test("collapsing a result group hides its rows", async ({ page: game }) => {
     const name = uniqueName("collapse");
     const itemId = await createDocumentViaUI(game, {
       documentTab: "items",

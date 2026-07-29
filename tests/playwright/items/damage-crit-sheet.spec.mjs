@@ -1,11 +1,11 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * The configurable damage-critical fields must be editable on the item sheets, not just present in the
@@ -13,7 +13,13 @@ import {
  * the overrides.crit override toggle (with the value fields appearing once it is enabled).
  */
 
-test("weapon sheet exposes the damageCrit config fields", async ({ game }) => {
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
+test("weapon sheet exposes the damageCrit config fields", async ({
+  page: game,
+}) => {
   const id = await createDocumentViaUI(game, {
     documentTab: "items",
     type: "weapon",
@@ -30,7 +36,7 @@ test("weapon sheet exposes the damageCrit config fields", async ({ game }) => {
   await closeDocSheet(game, { collection: "items", id });
 });
 
-test("ammo sheet exposes the crit override control", async ({ game }) => {
+test("ammo sheet exposes the crit override control", async ({ page: game }) => {
   const id = await createDocumentViaUI(game, {
     documentTab: "items",
     type: "ammo",

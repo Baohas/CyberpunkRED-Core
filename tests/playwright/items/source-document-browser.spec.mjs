@@ -1,4 +1,10 @@
-import { test, expect, openSidebarTab, uniqueName } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
+import {
+  createItemViaUI,
+  openSidebarTab,
+  uniqueName,
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * UI-driven tests for the document browser's source handling — the citation line
@@ -8,12 +14,12 @@ import { test, expect, openSidebarTab, uniqueName } from "../fixtures.mjs";
  * hover tooltip, while the book filter treats an item as belonging to a book if
  * ANY of its sources cites it (not just the first).
  *
- * Each test runs against a fresh, reset world (the `game` fixture, GM-authed) and
- * drives the document browser the way a user would. Items are created programmatically
- * with unique names and known `sources` arrays so a name search isolates them
- * from the (many) compendium entries the document browser also indexes, and the assertions
- * only read visible result rows — never the action under test. Cleanup deletes
- * every world item after each test.
+ * Each test explicitly navigates to the ready world as the GM and drives the
+ * document browser the way a user would. Items are created with unique names
+ * and known `sources` arrays so a name search isolates them from the (many)
+ * compendium entries the document browser also indexes, and the assertions only
+ * read visible result rows — never the action under test. Cleanup deletes every
+ * world item after each test.
  */
 
 // Launch the document browser in Item mode and wait for results to start rendering.
@@ -35,18 +41,14 @@ async function openItemBrowser(page) {
 }
 
 // Create a world gear item with a known name and `sources` array; return its id.
-function createGear(page, name, sources) {
-  return page.evaluate(
-    async ({ name, sources }) => {
-      const doc = await Item.create({
-        name,
-        type: "gear",
-        system: { sources },
-      });
-      return doc.id;
-    },
-    { name, sources },
+async function createGear(page, name, sources) {
+  const id = await createItemViaUI(page, { type: "gear", name });
+  await page.evaluate(
+    ({ id, sources }) =>
+      game.items.get(id).update({ "system.sources": sources }),
+    { id, sources },
   );
+  return id;
 }
 
 // The result row whose name matches exactly one of our unique item names.
@@ -94,18 +96,13 @@ async function cycleTo(locator, target) {
   await expect(locator).toHaveAttribute("data-state", target);
 }
 
-test.describe("Document browser — sources", () => {
-  test.afterEach(async ({ game }) => {
-    await game.evaluate(() => {
-      if (game.items.size) {
-        return Item.deleteDocuments(game.items.map((i) => i.id));
-      }
-      return undefined;
-    });
-  });
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
 
+test.describe("Document browser — sources", () => {
   test("a row's citation shows the first source inline and the rest in a tooltip, and empty sources render blank", async ({
-    game,
+    page: game,
   }) => {
     const token = uniqueName("cite");
     const nameB = `${token} bravo`;
@@ -144,7 +141,7 @@ test.describe("Document browser — sources", () => {
   });
 
   test("book filter 'only' matches items where the book is a SECONDARY source", async ({
-    game,
+    page: game,
   }) => {
     const token = uniqueName("only");
     const nameA = `${token} alpha`;
@@ -173,7 +170,7 @@ test.describe("Document browser — sources", () => {
   });
 
   test("book filter 'exclude' hides every item that cites the book anywhere", async ({
-    game,
+    page: game,
   }) => {
     const token = uniqueName("excl");
     const nameA = `${token} alpha`;
@@ -201,7 +198,7 @@ test.describe("Document browser — sources", () => {
   });
 
   test("two books set to 'only' show items having EITHER (OR semantics)", async ({
-    game,
+    page: game,
   }) => {
     const token = uniqueName("or");
     const nameA = `${token} alpha`;
@@ -230,7 +227,7 @@ test.describe("Document browser — sources", () => {
   });
 
   test("Refresh Index re-indexes edited items: a corrected field updates the row and filter without a reopen", async ({
-    game,
+    page: game,
   }) => {
     const name = uniqueName("misconfigured");
     // The user's scenario: an item created with the wrong source book, spotted

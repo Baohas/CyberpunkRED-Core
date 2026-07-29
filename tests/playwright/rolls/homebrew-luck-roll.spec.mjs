@@ -1,11 +1,11 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * Homebrew (JonJon's) Luck Roll — issue #695.
@@ -67,14 +67,18 @@ async function rollLuck(page, sheetId) {
   });
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("Homebrew Luck Roll", () => {
-  test.afterEach(async ({ game }) => {
+  test.afterEach(async ({ page: game }) => {
     // Restore defaults so the world setting never leaks between tests.
     await setLuckRollSetting(game, { enabled: false, variant: "max" });
   });
 
   test("clicking LUCK rolls a roll-under Luck Roll when enabled", async ({
-    game,
+    page: game,
   }) => {
     await setLuckRollSetting(game, { enabled: true, variant: "max" });
 
@@ -108,7 +112,7 @@ test.describe("Homebrew Luck Roll", () => {
   });
 
   test("the variant setting selects which LUCK value to roll under", async ({
-    game,
+    page: game,
   }) => {
     await setLuckRollSetting(game, { enabled: true, variant: "max" });
 
@@ -161,7 +165,7 @@ test.describe("Homebrew Luck Roll", () => {
   });
 
   test("clicking LUCK rolls a normal stat roll when disabled", async ({
-    game,
+    page: game,
   }) => {
     await setLuckRollSetting(game, { enabled: false, variant: "max" });
 

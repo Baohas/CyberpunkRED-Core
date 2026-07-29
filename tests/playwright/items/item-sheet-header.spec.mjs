@@ -1,12 +1,13 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   createDocumentViaUI,
+  createItemViaUI,
   expectSheetRendered,
   closeDocSheet,
   dragItemToActorSheet,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * UI-driven tests for the read-only, chip-based item-sheet HEADER (issue #1286).
@@ -37,13 +38,10 @@ import {
 // its id, the rendered sheet's DOM element id, and the item's name.
 async function createItemSheet(game, { type, system = {}, prefix }) {
   const name = uniqueName(prefix ?? type);
-  const id = await game.evaluate(
-    async ({ name, type, system }) => {
-      const item = await Item.create({ name, type, system });
-      await item.sheet.render(true);
-      return item.id;
-    },
-    { name, type, system },
+  const id = await createItemViaUI(game, { type, name });
+  await game.evaluate(
+    ({ id, system }) => game.items.get(id).update({ system }),
+    { id, system },
   );
   const sheetId = await expectSheetRendered(game, { collection: "items", id });
   return { id, sheetId, name };
@@ -177,20 +175,15 @@ async function renderEmbeddedItemSheet(game, { actorId, itemId }) {
   return sheetId;
 }
 
-test.describe("Item sheet header (read-only chip layout)", () => {
-  test.afterEach(async ({ game }) => {
-    await game.evaluate(() => {
-      if (game.items.size) {
-        return Item.deleteDocuments(game.items.map((i) => i.id));
-      }
-      return undefined;
-    });
-  });
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
 
+test.describe("Item sheet header (read-only chip layout)", () => {
   // ---- Breadcrumb ---------------------------------------------------------
 
   test("weapon breadcrumb shows its weapon type and an Excellent quality segment", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId, name } = await createItemSheet(game, {
       type: "weapon",
@@ -212,7 +205,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   });
 
   test("a Standard-quality weapon breadcrumb omits the quality segment", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "weapon",
@@ -232,7 +225,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   });
 
   test("armor covering Head and Body joins both locations with ' & '", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "armor",
@@ -249,7 +242,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   });
 
   test("a Black ICE program breadcrumb shows the class and Black ICE type", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "program",
@@ -265,7 +258,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   });
 
   test("a role breadcrumb shows only its type, with no subtype segment", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "role",
@@ -282,7 +275,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   // ---- Chips --------------------------------------------------------------
 
   test("weapon chips show headline stats and exclude a non-headline stat", async ({
-    game,
+    page: game,
   }) => {
     const SENTINEL = "ZZZSENTINELDV";
     const { id, sheetId } = await createItemSheet(game, {
@@ -310,7 +303,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   });
 
   test("the Autofire chip appears only when autofire is set", async ({
-    game,
+    page: game,
   }) => {
     // No autofire -> no Autofire chip.
     const off = await createItemSheet(game, {
@@ -344,7 +337,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   });
 
   test("the Humanity Loss chip appears only when humanity loss is nonzero", async ({
-    game,
+    page: game,
   }) => {
     // humanityLoss.static 0 -> no HL chip.
     const zero = await createItemSheet(game, {
@@ -370,7 +363,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   });
 
   test("a flag chip (Concealable) appears only when the flag is true", async ({
-    game,
+    page: game,
   }) => {
     // Concealable true -> Concealable chip.
     const yes = await createItemSheet(game, {
@@ -398,7 +391,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   // ---- Promotions (brand / price / sources out of the chip row) -----------
 
   test("brand, price, and sources are promoted out of the chip row", async ({
-    game,
+    page: game,
   }) => {
     const BRAND = "ZZZBrandCo";
     const BOOK = "PromoBook";
@@ -439,7 +432,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   // ---- Sources ------------------------------------------------------------
 
   test("multiple sources show only the first, the rest in a hover tooltip", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "gear",
@@ -470,7 +463,9 @@ test.describe("Item sheet header (read-only chip layout)", () => {
     await closeDocSheet(game, { collection: "items", id });
   });
 
-  test("a single source shows inline with no tooltip", async ({ game }) => {
+  test("a single source shows inline with no tooltip", async ({
+    page: game,
+  }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "gear",
       prefix: "gear-onesrc",
@@ -494,7 +489,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   // ---- Sidebar removed / header read-only ---------------------------------
 
   test("the description tab has no stat sidebar and the header has no editable fields", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "weapon",
@@ -525,7 +520,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   // ---- Layout robustness (the misalignment fix) ---------------------------
 
   test("header renders intact with a long multi-source citation and many chips", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemSheet(game, {
       type: "weapon",
@@ -579,7 +574,7 @@ test.describe("Item sheet header (read-only chip layout)", () => {
   // ---- Upgrade adjustment -------------------------------------------------
 
   test("an owned weapon with an installed upgrade shows the adjusted ROF chip, while a world copy shows the base ROF", async ({
-    game,
+    page: game,
   }) => {
     // The header applies upgrade-adjusted stat values only for ACTOR-OWNED,
     // upgraded items; world/compendium copies show base values. This drives the

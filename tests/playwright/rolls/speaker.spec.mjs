@@ -1,11 +1,11 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * Regression coverage for chat-message speaker data on rolls (issue #677).
@@ -23,9 +23,13 @@ import {
  * the acting actor's id and name, guarding against the speaker block being
  * dropped or reverting to storing the Actor object.
  */
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("chat speaker on rolls", () => {
   test("a stat roll posts a message whose speaker resolves the actor", async ({
-    game,
+    page: game,
   }) => {
     const name = uniqueName("char");
     const actorId = await createDocumentViaUI(game, {

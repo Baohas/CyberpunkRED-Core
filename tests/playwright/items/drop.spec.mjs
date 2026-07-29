@@ -1,6 +1,6 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   ITEM_TYPES,
   DROP_TAB_BY_TYPE,
   createDocumentViaUI,
@@ -9,7 +9,7 @@ import {
   closeDocSheet,
   dragItemToActorSheet,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * Drag an item of each type from the Items directory onto a character sheet,
@@ -23,10 +23,14 @@ import {
  * Each test runs against a fresh, reset world (the `game` fixture), so a break
  * is attributable to the one item type under test.
  */
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("Item drop onto character sheet", () => {
   for (const type of ITEM_TYPES) {
     test(`drops a ${type} item onto a character and the sheet still renders`, async ({
-      game,
+      page: game,
     }) => {
       // Character to receive the drop.
       const actorId = await createDocumentViaUI(game, {

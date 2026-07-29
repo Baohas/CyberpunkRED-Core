@@ -1,10 +1,11 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
+  createItemViaUI,
   expectSheetRendered,
   closeDocSheet,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * The item sheet's Settings tab presents an editable, repeatable list of
@@ -32,17 +33,11 @@ const ADD_SOURCE = 'a.source-action[data-action-type="create"]';
 // return its id and rendered-sheet element id.
 async function createItemWithSources(game, sources, prefix) {
   const name = uniqueName(prefix);
-  const id = await game.evaluate(
-    async ({ name, sources }) => {
-      const item = await Item.create({
-        name,
-        type: "gear",
-        system: { sources },
-      });
-      await item.sheet.render(true);
-      return item.id;
-    },
-    { name, sources },
+  const id = await createItemViaUI(game, { type: "gear", name });
+  await game.evaluate(
+    ({ id, sources }) =>
+      game.items.get(id).update({ "system.sources": sources }),
+    { id, sources },
   );
   const sheetId = await expectSheetRendered(game, { collection: "items", id });
   return { id, sheetId };
@@ -101,9 +96,13 @@ async function setSourceField(page, { sheetId, itemId, name, path, value }) {
   );
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("Item sheet source list", () => {
   test("Add source appends a blank row that the row inputs then populate", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemWithSources(
       game,
@@ -143,11 +142,10 @@ test.describe("Item sheet source list", () => {
     ).toHaveCount(1);
 
     await closeDocSheet(game, { collection: "items", id });
-    await game.evaluate((id) => game.items.get(id).delete(), id);
   });
 
   test("editing an existing row's page input updates that source", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemWithSources(
       game,
@@ -172,11 +170,10 @@ test.describe("Item sheet source list", () => {
     });
 
     await closeDocSheet(game, { collection: "items", id });
-    await game.evaluate((id) => game.items.get(id).delete(), id);
   });
 
   test("the per-row delete control removes that source from the array", async ({
-    game,
+    page: game,
   }) => {
     const { id, sheetId } = await createItemWithSources(
       game,
@@ -210,11 +207,10 @@ test.describe("Item sheet source list", () => {
     ).toHaveCount(1);
 
     await closeDocSheet(game, { collection: "items", id });
-    await game.evaluate((id) => game.items.get(id).delete(), id);
   });
 
   test("the read-only citation lists only book-having sources with no trailing comma", async ({
-    game,
+    page: game,
   }) => {
     // A filled source FOLLOWED by a blank-book source: the blank must not leak a
     // stray/trailing comma into the read-only `.item-header-sources` citation.
@@ -240,6 +236,5 @@ test.describe("Item sheet source list", () => {
     expect(text).not.toMatch(/,\s*,/);
 
     await closeDocSheet(game, { collection: "items", id });
-    await game.evaluate((id) => game.items.get(id).delete(), id);
   });
 });

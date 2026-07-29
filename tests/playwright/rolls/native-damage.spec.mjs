@@ -1,4 +1,5 @@
-import { test, expect } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 
 /*
  * The `dmg` die modifier drives the apply-damage affordance on a bare native roll (e.g. `/r 2d6dmg`) via
@@ -32,9 +33,13 @@ async function postRoll(page, formula, dieFaces, faces) {
   );
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("native dmg roll — apply-damage injection", () => {
   test("2d6dmg crit posts an apply-damage button carrying the +5 bonus", async ({
-    game,
+    page: game,
   }) => {
     const id = await postRoll(game, "2d6dmg", 6, [6, 6]);
     const button = game.locator(
@@ -49,7 +54,7 @@ test.describe("native dmg roll — apply-damage injection", () => {
   });
 
   test("`ab`/`cd` override the RAW ablation and crit bonus (2d6dmgab2cd10)", async ({
-    game,
+    page: game,
   }) => {
     const id = await postRoll(game, "2d6dmgab2cd10", 6, [6, 6]);
     const button = game.locator(
@@ -60,7 +65,7 @@ test.describe("native dmg roll — apply-damage injection", () => {
     await expect(button).toHaveAttribute("data-bonus-damage", "10");
   });
 
-  test("`ab0` applies no ablation", async ({ game }) => {
+  test("`ab0` applies no ablation", async ({ page: game }) => {
     const id = await postRoll(game, "2d6dmgab0", 6, [6, 6]);
     const button = game.locator(
       `[data-message-id="${id}"] [data-action="applyDamage"]`,
@@ -70,7 +75,7 @@ test.describe("native dmg roll — apply-damage injection", () => {
   });
 
   test("2d6dmg without a crit posts the button with no bonus", async ({
-    game,
+    page: game,
   }) => {
     const id = await postRoll(game, "2d6dmg", 6, [6, 3]);
     const button = game.locator(
@@ -81,7 +86,9 @@ test.describe("native dmg roll — apply-damage injection", () => {
     await expect(button).toHaveAttribute("data-bonus-damage", "0");
   });
 
-  test("a plain 2d6 roll gets no apply-damage button", async ({ game }) => {
+  test("a plain 2d6 roll gets no apply-damage button", async ({
+    page: game,
+  }) => {
     const id = await postRoll(game, "2d6", 6, [6, 6]);
     await expect(
       game.locator(`[data-message-id="${id}"] [data-action="applyDamage"]`),
@@ -89,7 +96,7 @@ test.describe("native dmg roll — apply-damage injection", () => {
   });
 
   test("a message that already has an apply-damage button is not double-injected", async ({
-    game,
+    page: game,
   }) => {
     // Simulate a bespoke weapon/program damage card: content already carries an apply-damage button, and
     // the attached roll carries the `dmg` marker. The hook must leave it alone (exactly one button).

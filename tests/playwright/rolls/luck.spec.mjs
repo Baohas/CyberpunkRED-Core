@@ -1,11 +1,11 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * Regression test for the LUCK over-spend guard (issue #1256).
@@ -23,9 +23,13 @@ import {
  * observed. The warning is asserted from the console (DisplayMessage logs it),
  * since the toast notification is transient and races a DOM assertion.
  */
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("LUCK spend validation", () => {
   test("rejects spending more LUCK than available and keeps the roll dialog open", async ({
-    game,
+    page: game,
   }) => {
     const actorId = await createDocumentViaUI(game, {
       documentTab: "actors",

@@ -1,4 +1,5 @@
-import { test, expect } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 
 /*
  * The system registers three GM settings submenus (game.settings.registerMenu):
@@ -42,9 +43,15 @@ async function openSystemSettingsMenu(page, key) {
   await config.locator(`button[data-key="${key}"]`).click();
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("System settings menus (ApplicationV2)", () => {
   for (const { key, appId } of MENUS) {
-    test(`${appId} opens as an ApplicationV2 window`, async ({ game }) => {
+    test(`${appId} opens as an ApplicationV2 window`, async ({
+      page: game,
+    }) => {
       await openSystemSettingsMenu(game, key);
 
       const app = game.locator(`#${appId}`);

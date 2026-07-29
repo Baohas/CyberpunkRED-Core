@@ -1,10 +1,10 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   createDocumentViaUI,
   uniqueName,
   closeDocSheet,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * The Active Effect config sheet (CPRActiveEffectSheet) replaces Foundry's generic
@@ -13,8 +13,14 @@ import {
  * modifier and assert the CPR row renders — this guards against the sheet falling
  * back to Foundry's default changes editor.
  */
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("Active Effect sheet (ApplicationV2)", () => {
-  test("adds a CPR modifier via the custom Changes tab", async ({ game }) => {
+  test("adds a CPR modifier via the custom Changes tab", async ({
+    page: game,
+  }) => {
     const name = uniqueName("gear");
     const itemId = await createDocumentViaUI(game, {
       documentTab: "items",

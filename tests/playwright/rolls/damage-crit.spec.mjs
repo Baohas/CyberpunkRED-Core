@@ -1,4 +1,5 @@
-import { test, expect } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 
 /*
  * Configurable damage criticals: CPRDamageRoll builds the `dmg` marker modifier from a crit config
@@ -39,8 +40,12 @@ async function damageRoll(page, formula, critConfig, dieFaces, faces) {
   );
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test("dmgModifier builds the right modifier string from a config", async ({
-  game,
+  page: game,
 }) => {
   const r = await game.evaluate(async () => {
     const R = await import(
@@ -64,7 +69,7 @@ test("dmgModifier builds the right modifier string from a config", async ({
   });
 });
 
-test("RAW config: crit on two 6s, +5 bonus", async ({ game }) => {
+test("RAW config: crit on two 6s, +5 bonus", async ({ page: game }) => {
   const r = await damageRoll(game, "2d6", {}, 6, [6, 6]);
   expect(r.isCrit).toBe(true);
   expect(r.bonus).toBe(5);
@@ -72,7 +77,7 @@ test("RAW config: crit on two 6s, +5 bonus", async ({ game }) => {
 });
 
 test("Expansive-style threshold 5: two 5s crit; configurable bonus", async ({
-  game,
+  page: game,
 }) => {
   const r = await damageRoll(
     game,
@@ -88,7 +93,7 @@ test("Expansive-style threshold 5: two 5s crit; configurable bonus", async ({
 });
 
 test("higher count: 5+4 does not crit at threshold 5 count 3", async ({
-  game,
+  page: game,
 }) => {
   const r = await damageRoll(
     game,
@@ -102,7 +107,7 @@ test("higher count: 5+4 does not crit at threshold 5 count 3", async ({
 });
 
 test("no-crit weapon (count 0): never crits even on two 6s", async ({
-  game,
+  page: game,
 }) => {
   const r = await damageRoll(game, "2d6", { count: 0, bonus: 0 }, 6, [6, 6]);
   expect(r.formula).toContain("dmg0");

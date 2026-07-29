@@ -1,4 +1,5 @@
-import { test, expect } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 
 /*
  * The native-first roll engine hands the WHOLE formula to Foundry (dice, keep/drop and other pool
@@ -42,9 +43,13 @@ async function rollType(page, factory, args, dieFaces, faces) {
   );
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("native-first engine — arbitrary formulas", () => {
   test("a typed flat in a damage formula is counted exactly once", async ({
-    game,
+    page: game,
   }) => {
     // 2d6 forced to 6,6 = 12; the typed +3 must be added once → 15 (not 18 from a double-count).
     const r = await rollType(
@@ -59,7 +64,7 @@ test.describe("native-first engine — arbitrary formulas", () => {
   });
 
   test("keep-highest applies to a multi-die damage formula", async ({
-    game,
+    page: game,
   }) => {
     // 3d6kh2 forced to 6,6,1 → keeps the two 6s = 12, and both 6s make it a crit.
     const r = await rollType(
@@ -74,7 +79,7 @@ test.describe("native-first engine — arbitrary formulas", () => {
   });
 
   test("keep-highest drops the low die (no crit when only one max survives)", async ({
-    game,
+    page: game,
   }) => {
     // 3d6kh2 forced to 6,4,1 → keeps 6,4 = 10; only one 6 → not a crit.
     const r = await rollType(
@@ -89,7 +94,7 @@ test.describe("native-first engine — arbitrary formulas", () => {
   });
 
   test("red crit reads aggregate across all die terms, not just the first", async ({
-    game,
+    page: game,
   }) => {
     // First term has no red; the SECOND term explodes. Aggregated reads must still see the crit.
     // 1d10=3, then 1d10red=10 (explodes) + bonus 7 → total 20.
@@ -105,7 +110,7 @@ test.describe("native-first engine — arbitrary formulas", () => {
   });
 
   test("red implode on a non-first term is also aggregated", async ({
-    game,
+    page: game,
   }) => {
     // 1d10=5, then 1d10red=1 (implodes) + penalty 6 (counted -6) → total 5 + 1 - 6 = 0.
     const r = await rollType(
@@ -122,7 +127,7 @@ test.describe("native-first engine — arbitrary formulas", () => {
 
 test.describe("native-first engine — grouped pool damage is refused", () => {
   test("CPRDamageRoll.create throws on a `{…}kh` pool damage formula", async ({
-    game,
+    page: game,
   }) => {
     // A grouped pool has no single damage die for the item's crit/ablation/bonus markers to attach to,
     // so a Damage field must refuse it (warn + throw) rather than injecting the marker onto an arbitrary
@@ -142,7 +147,7 @@ test.describe("native-first engine — grouped pool damage is refused", () => {
   });
 
   test("a plain (non-pool) damage formula is still accepted", async ({
-    game,
+    page: game,
   }) => {
     // Guard the reject is scoped to pools only: an ordinary formula rolls as before.
     const r = await rollType(
@@ -158,7 +163,7 @@ test.describe("native-first engine — grouped pool damage is refused", () => {
 
 test.describe("native-first engine — red/dmg hard-reject", () => {
   test("CPRDamageRoll.create throws when the damage formula carries red", async ({
-    game,
+    page: game,
   }) => {
     const threw = await game.evaluate(async () => {
       const R = await import(
@@ -176,7 +181,7 @@ test.describe("native-first engine — red/dmg hard-reject", () => {
   });
 
   test("assertRedDmgExclusive throws for a combined formula and passes otherwise", async ({
-    game,
+    page: game,
   }) => {
     const out = await game.evaluate(async () => {
       const R = await import(

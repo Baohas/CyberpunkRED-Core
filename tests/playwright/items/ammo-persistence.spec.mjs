@@ -1,4 +1,10 @@
-import { test, expect, uniqueName, gotoGame } from "../fixtures.mjs";
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld as gotoGame } from "../../../tools/playwright/session/world.mjs";
+import { createActorViaUI } from "../../../tools/playwright/ui/actors.mjs";
+import { dragItemToActorSheet } from "../../../tools/playwright/ui/embedded-items.mjs";
+import { createItemViaUI } from "../../../tools/playwright/ui/items.mjs";
+import { uniqueName } from "../../../tools/playwright/ui/index.mjs";
+import { expectSheetRendered } from "../../../tools/playwright/ui/sheets.mjs";
 
 /*
  * Regression test: an owned ammo item's amount changes must persist to the DB.
@@ -31,25 +37,43 @@ function readAmount(game, actorId, ammoId) {
 }
 
 test.describe("Owned ammo amount persistence", () => {
+  test.beforeEach(async ({ page }) => {
+    await gotoGame(page);
+  });
+
   test("_ammoDecrement and _ammoIncrement persist system.amount across a reload", async ({
-    game,
+    page: game,
   }) => {
     const actorName = uniqueName("ammo-char");
     const ammoName = uniqueName("ammo");
 
     // 1. Create a character actor with an embedded ammo item at a known amount.
-    const { actorId, ammoId } = await game.evaluate(
-      async ({ actorName, ammoName }) => {
-        const actor = await Actor.create({
-          name: actorName,
-          type: "character",
-        });
-        const [ammo] = await actor.createEmbeddedDocuments("Item", [
-          { name: ammoName, type: "ammo", system: { amount: 100 } },
-        ]);
-        return { actorId: actor.id, ammoId: ammo.id };
+    const actorId = await createActorViaUI(game, { name: actorName });
+    const itemId = await createItemViaUI(game, {
+      type: "ammo",
+      name: ammoName,
+    });
+    const sheetId = await expectSheetRendered(game, {
+      collection: "actors",
+      id: actorId,
+    });
+    await dragItemToActorSheet(game, { itemId, sheetId, actorId });
+    const ammoId = await game.evaluate(
+      ({ actorId, ammoName }) => {
+        const ammo = game.actors
+          .get(actorId)
+          .items.find((item) => item.name === ammoName);
+        return ammo.id;
       },
-      { actorName, ammoName },
+      { actorId, ammoName },
+    );
+    await game.evaluate(
+      ({ actorId, ammoId }) =>
+        game.actors
+          .get(actorId)
+          .items.get(ammoId)
+          .update({ "system.amount": 100 }),
+      { actorId, ammoId },
     );
 
     // Sanity: the embedded ammo starts at 100.

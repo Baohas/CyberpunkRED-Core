@@ -1,12 +1,12 @@
+import { test, expect } from "@playwright/test";
+import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  test,
-  expect,
   createDocumentViaUI,
   expectSheetRendered,
   closeDocSheet,
   dragItemToActorSheet,
   uniqueName,
-} from "../fixtures.mjs";
+} from "../../../tools/playwright/ui/index.mjs";
 
 /*
  * Regression test for issue #1181: a secondary-weapon itemUpgrade's Attack
@@ -161,9 +161,13 @@ function expectModEntry(tooltip, source, value) {
   expect(entry, `mod entry for "${source}": ${entry}`).toContain(value);
 }
 
+test.beforeEach(async ({ page }) => {
+  await gotoReadyWorld(page);
+});
+
 test.describe("Secondary-weapon upgrade attack modifier (#1181)", () => {
   test("applies a secondary-weapon itemUpgrade's Attack Modifier to its attack roll", async ({
-    game,
+    page: game,
   }) => {
     // 1. Character to own the weapon + upgrade.
     const actorId = await createDocumentViaUI(game, {
@@ -301,7 +305,7 @@ test.describe("Secondary-weapon upgrade attack modifier (#1181)", () => {
   });
 
   test("still applies a plain weapon's own Attack Modifier to its attack roll", async ({
-    game,
+    page: game,
   }) => {
     // Regression guard for the non-upgrade path: a plain weapon's own attackmod
     // must continue to appear on its attack roll.
