@@ -1,5 +1,6 @@
 /* global User */
 import { SYSTEM_NAME } from "../config/harness-config.mjs";
+import { createActorViaUI } from "../ui/actors.mjs";
 
 /*
  * Drives Foundry's startup gates and gets us into a launched, ready world.
@@ -281,27 +282,34 @@ export async function joinAsGM(page, config) {
 }
 
 /*
- * Create (idempotently) a non-GM player User and a Character actor owned by and
- * assigned to that user, so the shop specs run with `game.user.character` set.
- * Runs in the GM page via the document API; returns the created ids.
+ * Create (idempotently) a non-GM player User, then create the assigned Character
+ * through the Actor directory UI. Ownership and assignment remain API wiring.
  */
 export async function createPlayerWithCharacter(
   page,
   { userName, characterName },
 ) {
-  return page.evaluate(
-    async ({ userName, characterName }) => {
+  const userId = await page.evaluate(async (userName) => {
+    const user =
+      game.users.getName(userName) ??
+      (await User.create({ name: userName, role: CONST.USER_ROLES.PLAYER }));
+    return user.id;
+  }, userName);
+  const actorId =
+    (await page.evaluate(
+      (characterName) => game.actors.getName(characterName)?.id,
+      characterName,
+    )) ??
+    (await createActorViaUI(page, { type: "character", name: characterName }));
+  await page.evaluate(
+    async ({ userId, actorId }) => {
       const owner = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
-      const user =
-        game.users.getName(userName) ??
-        (await User.create({ name: userName, role: CONST.USER_ROLES.PLAYER }));
-      const actor =
-        game.actors.getName(characterName) ??
-        (await Actor.create({ name: characterName, type: "character" }));
+      const user = game.users.get(userId);
+      const actor = game.actors.get(actorId);
       await actor.update({ [`ownership.${user.id}`]: owner });
       await user.update({ character: actor.id });
-      return { userId: user.id, actorId: actor.id };
     },
-    { userName, characterName },
+    { userId, actorId },
   );
+  return { userId, actorId };
 }
