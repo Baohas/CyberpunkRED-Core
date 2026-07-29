@@ -18,10 +18,18 @@ Node is pinned via `shell.nix` (Nix dev shell, auto-loaded by direnv). Common ta
 - `npm run prettier` / `npm run prettier:fix` — format check / fix. `npm run stylelint[:fix]` — CSS.
 - `npm run test:unit` — Vitest (fast, headless, no Foundry). `npm run test:unit:watch`, `test:coverage`.
   - Run one file: `npx vitest run tests/unit/config.test.js`.
-- `npm run test:browser` — Playwright end-to-end against a real Foundry (see below). Run a subset:
-  `npm run test:browser -- rolls/luck.spec.mjs` or `-- -g "LUCK"`.
-- `npm run browser:serve` — bring Foundry up with a fresh ephemeral world and leave it running, to drive
-  live via the Playwright MCP (URL is printed). Ctrl-C tears the world down.
+- `npm run test:playwright` — Playwright end-to-end against a real Foundry (see below). Run a subset:
+  `npm run test:playwright -- rolls/luck.spec.mjs` or `-- -g "LUCK"`.
+- `npm run playwright:serve` — build, bring Foundry up with a fresh ephemeral world in the configured live
+  data path, and leave it running for Playwright MCP/manual bughunt work. It prints both the base URL and
+  `/game`; Ctrl-C tears down only the recorded `cprc-playwright-*` world.
+- `npm run playwright:serve -- --world <id>` — build, launch an existing CPR world from the configured live
+  data path, reset all world user passwords to the harness password through Foundry v13's setup/admin world
+  context-menu user management UI before launch, log in as a full Gamemaster, unpause, and leave the world in
+  place on stop.
+- `npm run playwright:serve -- --archive <zip>` — build, import one CPR world archive into the configured live
+  data path (preserving archive id/folder/title and rejecting destination conflicts), then perform the same
+  setup/admin UI password reset and full-GM launch flow. Imported worlds are left in place on stop.
 - `make ci` / `make lint` / `make validate-packs` — run GitLab CI jobs locally via `gitlab-ci-local`
   (jobs are `include`d from the sibling `cicd` repo, not defined inline).
 
@@ -87,12 +95,15 @@ Two tiers, deliberately separated (see `vitest.config.js` header):
 - **Unit (`tests/unit/`, Vitest)** — only Foundry-free logic or units touching a thin, stubbed slice of the
   Foundry surface (stubs in `tests/unit/setup.js`). Fast, CLI. Config invariants, pure string/number helpers,
   formula sanitization.
-- **Browser (`tests/browser/`, Playwright)** — anything that genuinely needs a running Foundry: document/
-  sheet/data-model behaviour, real rolls, migrations, drag-drop. `npm run test:browser` builds the system,
+- **Browser (`tests/playwright/`, Playwright)** — anything that genuinely needs a running Foundry: document/
+  sheet/data-model behaviour, real rolls, migrations, drag-drop. `npm run test:playwright` builds the system,
   boots Foundry against an **isolated** project-local data dir (`.playwright/foundry-data`, never your real
-  `dataPath`), creates an ephemeral world, runs specs, and tears down. Harness lives in `tools/foundry-server/`.
+  `dataPath`), creates an ephemeral world, runs specs, and tears down. Harness lives in `tools/playwright/`.
+  Normal specs must create/delete Actors and Items through explicit UI helpers in `tools/playwright/ui/`, not
+  direct `Actor.create`, `Item.create`, embedded-document lifecycle, or bulk delete APIs. Direct API use remains
+  allowed for users, permissions, settings, modules, deterministic roll setup, and read-only assertions.
 
-For manual live checks, `npm run browser:serve` + the Playwright MCP.
+For manual live checks, `npm run playwright:serve` + the Playwright MCP.
 
 ## Environment notes
 

@@ -4,11 +4,14 @@
       "command": "npx",
       "args": [
         "@playwright/mcp@latest",
-        "--executable-path",
-        "${PLAYWRIGHT_MCP_EXECUTABLE_PATH}",
         "--config",
-        ".playwright/playwright-mcp.config.json"
-      ]
+        "tools/playwright/config/playwright-mcp.config.json"
+      ],
+      "env": {
+        "PLAYWRIGHT_MCP_EXECUTABLE_PATH": "${PLAYWRIGHT_MCP_EXECUTABLE_PATH}",
+        "PLAYWRIGHT_BROWSERS_PATH": "${PLAYWRIGHT_BROWSERS_PATH}",
+        "PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS": "${PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS}"
+      }
     }
   }
 }
