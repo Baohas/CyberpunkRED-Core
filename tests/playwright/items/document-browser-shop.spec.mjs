@@ -30,10 +30,30 @@ async function openItemBrowser(page) {
   return documentBrowser;
 }
 
+function parseDisplayedCurrency(valueText) {
+  const numericText = valueText.replace(/[^\d.,-]/g, "").trim();
+  const normalizedText =
+    numericText.includes(",") && numericText.includes(".")
+      ? numericText.lastIndexOf(",") > numericText.lastIndexOf(".")
+        ? numericText.replace(/\./g, "").replace(",", ".")
+        : numericText.replace(/,/g, "")
+      : numericText.includes(",")
+        ? /,\d{1,2}$/.test(numericText)
+          ? numericText.replace(",", ".")
+          : numericText.replace(/,/g, "")
+        : numericText;
+  const total = Number.parseFloat(normalizedText);
+  expect(
+    Number.isFinite(total),
+    `Expected cart total to be parseable from "${valueText}"`,
+  ).toBeTruthy();
+  return total;
+}
+
 // Add the first priced item to the cart, returning the cart total (so tests can
 // set wealth just above/below it). The price-min filter guarantees the bought
 // item costs something, so the total is > 0.
-async function addPricedItemToCart(page, documentBrowser) {
+async function addPricedItemToCart(documentBrowser) {
   const min = documentBrowser.locator(".cpr-browser-price-min");
   await min.fill("1");
   await min.blur();
@@ -44,11 +64,11 @@ async function addPricedItemToCart(page, documentBrowser) {
   await expect(documentBrowser.locator(".cpr-browser-cart-item")).toHaveCount(
     1,
   );
-  const total = await page.evaluate(() =>
-    foundry.applications.instances
-      .get("cpr-document-browser")
-      .cart.reduce((sum, line) => sum + line.price * line.quantity, 0),
+  const totalLabel = documentBrowser.locator(
+    ".cpr-browser-cart-total .cpr-browser-cart-eb",
   );
+  await expect(totalLabel).toHaveText(/\d/);
+  const total = parseDisplayedCurrency(await totalLabel.innerText());
   expect(total).toBeGreaterThan(0);
   return total;
 }
@@ -154,7 +174,7 @@ test.describe("Document browser — player shop", () => {
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     try {
       const documentBrowser = await openItemBrowser(player);
-      const total = await addPricedItemToCart(player, documentBrowser);
+      const total = await addPricedItemToCart(documentBrowser);
       // One eddie short of the total.
       await setWealth(player, total - 1);
 
@@ -182,7 +202,7 @@ test.describe("Document browser — player shop", () => {
     const { context, page: player } = await openPlayerPage(browser, baseURL);
     try {
       const documentBrowser = await openItemBrowser(player);
-      const total = await addPricedItemToCart(player, documentBrowser);
+      const total = await addPricedItemToCart(documentBrowser);
       // Comfortably affordable.
       await setWealth(player, total + 1000);
 
