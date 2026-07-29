@@ -271,6 +271,7 @@ export default class CPRActor extends Actor {
       } else {
         for (const upgradeId of installedUpgradeIds) {
           const sourceUpgrade =
+            game.items.get(upgradeId) ??
             (await SystemUtils.GetCompendiumDocById(upgradeId)) ??
             item.actor?.getOwnedItem(upgradeId);
           if (sourceUpgrade) sourceUpgrades.push(sourceUpgrade);
