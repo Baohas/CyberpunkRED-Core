@@ -196,7 +196,9 @@ export class PackUtils {
     };
     const mappings = config.packs.babeleMappings || {};
     const isTable = packData.type === "RollTable";
-    const files = fs.readdirSync(packDir);
+    // Normalize fragment iteration order so regenerated Babele JSON is stable
+    // across filesystems and operating systems.
+    const files = fs.readdirSync(packDir).sort();
 
     for (const file of files) {
       log.debug(`Processing pack fragment '${packData.name}/${file}'`);
