@@ -46,3 +46,6 @@ src/packs.*
 
 # LLMs
 .claude/worktrees
+.pi-subagents
+# Temp plan for mapping out needed tests
+.claude/skills/playwright-sheet-plan/*
