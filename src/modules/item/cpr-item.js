@@ -51,9 +51,13 @@ export default class CPRItem extends Item {
       item.system.hasInstalled &&
       !ContainerUtils.getInstallTreeFlag(item)
     ) {
-      const installedItemList = item.system.installedItems.list.map((id) =>
-        game.items.get(id),
-      );
+      const installedItemList = (
+        await Promise.all(
+          item.system.installedItems.list.map(async (id) =>
+            SystemUtils.GetCompendiumDocById(id),
+          ),
+        )
+      ).filter(Boolean);
       // Reset the new item's install list and used slots.
       await item.update({
         "system.installedItems": { list: [], usedSlots: 0 },
@@ -73,9 +77,13 @@ export default class CPRItem extends Item {
       let sourceUpgrades =
         installTree && installTree.length > 0
           ? installTree
-          : item.system.installedItems.list
-              .map((id) => game.items.get(id))
-              .filter(Boolean);
+          : (
+              await Promise.all(
+                item.system.installedItems.list.map(async (id) =>
+                  SystemUtils.GetCompendiumDocById(id),
+                ),
+              )
+            ).filter(Boolean);
       if (sourceUpgrades.length > 0) {
         const upgradeData = sourceUpgrades.map((u) =>
           foundry.utils.duplicate(u),
