@@ -1,11 +1,13 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  closeDocSheet,
   createDocumentViaUI,
   createItemViaUI,
-  expectSheetRendered,
-  closeDocSheet,
   dragItemToActorSheet,
+  expectSheetRendered,
+  installUpgrade,
+  setItemField,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -74,81 +76,6 @@ async function rofChipText(game, sheetId) {
 }
 
 // --- Owned-upgrade wiring helpers (mirroring weapon-upgrades.spec.mjs) --------
-
-// Ensure an item sheet's Settings tab is active, then return the sheet locator.
-async function openItemSettings(game, sheetId) {
-  const sheet = game.locator(`#${sheetId}`);
-  const tab = sheet.locator('a.tab-label[data-tab="item-settings"]');
-  await tab.click();
-  await expect(tab).toHaveClass(/active/);
-  return sheet;
-}
-
-// Fill a number/text field on an item sheet's Settings tab and wait for the
-// value to persist. The sheet submits on change, so blur (Tab) then confirm the
-// document actually updated (passive read, not the assertion under test).
-async function setItemField(game, { sheetId, itemId, name, path, value }) {
-  const sheet = await openItemSettings(game, sheetId);
-  const input = sheet.locator(`input[name="${name}"]`);
-  await expect(input).toBeVisible();
-  await input.fill(String(value));
-  await input.press("Tab");
-  await game.waitForFunction(
-    ({ itemId, path, value }) =>
-      foundry.utils.getProperty(game.items.get(itemId), path) === value,
-    { itemId, path, value },
-    { timeout: 10000 },
-  );
-}
-
-// Activate the character sheet's right-pane Gear tab and return its content
-// locator (row lookups scoped to the visible gear pane).
-async function activateGearTab(game, actorSheetId) {
-  const sheet = game.locator(`#${actorSheetId}`);
-  await sheet.locator('.navtabs-right a[data-tab="gear"]').click();
-  const content = sheet.locator(
-    '.right-content-section div.tab.gear-tab[data-tab="gear"]',
-  );
-  await expect(content).toHaveClass(/active/);
-  return content;
-}
-
-// Locate a gear-tab item row and hover it to reveal its action glyphs.
-async function hoverGearRow(gearContent, itemId) {
-  const row = gearContent.locator(`li.item[data-item-id="${itemId}"]`).first();
-  await expect(row).toBeVisible();
-  await row.hover();
-  return row;
-}
-
-// Install an embedded itemUpgrade into a target item via the Gear-tab install
-// glyph and the "Select Install Target" dialog, waiting for the install to land.
-async function installUpgrade(
-  game,
-  { actorSheetId, actorId, upgradeId, targetId },
-) {
-  const gear = await activateGearTab(game, actorSheetId);
-  const row = await hoverGearRow(gear, upgradeId);
-  await row.locator('a.item-action[data-action-type="install-item"]').click();
-
-  const dialog = game
-    .locator(".application")
-    .filter({ has: game.locator('input[name="selectedTarget"]') });
-  await expect(dialog).toBeVisible();
-  await dialog
-    .locator(`input[name="selectedTarget"][value="${targetId}"]`)
-    .check();
-  await dialog
-    .locator('button.cpr-dialog-button[data-action="confirm"]')
-    .click();
-
-  await game.waitForFunction(
-    ({ actorId, upgradeId }) =>
-      game.actors.get(actorId).items.get(upgradeId).system.isInstalled === true,
-    { actorId, upgradeId },
-    { timeout: 10000 },
-  );
-}
 
 // Render an embedded (actor-owned) item's own sheet and return its DOM element
 // id. Owned items aren't in game.items, so this can't go through

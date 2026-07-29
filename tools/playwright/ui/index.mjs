@@ -10,6 +10,17 @@ export {
   createActorViaUI,
   reopenActorSheetViaUI,
 } from "./actors.mjs";
-export { ITEM_TYPES, createItemViaUI } from "./items.mjs";
-export { DROP_TAB_BY_TYPE, dragItemToActorSheet } from "./embedded-items.mjs";
+export {
+  ITEM_TYPES,
+  createItemViaUI,
+  openItemSettings,
+  setItemField,
+} from "./items.mjs";
+export {
+  DROP_TAB_BY_TYPE,
+  activateGearTab,
+  dragItemToActorSheet,
+  hoverGearRow,
+  installUpgrade,
+} from "./embedded-items.mjs";
 export { captureSheet, closeDocSheet, expectSheetRendered } from "./sheets.mjs";

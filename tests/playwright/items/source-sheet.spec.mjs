@@ -1,9 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
+  closeDocSheet,
   createItemViaUI,
   expectSheetRendered,
-  closeDocSheet,
+  openItemSettings,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -52,17 +53,6 @@ function readSources(game, id) {
         .system.sources.map((s) => ({ book: s.book, page: s.page })),
     id,
   );
-}
-
-// Ensure the item sheet's Settings tab is active, then return the sheet locator.
-// The sheet re-renders (resetting to the Description tab) after every change, so
-// this is called again before each interaction.
-async function openItemSettings(page, sheetId) {
-  const sheet = page.locator(`#${sheetId}`);
-  const tab = sheet.locator('a.tab-label[data-tab="item-settings"]');
-  await tab.click();
-  await expect(tab).toHaveClass(/active/);
-  return sheet;
 }
 
 // Click the "Add source" control and wait for the new blank source to persist

@@ -71,3 +71,47 @@ export async function dragItemToActorSheet(page, { itemId, sheetId, actorId }) {
     throw new Error(`Item ${itemId} was not embedded on actor ${actorId}`);
   }
 }
+
+export async function activateGearTab(page, actorSheetId) {
+  const sheet = page.locator(`#${actorSheetId}`);
+  await sheet.locator('.navtabs-right a[data-tab="gear"]').click();
+  const content = sheet.locator(
+    '.right-content-section div.tab.gear-tab[data-tab="gear"]',
+  );
+  await expect(content).toHaveClass(/active/);
+  return content;
+}
+
+export async function hoverGearRow(gearContent, itemId) {
+  const row = gearContent.locator(`li.item[data-item-id="${itemId}"]`).first();
+  await expect(row).toBeVisible();
+  await row.hover();
+  return row;
+}
+
+export async function installUpgrade(
+  page,
+  { actorSheetId, actorId, upgradeId, targetId },
+) {
+  const gear = await activateGearTab(page, actorSheetId);
+  const row = await hoverGearRow(gear, upgradeId);
+  await row.locator('a.item-action[data-action-type="install-item"]').click();
+
+  const dialog = page
+    .locator(".application")
+    .filter({ has: page.locator('input[name="selectedTarget"]') });
+  await expect(dialog).toBeVisible();
+  await dialog
+    .locator(`input[name="selectedTarget"][value="${targetId}"]`)
+    .check();
+  await dialog
+    .locator('button.cpr-dialog-button[data-action="confirm"]')
+    .click();
+
+  await page.waitForFunction(
+    ({ actorId, upgradeId }) =>
+      game.actors.get(actorId).items.get(upgradeId).system.isInstalled === true,
+    { actorId, upgradeId },
+    { timeout: 10000 },
+  );
+}

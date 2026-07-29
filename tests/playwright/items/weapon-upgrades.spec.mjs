@@ -1,10 +1,15 @@
 import { test, expect } from "@playwright/test";
 import { gotoReadyWorld } from "../../../tools/playwright/session/world.mjs";
 import {
-  createDocumentViaUI,
-  expectSheetRendered,
   closeDocSheet,
+  createDocumentViaUI,
+  activateGearTab,
   dragItemToActorSheet,
+  expectSheetRendered,
+  hoverGearRow,
+  installUpgrade,
+  openItemSettings,
+  setItemField,
   uniqueName,
 } from "../../../tools/playwright/ui/index.mjs";
 
@@ -30,34 +35,6 @@ import {
  * to perform the action under test.
  */
 
-// Ensure the item sheet's Settings tab is active, then return the sheet locator.
-// The sheet re-renders (resetting to the Description tab) after every field
-// change, so this is called again before each interaction.
-async function openItemSettings(page, sheetId) {
-  const sheet = page.locator(`#${sheetId}`);
-  const tab = sheet.locator('a.tab-label[data-tab="item-settings"]');
-  await tab.click();
-  await expect(tab).toHaveClass(/active/);
-  return sheet;
-}
-
-// Fill a number/text field on an item sheet and wait for the value to persist.
-// The item sheet submits on change; press Tab to blur so the change fires, then
-// confirm the document actually updated (passive read).
-async function setItemField(page, { sheetId, itemId, name, path, value }) {
-  const sheet = await openItemSettings(page, sheetId);
-  const input = sheet.locator(`input[name="${name}"]`);
-  await expect(input).toBeVisible();
-  await input.fill(String(value));
-  await input.press("Tab");
-  await page.waitForFunction(
-    ({ itemId, path, value }) =>
-      foundry.utils.getProperty(game.items.get(itemId), path) === value,
-    { itemId, path, value },
-    { timeout: 10000 },
-  );
-}
-
 // Click one of the sheet's pseudo-checkbox toggles (`a.item-checkbox`) and wait
 // for the boolean it targets to flip to the expected value.
 async function toggleItemCheckbox(page, { sheetId, itemId, target, expected }) {
@@ -69,29 +46,6 @@ async function toggleItemCheckbox(page, { sheetId, itemId, target, expected }) {
     { itemId, target, expected },
     { timeout: 10000 },
   );
-}
-
-// Activate the character sheet's right-pane Gear tab (default is "skills") and
-// return the *gear content* locator, so row lookups are scoped to the visible
-// gear pane (the same item id also appears in the hidden Fight pane once
-// equipped). Waits until the gear content is actually shown.
-async function activateGearTab(page, actorSheetId) {
-  const sheet = page.locator(`#${actorSheetId}`);
-  await sheet.locator('.navtabs-right a[data-tab="gear"]').click();
-  const content = sheet.locator(
-    '.right-content-section div.tab.gear-tab[data-tab="gear"]',
-  );
-  await expect(content).toHaveClass(/active/);
-  return content;
-}
-
-// Locate a gear-tab item row and hover it to reveal its (hover-hidden) action
-// glyphs, returning the row locator. Waits for the row to be visible first.
-async function hoverGearRow(gearContent, itemId) {
-  const row = gearContent.locator(`li.item[data-item-id="${itemId}"]`).first();
-  await expect(row).toBeVisible();
-  await row.hover();
-  return row;
 }
 
 // Cycle an embedded weapon's equip state up to "equipped" (owned → carried →
@@ -108,35 +62,6 @@ async function equipWeapon(page, { actorSheetId, actorId, itemId }) {
       { timeout: 10000 },
     );
   }
-}
-
-// Install an embedded itemUpgrade into a target weapon via the Gear-tab install
-// glyph and the "Select Install Target" dialog, waiting for the install to land.
-async function installUpgrade(
-  page,
-  { actorSheetId, actorId, upgradeId, targetId },
-) {
-  const gear = await activateGearTab(page, actorSheetId);
-  const row = await hoverGearRow(gear, upgradeId);
-  await row.locator('a.item-action[data-action-type="install-item"]').click();
-
-  const dialog = page
-    .locator(".application")
-    .filter({ has: page.locator('input[name="selectedTarget"]') });
-  await expect(dialog).toBeVisible();
-  await dialog
-    .locator(`input[name="selectedTarget"][value="${targetId}"]`)
-    .check();
-  await dialog
-    .locator('button.cpr-dialog-button[data-action="confirm"]')
-    .click();
-
-  await page.waitForFunction(
-    ({ actorId, upgradeId }) =>
-      game.actors.get(actorId).items.get(upgradeId).system.isInstalled === true,
-    { actorId, upgradeId },
-    { timeout: 10000 },
-  );
 }
 
 // Read the applied-modifiers breakdown (source + value list) from an open
