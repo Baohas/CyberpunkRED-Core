@@ -304,7 +304,7 @@ class Config {
 
     if (compatibilityVersion === undefined || compatibilityVersion === null) {
       throw new Error(
-        'Cannot expand `{VERSION}` in Foundry paths: manifest `compatibility.verified` is not set.',
+        "Cannot expand `{VERSION}` in Foundry paths: manifest `compatibility.verified` is not set.",
       );
     }
 
@@ -353,8 +353,7 @@ class Config {
    */
   get buildDirPath() {
     const config = this.#loadFoundryConfig();
-    const dataPath =
-      process.env.FOUNDRY_DATA_PATH || config?.foundry?.dataPath;
+    const dataPath = process.env.FOUNDRY_DATA_PATH || config?.foundry?.dataPath;
     if (dataPath) {
       const moduleType = path.basename(
         this._manifestFile,
