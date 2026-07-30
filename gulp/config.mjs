@@ -171,6 +171,7 @@ class Config {
       const filePath = path.join(this.root, this._foundryConfig);
       const fileContent = fs.readFileSync(filePath, "utf-8");
       const config = JSON.parse(fileContent);
+      this.#validateFoundryConfig(config);
       this._cachedFoundryConfig = config;
       return config;
     } catch (error) {
@@ -190,6 +191,31 @@ class Config {
       }
       throw error;
     }
+  }
+
+  /**
+   * Rejects legacy top-level Foundry path keys and guides developers to the
+   * supported nested config shape.
+   *
+   * @param {Object} config - Parsed foundry config file
+   * @throws {Error} If legacy top-level keys are present
+   */
+  #validateFoundryConfig(config) {
+    if (!config || Array.isArray(config) || typeof config !== "object") {
+      return;
+    }
+
+    const legacyKeys = ["dataPath", "versionPrefix"].filter((key) =>
+      Object.prototype.hasOwnProperty.call(config, key),
+    );
+    if (!legacyKeys.length) {
+      return;
+    }
+
+    const quotedKeys = legacyKeys.map((key) => `"${key}"`).join(", ");
+    throw new Error(
+      `Invalid Foundry config: top-level ${quotedKeys} ${legacyKeys.length === 1 ? "is" : "are"} no longer supported. Move ${legacyKeys.length === 1 ? "it" : "them"} under "foundry", for example {"foundry":{"dataPath":"/path/to/Foundry/{VERSION}","versionPrefix":"V"}}.`,
+    );
   }
 
   /**
@@ -266,6 +292,45 @@ class Config {
   }
 
   /**
+   * Formats the manifest's Foundry compatibility version for path
+   * interpolation.
+   *
+   * @returns {string} Compatibility version with the configured prefix applied
+   * @throws {Error} If `{VERSION}` is used but compatibility.verified is unset
+   */
+  #getFoundryVersionValue() {
+    const versionPrefix = this.foundryConfig?.foundry?.versionPrefix ?? "v";
+    const compatibilityVersion = this.manifest?.compatibility?.verified;
+
+    if (compatibilityVersion === undefined || compatibilityVersion === null) {
+      throw new Error(
+        'Cannot expand `{VERSION}` in Foundry paths: manifest `compatibility.verified` is not set.',
+      );
+    }
+
+    const version = String(compatibilityVersion);
+    if (/^[vV]/.test(version)) {
+      return `${versionPrefix}${version.slice(1)}`;
+    }
+
+    return `${versionPrefix}${version}`;
+  }
+
+  /**
+   * Replaces every VERSION placeholder in a Foundry data path template.
+   *
+   * @param {string} dataPath - Foundry data path template
+   * @returns {string} Interpolated data path
+   */
+  #interpolateFoundryDataPath(dataPath) {
+    if (typeof dataPath !== "string" || !dataPath.includes("{VERSION}")) {
+      return dataPath;
+    }
+
+    return dataPath.split("{VERSION}").join(this.#getFoundryVersionValue());
+  }
+
+  /**
    * Gets the absolute path to the project root directory.
    *
    * @returns {string} Absolute path to the project root
@@ -279,24 +344,25 @@ class Config {
    * build deploys into `<dataPath>/Data/<type>s/<id>`; otherwise it falls back
    * to the configured build directory. The data path is resolved, in order,
    * from the `FOUNDRY_DATA_PATH` env var (used by the test harness for an
-   * isolated dir), then `foundryconfig.json`'s top-level `dataPath`, then its
-   * nested `foundry.dataPath` block.
+   * isolated dir) and then `foundryconfig.json`'s nested `foundry.dataPath`
+   * block. All `{VERSION}` placeholders in the selected path are interpolated
+   * using the manifest's `compatibility.verified` value and the optional
+   * `foundry.versionPrefix`.
    *
    * @returns {string} Resolved path to build directory
    */
   get buildDirPath() {
     const config = this.#loadFoundryConfig();
     const dataPath =
-      process.env.FOUNDRY_DATA_PATH ||
-      config?.dataPath ||
-      config?.foundry?.dataPath;
+      process.env.FOUNDRY_DATA_PATH || config?.foundry?.dataPath;
     if (dataPath) {
       const moduleType = path.basename(
         this._manifestFile,
         path.extname(this._manifestFile),
       );
+      const resolvedDataPath = this.#interpolateFoundryDataPath(dataPath);
       return path.resolve(
-        path.join(dataPath, "Data", `${moduleType}s`, this.id),
+        path.join(resolvedDataPath, "Data", `${moduleType}s`, this.id),
       );
     }
     return path.resolve(this.root, this._buildDir);
