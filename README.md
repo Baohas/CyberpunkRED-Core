@@ -107,10 +107,10 @@ in that compatibility version, or is prepended when the version has no leading
 
 > ℹ️ `FOUNDRY_DATA_PATH` remains the highest-priority override. If it contains
 > `{VERSION}`, the same interpolation and `versionPrefix` rules apply.
-
+>
 > ⚠️ Legacy top-level `dataPath` and `versionPrefix` keys are no longer
 > supported. Move them under `foundry` instead.
-
+>
 > ℹ️ If you're using Windows you must use `/` as a dir seperator, not `\`
 > eg: `C:/Path/to/Foundry`
 
