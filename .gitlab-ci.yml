@@ -72,14 +72,14 @@ include:
     inputs:
       component_repo: "cyberpunk-red-team/cprc-build"
 
-  # Keep the vendored build-system subtree updated from the public cprc-cicd repo.
+  # Keep the vendored build-system subtree updated from the public cprc-build repo.
   - project: "cyberpunk-red-team/cprc-cicd"
     ref: dev
     file: "/jobs/manage/build-system-sync.yml"
 
 variables:
-  BUILD_SYNC_SOURCE_PROJECT: "cyberpunk-red-team/cprc-cicd"
-  BUILD_SYNC_SOURCE_BRANCH: "dev"
+  BUILD_SYNC_SOURCE_PROJECT: "cyberpunk-red-team/cprc-build"
+  BUILD_SYNC_SOURCE_BRANCH: "main"
   BUILD_SYNC_PREFIX: "gulp"
   BUILD_SYNC_TARGET_BRANCH: "dev"
   BUILD_SYNC_REBASE_TOKEN: "$CHOOM_BOT_API"
