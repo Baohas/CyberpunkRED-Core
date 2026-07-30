@@ -88,12 +88,28 @@ automatically build directly into your Foundry VTT data directory:
 
 ```json
 {
-  "dataPath": "/path/to/FoundryVTT"
+  "foundry": {
+    "dataPath": "/path/to/FoundryVTT/{VERSION}",
+    "versionPrefix": "V"
+  }
 }
 ```
 
-When `dataPath` is set, the build output goes to `{dataPath}/Data/modules/{id}`
-(or `systems/` for `system.json` manifests) instead of the configured `buildDir`.
+When `foundry.dataPath` is set, the build output goes to
+`{dataPath}/Data/modules/{id}` (or `systems/` for `system.json` manifests)
+instead of the configured `buildDir`.
+
+`{VERSION}` may appear anywhere in the path string and every occurrence is
+replaced using the configured manifest's `compatibility.verified` value.
+`foundry.versionPrefix` is optional: when set, it replaces a leading `v`/`V`
+in that compatibility version, or is prepended when the version has no leading
+`v`/`V`. When omitted, lowercase `v` is used by default.
+
+> ℹ️ `FOUNDRY_DATA_PATH` remains the highest-priority override. If it contains
+> `{VERSION}`, the same interpolation and `versionPrefix` rules apply.
+
+> ⚠️ Legacy top-level `dataPath` and `versionPrefix` keys are no longer
+> supported. Move them under `foundry` instead.
 
 > ℹ️ If you're using Windows you must use `/` as a dir seperator, not `\`
 > eg: `C:/Path/to/Foundry`
@@ -113,7 +129,7 @@ The `Config` constructor accepts the following options.
 | `imageExts`      | `[".svg", ".png", ".webp"]`                                                                                         | Image extensions to process                                                     |
 | `excludeDirs`    | `[]`                                                                                                                | Directories to exclude (applies to both static assets and images)               |
 | `defaultVersion` | `"v0.0.0dev"`                                                                                                       | Fallback version when CI/manifest unavailable                                   |
-| `foundryConfig`  | `"foundryconfig.json"`                                                                                              | Path to Foundry config (for local dev `dataPath` override)                      |
+| `foundryConfig`  | `"foundryconfig.json"`                                                                                              | Path to Foundry config (for local dev `foundry.dataPath` override)              |
 | `changelogFile`  | `"CHANGELOG.md"`                                                                                                    | Path to changelog                                                               |
 | `varsFile`       | `"vars.env"`                                                                                                        | Output path for CI environment file                                             |
 | `babele`         | `{ enabled: false, dir: "babele" }`                                                                                 | Babele translation file generation options                                      |
