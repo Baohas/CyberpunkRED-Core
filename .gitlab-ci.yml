@@ -3,7 +3,7 @@
 # shared rules come from jobs/init/config.yml.
 include:
   - project: "cyberpunk-red-team/cprc-cicd"
-    ref: ryanw/build-auto-update
+    ref: dev
     file:
       - "/jobs/init/config.yml"
       # Test
@@ -52,7 +52,7 @@ include:
 
   # Jobs that carry inputs are their own include entries.
   - project: "cyberpunk-red-team/cprc-cicd"
-    ref: ryanw/build-auto-update
+    ref: dev
     file: "/jobs/init/init.yml"
     inputs:
       gitlab_tokens_to_test: "CHOOM_BOT_API"
@@ -60,21 +60,21 @@ include:
   # Scope prettier to the source we format (en babele included; translations,
   # schema, licenses, etc. excluded).
   - project: "cyberpunk-red-team/cprc-cicd"
-    ref: ryanw/build-auto-update
+    ref: dev
     file: "/jobs/test/code-formatting.yml"
     inputs:
       paths: "gulpfile.mjs gulp/*.mjs src/*.js src/modules src/**/*.yaml src/*.json src/**/*.json src/css/**/*.css src/babele/en/*.json"
 
   # Block manual edits to the vendored cprc-build gulp subtree.
   - project: "cyberpunk-red-team/cprc-cicd"
-    ref: ryanw/build-auto-update
+    ref: dev
     file: "/jobs/test/subtree-guard.yml"
     inputs:
       component_repo: "cyberpunk-red-team/cprc-build"
 
   # Keep the vendored build-system subtree updated from the public cprc-cicd repo.
   - project: "cyberpunk-red-team/cprc-cicd"
-    ref: ryanw/build-auto-update
+    ref: dev
     file: "/jobs/manage/build-system-sync.yml"
 
 variables:
