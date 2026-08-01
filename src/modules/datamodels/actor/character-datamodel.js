@@ -3,12 +3,16 @@ import CommonSchema from "./mixins/common-schema.js";
 import LedgerSchema from "./components/ledger-schema.js";
 import LifestyleSchema from "./components/lifestyle-schema.js";
 import WealthSchema from "./mixins/wealth-schema.js";
+import ItemHolderSchema from "./mixins/itemholder-schema.js";
+import LedgerableSchema from "./mixins/ledgerable-schema.js";
 import ContainerSchema from "../shared/container-schema.js";
 
 export default class CharacterDataModel extends CPRSystemDataModel.mixin(
   CommonSchema,
   ContainerSchema,
   WealthSchema,
+  ItemHolderSchema,
+  LedgerableSchema,
 ) {
   static defineSchema() {
     const { fields } = foundry.data;
@@ -79,6 +83,6 @@ export default class CharacterDataModel extends CPRSystemDataModel.mixin(
   }
 
   get seriouslyWounded() {
-    return Math.ceil(this.parent.system.derivedStats.hp.max / 2);
+    return Math.ceil(this.parent.system.stats.hp.max / 2);
   }
 }

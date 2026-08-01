@@ -5,6 +5,37 @@ import SystemUtils from "../../utils/cpr-systemUtils.js";
 import CPRMod from "../../rolls/cpr-modifiers.js";
 
 /**
+ * Resolve the `{ statValue, skillLevel }` base for a skill roll. Sourced from the actor's
+ * `system.skills` getter (the single canonical place the base is computed, and the seam a future
+ * Combat-Number capability would override), falling back to the raw STAT/level for any actor whose
+ * data model doesn't expose the getter.
+ *
+ * @param {CPRActor} actor - the actor making the roll
+ * @param {string} statName - the skill's linked stat
+ * @param {string} skillName - the skill's name
+ * @param {object} skillData - the skill item's `system`
+ * @returns {{statValue:number, skillLevel:number}}
+ */
+function resolveSkillBase(actor, statName, skillName, skillData) {
+  const base = actor.system.skills?.[SystemUtils.slugify(skillName)] ?? {};
+  return {
+    statValue: base.stat ?? actor.getStat(statName),
+    skillLevel: resolveSkillLevel(base, skillData),
+  };
+}
+
+/**
+ * The skill level from the resolved base, falling back to the parsed skill-item level.
+ *
+ * @param {object} base - the resolved skill base (may be empty)
+ * @param {object} skillData - the skill item's `system`
+ * @returns {number}
+ */
+function resolveSkillLevel(base, skillData) {
+  return base.level ?? Number.parseInt(skillData.level, 10);
+}
+
+/**
  * Extend the base CPRItem object with things specific to actor skills.
  * @extends {CPRItem}
  */
@@ -29,16 +60,15 @@ export default class CPRSkillItem extends CPRItem {
     const cprItemData = this.system;
     const statName = cprItemData.stat;
     const niceStatName = SystemUtils.Localize(CPR.statList[statName]);
-    const statValue = actor.getStat(statName);
     const skillName = this.name;
-    const skillLevel = Number.parseInt(cprItemData.level, 10);
-
-    const effects = Array.from(actor.allApplicableEffects()); // Active effects on the actor.
-    const allMods = CPRMod.getAllModifiers(effects); // Effects list converted into CPRMods.
-    // Filter for mods that should always be on (not situational) or are situational but on by default.
-    const filteredMods = allMods.filter(
-      (m) => !m.isSituational || (m.isSituational && m.onByDefault),
+    const { statValue, skillLevel } = resolveSkillBase(
+      actor,
+      statName,
+      skillName,
+      cprItemData,
     );
+
+    const filteredMods = CPRMod.getActiveMods(actor);
 
     const skillMods = CPRMod.getRelevantMods(filteredMods, [
       SystemUtils.slugify(skillName),

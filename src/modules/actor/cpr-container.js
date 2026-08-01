@@ -1,102 +1,38 @@
-/* eslint-disable no-await-in-loop */
+import CPRActor from "./cpr-actor.js";
 import SystemUtils from "../utils/cpr-systemUtils.js";
-import LOGGER from "../utils/cpr-logger.js";
-import Rules from "../utils/cpr-rules.js";
-import { ContainerUtils } from "../item/mixins/cpr-container.js";
 
 /**
- * Container actors function like loot boxes, player or party stashes, stores, and
- * vending machines. Note this does not extend CPRActor.
+ * Container actors function like loot boxes, player or party stashes, stores, and vending machines.
+ * They extend the generic CPRActor base for the shared item/ledger/embedded-document behaviour and add
+ * their own container-specific shop/loot/stash handling.
  *
- * @extends {Actor}
+ * @extends {CPRActor}
  */
-export default class CPRContainerActor extends Actor {
+export default class CPRContainerActor extends CPRActor {
   /**
-   * create() is called when creating the actor, but it's not the same as a constructor. In the
-   * code here, we pre-configure a few token options to reduce repetitive clicking.
-   */
-  static async create(data, options) {
-    const createData = data;
-    if (typeof data.system === "undefined") {
-      createData.prototypeToken = {
-        disposition: 0,
-      };
-      createData.ownership = { default: 3 };
-    }
-    const newContainerActor = await super.create(createData, options);
-    newContainerActor.setContainerType("shop");
-  }
-
-  /**
-   * This is pretty much a copy of the same function in `cpr-actor.js`.
-   * We copy it because CPRContainerActor does not actually extend CPRActor.
-   * In the future, we should refactor so that CPRContainerActor extends CPRActor,
-   * thus rendering this function copy unnecessary.
+   * Set up a newly-created container in the creation source: neutral-disposition token, owner-default
+   * ownership so players can interact, and the default "shop" container type (its flags — the other
+   * container types' unset flags are already absent on a fresh actor). Applied only to a genuinely-new
+   * actor (a duplicate/import keeps its own token, ownership, and container type).
    *
+   * @async
    * @override
-   * @param {String} embeddedName - document name, usually a category like Item
-   * @param {Array<CPRItem>} items - Array of documents to create
-   * @param {Object} context - an object tracking the context in which the method is being called
-   * @returns {null}
+   * @param {object} data - the creation data
+   * @param {object} options - creation options
+   * @param {User} user - the user requesting the creation
+   * @returns {Promise<boolean|void>} false aborts creation
    */
-  async createEmbeddedDocuments(
-    embeddedName,
-    items,
-    context = { createInstalled: true },
-  ) {
-    if (!embeddedName === "Item")
-      return super.createEmbeddedDocuments(embeddedName, items, context);
-
-    // Don't add core items.
-    const coreItemIds = items.filter((i) => i.system?.core).map((i) => i._id);
-    if (coreItemIds.length > 0) {
-      Rules.lawyer(false, "CPR.messages.dontAddCoreItems");
-      items = items.filter((i) => !coreItemIds.includes(i._id));
-    }
-
-    // Attempt to stack item before creating it
-    const stackedItemReferences = [];
-    if (!context.CPRsplitStack) {
-      LOGGER.debug("Attempting to stack items on an actor sheet");
-      const dontCreate = [];
-      for (const doc of items) {
-        // eslint-disable-next-line no-continue
-        if (!doc.system) continue;
-        const [returnValue] = await this.automaticallyStackItems(doc);
-        if (returnValue) {
-          dontCreate.push(doc._id);
-          // Keep track of the item that we stacked upon, so we can update the parent's
-          // references later, if the item that was stacked is meant to be installed.
-          stackedItemReferences.push({ id: returnValue._id, system: {} });
-        }
-      }
-      // Don't create items that we should stack.
-      items = items.filter((i) => !dontCreate.includes(i._id));
-    }
-
-    // Create the items
-    const createdItems = await super.createEmbeddedDocuments(
-      embeddedName,
-      items,
-      context,
-    );
-
-    if (context.createInstalled) {
-      // Handle creating and installing any items into the parent item.
-      for (const item of createdItems) {
-        // eslint-disable-next-line no-continue
-        if (!item.system.hasInstalled) continue;
-        // The item will only have this flag if it is imported/coming from another actor.
-        const imported = !!ContainerUtils.getInstallTreeFlag(item);
-        // The following function recusrively creates and installs all items in the install tree.
-        await item.createInstalledItemsOnActor(imported);
-      }
-    }
-
-    // Here, we return the created item array, but concatenated with references to any stacked items
-    // This way, when dragging/dropping installed items from sheet to sheet, the calling function can still
-    // update the parent with the correct references (see `createInstalledItemsOnActor()` in the mixin cpr-container.js)
-    return createdItems.concat(stackedItemReferences);
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    this._applyCreationSource(data, {
+      prototypeToken: { disposition: 0 },
+      ownership: { default: 3 },
+      flags: {
+        [game.system.id]: { "container-type": "shop", "players-sell": true },
+      },
+    });
+    return allowed;
   }
 
   /**
@@ -141,57 +77,6 @@ export default class CPRContainerActor extends Actor {
     }
 
     await this.updateEmbeddedDocuments("Item", updateList);
-  }
-
-  /**
-   * automaticallyStackItems searches for an identical item on the actor
-   * and if found increments the amount and price for the item on the actor
-   * instead of adding it as a new item.
-   *
-   * @param {Object} newItem - an object containing the new item
-   * @returns {boolean} - true if thee item should be added normally
-   *                    - false if it has been stacked on an existing item
-   */
-  automaticallyStackItems(newItem) {
-    const itemTemplates = SystemUtils.getMixins(newItem.type);
-    if (!itemTemplates.includes("stackable")) return [];
-    const itemMatch = this.items.find(
-      (i) => i.type === newItem.type && i.name === newItem.name,
-    );
-    if (
-      !itemMatch ||
-      !CPRContainerActor._canStackOnto(itemTemplates, itemMatch, newItem)
-    )
-      return [];
-    const toInt = (value) => {
-      const parsed = parseInt(value, 10);
-      return Number.isNaN(parsed) ? 1 : parsed;
-    };
-    const newAmount =
-      toInt(itemMatch.system.amount) + toInt(newItem.system.amount);
-    return this.updateEmbeddedDocuments(
-      "Item",
-      [{ _id: itemMatch.id, "system.amount": newAmount }],
-      { diff: false },
-    );
-  }
-
-  /**
-   * Whether an incoming item may stack onto an existing match. Upgradable items
-   * become unique once either side carries installed upgrades, so they never
-   * merge; everything else stacks.
-   *
-   * @param {string[]} itemTemplates - the mixin templates for the item type
-   * @param {Item} itemMatch - the existing item to stack onto
-   * @param {Object} newItem - the incoming item data
-   * @returns {boolean} true if the items may be merged into one stack
-   */
-  static _canStackOnto(itemTemplates, itemMatch, newItem) {
-    if (!itemTemplates.includes("upgradable")) return true;
-    return (
-      !itemMatch.system.installedUpgrades.length &&
-      !newItem.system.installedUpgrades?.length
-    );
   }
 
   /**
@@ -258,54 +143,6 @@ export default class CPRContainerActor extends Actor {
   }
 
   /**
-   * Get all records from the associated ledger of a property. Currently the only
-   * ledger that the container actor supports is the wealth ledger, however the
-   * actor data model does have hit points listed as a ledger so we will
-   * leave this as is.
-   *
-   * @param {String} prop - name of the property that has a ledger
-   * @returns {Array} - Each element is a tuple: [value, reason], or null if not found
-   */
-  listRecords(prop) {
-    if (prop === "wealth") {
-      return foundry.utils.getProperty(this.system, `${prop}.transactions`);
-    }
-    return null;
-  }
-
-  /**
-   * Return whether a property in actor data is a ledgerProperty. This means it has
-   * two (sub-)properties, "value", and "transactions".
-   *
-   * XXX: This method is copied from cpr-actor.js because CPRContainerActor does not inherit
-   *      from that class. We could fix that, but then all other code in this file would be added
-   *      to an already long file. If you make changes here, be sure to consider them there too.
-   *
-   * @param {String} prop - name of the property that has a ledger
-   * @returns {Boolean}
-   */
-  isLedgerProperty(prop) {
-    const ledgerData = foundry.utils.getProperty(this.system, prop);
-    if (!foundry.utils.hasProperty(ledgerData, "value")) {
-      SystemUtils.DisplayMessage(
-        "error",
-        SystemUtils.Format("CPR.ledger.errorMessage.missingValue", { prop }),
-      );
-      return false;
-    }
-    if (!foundry.utils.hasProperty(ledgerData, "transactions")) {
-      SystemUtils.DisplayMessage(
-        "error",
-        SystemUtils.Format("CPR.ledger.errorMessage.missingTransactions", {
-          prop,
-        }),
-      );
-      return false;
-    }
-    return true;
-  }
-
-  /**
    * Change the value of a property and store a record of the change in the corresponding
    * ledger.
    *
@@ -314,168 +151,26 @@ export default class CPRContainerActor extends Actor {
    * @returns {Number} (or null if not found)
    */
   recordTransaction(value, reason, seller = null) {
-    // update "value"; it may be negative
-    // If Containers ever get Active Effects, this code will be a problem. See Issue #583.
-    const cprData = foundry.utils.duplicate(this.system);
-    let newValue = foundry.utils.getProperty(cprData, "wealth.value") || 0;
-    let transactionSentence;
-    let transactionType = "set";
-
+    // Determine the transaction direction, then delegate to the inherited `ledgerable` API
+    // (set/deltaLedgerProperty on the container's `wealth` ledger). A seller matching this container
+    // means money flows in (add); a different seller means money flows out (subtract); otherwise the
+    // direction is read from the reason string (its third word).
+    let transactionType;
     if (seller) {
-      if (seller._id === this._id) {
-        transactionType = "add";
-      } else {
-        transactionType = "subtract";
-      }
+      transactionType = seller._id === this._id ? "add" : "subtract";
     } else {
       // eslint-disable-next-line prefer-destructuring
       transactionType = reason.split(" ")[2];
     }
 
     switch (transactionType) {
-      case "set": {
-        newValue = value;
-        transactionSentence = "CPR.ledger.setSentence";
-        break;
-      }
-      case "add": {
-        newValue += value;
-        transactionSentence = "CPR.ledger.increaseSentence";
-        break;
-      }
-      case "subtract": {
-        newValue -= value;
-        transactionSentence = "CPR.ledger.decreaseSentence";
-        break;
-      }
+      case "add":
+        return this.deltaLedgerProperty("wealth", value, reason);
+      case "subtract":
+        return this.deltaLedgerProperty("wealth", -value, reason);
+      case "set":
       default:
+        return this.setLedgerProperty("wealth", value, reason);
     }
-
-    foundry.utils.setProperty(cprData, "wealth.value", newValue);
-    // update the ledger with the change
-    const ledger = foundry.utils.getProperty(cprData, "wealth.transactions");
-    ledger.push([
-      SystemUtils.Format(transactionSentence, {
-        property: "wealth",
-        amount: value,
-        total: newValue,
-      }),
-      reason,
-    ]);
-    foundry.utils.setProperty(cprData, "wealth.transactions", ledger);
-    // update the actor and return the modified property
-    this.update({ system: cprData });
-    return foundry.utils.getProperty(this.system, "wealth");
-  }
-
-  /**
-   * Given a property name on the actor model, wipe out all records in the corresponding ledger
-   * for it. Effectively this sets it back to [].
-   *
-   * @param {String} prop - name of the property that has a ledger
-   * @returns {Array} - empty or null if the property was not found
-   */
-  clearLedger(prop) {
-    if (this.isLedgerProperty(prop)) {
-      const valProp = `system.${prop}.value`;
-      const ledgerProp = `system.${prop}.transactions`;
-      this.update({
-        [valProp]: 0,
-        [ledgerProp]: [],
-      });
-      return foundry.utils.getProperty(this.system, prop);
-    }
-    return null;
-  }
-
-  /**
-   * Change the value of a property and store a record of the change in the corresponding
-   * ledger.
-   *
-   * @param {String} prop - name of the property that has a ledger
-   * @param {Number} value - how much to increase or decrease the value by
-   * @param {String} reason - a user-provided reason for the change
-   * @returns {Number} (or null if not found)
-   */
-  deltaLedgerProperty(prop, value, reason) {
-    if (this.isLedgerProperty(prop)) {
-      // update "value"; it may be negative
-      const valProp = `system.${prop}.value`;
-      let newValue = foundry.utils.getProperty(this, valProp);
-      newValue += value;
-      // update the ledger with the change
-      const ledgerProp = `system.${prop}.transactions`;
-      const ledger = foundry.utils.getProperty(this, ledgerProp);
-      if (value > 0) {
-        ledger.push([
-          SystemUtils.Format("CPR.ledger.increaseSentence", {
-            property: prop,
-            amount: value,
-            total: newValue,
-          }),
-          reason,
-        ]);
-      } else {
-        ledger.push([
-          SystemUtils.Format("CPR.ledger.decreaseSentence", {
-            property: prop,
-            amount: -1 * value,
-            total: newValue,
-          }),
-          reason,
-        ]);
-      }
-      // update the actor and return the modified property
-      this.update({
-        [valProp]: newValue,
-        [ledgerProp]: ledger,
-      });
-      return foundry.utils.getProperty(this.system, prop);
-    }
-    return null;
-  }
-
-  /**
-   * Set the value of a property and store a record of the change in the corresponding
-   * ledger. This is different from applying a delta, here we just set the value.
-   *
-   * @param {String} prop - name of the property that has a ledger
-   * @param {Number} value - what to set the value to
-   * @param {String} reason - a user-provided reason for the change
-   * @returns {Number} (or null if not found)
-   */
-  setLedgerProperty(prop, value, reason) {
-    if (this.isLedgerProperty(prop)) {
-      const valProp = `system.${prop}.value`;
-      const ledgerProp = `system.${prop}.transactions`;
-      const ledger = foundry.utils.getProperty(this, ledgerProp);
-      ledger.push([
-        SystemUtils.Format("CPR.ledger.setSentence", {
-          property: prop,
-          total: value,
-        }),
-        reason,
-      ]);
-      this.update({
-        [valProp]: value,
-        [ledgerProp]: ledger,
-      });
-      return foundry.utils.getProperty(this.system, prop);
-    }
-    return null;
-  }
-
-  /**
-   * Return the Item object given an Id
-   *
-   * @public
-   * @param {String} itemId - Id or UUID of the item to get
-   * @returns {CPRItem}
-   */
-  getOwnedItem(itemId) {
-    const item = this.items.find((i) => i._id === itemId)
-      ? this.items.find((i) => i._id === itemId)
-      : this.items.find((i) => i.uuid === itemId);
-    return item;
   }
 }

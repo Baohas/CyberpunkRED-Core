@@ -376,7 +376,7 @@
     "distance": 2,
     "units": "m"
   },
-  "primaryTokenAttribute": "derivedStats.hp",
+  "primaryTokenAttribute": "stats.hp",
   "secondaryTokenAttribute": null,
   "background": "systems/cyberpunk-red-core/images/Foundry-Background.webp",
   "url": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core",

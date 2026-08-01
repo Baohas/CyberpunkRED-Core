@@ -1,32 +1,35 @@
-import CPRActor from "./cpr-actor.js";
+import CPRHuman from "./cpr-human.js";
 
 /**
  * Character actors are generally represented by players, but for especially detailed NPCs,
  * they are appropriate too. Characters are the most complex actors in the system.
  *
- * @extends {Actor}
+ * @extends {CPRHuman}
  */
-export default class CPRCharacterActor extends CPRActor {
+export default class CPRCharacterActor extends CPRHuman {
   /**
-   * Pre-configure a few token options to reduce repetitive clicking, such as setting HP
-   * as a resource bar. We also set the disposition as friendly, and always link with a token.
+   * Set sensible token defaults on a newly-created character: linked token, friendly disposition,
+   * vision, and an HP resource bar. Applied only to a genuinely-new actor (a duplicate/import keeps its
+   * own token). Core-item population lives on the CPRActor base.
    *
    * @async
    * @override
-   * @static
-   * @param {Object} data - a complex structure with details and data to stuff into the actor object
-   * @param {Object} options - not used here, but required by the parent class
+   * @param {object} data - the creation data
+   * @param {object} options - creation options
+   * @param {User} user - the user requesting the creation
+   * @returns {Promise<boolean|void>} false aborts creation
    */
-  static async create(data, options) {
-    const createData = data;
-    if (typeof data.system === "undefined") {
-      createData.prototypeToken = {
+  async _preCreate(data, options, user) {
+    const allowed = await super._preCreate(data, options, user);
+    if (allowed === false) return false;
+    this._applyCreationSource(data, {
+      prototypeToken: {
         actorLink: true,
         disposition: 1,
-        "sight.enabled": true,
-        "bar1.Attribute": "derivedStats.hp",
-      };
-    }
-    return super.create(createData, options);
+        sight: { enabled: true },
+        bar1: { attribute: "stats.hp" },
+      },
+    });
+    return allowed;
   }
 }

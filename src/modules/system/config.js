@@ -21,6 +21,25 @@ CPR.statList = {
   emp: "CPR.global.stats.emp",
 };
 
+/**
+ * The ordered list of stats shown in the character/mook stat block. Iterated by the
+ * stat-block templates to decide which of `system.stats.*` to render (the ten base STATs
+ * by default; the folded-in derived stats such as HP and Humanity are excluded). Modules
+ * may extend this array to surface additional stats in the block.
+ */
+CPR.displayedStats = [
+  "int",
+  "ref",
+  "dex",
+  "tech",
+  "cool",
+  "will",
+  "luck",
+  "move",
+  "body",
+  "emp",
+];
+
 // Sorted A-Z
 CPR.roleList = {
   exec: "CPR.global.role.exec.name",

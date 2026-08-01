@@ -134,10 +134,10 @@ export default class CPRCharacterActorSheet extends CPRActorSheet {
    */
   _setMaxHp() {
     const maxHp = this.actor.calcMaxHp();
-    const { hp } = this.actor.system.derivedStats;
+    const { hp } = this.actor.system.stats;
     this.actor.update({
-      "system.derivedStats.hp.max": maxHp,
-      "system.derivedStats.hp.value": hp.max === hp.value ? maxHp : hp.value,
+      "system.stats.hp.max": maxHp,
+      "system.stats.hp.value": hp.max === hp.value ? maxHp : hp.value,
     });
   }
 
