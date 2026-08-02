@@ -44,6 +44,22 @@ async function openItemBrowser(page) {
   return documentBrowser;
 }
 
+// Create a world upgrade item and retarget it to a specific upgradable item type.
+async function createUpgrade(page, { name, targetType }) {
+  const id = await createDocumentViaUI(page, {
+    documentTab: "items",
+    type: "itemUpgrade",
+    name,
+  });
+  await page.evaluate(
+    ({ id, targetType }) =>
+      game.items.get(id).update({ "system.type": targetType }),
+    { id, targetType },
+  );
+  await closeDocSheet(page, { collection: "items", id });
+  return id;
+}
+
 test.beforeEach(async ({ page }) => {
   await gotoReadyWorld(page);
 });
@@ -91,22 +107,22 @@ test.describe("Document browser", () => {
   test("a type box set to 'only' scopes results to that type", async ({
     page: game,
   }) => {
-    const token = uniqueName("scope");
+    const nameTag = uniqueName("scope");
     const weaponId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "weapon",
-      name: `${token} blade`,
+      name: `${nameTag} blade`,
     });
     await closeDocSheet(game, { collection: "items", id: weaponId });
     const gearId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "gear",
-      name: `${token} crate`,
+      name: `${nameTag} crate`,
     });
     await closeDocSheet(game, { collection: "items", id: gearId });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
     // Cycle the Weapon box's tri-state include -> exclude -> only.
@@ -120,18 +136,18 @@ test.describe("Document browser", () => {
     const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
-      `${token} blade`,
+      `${nameTag} blade`,
     );
   });
 
   test("clearing a promoted sub-filter releases the auto-'only' type box", async ({
     page: game,
   }) => {
-    const token = uniqueName("promote");
+    const nameTag = uniqueName("promote");
     const weaponId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "weapon",
-      name: `${token} blade`,
+      name: `${nameTag} blade`,
     });
     // A known weaponType so its sub-filter option exists in the Weapon box.
     await game.evaluate(
@@ -141,7 +157,7 @@ test.describe("Document browser", () => {
     await closeDocSheet(game, { collection: "items", id: weaponId });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(1);
 
     // Expand the Weapon box so its sub-filters are interactable.
@@ -174,11 +190,11 @@ test.describe("Document browser", () => {
   test("a manually 'only' type box survives toggling one of its sub-filters", async ({
     page: game,
   }) => {
-    const token = uniqueName("manual");
+    const nameTag = uniqueName("manual");
     const weaponId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "weapon",
-      name: `${token} blade`,
+      name: `${nameTag} blade`,
     });
     await game.evaluate(
       (id) => game.items.get(id).update({ "system.weaponType": "heavyMelee" }),
@@ -187,7 +203,7 @@ test.describe("Document browser", () => {
     await closeDocSheet(game, { collection: "items", id: weaponId });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(1);
 
     const weaponBox = documentBrowser.locator(
@@ -212,20 +228,132 @@ test.describe("Document browser", () => {
     await expect(typeTristate).toHaveAttribute("data-state", "only");
   });
 
+  test("upgrade type filter stays stable, auto-promotes its parent, and orders upgrade rows by target type then name", async ({
+    page: game,
+  }) => {
+    const nameTag = uniqueName("upgrade-type");
+    const expectedOrder = [
+      `${nameTag} omega armor`,
+      `${nameTag} zulu armor`,
+      `${nameTag} alpha vehicle`,
+      `${nameTag} yankee vehicle`,
+      `${nameTag} beta weapon`,
+    ];
+
+    await createUpgrade(game, {
+      name: expectedOrder[0],
+      targetType: "armor",
+    });
+    await createUpgrade(game, {
+      name: expectedOrder[1],
+      targetType: "armor",
+    });
+    await createUpgrade(game, {
+      name: expectedOrder[2],
+      targetType: "vehicle",
+    });
+    await createUpgrade(game, {
+      name: expectedOrder[3],
+      targetType: "vehicle",
+    });
+    await createUpgrade(game, {
+      name: expectedOrder[4],
+      targetType: "weapon",
+    });
+
+    const documentBrowser = await openItemBrowser(game);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
+
+    const entries = documentBrowser.locator(".cpr-browser-entry");
+    await expect(entries).toHaveCount(expectedOrder.length);
+    await expect(entries.locator(".item-header-name")).toHaveText(
+      expectedOrder,
+    );
+
+    const itemUpgradeBox = documentBrowser.locator(
+      '.cpr-browser-typebox[data-type="itemUpgrade"]',
+    );
+    const typeTristate = itemUpgradeBox.locator(
+      '.cpr-browser-tristate[data-tree="type"]',
+    );
+    await expect(typeTristate).toHaveAttribute("data-state", "include");
+    await itemUpgradeBox.locator(".cpr-browser-collapse-toggle").click();
+
+    const upgradeTypeFilter = itemUpgradeBox.locator(".cpr-browser-filter-sub");
+    await expect(
+      upgradeTypeFilter.locator(".cpr-browser-filter-sublabel"),
+    ).toHaveText("Upgrade Type");
+    await expect(
+      upgradeTypeFilter.locator(".cpr-browser-tristate-label"),
+    ).toHaveText([
+      "Armor",
+      "Clothing",
+      "Cyberdeck",
+      "Cyberware",
+      "Gear",
+      "Vehicle",
+      "Weapon",
+    ]);
+
+    const armorOption = itemUpgradeBox.locator(
+      '.cpr-browser-tristate[data-set="1"][data-filter="upgradeType"][data-value="armor"]',
+    );
+    const vehicleOption = itemUpgradeBox.locator(
+      '.cpr-browser-tristate[data-set="1"][data-filter="upgradeType"][data-value="vehicle"]',
+    );
+    const clothingOption = itemUpgradeBox.locator(
+      '.cpr-browser-tristate[data-set="1"][data-filter="upgradeType"][data-value="clothing"]',
+    );
+    await expect(armorOption).toBeVisible();
+    await expect(vehicleOption).toBeVisible();
+    await expect(clothingOption).toBeVisible();
+
+    // Choosing a child as "only" must auto-promote the parent type box.
+    await armorOption.click();
+    await armorOption.click();
+    await expect(armorOption).toHaveAttribute("data-state", "only");
+    await expect(typeTristate).toHaveAttribute("data-state", "only");
+    await expect(entries).toHaveCount(2);
+    await expect(entries.locator(".item-header-name")).toHaveText(
+      expectedOrder.slice(0, 2),
+    );
+
+    // The static option list must not shrink when one option is selected.
+    await expect(armorOption).toBeVisible();
+    await expect(vehicleOption).toBeVisible();
+    await expect(clothingOption).toBeVisible();
+
+    // Repro: Armor only -> include -> Vehicle only, and Armor still displays.
+    await armorOption.click();
+    await expect(armorOption).toHaveAttribute("data-state", "include");
+    await expect(typeTristate).toHaveAttribute("data-state", "include");
+    await expect(entries).toHaveCount(expectedOrder.length);
+
+    await vehicleOption.click();
+    await vehicleOption.click();
+    await expect(vehicleOption).toHaveAttribute("data-state", "only");
+    await expect(typeTristate).toHaveAttribute("data-state", "only");
+    await expect(armorOption).toBeVisible();
+    await expect(entries).toHaveCount(2);
+    await expect(entries.locator(".item-header-name")).toHaveText(
+      expectedOrder.slice(2, 4),
+    );
+  });
+
   test("the price filter excludes items above the max", async ({
     page: game,
   }) => {
-    const token = uniqueName("price");
+    const nameTag = uniqueName("price");
     const cheapId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "gear",
-      name: `${token} cheap`,
+      name: `${nameTag} cheap`,
     });
     await closeDocSheet(game, { collection: "items", id: cheapId });
     const dearId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "gear",
-      name: `${token} dear`,
+      name: `${nameTag} dear`,
     });
     await closeDocSheet(game, { collection: "items", id: dearId });
 
@@ -239,7 +367,7 @@ test.describe("Document browser", () => {
     );
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
     const maxInput = documentBrowser.locator(".cpr-browser-price-max");
@@ -249,29 +377,29 @@ test.describe("Document browser", () => {
     const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
-      `${token} cheap`,
+      `${nameTag} cheap`,
     );
   });
 
   test("a type box tri-state is keyboard operable (focus + Enter cycles it)", async ({
     page: game,
   }) => {
-    const token = uniqueName("keys");
+    const nameTag = uniqueName("keys");
     const weaponId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "weapon",
-      name: `${token} blade`,
+      name: `${nameTag} blade`,
     });
     await closeDocSheet(game, { collection: "items", id: weaponId });
     const gearId = await createDocumentViaUI(game, {
       documentTab: "items",
       type: "gear",
-      name: `${token} crate`,
+      name: `${nameTag} crate`,
     });
     await closeDocSheet(game, { collection: "items", id: gearId });
 
     const documentBrowser = await openItemBrowser(game);
-    await documentBrowser.locator(".cpr-browser-name-input").fill(token);
+    await documentBrowser.locator(".cpr-browser-name-input").fill(nameTag);
     await expect(documentBrowser.locator(".cpr-browser-entry")).toHaveCount(2);
 
     const weaponTristate = documentBrowser.locator(
@@ -288,7 +416,7 @@ test.describe("Document browser", () => {
     const entries = documentBrowser.locator(".cpr-browser-entry");
     await expect(entries).toHaveCount(1);
     await expect(entries.first().locator(".item-header-name")).toHaveText(
-      `${token} blade`,
+      `${nameTag} blade`,
     );
   });
 

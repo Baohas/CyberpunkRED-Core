@@ -196,7 +196,6 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     context.mode = this.mode;
     context.name = this.filterState.name;
     context.isItemContext = this.#isItemContext();
-    context.typeBoxes = this.#getTypeBoxes();
     context.priceMin = this.filterState.price.min;
     context.priceMax = this.filterState.price.max;
     context.priceCategoryOp = this.filterState.priceCategory.op;
@@ -230,20 +229,22 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     // renders must not reset the progressive-render counters: doing so mid-load
     // would re-append rows already in the DOM.
     const parts = options.parts ?? Object.keys(CPRDocumentBrowser.PARTS);
-    if (parts.includes("sidebar") || parts.includes("results")) {
-      const entries = await this.#getModeEntries();
-      if (parts.includes("sidebar")) {
-        context.filters = this.#getFilterContext(entries);
-      }
-      if (parts.includes("results")) {
-        const results = this.#applyFilters(entries);
-        this._results = results;
-        // Rows (and their group headers) are appended progressively in _onRender.
-        this._rendered = 0;
-        context.resultTotal = results.length;
-        context.shown = 0;
-        context.loading = results.length > 0;
-      }
+    const needsEntries = parts.includes("sidebar") || parts.includes("results");
+    const entries = needsEntries ? await this.#getModeEntries() : [];
+
+    context.typeBoxes = parts.includes("sidebar") ? this.#getTypeBoxes() : [];
+
+    if (parts.includes("sidebar")) {
+      context.filters = this.#getFilterContext(entries);
+    }
+    if (parts.includes("results")) {
+      const results = this.#applyFilters(entries);
+      this._results = results;
+      // Rows (and their group headers) are appended progressively in _onRender.
+      this._rendered = 0;
+      context.resultTotal = results.length;
+      context.shown = 0;
+      context.loading = results.length > 0;
     }
     return context;
   }
@@ -376,6 +377,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
    * Actor data models (GM only) and have no per-type filters.
    *
    * @private
+   * @param {Array<object>} entries - the current mode's unfiltered browser entries
    * @returns {Array<object>}
    */
   #getTypeBoxes() {
@@ -442,16 +444,15 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     switch (def.type) {
       case "set": {
         const states = this.filterState.sets[type]?.[def.id] ?? {};
+        const choices = Object.entries(CPR[def.choices] ?? {});
         return {
           ...base,
           isSet: true,
-          options: Object.entries(CPR[def.choices] ?? {}).map(
-            ([value, label]) => ({
-              value,
-              label,
-              state: states[value] ?? "include",
-            }),
-          ),
+          options: choices.map(([value, label]) => ({
+            value,
+            label,
+            state: states[value] ?? "include",
+          })),
         };
       }
       case "range":
@@ -598,7 +599,9 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     }
     return Array.from(values)
       .map((value) => [value, value])
-      .sort((a, b) => a[1].localeCompare(b[1]));
+      .sort((a, b) =>
+        SystemUtils.Localize(a[1]).localeCompare(SystemUtils.Localize(b[1])),
+      );
   }
 
   /**
@@ -629,7 +632,7 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
       .sort(
         (a, b) =>
           CPRDocumentBrowser.#typeOrder(a) - CPRDocumentBrowser.#typeOrder(b) ||
-          a.name.localeCompare(b.name),
+          CPRDocumentBrowser.#compareTypeGroupEntries(a, b),
       );
   }
 
@@ -650,6 +653,26 @@ export default class CPRDocumentBrowser extends HandlebarsApplicationMixin(
     const actorIndex = actorTypes.indexOf(entry.type);
     if (actorIndex !== -1) return itemTypes.length + actorIndex;
     return itemTypes.length + actorTypes.length;
+  }
+
+  /**
+   * Sort entries within a type group. Item upgrades sort first by their target
+   * item type, then by name; every other group keeps the existing name sort.
+   *
+   * @private
+   * @param {object} a
+   * @param {object} b
+   * @returns {number}
+   */
+  static #compareTypeGroupEntries(a, b) {
+    if (a.type === "itemUpgrade" && b.type === "itemUpgrade") {
+      const aUpgradeType = foundry.utils.getProperty(a, "system.type") ?? "";
+      const bUpgradeType = foundry.utils.getProperty(b, "system.type") ?? "";
+      return (
+        aUpgradeType.localeCompare(bUpgradeType) || a.name.localeCompare(b.name)
+      );
+    }
+    return a.name.localeCompare(b.name);
   }
 
   /**
