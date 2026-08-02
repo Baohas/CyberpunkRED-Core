@@ -1,4 +1,4 @@
-# Cyberpunk RED - CORE LLM Instructions
+# Cyberpunk RED LLM Instructions
 
 This file provides guidance to Agents when working with code in this repository.
 
@@ -7,39 +7,36 @@ This file provides guidance to Agents when working with code in this repository.
 A [Foundry VTT](https://foundryvtt.com) **game system** implementing the Cyberpunk RED core rules. It runs
 inside Foundry's browser client. There is no standalone runtime code only executes inside a live Foundry world.
 
-## Commands
-
-Node is pinned via `shell.nix` (Nix dev shell, auto-loaded by direnv). Common tasks:
-
-- `npx gulp build` (or `make build`) — compile `src/` → `dist/` and deploy into your Foundry data dir. Deploy
-  target and license come from `foundryconfig.json` (git-ignored; copy `foundryconfig.json.example`).
-- `npx gulp watch` (or `make watch`) — incremental rebuild on change; leave running while developing.
-- `npm run lint` — ESLint over gulpfile, `src/modules`, vitest config, and unit tests.
-- `npm run prettier` / `npm run prettier:fix` — format check / fix. `npm run stylelint[:fix]` — CSS.
-- `npm run test:unit` — Vitest (fast, headless, no Foundry). `npm run test:unit:watch`, `test:coverage`.
-  - Run one file: `npx vitest run tests/unit/config.test.js`.
-- `npm run test:playwright` — Playwright end-to-end against a real Foundry (see below). Run a subset:
-  `npm run test:playwright -- rolls/luck.spec.mjs` or `-- -g "LUCK"`.
-- `npm run playwright:serve` — build, bring Foundry up with a fresh ephemeral world in the configured live
-  data path, and leave it running for Playwright MCP/manual bughunt work. It prints both the base URL and
-  `/game`; Ctrl-C tears down only the recorded `cprc-playwright-*` world.
-- `npm run playwright:serve -- --world <id>` — build, launch an existing CPR world from the configured live
-  data path, reset all world user passwords to the harness password through Foundry v13's setup/admin world
-  context-menu user management UI before launch, log in as a full Gamemaster, unpause, and leave the world in
-  place on stop.
-- `npm run playwright:serve -- --archive <zip>` — build, import one CPR world archive into the configured live
-  data path (preserving archive id/folder/title and rejecting destination conflicts), then perform the same
-  setup/admin UI password reset and full-GM launch flow. Imported worlds are left in place on stop.
-- `make ci` / `make lint` / `make validate-packs` — run GitLab CI jobs locally via `gitlab-ci-local`
-  (jobs are `include`d from the sibling `cicd` repo, not defined inline).
-
 ## Rules
 
 - **Markdown**: after creating or editing any `.md` file (docs, specs, plans, skill `SKILL.md` files
   included), format and lint it before treating it as done — `npx prettier --write <file>` then
   `npx markdownlint --fix <file>`, hand-fixing anything left. See `.claude/skills/markdown/SKILL.md`.
+- **gulp/build system**: The gulp based build system is vendored using git submodule, never edit files
+  in `gulp/`. See the repos section for meore details of how to find the build system repo.
 
-## Architecture
+## Repos
+
+All our repos are hosted on gitlab.com, to interact with them use either the GitLab MCP or the glab cli tool,
+never attempt to use fetch/webfetch/playwright to interact with GitLab.
+
+- **core/system** - This repo. Gitlab project: `cyberpunk-red-team/fvtt-cyberpunk-red-core`
+- **dlc** - The repo we use to distribute official expansions and DLC.
+  Gitlab project: `cyberpunk-red-team/fvtt-cyberpunk-red-dlc`
+- **build** - The shared git repo used by core/dlc, vendored via `git subtree`. Never edit files in
+  `gulp/` directly. Gitlab project: `cyberpunk-red-team/cprc-build`
+- **cicd** - The shared cicd system used by core/dlc, no vendored, called using gitlab's remote workflows.
+  Gitlab project: `cyberpunk-red-team/cprc-cicd`
+- **templates** - The shared issue/mr templates used by the project. Always read these before making a
+  Work Item/Issue or Merge Request, selecting the best template for the work. Gitlab project: `cyberpunk-red-team/templates`
+
+### Discovering local repos
+
+As this project is made up of the multiple repos described and the project is worked on by multiple developers
+we have a `foundryconfig.json` within this is the key `repos` with a subkey for each repo, if you need to discover
+a repo's local checkout location, read the json file and the keys under `repos`, eg: `repos.dlc`.
+
+## System Architecture
 
 ### Entry point and registration
 
@@ -109,9 +106,3 @@ For manual live checks, `npm run playwright:serve` + the Playwright MCP.
 
 - **NixOS / Playwright**: browsers come from `shell.nix`, never `npx playwright install`. If Playwright/
   Chromium can't launch or revisions mismatch, fix `shell.nix` — see `.claude/skills/playwright/nix/SKILL.md`.
-- **Git remotes**: this repo's canonical home is GitLab (`cyberpunk-red-team/fvtt-cyberpunk-red-core`); the
-  default branch is `dev`.
-- **Sibling repos**: the related `cyberpunk-red-team` checkouts (`dlc`, `templates`, `system`, `cicd`) live
-  at developer-specific paths — never assume they sit at `../<name>`. Resolve one by reading
-  `foundryconfig.json` → `repos.<name>` (git-ignored, per-developer; see `foundryconfig.json.example` for
-  the shape). E.g. the GitLab issue templates are at `<repos.templates>/.gitlab/issue_templates/`.
