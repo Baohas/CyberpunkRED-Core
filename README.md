@@ -105,11 +105,16 @@ replaced using the configured manifest's `compatibility.verified` value.
 in that compatibility version, or is prepended when the version has no leading
 `v`/`V`. When omitted, lowercase `v` is used by default.
 
+Legacy top-level `dataPath` and `versionPrefix` keys are still accepted for
+backwards compatibility, but the nested `foundry.*` keys are preferred. If
+both are present, `foundry.dataPath` and `foundry.versionPrefix` take
+precedence.
+
 > ℹ️ `FOUNDRY_DATA_PATH` remains the highest-priority override. If it contains
 > `{VERSION}`, the same interpolation and `versionPrefix` rules apply.
 >
-> ⚠️ Legacy top-level `dataPath` and `versionPrefix` keys are no longer
-> supported. Move them under `foundry` instead.
+> ⚠️ Top-level `dataPath` and `versionPrefix` are deprecated. Move them under
+> `foundry` when you next update your local config.
 >
 > ℹ️ If you're using Windows you must use `/` as a dir seperator, not `\`
 > eg: `C:/Path/to/Foundry`
