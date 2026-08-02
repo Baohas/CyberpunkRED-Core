@@ -171,7 +171,7 @@ class Config {
       const filePath = path.join(this.root, this._foundryConfig);
       const fileContent = fs.readFileSync(filePath, "utf-8");
       const config = JSON.parse(fileContent);
-      this.#validateFoundryConfig(config);
+      this.#warnForLegacyFoundryConfig(config);
       this._cachedFoundryConfig = config;
       return config;
     } catch (error) {
@@ -194,13 +194,12 @@ class Config {
   }
 
   /**
-   * Rejects legacy top-level Foundry path keys and guides developers to the
-   * supported nested config shape.
+   * Warns when a Foundry config uses deprecated top-level path keys and notes
+   * when nested `foundry.*` keys override conflicting legacy values.
    *
    * @param {Object} config - Parsed foundry config file
-   * @throws {Error} If legacy top-level keys are present
    */
-  #validateFoundryConfig(config) {
+  #warnForLegacyFoundryConfig(config) {
     if (!config || Array.isArray(config) || typeof config !== "object") {
       return;
     }
@@ -212,10 +211,45 @@ class Config {
       return;
     }
 
-    const quotedKeys = legacyKeys.map((key) => `"${key}"`).join(", ");
-    throw new Error(
-      `Invalid Foundry config: top-level ${quotedKeys} ${legacyKeys.length === 1 ? "is" : "are"} no longer supported. Move ${legacyKeys.length === 1 ? "it" : "them"} under "foundry", for example {"foundry":{"dataPath":"/path/to/Foundry/{VERSION}","versionPrefix":"V"}}.`,
+    const foundry =
+      config.foundry && !Array.isArray(config.foundry) ? config.foundry : {};
+    const conflictingKeys = legacyKeys.filter(
+      (key) =>
+        Object.prototype.hasOwnProperty.call(foundry, key) &&
+        foundry[key] !== config[key],
     );
+    const quotedLegacyKeys = legacyKeys.map((key) => `"${key}"`).join(", ");
+
+    if (conflictingKeys.length) {
+      const quotedConflictingKeys = conflictingKeys
+        .map((key) => `"${key}"`)
+        .join(", ");
+      log(
+        `${chalk.yellow("WARNING")} ${this._foundryConfig} uses deprecated top-level ${quotedLegacyKeys}. Nested foundry.${quotedConflictingKeys} ${conflictingKeys.length === 1 ? "takes" : "take"} precedence over the conflicting legacy ${conflictingKeys.length === 1 ? "value" : "values"}.`,
+      );
+      return;
+    }
+
+    log(
+      `${chalk.yellow("WARNING")} ${this._foundryConfig} uses deprecated top-level ${quotedLegacyKeys}. They are still supported for backwards compatibility, but should be moved under "foundry", for example {"foundry":{"dataPath":"/path/to/Foundry/{VERSION}","versionPrefix":"V"}}.`,
+    );
+  }
+
+  /**
+   * Resolves Foundry path settings from the preferred nested config shape,
+   * falling back to deprecated top-level keys for backwards compatibility.
+   *
+   * @param {Object} config - Parsed foundry config file
+   * @returns {Object} Resolved Foundry settings
+   */
+  #getFoundrySettings(config = this.foundryConfig) {
+    const foundry =
+      config?.foundry && !Array.isArray(config.foundry) ? config.foundry : {};
+
+    return {
+      dataPath: foundry.dataPath ?? config?.dataPath,
+      versionPrefix: foundry.versionPrefix ?? config?.versionPrefix ?? "v",
+    };
   }
 
   /**
@@ -299,7 +333,7 @@ class Config {
    * @throws {Error} If `{VERSION}` is used but compatibility.verified is unset
    */
   #getFoundryVersionValue() {
-    const versionPrefix = this.foundryConfig?.foundry?.versionPrefix ?? "v";
+    const { versionPrefix } = this.#getFoundrySettings();
     const compatibilityVersion = this.manifest?.compatibility?.verified;
 
     if (compatibilityVersion === undefined || compatibilityVersion === null) {
@@ -344,16 +378,18 @@ class Config {
    * build deploys into `<dataPath>/Data/<type>s/<id>`; otherwise it falls back
    * to the configured build directory. The data path is resolved, in order,
    * from the `FOUNDRY_DATA_PATH` env var (used by the test harness for an
-   * isolated dir) and then `foundryconfig.json`'s nested `foundry.dataPath`
-   * block. All `{VERSION}` placeholders in the selected path are interpolated
-   * using the manifest's `compatibility.verified` value and the optional
-   * `foundry.versionPrefix`.
+   * isolated dir), then `foundryconfig.json`'s nested `foundry.dataPath`
+   * block, then the deprecated top-level `dataPath` key. All `{VERSION}`
+   * placeholders in the selected path are interpolated using the manifest's
+   * `compatibility.verified` value and the resolved `versionPrefix`
+   * (`foundry.versionPrefix`, then legacy `versionPrefix`, then `"v"`).
    *
    * @returns {string} Resolved path to build directory
    */
   get buildDirPath() {
     const config = this.#loadFoundryConfig();
-    const dataPath = process.env.FOUNDRY_DATA_PATH || config?.foundry?.dataPath;
+    const { dataPath: configuredDataPath } = this.#getFoundrySettings(config);
+    const dataPath = process.env.FOUNDRY_DATA_PATH || configuredDataPath;
     if (dataPath) {
       const moduleType = path.basename(
         this._manifestFile,
