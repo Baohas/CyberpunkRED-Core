@@ -33,6 +33,9 @@ const DEFAULT_USAGE = "equipped";
 /** Physical-possession usages that compendium items should never carry. */
 const PHYSICAL_USAGE = ["owned", "carried"];
 
+/** Ownership block used for embedded installed items in compendium source. */
+const DEFAULT_OWNERSHIP = { default: 0 };
+
 /**
  * Extracts the pack type (e.g. "items") from a LevelDB key such as
  * "!items!abc" or "!items.effects!abc.def".
@@ -132,6 +135,38 @@ function coerceNumbers(entry) {
 }
 
 /**
+ * Recursively sanitizes embedded installed-item data so extracted compendium
+ * fragments never capture user-specific ownership ids from a developer's
+ * world.
+ *
+ * @param {Object} entry - The item pack entry (mutated in place)
+ */
+function sanitizeInstalledOwnership(entry) {
+  if (!entry || typeof entry !== "object") {
+    return;
+  }
+
+  for (const [key, value] of Object.entries(entry)) {
+    if (key !== "cprInstallTree") {
+      sanitizeInstalledOwnership(value);
+      continue;
+    }
+
+    if (!Array.isArray(value)) {
+      continue;
+    }
+
+    for (const installedItem of value) {
+      if (!installedItem || typeof installedItem !== "object") {
+        continue;
+      }
+      installedItem.ownership = { ...DEFAULT_OWNERSHIP };
+      sanitizeInstalledOwnership(installedItem);
+    }
+  }
+}
+
+/**
  * Cleans a CPR pack entry in place. Intended to be passed as
  * `packs.transformEntry`. Returns nothing so the entry is always kept.
  *
@@ -142,8 +177,10 @@ export async function cprTransformEntry(entry) {
   // Document-level metadata (author/folder/ownership/sort/flags/...) is kept —
   // fragments are complete Foundry documents. `_stats` is the exception: it is
   // build-time provenance, so it's dropped from source and stamped only when
-  // compiling the packs.
+  // compiling the packs. Embedded installed items are also normalized so their
+  // ownership never leaks developer-specific user ids into `cprInstallTree`.
   delete entry._stats;
+  sanitizeInstalledOwnership(entry);
 
   if (entry._key && getPackType(entry._key) === "items") {
     normalizeItem(entry);
