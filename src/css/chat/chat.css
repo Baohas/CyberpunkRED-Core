@@ -1,20 +1,32 @@
 /*
- * Only theme chat messages that contain one of our own cards (roll cards,
- * item cards). Plain messages and other modules' messages keep Foundry's
- * styling. CPR card internals below match only our markup, so they need no
- * extra scoping.
+ * Theme the full chat-message surface with CPR typography and palette so every
+ * chat card path shares the same look, from native Foundry output to CPR's own
+ * bespoke cards.
  */
-.chat-message:has(:is(.rollcard, .item-card-grid-container, .cpr-block)),
-.chat-message.whisper:has(
-    :is(.rollcard, .item-card-grid-container, .cpr-block)
-  ),
-.chat-message.emote:has(:is(.rollcard, .item-card-grid-container, .cpr-block)) {
+.chat-message,
+.chat-message.whisper,
+.chat-message.emote {
   font-family: var(--cpr-font-primary);
   background: var(--cpr-background-chat-card);
   color: var(--cpr-text-chat-normal);
 
+  .message-content,
+  .message-content .chat-card,
+  .message-content .dice-roll,
+  .message-content .table-draw {
+    color: inherit;
+    font-family: inherit;
+  }
+
   .message-header {
     color: var(--cpr-text-chat-normal) !important;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: inherit;
   }
 
   img {
@@ -27,6 +39,12 @@
 
   .table-description {
     color: var(--cpr-text-foundry-hint) !important;
+  }
+
+  .table-results,
+  .table-result,
+  .table-results > li {
+    border-color: var(--cpr-background-chat-border);
   }
 }
 
@@ -259,8 +277,7 @@
   }
 }
 
-.chat-message:has(:is(.rollcard, .item-card-grid-container, .cpr-block))
-  a.inline-roll {
+.chat-message a.inline-roll {
   background: var(--cpr-background-chat-inline-roll);
 
   .dice-tooltip {
@@ -280,16 +297,17 @@
 ------------------------- */
 
 /*
- * CPR injects this visibility badge into every message, so only style it on our
- * own cards — otherwise it shows as a clashing dark box on Foundry's and other
- * modules' messages.
+ * CPR injects this visibility badge into every message, so keep it on the same
+ * palette as the rest of the themed chat log.
  */
-.chat-message:has(:is(.rollcard, .item-card-grid-container, .cpr-block))
-  .chat-mode-indicator {
-  display: inline-block;
+.chat-message .chat-mode-indicator {
+  display: inline-flex;
+  align-items: center;
   margin: 0 0.188rem 0 0;
   padding: 0 0.188rem;
-  line-height: 1rem;
+  min-height: 1rem;
+  line-height: 1;
+  vertical-align: middle;
   border: 0.063rem solid var(--cpr-background-chat-border);
   border-radius: 0.188rem;
   background: var(--cpr-background-chat-card);
