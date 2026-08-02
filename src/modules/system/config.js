@@ -294,6 +294,17 @@ CPR.objectTypes = {
   weapon: "CPR.global.itemTypes.weapon",
 };
 
+// The item types item upgrades can target, using the shared object-type labels.
+CPR.itemUpgradeTypes = {
+  armor: CPR.objectTypes.armor,
+  clothing: CPR.objectTypes.clothing,
+  cyberdeck: CPR.objectTypes.cyberdeck,
+  cyberware: CPR.objectTypes.cyberware,
+  gear: CPR.objectTypes.gear,
+  vehicle: CPR.objectTypes.vehicle,
+  weapon: CPR.objectTypes.weapon,
+};
+
 // Sorted A-Z
 CPR.clothingVarieties = {
   asiaPop: "CPR.global.clothing.style.asiaPop",
@@ -1065,6 +1076,15 @@ CPR.browserFilters = {
       field: "system.class",
       choices: "programClassList",
       label: "CPR.browser.filter.programClass",
+    },
+  ],
+  itemUpgrade: [
+    {
+      id: "upgradeType",
+      type: "set",
+      field: "system.type",
+      choices: "itemUpgradeTypes",
+      label: "CPR.itemSheet.itemUpgrade.upgradeType",
     },
   ],
 };
