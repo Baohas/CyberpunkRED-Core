@@ -177,28 +177,34 @@ const Loadable = function Loadable() {
   };
 
   /**
-   * Calculate the amount of space in this magazine, including upgrades.
+   * Calculate this magazine's total capacity, including upgrades.
    *
-   * @returns {Number} - upgraded magazine space
+   * @returns {Number} - upgraded magazine capacity
    */
-  this.getMagazineSpace = function getMagazineSpace() {
+  this.getMagazineCapacity = function getMagazineCapacity() {
     const magazineData = this.system.magazine;
 
     // Sometimes we are checking the magazine of an item upgrade,
     // e.g., an underbarrel weapon, which themselves cannot be upgraded.
     // Early return with just the base magazine size, if so.
     if (!SystemUtils.hasMixin(this.type, "upgradable")) {
-      return magazineData.max - magazineData.value;
+      return magazineData.max;
     }
 
     // Otherwise, return the size, taking into account any magazine upgrades.
     const upgradeData = this.getTotalUpgradeValues("magazine");
-    const magazineSpace =
-      upgradeData.type === "override"
-        ? upgradeData.value - magazineData.value
-        : magazineData.max + upgradeData.value - magazineData.value;
+    return upgradeData.type === "override"
+      ? upgradeData.value
+      : magazineData.max + upgradeData.value;
+  };
 
-    return magazineSpace;
+  /**
+   * Calculate the amount of space in this magazine, including upgrades.
+   *
+   * @returns {Number} - upgraded magazine space
+   */
+  this.getMagazineSpace = function getMagazineSpace() {
+    return this.getMagazineCapacity() - this.system.magazine.value;
   };
 
   /**
@@ -235,7 +241,7 @@ const Loadable = function Loadable() {
    */
   this.setWeaponAmmo = function setWeaponAmmo(value) {
     if (this.type === "weapon") {
-      const maxAmmo = this.system.magazine.max;
+      const maxAmmo = this.getMagazineCapacity();
       let newValue;
       if (value.charAt(0) === "+" || value.charAt(0) === "-") {
         newValue = Math.clamp(
