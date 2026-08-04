@@ -22,6 +22,7 @@ results.json
 
 # Local config
 .foundry
+.env
 foundryconfig.json
 
 # Build
