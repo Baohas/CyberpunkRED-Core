@@ -1,9 +1,9 @@
 ---
-name: show-me
+name: demo
 description: Build the current branch, launch a fresh live Foundry world, open a headed Playwright MCP browser on that world, and drive Foundry to the changed system feature so the dev can see it live.
 ---
 
-# Show me
+# Demo
 
 Use this skill when the dev wants a live demo of the current branch in Foundry.
 
