@@ -1620,25 +1620,6 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
       newItem = created?.[0] ?? null;
     }
 
-    // Recreate installed upgrades on the target actor.
-    if (newItem && dragData.system?.upgrades?.length > 0) {
-      const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
-      if (upgradableTypes.includes(newItem.type)) {
-        const upgradeData = dragData.system.upgrades.map((u) => ({
-          ...u,
-          _id: undefined,
-        }));
-        const newUpgrades = await this.actor.createEmbeddedDocuments(
-          "Item",
-          upgradeData,
-        );
-        const newUpgradeIds = newUpgrades.map((u) => u.id);
-        await newItem.update({
-          "system.installedItems.list": newUpgradeIds,
-        });
-      }
-    }
-
     // If we created a new item and the sourceItem is a container type the createItem hook ensures all of the
     // installed items are also created on the target actor. We need to ensure that those items are
     // deleted from the source actor.
