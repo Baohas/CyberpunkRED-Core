@@ -1,6 +1,6 @@
 import AdmZip from "adm-zip";
 import fs from "fs-extra";
-import { mkdtemp, rm, rename } from "node:fs/promises";
+import { mkdtemp, rm } from "node:fs/promises";
 import path from "node:path";
 import { RUN_STATE_DIR, worldDir } from "../config/harness-config.mjs";
 import { validateWorldPackageId, validateWorldSystem } from "./worlds.mjs";
@@ -60,11 +60,18 @@ function validateLayout(extractDir, worldJsonPath, world) {
 async function moveRootWorld(sourceDir, destinationDir) {
   fs.ensureDirSync(destinationDir);
   for (const entry of fs.readdirSync(sourceDir)) {
-    await rename(path.join(sourceDir, entry), path.join(destinationDir, entry));
+    await fs.move(
+      path.join(sourceDir, entry),
+      path.join(destinationDir, entry),
+    );
   }
 }
 
-export async function importWorldArchive({ archivePath, dataPath }) {
+export async function importWorldArchive({
+  archivePath,
+  dataPath,
+  force = false,
+}) {
   if (!archivePath) throw new Error("Missing archive path.");
   const sourceArchive = path.resolve(archivePath);
   if (!fs.existsSync(sourceArchive)) {
@@ -96,13 +103,16 @@ export async function importWorldArchive({ archivePath, dataPath }) {
     validateWorldPackageId(worldId, "Archive world id");
     const destinationDir = worldDir(dataPath, folder);
     if (fs.existsSync(destinationDir)) {
-      throw new Error(`World destination already exists: ${destinationDir}`);
+      if (!force) {
+        throw new Error(`World destination already exists: ${destinationDir}`);
+      }
+      await rm(destinationDir, { recursive: true, force: true });
     }
 
     fs.ensureDirSync(path.dirname(destinationDir));
     if (sourceWorldDir === extractDir)
       await moveRootWorld(sourceWorldDir, destinationDir);
-    else await rename(sourceWorldDir, destinationDir);
+    else await fs.move(sourceWorldDir, destinationDir);
 
     await rm(tempRoot, { recursive: true, force: true });
     return {

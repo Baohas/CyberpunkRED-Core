@@ -123,16 +123,38 @@ describe("world archive import", () => {
     ).rejects.toThrow(/exactly one world\.json/);
   });
 
-  it("rejects destination conflicts", async () => {
+  it("rejects destination conflicts unless forced", async () => {
     const root = await tempDir();
     const dataPath = path.join(root, "data");
     const conflict = path.join(root, "conflict.zip");
-    writeZip(conflict, { "world.json": worldJson("taken") });
-    fs.ensureDirSync(path.join(dataPath, "Data/worlds/taken"));
+    const destinationDir = path.join(dataPath, "Data/worlds/taken");
+    writeZip(conflict, {
+      "world.json": worldJson("taken", { title: "Imported Taken" }),
+      "data/settings.db": "new-settings",
+    });
+    fs.ensureDirSync(destinationDir);
+    fs.writeJSONSync(path.join(destinationDir, "world.json"), {
+      id: "taken",
+      title: "Existing Taken",
+      system: "cyberpunk-red-core",
+    });
+    fs.writeFileSync(path.join(destinationDir, "stale.txt"), "old");
 
     await expect(
       importWorldArchive({ archivePath: conflict, dataPath }),
     ).rejects.toThrow(/already exists/);
+
+    const imported = await importWorldArchive({
+      archivePath: conflict,
+      dataPath,
+      force: true,
+    });
+
+    expect(imported.worldId).toBe("taken");
+    expect(fs.readJSONSync(path.join(destinationDir, "world.json")).title).toBe(
+      "Imported Taken",
+    );
+    expect(fs.existsSync(path.join(destinationDir, "stale.txt"))).toBe(false);
   });
 
   it("rejects wrong system ids and unsafe paths", async () => {
