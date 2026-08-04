@@ -116,6 +116,7 @@ export function launchLiveWorld(options = {}) {
 async function launchBughuntWorld({
   worldId,
   archivePath,
+  force = false,
   silent = false,
 } = {}) {
   const config = resolveHarnessConfig({
@@ -128,6 +129,7 @@ async function launchBughuntWorld({
         id: (archiveInfo = await importWorldArchive({
           archivePath,
           dataPath: config.dataPath,
+          force,
         })).worldId,
         folder: archiveInfo.folder,
       }
