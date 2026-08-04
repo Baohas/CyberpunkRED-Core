@@ -145,6 +145,103 @@ async function acceptEula(page) {
   await page.waitForLoadState("networkidle").catch(() => {});
 }
 
+async function clickWorldLaunch(page, worldId) {
+  const tile = page.locator(`[data-package-id="${worldId}"]`).first();
+  if (!(await present(tile))) {
+    throw new Error(`World '${worldId}' is not visible on the setup screen.`);
+  }
+
+  // Setup tiles reveal Launch on hover, but the anchor stays in the DOM even
+  // while hidden. Dispatch the click directly so hover/tour timing cannot make
+  // us miss the launch action.
+  await tile.hover().catch(() => {});
+  const launch = tile.locator('[data-action="worldLaunch"]').first();
+  await launch.dispatchEvent("click").catch(() => {});
+  await page.waitForLoadState("networkidle").catch(() => {});
+}
+
+async function handleCoreWorldMigrationPrompt(page) {
+  const beginMigration = page
+    .locator(
+      'button:has-text("Begin Migration"), button:has-text("Migrate World")',
+    )
+    .last();
+  const backupCheckbox = page.locator('input[name="createBackup"]').last();
+  const migrationTitle = page
+    .getByText(/World Data Migration Required|World Migration Required/i)
+    .last();
+  const migrationBody = page
+    .getByText(/Launching the world .* will migrate/i)
+    .last();
+
+  const hasBeginMigration = await present(beginMigration, 1000);
+  const hasMigrationTitle = await present(migrationTitle, 1000);
+  const hasMigrationBody = await present(migrationBody, 1000);
+  const promptVisible =
+    hasBeginMigration && (hasMigrationTitle || hasMigrationBody);
+  if (!promptVisible) return false;
+
+  const backupEnabled = await backupCheckbox.isChecked().catch(() => false);
+  if (backupEnabled) {
+    await backupCheckbox.setChecked(false, { force: true }).catch(() => {});
+    await backupCheckbox
+      .evaluate((input) => {
+        if (!(input instanceof HTMLInputElement)) return;
+        input.checked = false;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      })
+      .catch(() => {});
+    const backupStillEnabled = await backupCheckbox
+      .isChecked()
+      .catch(() => false);
+    if (backupStillEnabled) {
+      throw new Error(
+        "Foundry's core world migration prompt appeared, but backup creation could not be disabled.",
+      );
+    }
+  }
+
+  await clickThrough(page, beginMigration);
+  await page.waitForLoadState("networkidle").catch(() => {});
+  await page.waitForTimeout(500);
+  return true;
+}
+
+async function waitForJoinAfterMigration(page, config, timeoutMs = 180000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const pathname = new URL(page.url()).pathname;
+    if (
+      /\/(join|auth)$/.test(pathname) &&
+      (await currentPageHasJoinScreen(page))
+    ) {
+      return true;
+    }
+    await page.waitForTimeout(2000);
+  }
+
+  // If Foundry never redirected on its own, try the join screen once as a fallback.
+  return launchedWorldHasJoinScreen(page, config);
+}
+
+async function launchWorldFromSetup(page, { config, worldId }) {
+  // Retry from /setup until the world is joinable. A launch can either succeed
+  // directly, surface Foundry's core migration dialog, or simply need another try.
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    await dismissTours(page);
+    await clickWorldLaunch(page, worldId);
+    const handledMigration = await handleCoreWorldMigrationPrompt(page);
+    if (handledMigration) {
+      if (await waitForJoinAfterMigration(page, config)) return;
+    } else if (await launchedWorldHasJoinScreen(page, config)) {
+      return;
+    }
+    await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
+  }
+  throw new Error(`World '${worldId}' did not launch from setup.`);
+}
+
 async function createAndLaunchWorld(page, worldId, config) {
   // Already in a world / at the join screen — nothing to set up.
   if (/\/(game|join)/.test(new URL(page.url()).pathname)) return;
@@ -189,38 +286,7 @@ async function createAndLaunchWorld(page, worldId, config) {
     await page.waitForLoadState("networkidle").catch(() => {});
   }
 
-  // Launch the world and confirm it actually went active. In v13 the launch
-  // click is easy to lose — the control is hover-revealed on the world tile and a
-  // tour overlay can sit over it — which silently leaves us on /setup so that
-  // /join reports "no active game session". Retry from /setup until the world is
-  // up (the join screen renders the user picker only once a world is launched).
-  for (let attempt = 0; attempt < 6; attempt += 1) {
-    // A fresh world can trigger another tour (e.g. "Backups Overview") that sits
-    // over the launch control — clear it before launching.
-    await dismissTours(page);
-
-    // The launch control is revealed on hover over the world tile, so hover the
-    // tile first; if it still isn't actionable, dispatch the click directly (the
-    // anchor is in the DOM regardless of the hover-reveal styling).
-    const tile = page.locator(`[data-package-id="${worldId}"]`).first();
-    if (await present(tile)) {
-      await tile.hover().catch(() => {});
-      const launch = tile.locator('[data-action="worldLaunch"]').first();
-      if (await present(launch, 1500)) await launch.click().catch(() => {});
-      else await launch.dispatchEvent("click").catch(() => {});
-      await page.waitForLoadState("networkidle").catch(() => {});
-    }
-
-    // Verify the world is live: the user picker on /join only renders when a
-    // world is active. If it's there, we're done.
-    await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
-    if (await present(page.locator('select[name="userid"]').first(), 2000)) {
-      return;
-    }
-
-    // Still showing "no active game session" — go back to /setup and retry.
-    await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
-  }
+  await launchWorldFromSetup(page, { config, worldId });
 }
 
 /*
@@ -247,28 +313,18 @@ export async function driveSetup(page, { config, worldId }) {
   await createAndLaunchWorld(page, worldId, config);
 }
 
+async function currentPageHasJoinScreen(page) {
+  return present(page.locator('select[name="userid"]').first(), 2000);
+}
+
 export async function launchedWorldHasJoinScreen(page, config) {
   await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
-  return present(page.locator('select[name="userid"]').first(), 2000);
+  return currentPageHasJoinScreen(page);
 }
 
 export async function launchExistingWorld(page, { config, worldId }) {
   await reachInteractableSetup(page, config);
-  for (let attempt = 0; attempt < 6; attempt += 1) {
-    await dismissTours(page);
-    const tile = page.locator(`[data-package-id="${worldId}"]`).first();
-    if (!(await present(tile))) {
-      throw new Error(`World '${worldId}' is not visible on the setup screen.`);
-    }
-    await tile.hover().catch(() => {});
-    const launch = tile.locator('[data-action="worldLaunch"]').first();
-    if (await present(launch, 1500)) await clickThrough(page, launch);
-    else await launch.dispatchEvent("click").catch(() => {});
-    await page.waitForLoadState("networkidle").catch(() => {});
-    if (await launchedWorldHasJoinScreen(page, config)) return;
-    await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
-  }
-  throw new Error(`World '${worldId}' did not launch from setup.`);
+  await launchWorldFromSetup(page, { config, worldId });
 }
 
 async function openWorldConfig(page, { config, worldId }) {
