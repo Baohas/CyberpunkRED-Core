@@ -32,8 +32,9 @@ export default class CPRItem extends Item {
    */
   static async create(data, options) {
     const item = await super.create(data, options);
-    // Early return if has no installed, or its in a compendium.
-    if (!item.system.hasInstalled || item.pack) return;
+    // Early return if has no installed items.
+    if (!item.system.hasInstalled) return;
+
     // If this item is being imported into the world,
     // and it has embedded installed item data in its flags.
     if (!item.parent && ContainerUtils.getInstallTreeFlag(item)) {
@@ -50,9 +51,11 @@ export default class CPRItem extends Item {
       item.system.hasInstalled &&
       !ContainerUtils.getInstallTreeFlag(item)
     ) {
-      const installedItemList = item.system.installedItems.list.map((id) =>
-        game.items.get(id),
-      );
+      const installedItemList = (
+        await Promise.all(
+          item.system.installedItems.list.map(async (id) => game.items.get(id)),
+        )
+      ).filter(Boolean);
       // Reset the new item's install list and used slots.
       await item.update({
         "system.installedItems": { list: [], usedSlots: 0 },

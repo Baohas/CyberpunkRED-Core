@@ -176,7 +176,7 @@ export default class CPRActor extends Actor {
   }
 
   /**
-   * The three reasons we extend this code are:
+   * The four reasons we extend this code are:
    *  - handle an edge case for migrations.
    *  - prevent addition of core items
    *  - handle item stacking
@@ -252,6 +252,42 @@ export default class CPRActor extends Actor {
         // The following function recusrively creates and installs all items in the install tree.
         await item.createInstalledItemsOnActor(imported);
       }
+    }
+
+    // Handle upgradable items (weapons, armor, clothing) with installed upgrades
+    const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
+    for (const item of createdItems) {
+      // skip item if it is not upgradeable - nothing should be there
+      if (!upgradableTypes.includes(item.type)) continue;
+      const installedUpgradeIds = item.system.installedItems?.list ?? [];
+      // skip item if it has no upgrades
+      if (installedUpgradeIds.length === 0) continue;
+      const sourceUpgrades = [];
+      const installTree = ContainerUtils.getInstallTreeFlag(item);
+      if (installTree && installTree.length > 0) {
+        for (const upgrade of installTree) {
+          sourceUpgrades.push(foundry.utils.duplicate(upgrade));
+        }
+      } else {
+        for (const upgradeId of installedUpgradeIds) {
+          const sourceUpgrade =
+            game.items.get(upgradeId) ?? item.actor?.getOwnedItem(upgradeId);
+          if (sourceUpgrade) sourceUpgrades.push(sourceUpgrade);
+        }
+      }
+
+      // game environment doesn't have the upgrade items, so we cannot duplicate them (!?)
+      if (sourceUpgrades.length === 0) continue;
+      // Finally, duplicate and install the upgrades
+      const upgradeData = sourceUpgrades.map((u) => foundry.utils.duplicate(u));
+      const newUpgrades = await item.actor.createEmbeddedDocuments(
+        "Item",
+        upgradeData,
+        { keepId: false },
+      );
+      const newUpgradeIds = newUpgrades.map((u) => u.id);
+
+      await item.update({ "system.installedItems": { list: newUpgradeIds } });
     }
 
     const isMookSheet = Object.values(this.apps).some(
