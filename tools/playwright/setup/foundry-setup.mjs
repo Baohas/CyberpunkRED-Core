@@ -94,7 +94,7 @@ async function declineDataSharing(page) {
   }
 }
 
-async function authenticateSetup(page, adminPassword) {
+async function authenticateSetup(page, foundryAdminPass) {
   const passwordInput = page
     .locator(
       'input[name="adminPassword"], input[name="password"], input[type="password"]',
@@ -102,14 +102,14 @@ async function authenticateSetup(page, adminPassword) {
     .first();
   if (!(await present(passwordInput, 1000))) return;
 
-  if (!adminPassword) {
+  if (!foundryAdminPass) {
     throw new Error(
       "Foundry setup requires the administrator password. Set " +
-        "'foundry.adminPassword' in foundryconfig.json or FOUNDRY_ADMIN_PASSWORD.",
+        "FOUNDRY_ADMIN_PASS in the repo-root .env file or export it in your shell.",
     );
   }
 
-  await passwordInput.fill(adminPassword);
+  await passwordInput.fill(foundryAdminPass);
   await page
     .locator(
       'button[type="submit"], button:has-text("Log In"), button:has-text("Sign In")',
@@ -119,17 +119,17 @@ async function authenticateSetup(page, adminPassword) {
   await page.waitForLoadState("networkidle").catch(() => {});
 }
 
-async function acceptLicense(page, licenseKey) {
+async function acceptLicense(page, foundryKey) {
   const keyInput = page.locator('input[name="licenseKey"]').first();
   if (!(await present(keyInput))) return;
 
-  if (!licenseKey) {
+  if (!foundryKey) {
     throw new Error(
-      "Foundry is showing the license activation screen but no license key is " +
-        "configured. Set 'licenseKey' in foundryconfig.json or FOUNDRY_LICENSE_KEY.",
+      "Foundry is showing the license activation screen but no license key is configured. Set " +
+        "FOUNDRY_KEY in the repo-root .env file or export it in your shell.",
     );
   }
-  await keyInput.fill(licenseKey);
+  await keyInput.fill(foundryKey);
   await page.locator('button[type="submit"]').first().click();
   await page.waitForLoadState("networkidle").catch(() => {});
 }
@@ -297,9 +297,9 @@ async function createAndLaunchWorld(page, worldId, config) {
 export async function reachInteractableSetup(page, config) {
   await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
 
-  await acceptLicense(page, config.licenseKey);
+  await acceptLicense(page, config.foundryKey);
   await acceptEula(page);
-  await authenticateSetup(page, config.adminPassword);
+  await authenticateSetup(page, config.foundryAdminPass);
   await declineDataSharing(page);
   await dismissTours(page);
 }
@@ -307,7 +307,7 @@ export async function reachInteractableSetup(page, config) {
 export async function driveSetup(page, { config, worldId }) {
   await page.goto(config.url, { waitUntil: "domcontentloaded" });
 
-  await acceptLicense(page, config.licenseKey);
+  await acceptLicense(page, config.foundryKey);
   await acceptEula(page);
   await declineDataSharing(page);
   await createAndLaunchWorld(page, worldId, config);
