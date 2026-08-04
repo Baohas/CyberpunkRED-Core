@@ -129,6 +129,16 @@
       "description": "<p>Удваивает скорость лечения во время отдыха.</p>",
       "dvTable": ""
     },
+    "Exposed Covering (Cyber Arm)": {
+      "name": "Exposed Covering (Cyber Arm)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
+    "Exposed Covering (Cyber Leg)": {
+      "name": "Exposed Covering (Cyber Leg)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
     "Gills": {
       "name": "Жабры",
       "description": "<p>Позволяют дышать под водой.</p>",
@@ -227,6 +237,16 @@
     "Meat Arm": {
       "name": "Мясная рука",
       "description": "<p>Обычная рука. Годится только для имплантов вроде «Стандартной кисти», а так же некоторых видов оружия и инструментов, но только в количестве одной штуки.</p>",
+      "dvTable": ""
+    },
+    "Meat Foot": {
+      "name": "Meat Foot",
+      "description": "<p>Looks like a normal foot for the most part.</p>\n",
+      "dvTable": ""
+    },
+    "Meat Hand": {
+      "name": "Meat Hand",
+      "description": "<p>Looks like a normal hand for the most part.</p>\n",
       "dvTable": ""
     },
     "Meat Leg": {
