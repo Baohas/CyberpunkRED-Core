@@ -30,7 +30,8 @@
     .releasenotes,
     .journal-entry-content,
     .journal-page-content,
-    .journal-sheet-container
+    .journal-sheet-container,
+    .roll-table-sheet
   )
   :is(div, section) {
   scrollbar-width: thin;
@@ -45,7 +46,8 @@
 .item-sheet,
 .mook-sheet,
 .cpr-migration-dialog,
-.releasenotes {
+.releasenotes,
+.roll-table-sheet {
   font-family: var(--cpr-font-primary);
 }
 
@@ -62,7 +64,8 @@
     .releasenotes,
     .journal-entry-content,
     .journal-page-content,
-    .journal-sheet-container
+    .journal-sheet-container,
+    .roll-table-sheet
   )
   .editor {
   flex: 1 0 auto;
@@ -87,7 +90,8 @@
     .releasenotes,
     .journal-entry-content,
     .journal-page-content,
-    .journal-sheet-container
+    .journal-sheet-container,
+    .roll-table-sheet
   )
   .editor-content {
   padding: 0.313rem;
