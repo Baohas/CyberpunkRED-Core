@@ -53,9 +53,7 @@ export default class CPRItem extends Item {
     ) {
       const installedItemList = (
         await Promise.all(
-          item.system.installedItems.list.map(async (id) =>
-            SystemUtils.GetCompendiumDocById(id),
-          ),
+          item.system.installedItems.list.map(async (id) => game.items.get(id)),
         )
       ).filter(Boolean);
       // Reset the new item's install list and used slots.
@@ -80,7 +78,7 @@ export default class CPRItem extends Item {
           : (
               await Promise.all(
                 item.system.installedItems.list.map(async (id) =>
-                  SystemUtils.GetCompendiumDocById(id),
+                  game.items.get(id),
                 ),
               )
             ).filter(Boolean);

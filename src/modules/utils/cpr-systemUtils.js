@@ -6,24 +6,6 @@ import LOGGER from "./cpr-logger.js";
 export default class CPRSystemUtils {
   /* COMPENDIA AND FOLDER UTILS */
 
-  /**
-   * Search all packs for a document by its bare ID.
-   *
-   * @async
-   * @static
-   * @param {String} id - the document ID to look for
-   * @returns {Promise<Document|null>} - returns the document if found, null otherwise
-   */
-  static async GetCompendiumDocById(id) {
-    if (!game.packs) return null;
-    for (const pack of game.packs.values()) {
-      LOGGER.debug(`Trying to get ${id} from pack: ${pack.metadata.label}`);
-      const doc = await pack.getDocument(id);
-      if (doc) return doc;
-    }
-    return null;
-  }
-
   static GetCompendiaByType(ptype, ctype = null) {
     if (!game.packs) return [];
     const packs = game.packs.filter((p) => p.metadata.packageType === ptype);
