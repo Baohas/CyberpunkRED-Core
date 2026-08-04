@@ -7,14 +7,14 @@ import { SYSTEM_NAME } from "../config/harness-config.mjs";
  * IMPORTANT: the exact selectors for the license / EULA / setup screens are
  * Foundry-version-specific (v13 moved everything to ApplicationV2). They are
  * written defensively here but SHOULD be confirmed against a live instance on
- * first run — `npm run playwright:serve` + the Playwright MCP is the intended way to
+ * first run - `npm run playwright:serve` + the Playwright MCP is the intended way to
  * inspect the real DOM and adjust these. Each step is a no-op if its screen is
  * not present, so a warm dataPath (already licensed, EULA accepted) skips ahead.
  */
 
 const SHORT = 4000;
 
-// True if `locator` becomes visible within `timeout`, false otherwise — never throws.
+// True if `locator` becomes visible within `timeout`, false otherwise - never throws.
 async function present(locator, timeout = SHORT) {
   try {
     await locator.first().waitFor({ state: "visible", timeout });
@@ -27,7 +27,7 @@ async function present(locator, timeout = SHORT) {
 /*
  * Foundry shows onboarding "tours" (e.g. the Setup screen's "Backups Overview")
  * as a `.tour` step plus a full-screen `.tour-overlay` that renders above the
- * setup UI and intercepts clicks on the controls below it — enough to make
+ * setup UI and intercepts clicks on the controls below it - enough to make
  * worldCreate/worldLaunch silently miss. Dismiss any visible tour: click its exit
  * ("X") control, fall back to pressing Escape (Foundry exits tours on Escape),
  * and as a last resort remove any lingering `.tour-overlay`/`.tour` nodes so they
@@ -67,7 +67,7 @@ async function dismissTours(page) {
  * re-render between page load and the click and intercept pointer events, which
  * makes a normal `.click()` time out ("<div class="tour-overlay"> intercepts
  * pointer events"). Clear the tour first, try a real click, and fall back to
- * dispatching the event straight at the element — which ignores any overlay
+ * dispatching the event straight at the element - which ignores any overlay
  * stacked on top. Mirrors the worldLaunch handling below.
  */
 async function clickThrough(page, locator) {
@@ -243,7 +243,7 @@ async function launchWorldFromSetup(page, { config, worldId }) {
 }
 
 async function createAndLaunchWorld(page, worldId, config) {
-  // Already in a world / at the join screen — nothing to set up.
+  // Already in a world / at the join screen - nothing to set up.
   if (/\/(game|join)/.test(new URL(page.url()).pathname)) return;
 
   // The Setup screen often opens a tour overlay that would intercept our clicks.
@@ -258,7 +258,7 @@ async function createAndLaunchWorld(page, worldId, config) {
     await clickThrough(page, createButton);
 
     // World creation dialog. Opening it can spawn a fresh tour (e.g. "Backups Overview") that
-    // overlays and re-renders the dialog, detaching the title input mid-fill — a 30s `fill` timeout
+    // overlays and re-renders the dialog, detaching the title input mid-fill - a 30s `fill` timeout
     // that flaked CI. Clear tours and retry so a tour that appears after the dialog can't wedge us.
     const titleInput = page.locator('input[name="title"]').first();
     for (let attempt = 0; attempt < 6; attempt += 1) {

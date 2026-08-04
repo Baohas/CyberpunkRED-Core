@@ -226,7 +226,7 @@ export function resolveMainJs(appDir) {
       `Could not find Foundry main.js under '${appDir}'. Looked at:\n  ` +
         candidates.join("\n  ") +
         `\n(appPath may use a {VERSION} placeholder; if it omits one, the ` +
-        `<versionPrefix><version> subdir from src/system.json is appended — ` +
+        `<versionPrefix><version> subdir from src/system.json is appended - ` +
         `set FOUNDRY_VERSION to target a different version.)`,
     );
   }
