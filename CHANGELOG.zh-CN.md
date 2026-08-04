@@ -56,6 +56,9 @@ If you have any such items that should not crit, set them manually: on a weapon,
 - The item browser result rows now share the redesigned item sheet header layout (breadcrumb, name, chips, price and source)
 - Items can now cite multiple sourcebooks: the single `source` field is now a `sources` list; existing worlds migrate automatically
 - Item sheet headers and browser rows now show only an item's first source inline, revealing the rest in a hover tooltip
+- Pre-Installed smartgun-link upgrade into Malorian Arms 3516
+- Pre-Installed hands and feet into Meatlimbs
+- Pre-Installed hands, feet, and exposed cyberware coverings into Cyberlimbs
 
 ### Plumbing
 
@@ -144,7 +147,6 @@ We have fixed a number of Quality/Attack Mod mismatches on weapons in the Compen
 ### New Features
 
 - Add Ukrainian Language support
-- Pre-Installed smartgun-link upgrade into Malorian Arms 3516
 
 ### Bug Fixes
 

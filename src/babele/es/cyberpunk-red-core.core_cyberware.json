@@ -129,6 +129,16 @@
       "description": "<p>Duplica la curación natural mientras descansas. </p>",
       "dvTable": ""
     },
+    "Exposed Covering (Cyber Arm)": {
+      "name": "Exposed Covering (Cyber Arm)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
+    "Exposed Covering (Cyber Leg)": {
+      "name": "Exposed Covering (Cyber Leg)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
     "Gills": {
       "name": "Agallas",
       "description": "<p>Permite respirar bajo el agua. </p>",
@@ -227,6 +237,16 @@
     "Meat Arm": {
       "name": "Brazo de Carne y Hueso",
       "description": "<p>Un brazo regular. Puede soportar implantes como una Mano Estándar o algunas armas y herramientas como la única pieza instalada.</p>",
+      "dvTable": ""
+    },
+    "Meat Foot": {
+      "name": "Meat Foot",
+      "description": "<p>Looks like a normal foot for the most part.</p>\n",
+      "dvTable": ""
+    },
+    "Meat Hand": {
+      "name": "Meat Hand",
+      "description": "<p>Looks like a normal hand for the most part.</p>\n",
       "dvTable": ""
     },
     "Meat Leg": {

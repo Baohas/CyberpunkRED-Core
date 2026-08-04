@@ -129,6 +129,16 @@
       "description": "<p>Verdoppelt die natürliche Heilung während der Ruhezeit.</p>",
       "dvTable": ""
     },
+    "Exposed Covering (Cyber Arm)": {
+      "name": "Exposed Covering (Cyber Arm)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
+    "Exposed Covering (Cyber Leg)": {
+      "name": "Exposed Covering (Cyber Leg)",
+      "description": "<p>\n  Your cybernetics are exposed, maybe you should purchase a covering for your\n  arm?\n</p>\n",
+      "dvTable": ""
+    },
     "Gills": {
       "name": "Kiemen",
       "description": "<p>Der Anwender kann unter Wasser atmen.</p>",
@@ -227,6 +237,16 @@
     "Meat Arm": {
       "name": "Fleischarm",
       "description": "<p>Ein normaler Arm. Dieser kann Aufsätze wie eine Standardhand oder einige Waffen und Werkzeuge als einziges installiertes Teil tragen.</p>",
+      "dvTable": ""
+    },
+    "Meat Foot": {
+      "name": "Meat Foot",
+      "description": "<p>Looks like a normal foot for the most part.</p>\n",
+      "dvTable": ""
+    },
+    "Meat Hand": {
+      "name": "Meat Hand",
+      "description": "<p>Looks like a normal hand for the most part.</p>\n",
       "dvTable": ""
     },
     "Meat Leg": {
