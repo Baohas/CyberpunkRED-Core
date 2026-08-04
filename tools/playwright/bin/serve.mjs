@@ -12,6 +12,7 @@ try {
 const session = await buildAndLaunchLiveWorld({
   worldId: args.world,
   archivePath: args.archive,
+  force: args.force,
 });
 
 console.log(`\nFoundry is up at ${session.config.url}`);
