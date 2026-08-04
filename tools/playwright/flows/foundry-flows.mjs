@@ -11,7 +11,6 @@ import { resolveWorld } from "../session/worlds.mjs";
 import { startFoundry, stopFoundry } from "../server/foundry-server.mjs";
 import {
   driveSetup,
-  joinAsFullGM,
   joinAsGM,
   launchExistingWorld,
   resetWorldUserPasswords,
@@ -82,7 +81,9 @@ async function launchWorld({
       mode === "test" ? { viewport: { width: 1920, height: 1080 } } : undefined,
     );
     await driveSetup(page, { config, worldId });
-    await joinAsGM(page, config);
+    if (mode === "test") {
+      await joinAsGM(page, config);
+    }
     session = createSession({
       config,
       child,
@@ -110,12 +111,18 @@ async function launchWorld({
 }
 
 export function launchLiveWorld(options = {}) {
-  return launchWorld({ ...options, mode: "live", dataPathMode: "configured" });
+  return launchWorld({
+    ...options,
+    mode: "live",
+    dataPathMode: "configured",
+    keepBrowser: true,
+  });
 }
 
 async function launchBughuntWorld({
   worldId,
   archivePath,
+  force = false,
   silent = false,
 } = {}) {
   const config = resolveHarnessConfig({
@@ -128,6 +135,7 @@ async function launchBughuntWorld({
         id: (archiveInfo = await importWorldArchive({
           archivePath,
           dataPath: config.dataPath,
+          force,
         })).worldId,
         folder: archiveInfo.folder,
       }
@@ -146,8 +154,6 @@ async function launchBughuntWorld({
       worldId: setupPackageId,
     });
     await launchExistingWorld(page, { config, worldId: setupPackageId });
-    await joinAsFullGM(page, config, { password: "" });
-    await page.context().storageState({ path: config.storageState });
     return createSession({
       config,
       child,

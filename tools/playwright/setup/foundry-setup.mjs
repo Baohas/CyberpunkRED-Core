@@ -7,14 +7,14 @@ import { SYSTEM_NAME } from "../config/harness-config.mjs";
  * IMPORTANT: the exact selectors for the license / EULA / setup screens are
  * Foundry-version-specific (v13 moved everything to ApplicationV2). They are
  * written defensively here but SHOULD be confirmed against a live instance on
- * first run — `npm run playwright:serve` + the Playwright MCP is the intended way to
+ * first run - `npm run playwright:serve` + the Playwright MCP is the intended way to
  * inspect the real DOM and adjust these. Each step is a no-op if its screen is
  * not present, so a warm dataPath (already licensed, EULA accepted) skips ahead.
  */
 
 const SHORT = 4000;
 
-// True if `locator` becomes visible within `timeout`, false otherwise — never throws.
+// True if `locator` becomes visible within `timeout`, false otherwise - never throws.
 async function present(locator, timeout = SHORT) {
   try {
     await locator.first().waitFor({ state: "visible", timeout });
@@ -27,7 +27,7 @@ async function present(locator, timeout = SHORT) {
 /*
  * Foundry shows onboarding "tours" (e.g. the Setup screen's "Backups Overview")
  * as a `.tour` step plus a full-screen `.tour-overlay` that renders above the
- * setup UI and intercepts clicks on the controls below it — enough to make
+ * setup UI and intercepts clicks on the controls below it - enough to make
  * worldCreate/worldLaunch silently miss. Dismiss any visible tour: click its exit
  * ("X") control, fall back to pressing Escape (Foundry exits tours on Escape),
  * and as a last resort remove any lingering `.tour-overlay`/`.tour` nodes so they
@@ -67,7 +67,7 @@ async function dismissTours(page) {
  * re-render between page load and the click and intercept pointer events, which
  * makes a normal `.click()` time out ("<div class="tour-overlay"> intercepts
  * pointer events"). Clear the tour first, try a real click, and fall back to
- * dispatching the event straight at the element — which ignores any overlay
+ * dispatching the event straight at the element - which ignores any overlay
  * stacked on top. Mirrors the worldLaunch handling below.
  */
 async function clickThrough(page, locator) {
@@ -94,7 +94,7 @@ async function declineDataSharing(page) {
   }
 }
 
-async function authenticateSetup(page, adminPassword) {
+async function authenticateSetup(page, foundryAdminPass) {
   const passwordInput = page
     .locator(
       'input[name="adminPassword"], input[name="password"], input[type="password"]',
@@ -102,14 +102,14 @@ async function authenticateSetup(page, adminPassword) {
     .first();
   if (!(await present(passwordInput, 1000))) return;
 
-  if (!adminPassword) {
+  if (!foundryAdminPass) {
     throw new Error(
       "Foundry setup requires the administrator password. Set " +
-        "'foundry.adminPassword' in foundryconfig.json or FOUNDRY_ADMIN_PASSWORD.",
+        "FOUNDRY_ADMIN_PASS in the repo-root .env file or export it in your shell.",
     );
   }
 
-  await passwordInput.fill(adminPassword);
+  await passwordInput.fill(foundryAdminPass);
   await page
     .locator(
       'button[type="submit"], button:has-text("Log In"), button:has-text("Sign In")',
@@ -119,17 +119,17 @@ async function authenticateSetup(page, adminPassword) {
   await page.waitForLoadState("networkidle").catch(() => {});
 }
 
-async function acceptLicense(page, licenseKey) {
+async function acceptLicense(page, foundryKey) {
   const keyInput = page.locator('input[name="licenseKey"]').first();
   if (!(await present(keyInput))) return;
 
-  if (!licenseKey) {
+  if (!foundryKey) {
     throw new Error(
-      "Foundry is showing the license activation screen but no license key is " +
-        "configured. Set 'licenseKey' in foundryconfig.json or FOUNDRY_LICENSE_KEY.",
+      "Foundry is showing the license activation screen but no license key is configured. Set " +
+        "FOUNDRY_KEY in the repo-root .env file or export it in your shell.",
     );
   }
-  await keyInput.fill(licenseKey);
+  await keyInput.fill(foundryKey);
   await page.locator('button[type="submit"]').first().click();
   await page.waitForLoadState("networkidle").catch(() => {});
 }
@@ -145,8 +145,105 @@ async function acceptEula(page) {
   await page.waitForLoadState("networkidle").catch(() => {});
 }
 
+async function clickWorldLaunch(page, worldId) {
+  const tile = page.locator(`[data-package-id="${worldId}"]`).first();
+  if (!(await present(tile))) {
+    throw new Error(`World '${worldId}' is not visible on the setup screen.`);
+  }
+
+  // Setup tiles reveal Launch on hover, but the anchor stays in the DOM even
+  // while hidden. Dispatch the click directly so hover/tour timing cannot make
+  // us miss the launch action.
+  await tile.hover().catch(() => {});
+  const launch = tile.locator('[data-action="worldLaunch"]').first();
+  await launch.dispatchEvent("click").catch(() => {});
+  await page.waitForLoadState("networkidle").catch(() => {});
+}
+
+async function handleCoreWorldMigrationPrompt(page) {
+  const beginMigration = page
+    .locator(
+      'button:has-text("Begin Migration"), button:has-text("Migrate World")',
+    )
+    .last();
+  const backupCheckbox = page.locator('input[name="createBackup"]').last();
+  const migrationTitle = page
+    .getByText(/World Data Migration Required|World Migration Required/i)
+    .last();
+  const migrationBody = page
+    .getByText(/Launching the world .* will migrate/i)
+    .last();
+
+  const hasBeginMigration = await present(beginMigration, 1000);
+  const hasMigrationTitle = await present(migrationTitle, 1000);
+  const hasMigrationBody = await present(migrationBody, 1000);
+  const promptVisible =
+    hasBeginMigration && (hasMigrationTitle || hasMigrationBody);
+  if (!promptVisible) return false;
+
+  const backupEnabled = await backupCheckbox.isChecked().catch(() => false);
+  if (backupEnabled) {
+    await backupCheckbox.setChecked(false, { force: true }).catch(() => {});
+    await backupCheckbox
+      .evaluate((input) => {
+        if (!(input instanceof HTMLInputElement)) return;
+        input.checked = false;
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+      })
+      .catch(() => {});
+    const backupStillEnabled = await backupCheckbox
+      .isChecked()
+      .catch(() => false);
+    if (backupStillEnabled) {
+      throw new Error(
+        "Foundry's core world migration prompt appeared, but backup creation could not be disabled.",
+      );
+    }
+  }
+
+  await clickThrough(page, beginMigration);
+  await page.waitForLoadState("networkidle").catch(() => {});
+  await page.waitForTimeout(500);
+  return true;
+}
+
+async function waitForJoinAfterMigration(page, config, timeoutMs = 180000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    const pathname = new URL(page.url()).pathname;
+    if (
+      /\/(join|auth)$/.test(pathname) &&
+      (await currentPageHasJoinScreen(page))
+    ) {
+      return true;
+    }
+    await page.waitForTimeout(2000);
+  }
+
+  // If Foundry never redirected on its own, try the join screen once as a fallback.
+  return launchedWorldHasJoinScreen(page, config);
+}
+
+async function launchWorldFromSetup(page, { config, worldId }) {
+  // Retry from /setup until the world is joinable. A launch can either succeed
+  // directly, surface Foundry's core migration dialog, or simply need another try.
+  for (let attempt = 0; attempt < 6; attempt += 1) {
+    await dismissTours(page);
+    await clickWorldLaunch(page, worldId);
+    const handledMigration = await handleCoreWorldMigrationPrompt(page);
+    if (handledMigration) {
+      if (await waitForJoinAfterMigration(page, config)) return;
+    } else if (await launchedWorldHasJoinScreen(page, config)) {
+      return;
+    }
+    await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
+  }
+  throw new Error(`World '${worldId}' did not launch from setup.`);
+}
+
 async function createAndLaunchWorld(page, worldId, config) {
-  // Already in a world / at the join screen — nothing to set up.
+  // Already in a world / at the join screen - nothing to set up.
   if (/\/(game|join)/.test(new URL(page.url()).pathname)) return;
 
   // The Setup screen often opens a tour overlay that would intercept our clicks.
@@ -161,7 +258,7 @@ async function createAndLaunchWorld(page, worldId, config) {
     await clickThrough(page, createButton);
 
     // World creation dialog. Opening it can spawn a fresh tour (e.g. "Backups Overview") that
-    // overlays and re-renders the dialog, detaching the title input mid-fill — a 30s `fill` timeout
+    // overlays and re-renders the dialog, detaching the title input mid-fill - a 30s `fill` timeout
     // that flaked CI. Clear tours and retry so a tour that appears after the dialog can't wedge us.
     const titleInput = page.locator('input[name="title"]').first();
     for (let attempt = 0; attempt < 6; attempt += 1) {
@@ -189,38 +286,7 @@ async function createAndLaunchWorld(page, worldId, config) {
     await page.waitForLoadState("networkidle").catch(() => {});
   }
 
-  // Launch the world and confirm it actually went active. In v13 the launch
-  // click is easy to lose — the control is hover-revealed on the world tile and a
-  // tour overlay can sit over it — which silently leaves us on /setup so that
-  // /join reports "no active game session". Retry from /setup until the world is
-  // up (the join screen renders the user picker only once a world is launched).
-  for (let attempt = 0; attempt < 6; attempt += 1) {
-    // A fresh world can trigger another tour (e.g. "Backups Overview") that sits
-    // over the launch control — clear it before launching.
-    await dismissTours(page);
-
-    // The launch control is revealed on hover over the world tile, so hover the
-    // tile first; if it still isn't actionable, dispatch the click directly (the
-    // anchor is in the DOM regardless of the hover-reveal styling).
-    const tile = page.locator(`[data-package-id="${worldId}"]`).first();
-    if (await present(tile)) {
-      await tile.hover().catch(() => {});
-      const launch = tile.locator('[data-action="worldLaunch"]').first();
-      if (await present(launch, 1500)) await launch.click().catch(() => {});
-      else await launch.dispatchEvent("click").catch(() => {});
-      await page.waitForLoadState("networkidle").catch(() => {});
-    }
-
-    // Verify the world is live: the user picker on /join only renders when a
-    // world is active. If it's there, we're done.
-    await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
-    if (await present(page.locator('select[name="userid"]').first(), 2000)) {
-      return;
-    }
-
-    // Still showing "no active game session" — go back to /setup and retry.
-    await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
-  }
+  await launchWorldFromSetup(page, { config, worldId });
 }
 
 /*
@@ -231,9 +297,9 @@ async function createAndLaunchWorld(page, worldId, config) {
 export async function reachInteractableSetup(page, config) {
   await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
 
-  await acceptLicense(page, config.licenseKey);
+  await acceptLicense(page, config.foundryKey);
   await acceptEula(page);
-  await authenticateSetup(page, config.adminPassword);
+  await authenticateSetup(page, config.foundryAdminPass);
   await declineDataSharing(page);
   await dismissTours(page);
 }
@@ -241,34 +307,24 @@ export async function reachInteractableSetup(page, config) {
 export async function driveSetup(page, { config, worldId }) {
   await page.goto(config.url, { waitUntil: "domcontentloaded" });
 
-  await acceptLicense(page, config.licenseKey);
+  await acceptLicense(page, config.foundryKey);
   await acceptEula(page);
   await declineDataSharing(page);
   await createAndLaunchWorld(page, worldId, config);
 }
 
+async function currentPageHasJoinScreen(page) {
+  return present(page.locator('select[name="userid"]').first(), 2000);
+}
+
 export async function launchedWorldHasJoinScreen(page, config) {
   await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
-  return present(page.locator('select[name="userid"]').first(), 2000);
+  return currentPageHasJoinScreen(page);
 }
 
 export async function launchExistingWorld(page, { config, worldId }) {
   await reachInteractableSetup(page, config);
-  for (let attempt = 0; attempt < 6; attempt += 1) {
-    await dismissTours(page);
-    const tile = page.locator(`[data-package-id="${worldId}"]`).first();
-    if (!(await present(tile))) {
-      throw new Error(`World '${worldId}' is not visible on the setup screen.`);
-    }
-    await tile.hover().catch(() => {});
-    const launch = tile.locator('[data-action="worldLaunch"]').first();
-    if (await present(launch, 1500)) await clickThrough(page, launch);
-    else await launch.dispatchEvent("click").catch(() => {});
-    await page.waitForLoadState("networkidle").catch(() => {});
-    if (await launchedWorldHasJoinScreen(page, config)) return;
-    await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
-  }
-  throw new Error(`World '${worldId}' did not launch from setup.`);
+  await launchWorldFromSetup(page, { config, worldId });
 }
 
 async function openWorldConfig(page, { config, worldId }) {

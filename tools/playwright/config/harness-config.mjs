@@ -2,6 +2,100 @@ import fs from "fs-extra";
 import { rm } from "node:fs/promises";
 import path from "path";
 import crypto from "crypto";
+import { fileURLToPath } from "node:url";
+
+const REPO_SECRET_ENV_KEYS = new Set([
+  "FOUNDRY_ADMIN_PASS",
+  "FOUNDRY_KEY",
+  "FOUNDRY_WORLD_PASS",
+]);
+const loadedRepoSecrets = new Map();
+
+function findRepoRoot(startDir) {
+  let currentDir = startDir;
+
+  while (true) {
+    if (fs.existsSync(path.join(currentDir, ".git"))) {
+      return currentDir;
+    }
+
+    const parentDir = path.dirname(currentDir);
+    if (parentDir === currentDir) {
+      return undefined;
+    }
+    currentDir = parentDir;
+  }
+}
+
+const REPO_ROOT = findRepoRoot(path.dirname(fileURLToPath(import.meta.url)));
+const REPO_ENV_PATH = REPO_ROOT ? path.join(REPO_ROOT, ".env") : undefined;
+
+function parseDotEnvValue(rawValue) {
+  const value = rawValue.trim();
+  if (!value) return "";
+
+  if (
+    (value.startsWith('"') && value.endsWith('"')) ||
+    (value.startsWith("'") && value.endsWith("'"))
+  ) {
+    const quote = value[0];
+    const inner = value.slice(1, -1);
+    if (quote === "'") return inner;
+
+    return inner
+      .replace(/\\n/g, "\n")
+      .replace(/\\r/g, "\r")
+      .replace(/\\t/g, "\t")
+      .replace(/\\"/g, '"')
+      .replace(/\\\\/g, "\\");
+  }
+
+  const commentIndex = value.search(/\s#/);
+  return (commentIndex === -1 ? value : value.slice(0, commentIndex)).trim();
+}
+
+function loadRepoSecrets() {
+  loadedRepoSecrets.clear();
+
+  if (!REPO_ENV_PATH || !fs.existsSync(REPO_ENV_PATH)) return;
+
+  const envFile = fs.readFileSync(REPO_ENV_PATH, "utf8");
+  for (const rawLine of envFile.split(/\r?\n/u)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+
+    const entry = line.startsWith("export ") ? line.slice(7) : line;
+    const separatorIndex = entry.indexOf("=");
+    if (separatorIndex === -1) continue;
+
+    const key = entry.slice(0, separatorIndex).trim();
+    if (!REPO_SECRET_ENV_KEYS.has(key)) continue;
+    if (Object.prototype.hasOwnProperty.call(process.env, key)) continue;
+
+    loadedRepoSecrets.set(
+      key,
+      parseDotEnvValue(entry.slice(separatorIndex + 1)),
+    );
+  }
+}
+
+function readSecretEnv(key) {
+  if (Object.prototype.hasOwnProperty.call(process.env, key)) {
+    return process.env[key];
+  }
+  return loadedRepoSecrets.get(key);
+}
+
+function resolveSecret(key, fallbackValue) {
+  const envValue = readSecretEnv(key);
+  if (envValue !== undefined) {
+    return envValue;
+  }
+  return fallbackValue ?? "";
+}
+
+// Load repo-root .env once so shared harness resolution can consume env-backed secrets.
+loadRepoSecrets();
 
 export const SYSTEM_NAME = process.env.SYSTEM_NAME || "cyberpunk-red-core";
 export const DEFAULT_VERSION_PREFIX = "v";
@@ -14,7 +108,6 @@ export const STORAGE_STATE = path.join(RUN_STATE_DIR, "gm.json");
 export const PLAYER_STORAGE_STATE = path.join(RUN_STATE_DIR, "player.json");
 export const PLAYER_NAME = "E2E Player";
 export const PLAYER_CHARACTER_NAME = "E2E Shopper";
-export const HARNESS_PASSWORD = "playwright";
 
 const EPHEMERAL_PREFIX = "cprc-playwright-";
 
@@ -54,6 +147,8 @@ export function resolveHarnessConfig({
   dataPathMode,
   honorEnvDataPath = true,
 } = {}) {
+  loadRepoSecrets();
+
   const local = readLocalConfig();
   const versionPrefix = local.foundry?.versionPrefix;
   const rawAppPath = process.env.FOUNDRY_APP_PATH || local.foundry?.appPath;
@@ -67,15 +162,16 @@ export function resolveHarnessConfig({
     (selectedDataPathMode === "isolated"
       ? path.resolve(".playwright", "foundry-data")
       : local.foundry?.dataPath);
-  const licenseKey =
-    process.env.FOUNDRY_LICENSE_KEY || local.foundry?.licenseKey || "";
+  const foundryKey = resolveSecret("FOUNDRY_KEY", local.foundry?.licenseKey);
   const port = Number(process.env.PLAYWRIGHT_FOUNDRY_PORT || 30001);
-  const harnessPassword =
-    process.env.PLAYWRIGHT_FOUNDRY_PASSWORD ||
-    local.foundry?.playwrightPassword ||
-    HARNESS_PASSWORD;
-  const adminPassword =
-    process.env.FOUNDRY_ADMIN_PASSWORD || local.foundry?.adminPassword || "";
+  const foundryAdminPass = resolveSecret(
+    "FOUNDRY_ADMIN_PASS",
+    local.foundry?.adminPassword,
+  );
+  const foundryWorldPass = resolveSecret(
+    "FOUNDRY_WORLD_PASS",
+    local.foundry?.worldPassword,
+  );
 
   if (!rawAppPath) {
     throw new Error(
@@ -106,15 +202,15 @@ export function resolveHarnessConfig({
     appDir,
     dataPath,
     dataPathMode: explicitDataPath ? "override" : selectedDataPathMode,
-    licenseKey,
     mode,
     port,
     runStateDir: RUN_STATE_DIR,
     sessionState: SESSION_STATE,
     storageState: STORAGE_STATE,
     playerStorageState: PLAYER_STORAGE_STATE,
-    harnessPassword,
-    adminPassword,
+    foundryAdminPass,
+    foundryKey,
+    foundryWorldPass,
     url: `http://localhost:${port}`,
   };
 }
@@ -130,7 +226,7 @@ export function resolveMainJs(appDir) {
       `Could not find Foundry main.js under '${appDir}'. Looked at:\n  ` +
         candidates.join("\n  ") +
         `\n(appPath may use a {VERSION} placeholder; if it omits one, the ` +
-        `<versionPrefix><version> subdir from src/system.json is appended — ` +
+        `<versionPrefix><version> subdir from src/system.json is appended - ` +
         `set FOUNDRY_VERSION to target a different version.)`,
     );
   }
