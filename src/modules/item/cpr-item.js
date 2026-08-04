@@ -63,41 +63,6 @@ export default class CPRItem extends Item {
       item.installItems(installedItemList);
     }
 
-    // Duplicate installed upgrades for world upgradable items
-    const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
-    if (
-      upgradableTypes.includes(item.type) &&
-      item.system.installedItems?.list?.length > 0
-    ) {
-      // item has upgrades — use cprInstallTree flag if available
-      // otherwise fall back to resolving by ID from world items
-      const installTree = ContainerUtils.getInstallTreeFlag(item);
-      let sourceUpgrades =
-        installTree && installTree.length > 0
-          ? installTree
-          : (
-              await Promise.all(
-                item.system.installedItems.list.map(async (id) =>
-                  game.items.get(id),
-                ),
-              )
-            ).filter(Boolean);
-      if (sourceUpgrades.length > 0) {
-        const upgradeData = sourceUpgrades.map((u) =>
-          foundry.utils.duplicate(u),
-        );
-        const newUpgrades = await Item.createDocuments(upgradeData);
-        const newUpgradeIds = newUpgrades.map((u) => u.id);
-        if (item.parent) {
-          // this thing owned
-          await item.actor.updateEmbeddedDocuments("Item", [
-            { _id: item._id, "system.installedItems.list": newUpgradeIds },
-          ]);
-        } else {
-          await item.update({ "system.installedItems.list": newUpgradeIds });
-        }
-      }
-    }
     return item;
   }
 
