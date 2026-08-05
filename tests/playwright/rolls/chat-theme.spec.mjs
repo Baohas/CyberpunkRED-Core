@@ -82,7 +82,9 @@ async function waitForRenderedMessage(page, messageId) {
   await page.waitForFunction(
     (id) =>
       Array.from(
-        document.querySelectorAll(`.chat-message[data-message-id="${id}"]`),
+        document.querySelectorAll(
+          `#chat .chat-message[data-message-id="${id}"]`,
+        ),
       ).some((element) => !element.hidden),
     messageId,
     { timeout: 10000 },
@@ -92,7 +94,7 @@ async function waitForRenderedMessage(page, messageId) {
 async function readMessageTheme(page, messageId) {
   return page.evaluate((id) => {
     const message = Array.from(
-      document.querySelectorAll(`.chat-message[data-message-id="${id}"]`),
+      document.querySelectorAll(`#chat .chat-message[data-message-id="${id}"]`),
     ).find((element) => !element.hidden);
     const messageStyle = getComputedStyle(message);
     const content = message.querySelector(".message-content");
@@ -136,7 +138,7 @@ test.describe("chat theme", () => {
     await waitForRenderedMessage(game, messageId);
 
     const diceRoll = game.locator(
-      `.chat-message[data-message-id="${messageId}"]:not([hidden]) .dice-roll`,
+      `#chat .chat-message[data-message-id="${messageId}"]:not([hidden]) .dice-roll`,
     );
     await expect(diceRoll).toBeVisible();
 
@@ -166,7 +168,7 @@ test.describe("chat theme", () => {
 
     await waitForRenderedMessage(game, draw.messageId);
     const tableDraw = game.locator(
-      `.chat-message[data-message-id="${draw.messageId}"]:not([hidden]) .table-draw[data-table-id="${draw.tableId}"]`,
+      `#chat .chat-message[data-message-id="${draw.messageId}"]:not([hidden]) .table-draw[data-table-id="${draw.tableId}"]`,
     );
     await expect(tableDraw).toBeVisible();
 
