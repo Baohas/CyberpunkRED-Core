@@ -597,7 +597,7 @@ export default class CPRContainerActorSheet extends CPRActorSheet {
           return;
         }
       }
-      super._onDrop(event);
+      return super._onDrop(event);
     } else {
       SystemUtils.DisplayMessage(
         "warn",

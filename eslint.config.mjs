@@ -35,6 +35,7 @@ export default [
         Combatant: "readonly",
         ContextMenu: "readonly",
         Dialog: "readonly",
+        DragDrop: "readonly",
         DocumentSheetConfig: "readonly",
         Folder: "readonly",
         FormApplication: "readonly",

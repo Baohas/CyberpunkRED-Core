@@ -47,6 +47,11 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   };
 
   /**
+   * @private
+   */
+  #dragDrop;
+
+  /**
    * Track which collapsible sections are open/closed on this sheet instance,
    * seeded from the user's saved settings. (AppV2 freezes `options`, so this is a
    * plain instance field.)
@@ -62,6 +67,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
         "sheetCollapsedSections",
         this.id,
       ) || [];
+    this.#dragDrop = this.#createDragDropHandlers();
   }
 
   /**
@@ -312,14 +318,6 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Activate listeners for the sheet. This should be only common listeners across Mook and Character sheets.
-   * This has to call super at the end for Foundry to process events properly and get built-in functionality
-   * like dragging items to sheets.
-   *
-   * @override
-   * @param {Object} html - the DOM object
-   */
-  /**
    * Add the same event listener to every element matching a selector within the
    * rendered sheet. Shared by all CPR actor sheets so each `_onRender` override
    * doesn't redefine the helper.
@@ -335,8 +333,17 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
       .forEach((el) => el.addEventListener(eventName, handler));
   }
 
+  /**
+   * Called after the sheet is rendered. Sets up event listeners, binds
+   * drag-and-drop handlers, and sizes layout elements.
+   *
+   * @override
+   * @param {Object} context - the render context
+   * @param {Object} options - the render options
+   */
   _onRender(context, options) {
     super._onRender(context, options);
+    this.#dragDrop.forEach((d) => d.bind(this.element));
     const root = this.element;
 
     // Size the item-type chips to their widest content and shrink the actor
@@ -1451,47 +1458,120 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   }
 
   /**
+   * Create drag-and-drop workflow handlers for this Application.
+   *
+   * @returns {DragDrop[]}     An array of DragDrop handlers
+   * @private
+   */
+  #createDragDropHandlers() {
+    return this.options.dragDrop.map((d) => {
+      d.permissions = {
+        dragstart: this._canDragStart.bind(this),
+        drop: this._canDragDrop.bind(this),
+      };
+      d.callbacks = {
+        dragstart: this._onDragStart.bind(this),
+        dragover: this._onDragOver.bind(this),
+        drop: this._onDrop.bind(this),
+      };
+      return new DragDrop(d);
+    });
+  }
+
+  /**
+   * Define whether a user is able to begin a dragstart workflow for a given drag selector.
+   *
+   * @param {string} selector       The candidate HTML selector for dragging
+   * @returns {boolean}             Can the current user drag this selector?
+   * @protected
+   */
+  _canDragStart(_selector) {
+    return this.isEditable;
+  }
+
+  /**
+   * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector.
+   *
+   * @param {string} selector       The candidate HTML selector for the drop target
+   * @returns {boolean}             Can the current user drop on this selector?
+   * @protected
+   */
+  _canDragDrop(_selector) {
+    return this.isEditable;
+  }
+
+  /**
+   * Ensure the dragged element is over a valid drop target.
+   *
+   * @param {*} event
+   */
+  _onDragOver(event) {
+    void this.isEditable;
+    event.preventDefault();
+  }
+
+  /**
    * Called when an Item is dragged on the ActorSheet. This "stringifies" the Item into attributes
    * that can be inspected later. Doing so allows the system to make changes to the item before/after it
    * is added to the Actor's inventory.
    *
-   * @private
-   * @param {Object} event - an object capturing event details
+   * @param {*} event
    */
   _onDragStart(event) {
-    const itemId = SystemUtils.GetEventDatum(event, "data-item-id");
+    const el = event.currentTarget;
+    const itemId = el.dataset.itemId;
     const item = this.actor.getEmbeddedDocument("Item", itemId);
     const tokenId = this.token === null ? null : this.token.id;
-    event.dataTransfer.setData(
-      "text/plain",
-      JSON.stringify({
-        type: "Item",
-        uuid: item.uuid,
-        system: {
-          actorId: this.actor._id,
-          tokenId,
-          data: item,
-          root: SystemUtils.GetEventDatum(event, "root"),
-        },
-      }),
-    );
+    const dragData = {
+      type: "Item",
+      uuid: item.uuid,
+      system: {
+        actorId: this.actor._id,
+        tokenId,
+        data: item,
+        root: SystemUtils.GetEventDatum(event, "root"),
+      },
+    };
+
+    // Package installed upgrades so they duplicate on the target actor.
+    const upgradableTypes = SystemUtils.getDocTypesFromMixin("upgradable");
+    if (
+      upgradableTypes.includes(item.type) &&
+      item.system.installedItems?.list?.length > 0
+    ) {
+      const upgradeIds = item.system.installedItems.list;
+      dragData.system.upgrades = upgradeIds
+        .map((id) => {
+          const upgrade = this.actor.getEmbeddedDocument("Item", id);
+          return upgrade ? foundry.utils.duplicate(upgrade) : null;
+        })
+        .filter(Boolean);
+    }
+
+    event.dataTransfer.setData("text/plain", JSON.stringify(dragData));
   }
 
   /**
    * _onDrop is provided by Foundry and extended here. When an Item is dragged to an ActorSheet a new copy is created.
    * This extension ensure that the copy is owned by the right actor afterward. In the case that an item is dragged from
    * one Actor sheet to another, the item on the source sheet is deleted, simulating an actor giving an item to another
-   * actor.
+   * actor. Upgrades installed on the item are also duplicated on the target actor.
    *
-   * @private
+   * @param {DragEvent} event
    * @override
-   * @param {Object} event - an object capturing event details
-   * @returns {null}
+   * @private
+   * @returns {Promise<CPRItem|null>}
    */
-  async _onDropItem(event, item) {
+  async _onDrop(event) {
     const dragData = TextEditor.getDragEventData(event);
+
+    // Only handle Item drops
+    if (dragData.type !== "Item") return null;
+
+    // Construct the item from drag data
+    const sourceItem = await Item.implementation.fromDropData(dragData);
+
     let sourceActor;
-    const sourceItem = item;
     if (sourceItem.type === "cyberware" && sourceItem.system?.isInstalled) {
       SystemUtils.DisplayMessage(
         "error",
@@ -1543,7 +1623,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
     if (!this.actor.isOwner || this.actor.uuid === sourceItem.parent?.uuid) {
       // Not owned, or reordering within this actor — the core behaviour
       // (permission check / item sort) is correct.
-      newItem = await super._onDropItem(event, item);
+      newItem = await super._onDrop(event);
     } else {
       // Create through the actor's createEmbeddedDocuments override so CPR's
       // item-stacking runs. AppV2's default _onDropItem creates via
@@ -1577,7 +1657,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
       }
     }
 
-    if (newItem && transferItem) {
+    if (newItem && transferItem && sourceActor) {
       await sourceActor.deleteEmbeddedDocuments("Item", deleteList, {
         // Don't unload the ammo when we are transferring weapons. Leave ammo stack as-is.
         unloadAmmo: false,
