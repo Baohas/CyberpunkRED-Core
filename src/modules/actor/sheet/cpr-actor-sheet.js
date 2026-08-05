@@ -47,6 +47,11 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   };
 
   /**
+   * @private
+   */
+  #dragDrop;
+
+  /**
    * Track which collapsible sections are open/closed on this sheet instance,
    * seeded from the user's saved settings. (AppV2 freezes `options`, so this is a
    * plain instance field.)
@@ -64,11 +69,6 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
       ) || [];
     this.#dragDrop = this.#createDragDropHandlers();
   }
-
-  /**
-   * @private
-   */
-  #dragDrop;
 
   /**
    * Get actor data into a more convenient organized structure. This should be called sparingly in code.
@@ -318,14 +318,6 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Activate listeners for the sheet. This should be only common listeners across Mook and Character sheets.
-   * This has to call super at the end for Foundry to process events properly and get built-in functionality
-   * like dragging items to sheets.
-   *
-   * @override
-   * @param {Object} html - the DOM object
-   */
-  /**
    * Add the same event listener to every element matching a selector within the
    * rendered sheet. Shared by all CPR actor sheets so each `_onRender` override
    * doesn't redefine the helper.
@@ -341,6 +333,14 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
       .forEach((el) => el.addEventListener(eventName, handler));
   }
 
+  /**
+   * Called after the sheet is rendered. Sets up event listeners, binds
+   * drag-and-drop handlers, and sizes layout elements.
+   *
+   * @override
+   * @param {Object} context - the render context
+   * @param {Object} options - the render options
+   */
   _onRender(context, options) {
     super._onRender(context, options);
     this.#dragDrop.forEach((d) => d.bind(this.element));
@@ -1459,6 +1459,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
 
   /**
    * Create drag-and-drop workflow handlers for this Application.
+   *
    * @returns {DragDrop[]}     An array of DragDrop handlers
    * @private
    */
@@ -1479,6 +1480,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
 
   /**
    * Define whether a user is able to begin a dragstart workflow for a given drag selector.
+   *
    * @param {string} selector       The candidate HTML selector for dragging
    * @returns {boolean}             Can the current user drag this selector?
    * @protected
@@ -1489,6 +1491,7 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
 
   /**
    * Define whether a user is able to conclude a drag-and-drop workflow for a given drop selector.
+   *
    * @param {string} selector       The candidate HTML selector for the drop target
    * @returns {boolean}             Can the current user drop on this selector?
    * @protected
@@ -1497,12 +1500,23 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
     return this.isEditable;
   }
 
+  /**
+   * Ensure the dragged element is over a valid drop target.
+   *
+   * @param {*} event
+   */
   _onDragOver(event) {
-    // Ensure the dragged element is over a valid drop target.
     void this.isEditable;
     event.preventDefault();
   }
 
+  /**
+   * Called when an Item is dragged on the ActorSheet. This "stringifies" the Item into attributes
+   * that can be inspected later. Doing so allows the system to make changes to the item before/after it
+   * is added to the Actor's inventory.
+   *
+   * @param {*} event
+   */
   _onDragStart(event) {
     const el = event.currentTarget;
     const itemId = el.dataset.itemId;
@@ -1538,10 +1552,14 @@ export default class CPRActorSheet extends HandlebarsApplicationMixin(
   }
 
   /**
-   * Handle an item being dropped onto this actor sheet.
-   * When the item is dragged from another actor sheet, it is transferred (deleted from source).
-   * Upgrades installed on the item are also duplicated on the target actor.
+   * _onDrop is provided by Foundry and extended here. When an Item is dragged to an ActorSheet a new copy is created.
+   * This extension ensure that the copy is owned by the right actor afterward. In the case that an item is dragged from
+   * one Actor sheet to another, the item on the source sheet is deleted, simulating an actor giving an item to another
+   * actor. Upgrades installed on the item are also duplicated on the target actor.
+   *
    * @param {DragEvent} event
+   * @override
+   * @private
    * @returns {Promise<CPRItem|null>}
    */
   async _onDrop(event) {
