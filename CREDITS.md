@@ -32,19 +32,67 @@ This game system (including items provided in the compendium) contains unofficia
 
 - Permission to use CyberpunkRED branded dice themes are graciously provided by Q-Workshop and R Talsorian Games - Physical dice may be purchased from [their store](https://q-workshop.com)
 
-### Icons
+## Icons
 
 - Default icons for compendia provided by Lorc, Delapouite, Skoll, sbed, and John Colburn [Game Icons](https://game-icons.net) under the [CC-BY license](https://creativecommons.org/licenses/by/3.0/)
-- Ammo Icons by [Mirradin](https://reddit.com/user/Mirrandin)
+- `.png` Ammo Icons by [Mirradin](https://reddit.com/user/Mirrandin)
+  - `.svg` Ammo icons derived from Mirradin's original icon set
 - Netrunning icons provided by Verasunrise and Hyriu33
 - Program/Black ICE icon usage inspired by [Verfasst von Tim](https://charzinski.wordpress.com/2021/01/10/cyberpunk-red-netrunner-cards/)
 - Status & Critical Injury icons inspired by by [evr-](https://reddit.com/r/cyberpunkred/comments/lpicdf/roll20_custom_status_icons_for_cyberpunk_red/)
 
-### Specific Assets
+### Compendium
 
-- `icons/compendium/armor/bodyweightsuit.svg` - remixed from [wetsuit](https://www.svgrepo.com/svg/20767/wetsuit)
-- `icons/compendium/armor/bulletproofshield.svg` - remixed from [shield-defense](https://www.svgrepo.com/svg/288878/shield-defense)
+#### ammo
+
+- `icons\compendium\ammo\battery.svg` remixed from [Soda Can](https://game-icons.net/1x1/guard13007/soda-can.html)
+- `icons\compendium\ammo\bow_basic.svg` derived from Mirradin's original iconset by Aru.Guy
+- `icons\compendium\ammo\grenade_basic.svg` remixed from [Gas Grenade](https://thenounproject.com/icon/gas-grenade-688890/)
+- `icons\compendium\ammo\paintball_basic.svg` Cannot locate source [Find a replacement]()
+- `src\icons\compendium\ammo\pistolheavy_basic.svg` derived from Mirradin's original iconset by Aru.Guy
+- `src\icons\compendium\ammo\pistolmedium_basic.svg` derived from Mirradin's original iconset by Aru.Guy
+- `src\icons\compendium\ammo\pistolveryheavy_basic.svg` derived from Mirradin's original iconset by Aru.Guy
+- `src\icons\compendium\ammo\rifle_basic.svg` derived from Mirradin's original iconset by Aru.Guy
+- `src\icons\compendium\ammo\rocket_basic.svg` remixed from [Rocket](https://www.svgrepo.com/svg/221935/rocket)
+- `src\icons\compendium\ammo\shotgun_shell_basic.svg` remixed from [Shotgun Rounds](https://game-icons.net/1x1/delapouite/shotgun-rounds.html)
+- `src\icons\compendium\ammo\shotgun_slug_basic.svg` remixed from [Shotgun Rounds](https://game-icons.net/1x1/delapouite/shotgun-rounds.html)
+
+#### armor
+
+- `icons/compendium/armor/bodyweightsuit.svg` remixed from [wetsuit](https://www.svgrepo.com/svg/20767/wetsuit)
+- `icons/compendium/armor/bulletproofshield.svg` remixed from [shield-defense](https://www.svgrepo.com/svg/288878/shield-defense)
+- `src\icons\compendium\armor\flak_body.svg` remixed from [armor](https://thenounproject.com/icon/armor-4069130/)
+- `src\icons\compendium\armor\flak_head.svg`remixed from [Military Helmet](https://thenounproject.com/icon/military-helmet-4831041/)
+- `src\icons\compendium\armor\heavy-armorjack_body.svg`remixed from [body armor](https://thenounproject.com/icon/body-armor-2851572/)
+- `src\icons\compendium\armor\heavy-armorjack_head.svg`remixed from []()
+- `src\icons\compendium\armor\kevlar_body.svg`remixed from [paintball armor](https://thenounproject.com/icon/paintball-armor-2873933/)
+- `src\icons\compendium\armor\kevlar_head.svg`remixed from [Helmet](https://thenounproject.com/icon/helmet-4599995/)
+- `src\icons\compendium\armor\leathers_body.svg`remixed from [armor](https://thenounproject.com/icon/armor-4283441/)
+- `src\icons\compendium\armor\leathers_head.svg`remixed from [trapper hat](https://thenounproject.com/icon/trapper-hat-414768/)
+- `src\icons\compendium\armor\light-armorjack_body.svg`remixed from [armor](https://thenounproject.com/icon/armor-4782900/)
+- `src\icons\compendium\armor\light-armorjack_head.svg`remixed from [Army Helmet](https://thenounproject.com/icon/army-helmet-3484118/)
+- `src\icons\compendium\armor\medium-armorjack_body.svg`remixed from [bulletproof](https://thenounproject.com/icon/bulletproof-4018221/)
+- `src\icons\compendium\armor\medium-armorjack_head.svg`remixed from []()
+- `src\icons\compendium\armor\metalgear_body.svg`remixed from [armor](https://thenounproject.com/icon/armor-2551945/)
+- `src\icons\compendium\armor\metalgear_head.svg`remixed from [Helmet](https://thenounproject.com/icon/helmet-3834669/)
+
+#### blackice
+
+- `icons/compendium/blackice/asp.{svg,webp}` from [Cobra](https://game-icons.net/1x1/delapouite/cobra.html)
+- `icons/compendium/blackice/dragon.{svg,webp}` from [Spiked Dragon Head](https://game-icons.net/1x1/delapouite/spiked-dragon-head.html)
+- `icons/compendium/blackice/giant.{svg,webp}` from [Giant](https://game-icons.net/1x1/delapouite/giant.html)
+- `icons/compendium/blackice/hellhound.{svg,webp}` from [Hound](https://game-icons.net/1x1/lorc/hound.html)
+- `icons/compendium/blackice/killer.{svg,webp}` from [Robot Helmet](https://game-icons.net/1x1/delapouite/robot-helmet.html)
 - `icons/compendium/blackice/kraken.{svg,webp}` from [Mode Standard Kraken](https://www.svgrepo.com/svg/355417/mode-standard-kraken)
+- `icons/compendium/blackice/liche.{svg,webp}` from [Crowned Skull](https://game-icons.net/1x1/lorc/crowned-skull.html)
+- `icons/compendium/blackice/raven.{svg,webp}` from [Raven](https://game-icons.net/1x1/lorc/raven.html)
+- `icons/compendium/blackice/sabertooth.{svg,webp}` from [Saber Tooth](https://game-icons.net/1x1/lorc/saber-tooth.html)
+- `icons/compendium/blackice/scorpion.{svg,webp}` from [Scorpion Tail](https://game-icons.net/1x1/lorc/scorpion-tail.html)
+- `icons/compendium/blackice/skunk.{svg,webp}` from [Fox Tail](https://game-icons.net/1x1/delapouite/fox-tail.html)
+- `icons/compendium/blackice/wisp.{svg,webp}` from [Dead Eye](https://game-icons.net/1x1/lorc/dead-eye.html)
+
+#### clothing
+
 - `icons/compendium/clothing/generic_bottoms.svg` from [Trousers Pants](https://www.svgrepo.com/svg/275007/trousers-pants)
 - `icons/compendium/clothing/generic_contact-lenses.svg` from [Contact Lens](https://www.svgrepo.com/svg/160924/contact-lens)
 - `icons/compendium/clothing/generic_footwear.svg` from [Big Boot](https://www.svgrepo.com/svg/98185/big-boot)
@@ -54,107 +102,179 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/clothing/generic_jewlery.svg` from [Gem Pendant](https://game-icons.net/1x1/lorc/gem-pendant.html)
 - `icons/compendium/clothing/generic_mirrorshades.svg` from [Glasses Vision](https://www.svgrepo.com/svg/201581/glasses-vision)
 - `icons/compendium/clothing/generic_top.svg` from [Shirt](https://www.svgrepo.com/svg/22216/shirt)
-- `icons/compendium/critical_injirues/head_broken_jaw.svg` remixed from [Jawbone](https://game-icons.net/1x1/lorc/jawbone.html)
-- `icons/compendium/critical_injuries/body_broken_arm.svg` remixed from [Arm](https://game-icons.net/1x1/delapouite/arm.html)
-- `icons/compendium/critical_injuries/body_broken_leg.svg` remixed from [Knee Bandage](https://game-icons.net/1x1/delapouite/knee-bandage.html)
-- `icons/compendium/critical_injuries/body_broken_ribs.svg` remixed from [Ribcage](https://game-icons.net/1x1/lorc/ribcage.html)
-- `icons/compendium/critical_injuries/body_collapsed_lung.svg` remixed from [Lungs](https://game-icons.net/1x1/delapouite/lungs.html)
-- `icons/compendium/critical_injuries/body_crushed_fingers.svg` remixed from [Hand Filled Shape](https://www.svgrepo.com/svg/172910/hand-filled-shape)
-- `icons/compendium/critical_injuries/body_dismembered_hand.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
-- `icons/compendium/critical_injuries/body_dismembered_leg.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
-- `icons/compendium/critical_injuries/body_spinal_injury.svg` remixed from [Spine Bone](https://www.svgrepo.com/svg/70061/spine-bone)
+
+#### critical_injuries
+
+- `icons/compendium/critical_injuries/body_critical_injury.svg` remixed from [Internal Injury](https://game-icons.net/1x1/lorc/internal-injury.html)
+- `icons/compendium/critical_injuries/brain_injury.svg` remixed from [Brain](https://www.svgrepo.com/svg/115982/brain)
+- `icons/compendium/critical_injuries/broken_arm.svg` remixed from [Arm](https://game-icons.net/1x1/delapouite/arm.html)
+- `icons/compendium/critical_injuries/broken_jaw.svg` remixed from [Jawbone](https://game-icons.net/1x1/lorc/jawbone.html)
+- `icons/compendium/critical_injuries/broken_leg.svg` remixed from [Knee Bandage](https://game-icons.net/1x1/delapouite/knee-bandage.html)
+- `icons/compendium/critical_injuries/broken_ribs.svg` remixed from [Ribcage](https://game-icons.net/1x1/lorc/ribcage.html)
+- `icons/compendium/critical_injuries/collapsed_lung.svg` remixed from [Lungs](https://game-icons.net/1x1/delapouite/lungs.html)
+- `icons/compendium/critical_injuries/concussion.svg` remixed from [Brain](https://www.svgrepo.com/svg/204189/brain)
+- `icons/compendium/critical_injuries/cracked_skull.svg` remixed from [Skull Crack](https://game-icons.net/1x1/lorc/skull-crack.html)
+- `icons/compendium/critical_injuries/crushed_fingers.svg` remixed from [Hand Filled Shape](https://www.svgrepo.com/svg/172910/hand-filled-shape)
+- `icons/compendium/critical_injuries/crushed_windpipe.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
+- `icons/compendium/critical_injuries/damaged_ear.svg` remixed from [Ear](https://www.svgrepo.com/svg/204196/ear)
+- `icons/compendium/critical_injuries/damaged_eye.svg` remixed from [Eye](https://www.svgrepo.com/svg/66782/eye)
 - `icons/compendium/critical_injuries/dismembered_arm.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
-- `icons/compendium/critical_injuries/head_brain_injury.svg` remixed from [Brain](https://www.svgrepo.com/svg/115982/brain)
-- `icons/compendium/critical_injuries/head_concussion.svg` remixed from [Brain](https://www.svgrepo.com/svg/204189/brain)
-- `icons/compendium/critical_injuries/head_cracked_skull.svg` remixed from [Skull Crack](https://game-icons.net/1x1/lorc/skull-crack.html)
-- `icons/compendium/critical_injuries/head_crushed_windpipe.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
-- `icons/compendium/critical_injuries/head_damaged_ear.svg` remixed from [Ear](https://www.svgrepo.com/svg/204196/ear)
-- `icons/compendium/critical_injuries/head_damaged_eye.svg` remixed from [Eye](https://www.svgrepo.com/svg/66782/eye)
-- `icons/compendium/critical_injuries/head_foreign_object.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
-- `icons/compendium/critical_injuries/head_lost_ear.svg` remixed from [Ear](https://www.svgrepo.com/svg/204196/ear)
-- `icons/compendium/critical_injuries/head_lost_eye.svg` remixed from [Eye](https://www.svgrepo.com/svg/66782/eye)
-- `icons/compendium/critical_injury/head_whiplash.svg` remixed from [Head](https://www.svgrepo.com/svg/6979/head)
-- `icons/compendium/cyberware/amplified_hearing.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [WiFi Signal](https://www.svgrepo.com/svg/88799/wifi-signal)
-- `icons/compendium/cyberware/anti_dazzle.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Ice Iris](https://game-icons.net/1x1/delapouite/ice-iris.html)
+- `icons/compendium/critical_injuries/dismembered_hand.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
+- `icons/compendium/critical_injuries/dismembered_leg.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
+- `icons/compendium/critical_injuries/foreign_object.svg` remixed from [Standing Human](https://www.svgrepo.com/svg/76394/standing-human-body-silhouette)
+- `icons/compendium/critical_injuries/lost_ear.svg` remixed from [Ear](https://www.svgrepo.com/svg/204196/ear)
+- `icons/compendium/critical_injuries/lost_eye.svg` remixed from [Eye](https://www.svgrepo.com/svg/66782/eye)
+- `icons/compendium/critical_injuries/spinal_injury.svg` remixed from [Spine Bone](https://www.svgrepo.com/svg/70061/spine-bone)
+- `icons/compendium/critical_injuries/torn_muscle.svg` remixed from
+- `icons/compendium/critical_injury/whiplash.svg` remixed from [Head](https://www.svgrepo.com/svg/6979/head)
+
+#### cyberware
+
+- `icons/compendium/cyberware/amplified_hearing.svg` derived from prototype icon
+- `icons/compendium/cyberware/amplified_hearing.svg` derived from prototype icon and [WiFi Signal](https://www.svgrepo.com/svg/88799/wifi-signal)
+- `icons/compendium/cyberware/anti_dazzle.svg` derived from prototype icon and [Ice Iris](https://game-icons.net/1x1/delapouite/ice-iris.html)
 - `icons/compendium/cyberware/artificial_shoulder_mount.svg` remixed from [Robot](https://www.svgrepo.com/svg/99793/robot) and [Iron Furniture and Household](https://www.svgrepo.com/svg/216958/iron-furniture-and-household)
-- `icons/compendium/cyberware/audiovox.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Music Player Audio Bars](https://www.svgrepo.com/svg/268686/music-player-audio-bars)
-- `icons/compendium/cyberware/big_knucks.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Fist Raised](https://www.svgrepo.com/svg/352048/fist-raised)
+- `icons/compendium/cyberware/audiovox.svg` derived from prototype icon and [Music Player Audio Bars](https://www.svgrepo.com/svg/268686/music-player-audio-bars)
+- `icons/compendium/cyberware/battleglove.svg`
+- `icons/compendium/cyberware/big_knucks.svg` derived from prototype icon and [Fist Raised](https://www.svgrepo.com/svg/352048/fist-raised)
 - `icons/compendium/cyberware/biomonitor.svg` remixed from [Heat Healthcare and Medical](https://www.svgrepo.com/svg/197411/heart-healthcare-and-medical)
 - `icons/compendium/cyberware/braindance_recorder.svg` remixed from [Human Brain](https://www.svgrepo.com/svg/66295/human-brain) and [Aperture](https://www.svgrepo.com/svg/69788/aperture)
+- `icons/compendium/cyberware/bug_detector.svg`
 - `icons/compendium/cyberware/chemical_analyzer.svg` remixed from [USB Tool](https://www.svgrepo.com/svg/29162/usb-tool) and [Chemical Weapon](https://www.svgrepo.com/svg/115663/chemical-weapon)
 - `icons/compendium/cyberware/chemskin.svg` from [Dye](https://www.svgrepo.com/svg/221758/dye)
 - `icons/compendium/cyberware/chipware_socket.svg` remixed from [Socket](https://www.svgrepo.com/svg/199062/socket) and [Interface Socket Sign](https://www.svgrepo.com/svg/10816/interface-socket-sign)
-- `icons/compendium/cyberware/chyron.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Tablet Touch Screen](https://www.svgrepo.com/svg/217518/tablet-touch-screen)
-- `icons/compendium/cyberware/color_shift.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Touch Screen](https://www.svgrepo.com/svg/129795/touch-screen)
-- `icons/compendium/cyberware/contraceptive_implant.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Condom](https://www.svgrepo.com/svg/182815/condom)
+- `icons/compendium/cyberware/chyron.svg` derived from prototype icon and [Tablet Touch Screen](https://www.svgrepo.com/svg/217518/tablet-touch-screen)
+- `icons/compendium/cyberware/color_shift.svg` derived from prototype icon and [Touch Screen](https://www.svgrepo.com/svg/129795/touch-screen)
+- `icons/compendium/cyberware/contraceptive_implant.svg` derived from prototype icon and [Condom](https://www.svgrepo.com/svg/182815/condom)
 - `icons/compendium/cyberware/cyberarm.svg` purchaed from [Icon Finder](https://www.iconfinder.com/icons/7018292/limb_prosthesis_arm_cyber_robot_bionic_icon)
-- `icons/compendium/cyberware/cyberaudio_suite.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [Bug Symbol with Symbol](https://www.svgrepo.com/svg/8014/bug-symbol-with-signal)
-- `icons/compendium/cyberware/cyberdeck.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Keyboard Piano](https://www.svgrepo.com/svg/262262/keyboard-piano)
+- `icons/compendium/cyberware/cyberaudio_suite.svg` derived from prototype icon and [Bug Symbol with Symbol](https://www.svgrepo.com/svg/8014/bug-symbol-with-signal)
+- `icons/compendium/cyberware/cyberdeck.svg` derived from prototype icon and [Keyboard Piano](https://www.svgrepo.com/svg/262262/keyboard-piano)
+- `icons/compendium/cyberware/cybereye.svg`
 - `icons/compendium/cyberware/cyberleg.svg` remixed from [Robot Leg](https://game-icons.net/1x1/delapouite/robot-leg.html)
-- `icons/compendium/cyberware/cybersnake.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Sand Snake](https://game-icons.net/1x1/delapouite/sand-snake.html)
+- `icons/compendium/cyberware/cybersnake.svg` derived from prototype icon and [Sand Snake](https://game-icons.net/1x1/delapouite/sand-snake.html)
+- `icons/compendium/cyberware/dartgun.svg`
 - `icons/compendium/cyberware/emp_threading.svg` from [Tree Shape Of Straight Lines Like A Computer Printed Circuit](https://www.svgrepo.com/svg/25715/tree-shape-of-straight-lines-like-a-computer-printed-circuit)
-- `icons/compendium/cyberware/enhanced_antibodies.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Antibody](https://www.svgrepo.com/svg/321735/antibody)
-- `icons/compendium/cyberware/gills.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Water](https://www.svgrepo.com/svg/352680/water)
-- `icons/compendium/cyberware/grafted_muscle_and_lace.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Biceps](https://game-icons.net/1x1/delapouite/biceps.html)
-- `icons/compendium/cyberware/grapple_hand.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Keyboard Piano](https://www.svgrepo.com/svg/262262/keyboard-piano)
-- `icons/compendium/cyberware/grip_foot.svg` remixed from [Leg](https://game-icons.net/1x1/delapouite/leg.html) and [Frog Foot](https://game-icons.net/1x1/delapouite/frog-foot.html)
+- `icons/compendium/cyberware/enhanced_antibodies.svg` derived from prototype icon and [Antibody](https://www.svgrepo.com/svg/321735/antibody)
+- `icons/compendium/cyberware/exposed_coverings.svg`
+- `icons/compendium/cyberware/gills.svg` derived from prototype icon and [Water](https://www.svgrepo.com/svg/352680/water)
+- `icons/compendium/cyberware/grafted_muscle_and_lace.svg` derived from prototype icon and [Biceps](https://game-icons.net/1x1/delapouite/biceps.html)
+- `icons/compendium/cyberware/grapple_hand.svg` derived from prototype icon and [Keyboard Piano](https://www.svgrepo.com/svg/262262/keyboard-piano)
+- `icons/compendium/cyberware/grip_foot.svg` derived from prototype icon and [Frog Foot](https://game-icons.net/1x1/delapouite/frog-foot.html)
 - `icons/compendium/cyberware/hardened_shielding.svg` remixed from [Break](https://www.svgrepo.com/svg/252779/break) and [Bolt](https://www.svgrepo.com/svg/110394/bolt)
-- `icons/compendium/cyberware/homing_tracer.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [Map](https://www.svgrepo.com/svg/86709/map)
-- `icons/compendium/cyberware/image_enhance.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Magnifying Glass](https://www.svgrepo.com/svg/74695/magnifying-glass)
-- `icons/compendium/cyberware/implanted_linearframe_beta.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Robot](https://www.svgrepo.com/svg/99793/robot)
-- `icons/compendium/cyberware/implanted_linearframe_sigma.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Robot](https://www.svgrepo.com/svg/99793/robot)
-- `icons/compendium/cyberware/internal_agent.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [Smartphone](https://game-icons.net/1x1/skoll/smartphone.html)
-- `icons/compendium/cyberware/internal_air_supply.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Oxygen Tank](https://www.svgrepo.com/svg/31697/oxygen-tank)
-- `icons/compendium/cyberware/jump_booster.svg` remixed from [Leg](https://game-icons.net/1x1/delapouite/leg.html) and [Leapfrog](https://game-icons.net/1x1/delapouite/leapfrog.html)
+- `icons/compendium/cyberware/hidden_holster.svg`
+- `icons/compendium/cyberware/homing_tracer.svg` derived from prototype icon and [Map](https://www.svgrepo.com/svg/86709/map)
+- `icons/compendium/cyberware/image_enhance.svg` derived from prototype icon and [Magnifying Glass](https://www.svgrepo.com/svg/74695/magnifying-glass)
+- `icons/compendium/cyberware/implanted_linearframe_beta.svg` derived from prototype icon and [Robot](https://www.svgrepo.com/svg/99793/robot)
+- `icons/compendium/cyberware/implanted_linearframe_sigma.svg` derived from prototype icon and [Robot](https://www.svgrepo.com/svg/99793/robot)
+- `icons/compendium/cyberware/independent_air_supply.svg` derived from prototype icon and [Oxygen Tank](https://www.svgrepo.com/svg/31697/oxygen-tank)
+- `icons/compendium/cyberware/interface_plugs.svg`
+- `icons/compendium/cyberware/internal_agent.svg` derived from prototype icon and [Smartphone](https://game-icons.net/1x1/skoll/smartphone.html)
+- `icons/compendium/cyberware/jump_booster.svg` derived from prototype icon and [Leapfrog](https://game-icons.net/1x1/delapouite/leapfrog.html)
 - `icons/compendium/cyberware/light_tattoo.svg` remixed from [Tattoo Machine](https://www.svgrepo.com/svg/71426/tattoo-machine)
-- `icons/compendium/cyberware/lowlight_ir_uv.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Sunken Eye](https://game-icons.net/1x1/lorc/sunken-eye.html)
-- `icons/compendium/cyberware/meatarm.svg.svg` from [Human Arm](https://www.svgrepo.com/svg/169283/human-arm)
+- `icons/compendium/cyberware/lowlight_ir_uv.svg` derived from prototype icon and [Sunken Eye](https://game-icons.net/1x1/lorc/sunken-eye.html)
+- `icons/compendium/cyberware/meatarm.svg` from [Human Arm](https://www.svgrepo.com/svg/169283/human-arm)
+- `icons/compendium/cyberware/meatfoot.svg` from [Lost Limb](https://game-icons.net/1x1/quoting/lost-limb.html)
+- `icons/compendium/cyberware/meathand.svg`from [Severed Hand](https://game-icons.net/1x1/darkzaitzev/severed-hand.html)
+- `icons/compendium/cyberware/meatleg.svg` from [Leg](https://www.svgrepo.com/svg/31874/leg)
 - `icons/compendium/cyberware/medscanner.svg` purchased from [Iconfinder](https://www.iconfinder.com/icons/8076035/scanner_scanning_scan_printer_hardware_icon) remixed with [Medical Cross](https://www.svgrepo.com/svg/24008/medical-cross), and [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette)
-- `icons/compendium/cyberware/memory_chip.svg` remixed from [Chip CPU](https://www.svgrepo.com/svg/255480/chip-cpu) and [Memory Card](https://www.svgrepo.com/svg/167281/memory-card)
-- `icons/compendium/cyberware/microoptics.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Binoculars](https://www.svgrepo.com/svg/52243/binoculars)
-- `icons/compendium/cyberware/microvideo.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Video Camera](https://www.svgrepo.com/svg/123658/video-camera)
-- `icons/compendium/cyberware/midnight_lady.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Female](https://game-icons.net/1x1/delapouite/female.html)
-- `icons/compendium/cyberware/midnight_studd.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Male](https://game-icons.net/1x1/delapouite/male.html)
+- `icons/compendium/cyberware/memory_chip.svg` derived from prototype icon and [Memory Card](https://www.svgrepo.com/svg/167281/memory-card)
+- `icons/compendium/cyberware/microoptics.svg` derived from prototype icon and [Binoculars](https://www.svgrepo.com/svg/52243/binoculars)
+- `icons/compendium/cyberware/microvideo.svg` derived from prototype icon and [Video Camera](https://www.svgrepo.com/svg/123658/video-camera)
+- `icons/compendium/cyberware/midnight_lady.svg` derived from prototype icon and [Female](https://game-icons.net/1x1/delapouite/female.html)
+- `icons/compendium/cyberware/midnight_studd.svg` derived from prototype icon and [Male](https://game-icons.net/1x1/delapouite/male.html)
 - `icons/compendium/cyberware/multioptic_mount.svg` remixed from [Face with a Question Mark](https://www.svgrepo.com/svg/61762/face-with-a-question-mark) and [Spider Face](https://game-icons.net/1x1/carl-olsen/spider-face.html)
 - `icons/compendium/cyberware/nasal_filters.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human), [Surgical Mask](https://www.svgrepo.com/svg/346425/surgical-mask-fill), and [Edit Mask](https://www.svgrepo.com/svg/333033/edit-mask)
 - `icons/compendium/cyberware/neural_link.svg` remixed from [Brain](https://www.svgrepo.com/svg/351802/brain), [CPU](https://www.svgrepo.com/svg/346734/cpu), and [Circuit](https://www.svgrepo.com/svg/20727/circuit)
-- `icons/compendium/cyberware/olfactory_boost.svg` remixed from [Chip CPU](https://www.svgrepo.com/svg/255480/chip-cpu) and [Big Nose](https://www.svgrepo.com/svg/21864/big-nose)
-- `icons/compendium/cyberware/pain_editor.svg` remixed from [Chip CPU](https://www.svgrepo.com/svg/255480/chip-cpu) and [Spine Bone](https://www.svgrepo.com/svg/70061/spine-bone)
+- `icons/compendium/cyberware/olfactory_boost.svg` derived from prototype icon and [Big Nose](https://www.svgrepo.com/svg/21864/big-nose)
+- `icons/compendium/cyberware/pain_editor.svg` derived from prototype icon and [Spine Bone](https://www.svgrepo.com/svg/70061/spine-bone)
 - `icons/compendium/cyberware/plastic_covering.svg` from [Layers](https://www.svgrepo.com/svg/105418/layers)
-- `icons/compendium/cyberware/popup_grenade_launcher.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Stun Grenade](https://www.svgrepo.com/svg/323389/stun-grenade)
-- `icons/compendium/cyberware/popup_melee_weapon.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Bowie Knife](https://game-icons.net/1x1/lorc/bowie-knife.html)
-- `icons/compendium/cyberware/quick_change_mount.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Knee](https://www.svgrepo.com/svg/32177/knee)
-- `icons/compendium/cyberware/radar_detector.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [Radar](https://www.svgrepo.com/svg/213702/radar)
-- `icons/compendium/cyberware/radar_sonar_implant.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Radar](https://www.svgrepo.com/svg/213702/radar)
-- `icons/compendium/cyberware/radiation_detector.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Radiation](https://www.svgrepo.com/svg/140255/radiation)
-- `icons/compendium/cyberware/radio_communicator.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [Headset](https://www.svgrepo.com/svg/135755/headset)
+- `icons/compendium/cyberware/popup_grenade_launcher.svg` derived from prototype icon and [Stun Grenade](https://www.svgrepo.com/svg/323389/stun-grenade)
+- `icons/compendium/cyberware/popup_melee_weapon.svg` derived from prototype icon and [Bowie Knife](https://game-icons.net/1x1/lorc/bowie-knife.html)
+- `icons/compendium/cyberware/quick_change_mount.svg` derived from prototype icon and [Knee](https://www.svgrepo.com/svg/32177/knee)
+- `icons/compendium/cyberware/radar_detector.svg` derived from prototype icon and [Radar](https://www.svgrepo.com/svg/213702/radar)
+- `icons/compendium/cyberware/radar_sonar_implant.svg` derived from prototype icon and [Radar](https://www.svgrepo.com/svg/213702/radar)
+- `icons/compendium/cyberware/radiation_detector.svg` derived from prototype icon and [Radiation](https://www.svgrepo.com/svg/140255/radiation)
+- `icons/compendium/cyberware/radio_communicator.svg` derived from prototype icon and [Headset](https://www.svgrepo.com/svg/135755/headset)
+- `icons/compendium/cyberware/radio_scanner_music_player.svg`
 - `icons/compendium/cyberware/realskin_covering.svg` from [Layers](https://www.svgrepo.com/svg/45604/layers)
-- `icons/compendium/cyberware/rippers.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Claw Slashes](https://game-icons.net/1x1/lorc/claw-slashes.html)
+- `icons/compendium/cyberware/rippers.svg` derived from prototype icon and [Claw Slashes](https://game-icons.net/1x1/lorc/claw-slashes.html)
 - `icons/compendium/cyberware/sandevistan.svg` from [Chronometers Speed](https://www.svgrepo.com/svg/293242/chronometers-speed)
-- `icons/compendium/cyberware/scrambler_descrambler.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [Sound Waves](https://game-icons.net/1x1/skoll/sound-waves.html)
-- `icons/compendium/cyberware/scratchers.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Lightning Slashes](https://game-icons.net/1x1/lorc/lightning-slashes.html)
-- `icons/compendium/cyberware/shift_tacta.svg` from [Eye](https://www.svgrepo.com/svg/58601/eye)
-- `icons/compendium/cyberware/skate_foot.svg` remixed from [Leg](https://game-icons.net/1x1/delapouite/leg.html) and [Roller Skate](https://www.svgrepo.com/svg/156307/roller-skate)
-- `icons/compendium/cyberware/skill_chip.svg` remixed from [Chip CPU](https://www.svgrepo.com/svg/255480/chip-cpu) and [Skill Level Advanced](https://www.svgrepo.com/svg/341028/skill-level-advanced)
+- `icons/compendium/cyberware/scrambler_descrambler.svg` derived from prototype icon and [Sound Waves](https://game-icons.net/1x1/skoll/sound-waves.html)
+- `icons/compendium/cyberware/scratchers.svg` derived from prototype icon and [Lightning Slashes](https://game-icons.net/1x1/lorc/lightning-slashes.html)
+- `icons/compendium/cyberware/sensor_array.svg`
+- `icons/compendium/cyberware/shift_tacts.svg` from [Eye](https://www.svgrepo.com/svg/58601/eye)
+- `icons/compendium/cyberware/shoulder_cam.svg`
+- `icons/compendium/cyberware/skate_foot.svg` derived from prototype icon and [Roller Skate](https://www.svgrepo.com/svg/156307/roller-skate)
+- `icons/compendium/cyberware/skill_chip.svg` derived from prototype icon and [Skill Level Advanced](https://www.svgrepo.com/svg/341028/skill-level-advanced)
 - `icons/compendium/cyberware/skinwatch.svg` remixed from [Wristwatch Watch](https://www.svgrepo.com/svg/302337/wristwatch-watch)
-- `icons/compendium/cyberware/slice_n_dice.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette) and [Whiplash](https://game-icons.net/1x1/lorc/whiplash.html)
+- `icons/compendium/cyberware/slice_n_dice.svg` derived from prototype icon and [Whiplash](https://game-icons.net/1x1/lorc/whiplash.html)
+- `icons/compendium/cyberware/standard_foot.svg` from [Left Foot](https://www.svgrepo.com/svg/78614/left-foot)
 - `icons/compendium/cyberware/standard_hand.svg` from [Hand Drag](https://www.svgrepo.com/svg/188175/hand-drag)
+- `icons/compendium/cyberware/subdermal_armor.svg`
 - `icons/compendium/cyberware/subdermal_grip.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [Hand](https://www.svgrepo.com/svg/353145/hand), and [Circuitry](https://game-icons.net/1x1/lorc/circuitry.html)
 - `icons/compendium/cyberware/subdermal_pocket.svg` from [Pocket Shape](https://www.svgrepo.com/svg/115039/pocket-shape)
 - `icons/compendium/cyberware/superchrome_covering.svg` from [Layers](https://www.svgrepo.com/svg/36307/layers)
+- `icons/compendium/cyberware/tactile_boost.svg`
 - `icons/compendium/cyberware/talon_foot.svg` remixed from [Bird Claw](https://game-icons.net/1x1/lorc/bird-claw.html)
-- `icons/compendium/cyberware/targeting_scope.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Target](https://www.svgrepo.com/svg/66067/target)
-- `icons/compendium/cyberware/tech_scanner.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [GPS Device](https://www.svgrepo.com/svg/147709/gps-device) and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
+- `icons/compendium/cyberware/targeting_scope.svg` derived from prototype icon and [Target](https://www.svgrepo.com/svg/66067/target)
 - `icons/compendium/cyberware/techhair.svg` from [Boy Hair Shape](https://www.svgrepo.com/svg/123783/boy-hair-shape)
-- `icons/compendium/cyberware/teleoptics.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Orbit](https://www.svgrepo.com/svg/195652/orbit)
+- `icons/compendium/cyberware/techscanner.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [GPS Device](https://www.svgrepo.com/svg/147709/gps-device) and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
+- `icons/compendium/cyberware/teleoptics.svg` derived from prototype icon and [Orbit](https://www.svgrepo.com/svg/195652/orbit)
 - `icons/compendium/cyberware/tool_hand.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [Swiss army Knife](https://game-icons.net/1x1/delapouite/swiss-army-knife.html), and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
-- `icons/compendium/cyberware/toxin_binders.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Poison Gas](https://game-icons.net/1x1/lorc/poison-gas.html)
-- `icons/compendium/cyberware/vampyres.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human) and [Fangs](https://game-icons.net/1x1/skoll/fangs.html)
-- `icons/compendium/cyberware/virtuality.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye) and [Virtual Reality](https://www.svgrepo.com/svg/151599/virtual-reality)
-- `icons/compendium/cyberware/voice_stress_analyzer.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear) and [User Voice](https://www.svgrepo.com/svg/334346/user-voice)
-- `icons/compendium/cyberware/web_foot.svg` remixed from [Leg](https://game-icons.net/1x1/delapouite/leg.html) and [Duck Prints](https://www.svgrepo.com/svg/32836/duck-prints)
+- `icons/compendium/cyberware/toxin_binders.svg` derived from prototype icon and [Poison Gas](https://game-icons.net/1x1/lorc/poison-gas.html)
+- `icons/compendium/cyberware/vampyres.svg` derived from prototype icon and [Fangs](https://game-icons.net/1x1/skoll/fangs.html)
+- `icons/compendium/cyberware/virtuality.svg` derived from prototype icon and [Virtual Reality](https://www.svgrepo.com/svg/151599/virtual-reality)
+- `icons/compendium/cyberware/voice_stress_analyzer.svg` derived from prototype icon and [User Voice](https://www.svgrepo.com/svg/334346/user-voice)
+- `icons/compendium/cyberware/web_foot.svg` derived from prototype icon and [Duck Prints](https://www.svgrepo.com/svg/32836/duck-prints)
 - `icons/compendium/cyberware/wolvers.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [Wolverine Claws](https://game-icons.net/1x1/delapouite/wolverine-claws.html)
+
+#### cyberweapons
+
+- `icons/compendium/cyberware/big_knucks.svg` derived from prototype icon and [Fist Raised](https://www.svgrepo.com/svg/352048/fist-raised)
+- `icons/compendium/cyberware/cybersnake.svg` derived from prototype icon and [Sand Snake](https://game-icons.net/1x1/delapouite/sand-snake.html)
+- `icons/compendium/cyberware/rippers.svg` derived from prototype icon and [Claw Slashes](https://game-icons.net/1x1/lorc/claw-slashes.html)
+- `icons/compendium/cyberware/scratchers.svg` derived from prototype icon and [Lightning Slashes](https://game-icons.net/1x1/lorc/lightning-slashes.html)
+- `icons/compendium/cyberware/slice_n_dice.svg` derived from prototype icon and [Whiplash](https://game-icons.net/1x1/lorc/whiplash.html)
+- `icons/compendium/cyberware/talon_foot.svg` remixed from [Bird Claw](https://game-icons.net/1x1/lorc/bird-claw.html)
+- `icons/compendium/cyberware/vampyres.svg` derived from prototype icon and [Fangs](https://game-icons.net/1x1/skoll/fangs.html)
+- `icons/compendium/cyberware/wolvers.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [Wolverine Claws](https://game-icons.net/1x1/delapouite/wolverine-claws.html)
+
+#### default
+
+- `icons/compendium/default/cyberdeck.svg`
+- `icons/compendium/default/Default_Ammo.svg`
 - `icons/compendium/default/Default_Armor_Head.svg` - remixed from [helmet](https://www.svgrepo.com/svg/213639/helmet)
+- `icons/compendium/default/Default_Armor.svg`
+- `icons/compendium/default/Default_Card_Hand.svg`
+- `icons/compendium/default/Default_Clothing.svg`
+- `icons/compendium/default/Default_Container.svg`
+- `icons/compendium/default/Default_CPR_Mystery_Man.svg`
+- `icons/compendium/default/Default_Critical_Injury.svg`
+- `icons/compendium/default/Default_Cyberdeck.svg`
+- `icons/compendium/default/Default_Cyberware.svg`
+- `icons/compendium/default/Default_Dice.svg`
+- `icons/compendium/default/Default_drink.svg`
+- `icons/compendium/default/Default_DV_Table.svg`
+- `icons/compendium/default/Default_Gear.svg`
+- `icons/compendium/default/Default_Melee.svg`
+- `icons/compendium/default/Default_Mook.svg`
+- `icons/compendium/default/Default_Net_Archetecture.svg`
+- `icons/compendium/default/Default_Program.svg`
+- `icons/compendium/default/Default_Role.svg`
+- `icons/compendium/default/Default_Skill.svg`
+- `icons/compendium/default/Default_Vehicle.svg`
+- `icons/compendium/default/Default_Weapon.svg`
+- `icons/compendium/default/default-blackice.svg`
+- `icons/compendium/default/default-demon.svg`
+- `icons/compendium/default/default-implanted-linearframe.svg`
+- `icons/compendium/default/default-linearframe.svg`
+
+#### drugs
+
+#### exotics???
+
+#### gear
+
 - `icons/compendium/gear/air_hypo.svg` remixed from [monkeywrench](https://game-icons.net/1x1/delapouite/monkey-wrench.html), [Thermometer Scale](https://game-icons.net/1x1/lorc/thermometer-scale.html), and [Valve](https://game-icons.net/1x1/delapouite/valve.html) from game-icons.net
 - `icons/compendium/gear/antismok_breathing_mask.svg` remixed from [Surgical Mask](https://www.svgrepo.com/svg/346425/surgical-mask-fill) and [Edit Mask](https://www.svgrepo.com/svg/333033/edit-mask)
 - `icons/compendium/gear/audio_recorder.svg` from [Recorder](https://www.svgrepo.com/svg/66755/recorder)
@@ -187,11 +307,22 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/gear/radio_scanner_music_player.svg` from [MP4 Audio Player](https://www.svgrepo.com/svg/268682/mp4-audio-player)
 - `icons/compendium/gear/smart_glasses.svg` remixed from [AR Glasses](https://www.svgrepo.com/svg/53184/ar-glasses)
 - `icons/compendium/gear/tech_scanner.svg` remixed from [GPS Device](https://www.svgrepo.com/svg/147709/gps-device) and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
+- `icons/compendium/gear/tech_tool/png.svg` remixed from [Swiss army Knife](https://game-icons.net/1x1/delapouite/swiss-army-knife.html) and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
 - `icons/compendium/gear/techbag.svg` from [Tool Bag](https://www.svgrepo.com/svg/89751/tool-bag)
 - `icons/compendium/gear/vial_biotoxin.svg` remixed from [Vial](https://game-icons.net/1x1/sbed/vial.html) and [Biohazard](https://game-icons.net/1x1/lorc/biohazard.html)
 - `icons/compendium/gear/vial_poison.svg` remixed from [Vial](https://game-icons.net/1x1/sbed/vial.html) and [Poison Bottle](https://game-icons.net/1x1/lorc/poison-bottle.html)
 - `icons/compendium/gear/video_camera.svg` from [Video Camera](https://www.svgrepo.com/svg/31680/video-camera)
-- `icons/compendium/image/tech_tool/png.svg` remixed from [Swiss army Knife](https://game-icons.net/1x1/delapouite/swiss-army-knife.html) and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
+
+#### must have???
+
+#### programs
+
+#### spinning ????
+
+- `icons/compendium/compendium/spinning_your_wheels/bottle_dynamo.svg` remixed from [Mono wheel robot icon](https://game-icons.net/1x1/delapouite/mono-wheel-robot.html)
+
+#### status
+
 - `icons/compendium/status/broken_weapon.svg` remixed from [Glock](https://game-icons.net/1x1/skoll/glock.html)
 - `icons/compendium/status/drugged.svg` remixed from [Pill](https://www.svgrepo.com/svg/141371/pill)
 - `icons/compendium/status/grappled.svg` from [Grab](https://game-icons.net/1x1/lorc/grab.html)
@@ -205,6 +336,11 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/status/readied_action.svg` from [Backward Time](https://game-icons.net/1x1/delapouite/backward-time.html)
 - `icons/compendium/status/unconcious.svg` from [Knockout](https://game-icons.net/1x1/skoll/knockout.html)
 - `icons/compendium/status/wounded*` remixed from [Glass Heart](https://game-icons.net/1x1/lorc/glass-heart.html)
+
+#### 12 days????
+
+#### upgrades
+
 - `icons/compendium/upgrades/armored_chasis.svg` remixed from [Car Travel SVG Vector](https://www.svgrepo.com/svg/390412/car-travel) and [Shield SVG Vector](https://www.svgrepo.com/svg/503088/shield)
 - `icons/compendium/upgrades/dna_lock.svg` remixed from [Combination Lock](https://game-icons.net/1x1/skoll/combination-lock.html) and [DNA 2](https://game-icons.net/1x1/lorc/dna2.html)
 - `icons/compendium/upgrades/enhanced_interface_plug_integration.svg` from [Plug Charging SVG Vector](https://www.svgrepo.com/svg/292678/plug-charging)
@@ -217,12 +353,54 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/upgrades/security_upgrade.svg` from [Security Protection Combination](https://www.svgrepo.com/svg/390117/security-protection-combination)
 - `icons/compendium/upgrades/smuggling_upgrade.svg` remixed from [Box1 SVG Vector](https://www.svgrepo.com/svg/485641/box1) and [Hidden SVG Vector](https://www.svgrepo.com/svg/447392/hidden)
 - `icons/compendium/upgrades/sniping_scope.svg` remixed from [Target Sniper](https://www.svgrepo.com/svg/182279/target-sniper)
-- `icons/compendium/weapons/Flamethrower.svg` remixed from [Delapouite](https://game-icons.net/1x1/delapouite/flamethrower.html)
-- `icons/compendium/weapons/Thrown_Weapon.svg` remixed from [Lorc](https://game-icons.net/1x1/lorc/arrow-dunk.html)
+
+#### vehicles
+
+#### weapons
+
 - `icons/compendium/weapons/air_pistol.svg` remixed from [Mac 10](https://game-icons.net/1x1/skoll/mac-10.html)
 - `icons/compendium/weapons/dartgun.svg` remixed from [Bolter Gun](https://game-icons.net/1x1/lorc/bolter-gun.html)
+- `icons/compendium/weapons/Flamethrower.svg` remixed from [Delapouite](https://game-icons.net/1x1/delapouite/flamethrower.html)
 - `icons/compendium/weapons/martial_arts.svg` remixed from [Karate Master](https://www.svgrepo.com/svg/120059/karate-master)
 - `icons/compendium/weapons/microwaver.svg` remixed from [Canister](https://game-icons.net/1x1/lorc/cannister.html) and [Tec 9](https://game-icons.net/1x1/skoll/tec-9.html)
 - `icons/compendium/weapons/shrieker.svg` remixed from [CZ Scorpion](https://game-icons.net/1x1/skoll/cz-skorpion.html)
 - `icons/compendium/weapons/stun_gun.svg` remixed from [Mac 10](https://game-icons.net/1x1/skoll/mac-10.html)
-- `icons/compendium/compendium/spinning_your_wheels/bottle_dynamo.svg` remixed from [Mono wheel robot icon](https://game-icons.net/1x1/delapouite/mono-wheel-robot.html)
+- `icons/compendium/weapons/Thrown_Weapon.svg` remixed from [Lorc](https://game-icons.net/1x1/lorc/arrow-dunk.html)
+
+### Dice
+
+### Hud
+
+### Macros
+
+### Netrunning
+
+### Prototype Assets
+
+#### badges
+
+- `icons/prototypes/badges/ammo_acid.svg` remixed from [Erlenmeyer](https://game-icons.net/1x1/lorc/erlenmeyer.html)
+- `icons/prototypes/badges/ammo_armorpiercing.svg` remixed from [Broken Shield](https://game-icons.net/1x1/lorc/broken-shield.html)
+- `icons/prototypes/badges/ammo_biotoxin.svg` remixed from [Biohazard](https://game-icons.net/1x1/lorc/biohazard.html)
+- `icons/prototypes/badges/ammo_emp.svg` remixed from [Electric](https://game-icons.net/1x1/sbed/electric.html)
+- `icons/prototypes/badges/ammo_expansive.svg` remixed from [Expander](https://game-icons.net/1x1/sbed/expander.html)
+- `icons/prototypes/badges/ammo_flashbang.svg` remixed from [Flake](https://game-icons.net/1x1/sbed/flake.html)
+- `icons/prototypes/badges/ammo_incendiary.svg` remixed from [Small Fire](https://game-icons.net/1x1/lorc/small-fire.html)
+- `icons/prototypes/badges/ammo_poison.svg` remixed from [Poison Bottle](https://game-icons.net/1x1/lorc/poison-bottle.html)
+- `icons/prototypes/badges/ammo_rubber.svg` created by Aru.Guy
+- `icons/prototypes/badges/ammo_sleep.svg` created by Aru.Guy
+- `icons/prototypes/badges/ammo_smart.svg` remixed from [CPU](https://game-icons.net/1x1/delapouite/cpu.html)
+- `icons/prototypes/badges/ammo_smoke.svg` remixed from [Heat Haze](https://game-icons.net/1x1/lorc/heat-haze.html)
+- `icons/prototypes/badges/ammo_teargas.svg` remixed from
+
+#### icons
+
+- `icons/prototypes/icons/app.svg` remixed from
+- `icons/prototypes/icons/audioware.svg` remixed from [Ear](https://www.svgrepo.com/svg/58400/ear)
+- `icons/prototypes/icons/chipware.svg` remixed from [Chip CPU](https://www.svgrepo.com/svg/255480/chip-cpu)
+- `icons/prototypes/icons/cyberarm.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette)
+- `icons/prototypes/icons/cybereye.svg` remixed from [Eye](https://www.svgrepo.com/svg/151175/eye)
+- `icons/prototypes/icons/cyberleg.svg` remixed from [Leg](https://game-icons.net/1x1/delapouite/leg.html)
+- `icons/prototypes/icons/external.svg` remixed from
+- `icons/prototypes/icons/internal.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human)
+- `icons/prototypes/icons/neuralware.svg` remixed from [Human Brain](https://www.svgrepo.com/svg/66295/human-brain)
