@@ -16,7 +16,8 @@
 .demon-sheet,
 .dialog-sheet,
 .item-sheet,
-.mook-sheet {
+.mook-sheet,
+.roll-table-sheet {
   font-family: var(--cpr-font-primary);
   color: var(--cpr-text-normal);
   background: var(--cpr-background-window);
@@ -144,7 +145,8 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     .releasenotes,
     .journal-entry-content,
     .journal-page-content,
-    .journal-sheet-container
+    .journal-sheet-container,
+    .roll-table-sheet
   )
   :is(.prosemirror, .prosemirror.menu-dialog) {
   form {
@@ -208,7 +210,8 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     .releasenotes,
     .journal-entry-content,
     .journal-page-content,
-    .journal-sheet-container
+    .journal-sheet-container,
+    .roll-table-sheet
   )
   .editor.prosemirror {
   min-height: 10rem;
@@ -240,11 +243,12 @@ html[data-cpr-theme="default"] :is(.cpr-migration-dialog, #compendia-config) a {
     .actor-sheet,
     .blackice-sheet,
     .container-sheet,
+    .cpr-migration-dialog,
     .demon-sheet,
     .dialog-sheet,
     .item-sheet,
     .mook-sheet,
-    .cpr-migration-dialog
+    .roll-table-sheet
   )
   :is(.prosemirror, .editor-content) {
   font-family: var(--cpr-font-primary);
