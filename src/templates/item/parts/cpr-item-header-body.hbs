@@ -16,7 +16,7 @@
   <div class="item-header-top">
     <div class="item-image item-image-block">
       <img class="item-image-block-img" src="{{img}}" alt="{{name}}"
-        {{#if editImg}}data-edit="img"{{/if}} />
+        {{#if editImg}}data-action="editImage" data-edit="img"{{/if}} />
       {{#if statusUpgraded}}
         <i class="fa-solid fa-square-caret-up fa-xs"
           data-tooltip="{{localize "CPR.global.generic.upgraded"}}"></i>

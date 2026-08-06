@@ -1,5 +1,6 @@
 import { expect } from "@playwright/test";
 import { createDocumentViaUI } from "./documents.mjs";
+import { openSidebarTab } from "./sidebar.mjs";
 
 export const ITEM_TYPES = [
   "ammo",
@@ -21,6 +22,27 @@ export const ITEM_TYPES = [
 
 export async function createItemViaUI(page, { type, name }) {
   return createDocumentViaUI(page, { documentTab: "items", type, name });
+}
+
+export async function reopenItemSheetViaUI(page, itemId) {
+  await openSidebarTab(page, "items");
+  const entry = page.locator(`#items [data-entry-id="${itemId}"]`);
+  await expect(entry).toBeVisible();
+  await entry.dblclick();
+
+  await page.waitForFunction(
+    (id) => game.items.get(id)?.sheet?.rendered === true,
+    itemId,
+    { timeout: 15000 },
+  );
+  const elementId = await page.evaluate((id) => {
+    const sheet = game.items.get(id).sheet;
+    return sheet.element?.id ?? null;
+  }, itemId);
+
+  expect(elementId).toBeTruthy();
+  await expect(page.locator(`#${elementId}`)).toBeVisible();
+  return elementId;
 }
 
 export async function openItemSettings(page, sheetId) {
