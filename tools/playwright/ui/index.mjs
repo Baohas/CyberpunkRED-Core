@@ -14,8 +14,10 @@ export {
   ITEM_TYPES,
   createItemViaUI,
   openItemSettings,
+  reopenItemSheetViaUI,
   setItemField,
 } from "./items.mjs";
+export { openImagePickerViaUI, selectFileViaUI } from "./file-picker.mjs";
 export {
   DROP_TAB_BY_TYPE,
   activateGearTab,
