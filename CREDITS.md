@@ -23,7 +23,6 @@ This game system (including items provided in the compendium) contains unofficia
 
 ### General
 
-- Pause overlay image by [Olena Panasovska](https://thenounproject.com/term/cyberpunk/1797860/) (CCBY)
 - Netarchitecture tiles, Dystopian City Streets, Dystopian City Junction scenes, and background picture created by [SolutionMaps](https://www.patreon.com/solutionmaps)
 - Icons, Art, Design, and Styling by [Flintwyrm](https://twitter.com/Flintwyrm)
 - Background and header images by Rayane Souizi "Wizi"
@@ -404,3 +403,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/prototypes/icons/external.svg` remixed from
 - `icons/prototypes/icons/internal.svg` remixed from [Man Body Person Human](https://www.svgrepo.com/svg/307391/man-boy-person-human)
 - `icons/prototypes/icons/neuralware.svg` remixed from [Human Brain](https://www.svgrepo.com/svg/66295/human-brain)
+
+## Legacy assets no longer in use by release 0.93.0
+
+- Pause overlay image by [Olena Panasovska](https://thenounproject.com/term/cyberpunk/1797860/) (CCBY)
