@@ -281,8 +281,6 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/drugs/surge.svg` remixed from []()
 - `icons/compendium/drugs/synthcoke.svg` remixed from []()
 
-#### exotics???
-
 #### gear
 
 - `icons/compendium/gear/air_hypo.svg` remixed from [monkeywrench](https://game-icons.net/1x1/delapouite/monkey-wrench.html), [Thermometer Scale](https://game-icons.net/1x1/lorc/thermometer-scale.html), and [Valve](https://game-icons.net/1x1/delapouite/valve.html) from game-icons.net
@@ -323,8 +321,6 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/gear/vial_poison.svg` remixed from [Vial](https://game-icons.net/1x1/sbed/vial.html) and [Poison Bottle](https://game-icons.net/1x1/lorc/poison-bottle.html)
 - `icons/compendium/gear/video_camera.svg` remixed from [Video Camera](https://www.svgrepo.com/svg/31680/video-camera)
 
-#### must have???
-
 #### programs
 
 #### spinning ????
@@ -346,8 +342,6 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/status/readied_action.svg` remixed from [Backward Time](https://game-icons.net/1x1/delapouite/backward-time.html)
 - `icons/compendium/status/unconcious.svg` remixed from [Knockout](https://game-icons.net/1x1/skoll/knockout.html)
 - `icons/compendium/status/wounded*` remixed from [Glass Heart](https://game-icons.net/1x1/lorc/glass-heart.html)
-
-#### 12 days????
 
 #### upgrades
 
