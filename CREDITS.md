@@ -63,7 +63,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `src\icons\compendium\armor\flak_body.svg` remixed from [armor](https://thenounproject.com/icon/armor-4069130/)
 - `src\icons\compendium\armor\flak_head.svg`remixed from [Military Helmet](https://thenounproject.com/icon/military-helmet-4831041/)
 - `src\icons\compendium\armor\heavy-armorjack_body.svg`remixed from [body armor](https://thenounproject.com/icon/body-armor-2851572/)
-- `src\icons\compendium\armor\heavy-armorjack_head.svg`remixed from []()
+- `src\icons\compendium\armor\heavy-armorjack_head.svg` - remixed from [helmet](https://www.svgrepo.com/svg/213639/helmet)
 - `src\icons\compendium\armor\kevlar_body.svg`remixed from [paintball armor](https://thenounproject.com/icon/paintball-armor-2873933/)
 - `src\icons\compendium\armor\kevlar_head.svg`remixed from [Helmet](https://thenounproject.com/icon/helmet-4599995/)
 - `src\icons\compendium\armor\leathers_body.svg`remixed from [armor](https://thenounproject.com/icon/armor-4283441/)
@@ -92,15 +92,15 @@ This game system (including items provided in the compendium) contains unofficia
 
 #### clothing
 
-- `icons/compendium/clothing/generic_bottoms.svg` from [Trousers Pants](https://www.svgrepo.com/svg/275007/trousers-pants)
-- `icons/compendium/clothing/generic_contact-lenses.svg` from [Contact Lens](https://www.svgrepo.com/svg/160924/contact-lens)
-- `icons/compendium/clothing/generic_footwear.svg` from [Big Boot](https://www.svgrepo.com/svg/98185/big-boot)
-- `icons/compendium/clothing/generic_glasses.svg` from [Glasses](https://www.svgrepo.com/svg/137191/glasses)
-- `icons/compendium/clothing/generic_hat.svg` from [Black Homburg Hat](https://www.svgrepo.com/svg/13982/black-homburg-hat)
-- `icons/compendium/clothing/generic_jacket.svg` from [Coat Jacket](https://www.svgrepo.com/svg/290751/coat-jacket)
-- `icons/compendium/clothing/generic_jewlery.svg` from [Gem Pendant](https://game-icons.net/1x1/lorc/gem-pendant.html)
-- `icons/compendium/clothing/generic_mirrorshades.svg` from [Glasses Vision](https://www.svgrepo.com/svg/201581/glasses-vision)
-- `icons/compendium/clothing/generic_top.svg` from [Shirt](https://www.svgrepo.com/svg/22216/shirt)
+- `icons/compendium/clothing/generic_bottoms.svg` remixed from [Trousers Pants](https://www.svgrepo.com/svg/275007/trousers-pants)
+- `icons/compendium/clothing/generic_contact-lenses.svg` remixed from [Contact Lens](https://www.svgrepo.com/svg/160924/contact-lens)
+- `icons/compendium/clothing/generic_footwear.svg` remixed from [Big Boot](https://www.svgrepo.com/svg/98185/big-boot)
+- `icons/compendium/clothing/generic_glasses.svg` remixed from [Glasses](https://www.svgrepo.com/svg/137191/glasses)
+- `icons/compendium/clothing/generic_hat.svg` remixed from [Black Homburg Hat](https://www.svgrepo.com/svg/13982/black-homburg-hat)
+- `icons/compendium/clothing/generic_jacket.svg` remixed from [Coat Jacket](https://www.svgrepo.com/svg/290751/coat-jacket)
+- `icons/compendium/clothing/generic_jewlery.svg` remixed from [Gem Pendant](https://game-icons.net/1x1/lorc/gem-pendant.html)
+- `icons/compendium/clothing/generic_mirrorshades.svg` remixed from [Glasses Vision](https://www.svgrepo.com/svg/201581/glasses-vision)
+- `icons/compendium/clothing/generic_top.svg` remixed from [Shirt](https://www.svgrepo.com/svg/22216/shirt)
 
 #### critical_injuries
 
@@ -124,7 +124,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/critical_injuries/lost_ear.svg` remixed from [Ear](https://www.svgrepo.com/svg/204196/ear)
 - `icons/compendium/critical_injuries/lost_eye.svg` remixed from [Eye](https://www.svgrepo.com/svg/66782/eye)
 - `icons/compendium/critical_injuries/spinal_injury.svg` remixed from [Spine Bone](https://www.svgrepo.com/svg/70061/spine-bone)
-- `icons/compendium/critical_injuries/torn_muscle.svg` remixed from
+- `icons/compendium/critical_injuries/torn_muscle.svg` remixed from []()
 - `icons/compendium/critical_injury/whiplash.svg` remixed from [Head](https://www.svgrepo.com/svg/6979/head)
 
 #### cyberware
@@ -134,13 +134,13 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/cyberware/anti_dazzle.svg` derived from prototype icon and [Ice Iris](https://game-icons.net/1x1/delapouite/ice-iris.html)
 - `icons/compendium/cyberware/artificial_shoulder_mount.svg` remixed from [Robot](https://www.svgrepo.com/svg/99793/robot) and [Iron Furniture and Household](https://www.svgrepo.com/svg/216958/iron-furniture-and-household)
 - `icons/compendium/cyberware/audiovox.svg` derived from prototype icon and [Music Player Audio Bars](https://www.svgrepo.com/svg/268686/music-player-audio-bars)
-- `icons/compendium/cyberware/battleglove.svg`
+- `icons/compendium/cyberware/battleglove.svg` remixed from []()
 - `icons/compendium/cyberware/big_knucks.svg` derived from prototype icon and [Fist Raised](https://www.svgrepo.com/svg/352048/fist-raised)
 - `icons/compendium/cyberware/biomonitor.svg` remixed from [Heat Healthcare and Medical](https://www.svgrepo.com/svg/197411/heart-healthcare-and-medical)
 - `icons/compendium/cyberware/braindance_recorder.svg` remixed from [Human Brain](https://www.svgrepo.com/svg/66295/human-brain) and [Aperture](https://www.svgrepo.com/svg/69788/aperture)
-- `icons/compendium/cyberware/bug_detector.svg`
+- `icons/compendium/cyberware/bug_detector.svg` remixed from []()
 - `icons/compendium/cyberware/chemical_analyzer.svg` remixed from [USB Tool](https://www.svgrepo.com/svg/29162/usb-tool) and [Chemical Weapon](https://www.svgrepo.com/svg/115663/chemical-weapon)
-- `icons/compendium/cyberware/chemskin.svg` from [Dye](https://www.svgrepo.com/svg/221758/dye)
+- `icons/compendium/cyberware/chemskin.svg` remixed from [Dye](https://www.svgrepo.com/svg/221758/dye)
 - `icons/compendium/cyberware/chipware_socket.svg` remixed from [Socket](https://www.svgrepo.com/svg/199062/socket) and [Interface Socket Sign](https://www.svgrepo.com/svg/10816/interface-socket-sign)
 - `icons/compendium/cyberware/chyron.svg` derived from prototype icon and [Tablet Touch Screen](https://www.svgrepo.com/svg/217518/tablet-touch-screen)
 - `icons/compendium/cyberware/color_shift.svg` derived from prototype icon and [Touch Screen](https://www.svgrepo.com/svg/129795/touch-screen)
@@ -148,33 +148,33 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/cyberware/cyberarm.svg` purchaed from [Icon Finder](https://www.iconfinder.com/icons/7018292/limb_prosthesis_arm_cyber_robot_bionic_icon)
 - `icons/compendium/cyberware/cyberaudio_suite.svg` derived from prototype icon and [Bug Symbol with Symbol](https://www.svgrepo.com/svg/8014/bug-symbol-with-signal)
 - `icons/compendium/cyberware/cyberdeck.svg` derived from prototype icon and [Keyboard Piano](https://www.svgrepo.com/svg/262262/keyboard-piano)
-- `icons/compendium/cyberware/cybereye.svg`
+- `icons/compendium/cyberware/cybereye.svg` remixed from []()
 - `icons/compendium/cyberware/cyberleg.svg` remixed from [Robot Leg](https://game-icons.net/1x1/delapouite/robot-leg.html)
 - `icons/compendium/cyberware/cybersnake.svg` derived from prototype icon and [Sand Snake](https://game-icons.net/1x1/delapouite/sand-snake.html)
-- `icons/compendium/cyberware/dartgun.svg`
-- `icons/compendium/cyberware/emp_threading.svg` from [Tree Shape Of Straight Lines Like A Computer Printed Circuit](https://www.svgrepo.com/svg/25715/tree-shape-of-straight-lines-like-a-computer-printed-circuit)
+- `icons/compendium/cyberware/dartgun.svg` remixed from []()
+- `icons/compendium/cyberware/emp_threading.svg` remixed from [Tree Shape Of Straight Lines Like A Computer Printed Circuit](https://www.svgrepo.com/svg/25715/tree-shape-of-straight-lines-like-a-computer-printed-circuit)
 - `icons/compendium/cyberware/enhanced_antibodies.svg` derived from prototype icon and [Antibody](https://www.svgrepo.com/svg/321735/antibody)
-- `icons/compendium/cyberware/exposed_coverings.svg`
+- `icons/compendium/cyberware/exposed_coverings.svg` remixed from []()
 - `icons/compendium/cyberware/gills.svg` derived from prototype icon and [Water](https://www.svgrepo.com/svg/352680/water)
 - `icons/compendium/cyberware/grafted_muscle_and_lace.svg` derived from prototype icon and [Biceps](https://game-icons.net/1x1/delapouite/biceps.html)
 - `icons/compendium/cyberware/grapple_hand.svg` derived from prototype icon and [Keyboard Piano](https://www.svgrepo.com/svg/262262/keyboard-piano)
 - `icons/compendium/cyberware/grip_foot.svg` derived from prototype icon and [Frog Foot](https://game-icons.net/1x1/delapouite/frog-foot.html)
 - `icons/compendium/cyberware/hardened_shielding.svg` remixed from [Break](https://www.svgrepo.com/svg/252779/break) and [Bolt](https://www.svgrepo.com/svg/110394/bolt)
-- `icons/compendium/cyberware/hidden_holster.svg`
+- `icons/compendium/cyberware/hidden_holster.svg` remixed from []()
 - `icons/compendium/cyberware/homing_tracer.svg` derived from prototype icon and [Map](https://www.svgrepo.com/svg/86709/map)
 - `icons/compendium/cyberware/image_enhance.svg` derived from prototype icon and [Magnifying Glass](https://www.svgrepo.com/svg/74695/magnifying-glass)
 - `icons/compendium/cyberware/implanted_linearframe_beta.svg` derived from prototype icon and [Robot](https://www.svgrepo.com/svg/99793/robot)
 - `icons/compendium/cyberware/implanted_linearframe_sigma.svg` derived from prototype icon and [Robot](https://www.svgrepo.com/svg/99793/robot)
 - `icons/compendium/cyberware/independent_air_supply.svg` derived from prototype icon and [Oxygen Tank](https://www.svgrepo.com/svg/31697/oxygen-tank)
-- `icons/compendium/cyberware/interface_plugs.svg`
+- `icons/compendium/cyberware/interface_plugs.svg` remixed from []()
 - `icons/compendium/cyberware/internal_agent.svg` derived from prototype icon and [Smartphone](https://game-icons.net/1x1/skoll/smartphone.html)
 - `icons/compendium/cyberware/jump_booster.svg` derived from prototype icon and [Leapfrog](https://game-icons.net/1x1/delapouite/leapfrog.html)
 - `icons/compendium/cyberware/light_tattoo.svg` remixed from [Tattoo Machine](https://www.svgrepo.com/svg/71426/tattoo-machine)
 - `icons/compendium/cyberware/lowlight_ir_uv.svg` derived from prototype icon and [Sunken Eye](https://game-icons.net/1x1/lorc/sunken-eye.html)
-- `icons/compendium/cyberware/meatarm.svg` from [Human Arm](https://www.svgrepo.com/svg/169283/human-arm)
-- `icons/compendium/cyberware/meatfoot.svg` from [Lost Limb](https://game-icons.net/1x1/quoting/lost-limb.html)
+- `icons/compendium/cyberware/meatarm.svg` remixed from [Human Arm](https://www.svgrepo.com/svg/169283/human-arm)
+- `icons/compendium/cyberware/meatfoot.svg` remixed from [Lost Limb](https://game-icons.net/1x1/quoting/lost-limb.html)
 - `icons/compendium/cyberware/meathand.svg`from [Severed Hand](https://game-icons.net/1x1/darkzaitzev/severed-hand.html)
-- `icons/compendium/cyberware/meatleg.svg` from [Leg](https://www.svgrepo.com/svg/31874/leg)
+- `icons/compendium/cyberware/meatleg.svg` remixed from [Leg](https://www.svgrepo.com/svg/31874/leg)
 - `icons/compendium/cyberware/medscanner.svg` purchased from [Iconfinder](https://www.iconfinder.com/icons/8076035/scanner_scanning_scan_printer_hardware_icon) remixed with [Medical Cross](https://www.svgrepo.com/svg/24008/medical-cross), and [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette)
 - `icons/compendium/cyberware/memory_chip.svg` derived from prototype icon and [Memory Card](https://www.svgrepo.com/svg/167281/memory-card)
 - `icons/compendium/cyberware/microoptics.svg` derived from prototype icon and [Binoculars](https://www.svgrepo.com/svg/52243/binoculars)
@@ -186,7 +186,7 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/cyberware/neural_link.svg` remixed from [Brain](https://www.svgrepo.com/svg/351802/brain), [CPU](https://www.svgrepo.com/svg/346734/cpu), and [Circuit](https://www.svgrepo.com/svg/20727/circuit)
 - `icons/compendium/cyberware/olfactory_boost.svg` derived from prototype icon and [Big Nose](https://www.svgrepo.com/svg/21864/big-nose)
 - `icons/compendium/cyberware/pain_editor.svg` derived from prototype icon and [Spine Bone](https://www.svgrepo.com/svg/70061/spine-bone)
-- `icons/compendium/cyberware/plastic_covering.svg` from [Layers](https://www.svgrepo.com/svg/105418/layers)
+- `icons/compendium/cyberware/plastic_covering.svg` remixed from [Layers](https://www.svgrepo.com/svg/105418/layers)
 - `icons/compendium/cyberware/popup_grenade_launcher.svg` derived from prototype icon and [Stun Grenade](https://www.svgrepo.com/svg/323389/stun-grenade)
 - `icons/compendium/cyberware/popup_melee_weapon.svg` derived from prototype icon and [Bowie Knife](https://game-icons.net/1x1/lorc/bowie-knife.html)
 - `icons/compendium/cyberware/quick_change_mount.svg` derived from prototype icon and [Knee](https://www.svgrepo.com/svg/32177/knee)
@@ -194,29 +194,29 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/cyberware/radar_sonar_implant.svg` derived from prototype icon and [Radar](https://www.svgrepo.com/svg/213702/radar)
 - `icons/compendium/cyberware/radiation_detector.svg` derived from prototype icon and [Radiation](https://www.svgrepo.com/svg/140255/radiation)
 - `icons/compendium/cyberware/radio_communicator.svg` derived from prototype icon and [Headset](https://www.svgrepo.com/svg/135755/headset)
-- `icons/compendium/cyberware/radio_scanner_music_player.svg`
-- `icons/compendium/cyberware/realskin_covering.svg` from [Layers](https://www.svgrepo.com/svg/45604/layers)
+- `icons/compendium/cyberware/radio_scanner_music_player.svg` remixed from []()
+- `icons/compendium/cyberware/realskin_covering.svg` remixed from [Layers](https://www.svgrepo.com/svg/45604/layers)
 - `icons/compendium/cyberware/rippers.svg` derived from prototype icon and [Claw Slashes](https://game-icons.net/1x1/lorc/claw-slashes.html)
-- `icons/compendium/cyberware/sandevistan.svg` from [Chronometers Speed](https://www.svgrepo.com/svg/293242/chronometers-speed)
+- `icons/compendium/cyberware/sandevistan.svg` remixed from [Chronometers Speed](https://www.svgrepo.com/svg/293242/chronometers-speed)
 - `icons/compendium/cyberware/scrambler_descrambler.svg` derived from prototype icon and [Sound Waves](https://game-icons.net/1x1/skoll/sound-waves.html)
 - `icons/compendium/cyberware/scratchers.svg` derived from prototype icon and [Lightning Slashes](https://game-icons.net/1x1/lorc/lightning-slashes.html)
-- `icons/compendium/cyberware/sensor_array.svg`
-- `icons/compendium/cyberware/shift_tacts.svg` from [Eye](https://www.svgrepo.com/svg/58601/eye)
-- `icons/compendium/cyberware/shoulder_cam.svg`
+- `icons/compendium/cyberware/sensor_array.svg` remixed from []()
+- `icons/compendium/cyberware/shift_tacts.svg` remixed from [Eye](https://www.svgrepo.com/svg/58601/eye)
+- `icons/compendium/cyberware/shoulder_cam.svg` remixed from []()
 - `icons/compendium/cyberware/skate_foot.svg` derived from prototype icon and [Roller Skate](https://www.svgrepo.com/svg/156307/roller-skate)
 - `icons/compendium/cyberware/skill_chip.svg` derived from prototype icon and [Skill Level Advanced](https://www.svgrepo.com/svg/341028/skill-level-advanced)
 - `icons/compendium/cyberware/skinwatch.svg` remixed from [Wristwatch Watch](https://www.svgrepo.com/svg/302337/wristwatch-watch)
 - `icons/compendium/cyberware/slice_n_dice.svg` derived from prototype icon and [Whiplash](https://game-icons.net/1x1/lorc/whiplash.html)
-- `icons/compendium/cyberware/standard_foot.svg` from [Left Foot](https://www.svgrepo.com/svg/78614/left-foot)
-- `icons/compendium/cyberware/standard_hand.svg` from [Hand Drag](https://www.svgrepo.com/svg/188175/hand-drag)
+- `icons/compendium/cyberware/standard_foot.svg` remixed from [Left Foot](https://www.svgrepo.com/svg/78614/left-foot)
+- `icons/compendium/cyberware/standard_hand.svg` remixed from [Hand Drag](https://www.svgrepo.com/svg/188175/hand-drag)
 - `icons/compendium/cyberware/subdermal_armor.svg`
 - `icons/compendium/cyberware/subdermal_grip.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [Hand](https://www.svgrepo.com/svg/353145/hand), and [Circuitry](https://game-icons.net/1x1/lorc/circuitry.html)
-- `icons/compendium/cyberware/subdermal_pocket.svg` from [Pocket Shape](https://www.svgrepo.com/svg/115039/pocket-shape)
-- `icons/compendium/cyberware/superchrome_covering.svg` from [Layers](https://www.svgrepo.com/svg/36307/layers)
-- `icons/compendium/cyberware/tactile_boost.svg`
+- `icons/compendium/cyberware/subdermal_pocket.svg` remixed from [Pocket Shape](https://www.svgrepo.com/svg/115039/pocket-shape)
+- `icons/compendium/cyberware/superchrome_covering.svg` remixed from [Layers](https://www.svgrepo.com/svg/36307/layers)
+- `icons/compendium/cyberware/tactile_boost.svg` remixed from []()
 - `icons/compendium/cyberware/talon_foot.svg` remixed from [Bird Claw](https://game-icons.net/1x1/lorc/bird-claw.html)
 - `icons/compendium/cyberware/targeting_scope.svg` derived from prototype icon and [Target](https://www.svgrepo.com/svg/66067/target)
-- `icons/compendium/cyberware/techhair.svg` from [Boy Hair Shape](https://www.svgrepo.com/svg/123783/boy-hair-shape)
+- `icons/compendium/cyberware/techhair.svg` remixed from [Boy Hair Shape](https://www.svgrepo.com/svg/123783/boy-hair-shape)
 - `icons/compendium/cyberware/techscanner.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [GPS Device](https://www.svgrepo.com/svg/147709/gps-device) and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
 - `icons/compendium/cyberware/teleoptics.svg` derived from prototype icon and [Orbit](https://www.svgrepo.com/svg/195652/orbit)
 - `icons/compendium/cyberware/tool_hand.svg` remixed from [Musculous Arm](https://www.svgrepo.com/svg/107015/musculous-arm-silhouette), [Swiss army Knife](https://game-icons.net/1x1/delapouite/swiss-army-knife.html), and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
@@ -240,35 +240,46 @@ This game system (including items provided in the compendium) contains unofficia
 
 #### default
 
-- `icons/compendium/default/cyberdeck.svg`
-- `icons/compendium/default/Default_Ammo.svg`
+- `icons/compendium/default/cyberdeck.svg` remixed from []()
+- `icons/compendium/default/Default_Ammo.svg` remixed from []()
 - `icons/compendium/default/Default_Armor_Head.svg` - remixed from [helmet](https://www.svgrepo.com/svg/213639/helmet)
-- `icons/compendium/default/Default_Armor.svg`
-- `icons/compendium/default/Default_Card_Hand.svg`
-- `icons/compendium/default/Default_Clothing.svg`
-- `icons/compendium/default/Default_Container.svg`
-- `icons/compendium/default/Default_CPR_Mystery_Man.svg`
-- `icons/compendium/default/Default_Critical_Injury.svg`
-- `icons/compendium/default/Default_Cyberdeck.svg`
-- `icons/compendium/default/Default_Cyberware.svg`
-- `icons/compendium/default/Default_Dice.svg`
-- `icons/compendium/default/Default_drink.svg`
-- `icons/compendium/default/Default_DV_Table.svg`
-- `icons/compendium/default/Default_Gear.svg`
-- `icons/compendium/default/Default_Melee.svg`
-- `icons/compendium/default/Default_Mook.svg`
-- `icons/compendium/default/Default_Net_Archetecture.svg`
-- `icons/compendium/default/Default_Program.svg`
-- `icons/compendium/default/Default_Role.svg`
-- `icons/compendium/default/Default_Skill.svg`
-- `icons/compendium/default/Default_Vehicle.svg`
-- `icons/compendium/default/Default_Weapon.svg`
-- `icons/compendium/default/default-blackice.svg`
-- `icons/compendium/default/default-demon.svg`
-- `icons/compendium/default/default-implanted-linearframe.svg`
-- `icons/compendium/default/default-linearframe.svg`
+- `icons/compendium/default/Default_Armor.svg` remixed from []()
+- `icons/compendium/default/Default_Card_Hand.svg` remixed from []()
+- `icons/compendium/default/Default_Clothing.svg` remixed from []()
+- `icons/compendium/default/Default_Container.svg` remixed from []()
+- `icons/compendium/default/Default_CPR_Mystery_Man.svg` remixed from []()
+- `icons/compendium/default/Default_Critical_Injury.svg` remixed from []()
+- `icons/compendium/default/Default_Cyberdeck.svg` remixed from []()
+- `icons/compendium/default/Default_Cyberware.svg` remixed from []()
+- `icons/compendium/default/Default_Dice.svg` remixed from []()
+- `icons/compendium/default/Default_drink.svg` remixed from []()
+- `icons/compendium/default/Default_DV_Table.svg` remixed from []()
+- `icons/compendium/default/Default_Gear.svg` remixed from []()
+- `icons/compendium/default/Default_Melee.svg` remixed from []()
+- `icons/compendium/default/Default_Mook.svg` remixed from []()
+- `icons/compendium/default/Default_Net_Archetecture.svg` remixed from []()
+- `icons/compendium/default/Default_Program.svg` remixed from []()
+- `icons/compendium/default/Default_Role.svg` remixed from []()
+- `icons/compendium/default/Default_Skill.svg` remixed from []()
+- `icons/compendium/default/Default_Vehicle.svg` remixed from []()
+- `icons/compendium/default/Default_Weapon.svg` remixed from []()
+- `icons/compendium/default/default-blackice.svg` remixed from []()
+- `icons/compendium/default/default-demon.svg` remixed from []()
+- `icons/compendium/default/default-implanted-linearframe.svg` remixed from []()
+- `icons/compendium/default/default-linearframe.svg` remixed from []()
 
 #### drugs
+
+- `icons/compendium/drugs/antibiotics.svg` remixed from []()
+- `icons/compendium/drugs/blacck_lace.svg` remixed from []()
+- `icons/compendium/drugs/blue_glass.svg` remixed from []()
+- `icons/compendium/drugs/boost.svg` remixed from []()
+- `icons/compendium/drugs/rapiddetox.svg` remixed from []()
+- `icons/compendium/drugs/smash.svg` remixed from []()
+- `icons/compendium/drugs/speedheal.svg` remixed from []()
+- `icons/compendium/drugs/stim.svg` remixed from []()
+- `icons/compendium/drugs/surge.svg` remixed from []()
+- `icons/compendium/drugs/synthcoke.svg` remixed from []()
 
 #### exotics???
 
@@ -276,23 +287,23 @@ This game system (including items provided in the compendium) contains unofficia
 
 - `icons/compendium/gear/air_hypo.svg` remixed from [monkeywrench](https://game-icons.net/1x1/delapouite/monkey-wrench.html), [Thermometer Scale](https://game-icons.net/1x1/lorc/thermometer-scale.html), and [Valve](https://game-icons.net/1x1/delapouite/valve.html) from game-icons.net
 - `icons/compendium/gear/antismok_breathing_mask.svg` remixed from [Surgical Mask](https://www.svgrepo.com/svg/346425/surgical-mask-fill) and [Edit Mask](https://www.svgrepo.com/svg/333033/edit-mask)
-- `icons/compendium/gear/audio_recorder.svg` from [Recorder](https://www.svgrepo.com/svg/66755/recorder)
+- `icons/compendium/gear/audio_recorder.svg` remixed from [Recorder](https://www.svgrepo.com/svg/66755/recorder)
 - `icons/compendium/gear/auto_leveling_ear_defenders.svg` remixed from [Earphones](https://www.svgrepo.com/svg/132132/earphones)
 - `icons/compendium/gear/autoleveling_ear_defenders.svg` remixed from [Earphones](https://www.svgrepo.com/svg/132132/earphones)
-- `icons/compendium/gear/binoculars.svg` from [Pair of Binoculars](https://www.svgrepo.com/svg/109453/pair-of-binoculars-silhouette)
-- `icons/compendium/gear/braindance_viewer.svg` from [Bionic Contact Lens Virtual Reality](https://www.svgrepo.com/svg/246605/bionic-contact-lens-virtual-reality)
-- `icons/compendium/gear/bug_detector.svg` from [Bug Symbol with Signal](https://www.svgrepo.com/svg/8014/bug-symbol-with-signal)
+- `icons/compendium/gear/binoculars.svg` remixed from [Pair of Binoculars](https://www.svgrepo.com/svg/109453/pair-of-binoculars-silhouette)
+- `icons/compendium/gear/braindance_viewer.svg` remixed from [Bionic Contact Lens Virtual Reality](https://www.svgrepo.com/svg/246605/bionic-contact-lens-virtual-reality)
+- `icons/compendium/gear/bug_detector.svg` remixed from [Bug Symbol with Signal](https://www.svgrepo.com/svg/8014/bug-symbol-with-signal)
 - `icons/compendium/gear/chemical_analyzer.svg` remixed from [USB Tool](https://www.svgrepo.com/svg/29162/usb-tool) and [Chemical Weapon](https://www.svgrepo.com/svg/115663/chemical-weapon)
-- `icons/compendium/gear/computer.svg` from [Laptop](https://www.svgrepo.com/svg/19687/laptop)
+- `icons/compendium/gear/computer.svg` remixed from [Laptop](https://www.svgrepo.com/svg/19687/laptop)
 - `icons/compendium/gear/cryopump.svg` remixed from [Trip Bag](https://www.svgrepo.com/svg/92126/trip-bag) and [Cardiogram](https://www.svgrepo.com/svg/201636/cardiogram)
 - `icons/compendium/gear/cyberdeck.svg` remixed from [Keyboard Piano](https://www.svgrepo.com/svg/262262/keyboard-piano)
-- `icons/compendium/gear/drum_syntheziser.svg` from [Piter Kidanchuk](https://www.shutterstock.com/g/Piter+Kidanchuk) via [Shutterstock](https://www.shutterstock.com)
+- `icons/compendium/gear/drum_syntheziser.svg` remixed from [Piter Kidanchuk](https://www.shutterstock.com/g/Piter+Kidanchuk) via [Shutterstock](https://www.shutterstock.com)
 - `icons/compendium/gear/duct_tape.svg` by [Adhesive Tape](https://www.svgrepo.com/svg/46986/adhesive-tape)
 - `icons/compendium/gear/flare.svg` remixed from [Flamer](https://game-icons.net/1x1/sbed/flamer.html)
-- `icons/compendium/gear/foodstick.svg` from [Food Pet Shop](https://www.svgrepo.com/svg/256438/food-pet-shop)
+- `icons/compendium/gear/foodstick.svg` remixed from [Food Pet Shop](https://www.svgrepo.com/svg/256438/food-pet-shop)
 - `icons/compendium/gear/glowstick.svg` by [Damion](https://thenounproject.com/term/glow-stick/16239/)
-- `icons/compendium/gear/guitar.svg` from [Electric Guitar](https://www.svgrepo.com/svg/1816/triangular-guitar-silhouette)
-- `icons/compendium/gear/homing_tracer.svg` from [Map](https://www.svgrepo.com/svg/86709/map)
+- `icons/compendium/gear/guitar.svg` remixed from [Electric Guitar](https://www.svgrepo.com/svg/1816/triangular-guitar-silhouette)
+- `icons/compendium/gear/homing_tracer.svg` remixed from [Map](https://www.svgrepo.com/svg/86709/map)
 - `icons/compendium/gear/inflatable_bed_and_sleepingbag.svg` remixed from [Sleeping Bag](https://www.svgrepo.com/svg/279080/sleeping-bag)
 - `icons/compendium/gear/kibble.svg` remixed from [Fertilizer Bag](https://game-icons.net/1x1/delapouite/fertilizer-bag.html) and [Japanese Food](https://www.svgrepo.com/svg/27559/japanese-food)
 - `icons/compendium/gear/linearframe.svg` remized from [Robot](https://www.svgrepo.com/svg/99793/robot)
@@ -300,17 +311,17 @@ This game system (including items provided in the compendium) contains unofficia
 - `icons/compendium/gear/medscanner.svg` purchased from [Iconfinder](https://www.iconfinder.com/icons/8076035/scanner_scanning_scan_printer_hardware_icon) remixed with [Medical Cross](https://www.svgrepo.com/svg/24008/medical-cross)
 - `icons/compendium/gear/memory_chip.svg` remixed from [Memory Card](https://www.svgrepo.com/svg/167281/memory-card)
 - `icons/compendium/gear/mre.svg` remixed from [Cat Food](https://www.svgrepo.com/svg/43231/cat-food) and [Skewer Food and Restaurant](https://www.svgrepo.com/svg/265661/skewer-food-and-restaurant)
-- `icons/compendium/gear/pocket_amplifier.svg` from [Music Amplifier Box](https://www.svgrepo.com/svg/175315/music-amplifier-box)
+- `icons/compendium/gear/pocket_amplifier.svg` remixed from [Music Amplifier Box](https://www.svgrepo.com/svg/175315/music-amplifier-box)
 - `icons/compendium/gear/radar_scanner.svg` remixed from [Tablet](https://www.svgrepo.com/svg/107319/tablet) and [Radar](https://www.svgrepo.com/svg/213702/radar)
 - `icons/compendium/gear/radio_communicator.svg` remixed from [Headset](https://www.svgrepo.com/svg/135755/headset)
-- `icons/compendium/gear/radio_scanner_music_player.svg` from [MP4 Audio Player](https://www.svgrepo.com/svg/268682/mp4-audio-player)
+- `icons/compendium/gear/radio_scanner_music_player.svg` remixed from [MP4 Audio Player](https://www.svgrepo.com/svg/268682/mp4-audio-player)
 - `icons/compendium/gear/smart_glasses.svg` remixed from [AR Glasses](https://www.svgrepo.com/svg/53184/ar-glasses)
 - `icons/compendium/gear/tech_scanner.svg` remixed from [GPS Device](https://www.svgrepo.com/svg/147709/gps-device) and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
 - `icons/compendium/gear/tech_tool/png.svg` remixed from [Swiss army Knife](https://game-icons.net/1x1/delapouite/swiss-army-knife.html) and [Device Focus Point](https://www.svgrepo.com/svg/107163/device-focus-point)
-- `icons/compendium/gear/techbag.svg` from [Tool Bag](https://www.svgrepo.com/svg/89751/tool-bag)
+- `icons/compendium/gear/techbag.svg` remixed from [Tool Bag](https://www.svgrepo.com/svg/89751/tool-bag)
 - `icons/compendium/gear/vial_biotoxin.svg` remixed from [Vial](https://game-icons.net/1x1/sbed/vial.html) and [Biohazard](https://game-icons.net/1x1/lorc/biohazard.html)
 - `icons/compendium/gear/vial_poison.svg` remixed from [Vial](https://game-icons.net/1x1/sbed/vial.html) and [Poison Bottle](https://game-icons.net/1x1/lorc/poison-bottle.html)
-- `icons/compendium/gear/video_camera.svg` from [Video Camera](https://www.svgrepo.com/svg/31680/video-camera)
+- `icons/compendium/gear/video_camera.svg` remixed from [Video Camera](https://www.svgrepo.com/svg/31680/video-camera)
 
 #### must have???
 
@@ -324,16 +335,16 @@ This game system (including items provided in the compendium) contains unofficia
 
 - `icons/compendium/status/broken_weapon.svg` remixed from [Glock](https://game-icons.net/1x1/skoll/glock.html)
 - `icons/compendium/status/drugged.svg` remixed from [Pill](https://www.svgrepo.com/svg/141371/pill)
-- `icons/compendium/status/grappled.svg` from [Grab](https://game-icons.net/1x1/lorc/grab.html)
-- `icons/compendium/status/hidden.svg` from [Ninja Head](https://game-icons.net/1x1/darkzaitzev/ninja-head.html)
+- `icons/compendium/status/grappled.svg` remixed from [Grab](https://game-icons.net/1x1/lorc/grab.html)
+- `icons/compendium/status/hidden.svg` remixed from [Ninja Head](https://game-icons.net/1x1/darkzaitzev/ninja-head.html)
 - `icons/compendium/status/in_cover.svg` remixed from [Shield](https://www.svgrepo.com/svg/54670/shield)
-- `icons/compendium/status/netrunning.svg` from [Virtual Reality Headset Virtual Reality Augmented Reality Ar](https://www.svgrepo.com/svg/308146/virtual-reality-headset-virtual-reality-augmented-reality-ar)
-- `icons/compendium/status/on_fire.svg` from [Fire Silhouette](https://game-icons.net/1x1/lorc/fire-silhouette.html)
+- `icons/compendium/status/netrunning.svg` remixed from [Virtual Reality Headset Virtual Reality Augmented Reality Ar](https://www.svgrepo.com/svg/308146/virtual-reality-headset-virtual-reality-augmented-reality-ar)
+- `icons/compendium/status/on_fire.svg` remixed from [Fire Silhouette](https://game-icons.net/1x1/lorc/fire-silhouette.html)
 - `icons/compendium/status/prone.svg` remixed from [Up Arrow](https://www.svgrepo.com/svg/73039/up-arrow)
 - `icons/compendium/status/radiation_high,svg` from [SVGRepo](https://www.svgrepo.com/svg/216429/radiation-nuclear)
-- `icons/compendium/status/radiation_low.svg` from [SVGRepo](https://www.svgrepo.com/svg/92220/radiation)
-- `icons/compendium/status/readied_action.svg` from [Backward Time](https://game-icons.net/1x1/delapouite/backward-time.html)
-- `icons/compendium/status/unconcious.svg` from [Knockout](https://game-icons.net/1x1/skoll/knockout.html)
+- `icons/compendium/status/radiation_low.svg` remixed from [SVGRepo](https://www.svgrepo.com/svg/92220/radiation)
+- `icons/compendium/status/readied_action.svg` remixed from [Backward Time](https://game-icons.net/1x1/delapouite/backward-time.html)
+- `icons/compendium/status/unconcious.svg` remixed from [Knockout](https://game-icons.net/1x1/skoll/knockout.html)
 - `icons/compendium/status/wounded*` remixed from [Glass Heart](https://game-icons.net/1x1/lorc/glass-heart.html)
 
 #### 12 days????
@@ -342,14 +353,14 @@ This game system (including items provided in the compendium) contains unofficia
 
 - `icons/compendium/upgrades/armored_chasis.svg` remixed from [Car Travel SVG Vector](https://www.svgrepo.com/svg/390412/car-travel) and [Shield SVG Vector](https://www.svgrepo.com/svg/503088/shield)
 - `icons/compendium/upgrades/dna_lock.svg` remixed from [Combination Lock](https://game-icons.net/1x1/skoll/combination-lock.html) and [DNA 2](https://game-icons.net/1x1/lorc/dna2.html)
-- `icons/compendium/upgrades/enhanced_interface_plug_integration.svg` from [Plug Charging SVG Vector](https://www.svgrepo.com/svg/292678/plug-charging)
+- `icons/compendium/upgrades/enhanced_interface_plug_integration.svg` remixed from [Plug Charging SVG Vector](https://www.svgrepo.com/svg/292678/plug-charging)
 - `icons/compendium/upgrades/generic_drum_magazine.svg` remixed from [Target SVG Vector](https://www.svgrepo.com/svg/513461/target)
 - `icons/compendium/upgrades/hardened_circuitry.svg` remixed from [CPU](https://game-icons.net/1x1/delapouite/cpu.html) and [Shield](https://game-icons.net/1x1/sbed/shield.html)
 - `icons/compendium/upgrades/heavy_chasis.svg` remixed from [Car Travel SVG Vector](https://www.svgrepo.com/svg/390412/car-travel) and [Weight Hanging SVG Vector](https://www.svgrepo.com/svg/352684/weight-hanging)
-- `icons/compendium/upgrades/housing_capacity.svg` from [Bed SVG Vector](https://www.svgrepo.com/svg/409415/bed)
-- `icons/compendium/upgrades/infrared_nightvision_scope.svg.svg` from [Orbit](https://www.svgrepo.com/svg/285298/orbit)
+- `icons/compendium/upgrades/housing_capacity.svg` remixed from [Bed SVG Vector](https://www.svgrepo.com/svg/409415/bed)
+- `icons/compendium/upgrades/infrared_nightvision_scope.svg.svg` remixed from [Orbit](https://www.svgrepo.com/svg/285298/orbit)
 - `icons/compendium/upgrades/range_upgrade.svg` remixed from [WiFi](https://www.svgrepo.com/svg/10334/wifi)
-- `icons/compendium/upgrades/security_upgrade.svg` from [Security Protection Combination](https://www.svgrepo.com/svg/390117/security-protection-combination)
+- `icons/compendium/upgrades/security_upgrade.svg` remixed from [Security Protection Combination](https://www.svgrepo.com/svg/390117/security-protection-combination)
 - `icons/compendium/upgrades/smuggling_upgrade.svg` remixed from [Box1 SVG Vector](https://www.svgrepo.com/svg/485641/box1) and [Hidden SVG Vector](https://www.svgrepo.com/svg/447392/hidden)
 - `icons/compendium/upgrades/sniping_scope.svg` remixed from [Target Sniper](https://www.svgrepo.com/svg/182279/target-sniper)
 
