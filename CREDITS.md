@@ -323,10 +323,6 @@ This game system (including items provided in the compendium) contains unofficia
 
 #### programs
 
-#### spinning ????
-
-- `icons/compendium/compendium/spinning_your_wheels/bottle_dynamo.svg` remixed from [Mono wheel robot icon](https://game-icons.net/1x1/delapouite/mono-wheel-robot.html)
-
 #### status
 
 - `icons/compendium/status/broken_weapon.svg` remixed from [Glock](https://game-icons.net/1x1/skoll/glock.html)
