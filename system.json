@@ -665,7 +665,7 @@
   "secondaryTokenAttribute": null,
   "background": "systems/cyberpunk-red-core/images/Foundry-Background.webp",
   "url": "https://gitlab.com/cyberpunk-red-team/fvtt-cyberpunk-red-core",
-  "manifest": "https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/latest/system.json",
+  "manifest": "https://github.com/Baohas/CyberpunkRED-Core/blob/I1347/admin-passwords/system.json",
   "download": "https://gitlab.com/api/v4/projects/22820629/packages/generic/fvtt-cyberpunk-red-core/v0.92.4/fvtt-cyberpunk-red-core-v0.92.4.zip",
   "license": "GPL v3"
 }
