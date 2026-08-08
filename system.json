@@ -8,8 +8,8 @@
   "description": "Implementation of the Cyberpunk RED, Core Rules, for FVTT",
   "compatibility": {
     "minimum": 12,
-    "verified": 12,
-    "maximum": 12
+    "verified": 14,
+    "maximum": 14
   },
   "authors": [
     {
