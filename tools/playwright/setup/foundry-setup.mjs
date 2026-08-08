@@ -217,9 +217,24 @@ async function handleCoreWorldMigrationPrompt(page) {
   return true;
 }
 
+async function recoverNoActiveGameSession(page) {
+  const pathname = new URL(page.url()).pathname;
+  if (!/\/(?:no|game)$/.test(pathname)) return false;
+
+  const goBack = page
+    .locator('a:has-text("Go Back"), button:has-text("Go Back")')
+    .first();
+  if (!(await present(goBack, 1000))) return false;
+
+  await clickThrough(page, goBack);
+  await page.waitForLoadState("networkidle").catch(() => {});
+  return true;
+}
+
 async function waitForJoinAfterMigration(page, config, timeoutMs = 180000) {
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
+    await recoverNoActiveGameSession(page);
     const pathname = new URL(page.url()).pathname;
     if (
       /\/(join|auth)$/.test(pathname) &&
@@ -238,6 +253,7 @@ async function launchWorldFromSetup(page, { config, worldId }) {
   // Retry from /setup until the world is joinable. A launch can either succeed
   // directly, surface Foundry's core migration dialog, or simply need another try.
   for (let attempt = 0; attempt < 6; attempt += 1) {
+    await recoverNoActiveGameSession(page);
     await dismissTours(page);
     await clickWorldLaunch(page, worldId);
     const handledMigration = await handleCoreWorldMigrationPrompt(page);
@@ -305,11 +321,13 @@ async function createAndLaunchWorld(page, worldId, config) {
  */
 export async function reachInteractableSetup(page, config) {
   await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
+  await recoverNoActiveGameSession(page);
   await satisfySetupGates(page, config);
 }
 
 export async function driveSetup(page, { config, worldId }) {
   await page.goto(config.url, { waitUntil: "domcontentloaded" });
+  await recoverNoActiveGameSession(page);
 
   // If Foundry has already redirected us into a live world or exposed the
   // join screen, setup auth is irrelevant and world creation is already a no-op.
@@ -332,6 +350,7 @@ async function currentPageHasJoinScreen(page) {
 
 export async function launchedWorldHasJoinScreen(page, config) {
   await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+  await recoverNoActiveGameSession(page);
   return currentPageHasJoinScreen(page);
 }
 

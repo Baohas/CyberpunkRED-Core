@@ -6,10 +6,13 @@ import {
 } from "../../tools/playwright/setup/foundry-setup.mjs";
 
 class FakeLocator {
-  constructor({ visible = false } = {}) {
+  constructor({ visible = false, onClick } = {}) {
     this.visible = visible;
+    this.onClick = onClick;
     this.fill = async () => {};
-    this.click = async () => {};
+    this.click = async () => {
+      this.onClick?.();
+    };
     this.check = async () => {};
   }
 
@@ -29,9 +32,11 @@ class FakePage {
     licenseVisible = false,
     passwordVisible = false,
     initialPath = "/join",
+    goBackVisible = false,
   } = {}) {
     this.licenseVisible = licenseVisible;
     this.passwordVisible = passwordVisible;
+    this.goBackVisible = goBackVisible;
     this.joinScreenVisible = initialPath === "/join";
     this.currentUrl = `http://localhost:30001${initialPath}`;
     this.keyboard = {
@@ -39,6 +44,17 @@ class FakePage {
     };
     this.waitForLoadState = async () => {};
     this.evaluate = async () => {};
+  }
+
+  handleClick(selector) {
+    if (
+      this.goBackVisible &&
+      (selector.includes('a:has-text("Go Back")') ||
+        selector.includes('button:has-text("Go Back")'))
+    ) {
+      this.currentUrl = "http://localhost:30001/setup";
+      this.goBackVisible = false;
+    }
   }
 
   async goto(url) {
@@ -58,6 +74,16 @@ class FakePage {
       return new FakeLocator({ visible: this.licenseVisible });
     }
 
+    if (
+      selector.includes('a:has-text("Go Back")') ||
+      selector.includes('button:has-text("Go Back")')
+    ) {
+      return new FakeLocator({
+        visible: this.goBackVisible,
+        onClick: () => this.handleClick(selector),
+      });
+    }
+
     if (selector.includes('select[name="userid"]')) {
       return new FakeLocator({ visible: this.joinScreenVisible });
     }
@@ -70,7 +96,10 @@ class FakePage {
       return new FakeLocator({ visible: this.passwordVisible });
     }
 
-    return new FakeLocator({ visible: false });
+    return new FakeLocator({
+      visible: false,
+      onClick: () => this.handleClick(selector),
+    });
   }
 }
 
@@ -182,5 +211,21 @@ describe("playwright Foundry setup messaging", () => {
 
     expect(error).toBeInstanceOf(Error);
     expectAdminPasswordGuidance(error.message);
+  });
+
+  it("recovers from the no-active-game page with Go Back", async () => {
+    const page = new FakePage({
+      passwordVisible: false,
+      initialPath: "/no",
+      goBackVisible: true,
+    });
+    const config = {
+      url: "http://localhost:30001",
+      foundryAdminPass: "",
+      foundryKey: "licensed",
+    };
+
+    await expect(reachInteractableSetup(page, config)).resolves.toBeUndefined();
+    expect(page.url()).toBe("http://localhost:30001/setup");
   });
 });
