@@ -105,7 +105,8 @@ async function authenticateSetup(page, foundryAdminPass) {
   if (!foundryAdminPass) {
     throw new Error(
       "Foundry setup requires the administrator password. Set " +
-        "FOUNDRY_ADMIN_PASS in the repo-root .env file or export it in your shell.",
+        "foundry.adminPassword in foundryconfig.json, or set FOUNDRY_ADMIN_PASS " +
+        "in the repo-root .env file or export it in your shell.",
     );
   }
 
@@ -143,6 +144,14 @@ async function acceptEula(page) {
   await agree.check().catch(() => {});
   await page.locator("button#sign").first().click();
   await page.waitForLoadState("networkidle").catch(() => {});
+}
+
+async function satisfySetupGates(page, config) {
+  await acceptLicense(page, config.foundryKey);
+  await acceptEula(page);
+  await authenticateSetup(page, config.foundryAdminPass);
+  await declineDataSharing(page);
+  await dismissTours(page);
 }
 
 async function clickWorldLaunch(page, worldId) {
@@ -296,20 +305,24 @@ async function createAndLaunchWorld(page, worldId, config) {
  */
 export async function reachInteractableSetup(page, config) {
   await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
-
-  await acceptLicense(page, config.foundryKey);
-  await acceptEula(page);
-  await authenticateSetup(page, config.foundryAdminPass);
-  await declineDataSharing(page);
-  await dismissTours(page);
+  await satisfySetupGates(page, config);
 }
 
 export async function driveSetup(page, { config, worldId }) {
   await page.goto(config.url, { waitUntil: "domcontentloaded" });
 
-  await acceptLicense(page, config.foundryKey);
-  await acceptEula(page);
-  await declineDataSharing(page);
+  // If Foundry has already redirected us into a live world or exposed the
+  // join screen, setup auth is irrelevant and world creation is already a no-op.
+  // Do not treat `/auth` the same way: on admin-protected setups that is the
+  // setup login gate we specifically need to satisfy.
+  if (
+    /\/(game|join)$/.test(new URL(page.url()).pathname) ||
+    (await currentPageHasJoinScreen(page))
+  ) {
+    return;
+  }
+
+  await satisfySetupGates(page, config);
   await createAndLaunchWorld(page, worldId, config);
 }
 
