@@ -105,7 +105,8 @@ async function authenticateSetup(page, foundryAdminPass) {
   if (!foundryAdminPass) {
     throw new Error(
       "Foundry setup requires the administrator password. Set " +
-        "FOUNDRY_ADMIN_PASS in the repo-root .env file or export it in your shell.",
+        "foundry.adminPassword in foundryconfig.json, or set FOUNDRY_ADMIN_PASS " +
+        "in the repo-root .env file or export it in your shell.",
     );
   }
 
@@ -143,6 +144,14 @@ async function acceptEula(page) {
   await agree.check().catch(() => {});
   await page.locator("button#sign").first().click();
   await page.waitForLoadState("networkidle").catch(() => {});
+}
+
+async function satisfySetupGates(page, config) {
+  await acceptLicense(page, config.foundryKey);
+  await acceptEula(page);
+  await authenticateSetup(page, config.foundryAdminPass);
+  await declineDataSharing(page);
+  await dismissTours(page);
 }
 
 async function clickWorldLaunch(page, worldId) {
@@ -208,9 +217,24 @@ async function handleCoreWorldMigrationPrompt(page) {
   return true;
 }
 
+async function recoverNoActiveGameSession(page) {
+  const pathname = new URL(page.url()).pathname;
+  if (!/\/(?:no|game)$/.test(pathname)) return false;
+
+  const goBack = page
+    .locator('a:has-text("Go Back"), button:has-text("Go Back")')
+    .first();
+  if (!(await present(goBack, 1000))) return false;
+
+  await clickThrough(page, goBack);
+  await page.waitForLoadState("networkidle").catch(() => {});
+  return true;
+}
+
 async function waitForJoinAfterMigration(page, config, timeoutMs = 180000) {
   const deadline = Date.now() + timeoutMs;
   while (Date.now() < deadline) {
+    await recoverNoActiveGameSession(page);
     const pathname = new URL(page.url()).pathname;
     if (
       /\/(join|auth)$/.test(pathname) &&
@@ -229,6 +253,7 @@ async function launchWorldFromSetup(page, { config, worldId }) {
   // Retry from /setup until the world is joinable. A launch can either succeed
   // directly, surface Foundry's core migration dialog, or simply need another try.
   for (let attempt = 0; attempt < 6; attempt += 1) {
+    await recoverNoActiveGameSession(page);
     await dismissTours(page);
     await clickWorldLaunch(page, worldId);
     const handledMigration = await handleCoreWorldMigrationPrompt(page);
@@ -296,20 +321,26 @@ async function createAndLaunchWorld(page, worldId, config) {
  */
 export async function reachInteractableSetup(page, config) {
   await page.goto(`${config.url}/setup`, { waitUntil: "domcontentloaded" });
-
-  await acceptLicense(page, config.foundryKey);
-  await acceptEula(page);
-  await authenticateSetup(page, config.foundryAdminPass);
-  await declineDataSharing(page);
-  await dismissTours(page);
+  await recoverNoActiveGameSession(page);
+  await satisfySetupGates(page, config);
 }
 
 export async function driveSetup(page, { config, worldId }) {
   await page.goto(config.url, { waitUntil: "domcontentloaded" });
+  await recoverNoActiveGameSession(page);
 
-  await acceptLicense(page, config.foundryKey);
-  await acceptEula(page);
-  await declineDataSharing(page);
+  // If Foundry has already redirected us into a live world or exposed the
+  // join screen, setup auth is irrelevant and world creation is already a no-op.
+  // Do not treat `/auth` the same way: on admin-protected setups that is the
+  // setup login gate we specifically need to satisfy.
+  if (
+    /\/(game|join)$/.test(new URL(page.url()).pathname) ||
+    (await currentPageHasJoinScreen(page))
+  ) {
+    return;
+  }
+
+  await satisfySetupGates(page, config);
   await createAndLaunchWorld(page, worldId, config);
 }
 
@@ -319,6 +350,7 @@ async function currentPageHasJoinScreen(page) {
 
 export async function launchedWorldHasJoinScreen(page, config) {
   await page.goto(`${config.url}/join`, { waitUntil: "domcontentloaded" });
+  await recoverNoActiveGameSession(page);
   return currentPageHasJoinScreen(page);
 }
 
